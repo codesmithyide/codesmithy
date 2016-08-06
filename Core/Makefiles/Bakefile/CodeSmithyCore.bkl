@@ -1,0 +1,28 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/CodeSmithyCore.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
+
+library CodeSmithyCore
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../../Include/CodeSmithy/Core;
+
+    outputdir = ../../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyCore-d;
+    }
+
+    headers
+    {
+        ../../../Include/CodeSmithy/Core/Projects/Project.h
+    }
+
+    sources
+    {
+        ../../Source/Projects/Project.cpp
+    }
+}
