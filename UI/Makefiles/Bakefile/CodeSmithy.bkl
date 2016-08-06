@@ -1,0 +1,19 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/CodeSmithy.sln;
+vs2013.solutionfile = ../VC12/CodeSmithy.sln;
+
+program CodeSmithy
+{
+    headers
+    {
+        ../../Source/App.h
+        ../../Source/Frame.h
+    }
+
+    sources
+    {
+        ../../Source/App.cpp
+        ../../Source/Frame.cpp
+    }
+}
