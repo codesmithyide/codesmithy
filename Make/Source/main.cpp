@@ -20,7 +20,41 @@
     IN THE SOFTWARE.
 */
 
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#endif
+#include <string>
+
 int main(int argc, char* argv[])
 {
+    std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe ";
+    commandLine.append(argv[1]);
+    commandLine.append(" /build Debug");
+
+#ifdef _WIN32
+    HANDLE processHandle;
+    STARTUPINFOA startupInfo;
+    ZeroMemory(&startupInfo, sizeof(startupInfo));
+    startupInfo.cb = sizeof(startupInfo);
+
+    PROCESS_INFORMATION processInfo;
+    ZeroMemory(&processInfo, sizeof(processInfo));
+
+    if (CreateProcessA(NULL, const_cast<char*>(commandLine.c_str()),
+        NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo))
+    {
+        processHandle = processInfo.hProcess;
+        CloseHandle(processInfo.hThread);
+
+        WaitForSingleObject(processHandle, INFINITE);
+        CloseHandle(processHandle);
+    }
+    else
+    {
+        // TODO
+    }
+#endif
+
     return 0;
 }
