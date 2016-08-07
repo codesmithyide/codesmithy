@@ -1,9 +1,12 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
-program CodeSmithyCoreTests
+program CodeSmithyCoreTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 

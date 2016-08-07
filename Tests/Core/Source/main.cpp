@@ -20,7 +20,11 @@
     IN THE SOFTWARE.
 */
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
 int main(int argc, char* argv[])
 {
-    return 0;
+    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+
+    return theTestHarness.run();
 }
