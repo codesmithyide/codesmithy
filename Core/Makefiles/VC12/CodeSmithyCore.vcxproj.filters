@@ -20,9 +20,15 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Project.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

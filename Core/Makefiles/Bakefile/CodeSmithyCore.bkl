@@ -19,10 +19,14 @@ library CodeSmithyCore
     headers
     {
         ../../../Include/CodeSmithy/Core/Projects/Project.h
+
+        ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
     }
 
     sources
     {
         ../../Source/Projects/Project.cpp
+
+        ../../Source/Projects/Bakefile/BakefileProject.cpp
     }
 }
