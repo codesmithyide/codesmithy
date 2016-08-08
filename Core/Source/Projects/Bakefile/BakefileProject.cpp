@@ -21,3 +21,16 @@
 */
 
 #include "Projects/Bakefile/BakefileProject.h"
+
+namespace CodeSmithy
+{
+
+BakefileProject::BakefileProject()
+{
+}
+
+BakefileProject::~BakefileProject()
+{
+}
+
+}

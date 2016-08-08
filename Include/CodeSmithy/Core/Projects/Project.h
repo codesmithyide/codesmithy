@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
+namespace CodeSmithy
+{
+
+// A project is a collection of documents.
+class Project
+{
+public:
+	Project();
+	virtual ~Project();
+};
+
+}
+
 #endif

@@ -21,3 +21,16 @@
 */
 
 #include "Projects/Project.h"
+
+namespace CodeSmithy
+{
+
+Project::Project()
+{
+}
+
+Project::~Project()
+{
+}
+
+}

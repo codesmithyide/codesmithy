@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_BAKEFILE_BAKEFILEPROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_BAKEFILE_BAKEFILEPROJECT_H_
 
+#include "../Project.h"
+
+namespace CodeSmithy
+{
+
+class BakefileProject : public Project
+{
+public:
+	BakefileProject();
+	virtual ~BakefileProject();
+};
+
+}
+
 #endif
