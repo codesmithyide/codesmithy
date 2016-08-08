@@ -18,6 +18,8 @@ library CodeSmithyCore
 
     headers
     {
+        ../../../Include/CodeSmithy/Core/linkoptions.h
+
         ../../../Include/CodeSmithy/Core/Projects/Project.h
 
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h

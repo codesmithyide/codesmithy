@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,18 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileProjectTests.h"
-#include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
+#ifndef _CODESMITHY_CORE_LINKOPTIONS_H_
+#define _CODESMITHY_CORE_LINKOPTIONS_H_
 
-void AddBakefileProjectTests(TestSequence& testSequence)
-{
-	TestSequence* bakefileProjectTestSequence = new TestSequence("BakefileProject tests", testSequence);
+#ifdef _DEBUG
+#pragma comment(lib, "CodeSmithyCore-d.lib")
+#else
+#pragma comment(lib, "CodeSmithyCore.lib")
+#endif
 
-	new HeapAllocationErrorsTest("Creation test 1", BakefileProjectCreationTest1, *bakefileProjectTestSequence);
-}
-
-TestResult::EOutcome BakefileProjectCreationTest1()
-{
-	CodeSmithy::BakefileProject project;
-	return TestResult::ePassed;
-}
+#endif

@@ -17,6 +17,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
