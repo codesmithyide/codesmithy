@@ -151,12 +151,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Project.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
   </ItemGroup>

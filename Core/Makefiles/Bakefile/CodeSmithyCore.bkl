@@ -21,6 +21,7 @@ library CodeSmithyCore
         ../../../Include/CodeSmithy/Core/linkoptions.h
 
         ../../../Include/CodeSmithy/Core/Projects/Project.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectType.h
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
@@ -29,6 +30,7 @@ library CodeSmithyCore
     sources
     {
         ../../Source/Projects/Project.cpp
+        ../../Source/Projects/ProjectType.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp
 
         ../../Source/Projects/Bakefile/BakefileProject.cpp
