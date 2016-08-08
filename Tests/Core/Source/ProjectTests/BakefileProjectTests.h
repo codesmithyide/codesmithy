@@ -20,12 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "BakefileProjectTests.h"
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_BAKEFILEPROJECTTESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_BAKEFILEPROJECTTESTS_H_
 
-void AddProjectTests(TestHarness& theTestHarness)
-{
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-	AddBakefileProjectTests(projectTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddBakefileProjectTests(TestSequence& testSequence);
+
+TestResult::EOutcome BakefileProjectCreationTest1();
+
+#endif

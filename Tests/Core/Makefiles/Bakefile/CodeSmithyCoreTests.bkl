@@ -1,18 +1,21 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
-program CodeSmithyCoreTests : IshikoTestFrameworkCore
+program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
     headers
     {
         ../../Source/ProjectTests/ProjectTests.h
+        ../../Source/ProjectTests/BakefileProjectTests.h
     }
 
     sources
@@ -20,5 +23,6 @@ program CodeSmithyCoreTests : IshikoTestFrameworkCore
         ../../Source/main.cpp
 
         ../../Source/ProjectTests/ProjectTests.cpp
+        ../../Source/ProjectTests/BakefileProjectTests.cpp
     }
 }

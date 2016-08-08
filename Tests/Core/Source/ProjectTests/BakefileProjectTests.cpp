@@ -20,12 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
 #include "BakefileProjectTests.h"
+#include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
 
-void AddProjectTests(TestHarness& theTestHarness)
+void AddBakefileProjectTests(TestSequence& testSequence)
 {
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+	TestSequence* bakefileProjectTestSequence = new TestSequence("BakefileProject tests", testSequence);
 
-	AddBakefileProjectTests(projectTestSequence);
+	new HeapAllocationErrorsTest("Creation test 1", BakefileProjectCreationTest1, *bakefileProjectTestSequence);
+}
+
+TestResult::EOutcome BakefileProjectCreationTest1()
+{
+	return TestResult::eFailed;
 }
