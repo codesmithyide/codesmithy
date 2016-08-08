@@ -10,8 +10,15 @@ program CodeSmithyCoreTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/ProjectTests/ProjectTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+
+        ../../Source/ProjectTests/ProjectTests.cpp
     }
 }

@@ -20,14 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests/ProjectTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "ProjectTests.h"
 
-int main(int argc, char* argv[])
+void AddProjectTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
-
-	AddProjectTests(theTestHarness);
-
-    return theTestHarness.run();
+	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 }
