@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,21 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_BAKEFILE_BAKEFILEPROJECT_H_
-#define _CODESMITHY_CORE_PROJECTS_BAKEFILE_BAKEFILEPROJECT_H_
-
-#include "../MetaBuildSystemProject.h"
+#include "Projects/MetaBuildSystemProject.h"
 
 namespace CodeSmithy
 {
 
-class BakefileProject : public MetaBuildSystemProject
+MetaBuildSystemProject::MetaBuildSystemProject()
 {
-public:
-	BakefileProject();
-	virtual ~BakefileProject();
-};
-
 }
 
-#endif
+MetaBuildSystemProject::~MetaBuildSystemProject()
+{
+}
+
+}
