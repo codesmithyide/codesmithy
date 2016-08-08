@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
 
-	AddProjectTests(theTestHarness);
+    AddProjectTests(theTestHarness);
 
     return theTestHarness.run();
 }
