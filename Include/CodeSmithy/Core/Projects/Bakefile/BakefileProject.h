@@ -31,8 +31,8 @@ namespace CodeSmithy
 class BakefileProject : public MetaBuildSystemProject
 {
 public:
-	BakefileProject();
-	virtual ~BakefileProject();
+    BakefileProject();
+    virtual ~BakefileProject();
 };
 
 }

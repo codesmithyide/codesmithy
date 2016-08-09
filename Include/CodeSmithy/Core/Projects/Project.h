@@ -30,8 +30,8 @@ namespace CodeSmithy
 class Project
 {
 public:
-	Project();
-	virtual ~Project();
+    Project();
+    virtual ~Project();
 };
 
 }

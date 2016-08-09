@@ -29,8 +29,8 @@ namespace CodeSmithy
 class ProjectType
 {
 public:
-	ProjectType();
-	virtual ~ProjectType();
+    ProjectType();
+    virtual ~ProjectType();
 };
 
 }

@@ -32,7 +32,7 @@ class MetaBuildSystemProject : public Project
 {
 public:
     MetaBuildSystemProject();
-	virtual ~MetaBuildSystemProject();
+    virtual ~MetaBuildSystemProject();
 };
 
 }
