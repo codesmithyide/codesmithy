@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "CodeSmithy/Core/Make/CodeSmithyMakeReturnCodes.h"
+#include "CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h"
 #include "Ishiko/Process/ProcessCreator.h"
 #include <string>
 
