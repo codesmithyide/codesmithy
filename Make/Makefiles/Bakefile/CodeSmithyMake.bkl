@@ -5,6 +5,10 @@ vs2013.solutionfile = ../VC12/CodeSmithyMake.sln;
 
 program CodeSmithyMake
 {
+    archs = x86 x86_64;
+
+    outputdir = ../../../Bin/$(arch);
+
     sources
     {
         ../../Source/main.cpp
