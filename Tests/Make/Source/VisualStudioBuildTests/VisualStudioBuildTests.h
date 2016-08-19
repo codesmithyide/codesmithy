@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddVisualStudioBuildTests(TestHarness& theTestHarness);
 
+void VisualStudioBuildTest1(TestSequence& testSequence);
+
 #endif

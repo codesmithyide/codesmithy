@@ -25,7 +25,9 @@
 
 int main(int argc, char* argv[])
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyMake");
+
+    theTestHarness.environment().setTestDataDirectory("../../TestData");
 
     AddVisualStudioBuildTests(theTestHarness);
 

@@ -25,4 +25,17 @@
 void AddVisualStudioBuildTests(TestHarness& theTestHarness)
 {
     TestSequence& buildTestSequence = theTestHarness.appendTestSequence("VisualStudio build tests");
+
+    VisualStudioBuildTest1(buildTestSequence);
+}
+
+void VisualStudioBuildTest1(TestSequence& testSequence)
+{
+    boost::filesystem::path projectPath(
+        testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln"
+        );
+
+    std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
+    commandLine.append(projectPath.string());
+    new ConsoleApplicationTest("Visual Studio build test 1", commandLine, 0, testSequence);
 }

@@ -28,6 +28,11 @@
 
 int main(int argc, char* argv[])
 {
+    if (argc <= 1)
+    {
+        return 0;
+    }
+
     std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe ";
     commandLine.append(argv[1]);
     commandLine.append(" /build Debug");
