@@ -1,0 +1,12 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/HelloWorld.sln;
+vs2013.solutionfile = ../VC12/HelloWorld.sln;
+
+program HelloWorld
+{
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
