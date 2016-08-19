@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "VisualStudioBuildTests/VisualStudioBuildTests.h"
+#ifndef _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
+#define _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-int main(int argc, char* argv[])
-{
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+using namespace Ishiko::TestFramework;
 
-    AddVisualStudioBuildTests(theTestHarness);
+void AddVisualStudioBuildTests(TestHarness& theTestHarness);
 
-    return theTestHarness.run();
-}
+#endif

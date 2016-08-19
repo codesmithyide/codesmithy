@@ -10,8 +10,15 @@ program CodeSmithyMakeTests : IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/VisualStudioBuildTests/VisualStudioBuildTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+
+        ../../Source/VisualStudioBuildTests/VisualStudioBuildTests.cpp
     }
 }
