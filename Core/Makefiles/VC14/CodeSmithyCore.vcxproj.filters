@@ -32,7 +32,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Make\CodeSmithyMakeReturnCodes.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
