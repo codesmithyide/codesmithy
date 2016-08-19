@@ -25,6 +25,8 @@ library CodeSmithyCore
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
+
+        ../../../Include/CodeSmithy/Core/Make/CodeSmithyMakeReturnCodes.h
     }
 
     sources

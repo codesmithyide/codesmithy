@@ -32,6 +32,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Make\CodeSmithyMakeReturnCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Project.cpp">
