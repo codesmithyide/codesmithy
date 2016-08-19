@@ -1,9 +1,14 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyMake.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyMake.sln;
 
-program CodeSmithyMake
+program CodeSmithyMake : CodeSmithyCore, IshikoProcess
 {
     archs = x86 x86_64;
 

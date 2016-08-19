@@ -27,6 +27,8 @@ void AddVisualStudioBuildTests(TestHarness& theTestHarness)
     TestSequence& buildTestSequence = theTestHarness.appendTestSequence("VisualStudio build tests");
 
     VisualStudioBuildTest1(buildTestSequence);
+    VisualStudioBuildTest2(buildTestSequence);
+    VisualStudioBuildTest3(buildTestSequence);
 }
 
 void VisualStudioBuildTest1(TestSequence& testSequence)
@@ -38,4 +40,26 @@ void VisualStudioBuildTest1(TestSequence& testSequence)
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
     new ConsoleApplicationTest("Visual Studio build test 1", commandLine, 0, testSequence);
+}
+
+void VisualStudioBuildTest2(TestSequence& testSequence)
+{
+    boost::filesystem::path projectPath(
+        testSequence.environment().getTestDataDirectory() / "MissingProject.sln"
+        );
+
+    std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
+    commandLine.append(projectPath.string());
+    new ConsoleApplicationTest("Visual Studio build test 2", commandLine, -1, testSequence);
+}
+
+void VisualStudioBuildTest3(TestSequence& testSequence)
+{
+    boost::filesystem::path projectPath(
+        testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln"
+        );
+
+    std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
+    commandLine.append(projectPath.string());
+    new ConsoleApplicationTest("Visual Studio build test 3", commandLine, -1, testSequence);
 }

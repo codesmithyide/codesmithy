@@ -20,10 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#include <iostream>
-
 int main(int argc, char* argv[])
 {
-    std::cout << "Hello World!" << std::endl;
+    A compilation error!!!
     return 0;
 }

@@ -26,10 +26,14 @@
 namespace CodeSmithy
 {
 
-enum ECodeSmithyMakeReturnCodes
+class CodeSmithyMakeReturnCode
 {
-	eOk = 0,
-    eError = -1
+public:
+    enum EValues
+    {
+	    eOk = 0,
+        eError = -1
+    };
 };
 
 }

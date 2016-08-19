@@ -30,5 +30,7 @@ using namespace Ishiko::TestFramework;
 void AddVisualStudioBuildTests(TestHarness& theTestHarness);
 
 void VisualStudioBuildTest1(TestSequence& testSequence);
+void VisualStudioBuildTest2(TestSequence& testSequence);
+void VisualStudioBuildTest3(TestSequence& testSequence);
 
 #endif

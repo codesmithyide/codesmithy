@@ -20,11 +20,11 @@
     IN THE SOFTWARE.
 */
 
-#ifdef _WIN32
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#endif
+#include "CodeSmithy/Core/Make/CodeSmithyMakeReturnCodes.h"
+#include "Ishiko/Process/ProcessCreator.h"
 #include <string>
+
+using namespace CodeSmithy;
 
 int main(int argc, char* argv[])
 {
@@ -37,29 +37,22 @@ int main(int argc, char* argv[])
     commandLine.append(argv[1]);
     commandLine.append(" /build Debug");
 
-#ifdef _WIN32
-    HANDLE processHandle;
-    STARTUPINFOA startupInfo;
-    ZeroMemory(&startupInfo, sizeof(startupInfo));
-    startupInfo.cb = sizeof(startupInfo);
-
-    PROCESS_INFORMATION processInfo;
-    ZeroMemory(&processInfo, sizeof(processInfo));
-
-    if (CreateProcessA(NULL, const_cast<char*>(commandLine.c_str()),
-        NULL, NULL, FALSE, 0, NULL, NULL, &startupInfo, &processInfo))
+    Ishiko::Process::ProcessHandle processHandle;
+    int err = Ishiko::Process::ProcessCreator::StartProcess(commandLine, processHandle);
+    if (err == 0)
     {
-        processHandle = processInfo.hProcess;
-        CloseHandle(processInfo.hThread);
-
-        WaitForSingleObject(processHandle, INFINITE);
-        CloseHandle(processHandle);
+        processHandle.waitForExit();
+        if (processHandle.exitCode() == 0)
+        {
+            return CodeSmithyMakeReturnCode::eOk;
+        }
+        else
+        {
+            return CodeSmithyMakeReturnCode::eError;
+        }
     }
     else
     {
-        // TODO
+        return CodeSmithyMakeReturnCode::eError;
     }
-#endif
-
-    return 0;
 }
