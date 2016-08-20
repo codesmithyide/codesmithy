@@ -21,12 +21,13 @@
 */
 
 #include "Projects/ProjectFileRepository.h"
+#include <fstream>
 
 namespace CodeSmithy
 {
 
 ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path)
-    : m_file(path.wstring())
+    : m_path(path)
 {
     pugi::xml_node rootNode = m_document.append_child("codesmithy-project");
     if (rootNode)
@@ -34,7 +35,7 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
         m_projectNameNode = rootNode.append_child("project-name");
         if (m_projectNameNode)
         {
-            m_document.save(m_file);
+            save();
         }
     }
 }
@@ -46,7 +47,8 @@ void ProjectFileRepository::setProjectName(const std::string& name)
 
 void ProjectFileRepository::save()
 {
-    m_document.save(m_file);
+    std::ofstream file(m_path.wstring());
+    m_document.save(file);
 }
 
 }

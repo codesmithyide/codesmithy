@@ -26,7 +26,6 @@
 #include "ProjectRepository.h"
 #include <pugixml.hpp>
 #include <boost/filesystem/path.hpp>
-#include <fstream>
 
 namespace CodeSmithy
 {
@@ -40,7 +39,7 @@ public:
     void save() override;
 
 private:
-    std::ofstream m_file;
+    boost::filesystem::path m_path;
     pugi::xml_document m_document;
     pugi::xml_node m_projectNameNode;
 };
