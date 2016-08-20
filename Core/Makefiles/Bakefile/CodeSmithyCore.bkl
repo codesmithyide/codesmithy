@@ -22,6 +22,9 @@ library CodeSmithyCore
 
         ../../../Include/CodeSmithy/Core/Projects/Project.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectType.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectObserver.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectRepository.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectFileRepository.h
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
@@ -33,6 +36,9 @@ library CodeSmithyCore
     {
         ../../Source/Projects/Project.cpp
         ../../Source/Projects/ProjectType.cpp
+        ../../Source/Projects/ProjectObserver.cpp
+        ../../Source/Projects/ProjectRepository.cpp
+        ../../Source/Projects/ProjectFileRepository.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp
 
         ../../Source/Projects/Bakefile/BakefileProject.cpp

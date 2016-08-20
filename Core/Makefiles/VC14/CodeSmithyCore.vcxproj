@@ -152,6 +152,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Project.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectObserver.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectRepository.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp" />
   </ItemGroup>
@@ -159,6 +162,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectObserver.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
