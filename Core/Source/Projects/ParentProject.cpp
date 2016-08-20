@@ -25,18 +25,26 @@
 namespace CodeSmithy
 {
 
-ParentProject::ParentProject(const std::string& name)
-    : Project(name)
+ParentProject::ParentProject(const ParentProjectType& type,
+                             const std::string& name)
+    : Project(name), m_type(type)
 {
 }
 
-ParentProject::ParentProject(ProjectRepositoryNode::shared_ptr node)
-    : Project(node->get("name")), m_node(node)
+ParentProject::ParentProject(const ParentProjectType& type, 
+                             ProjectRepositoryNode::shared_ptr node)
+    : Project(node->get("name")), m_type(type),
+    m_node(node)
 {
 }
 
 ParentProject::~ParentProject()
 {
+}
+
+const ProjectType& ParentProject::type() const
+{
+    return m_type;
 }
 
 void ParentProject::save()

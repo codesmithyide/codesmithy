@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_BAKEFILE_BAKEFILEPROJECT_H_
 
 #include "../MetaBuildSystemProject.h"
+#include "BakefileProjectType.h"
 
 namespace CodeSmithy
 {
@@ -31,13 +32,16 @@ namespace CodeSmithy
 class BakefileProject : public MetaBuildSystemProject
 {
 public:
-    BakefileProject(const std::string& name);
-    BakefileProject(ProjectRepositoryNode::shared_ptr node);
+	BakefileProject(const BakefileProjectType& type, const std::string& name);
+    BakefileProject(const BakefileProjectType& type, ProjectRepositoryNode::shared_ptr node);
     ~BakefileProject() override;
+
+    const ProjectType& type() const override;
 
     void save() override;
 
 private:
+	const BakefileProjectType& m_type;
     ProjectRepositoryNode::shared_ptr m_node;
 };
 

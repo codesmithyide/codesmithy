@@ -37,7 +37,8 @@ void AddParentProjectTests(TestSequence& testSequence)
 
 TestResult::EOutcome ParentProjectCreationTest1()
 {
-	CodeSmithy::ParentProject project("ParentProjectCreationTest1");
+    CodeSmithy::ParentProjectType type;
+    CodeSmithy::ParentProject project(type, "ParentProjectCreationTest1");
 	return TestResult::ePassed;
 }
 
@@ -52,7 +53,8 @@ TestResult::EOutcome ParentProjectCreationTest2(Test& test)
 
     if (projectNode)
     {
-        CodeSmithy::ParentProject project(projectNode);
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
         if (project.name() == "ParentProject")
         {
             result = TestResult::ePassed;
@@ -73,7 +75,8 @@ TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test)
     CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.addProject("ParentProject");
     if (projectNode)
     {
-        CodeSmithy::ParentProject project(projectNode);
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
         project.save();
     }
 

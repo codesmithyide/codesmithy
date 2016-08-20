@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
+#include "ProjectType.h"
 #include "ProjectRepositoryNode.h"
 #include <string>
 
@@ -36,6 +37,7 @@ public:
     Project(const std::string& name);
     virtual ~Project();
 
+    virtual const ProjectType& type() const = 0;
     const std::string& name() const;
 
 	virtual void save() = 0;

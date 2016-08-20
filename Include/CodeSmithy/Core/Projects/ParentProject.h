@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PARENTPROJECT_H_
 
 #include "Project.h"
+#include "ParentProjectType.h"
 
 namespace CodeSmithy
 {
@@ -31,13 +32,16 @@ namespace CodeSmithy
 class ParentProject : public Project
 {
 public:
-    ParentProject(const std::string& name);
-    ParentProject(ProjectRepositoryNode::shared_ptr node);
+    ParentProject(const ParentProjectType& type, const std::string& name);
+    ParentProject(const ParentProjectType& type, ProjectRepositoryNode::shared_ptr node);
     ~ParentProject() override;
+
+    const ProjectType& type() const override;
 
     void save() override;
 
 private:
+    const ParentProjectType& m_type;
     ProjectRepositoryNode::shared_ptr m_node;
 };
 
