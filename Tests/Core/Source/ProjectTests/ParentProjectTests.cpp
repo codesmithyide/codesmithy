@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,26 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "ParentProjectTypeTests.h"
-#include "BakefileProjectTypeTests.h"
-#include "ProjectTypesTests.h"
-#include "ProjectFileRepositoryTests.h"
 #include "ParentProjectTests.h"
-#include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
+#include "CodeSmithy/Core/Projects/ParentProject.h"
 
-void AddProjectTests(TestHarness& theTestHarness)
+void AddParentProjectTests(TestSequence& testSequence)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
+	TestSequence* parentProjectTestSequence = new TestSequence("ParentProject tests", testSequence);
 
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+	new HeapAllocationErrorsTest("Creation test 1", ParentProjectCreationTest1, *parentProjectTestSequence);
+}
 
-    AddParentProjectTypeTests(projectTestSequence);
-    AddBakefileProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    AddProjectFileRepositoryTests(projectTestSequence);
-    AddParentProjectTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
+TestResult::EOutcome ParentProjectCreationTest1()
+{
+	CodeSmithy::ParentProject project;
+	return TestResult::ePassed;
 }
