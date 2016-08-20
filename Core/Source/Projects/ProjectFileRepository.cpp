@@ -21,6 +21,7 @@
 */
 
 #include "Projects/ProjectFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 #include <fstream>
 
 namespace CodeSmithy
@@ -29,13 +30,21 @@ namespace CodeSmithy
 ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path)
     : m_path(path)
 {
-    pugi::xml_node rootNode = m_document.append_child("codesmithy-project");
-    if (rootNode)
+    if (boost::filesystem::exists(path))
     {
-        m_projectNameNode = rootNode.append_child("project-name");
-        if (m_projectNameNode)
+        m_document.load_file(path.string().c_str());
+        m_projectNameNode = m_document.child("codesmithy-project").child("project-name");
+    }
+    else
+    {
+        pugi::xml_node rootNode = m_document.append_child("codesmithy-project");
+        if (rootNode)
         {
-            save();
+            m_projectNameNode = rootNode.append_child("project-name");
+            if (m_projectNameNode)
+            {
+                save();
+            }
         }
     }
 }

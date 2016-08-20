@@ -22,12 +22,14 @@
 
 #include "ProjectFileRepositoryTests.h"
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddProjectFileRepositoryTests(TestSequence& testSequence)
 {
 	TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepository tests", testSequence);
 
     new FileComparisonTest("Creation test 1", ProjectFileRepositoryCreationTest1, *repositoryTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", ProjectFileRepositoryCreationTest2, *repositoryTestSequence);
 
     new FileComparisonTest("setProjectName test 1", ProjectFileRepositorySetProjectNameTest1, *repositoryTestSequence);
 }
@@ -37,6 +39,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     TestResult::EOutcome result = TestResult::eFailed;
 
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
@@ -51,11 +54,26 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     return result;
 }
 
+TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest2.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.projectName() == "")
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
+}
 TestResult::EOutcome ProjectFileRepositorySetProjectNameTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositorySetProjectNameTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositorySetProjectNameTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
