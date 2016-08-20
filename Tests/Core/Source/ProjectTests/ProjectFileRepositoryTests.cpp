@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,10 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
 #include "ProjectFileRepositoryTests.h"
-#include "BakefileProjectTests.h"
+#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
 
-void AddProjectTests(TestHarness& theTestHarness)
+void AddProjectFileRepositoryTests(TestSequence& testSequence)
 {
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
-
-    AddProjectFileRepositoryTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
+	TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepository tests", testSequence);
 }

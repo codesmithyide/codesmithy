@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "ProjectFileRepositoryTests.h"
-#include "BakefileProjectTests.h"
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTFILEREPOSITORYTESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTFILEREPOSITORYTESTS_H_
 
-void AddProjectTests(TestHarness& theTestHarness)
-{
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    AddProjectFileRepositoryTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddProjectFileRepositoryTests(TestSequence& testSequence);
+
+#endif
