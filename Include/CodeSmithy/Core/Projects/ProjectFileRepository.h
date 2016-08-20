@@ -35,6 +35,7 @@ class ProjectFileRepository : public ProjectRepository
 public:
     ProjectFileRepository(const boost::filesystem::path& path);
 
+    std::string projectName() const override;
     void setProjectName(const std::string& name) override;
     void save() override;
 

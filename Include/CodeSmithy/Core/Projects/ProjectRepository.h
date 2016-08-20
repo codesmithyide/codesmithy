@@ -31,6 +31,7 @@ namespace CodeSmithy
 class ProjectRepository
 {
 public:
+    virtual std::string projectName() const = 0;
     virtual void setProjectName(const std::string& name) = 0;
 
     virtual void save() = 0;

@@ -40,6 +40,16 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
     }
 }
 
+std::string ProjectFileRepository::projectName() const
+{
+    std::string result;
+    if (m_projectNameNode)
+    {
+        result = m_projectNameNode.child_value();
+    }
+    return result;
+}
+
 void ProjectFileRepository::setProjectName(const std::string& name)
 {
     m_projectNameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
