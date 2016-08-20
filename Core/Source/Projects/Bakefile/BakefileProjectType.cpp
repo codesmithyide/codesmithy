@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,9 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "BakefileProjectTypeTests.h"
-
-void AddBakefileProjectTypeTests(TestSequence& testSequence)
-{
-	TestSequence* typeTestSequence = new TestSequence("BakefileProjectType tests", testSequence);
-}
+#include "Projects/Bakefile/BakefileProjectType.h"

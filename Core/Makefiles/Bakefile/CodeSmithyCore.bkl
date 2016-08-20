@@ -33,6 +33,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
+        ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
     }
@@ -48,5 +49,6 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Projects/MetaBuildSystemProject.cpp
 
         ../../Source/Projects/Bakefile/BakefileProject.cpp
+        ../../Source/Projects/Bakefile/BakefileProjectType.cpp
     }
 }

@@ -158,6 +158,7 @@
     <ClCompile Include="..\..\Source\Projects\ProjectFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp" />
+    <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProjectType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

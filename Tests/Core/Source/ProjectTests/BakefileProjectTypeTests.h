@@ -20,13 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTTYPETESTS_H_
-#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTTYPETESTS_H_
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_BAKEFILEPROJECTTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_BAKEFILEPROJECTTYPETESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::TestFramework;
 
-void AddProjectTypeTests(TestSequence& testSequence);
+void AddBakefileProjectTypeTests(TestSequence& testSequence);
 
 #endif

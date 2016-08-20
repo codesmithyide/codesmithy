@@ -21,7 +21,7 @@
 */
 
 #include "ProjectTests.h"
-#include "ProjectTypeTests.h"
+#include "BakefileProjectTypeTests.h"
 #include "ProjectTypesTests.h"
 #include "ProjectFileRepositoryTests.h"
 #include "BakefileProjectTests.h"
@@ -34,7 +34,7 @@ void AddProjectTests(TestHarness& theTestHarness)
 
 	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 
-    AddProjectTypeTests(projectTestSequence);
+    AddBakefileProjectTypeTests(projectTestSequence);
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
 	AddBakefileProjectTests(projectTestSequence);

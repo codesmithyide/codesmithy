@@ -23,13 +23,15 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTTYPE_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTTYPE_H_
 
+#include <string>
+
 namespace CodeSmithy
 {
 
 class ProjectType
 {
 public:
-    ProjectType();
+    ProjectType(const std::string& name);
     virtual ~ProjectType();
 };
 

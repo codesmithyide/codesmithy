@@ -25,7 +25,7 @@
 namespace CodeSmithy
 {
 
-ProjectType::ProjectType()
+ProjectType::ProjectType(const std::string& name)
 {
 }
 
