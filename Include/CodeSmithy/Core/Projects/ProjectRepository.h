@@ -23,11 +23,17 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 
+#include <string>
+
 namespace CodeSmithy
 {
 
 class ProjectRepository
 {
+public:
+    virtual void setProjectName(const std::string& name) = 0;
+
+    virtual void save() = 0;
 };
 
 }

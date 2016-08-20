@@ -24,7 +24,9 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORY_H_
 
 #include "ProjectRepository.h"
+#include <pugixml.hpp>
 #include <boost/filesystem/path.hpp>
+#include <fstream>
 
 namespace CodeSmithy
 {
@@ -33,6 +35,14 @@ class ProjectFileRepository : public ProjectRepository
 {
 public:
     ProjectFileRepository(const boost::filesystem::path& path);
+
+    void setProjectName(const std::string& name) override;
+    void save() override;
+
+private:
+    std::ofstream m_file;
+    pugi::xml_document m_document;
+    pugi::xml_node m_projectNameNode;
 };
 
 }
