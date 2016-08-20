@@ -23,4 +23,15 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORYNODE_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORYNODE_H_
 
+#include "Projects/ProjectRepositoryNode.h"
+
+namespace CodeSmithy
+{
+
+class ProjectFileRepositoryNode : public ProjectRepositoryNode
+{
+};
+
+}
+
 #endif

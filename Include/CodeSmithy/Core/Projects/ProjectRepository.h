@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 
+#include "ProjectRepositoryNode.h"
 #include <string>
 
 namespace CodeSmithy
@@ -39,6 +40,8 @@ class ProjectRepository
 public:
     virtual std::string name() const = 0;
     virtual void setName(const std::string& name) = 0;
+
+    virtual ProjectRepositoryNode::shared_ptr addProject(const std::string& name) = 0;
 
     virtual void save() = 0;
 };

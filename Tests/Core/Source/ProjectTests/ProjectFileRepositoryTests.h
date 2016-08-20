@@ -33,5 +33,6 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test
 TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test);
 TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test);
 TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryAddProjectTest1(FileComparisonTest& test);
 
 #endif

@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORYNODE_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORYNODE_H_
 
+#include <memory>
+
+namespace CodeSmithy
+{
+
+class ProjectRepositoryNode
+{
+public:
+    typedef std::shared_ptr<ProjectRepositoryNode> shared_ptr;
+};
+
+}
+
 #endif

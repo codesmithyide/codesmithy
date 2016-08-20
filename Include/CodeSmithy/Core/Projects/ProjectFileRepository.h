@@ -38,12 +38,16 @@ public:
 
     std::string name() const override;
     void setName(const std::string& name) override;
+    
+    ProjectRepositoryNode::shared_ptr addProject(const std::string& name) override;
+
     void save() override;
 
 private:
     boost::filesystem::path m_path;
     pugi::xml_document m_document;
     pugi::xml_node m_nameNode;
+    pugi::xml_node m_projectsNode;
 };
 
 }
