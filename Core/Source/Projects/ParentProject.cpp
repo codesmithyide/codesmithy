@@ -31,7 +31,7 @@ ParentProject::ParentProject(const std::string& name)
 }
 
 ParentProject::ParentProject(ProjectRepositoryNode::shared_ptr node)
-    : Project(node->getValue("name")), m_node(node)
+    : Project(node->get("name")), m_node(node)
 {
 }
 
@@ -41,6 +41,7 @@ ParentProject::~ParentProject()
 
 void ParentProject::save()
 {
+    m_node->set("name", name());
 }
 
 }

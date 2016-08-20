@@ -35,7 +35,8 @@ public:
     typedef std::shared_ptr<ProjectRepositoryNode> shared_ptr;
 
 public:
-    virtual std::string getValue(const std::string& key) const = 0;
+    virtual std::string get(const std::string& key) const = 0;
+    virtual void set(const std::string& key, const std::string& value) = 0;
 };
 
 }

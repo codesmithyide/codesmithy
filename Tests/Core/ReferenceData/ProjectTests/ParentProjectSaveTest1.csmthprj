@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<codesmithy-project-repository>
+	<name />
+	<projects>
+		<codesmithy-project>
+			<name>ParentProject</name>
+		</codesmithy-project>
+	</projects>
+</codesmithy-project-repository>

@@ -23,6 +23,7 @@
 #include "BakefileProjectTests.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddBakefileProjectTests(TestSequence& testSequence)
 {
@@ -63,5 +64,23 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
 
 TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
 {
-    return TestResult::eFailed;
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+
+    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.addProject("BakefileProject");
+    if (projectNode)
+    {
+        CodeSmithy::BakefileProject project(projectNode);
+        project.save();
+    }
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
 }

@@ -30,9 +30,23 @@ ProjectFileRepositoryNode::ProjectFileRepositoryNode(pugi::xml_node node)
 {
 }
 
-std::string ProjectFileRepositoryNode::getValue(const std::string& key) const
+std::string ProjectFileRepositoryNode::get(const std::string& key) const
 {
     return m_node.child(key.c_str()).child_value();
+}
+
+void ProjectFileRepositoryNode::set(const std::string& key, const std::string& value)
+{
+    pugi::xml_node node = m_node.child(key.c_str());
+    if (node)
+    {
+        node.text().set(value.c_str());
+    }
+    else
+    {
+        pugi::xml_node newNode = m_node.append_child(key.c_str());
+        newNode.append_child(pugi::node_pcdata).set_value(value.c_str());
+    }
 }
 
 }

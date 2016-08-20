@@ -31,7 +31,7 @@ BakefileProject::BakefileProject(const std::string& name)
 }
 
 BakefileProject::BakefileProject(ProjectRepositoryNode::shared_ptr node)
-    : MetaBuildSystemProject(node->getValue("name")), m_node(node)
+    : MetaBuildSystemProject(node->get("name")), m_node(node)
 {
 }
 
@@ -41,6 +41,7 @@ BakefileProject::~BakefileProject()
 
 void BakefileProject::save()
 {
+    m_node->set("name", name());
 }
 
 }
