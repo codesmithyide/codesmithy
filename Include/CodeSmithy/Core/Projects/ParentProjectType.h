@@ -20,19 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_METABUILDSYSTEMPROJECT_H_
-#define _CODESMITHY_CORE_PROJECTS_METABUILDSYSTEMPROJECT_H_
+#ifndef _CODESMITHY_CORE_PROJECTS_PARENTPROJECTTYPE_H_
+#define _CODESMITHY_CORE_PROJECTS_PARENTPROJECTTYPE_H_
 
-#include "Project.h"
+#include "ProjectType.h"
 
 namespace CodeSmithy
 {
 
-class MetaBuildSystemProject : public Project
+class ParentProjectType : public ProjectType
 {
 public:
-    MetaBuildSystemProject();
-    ~MetaBuildSystemProject() override;
+    ParentProjectType();
 };
 
 }

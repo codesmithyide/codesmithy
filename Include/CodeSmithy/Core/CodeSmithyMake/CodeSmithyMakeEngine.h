@@ -20,20 +20,11 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_METABUILDSYSTEMPROJECT_H_
-#define _CODESMITHY_CORE_PROJECTS_METABUILDSYSTEMPROJECT_H_
-
-#include "Project.h"
+#ifndef _CODESMITHY_CORE_CODESMITHYMAKE_CODESMITHYMAKEENGINE_H_
+#define _CODESMITHY_CORE_CODESMITHYMAKE_CODESMITHYMAKEENGINE_H_
 
 namespace CodeSmithy
 {
-
-class MetaBuildSystemProject : public Project
-{
-public:
-    MetaBuildSystemProject();
-    ~MetaBuildSystemProject() override;
-};
 
 }
 
