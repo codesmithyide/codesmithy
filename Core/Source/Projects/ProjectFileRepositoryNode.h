@@ -20,29 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
-#define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
-
-#include <string>
-
-namespace CodeSmithy
-{
-
-// A project repository stores one or more projects.
-// This is an abstract interface to allow various
-// storage options.
-//
-// The ProjectRepositoryNode interface allows access
-// to individual project in the repository.
-class ProjectRepository
-{
-public:
-    virtual std::string name() const = 0;
-    virtual void setName(const std::string& name) = 0;
-
-    virtual void save() = 0;
-};
-
-}
+#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORYNODE_H_
+#define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORYNODE_H_
 
 #endif

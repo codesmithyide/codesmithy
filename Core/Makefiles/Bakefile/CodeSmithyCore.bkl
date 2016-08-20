@@ -29,6 +29,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Projects/ProjectTypes.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectObserver.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectRepository.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectRepositoryNode.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectFileRepository.h
         ../../../Include/CodeSmithy/Core/Projects/ParentProject.h
         ../../../Include/CodeSmithy/Core/Projects/ParentProjectType.h
@@ -39,6 +40,8 @@ library CodeSmithyCore : Boost, pugixml
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
+
+        ../../Source/Projects/ProjectFileRepositoryNode.h
     }
 
     sources
@@ -48,7 +51,9 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Projects/ProjectTypes.cpp
         ../../Source/Projects/ProjectObserver.cpp
         ../../Source/Projects/ProjectRepository.cpp
+        ../../Source/Projects/ProjectRepositoryNode.cpp
         ../../Source/Projects/ProjectFileRepository.cpp
+        ../../Source/Projects/ProjectFileRepositoryNode.cpp
         ../../Source/Projects/ParentProject.cpp
         ../../Source/Projects/ParentProjectType.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp
