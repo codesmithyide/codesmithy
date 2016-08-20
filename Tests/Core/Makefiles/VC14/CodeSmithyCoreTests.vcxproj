@@ -154,14 +154,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp" />
-    <ClCompile Include="..\..\Source\ProjectTests\ProjectTypeTests.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTypesTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h" />
-    <ClInclude Include="..\..\Source\ProjectTests\ProjectTypeTests.h" />
+    <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTypesTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h" />

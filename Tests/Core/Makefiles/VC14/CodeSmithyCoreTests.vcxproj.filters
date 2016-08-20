@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ProjectTests\ProjectTypeTests.h">
+    <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTypesTests.h">
@@ -40,7 +40,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjectTests\ProjectTypeTests.cpp">
+    <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTypesTests.cpp">
