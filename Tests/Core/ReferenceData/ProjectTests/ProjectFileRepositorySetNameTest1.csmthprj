@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<codesmithy-project>
-	<project-name>ProjectFileRepositorySetProjectNameTest1</project-name>
-</codesmithy-project>
+<codesmithy-project-repository>
+	<name>ProjectFileRepositorySetNameTest1</name>
+</codesmithy-project-repository>
