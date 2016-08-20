@@ -30,5 +30,7 @@ using namespace Ishiko::TestFramework;
 void AddBakefileProjectTests(TestSequence& testSequence);
 
 TestResult::EOutcome BakefileProjectCreationTest1();
+TestResult::EOutcome BakefileProjectCreationTest2(Test& test);
+TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test);
 
 #endif

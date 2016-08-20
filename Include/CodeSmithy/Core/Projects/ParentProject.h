@@ -32,7 +32,13 @@ class ParentProject : public Project
 {
 public:
     ParentProject();
+    ParentProject(ProjectRepositoryNode::shared_ptr node);
     ~ParentProject() override;
+
+    void save() override;
+
+private:
+    ProjectRepositoryNode::shared_ptr m_node;
 };
 
 }

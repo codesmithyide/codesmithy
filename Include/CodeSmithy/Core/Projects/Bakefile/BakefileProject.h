@@ -32,7 +32,13 @@ class BakefileProject : public MetaBuildSystemProject
 {
 public:
     BakefileProject();
+    BakefileProject(ProjectRepositoryNode::shared_ptr node);
     ~BakefileProject() override;
+
+    void save() override;
+
+private:
+    ProjectRepositoryNode::shared_ptr m_node;
 };
 
 }

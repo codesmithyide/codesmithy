@@ -41,6 +41,7 @@ public:
     virtual std::string name() const = 0;
     virtual void setName(const std::string& name) = 0;
 
+    virtual ProjectRepositoryNode::shared_ptr getProject(const std::string& name) = 0;
     virtual ProjectRepositoryNode::shared_ptr addProject(const std::string& name) = 0;
 
     virtual void save() = 0;

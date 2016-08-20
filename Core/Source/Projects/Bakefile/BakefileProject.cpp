@@ -29,7 +29,16 @@ BakefileProject::BakefileProject()
 {
 }
 
+BakefileProject::BakefileProject(ProjectRepositoryNode::shared_ptr node)
+    : m_node(node)
+{
+}
+
 BakefileProject::~BakefileProject()
+{
+}
+
+void BakefileProject::save()
 {
 }
 

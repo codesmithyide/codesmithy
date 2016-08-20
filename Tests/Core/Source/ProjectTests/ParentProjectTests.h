@@ -30,5 +30,7 @@ using namespace Ishiko::TestFramework;
 void AddParentProjectTests(TestSequence& testSequence);
 
 TestResult::EOutcome ParentProjectCreationTest1();
+TestResult::EOutcome ParentProjectCreationTest2(Test& test);
+TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test);
 
 #endif

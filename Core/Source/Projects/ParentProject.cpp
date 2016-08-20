@@ -29,7 +29,16 @@ ParentProject::ParentProject()
 {
 }
 
+ParentProject::ParentProject(ProjectRepositoryNode::shared_ptr node)
+    : m_node(node)
+{
+}
+
 ParentProject::~ParentProject()
+{
+}
+
+void ParentProject::save()
 {
 }
 

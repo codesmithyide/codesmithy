@@ -35,6 +35,9 @@ void AddProjectFileRepositoryTests(TestSequence& testSequence)
     new FileComparisonTest("setName test 1", ProjectFileRepositorySetNameTest1, *repositoryTestSequence);
 
     new FileComparisonTest("addProject test 1", ProjectFileRepositoryAddProjectTest1, *repositoryTestSequence);
+
+    new HeapAllocationErrorsTest("getProject test 1", ProjectFileRepositoryGetProjectTest1, *repositoryTestSequence);
+
 }
 
 TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
@@ -126,4 +129,22 @@ TestResult::EOutcome ProjectFileRepositoryAddProjectTest1(FileComparisonTest& te
     test.setReferenceFilePath(referencePath);
 
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectFileRepositoryGetProjectTest1(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryGetProjectTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.name() == "ProjectFileRepositoryGetProjectTest1")
+    {
+        if (repository.getProject("Project1"))
+        {
+            result = TestResult::ePassed;
+        }
+    }
+
+    return result;
 }

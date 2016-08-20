@@ -22,16 +22,36 @@
 
 #include "BakefileProjectTests.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
+#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
 
 void AddBakefileProjectTests(TestSequence& testSequence)
 {
 	TestSequence* bakefileProjectTestSequence = new TestSequence("BakefileProject tests", testSequence);
 
 	new HeapAllocationErrorsTest("Creation test 1", BakefileProjectCreationTest1, *bakefileProjectTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", BakefileProjectCreationTest2, *bakefileProjectTestSequence);
+
+    new FileComparisonTest("save test 1", BakefileProjectSaveTest1, *bakefileProjectTestSequence);
 }
 
 TestResult::EOutcome BakefileProjectCreationTest1()
 {
 	CodeSmithy::BakefileProject project;
 	return TestResult::ePassed;
+}
+
+TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+
+    return result;
+}
+
+TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
+{
+    return TestResult::eFailed;
 }

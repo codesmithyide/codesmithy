@@ -23,6 +23,8 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
+#include "ProjectRepositoryNode.h"
+
 namespace CodeSmithy
 {
 
@@ -32,6 +34,8 @@ class Project
 public:
     Project();
     virtual ~Project();
+
+	virtual void save() = 0;
 };
 
 }

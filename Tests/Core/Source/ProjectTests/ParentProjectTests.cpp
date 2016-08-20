@@ -22,16 +22,36 @@
 
 #include "ParentProjectTests.h"
 #include "CodeSmithy/Core/Projects/ParentProject.h"
+#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
 
 void AddParentProjectTests(TestSequence& testSequence)
 {
 	TestSequence* parentProjectTestSequence = new TestSequence("ParentProject tests", testSequence);
 
 	new HeapAllocationErrorsTest("Creation test 1", ParentProjectCreationTest1, *parentProjectTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", ParentProjectCreationTest2, *parentProjectTestSequence);
+
+    new FileComparisonTest("save test 1", ParentProjectSaveTest1, *parentProjectTestSequence);
 }
 
 TestResult::EOutcome ParentProjectCreationTest1()
 {
 	CodeSmithy::ParentProject project;
 	return TestResult::ePassed;
+}
+
+TestResult::EOutcome ParentProjectCreationTest2(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest2.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+
+    return result;
+}
+
+TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test)
+{
+    return TestResult::eFailed;
 }

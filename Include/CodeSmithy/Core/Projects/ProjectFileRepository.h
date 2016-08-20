@@ -39,6 +39,7 @@ public:
     std::string name() const override;
     void setName(const std::string& name) override;
     
+    ProjectRepositoryNode::shared_ptr getProject(const std::string& name) override;
     ProjectRepositoryNode::shared_ptr addProject(const std::string& name) override;
 
     void save() override;
