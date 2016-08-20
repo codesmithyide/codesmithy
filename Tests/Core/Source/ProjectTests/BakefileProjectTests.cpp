@@ -36,7 +36,7 @@ void AddBakefileProjectTests(TestSequence& testSequence)
 
 TestResult::EOutcome BakefileProjectCreationTest1()
 {
-	CodeSmithy::BakefileProject project;
+	CodeSmithy::BakefileProject project("BakefileProjectCreationTest1");
 	return TestResult::ePassed;
 }
 
@@ -47,6 +47,16 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.getProject("BakefileProject");
+
+    if (projectNode)
+    {
+        CodeSmithy::BakefileProject project(projectNode);
+        if (project.name() == "BakefileProject")
+        {
+            result = TestResult::ePassed;
+        }
+    }
 
     return result;
 }

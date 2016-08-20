@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORYNODE_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORYNODE_H_
 
+#include <string>
 #include <memory>
 
 namespace CodeSmithy
@@ -32,6 +33,9 @@ class ProjectRepositoryNode
 {
 public:
     typedef std::shared_ptr<ProjectRepositoryNode> shared_ptr;
+
+public:
+    virtual std::string getValue(const std::string& key) const = 0;
 };
 
 }

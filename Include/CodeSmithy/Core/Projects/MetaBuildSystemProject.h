@@ -31,7 +31,7 @@ namespace CodeSmithy
 class MetaBuildSystemProject : public Project
 {
 public:
-    MetaBuildSystemProject();
+    MetaBuildSystemProject(const std::string& name);
     ~MetaBuildSystemProject() override;
 };
 

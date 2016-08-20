@@ -25,12 +25,13 @@
 namespace CodeSmithy
 {
 
-BakefileProject::BakefileProject()
+BakefileProject::BakefileProject(const std::string& name)
+    : MetaBuildSystemProject(name)
 {
 }
 
 BakefileProject::BakefileProject(ProjectRepositoryNode::shared_ptr node)
-    : m_node(node)
+    : MetaBuildSystemProject(node->getValue("name")), m_node(node)
 {
 }
 

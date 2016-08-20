@@ -25,7 +25,8 @@
 namespace CodeSmithy
 {
 
-MetaBuildSystemProject::MetaBuildSystemProject()
+MetaBuildSystemProject::MetaBuildSystemProject(const std::string& name)
+    : Project(name)
 {
 }
 

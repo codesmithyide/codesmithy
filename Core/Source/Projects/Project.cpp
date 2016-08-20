@@ -25,12 +25,18 @@
 namespace CodeSmithy
 {
 
-Project::Project()
+Project::Project(const std::string& name)
+    : m_name(name)
 {
 }
 
 Project::~Project()
 {
+}
+
+const std::string& Project::name() const
+{
+    return m_name;
 }
 
 }

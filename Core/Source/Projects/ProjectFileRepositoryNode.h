@@ -24,12 +24,20 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORYNODE_H_
 
 #include "Projects/ProjectRepositoryNode.h"
+#include <pugixml.hpp>
 
 namespace CodeSmithy
 {
 
 class ProjectFileRepositoryNode : public ProjectRepositoryNode
 {
+public:
+    ProjectFileRepositoryNode(pugi::xml_node node);
+
+    std::string getValue(const std::string& key) const override;
+
+private:
+    pugi::xml_node m_node;
 };
 
 }

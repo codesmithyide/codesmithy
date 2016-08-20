@@ -21,3 +21,18 @@
 */
 
 #include "ProjectFileRepositoryNode.h"
+
+namespace CodeSmithy
+{
+
+ProjectFileRepositoryNode::ProjectFileRepositoryNode(pugi::xml_node node)
+    : m_node(node)
+{
+}
+
+std::string ProjectFileRepositoryNode::getValue(const std::string& key) const
+{
+    return m_node.child(key.c_str()).child_value();
+}
+
+}

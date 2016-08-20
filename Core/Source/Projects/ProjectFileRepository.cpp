@@ -83,7 +83,8 @@ ProjectRepositoryNode::shared_ptr ProjectFileRepository::getProject(const std::s
         pugi::xml_node nameNode = projectNode.child(projectNameElementName);
         if (nameNode.child_value() == name)
         {
-            result = std::make_shared<ProjectFileRepositoryNode>();
+            result = std::make_shared<ProjectFileRepositoryNode>(projectNode);
+            break;
         }
     }
     return result;
@@ -96,8 +97,12 @@ ProjectRepositoryNode::shared_ptr ProjectFileRepository::addProject(const std::s
         pugi::xml_node projectNode = m_projectsNode.append_child(projectElementName);
         pugi::xml_node nameNode = projectNode.append_child(projectNameElementName);
         nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
+        return std::make_shared<ProjectFileRepositoryNode>(projectNode);
     }
-    return std::make_shared<ProjectFileRepositoryNode>();
+    else
+    {
+        return ProjectRepositoryNode::shared_ptr();
+    }
 }
 
 void ProjectFileRepository::save()

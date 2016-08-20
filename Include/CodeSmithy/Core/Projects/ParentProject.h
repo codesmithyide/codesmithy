@@ -31,7 +31,7 @@ namespace CodeSmithy
 class ParentProject : public Project
 {
 public:
-    ParentProject();
+    ParentProject(const std::string& name);
     ParentProject(ProjectRepositoryNode::shared_ptr node);
     ~ParentProject() override;
 

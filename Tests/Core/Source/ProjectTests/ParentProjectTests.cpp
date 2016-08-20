@@ -36,7 +36,7 @@ void AddParentProjectTests(TestSequence& testSequence)
 
 TestResult::EOutcome ParentProjectCreationTest1()
 {
-	CodeSmithy::ParentProject project;
+	CodeSmithy::ParentProject project("ParentProjectCreationTest1");
 	return TestResult::ePassed;
 }
 
@@ -47,6 +47,16 @@ TestResult::EOutcome ParentProjectCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.getProject("ParentProject");
+
+    if (projectNode)
+    {
+        CodeSmithy::ParentProject project(projectNode);
+        if (project.name() == "ParentProject")
+        {
+            result = TestResult::ePassed;
+        }
+    }
 
     return result;
 }

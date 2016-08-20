@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
 #include "ProjectRepositoryNode.h"
+#include <string>
 
 namespace CodeSmithy
 {
@@ -32,10 +33,15 @@ namespace CodeSmithy
 class Project
 {
 public:
-    Project();
+    Project(const std::string& name);
     virtual ~Project();
 
+    const std::string& name() const;
+
 	virtual void save() = 0;
+
+private:
+    std::string m_name;
 };
 
 }
