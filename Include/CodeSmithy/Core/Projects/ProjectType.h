@@ -33,6 +33,11 @@ class ProjectType
 public:
     ProjectType(const std::string& name);
     virtual ~ProjectType();
+
+    const std::string& name() const;
+
+private:
+    std::string m_name;
 };
 
 }

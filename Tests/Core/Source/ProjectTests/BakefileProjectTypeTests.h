@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddBakefileProjectTypeTests(TestSequence& testSequence);
 
+TestResult::EOutcome BakefileProjectTypeCreationTest1();
+
 #endif

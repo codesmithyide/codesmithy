@@ -26,11 +26,17 @@ namespace CodeSmithy
 {
 
 ProjectType::ProjectType(const std::string& name)
+    : m_name(name)
 {
 }
 
 ProjectType::~ProjectType()
 {
+}
+
+const std::string& ProjectType::name() const
+{
+    return m_name;
 }
 
 }

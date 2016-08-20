@@ -21,8 +21,25 @@
 */
 
 #include "BakefileProjectTypeTests.h"
+#include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
 void AddBakefileProjectTypeTests(TestSequence& testSequence)
 {
 	TestSequence* typeTestSequence = new TestSequence("BakefileProjectType tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", BakefileProjectTypeCreationTest1, *typeTestSequence);
+}
+
+TestResult::EOutcome BakefileProjectTypeCreationTest1()
+{
+    CodeSmithy::BakefileProjectType type;
+
+    if (type.name() == "CodeSmithy.Bakefile")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
