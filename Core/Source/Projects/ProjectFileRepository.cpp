@@ -75,6 +75,12 @@ void ProjectFileRepository::setName(const std::string& name)
 
 ProjectRepositoryNode::shared_ptr ProjectFileRepository::addProject(const std::string& name)
 {
+    if (m_projectsNode)
+    {
+        pugi::xml_node projectNode = m_projectsNode.append_child(projectElementName);
+        pugi::xml_node nameNode = projectNode.append_child(projectNameElementName);
+        nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
+    }
     return std::make_shared<ProjectFileRepositoryNode>();
 }
 

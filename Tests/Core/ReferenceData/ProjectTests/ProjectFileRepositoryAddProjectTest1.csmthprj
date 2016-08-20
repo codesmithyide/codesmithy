@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<codesmithy-project-repository>
+	<name>ProjectFileRepositoryAddProjectTest1</name>
+	<projects>
+		<codesmithy-project>
+			<name>Project1</name>
+		</codesmithy-project>
+	</projects>
+</codesmithy-project-repository>

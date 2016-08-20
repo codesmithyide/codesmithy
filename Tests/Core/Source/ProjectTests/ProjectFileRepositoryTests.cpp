@@ -112,8 +112,6 @@ TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test)
 
 TestResult::EOutcome ProjectFileRepositoryAddProjectTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositoryAddProjectTest1.csmthprj");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryAddProjectTest1.csmthprj");
@@ -124,5 +122,8 @@ TestResult::EOutcome ProjectFileRepositoryAddProjectTest1(FileComparisonTest& te
 
     repository.save();
 
-    return result;
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
 }
