@@ -31,6 +31,7 @@ void AddProjectFileRepositoryTests(TestSequence& testSequence);
 
 TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test);
+TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test);
 TestResult::EOutcome ProjectFileRepositorySetProjectNameTest1(FileComparisonTest& test);
 
 #endif

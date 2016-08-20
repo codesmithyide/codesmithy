@@ -15,6 +15,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
     headers
     {
         ../../Source/ProjectTests/ProjectTests.h
+        ../../Source/ProjectTests/ProjectTypeTests.h
+        ../../Source/ProjectTests/ProjectTypesTests.h
         ../../Source/ProjectTests/ProjectFileRepositoryTests.h
         ../../Source/ProjectTests/BakefileProjectTests.h
     }
@@ -24,6 +26,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/main.cpp
 
         ../../Source/ProjectTests/ProjectTests.cpp
+        ../../Source/ProjectTests/ProjectTypeTests.cpp
+        ../../Source/ProjectTests/ProjectTypesTests.cpp
         ../../Source/ProjectTests/ProjectFileRepositoryTests.cpp
         ../../Source/ProjectTests/BakefileProjectTests.cpp
     }

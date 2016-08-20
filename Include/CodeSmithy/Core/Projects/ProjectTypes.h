@@ -20,22 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "ProjectTypeTests.h"
-#include "ProjectTypesTests.h"
-#include "ProjectFileRepositoryTests.h"
-#include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
+#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTTYPES_H_
+#define _CODESMITHY_CORE_PROJECTS_PROJECTTYPES_H_
 
-void AddProjectTests(TestHarness& theTestHarness)
+namespace CodeSmithy
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
 
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+class ProjectTypes
+{
+public:
+    ProjectTypes();
+    virtual ~ProjectTypes();
+};
 
-    AddProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    AddProjectFileRepositoryTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
 }
+
+#endif

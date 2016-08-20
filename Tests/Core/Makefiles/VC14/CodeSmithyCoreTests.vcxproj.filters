@@ -20,6 +20,12 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectTypeTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectTypesTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -32,6 +38,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectTypeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectTypesTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.cpp">

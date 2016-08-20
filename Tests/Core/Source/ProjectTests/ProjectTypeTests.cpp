@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,22 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
 #include "ProjectTypeTests.h"
-#include "ProjectTypesTests.h"
-#include "ProjectFileRepositoryTests.h"
-#include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
 
-void AddProjectTests(TestHarness& theTestHarness)
+void AddProjectTypeTests(TestSequence& testSequence)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
-
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
-
-    AddProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    AddProjectFileRepositoryTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
+	TestSequence* typeTestSequence = new TestSequence("ProjectType tests", testSequence);
 }
