@@ -33,4 +33,9 @@ ProjectTypes::~ProjectTypes()
 {
 }
 
+size_t ProjectTypes::size() const
+{
+    return 0;
+}
+
 }

@@ -21,8 +21,25 @@
 */
 
 #include "ProjectTypesTests.h"
+#include "CodeSmithy/Core/Projects/ProjectTypes.h"
 
 void AddProjectTypesTests(TestSequence& testSequence)
 {
 	TestSequence* typesTestSequence = new TestSequence("ProjectTypes tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", ProjectTypesCreationTest1, *typesTestSequence);
+}
+
+TestResult::EOutcome ProjectTypesCreationTest1()
+{
+    CodeSmithy::ProjectTypes types;
+
+    if (types.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
