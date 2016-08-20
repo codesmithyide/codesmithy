@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 
+namespace CodeSmithy
+{
+
+class ProjectRepository
+{
+};
+
+}
+
 #endif

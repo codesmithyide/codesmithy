@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORY_H_
 
+#include "ProjectRepository.h"
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class ProjectFileRepository : public ProjectRepository
+{
+public:
+    ProjectFileRepository(const boost::filesystem::path& path);
+};
+
+}
+
 #endif

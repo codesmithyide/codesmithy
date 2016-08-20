@@ -21,3 +21,21 @@
 */
 
 #include "Projects/ProjectFileRepository.h"
+#include <pugixml.hpp>
+#include <fstream>
+
+namespace CodeSmithy
+{
+
+ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path)
+{
+    pugi::xml_document document;
+    pugi::xml_node node = document.append_child("codesmithy-project");
+    if (node)
+    {
+        std::ofstream output(path.wstring());
+        document.save(output);
+    }
+}
+
+}

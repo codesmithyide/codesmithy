@@ -23,9 +23,13 @@
 #include "ProjectTests.h"
 #include "ProjectFileRepositoryTests.h"
 #include "BakefileProjectTests.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddProjectTests(TestHarness& theTestHarness)
 {
+    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
+    boost::filesystem::create_directories(outputPath);
+
 	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 
     AddProjectFileRepositoryTests(projectTestSequence);

@@ -26,4 +26,19 @@
 void AddProjectFileRepositoryTests(TestSequence& testSequence)
 {
 	TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepository tests", testSequence);
+
+    new FileComparisonTest("Creation test 1", ProjectFileRepositoryCreationTest1, *repositoryTestSequence);
+}
+
+TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
 }
