@@ -30,19 +30,20 @@
 namespace CodeSmithy
 {
 
+// This class allows to store one or more projects in a file.
 class ProjectFileRepository : public ProjectRepository
 {
 public:
     ProjectFileRepository(const boost::filesystem::path& path);
 
-    std::string projectName() const override;
-    void setProjectName(const std::string& name) override;
+    std::string name() const override;
+    void setName(const std::string& name) override;
     void save() override;
 
 private:
     boost::filesystem::path m_path;
     pugi::xml_document m_document;
-    pugi::xml_node m_projectNameNode;
+    pugi::xml_node m_nameNode;
 };
 
 }

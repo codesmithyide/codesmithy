@@ -33,15 +33,15 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
     if (boost::filesystem::exists(path))
     {
         m_document.load_file(path.string().c_str());
-        m_projectNameNode = m_document.child("codesmithy-project").child("project-name");
+        m_nameNode = m_document.child("codesmithy-project-repository").child("name");
     }
     else
     {
-        pugi::xml_node rootNode = m_document.append_child("codesmithy-project");
+        pugi::xml_node rootNode = m_document.append_child("codesmithy-project-repository");
         if (rootNode)
         {
-            m_projectNameNode = rootNode.append_child("project-name");
-            if (m_projectNameNode)
+            m_nameNode = rootNode.append_child("name");
+            if (m_nameNode)
             {
                 save();
             }
@@ -49,19 +49,19 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
     }
 }
 
-std::string ProjectFileRepository::projectName() const
+std::string ProjectFileRepository::name() const
 {
     std::string result;
-    if (m_projectNameNode)
+    if (m_nameNode)
     {
-        result = m_projectNameNode.child_value();
+        result = m_nameNode.child_value();
     }
     return result;
 }
 
-void ProjectFileRepository::setProjectName(const std::string& name)
+void ProjectFileRepository::setName(const std::string& name)
 {
-    m_projectNameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
+    m_nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
 }
 
 void ProjectFileRepository::save()

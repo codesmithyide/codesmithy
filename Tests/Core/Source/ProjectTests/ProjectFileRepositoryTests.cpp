@@ -32,7 +32,7 @@ void AddProjectFileRepositoryTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 2", ProjectFileRepositoryCreationTest2, *repositoryTestSequence);
     new HeapAllocationErrorsTest("Creation test 3", ProjectFileRepositoryCreationTest3, *repositoryTestSequence);
 
-    new FileComparisonTest("setProjectName test 1", ProjectFileRepositorySetProjectNameTest1, *repositoryTestSequence);
+    new FileComparisonTest("setName test 1", ProjectFileRepositorySetNameTest1, *repositoryTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
@@ -44,7 +44,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
-    if (repository.projectName() == "")
+    if (repository.name() == "")
     {
         result = TestResult::ePassed;
     }
@@ -62,7 +62,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    if (repository.projectName() == "")
+    if (repository.name() == "")
     {
         result = TestResult::ePassed;
     }
@@ -77,7 +77,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest3.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    if (repository.projectName() == "ProjectFileRepositoryCreationTest3")
+    if (repository.name() == "ProjectFileRepositoryCreationTest3")
     {
         result = TestResult::ePassed;
     }
@@ -85,19 +85,19 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test)
     return result;
 }
 
-TestResult::EOutcome ProjectFileRepositorySetProjectNameTest1(FileComparisonTest& test)
+TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositorySetProjectNameTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositorySetNameTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositorySetProjectNameTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositorySetNameTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
-    repository.setProjectName("ProjectFileRepositorySetProjectNameTest1");
+    repository.setName("ProjectFileRepositorySetNameTest1");
     repository.save();
 
-    if (repository.projectName() == "ProjectFileRepositorySetProjectNameTest1")
+    if (repository.name() == "ProjectFileRepositorySetNameTest1")
     {
         result = TestResult::ePassed;
     }
