@@ -21,6 +21,7 @@
 */
 
 #include "Frame.h"
+#include <wx/menu.h>
 
 namespace CodeSmithy
 {
@@ -28,6 +29,27 @@ namespace CodeSmithy
 Frame::Frame(const wxString& title)
     : wxFrame(NULL, wxID_ANY, title)
 {
+    CreateMenuBar();
 }
+
+void Frame::CreateMenuBar()
+{
+    wxMenuBar* menuBar = new wxMenuBar;
+
+    wxMenu* menuFile = new wxMenu;
+    menuFile->Append(wxID_EXIT);
+    menuBar->Append(menuFile, "&File");
+
+    SetMenuBar(menuBar);
+}
+
+void Frame::OnExit(wxCommandEvent& evt)
+{
+    Close(true);
+}
+
+wxBEGIN_EVENT_TABLE(Frame, wxFrame)
+    EVT_MENU(wxID_EXIT, Frame::OnExit)
+wxEND_EVENT_TABLE()
 
 }

@@ -32,6 +32,13 @@ class Frame : public wxFrame
 {
 public:
     Frame(const wxString& title);
+
+private:
+    void CreateMenuBar();
+
+    void OnExit(wxCommandEvent& evt);
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 }
