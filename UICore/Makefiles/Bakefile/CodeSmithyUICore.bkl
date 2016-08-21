@@ -1,0 +1,31 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/CodeSmithyUICore.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyUICore.sln;
+
+library CodeSmithyUICore
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../../Include/CodeSmithy/UICore;
+
+    outputdir = ../../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyUICore-d;
+    }
+
+    headers
+    {
+        ../../../Include/CodeSmithy/UICore/FileTypeAssociation.h
+        ../../../Include/CodeSmithy/UICore/FileTypeAssociations.h
+        ../../../Include/CodeSmithy/UICore/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/FileTypeAssociation.cpp
+        ../../Source/FileTypeAssociations.cpp
+    }
+}
