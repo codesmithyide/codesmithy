@@ -39,7 +39,7 @@ TestResult::EOutcome ParentProjectCreationTest1()
 {
     CodeSmithy::ParentProjectType type;
     CodeSmithy::ParentProject project(type, "ParentProjectCreationTest1");
-	return TestResult::ePassed;
+    return TestResult::ePassed;
 }
 
 TestResult::EOutcome ParentProjectCreationTest2(Test& test)

@@ -50,6 +50,7 @@ const ProjectType& BakefileProject::type() const
 void BakefileProject::save()
 {
     m_node->set("name", name());
+    m_node->set("type", type().name());
 }
 
 }

@@ -50,6 +50,7 @@ const ProjectType& ParentProject::type() const
 void ParentProject::save()
 {
     m_node->set("name", name());
+    m_node->set("type", type().name());
 }
 
 }

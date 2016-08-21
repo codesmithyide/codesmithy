@@ -32,7 +32,7 @@ namespace CodeSmithy
 class BakefileProject : public MetaBuildSystemProject
 {
 public:
-	BakefileProject(const BakefileProjectType& type, const std::string& name);
+    BakefileProject(const BakefileProjectType& type, const std::string& name);
     BakefileProject(const BakefileProjectType& type, ProjectRepositoryNode::shared_ptr node);
     ~BakefileProject() override;
 
@@ -41,7 +41,7 @@ public:
     void save() override;
 
 private:
-	const BakefileProjectType& m_type;
+    const BakefileProjectType& m_type;
     ProjectRepositoryNode::shared_ptr m_node;
 };
 

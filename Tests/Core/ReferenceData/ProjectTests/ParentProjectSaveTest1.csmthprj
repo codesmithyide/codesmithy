@@ -4,6 +4,7 @@
 	<projects>
 		<codesmithy-project>
 			<name>ParentProject</name>
+			<type>CodeSmithy.Parent</type>
 		</codesmithy-project>
 	</projects>
 </codesmithy-project-repository>

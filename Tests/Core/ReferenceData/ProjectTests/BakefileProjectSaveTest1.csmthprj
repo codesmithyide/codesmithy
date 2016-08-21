@@ -4,6 +4,7 @@
 	<projects>
 		<codesmithy-project>
 			<name>BakefileProject</name>
+			<type>CodeSmithy.Bakefile</type>
 		</codesmithy-project>
 	</projects>
 </codesmithy-project-repository>
