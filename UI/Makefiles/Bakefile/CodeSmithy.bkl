@@ -1,10 +1,15 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/wxWidgets.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithy.sln;
 vs2013.solutionfile = ../VC12/CodeSmithy.sln;
 
-program CodeSmithy
+program CodeSmithy : wxWidgets
 {
+    win32-subsystem = windows;
+
     headers
     {
         ../../Source/App.h
