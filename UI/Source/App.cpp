@@ -21,10 +21,23 @@
 */
 
 #include "App.h"
+#include "Frame.h"
 
 namespace CodeSmithy
 {
 
 wxIMPLEMENT_APP(App);
+
+App::App()
+{
+}
+
+bool App::OnInit()
+{
+    Frame* frame = new Frame(L"CodeSmithy");
+    frame->Show(true);
+
+    return true;
+}
 
 }

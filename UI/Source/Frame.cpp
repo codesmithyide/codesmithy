@@ -21,3 +21,13 @@
 */
 
 #include "Frame.h"
+
+namespace CodeSmithy
+{
+
+Frame::Frame(const wxString& title)
+    : wxFrame(NULL, wxID_ANY, title)
+{
+}
+
+}

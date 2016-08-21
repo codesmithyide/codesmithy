@@ -30,6 +30,10 @@ namespace CodeSmithy
 
 class App : public wxApp
 {
+public:
+    App();
+
+    bool OnInit() wxOVERRIDE;
 };
 
 wxDECLARE_APP(App);

@@ -23,8 +23,17 @@
 #ifndef _CODESMITHY_UI_FRAME_H_
 #define _CODESMITHY_UI_FRAME_H_
 
+#include <wx/frame.h>
+
 namespace CodeSmithy
 {
+
+class Frame : public wxFrame
+{
+public:
+    Frame(const wxString& title);
+};
+
 }
 
 #endif
