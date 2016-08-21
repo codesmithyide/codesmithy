@@ -36,6 +36,7 @@ public:
 private:
     void CreateMenuBar();
 
+    void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
 
     wxDECLARE_EVENT_TABLE();

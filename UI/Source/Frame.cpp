@@ -21,6 +21,7 @@
 */
 
 #include "Frame.h"
+#include "Preferences/PreferencesDialog.h"
 #include <wx/menu.h>
 
 namespace CodeSmithy
@@ -37,10 +38,18 @@ void Frame::CreateMenuBar()
     wxMenuBar* menuBar = new wxMenuBar;
 
     wxMenu* menuFile = new wxMenu;
+    menuFile->Append(wxID_PREFERENCES, "&Preferences...");
+    menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
     menuBar->Append(menuFile, "&File");
 
     SetMenuBar(menuBar);
+}
+
+void Frame::OnPreferences(wxCommandEvent& evt)
+{
+    PreferencesDialog preferencesDialog(this);
+    preferencesDialog.ShowModal();
 }
 
 void Frame::OnExit(wxCommandEvent& evt)
@@ -49,6 +58,7 @@ void Frame::OnExit(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
+    EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
 wxEND_EVENT_TABLE()
 
