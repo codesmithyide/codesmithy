@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UI_FRAME_H_
 #define _CODESMITHY_UI_FRAME_H_
 
+#include "CodeSmithy/UICore/AppSettings.h"
 #include <wx/frame.h>
 
 namespace CodeSmithy
@@ -38,6 +39,9 @@ private:
 
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
+
+private:
+    AppSettings m_appSettings;
 
     wxDECLARE_EVENT_TABLE();
 };

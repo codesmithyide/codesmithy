@@ -21,3 +21,13 @@
 */
 
 #include "AppSettings.h"
+
+namespace CodeSmithy
+{
+
+const FileTypeAssociations& AppSettings::fileTypeAssociations() const
+{
+    return m_fileTypeAssociations;
+}
+
+}

@@ -23,4 +23,22 @@
 #ifndef _CODESMITHY_UICORE_APPSETTINGS_H_
 #define _CODESMITHY_UICORE_APPSETTINGS_H_
 
+#include "FileTypeAssociations.h"
+
+namespace CodeSmithy
+{
+
+class AppSettings
+{
+public:
+    const FileTypeAssociations& fileTypeAssociations() const;
+
+private:
+    FileTypeAssociations m_fileTypeAssociations;
+};
+
+}
+
+#include "linkoptions.h"
+
 #endif

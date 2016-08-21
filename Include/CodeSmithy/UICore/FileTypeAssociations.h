@@ -28,6 +28,8 @@ namespace CodeSmithy
 
 class FileTypeAssociations
 {
+public:
+    size_t size() const;
 };
 
 }

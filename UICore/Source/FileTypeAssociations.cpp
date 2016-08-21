@@ -21,3 +21,13 @@
 */
 
 #include "FileTypeAssociations.h"
+
+namespace CodeSmithy
+{
+
+size_t FileTypeAssociations::size() const
+{
+    return 0;
+}
+
+}

@@ -48,7 +48,7 @@ void Frame::CreateMenuBar()
 
 void Frame::OnPreferences(wxCommandEvent& evt)
 {
-    PreferencesDialog preferencesDialog(this);
+    PreferencesDialog preferencesDialog(this, m_appSettings);
     preferencesDialog.ShowModal();
 }
 
