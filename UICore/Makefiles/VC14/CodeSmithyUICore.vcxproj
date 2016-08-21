@@ -150,10 +150,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\AppSettings.cpp" />
     <ClCompile Include="..\..\Source\FileTypeAssociation.cpp" />
     <ClCompile Include="..\..\Source\FileTypeAssociations.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\AppSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\FileTypeAssociation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\FileTypeAssociations.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />

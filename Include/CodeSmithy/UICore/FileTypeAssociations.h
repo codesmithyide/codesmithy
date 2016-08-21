@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_UICORE_FILETYPEASSOCIATIONS_H_
 #define _CODESMITHY_UICORE_FILETYPEASSOCIATIONS_H_
 
+namespace CodeSmithy
+{
+
+class FileTypeAssociations
+{
+};
+
+}
+
 #endif

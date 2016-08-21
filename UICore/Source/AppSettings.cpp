@@ -20,16 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UICORE_FILETYPEASSOCIATION_H_
-#define _CODESMITHY_UICORE_FILETYPEASSOCIATION_H_
-
-namespace CodeSmithy
-{
-
-class FileTypeAssociation
-{
-};
-
-}
-
-#endif
+#include "AppSettings.h"

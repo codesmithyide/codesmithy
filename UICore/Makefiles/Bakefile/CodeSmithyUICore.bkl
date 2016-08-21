@@ -18,6 +18,7 @@ library CodeSmithyUICore
 
     headers
     {
+        ../../../Include/CodeSmithy/UICore/AppSettings.h
         ../../../Include/CodeSmithy/UICore/FileTypeAssociation.h
         ../../../Include/CodeSmithy/UICore/FileTypeAssociations.h
         ../../../Include/CodeSmithy/UICore/linkoptions.h
@@ -25,6 +26,7 @@ library CodeSmithyUICore
 
     sources
     {
+        ../../Source/AppSettings.cpp
         ../../Source/FileTypeAssociation.cpp
         ../../Source/FileTypeAssociations.cpp
     }

@@ -17,6 +17,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\AppSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\FileTypeAssociation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -28,6 +31,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\AppSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FileTypeAssociation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
