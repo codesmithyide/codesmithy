@@ -1,0 +1,11 @@
+setting CODESMITHY_ROOT
+{
+    help = "Path to the CodeSmithy installation";
+    default = '$(CODESMITHY)';
+}
+
+template CodeSmithyUICore
+{
+    includedirs += $(CODESMITHY_ROOT)/Include;
+    libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);
+}
