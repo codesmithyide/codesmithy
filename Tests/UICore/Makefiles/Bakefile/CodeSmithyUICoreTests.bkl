@@ -1,0 +1,19 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyUICore.bkl;
+
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/CodeSmithyUICoreTests.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyUICoreTests.sln;
+
+program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
+{
+    archs = x86 x86_64;
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
