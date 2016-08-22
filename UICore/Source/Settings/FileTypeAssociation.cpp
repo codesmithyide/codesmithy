@@ -20,4 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "FileTypeAssociation.h"
+#include "Settings/FileTypeAssociation.h"

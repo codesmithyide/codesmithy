@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "AppSettings.h"
+#include "Settings/AppSettings.h"
 
 namespace CodeSmithy
 {

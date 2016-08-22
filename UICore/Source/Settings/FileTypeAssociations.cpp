@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "FileTypeAssociations.h"
+#include "Settings/FileTypeAssociations.h"
 
 namespace CodeSmithy
 {
