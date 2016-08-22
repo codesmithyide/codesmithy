@@ -20,14 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests/DocumentsTests.h"
+#ifndef _CODESMITHY_TEST_UICORE_DOCUMENTSTESTS_DOCUMENTSTESTS_H_
+#define _CODESMITHY_TEST_UICORE_DOCUMENTSTESTS_DOCUMENTSTESTS_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-int main(int argc, char* argv[])
-{
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+using namespace Ishiko::TestFramework;
 
-    AddDocumentsTests(theTestHarness);
+void AddDocumentsTests(TestHarness& theTestHarness);
 
-    return theTestHarness.run();
-}
+#endif

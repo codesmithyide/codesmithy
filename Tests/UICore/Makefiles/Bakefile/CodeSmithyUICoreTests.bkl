@@ -12,8 +12,19 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
 {
     archs = x86 x86_64;
 
+    headers
+    {
+        ../../Source/DocumentsTests/DocumentsTests.h
+        ../../Source/DocumentsTests/DocumentTypeTests.h
+        ../../Source/DocumentsTests/DocumentTypesTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+
+        ../../Source/DocumentsTests/DocumentsTests.cpp
+        ../../Source/DocumentsTests/DocumentTypeTests.cpp
+        ../../Source/DocumentsTests/DocumentTypesTests.cpp
     }
 }

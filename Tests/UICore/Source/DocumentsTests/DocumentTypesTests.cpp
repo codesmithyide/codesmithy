@@ -20,14 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests/DocumentsTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "DocumentTypesTests.h"
 
-int main(int argc, char* argv[])
+void AddDocumentTypesTests(TestSequence& testSequence)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
-
-    AddDocumentsTests(theTestHarness);
-
-    return theTestHarness.run();
+    TestSequence* typesTestSequence = new TestSequence("DocumentTypes tests", testSequence);
 }
