@@ -17,27 +17,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\AppSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\FileTypeAssociation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\FileTypeAssociations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\AppSettings.cpp">
+    <ClCompile Include="..\..\Source\Settings\AppSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FileTypeAssociation.cpp">
+    <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FileTypeAssociations.cpp">
+    <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
