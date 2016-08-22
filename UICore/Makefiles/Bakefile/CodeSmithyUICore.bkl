@@ -29,7 +29,7 @@ library CodeSmithyUICore
 
     sources
     {
-        ../../Source/Document/DocumentType.cpp
+        ../../Source/Documents/DocumentType.cpp
 
         ../../Source/Settings/AppSettings.cpp
         ../../Source/Settings/FileTypeAssociation.cpp
