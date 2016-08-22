@@ -23,11 +23,15 @@
 #ifndef _CODESMITHY_UICORE_FILETYPEASSOCIATION_H_
 #define _CODESMITHY_UICORE_FILETYPEASSOCIATION_H_
 
+#include <memory>
+
 namespace CodeSmithy
 {
 
 class FileTypeAssociation
 {
+public:
+    typedef std::shared_ptr<FileTypeAssociation> shared_ptr;
 };
 
 }

@@ -23,6 +23,9 @@
 #ifndef _CODESMITHY_UICORE_FILETYPEASSOCIATIONS_H_
 #define _CODESMITHY_UICORE_FILETYPEASSOCIATIONS_H_
 
+#include "FileTypeAssociation.h"
+#include <vector>
+
 namespace CodeSmithy
 {
 
@@ -30,6 +33,10 @@ class FileTypeAssociations
 {
 public:
     size_t size() const;
+    const FileTypeAssociation::shared_ptr& operator[](size_t index) const;
+
+private:
+    std::vector<FileTypeAssociation::shared_ptr> m_associations;
 };
 
 }

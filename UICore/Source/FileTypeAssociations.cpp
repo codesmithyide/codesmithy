@@ -27,7 +27,12 @@ namespace CodeSmithy
 
 size_t FileTypeAssociations::size() const
 {
-    return 0;
+    return m_associations.size();
+}
+
+const FileTypeAssociation::shared_ptr& FileTypeAssociations::operator[](size_t index) const
+{
+    return m_associations[index];
 }
 
 }
