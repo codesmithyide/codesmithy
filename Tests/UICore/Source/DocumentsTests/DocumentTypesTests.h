@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddDocumentTypesTests(TestSequence& testSequence);
 
+TestResult::EOutcome DocumentTypesCreationTest1();
+
 #endif

@@ -21,8 +21,17 @@
 */
 
 #include "DocumentTypesTests.h"
+#include "CodeSmithy/UICore/Documents/DocumentTypes.h"
 
 void AddDocumentTypesTests(TestSequence& testSequence)
 {
     TestSequence* typesTestSequence = new TestSequence("DocumentTypes tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", DocumentTypesCreationTest1, *typesTestSequence);
+}
+
+TestResult::EOutcome DocumentTypesCreationTest1()
+{
+    CodeSmithy::DocumentTypes types;
+    return TestResult::ePassed;
 }
