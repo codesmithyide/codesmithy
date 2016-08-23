@@ -21,7 +21,7 @@
 */
 
 #include "DocumentTypeTests.h"
-#include "CodeSmithy/UICore/Documents/DocumentType.h"
+#include "CodeSmithy/Core/Documents/DocumentType.h"
 
 void AddDocumentTypeTests(TestSequence& testSequence)
 {

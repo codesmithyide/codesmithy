@@ -20,7 +20,6 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests/DocumentsTests.h"
 #include "SettingsTests/SettingsTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
@@ -28,7 +27,6 @@ int main(int argc, char* argv[])
 {
     Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
 
-    AddDocumentsTests(theTestHarness);
     AddSettingsTests(theTestHarness);
 
     return theTestHarness.run();

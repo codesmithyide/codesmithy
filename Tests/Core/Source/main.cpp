@@ -20,6 +20,7 @@
     IN THE SOFTWARE.
 */
 
+#include "DocumentsTests/DocumentsTests.h"
 #include "ProjectTests/ProjectTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
@@ -33,6 +34,7 @@ int main(int argc, char* argv[])
     boost::filesystem::create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
+    AddDocumentsTests(theTestHarness);
     AddProjectTests(theTestHarness);
 
     return theTestHarness.run();
