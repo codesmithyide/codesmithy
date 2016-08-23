@@ -156,11 +156,17 @@
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentsTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentTypeTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentTypesTests.cpp" />
+    <ClCompile Include="..\..\Source\SettingsTests\SettingsTests.cpp" />
+    <ClCompile Include="..\..\Source\SettingsTests\FileTypeAssociationTests.cpp" />
+    <ClCompile Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentTypeTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentTypesTests.h" />
+    <ClInclude Include="..\..\Source\SettingsTests\SettingsTests.h" />
+    <ClInclude Include="..\..\Source\SettingsTests\FileTypeAssociationTests.h" />
+    <ClInclude Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
