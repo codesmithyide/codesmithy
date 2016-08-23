@@ -21,8 +21,17 @@
 */
 
 #include "FileTypeAssociationsTests.h"
+#include "CodeSmithy/UICore/Settings/FileTypeAssociations.h"
 
 void AddFileTypeAssociationsTests(TestSequence& testSequence)
 {
     TestSequence* associationsTestSequence = new TestSequence("FileTypeAssociations tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationsCreationTest1, *associationsTestSequence);
+}
+
+TestResult::EOutcome FileTypeAssociationsCreationTest1()
+{
+    CodeSmithy::FileTypeAssociations associations;
+    return TestResult::ePassed;
 }
