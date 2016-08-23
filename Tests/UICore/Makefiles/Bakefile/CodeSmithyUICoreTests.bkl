@@ -14,10 +14,6 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
 
     headers
     {
-        ../../Source/DocumentsTests/DocumentsTests.h
-        ../../Source/DocumentsTests/DocumentTypeTests.h
-        ../../Source/DocumentsTests/DocumentTypesTests.h
-
         ../../Source/SettingsTests/SettingsTests.h
         ../../Source/SettingsTests/FileTypeAssociationTests.h
         ../../Source/SettingsTests/FileTypeAssociationsTests.h
@@ -26,10 +22,6 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
     sources
     {
         ../../Source/main.cpp
-
-        ../../Source/DocumentsTests/DocumentsTests.cpp
-        ../../Source/DocumentsTests/DocumentTypeTests.cpp
-        ../../Source/DocumentsTests/DocumentTypesTests.cpp
 
         ../../Source/SettingsTests/SettingsTests.cpp
         ../../Source/SettingsTests/FileTypeAssociationTests.cpp
