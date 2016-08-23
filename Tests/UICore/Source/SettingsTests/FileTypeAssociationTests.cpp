@@ -32,6 +32,13 @@ void AddFileTypeAssociationTests(TestSequence& testSequence)
 
 TestResult::EOutcome FileTypeAssociationCreationTest1()
 {
-    CodeSmithy::FileTypeAssociation association;
-    return TestResult::ePassed;
+    CodeSmithy::FileTypeAssociation association("dummyTypeName");
+    if (association.type() == "dummyTypeName")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

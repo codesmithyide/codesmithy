@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UI_APP_H_
 #define _CODESMITHY_UI_APP_H_
 
+#include "CodeSmithy/UICore/Documents/DocumentTypes.h"
 #include <wx/app.h>
 
 namespace CodeSmithy
@@ -34,6 +35,9 @@ public:
     App();
 
     bool OnInit() wxOVERRIDE;
+
+private:
+    std::shared_ptr<DocumentTypes> m_documentTypes;
 };
 
 wxDECLARE_APP(App);

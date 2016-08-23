@@ -36,6 +36,7 @@ public:
     ~DocumentTypes();
 
     size_t size() const;
+    void add(DocumentType::shared_ptr type);
 
 private:
     std::vector<DocumentType::shared_ptr> m_types;

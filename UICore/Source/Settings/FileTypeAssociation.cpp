@@ -21,3 +21,18 @@
 */
 
 #include "Settings/FileTypeAssociation.h"
+
+namespace CodeSmithy
+{
+
+FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
+    : m_documentTypeName(documentTypeName)
+{
+}
+
+const std::string& FileTypeAssociation::type() const
+{
+    return m_documentTypeName;
+}
+
+}

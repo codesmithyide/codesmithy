@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_FILETYPEASSOCIATION_H_
 #define _CODESMITHY_UICORE_SETTINGS_FILETYPEASSOCIATION_H_
 
+#include <string>
 #include <memory>
 
 namespace CodeSmithy
@@ -32,6 +33,14 @@ class FileTypeAssociation
 {
 public:
     typedef std::shared_ptr<FileTypeAssociation> shared_ptr;
+
+public:
+    FileTypeAssociation(const std::string& documentTypeName);
+
+    const std::string& type() const;
+
+private:
+    std::string m_documentTypeName;
 };
 
 }

@@ -38,4 +38,9 @@ size_t DocumentTypes::size() const
     return m_types.size();
 }
 
+void DocumentTypes::add(DocumentType::shared_ptr type)
+{
+    m_types.push_back(type);
+}
+
 }

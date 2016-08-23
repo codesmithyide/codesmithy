@@ -30,6 +30,10 @@ wxIMPLEMENT_APP(App);
 
 App::App()
 {
+    // This is the list of document types supported by the
+    // the CodeSmithy UI.
+    m_documentTypes = std::make_shared<DocumentTypes>();
+    m_documentTypes->add(std::make_shared<BakefileType>()));
 }
 
 bool App::OnInit()
