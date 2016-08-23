@@ -20,9 +20,6 @@ library CodeSmithyUICore
     {
         ../../../Include/CodeSmithy/UICore/linkoptions.h
 
-        ../../../Include/CodeSmithy/UICore/Documents/DocumentType.h
-        ../../../Include/CodeSmithy/UICore/Documents/DocumentTypes.h
-
         ../../../Include/CodeSmithy/UICore/Settings/AppSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociation.h
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociations.h
@@ -30,9 +27,6 @@ library CodeSmithyUICore
 
     sources
     {
-        ../../Source/Documents/DocumentType.cpp
-        ../../Source/Documents/DocumentTypes.cpp
-
         ../../Source/Settings/AppSettings.cpp
         ../../Source/Settings/FileTypeAssociation.cpp
         ../../Source/Settings/FileTypeAssociations.cpp

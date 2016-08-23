@@ -150,6 +150,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
     <ClCompile Include="..\..\Source\Projects\Project.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectTypes.cpp" />
@@ -167,6 +169,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h" />
