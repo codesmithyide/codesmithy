@@ -32,6 +32,13 @@ void AddDocumentTypeTests(TestSequence& testSequence)
 
 TestResult::EOutcome DocumentTypeCreationTest1()
 {
-    CodeSmithy::DocumentType type;
-    return TestResult::ePassed;
+    CodeSmithy::DocumentType type("dummy.type");
+    if (type.name() == "dummy.type")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

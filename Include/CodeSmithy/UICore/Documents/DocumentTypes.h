@@ -23,13 +23,26 @@
 #ifndef _CODESMITHY_UICORE_DOCUMENTS_DOCUMENTTYPES_H_
 #define _CODESMITHY_UICORE_DOCUMENTS_DOCUMENTTYPES_H_
 
+#include "DocumentType.h"
+#include <vector>
+
 namespace CodeSmithy
 {
 
 class DocumentTypes
 {
+public:
+    DocumentTypes();
+    ~DocumentTypes();
+
+    size_t size() const;
+
+private:
+    std::vector<DocumentType::shared_ptr> m_types;
 };
 
 }
+
+#include "../linkoptions.h"
 
 #endif

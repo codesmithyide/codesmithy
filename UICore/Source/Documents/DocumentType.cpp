@@ -25,4 +25,14 @@
 namespace CodeSmithy
 {
 
+DocumentType::DocumentType(const std::string& name)
+    : m_name(name)
+{
+}
+
+const std::string& DocumentType::name() const
+{
+    return m_name;
+}
+
 }

@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_UI_FRAME_H_
 #define _CODESMITHY_UI_FRAME_H_
 
-#include "CodeSmithy/UICore/AppSettings.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/frame.h>
 
 namespace CodeSmithy

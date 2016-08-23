@@ -23,7 +23,8 @@
 #ifndef _CODESMITHY_UI_PREFERENCES_PREFERENCESDIALOG_H_
 #define _CODESMITHY_UI_PREFERENCES_PREFERENCESDIALOG_H_
 
-#include "CodeSmithy/UICore/AppSettings.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/UICore/Documents/DocumentTypes.h"
 #include <wx/dialog.h>
 #include <wx/treebook.h>
 
@@ -33,7 +34,9 @@ namespace CodeSmithy
 class PreferencesDialog : public wxDialog
 {
 public:
-    PreferencesDialog(wxWindow* parent, AppSettings& settings);
+    PreferencesDialog(wxWindow* parent,
+        AppSettings& settings,
+        const DocumentTypes& documentTypes);
 
 private:
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook);

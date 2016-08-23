@@ -33,5 +33,12 @@ void AddDocumentTypesTests(TestSequence& testSequence)
 TestResult::EOutcome DocumentTypesCreationTest1()
 {
     CodeSmithy::DocumentTypes types;
-    return TestResult::ePassed;
+    if (types.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

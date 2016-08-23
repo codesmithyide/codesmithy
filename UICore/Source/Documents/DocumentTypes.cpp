@@ -25,4 +25,17 @@
 namespace CodeSmithy
 {
 
+DocumentTypes::DocumentTypes()
+{
+}
+
+DocumentTypes::~DocumentTypes()
+{
+}
+
+size_t DocumentTypes::size() const
+{
+    return m_types.size();
+}
+
 }

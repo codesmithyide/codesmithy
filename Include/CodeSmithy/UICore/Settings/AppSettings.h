@@ -39,6 +39,6 @@ private:
 
 }
 
-#include "linkoptions.h"
+#include "../linkoptions.h"
 
 #endif
