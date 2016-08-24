@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 	
-AppSettings::AppSettings(DocumentTypes& documentTypes)
-    : m_documentTypes(documentTypes)
+AppSettings::AppSettings(const DocumentTypes& documentTypes,
+                         const ProjectTypes& projectTypes)
+    : m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
     m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
 }
@@ -34,6 +35,11 @@ AppSettings::AppSettings(DocumentTypes& documentTypes)
 const DocumentTypes& AppSettings::documentTypes() const
 {
     return m_documentTypes;
+}
+
+const ProjectTypes& AppSettings::projectTypes() const
+{
+    return m_projectTypes;
 }
 
 const FileTypeAssociations& AppSettings::fileTypeAssociations() const

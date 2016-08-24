@@ -57,9 +57,13 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
         DocumentType::shared_ptr documentType = m_appSettings.documentTypes().find(associations[i]->type());
         if (documentType)
         {
+            for (size_t j = 0; j < m_appSettings.projectTypes().size(); ++j)
+            {
+                projectChoices.Add(m_appSettings.projectTypes()[j].name());
+            }
         }
         wxChoice* projectChoice = new wxChoice(fileTypeAssociationsPage, wxID_ANY,
-            wxDefaultPosition, wxSize(100, wxDefaultCoord), projectChoices);
+            wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
         projectChoice->SetSelection(0);
 
         lineSizer->Add(fileTypeName, 0, wxEXPAND);

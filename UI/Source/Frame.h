@@ -32,7 +32,8 @@ namespace CodeSmithy
 class Frame : public wxFrame
 {
 public:
-    Frame(const wxString& title, DocumentTypes& documentTypes);
+    Frame(const wxString& title, const DocumentTypes& documentTypes, 
+        const ProjectTypes& projectTypes);
 
 private:
     void CreateMenuBar();

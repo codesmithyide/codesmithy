@@ -56,7 +56,8 @@ TestResult::EOutcome ProjectTypesAddTest1()
     CodeSmithy::ProjectTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
 
-    if (types.size() == 1)
+    if ((types.size() == 1) &&
+        (types[0].name() == "CodeSmithy.Bakefile"))
     {
         return TestResult::ePassed;
     }

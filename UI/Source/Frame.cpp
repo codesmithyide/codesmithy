@@ -28,8 +28,10 @@ namespace CodeSmithy
 {
 
 Frame::Frame(const wxString& title,
-             DocumentTypes& documentTypes)
-    : wxFrame(NULL, wxID_ANY, title), m_appSettings(documentTypes)
+             const DocumentTypes& documentTypes,
+             const ProjectTypes& projectTypes)
+    : wxFrame(NULL, wxID_ANY, title), 
+    m_appSettings(documentTypes, projectTypes)
 {
     CreateMenuBar();
 }

@@ -25,6 +25,7 @@
 
 #include "FileTypeAssociations.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
+#include "CodeSmithy/Core/Projects/ProjectTypes.h"
 
 namespace CodeSmithy
 {
@@ -35,13 +36,16 @@ public:
     // The list of document types supported by the
     // application needs to be passed in so that
     // we can load and save the file type associations.
-    AppSettings(DocumentTypes& documentTypes);
+    AppSettings(const DocumentTypes& documentTypes, 
+        const ProjectTypes& projectTypes);
     
     const DocumentTypes& documentTypes() const;
+    const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
 
 private:
     const DocumentTypes& m_documentTypes;
+    const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;
 };
 
