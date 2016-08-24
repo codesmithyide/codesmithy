@@ -20,16 +20,25 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
 #include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddXMLDocumentTypeTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* typeTestSequence = new TestSequence("XMLDocumentType tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", XMLDocumentTypeCreationTest1, *typeTestSequence);
+}
+
+TestResult::EOutcome XMLDocumentTypeCreationTest1()
+{
+    CodeSmithy::XMLDocumentType type;
+    if (type.name() == "XML")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

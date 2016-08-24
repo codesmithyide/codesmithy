@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,16 +20,14 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "Documents/XMLDocumentType.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+namespace CodeSmithy
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+XMLDocumentType::XMLDocumentType()
+    : DocumentType("XML")
+{
+}
+
 }

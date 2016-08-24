@@ -156,6 +156,7 @@
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentsTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentTypesTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\BakefileTypeTests.cpp" />
+    <ClCompile Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ParentProjectTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentTypesTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\BakefileTypeTests.h" />
+    <ClInclude Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ParentProjectTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.h" />

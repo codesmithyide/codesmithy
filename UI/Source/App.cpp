@@ -23,6 +23,7 @@
 #include "App.h"
 #include "Frame.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
+#include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
 namespace CodeSmithy
 {
@@ -35,6 +36,7 @@ App::App()
     // the CodeSmithy UI.
     m_documentTypes = std::make_shared<DocumentTypes>();
     m_documentTypes->add(std::make_shared<BakefileType>());
+    m_documentTypes->add(std::make_shared<XMLDocumentType>());
 }
 
 bool App::OnInit()

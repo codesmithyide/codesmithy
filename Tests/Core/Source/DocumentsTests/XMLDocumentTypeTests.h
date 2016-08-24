@@ -20,16 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_XMLDOCUMENTTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_XMLDOCUMENTTYPETESTS_H_
 
-void AddDocumentsTests(TestHarness& theTestHarness)
-{
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddXMLDocumentTypeTests(TestSequence& testSequence);
+
+TestResult::EOutcome XMLDocumentTypeCreationTest1();
+
+#endif
