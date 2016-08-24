@@ -22,6 +22,7 @@
 
 #include "PreferencesDialog.h"
 #include <wx/sizer.h>
+#include <wx/checkbox.h>
 
 namespace CodeSmithy
 {
@@ -45,10 +46,20 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
     const FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
     for (size_t i = 0; i < associations.size(); ++i)
     {
+        wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
+        wxCheckBox* fileTypeName = new wxCheckBox(fileTypeAssociationsPage, wxID_ANY,
+            associations[i]->type(), wxDefaultPosition, wxSize(125, wxDefaultCoord));
+        lineSizer->Add(fileTypeName, 0, wxEXPAND);
+        fileTypeAssociationsPageSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
     }
     fileTypeAssociationsPage->SetSizer(fileTypeAssociationsPageSizer);
 
-	treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
+    treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
+    // Set up the sizer for the frame and resize the frame
+    // according to its contents
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
+    SetSizerAndFit(topSizer);
 }
 
 }
