@@ -33,7 +33,9 @@ void AddXMLDocumentTypeTests(TestSequence& testSequence)
 TestResult::EOutcome XMLDocumentTypeCreationTest1()
 {
     CodeSmithy::XMLDocumentType type;
-    if (type.name() == "XML")
+    if ((type.name() == "XML") &&
+        (type.extensions().size() == 1) &&
+        (type.extensions()[0] == "xml"))
     {
         return TestResult::ePassed;
     }

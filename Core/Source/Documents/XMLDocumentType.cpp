@@ -26,7 +26,7 @@ namespace CodeSmithy
 {
 
 XMLDocumentType::XMLDocumentType()
-    : DocumentType("XML")
+    : DocumentType("XML", "xml")
 {
 }
 

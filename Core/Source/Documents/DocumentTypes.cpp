@@ -48,4 +48,16 @@ void DocumentTypes::add(DocumentType::shared_ptr type)
     m_types.push_back(type);
 }
 
+DocumentType::shared_ptr DocumentTypes::find(const std::string& name) const
+{
+    for (size_t i = 0; i < m_types.size(); ++i)
+    {
+        if (m_types[i]->name() == name)
+        {
+            return m_types[i];
+        }
+    }
+    return DocumentType::shared_ptr();
+}
+
 }

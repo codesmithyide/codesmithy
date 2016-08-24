@@ -38,6 +38,7 @@ public:
     size_t size() const;
     const DocumentType::shared_ptr& operator[](size_t index) const;
     void add(DocumentType::shared_ptr type);
+    DocumentType::shared_ptr find(const std::string& name) const;
 
 private:
     std::vector<DocumentType::shared_ptr> m_types;

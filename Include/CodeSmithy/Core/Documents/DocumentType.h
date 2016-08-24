@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPE_H_
 
 #include <string>
+#include <vector>
 #include <memory>
 
 namespace CodeSmithy
@@ -35,12 +36,17 @@ public:
     typedef std::shared_ptr<DocumentType> shared_ptr;
 
 public:
-    DocumentType(const std::string& name);
+    DocumentType(const std::string& name, const std::string& extension);
 
     const std::string& name() const;
 
+    // Returns the list of extensions typically 
+    // used for a file of this type
+    const std::vector<std::string>& extensions() const;
+
 private:
     std::string m_name;
+    std::vector<std::string> m_extensions;
 };
 
 }

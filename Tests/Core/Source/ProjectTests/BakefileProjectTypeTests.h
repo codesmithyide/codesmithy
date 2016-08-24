@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddBakefileProjectTypeTests(TestSequence& testSequence);
 
 TestResult::EOutcome BakefileProjectTypeCreationTest1();
+TestResult::EOutcome BakefileProjectTypeSupportedDocumentTypesTest1();
 
 #endif

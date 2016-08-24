@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTTYPE_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTTYPE_H_
 
+#include "../Documents/DocumentTypes.h"
 #include <string>
 
 namespace CodeSmithy
@@ -35,9 +36,21 @@ public:
     virtual ~ProjectType();
 
     const std::string& name() const;
+    // The list of document types that this project provides
+    // dedicated support for.
+    const DocumentTypes& supportedDocumentTypes() const;
+
+protected:
+    DocumentTypes& supportedDocumentTypes();
 
 private:
     std::string m_name;
+    // The type of documents this project is supposed to handle.
+    // Typically though other types can be loaded into a project
+    // as we don't want to restrict what the user may want to 
+    // have in its project. It just means the project will probably
+    // not know what to do with these and simply ignore them.
+    DocumentTypes m_supportedDocumentTypes;
 };
 
 }

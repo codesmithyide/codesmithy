@@ -22,18 +22,36 @@
 
 #include "DocumentTypesTests.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 
 void AddDocumentTypesTests(TestSequence& testSequence)
 {
     TestSequence* typesTestSequence = new TestSequence("DocumentTypes tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", DocumentTypesCreationTest1, *typesTestSequence);
+
+    new HeapAllocationErrorsTest("add test 1", DocumentTypesAddTest1, *typesTestSequence);
 }
 
 TestResult::EOutcome DocumentTypesCreationTest1()
 {
     CodeSmithy::DocumentTypes types;
     if (types.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome DocumentTypesAddTest1()
+{
+    CodeSmithy::DocumentTypes types;
+    types.add(std::make_shared<CodeSmithy::BakefileType>());
+    if ((types.size() == 1) &&
+        (types[0]->name() == "Bakefile"))
     {
         return TestResult::ePassed;
     }

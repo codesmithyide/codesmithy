@@ -31,7 +31,12 @@ namespace CodeSmithy
 class BakefileProjectType : public ProjectType
 {
 public:
-    BakefileProjectType();
+    // A Bakefile project has a set of document types it is specifically
+    // designed to handle. It will pick those out of all the document types 
+    // supported by the application and that are passed in via the documentTypes
+    // argument and store them in the ProjectType::m_supportedDocumentTypes member
+    // variable.
+    BakefileProjectType(const DocumentTypes& documentTypes);
 };
 
 }

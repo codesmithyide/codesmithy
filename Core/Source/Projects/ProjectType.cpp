@@ -39,4 +39,14 @@ const std::string& ProjectType::name() const
     return m_name;
 }
 
+const DocumentTypes& ProjectType::supportedDocumentTypes() const
+{
+    return m_supportedDocumentTypes;
+}
+
+DocumentTypes& ProjectType::supportedDocumentTypes()
+{
+    return m_supportedDocumentTypes;
+}
+
 }

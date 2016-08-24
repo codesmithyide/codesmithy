@@ -21,6 +21,7 @@
 */
 
 #include "BakefileProjectTypeTests.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
 void AddBakefileProjectTypeTests(TestSequence& testSequence)
@@ -28,13 +29,33 @@ void AddBakefileProjectTypeTests(TestSequence& testSequence)
 	TestSequence* typeTestSequence = new TestSequence("BakefileProjectType tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", BakefileProjectTypeCreationTest1, *typeTestSequence);
+
+    new HeapAllocationErrorsTest("supportedDocumentTypes test 1", BakefileProjectTypeSupportedDocumentTypesTest1, *typeTestSequence);
 }
 
 TestResult::EOutcome BakefileProjectTypeCreationTest1()
 {
-    CodeSmithy::BakefileProjectType type;
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::BakefileProjectType projectType(documentTypes);
 
-    if (type.name() == "CodeSmithy.Bakefile")
+    if (projectType.name() == "CodeSmithy.Bakefile")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome BakefileProjectTypeSupportedDocumentTypesTest1()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+    const CodeSmithy::BakefileProjectType projectType(documentTypes);
+    const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
+    if ((supportedDocumentTypes.size() == 1) &&
+        (supportedDocumentTypes[0]->name() == "Bakefile"))
     {
         return TestResult::ePassed;
     }

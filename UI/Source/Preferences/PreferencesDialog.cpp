@@ -23,6 +23,7 @@
 #include "PreferencesDialog.h"
 #include <wx/sizer.h>
 #include <wx/checkbox.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -47,9 +48,22 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
     for (size_t i = 0; i < associations.size(); ++i)
     {
         wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
+
         wxCheckBox* fileTypeName = new wxCheckBox(fileTypeAssociationsPage, wxID_ANY,
             associations[i]->type(), wxDefaultPosition, wxSize(125, wxDefaultCoord));
+        wxArrayString projectChoices;
+        projectChoices.Add("Ask at startup");
+        projectChoices.Add("Standalone");
+        DocumentType::shared_ptr documentType = m_appSettings.documentTypes().find(associations[i]->type());
+        if (documentType)
+        {
+        }
+        wxChoice* projectChoice = new wxChoice(fileTypeAssociationsPage, wxID_ANY,
+            wxDefaultPosition, wxSize(100, wxDefaultCoord), projectChoices);
+        projectChoice->SetSelection(0);
+
         lineSizer->Add(fileTypeName, 0, wxEXPAND);
+        lineSizer->Add(projectChoice, 0, wxEXPAND);
         fileTypeAssociationsPageSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
     }
     fileTypeAssociationsPage->SetSizer(fileTypeAssociationsPageSizer);

@@ -25,14 +25,21 @@
 namespace CodeSmithy
 {
 
-DocumentType::DocumentType(const std::string& name)
+DocumentType::DocumentType(const std::string& name,
+                           const std::string& extension)
     : m_name(name)
 {
+    m_extensions.push_back(extension);
 }
 
 const std::string& DocumentType::name() const
 {
     return m_name;
+}
+
+const std::vector<std::string>& DocumentType::extensions() const
+{
+    return m_extensions;
 }
 
 }

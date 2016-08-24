@@ -33,7 +33,9 @@ void AddBakefileTypeTests(TestSequence& testSequence)
 TestResult::EOutcome BakefileTypeCreationTest1()
 {
     CodeSmithy::BakefileType type;
-    if (type.name() == "Bakefile")
+    if ((type.name() == "Bakefile") &&
+        (type.extensions().size() == 1) &&
+        (type.extensions()[0] == "bkl"))
     {
         return TestResult::ePassed;
     }

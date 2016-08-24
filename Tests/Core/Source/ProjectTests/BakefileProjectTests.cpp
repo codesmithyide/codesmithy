@@ -37,7 +37,8 @@ void AddBakefileProjectTests(TestSequence& testSequence)
 
 TestResult::EOutcome BakefileProjectCreationTest1()
 {
-    CodeSmithy::BakefileProjectType type;
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::BakefileProjectType type(documentTypes);
 	CodeSmithy::BakefileProject project(type, "BakefileProjectCreationTest1");
 	return TestResult::ePassed;
 }
@@ -53,7 +54,8 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
 
     if (projectNode)
     {
-        CodeSmithy::BakefileProjectType type;
+        CodeSmithy::DocumentTypes documentTypes;
+        CodeSmithy::BakefileProjectType type(documentTypes);
         CodeSmithy::BakefileProject project(type, projectNode);
         if (project.name() == "BakefileProject")
         {
@@ -75,7 +77,8 @@ TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
     CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.addProject("BakefileProject");
     if (projectNode)
     {
-        CodeSmithy::BakefileProjectType type;
+        CodeSmithy::DocumentTypes documentTypes;
+        CodeSmithy::BakefileProjectType type(documentTypes);
         CodeSmithy::BakefileProject project(type, projectNode);
         project.save();
     }

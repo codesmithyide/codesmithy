@@ -26,7 +26,7 @@ namespace CodeSmithy
 {
 
 BakefileType::BakefileType()
-    : DocumentType("Bakefile")
+    : DocumentType("Bakefile", "bkl")
 {
 }
 
