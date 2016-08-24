@@ -22,12 +22,16 @@
 
 #include "ProjectTypesTests.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
+#include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
 void AddProjectTypesTests(TestSequence& testSequence)
 {
 	TestSequence* typesTestSequence = new TestSequence("ProjectTypes tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", ProjectTypesCreationTest1, *typesTestSequence);
+
+    new HeapAllocationErrorsTest("add test 1", ProjectTypesAddTest1, *typesTestSequence);
 }
 
 TestResult::EOutcome ProjectTypesCreationTest1()
@@ -35,6 +39,24 @@ TestResult::EOutcome ProjectTypesCreationTest1()
     CodeSmithy::ProjectTypes types;
 
     if (types.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ProjectTypesAddTest1()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+
+    CodeSmithy::ProjectTypes types;
+    types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
+
+    if (types.size() == 1)
     {
         return TestResult::ePassed;
     }

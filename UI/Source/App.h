@@ -24,6 +24,7 @@
 #define _CODESMITHY_UI_APP_H_
 
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
+#include "CodeSmithy/Core/Projects/ProjectTypes.h"
 #include <wx/app.h>
 
 namespace CodeSmithy
@@ -38,6 +39,7 @@ public:
 
 private:
     std::shared_ptr<DocumentTypes> m_documentTypes;
+    std::shared_ptr<ProjectTypes> m_projectTypes;
 };
 
 wxDECLARE_APP(App);

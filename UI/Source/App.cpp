@@ -24,6 +24,7 @@
 #include "Frame.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
+#include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
 namespace CodeSmithy
 {
@@ -37,6 +38,12 @@ App::App()
     m_documentTypes = std::make_shared<DocumentTypes>();
     m_documentTypes->add(std::make_shared<BakefileType>());
     m_documentTypes->add(std::make_shared<XMLDocumentType>());
+
+    // This is the list of project types supported by the
+    // the CodeSmithy UI. There is no dynamic way to add project
+    // types (via plugins for instance) at this stage.
+    m_projectTypes = std::make_shared<ProjectTypes>();
+    m_projectTypes->add(std::make_shared<BakefileProjectType>(*m_documentTypes));
 }
 
 bool App::OnInit()

@@ -23,6 +23,9 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTTYPES_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTTYPES_H_
 
+#include "ProjectType.h"
+#include <vector>
+
 namespace CodeSmithy
 {
 
@@ -40,6 +43,12 @@ public:
     ~ProjectTypes();
 
     size_t size() const;
+    const ProjectType& operator[](size_t index) const;
+
+    void add(ProjectType::shared_ptr type);
+
+private:
+    std::vector<ProjectType::shared_ptr> m_types;
 };
 
 }

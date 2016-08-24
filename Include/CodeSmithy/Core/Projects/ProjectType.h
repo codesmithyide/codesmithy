@@ -25,12 +25,16 @@
 
 #include "../Documents/DocumentTypes.h"
 #include <string>
+#include <memory>
 
 namespace CodeSmithy
 {
 
 class ProjectType
 {
+public:
+    typedef std::shared_ptr<ProjectType> shared_ptr;
+
 public:
     ProjectType(const std::string& name);
     virtual ~ProjectType();

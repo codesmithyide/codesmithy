@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddProjectTypesTests(TestSequence& testSequence);
 
 TestResult::EOutcome ProjectTypesCreationTest1();
+TestResult::EOutcome ProjectTypesAddTest1();
 
 #endif

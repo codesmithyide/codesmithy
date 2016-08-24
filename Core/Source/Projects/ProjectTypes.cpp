@@ -35,7 +35,17 @@ ProjectTypes::~ProjectTypes()
 
 size_t ProjectTypes::size() const
 {
-    return 0;
+    return m_types.size();
+}
+
+const ProjectType& ProjectTypes::operator[](size_t index) const
+{
+    return *m_types[index];
+}
+
+void ProjectTypes::add(ProjectType::shared_ptr type)
+{
+    m_types.push_back(type);
 }
 
 }
