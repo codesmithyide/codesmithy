@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_APPSETTINGS_H_
 
 #include "FileTypeAssociations.h"
+#include "CodeSmithy/Core/Documents/DocumentTypes.h"
 
 namespace CodeSmithy
 {
@@ -31,9 +32,16 @@ namespace CodeSmithy
 class AppSettings
 {
 public:
+    // The list of document types supported by the
+    // application needs to be passed in so that
+    // we can load and save the file type associations.
+    AppSettings(DocumentTypes& documentTypes);
+    
+    const DocumentTypes& documentTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
 
 private:
+    const DocumentTypes& m_documentTypes;
     FileTypeAssociations m_fileTypeAssociations;
 };
 

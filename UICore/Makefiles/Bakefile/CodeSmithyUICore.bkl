@@ -1,9 +1,12 @@
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyUICore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyUICore.sln;
 
-library CodeSmithyUICore
+library CodeSmithyUICore : CodeSmithyCore
 {
     archs = x86 x86_64;
 

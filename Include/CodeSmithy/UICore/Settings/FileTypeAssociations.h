@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_FILETYPEASSOCIATIONS_H_
 
 #include "FileTypeAssociation.h"
+#include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include <vector>
 
 namespace CodeSmithy
@@ -35,10 +36,16 @@ public:
     size_t size() const;
     const FileTypeAssociation::shared_ptr& operator[](size_t index) const;
 
+    // Add file type associations for any document types not already in the
+    // list
+    void addNewFileTypeAssociations(const DocumentTypes& documentTypes);
+
 private:
     std::vector<FileTypeAssociation::shared_ptr> m_associations;
 };
 
 }
+
+#include "../linkoptions.h"
 
 #endif

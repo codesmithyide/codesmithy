@@ -35,8 +35,7 @@ class PreferencesDialog : public wxDialog
 {
 public:
     PreferencesDialog(wxWindow* parent,
-        AppSettings& settings,
-        const DocumentTypes& documentTypes);
+        AppSettings& settings);
 
 private:
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook);

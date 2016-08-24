@@ -30,5 +30,7 @@ using namespace Ishiko::TestFramework;
 void AddFileTypeAssociationsTests(TestSequence& testSequence);
 
 TestResult::EOutcome FileTypeAssociationsCreationTest1();
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest1();
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2();
 
 #endif

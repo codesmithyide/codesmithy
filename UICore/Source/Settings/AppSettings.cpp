@@ -24,6 +24,17 @@
 
 namespace CodeSmithy
 {
+	
+AppSettings::AppSettings(DocumentTypes& documentTypes)
+    : m_documentTypes(documentTypes)
+{
+    m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
+}
+
+const DocumentTypes& AppSettings::documentTypes() const
+{
+    return m_documentTypes;
+}
 
 const FileTypeAssociations& AppSettings::fileTypeAssociations() const
 {

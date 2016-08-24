@@ -27,8 +27,9 @@
 namespace CodeSmithy
 {
 
-Frame::Frame(const wxString& title)
-    : wxFrame(NULL, wxID_ANY, title)
+Frame::Frame(const wxString& title,
+             DocumentTypes& documentTypes)
+    : wxFrame(NULL, wxID_ANY, title), m_appSettings(documentTypes)
 {
     CreateMenuBar();
 }
@@ -48,8 +49,7 @@ void Frame::CreateMenuBar()
 
 void Frame::OnPreferences(wxCommandEvent& evt)
 {
-    DocumentTypes documentTypes;
-    PreferencesDialog preferencesDialog(this, m_appSettings, documentTypes);
+    PreferencesDialog preferencesDialog(this, m_appSettings);
     preferencesDialog.ShowModal();
 }
 

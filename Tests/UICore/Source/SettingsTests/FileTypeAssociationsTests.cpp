@@ -22,16 +22,61 @@
 
 #include "FileTypeAssociationsTests.h"
 #include "CodeSmithy/UICore/Settings/FileTypeAssociations.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 
 void AddFileTypeAssociationsTests(TestSequence& testSequence)
 {
     TestSequence* associationsTestSequence = new TestSequence("FileTypeAssociations tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationsCreationTest1, *associationsTestSequence);
+
+    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 1", FileTypeAssociationsAddNewFileTypeAssociationsTest1,
+        *associationsTestSequence);
+    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 2", FileTypeAssociationsAddNewFileTypeAssociationsTest2,
+        *associationsTestSequence);
 }
 
 TestResult::EOutcome FileTypeAssociationsCreationTest1()
 {
     CodeSmithy::FileTypeAssociations associations;
-    return TestResult::ePassed;
+    if (associations.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest1()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::FileTypeAssociations associations;
+    associations.addNewFileTypeAssociations(documentTypes);
+    if (associations.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+    CodeSmithy::FileTypeAssociations associations;
+    associations.addNewFileTypeAssociations(documentTypes);
+    if ((associations.size() == 1) &&
+        (associations[0]->type() == "Bakefile"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

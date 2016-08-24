@@ -39,7 +39,7 @@ App::App()
 
 bool App::OnInit()
 {
-    Frame* frame = new Frame(L"CodeSmithy");
+    Frame* frame = new Frame(L"CodeSmithy", *m_documentTypes);
     frame->Show(true);
 
     return true;

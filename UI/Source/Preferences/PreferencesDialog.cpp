@@ -27,8 +27,7 @@ namespace CodeSmithy
 {
 
 PreferencesDialog::PreferencesDialog(wxWindow* parent,
-									 AppSettings& settings,
-                                     const DocumentTypes& documentTypes)
+									 AppSettings& settings)
     : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), 
     m_appSettings(settings)
 {

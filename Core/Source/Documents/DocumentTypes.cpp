@@ -38,6 +38,11 @@ size_t DocumentTypes::size() const
     return m_types.size();
 }
 
+const DocumentType::shared_ptr& DocumentTypes::operator[](size_t index) const
+{
+    return m_types[index];
+}
+
 void DocumentTypes::add(DocumentType::shared_ptr type)
 {
     m_types.push_back(type);

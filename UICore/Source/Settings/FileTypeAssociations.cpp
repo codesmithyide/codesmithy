@@ -35,4 +35,13 @@ const FileTypeAssociation::shared_ptr& FileTypeAssociations::operator[](size_t i
     return m_associations[index];
 }
 
+void FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& documentTypes)
+{
+    for (size_t i = 0; i < documentTypes.size(); ++i)
+    {
+        FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
+        m_associations.push_back(newAssociation);
+    }
+}
+
 }

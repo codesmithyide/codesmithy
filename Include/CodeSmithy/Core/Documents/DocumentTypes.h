@@ -36,6 +36,7 @@ public:
     ~DocumentTypes();
 
     size_t size() const;
+    const DocumentType::shared_ptr& operator[](size_t index) const;
     void add(DocumentType::shared_ptr type);
 
 private:
