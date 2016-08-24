@@ -1,3 +1,5 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/FileTypes/Include/Ishiko/FileTypes.bkl;
 codesmithypath = envvar("CODESMITHY");
 import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
@@ -6,7 +8,7 @@ toolsets = vs2015 vs2013;
 vs2015.solutionfile = ../VC14/CodeSmithyUICore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyUICore.sln;
 
-library CodeSmithyUICore : CodeSmithyCore
+library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
 {
     archs = x86 x86_64;
 

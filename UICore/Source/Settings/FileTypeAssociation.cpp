@@ -21,6 +21,10 @@
 */
 
 #include "Settings/FileTypeAssociation.h"
+#include "Ishiko/FileTypes/FileTypeAssociations.h"
+#include <windows.h>
+#include <Shlobj.h>
+#include <sstream>
 
 namespace CodeSmithy
 {
@@ -33,6 +37,23 @@ FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
 const std::string& FileTypeAssociation::type() const
 {
     return m_documentTypeName;
+}
+
+void FileTypeAssociation::registerFileTypeAssociation()
+{
+    char applicationPath[1024];
+    DWORD pathSize = GetModuleFileNameA(NULL, applicationPath, 1024);
+    std::stringstream command;
+    command << "\"" << applicationPath << "\" \"%1\"";
+
+    // Bakefile
+    Ishiko::FileTypes::ProgIDRegistryInfo bakefileProgInfo = Ishiko::FileTypes::FileTypeAssociations::createProgIDRegistryInfo("CodeSmithy.bkl.0.1", "Bakefile");
+    bakefileProgInfo.setOpenCommand(command.str());
+
+    Ishiko::FileTypes::ExtensionRegistryInfo bklExtInfo = Ishiko::FileTypes::FileTypeAssociations::createExtensionRegistryInfo(".bkl", "CodeSmithy.bkl.0.1");
+    bklExtInfo.addOpenWithProgids("CodeSmithy.bkl.0.1");
+
+    SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, NULL, NULL);
 }
 
 }
