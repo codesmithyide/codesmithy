@@ -21,13 +21,13 @@
 */
 
 #include "DocumentsTests.h"
-#include "DocumentTypeTests.h"
+#include "BakefileTypeTests.h"
 #include "DocumentTypesTests.h"
 
 void AddDocumentsTests(TestHarness& theTestHarness)
 {
     TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
 
-    AddDocumentTypeTests(documentsTestSequence);
+    AddBakefileTypeTests(documentsTestSequence);
     AddDocumentTypesTests(documentsTestSequence);
 }

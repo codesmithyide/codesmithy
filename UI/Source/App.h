@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_UI_APP_H_
 #define _CODESMITHY_UI_APP_H_
 
-#include "CodeSmithy/UICore/Documents/DocumentTypes.h"
+#include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include <wx/app.h>
 
 namespace CodeSmithy

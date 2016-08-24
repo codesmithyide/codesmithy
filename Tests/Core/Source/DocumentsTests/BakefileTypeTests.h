@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,15 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTTYPETESTS_H_
-#define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTTYPETESTS_H_
+#ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_BAKEFILETYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_BAKEFILETYPETESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::TestFramework;
 
-void AddDocumentTypeTests(TestSequence& testSequence);
+void AddBakefileTypeTests(TestSequence& testSequence);
 
-TestResult::EOutcome DocumentTypeCreationTest1();
+TestResult::EOutcome BakefileTypeCreationTest1();
 
 #endif

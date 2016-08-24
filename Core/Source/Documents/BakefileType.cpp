@@ -25,4 +25,9 @@
 namespace CodeSmithy
 {
 
+BakefileType::BakefileType()
+    : DocumentType("Bakefile")
+{
+}
+
 }

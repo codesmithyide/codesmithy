@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,20 +20,20 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentTypeTests.h"
-#include "CodeSmithy/Core/Documents/DocumentType.h"
+#include "BakefileTypeTests.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentTypeTests(TestSequence& testSequence)
+void AddBakefileTypeTests(TestSequence& testSequence)
 {
-    TestSequence* typeTestSequence = new TestSequence("DocumentType tests", testSequence);
+    TestSequence* typeTestSequence = new TestSequence("BakefileType tests", testSequence);
 
-    new HeapAllocationErrorsTest("Creation test 1", DocumentTypeCreationTest1, *typeTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", BakefileTypeCreationTest1, *typeTestSequence);
 }
 
-TestResult::EOutcome DocumentTypeCreationTest1()
+TestResult::EOutcome BakefileTypeCreationTest1()
 {
-    CodeSmithy::DocumentType type("dummy.type");
-    if (type.name() == "dummy.type")
+    CodeSmithy::BakefileType type;
+    if (type.name() == "Bakefile")
     {
         return TestResult::ePassed;
     }

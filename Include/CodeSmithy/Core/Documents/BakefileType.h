@@ -27,6 +27,13 @@
 
 namespace CodeSmithy
 {
+
+class BakefileType : public DocumentType
+{
+public:
+    BakefileType();
+};
+
 }
 
 #endif

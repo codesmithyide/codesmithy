@@ -24,7 +24,7 @@
 #define _CODESMITHY_UI_PREFERENCES_PREFERENCESDIALOG_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include "CodeSmithy/UICore/Documents/DocumentTypes.h"
+#include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include <wx/dialog.h>
 #include <wx/treebook.h>
 
