@@ -21,57 +21,27 @@
 */
 
 #include "PreferencesDialog.h"
+#include "FileTypeAssociationsPreferencesPage.h"
 #include <wx/sizer.h>
-#include <wx/checkbox.h>
-#include <wx/choice.h>
 
 namespace CodeSmithy
 {
 
 PreferencesDialog::PreferencesDialog(wxWindow* parent,
 									 AppSettings& settings)
-    : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), 
-    m_appSettings(settings)
+    : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
 
-    CreateFileTypeAssociationsPreferences(treebook);
+    CreateFileTypeAssociationsPreferences(treebook, settings);
 }
 
-void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook)
+void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 
+                                                              AppSettings& settings)
 {
-    wxPanel* fileTypeAssociationsPage = new wxPanel(treebook, wxID_ANY);
-    wxBoxSizer* fileTypeAssociationsPageSizer = new wxBoxSizer(wxVERTICAL);
-    const FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
-    for (size_t i = 0; i < associations.size(); ++i)
-    {
-        wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
-
-        wxCheckBox* fileTypeName = new wxCheckBox(fileTypeAssociationsPage, wxID_ANY,
-            associations[i]->type(), wxDefaultPosition, wxSize(125, wxDefaultCoord));
-        wxArrayString projectChoices;
-        projectChoices.Add("Ask at startup");
-        projectChoices.Add("Standalone");
-        DocumentType::shared_ptr documentType = m_appSettings.documentTypes().find(associations[i]->type());
-        if (documentType)
-        {
-            for (size_t j = 0; j < m_appSettings.projectTypes().size(); ++j)
-            {
-                projectChoices.Add(m_appSettings.projectTypes()[j].name());
-            }
-        }
-        wxChoice* projectChoice = new wxChoice(fileTypeAssociationsPage, wxID_ANY,
-            wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
-        projectChoice->SetSelection(0);
-
-        lineSizer->Add(fileTypeName, 0, wxEXPAND);
-        lineSizer->Add(projectChoice, 0, wxEXPAND);
-        fileTypeAssociationsPageSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
-    }
-    fileTypeAssociationsPage->SetSizer(fileTypeAssociationsPageSizer);
-
+    FileTypeAssociationsPreferencesPage* fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
     treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
     // Set up the sizer for the frame and resize the frame
     // according to its contents

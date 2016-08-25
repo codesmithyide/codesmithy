@@ -38,10 +38,7 @@ public:
         AppSettings& settings);
 
 private:
-    void CreateFileTypeAssociationsPreferences(wxTreebook* treebook);
-
-private:
-    AppSettings& m_appSettings;
+    void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
 };
 
 }

@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UI_PREFERENCES_FILETYPEASSOCIATIONSPREFERENCESPAGE_H_
 #define _CODESMITHY_UI_PREFERENCES_FILETYPEASSOCIATIONSPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class FileTypeAssociationsPreferencesPage : public wxPanel
+{
+public:
+    FileTypeAssociationsPreferencesPage(wxWindow *parent, AppSettings& settings);
+};
+
+}
+
 #endif
