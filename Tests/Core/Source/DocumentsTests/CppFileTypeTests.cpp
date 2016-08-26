@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,18 +20,27 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
 #include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/CppFileType.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddCppFileTypeTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* typeTestSequence = new TestSequence("CppFileType tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CppFileTypeCreationTest1, *typeTestSequence);
+}
+
+TestResult::EOutcome CppFileTypeCreationTest1()
+{
+    CodeSmithy::CppFileType type;
+    if ((type.name() == "C++ Source File") &&
+        (type.extensions().size() == 1) &&
+        (type.extensions()[0] == "cpp"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
