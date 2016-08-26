@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\Source\Frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\WindowIDs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
