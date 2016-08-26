@@ -21,10 +21,10 @@
 */
 
 #include "FileTypeAssociationsPreferencesPage.h"
+#include "../WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/choice.h>
-#include <wx/checkbox.h>
 #include <wx/button.h>
 
 namespace CodeSmithy
@@ -45,11 +45,22 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     {
         wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
 
-        wxCheckBox* fileTypeName = new wxCheckBox(this, wxID_ANY,
-            associations[i]->type(), wxDefaultPosition, wxSize(125, wxDefaultCoord));
+        wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
+            associations[i]->type(), wxDefaultPosition, wxSize(150, wxDefaultCoord));
+
+        wxArrayString actionChoices;
+        actionChoices.Add("Disabled");
+        actionChoices.Add("Open");
+        actionChoices.Add("Open With");
+        wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
+            wxDefaultPosition, wxDefaultSize, actionChoices);
         if (settings.isFileTypeAssociationRegistered(associations[i]->type()))
         {
-            fileTypeName->Set3StateValue(wxCHK_CHECKED);
+            actionChoice->SetSelection(1);
+        }
+        else
+        {
+            actionChoice->SetSelection(0);
         }
 
         wxArrayString projectChoices;
@@ -67,22 +78,15 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
         projectChoice->SetSelection(0);
 
-        wxArrayString actionChoices;
-        actionChoices.Add("Open");
-        actionChoices.Add("Open With");
-        wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
-            wxDefaultPosition, wxDefaultSize, actionChoices);
-        actionChoice->SetSelection(0);
-
         lineSizer->Add(fileTypeName, 0, wxEXPAND);
-        lineSizer->Add(projectChoice, 0, wxEXPAND);
-        lineSizer->AddSpacer(10);
         lineSizer->Add(actionChoice, 0, wxEXPAND);
-
+        lineSizer->AddSpacer(10);
+        lineSizer->Add(projectChoice, 0, wxEXPAND);
+        
         fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
     }
 
-    wxButton* applyButton = new wxButton(this, wxID_ANY, "Apply");
+    wxButton* applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
 
     topSizer->Add(description);
     topSizer->Add(fileTypeAssociationsSizer);

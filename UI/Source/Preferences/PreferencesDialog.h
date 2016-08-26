@@ -39,6 +39,13 @@ public:
 
 private:
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
+
+	void OnApplyFileTypeAssociations(wxCommandEvent& evt);
+
+private:
+    AppSettings& m_appSettings;
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 }

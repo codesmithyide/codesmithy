@@ -34,8 +34,6 @@ Frame::Frame(const wxString& title,
     m_appSettings(documentTypes, projectTypes)
 {
     CreateMenuBar();
-
-    m_appSettings.registerFileTypeAssociation("Bakefile");
 }
 
 void Frame::CreateMenuBar()

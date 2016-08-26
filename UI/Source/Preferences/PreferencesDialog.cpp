@@ -22,6 +22,7 @@
 
 #include "PreferencesDialog.h"
 #include "FileTypeAssociationsPreferencesPage.h"
+#include "../WindowIDs.h"
 #include <wx/sizer.h>
 
 namespace CodeSmithy
@@ -29,7 +30,8 @@ namespace CodeSmithy
 
 PreferencesDialog::PreferencesDialog(wxWindow* parent,
 									 AppSettings& settings)
-    : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+    : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), 
+    m_appSettings(settings)
 {
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
@@ -49,5 +51,14 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
     SetSizerAndFit(topSizer);
 }
+
+void PreferencesDialog::OnApplyFileTypeAssociations(wxCommandEvent& evt)
+{
+    m_appSettings.registerFileTypeAssociation("Bakefile");
+}
+
+wxBEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
+    EVT_RADIOBOX(PreferencesFileTypeAssociationsApplyButton, PreferencesDialog::OnApplyFileTypeAssociations)
+wxEND_EVENT_TABLE()
 
 }
