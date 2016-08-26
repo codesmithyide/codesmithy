@@ -20,20 +20,27 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
 #include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddCodeSmithyProjectFileTypeTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* typeTestSequence = new TestSequence("CodeSmithyProjectFileType tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CodeSmithyProjectFileTypeCreationTest1, *typeTestSequence);
+}
+
+TestResult::EOutcome CodeSmithyProjectFileTypeCreationTest1()
+{
+    CodeSmithy::CodeSmithyProjectFileType type;
+    if ((type.name() == "CodeSmithy Project File") &&
+        (type.extensions().size() == 1) &&
+        (type.extensions()[0] == "csmthprj"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
