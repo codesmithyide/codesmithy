@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,22 +20,20 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
-#include "CMakeListsTypeTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#ifndef _CODESMITHY_CORE_DOCUMENTS_CMAKELISTSTYPE_H_
+#define _CODESMITHY_CORE_DOCUMENTS_CMAKELISTSTYPE_H_
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+#include "DocumentType.h"
+
+namespace CodeSmithy
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+class CMakeListsType : public DocumentType
+{
+public:
+    CMakeListsType();
+};
+
 }
+
+#endif

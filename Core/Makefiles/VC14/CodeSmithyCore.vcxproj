@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\CMakeListsType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CppFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\XMLDocumentType.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocumentType.h" />

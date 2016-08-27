@@ -20,22 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
-#include "CMakeListsTypeTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CMAKELISTSTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CMAKELISTSTYPETESTS_H_
 
-void AddDocumentsTests(TestHarness& theTestHarness)
-{
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddCMakeListsTypeTests(TestSequence& testSequence);
+
+TestResult::EOutcome CMakeListsTypeCreationTest1();
+
+#endif

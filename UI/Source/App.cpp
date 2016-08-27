@@ -23,6 +23,7 @@
 #include "App.h"
 #include "Frame.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
+#include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
@@ -39,6 +40,7 @@ App::App()
     // the CodeSmithy UI.
     m_documentTypes = std::make_shared<DocumentTypes>();
     m_documentTypes->add(std::make_shared<BakefileType>());
+    m_documentTypes->add(std::make_shared<CMakeListsType>());
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>());
     m_documentTypes->add(std::make_shared<XMLDocumentType>());

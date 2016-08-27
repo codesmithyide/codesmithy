@@ -20,22 +20,27 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
 #include "CMakeListsTypeTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddCMakeListsTypeTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* typeTestSequence = new TestSequence("CMakeListsType tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CMakeListsTypeCreationTest1, *typeTestSequence);
+}
+
+TestResult::EOutcome CMakeListsTypeCreationTest1()
+{
+    CodeSmithy::CMakeListsType type;
+    if ((type.name() == "CMakeLists") &&
+        (type.extensions().size() == 1) &&
+        (type.extensions()[0] == "txt"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
