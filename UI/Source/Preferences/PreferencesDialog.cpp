@@ -24,6 +24,7 @@
 #include "FileTypeAssociationsPreferencesPage.h"
 #include "../WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/button.h>
 
 namespace CodeSmithy
 {
@@ -33,11 +34,20 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), 
     m_appSettings(settings)
 {
+    // Set up the sizer for the frame and resize the frame
+    // according to its contents
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
-
     CreateFileTypeAssociationsPreferences(treebook, settings);
+    topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
+
+    wxButton* closeButton = new wxButton(this, PreferencesCloseButton, "Close");
+    topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
+
+    SetSizerAndFit(topSizer);
 }
 
 void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 
@@ -45,11 +55,11 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
 {
     FileTypeAssociationsPreferencesPage* fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
     treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
-    // Set up the sizer for the frame and resize the frame
-    // according to its contents
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-    topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
-    SetSizerAndFit(topSizer);
+}
+
+void PreferencesDialog::OnClose(wxCommandEvent& evt)
+{
+    Close();
 }
 
 void PreferencesDialog::OnApplyFileTypeAssociations(wxCommandEvent& evt)
@@ -58,7 +68,8 @@ void PreferencesDialog::OnApplyFileTypeAssociations(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
-    EVT_RADIOBOX(PreferencesFileTypeAssociationsApplyButton, PreferencesDialog::OnApplyFileTypeAssociations)
+    EVT_BUTTON(PreferencesCloseButton, PreferencesDialog::OnClose)
+    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButton, PreferencesDialog::OnApplyFileTypeAssociations)
 wxEND_EVENT_TABLE()
 
 }

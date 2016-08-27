@@ -40,6 +40,7 @@ public:
 private:
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
 
+    void OnClose(wxCommandEvent& evt);
 	void OnApplyFileTypeAssociations(wxCommandEvent& evt);
 
 private:

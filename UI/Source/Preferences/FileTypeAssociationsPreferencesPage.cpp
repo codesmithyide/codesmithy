@@ -37,16 +37,39 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     wxStaticText* description = new wxStaticText(this, wxID_ANY, "jjjj");
+    description->SetBackgroundColour(*wxWHITE);
+    description->SetWindowStyle(wxBORDER_SIMPLE);
 
     wxBoxSizer* fileTypeAssociationsSizer = new wxBoxSizer(wxVERTICAL);
+    
+    wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
+        "Type and extensions", wxDefaultPosition, wxSize(150, wxDefaultCoord));
+    lineSizer->Add(fileTypeName, 0, wxEXPAND);
+    wxStaticText* actionChoice = new wxStaticText(this, wxID_ANY,
+        "Action", wxDefaultPosition, wxDefaultSize);
+    lineSizer->Add(actionChoice, 0, wxEXPAND);
+    wxStaticText* projectChoice = new wxStaticText(this, wxID_ANY,
+        "Associated Project Type", wxDefaultPosition, wxSize(200, wxDefaultCoord));
+    lineSizer->Add(projectChoice, 0, wxEXPAND);
+    fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
 
     const FileTypeAssociations& associations = settings.fileTypeAssociations();
     for (size_t i = 0; i < associations.size(); ++i)
     {
+        DocumentType::shared_ptr documentType = settings.documentTypes().find(associations[i]->type());
+
         wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
 
+        std::string typeAndExtensions = associations[i]->type();
+        if (documentType)
+        {
+            typeAndExtensions.append(" (*.");
+            typeAndExtensions.append(documentType->extensions()[0]);
+            typeAndExtensions.append(")");
+        }
         wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
-            associations[i]->type(), wxDefaultPosition, wxSize(150, wxDefaultCoord));
+            typeAndExtensions, wxDefaultPosition, wxSize(150, wxDefaultCoord));
 
         wxArrayString actionChoices;
         actionChoices.Add("Disabled");
@@ -66,7 +89,6 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
         wxArrayString projectChoices;
         projectChoices.Add("Ask at startup");
         projectChoices.Add("Standalone");
-        DocumentType::shared_ptr documentType = settings.documentTypes().find(associations[i]->type());
         if (documentType)
         {
             for (size_t j = 0; j < settings.projectTypes().size(); ++j)
@@ -88,8 +110,8 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
 
     wxButton* applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
 
-    topSizer->Add(description);
-    topSizer->Add(fileTypeAssociationsSizer);
+    topSizer->Add(description, 0, wxEXPAND | wxALL, 10);
+    topSizer->Add(fileTypeAssociationsSizer, 0, wxALL, 10);
     topSizer->Add(applyButton);
 
     SetSizer(topSizer);
