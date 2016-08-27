@@ -33,7 +33,7 @@ FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
 
 FileTypeAssociation::FileTypeAssociation(const FileTypeAssociation& other)
     : m_documentTypeName(other.m_documentTypeName), m_association(other.m_association),
-    m_actionType(other.m_actionType), m_associatedProjectType(other.m_associatedProjectType)
+    m_actionType(other.m_actionType), m_associatedProjectTypeName(other.m_associatedProjectTypeName)
 {
 }
 
@@ -41,7 +41,7 @@ FileTypeAssociation::~FileTypeAssociation()
 {
 }
 
-const std::string& FileTypeAssociation::type() const
+const std::string& FileTypeAssociation::documentTypeName() const
 {
     return m_documentTypeName;
 }
@@ -51,14 +51,61 @@ FileTypeAssociation::EAssociation FileTypeAssociation::association() const
     return m_association;
 }
 
+void FileTypeAssociation::setAssociation(EAssociation association)
+{
+    m_association = association;
+}
+
 FileTypeAssociation::EActionType FileTypeAssociation::actionType() const
 {
     return m_actionType;
 }
 
-const std::string& FileTypeAssociation::associatedProjectType() const
+const std::string& FileTypeAssociation::associatedProjectTypeName() const
 {
-    return m_associatedProjectType;
+    return m_associatedProjectTypeName;
+}
+
+void FileTypeAssociation::setAction(EActionType actionType, 
+                                    const std::string& associatedProjectTypeName)
+{
+    m_actionType = actionType;
+    if (m_actionType == eProjectType)
+    {
+        m_associatedProjectTypeName = associatedProjectTypeName;
+    }
+    else
+    {
+        m_associatedProjectTypeName.clear();
+    }
+}
+
+FileTypeAssociation& FileTypeAssociation::operator=(const FileTypeAssociation& other)
+{
+    if (this == &other)
+    {
+        return *this;
+    }
+
+    m_documentTypeName = other.m_documentTypeName;
+    m_association = other.m_association;
+    m_actionType = other.m_actionType;
+    m_associatedProjectTypeName = other.m_associatedProjectTypeName;
+
+    return *this;
+}
+
+bool FileTypeAssociation::operator==(const FileTypeAssociation& other) const
+{
+    return ((m_documentTypeName == other.m_documentTypeName) &&
+        (m_association == other.m_association) &&
+        (m_actionType == other.m_actionType) &&
+        (m_associatedProjectTypeName == other.m_associatedProjectTypeName));
+}
+
+bool FileTypeAssociation::operator!=(const FileTypeAssociation& other) const
+{
+    return !(*this == other);
 }
 
 }

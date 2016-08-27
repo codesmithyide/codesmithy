@@ -53,16 +53,22 @@ public:
     FileTypeAssociation(const FileTypeAssociation& other);
     ~FileTypeAssociation();
 
-    const std::string& type() const;
+    const std::string& documentTypeName() const;
     EAssociation association() const;
+    void setAssociation(EAssociation association);
     EActionType actionType() const;
-    const std::string& associatedProjectType() const;
+    const std::string& associatedProjectTypeName() const;
+    void setAction(EActionType actionType, const std::string& associatedProjectTypeName);
+
+    FileTypeAssociation& operator=(const FileTypeAssociation& other);
+    bool operator==(const FileTypeAssociation& other) const;
+    bool operator!=(const FileTypeAssociation& other) const;
 
 private:
     std::string m_documentTypeName;
     EAssociation m_association;
     EActionType m_actionType;
-    std::string m_associatedProjectType;
+    std::string m_associatedProjectTypeName;
 };
 
 }

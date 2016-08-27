@@ -31,5 +31,8 @@ void AddFileTypeAssociationTests(TestSequence& testSequence);
 
 TestResult::EOutcome FileTypeAssociationCreationTest1();
 TestResult::EOutcome FileTypeAssociationCreationTest2();
+TestResult::EOutcome FileTypeAssociationAssignmentTest1();
+TestResult::EOutcome FileTypeAssociationEqualityTest1();
+TestResult::EOutcome FileTypeAssociationEqualityTest2();
 
 #endif

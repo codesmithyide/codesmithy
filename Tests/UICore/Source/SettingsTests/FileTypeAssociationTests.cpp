@@ -29,15 +29,20 @@ void AddFileTypeAssociationTests(TestSequence& testSequence)
 
     new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationCreationTest1, *associationTestSequence);
     new HeapAllocationErrorsTest("Creation test 2", FileTypeAssociationCreationTest2, *associationTestSequence);
+
+    new HeapAllocationErrorsTest("operator= test 1", FileTypeAssociationAssignmentTest1, *associationTestSequence);
+
+    new HeapAllocationErrorsTest("operator== test 1", FileTypeAssociationEqualityTest1, *associationTestSequence);
+    new HeapAllocationErrorsTest("operator== test 2", FileTypeAssociationEqualityTest2, *associationTestSequence);
 }
 
 TestResult::EOutcome FileTypeAssociationCreationTest1()
 {
     CodeSmithy::FileTypeAssociation association("dummyTypeName");
-    if ((association.type() == "dummyTypeName") &&
+    if ((association.documentTypeName() == "dummyTypeName") &&
         (association.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
         (association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association.associatedProjectType() == ""))
+        (association.associatedProjectTypeName() == ""))
     {
         return TestResult::ePassed;
     }
@@ -51,19 +56,65 @@ TestResult::EOutcome FileTypeAssociationCreationTest2()
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName");
     CodeSmithy::FileTypeAssociation association2(association1);
-    if ((association1.type() == "dummyTypeName") &&
+    if ((association1.documentTypeName() == "dummyTypeName") &&
         (association1.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
         (association1.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association1.associatedProjectType() == "") &&
-        (association2.type() == "dummyTypeName") &&
+        (association1.associatedProjectTypeName() == "") &&
+        (association2.documentTypeName() == "dummyTypeName") &&
         (association2.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
         (association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association2.associatedProjectType() == ""))
+        (association2.associatedProjectTypeName() == ""))
     {
         return TestResult::ePassed;
     }
     else
     {
         return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationAssignmentTest1()
+{
+    CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
+    CodeSmithy::FileTypeAssociation association2("dummyTypeName2");
+    association2 = association1;
+    if ((association2.documentTypeName() == "dummyTypeName1") &&
+        (association2.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
+        (association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
+        (association2.associatedProjectTypeName() == ""))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationEqualityTest1()
+{
+    CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
+    CodeSmithy::FileTypeAssociation association2("dummyTypeName1");
+    if (association1 == association2)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationEqualityTest2()
+{
+    CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
+    CodeSmithy::FileTypeAssociation association2("dummyTypeName2");
+    if (association1 == association2)
+    {
+        return TestResult::eFailed;
+    }
+    else
+    {
+        return TestResult::ePassed;
     }
 }
