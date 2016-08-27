@@ -26,8 +26,10 @@ namespace CodeSmithy
 {
 
 CppFileType::CppFileType()
-    : DocumentType("C++ Source File", "cpp")
+    : DocumentType("C++ Source File")
 {
+    appendExtension("cpp");
+    appendExtension("cxx");
 }
 
 }

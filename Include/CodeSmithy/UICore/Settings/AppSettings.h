@@ -43,6 +43,9 @@ public:
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
 
+    void registerFileTypeAssociation(const std::string& documentTypeName);
+    bool isFileTypeAssociationRegistered(const std::string& documentTypeName) const;
+
 private:
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;

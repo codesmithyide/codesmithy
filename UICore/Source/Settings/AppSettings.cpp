@@ -21,6 +21,10 @@
 */
 
 #include "Settings/AppSettings.h"
+#include "Ishiko/FileTypes/FileTypeAssociations.h"
+#include <windows.h>
+#include <Shlobj.h>
+#include <sstream>
 
 namespace CodeSmithy
 {
@@ -45,6 +49,66 @@ const ProjectTypes& AppSettings::projectTypes() const
 const FileTypeAssociations& AppSettings::fileTypeAssociations() const
 {
     return m_fileTypeAssociations;
+}
+
+void AppSettings::registerFileTypeAssociation(const std::string& documentTypeName)
+{
+    char applicationPath[1024];
+    DWORD pathSize = GetModuleFileNameA(NULL, applicationPath, 1024);
+    std::stringstream command;
+    command << "\"" << applicationPath << "\" \"%1\"";
+
+    DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+    if (documentType)
+    {
+        const std::string& extension = documentType->extensions()[0];
+
+        std::stringstream progID;
+        progID << "CodeSmithy." << extension << ".0.1";
+        Ishiko::FileTypes::ProgIDRegistryInfo progInfo =
+            Ishiko::FileTypes::FileTypeAssociations::createProgIDRegistryInfo(progID.str(), documentTypeName);
+        progInfo.setOpenCommand(command.str());
+
+        std::stringstream ext;
+        ext << "." << extension;
+        Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+            Ishiko::FileTypes::FileTypeAssociations::createExtensionRegistryInfo(ext.str(), progID.str());
+        extInfo.addOpenWithProgids(progID.str());
+
+        SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, NULL, NULL);
+    }
+}
+
+bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTypeName) const
+{
+    bool result = false;
+
+    try
+    {
+        DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+        if (documentType)
+        {
+            const std::string& extension = documentType->extensions()[0];
+
+            std::stringstream ext;
+            ext << "." << extension;
+            Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+                Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
+
+            std::stringstream progID;
+            progID << "CodeSmithy." << extension << ".0.1";
+            if (extInfo.progID() == progID.str())
+            {
+                result = true;
+            }
+        }
+    }
+    catch (const std::exception& e)
+    {
+        // Do nothing
+    }
+
+    return result;
 }
 
 }

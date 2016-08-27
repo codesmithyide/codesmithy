@@ -26,7 +26,7 @@ namespace CodeSmithy
 {
 
 CodeSmithyProjectFileType::CodeSmithyProjectFileType()
-    : DocumentType("CodeSmithy Project File", "cmsthprj")
+    : DocumentType("CodeSmithy Project File", "csmthprj")
 {
 }
 

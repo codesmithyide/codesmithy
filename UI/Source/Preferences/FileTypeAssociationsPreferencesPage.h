@@ -33,6 +33,9 @@ class FileTypeAssociationsPreferencesPage : public wxPanel
 {
 public:
     FileTypeAssociationsPreferencesPage(wxWindow *parent, AppSettings& settings);
+
+private:
+    static std::string getFileTypeAndExtensions(const DocumentType& type);
 };
 
 }

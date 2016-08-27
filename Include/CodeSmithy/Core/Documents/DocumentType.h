@@ -36,6 +36,7 @@ public:
     typedef std::shared_ptr<DocumentType> shared_ptr;
 
 public:
+    DocumentType(const std::string& name);
     DocumentType(const std::string& name, const std::string& extension);
 
     const std::string& name() const;
@@ -43,6 +44,9 @@ public:
     // Returns the list of extensions typically 
     // used for a file of this type
     const std::vector<std::string>& extensions() const;
+
+protected:
+    void appendExtension(const std::string& extension);
 
 private:
     std::string m_name;

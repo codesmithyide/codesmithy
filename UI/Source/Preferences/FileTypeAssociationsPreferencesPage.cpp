@@ -58,54 +58,47 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     for (size_t i = 0; i < associations.size(); ++i)
     {
         DocumentType::shared_ptr documentType = settings.documentTypes().find(associations[i]->type());
-
-        wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
-
-        std::string typeAndExtensions = associations[i]->type();
         if (documentType)
         {
-            typeAndExtensions.append(" (*.");
-            typeAndExtensions.append(documentType->extensions()[0]);
-            typeAndExtensions.append(")");
-        }
-        wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
-            typeAndExtensions, wxDefaultPosition, wxSize(150, wxDefaultCoord));
+            wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
 
-        wxArrayString actionChoices;
-        actionChoices.Add("Disabled");
-        actionChoices.Add("Open");
-        actionChoices.Add("Open With");
-        wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
-            wxDefaultPosition, wxDefaultSize, actionChoices);
-        if (settings.isFileTypeAssociationRegistered(associations[i]->type()))
-        {
-            actionChoice->SetSelection(1);
-        }
-        else
-        {
-            actionChoice->SetSelection(0);
-        }
+            wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
+                getFileTypeAndExtensions(*documentType), wxDefaultPosition,
+                wxSize(150, wxDefaultCoord));
 
-        wxArrayString projectChoices;
-        projectChoices.Add("Ask at startup");
-        projectChoices.Add("Standalone");
-        if (documentType)
-        {
+            wxArrayString actionChoices;
+            actionChoices.Add("Disabled");
+            actionChoices.Add("Open");
+            actionChoices.Add("Open With");
+            wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
+                wxDefaultPosition, wxDefaultSize, actionChoices);
+            if (settings.isFileTypeAssociationRegistered(associations[i]->type()))
+            {
+                actionChoice->SetSelection(1);
+            }
+            else
+            {
+                actionChoice->SetSelection(0);
+            }
+
+            wxArrayString projectChoices;
+            projectChoices.Add("Ask at startup");
+            projectChoices.Add("Standalone");
             for (size_t j = 0; j < settings.projectTypes().size(); ++j)
             {
                 projectChoices.Add(settings.projectTypes()[j].name());
             }
-        }
-        wxChoice* projectChoice = new wxChoice(this, wxID_ANY,
-            wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
-        projectChoice->SetSelection(0);
+            wxChoice* projectChoice = new wxChoice(this, wxID_ANY,
+                wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
+            projectChoice->SetSelection(0);
 
-        lineSizer->Add(fileTypeName, 0, wxEXPAND);
-        lineSizer->Add(actionChoice, 0, wxEXPAND);
-        lineSizer->AddSpacer(10);
-        lineSizer->Add(projectChoice, 0, wxEXPAND);
-        
-        fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
+            lineSizer->Add(fileTypeName, 0, wxEXPAND);
+            lineSizer->Add(actionChoice, 0, wxEXPAND);
+            lineSizer->AddSpacer(10);
+            lineSizer->Add(projectChoice, 0, wxEXPAND);
+
+            fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
+        }
     }
 
     wxButton* applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
@@ -115,6 +108,24 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     topSizer->Add(applyButton);
 
     SetSizer(topSizer);
+}
+
+std::string FileTypeAssociationsPreferencesPage::getFileTypeAndExtensions(const DocumentType& type)
+{
+    std::string result = type.name();
+    result.append(" (");
+    const std::vector<std::string>& extensions = type.extensions();
+    for (size_t i = 0; i < extensions.size(); ++i)
+    {
+        if (i != 0)
+        {
+            result.append(";");
+        }
+        result.append("*.");
+        result.append(type.extensions()[i]);
+    }
+    result.append(")");
+    return result;
 }
 
 }

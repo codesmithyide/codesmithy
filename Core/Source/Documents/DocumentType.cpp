@@ -25,6 +25,11 @@
 namespace CodeSmithy
 {
 
+DocumentType::DocumentType(const std::string& name)
+    : m_name(name)
+{
+}
+
 DocumentType::DocumentType(const std::string& name,
                            const std::string& extension)
     : m_name(name)
@@ -40,6 +45,11 @@ const std::string& DocumentType::name() const
 const std::vector<std::string>& DocumentType::extensions() const
 {
     return m_extensions;
+}
+
+void DocumentType::appendExtension(const std::string& extension)
+{
+    m_extensions.push_back(extension);
 }
 
 }

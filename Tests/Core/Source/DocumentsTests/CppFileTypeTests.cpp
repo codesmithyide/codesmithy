@@ -34,8 +34,9 @@ TestResult::EOutcome CppFileTypeCreationTest1()
 {
     CodeSmithy::CppFileType type;
     if ((type.name() == "C++ Source File") &&
-        (type.extensions().size() == 1) &&
-        (type.extensions()[0] == "cpp"))
+        (type.extensions().size() == 2) &&
+        (type.extensions()[0] == "cpp") &&
+        (type.extensions()[1] == "cxx"))
     {
         return TestResult::ePassed;
     }

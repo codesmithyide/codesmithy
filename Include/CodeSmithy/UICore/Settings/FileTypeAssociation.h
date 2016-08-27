@@ -39,8 +39,6 @@ public:
 
     const std::string& type() const;
 
-    void registerFileTypeAssociation();
-
 private:
     std::string m_documentTypeName;
 };
