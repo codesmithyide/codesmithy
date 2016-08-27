@@ -25,6 +25,11 @@
 namespace CodeSmithy
 {
 
+static const char* documentTypeNameElementName = "document-type-name";
+static const char* associationElementName = "association";
+static const char* actionTypeElementName = "action-type";
+static const char* associatedProjectTypeNameElementName = "associated-project-type-name";
+
 FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
     : m_documentTypeName(documentTypeName), m_association(eDisabled), 
     m_actionType(eAskAtStartup)
@@ -106,6 +111,48 @@ bool FileTypeAssociation::operator==(const FileTypeAssociation& other) const
 bool FileTypeAssociation::operator!=(const FileTypeAssociation& other) const
 {
     return !(*this == other);
+}
+
+void FileTypeAssociation::save(pugi::xml_node node)
+{
+    pugi::xml_node documentTypeNameNode = node.append_child(documentTypeNameElementName);
+    documentTypeNameNode.append_child(pugi::node_pcdata).set_value(m_documentTypeName.c_str());
+    pugi::xml_node associationNode = node.append_child(associationElementName);
+    associationNode.append_child(pugi::node_pcdata).set_value(associationToString(m_association).c_str());
+    pugi::xml_node actionTypeNode = node.append_child(actionTypeElementName);
+    actionTypeNode.append_child(pugi::node_pcdata).set_value(actionTypeToString(m_actionType).c_str());
+    pugi::xml_node associatedProjectTypeNameNode = node.append_child(associatedProjectTypeNameElementName);
+    associatedProjectTypeNameNode.append_child(pugi::node_pcdata).set_value(m_associatedProjectTypeName.c_str());
+}
+
+std::string FileTypeAssociation::associationToString(EAssociation association)
+{
+    switch (association)
+    {
+    case eDisabled:
+        return "disabled";
+
+    case eOpen:
+        return "open";
+
+    case eOpenWith:
+        return "open-with";
+    }
+}
+
+std::string FileTypeAssociation::actionTypeToString(EActionType actionType)
+{
+    switch (actionType)
+    {
+    case eAskAtStartup:
+        return "ask-at-startup";
+
+    case eStandalone:
+        return "standalone";
+
+    case eProjectType:
+        return "project-type";
+    }
 }
 
 }

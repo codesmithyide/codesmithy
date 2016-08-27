@@ -25,6 +25,8 @@
 namespace CodeSmithy
 {
 
+static const char* fileTypeAssociationElementName = "file-type-association";
+
 FileTypeAssociations::FileTypeAssociations()
 {
 }
@@ -89,6 +91,15 @@ void FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& docum
             FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
             m_associations.push_back(newAssociation);
         }
+    }
+}
+
+void FileTypeAssociations::save(pugi::xml_node node)
+{
+    for (size_t i = 0; i < m_associations.size(); ++i)
+    {
+        pugi::xml_node associationNode = node.append_child(fileTypeAssociationElementName);
+        m_associations[i]->save(associationNode);
     }
 }
 

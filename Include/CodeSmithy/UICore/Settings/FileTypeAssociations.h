@@ -25,6 +25,7 @@
 
 #include "FileTypeAssociation.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
+#include <pugixml.hpp>
 #include <vector>
 
 namespace CodeSmithy
@@ -45,6 +46,8 @@ public:
     // Add file type associations for any document types not already in the
     // list
     void addNewFileTypeAssociations(const DocumentTypes& documentTypes);
+
+    void save(pugi::xml_node node);
 
 private:
     std::vector<FileTypeAssociation::shared_ptr> m_associations;

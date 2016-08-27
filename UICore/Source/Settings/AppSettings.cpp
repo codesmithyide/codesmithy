@@ -31,10 +31,12 @@ namespace CodeSmithy
 {
 	
 static const char* rootElementName = "codesmithy-application-settings";
+static const char* fileTypeAssociationsElementName = "file-type-associations";
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes)
-    : m_documentTypes(documentTypes), m_projectTypes(projectTypes)
+    : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
+    m_projectTypes(projectTypes)
 {
     boost::filesystem::path settingsPath = getSettingsDirectory();
     boost::filesystem::create_directories(settingsPath);
@@ -48,18 +50,22 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
-            std::ofstream file(settingsPath.wstring());
-            m_document.save(file);
+            m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
         }
     }
 
     m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
+    m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+
+    std::ofstream file(settingsPath.wstring());
+    m_document.save(file);
 }
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes,
                          const boost::filesystem::path& settingsPath)
-    : m_documentTypes(documentTypes), m_projectTypes(projectTypes)
+    : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
+    m_projectTypes(projectTypes)
 {
     if (boost::filesystem::exists(settingsPath))
     {
@@ -69,12 +75,15 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
-            std::ofstream file(settingsPath.wstring());
-            m_document.save(file);
+            m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
         }
     }
 
     m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
+    m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+
+    std::ofstream file(settingsPath.wstring());
+    m_document.save(file);
 }
 
 const DocumentTypes& AppSettings::documentTypes() const

@@ -48,6 +48,7 @@ public:
         const ProjectTypes& projectTypes,
         const boost::filesystem::path& settingsPath);
     AppSettings(const AppSettings& other) = delete;
+
     const DocumentTypes& documentTypes() const;
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
@@ -62,6 +63,7 @@ private:
 
 private:
     pugi::xml_document m_document;
+    pugi::xml_node m_fileTypeAssociationsNode;
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;

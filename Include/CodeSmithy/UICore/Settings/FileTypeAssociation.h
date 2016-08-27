@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_FILETYPEASSOCIATION_H_
 #define _CODESMITHY_UICORE_SETTINGS_FILETYPEASSOCIATION_H_
 
+#include <pugixml.hpp>
 #include <string>
 #include <memory>
 
@@ -63,6 +64,12 @@ public:
     FileTypeAssociation& operator=(const FileTypeAssociation& other);
     bool operator==(const FileTypeAssociation& other) const;
     bool operator!=(const FileTypeAssociation& other) const;
+
+    void save(pugi::xml_node node);
+
+private:
+    static std::string associationToString(EAssociation association);
+    static std::string actionTypeToString(EActionType actionType);
 
 private:
     std::string m_documentTypeName;

@@ -22,6 +22,7 @@
 
 #include "AppSettingsTests.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddAppSettingsTests(TestSequence& testSequence)
@@ -29,6 +30,7 @@ void AddAppSettingsTests(TestSequence& testSequence)
     TestSequence* settingsTestSequence = new TestSequence("AppSettings tests", testSequence);
 
     new FileComparisonTest("Creation test 1", AppSettingsCreationTest1, *settingsTestSequence);
+    new FileComparisonTest("Creation test 2", AppSettingsCreationTest2, *settingsTestSequence);
 }
 
 TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
@@ -40,6 +42,26 @@ TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsCreationTest1.xml");
 
     CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsCreationTest2(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsCreationTest2.xml");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsCreationTest2.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
     result = TestResult::ePassed;
