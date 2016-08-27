@@ -25,6 +25,14 @@
 namespace CodeSmithy
 {
 
+FileTypeAssociations::FileTypeAssociations()
+{
+}
+
+FileTypeAssociations::~FileTypeAssociations()
+{
+}
+
 size_t FileTypeAssociations::size() const
 {
     return m_associations.size();
@@ -35,12 +43,52 @@ const FileTypeAssociation::shared_ptr& FileTypeAssociations::operator[](size_t i
     return m_associations[index];
 }
 
+FileTypeAssociation::shared_ptr FileTypeAssociations::find(const std::string& documentTypeName)
+{
+    for (size_t i = 0; i < m_associations.size(); ++i)
+    {
+        if (m_associations[i]->documentTypeName() == documentTypeName)
+        {
+            return m_associations[i];
+        }
+    }
+    return FileTypeAssociation::shared_ptr();
+}
+
+void FileTypeAssociations::set(FileTypeAssociation::shared_ptr association)
+{
+    FileTypeAssociation::shared_ptr existingAssociation = find(association->documentTypeName());
+    if (!existingAssociation)
+    {
+        m_associations.push_back(association);
+    }
+    else
+    {
+        *existingAssociation = *association;
+    }
+}
+
+void FileTypeAssociations::remove(const std::string& documentTypeName)
+{
+    for (size_t i = 0; i < m_associations.size(); ++i)
+    {
+        if (m_associations[i]->documentTypeName() == documentTypeName)
+        {
+            m_associations.erase(m_associations.begin() + i);
+            break;
+        }
+    }
+}
+
 void FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& documentTypes)
 {
     for (size_t i = 0; i < documentTypes.size(); ++i)
     {
-        FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
-        m_associations.push_back(newAssociation);
+        if (!find(documentTypes[i]->name()))
+        {
+            FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
+            m_associations.push_back(newAssociation);
+        }
     }
 }
 

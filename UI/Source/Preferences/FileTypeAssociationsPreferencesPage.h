@@ -25,6 +25,9 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/stattext.h>
+#include <wx/sizer.h>
+#include <wx/button.h>
 
 namespace CodeSmithy
 {
@@ -32,10 +35,34 @@ namespace CodeSmithy
 class FileTypeAssociationsPreferencesPage : public wxPanel
 {
 public:
-    FileTypeAssociationsPreferencesPage(wxWindow *parent, AppSettings& settings);
+    FileTypeAssociationsPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
-    static std::string getFileTypeAndExtensions(const DocumentType& type);
+    static wxStaticText* CreateDescription(wxWindow *parent);
+    static void AddTitleRow(wxWindow *parent, wxFlexGridSizer* fileTypeAssociationsSizer);
+    static std::string GetFileTypeAndExtensions(const DocumentType& type);
+
+    void OnAssociationChanged(wxCommandEvent& evt);
+    void OnApply(wxCommandEvent& evt);
+
+private:
+    class CustomEventHandlerData : public wxObject
+    {
+    public:
+        CustomEventHandlerData(const std::string& documentTypeName);
+
+        const std::string& documentTypeName() const;
+
+    private:
+        std::string m_documentTypeName;
+    };
+
+private:
+    AppSettings& m_appSettings;
+    FileTypeAssociations m_updatedFileTypeAssociations;
+    wxButton* m_applyButton;
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 }

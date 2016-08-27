@@ -33,9 +33,15 @@ namespace CodeSmithy
 class FileTypeAssociations
 {
 public:
+    FileTypeAssociations();
+    ~FileTypeAssociations();
+
     size_t size() const;
     const FileTypeAssociation::shared_ptr& operator[](size_t index) const;
+    FileTypeAssociation::shared_ptr find(const std::string& documentTypeName);
 
+    void set(FileTypeAssociation::shared_ptr association);
+    void remove(const std::string& documentTypeName);
     // Add file type associations for any document types not already in the
     // list
     void addNewFileTypeAssociations(const DocumentTypes& documentTypes);

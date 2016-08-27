@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UI_PREFERENCES_PREFERENCESDIALOG_H_
 #define _CODESMITHY_UI_PREFERENCES_PREFERENCESDIALOG_H_
 
+#include "FileTypeAssociationsPreferencesPage.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include <wx/dialog.h>
@@ -41,10 +42,10 @@ private:
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
 
     void OnClose(wxCommandEvent& evt);
-	void OnApplyFileTypeAssociations(wxCommandEvent& evt);
-
+	
 private:
     AppSettings& m_appSettings;
+    FileTypeAssociationsPreferencesPage* m_fileTypeAssociationsPage;
 
     wxDECLARE_EVENT_TABLE();
 };

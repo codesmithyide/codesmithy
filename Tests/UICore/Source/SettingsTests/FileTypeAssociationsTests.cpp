@@ -30,15 +30,93 @@ void AddFileTypeAssociationsTests(TestSequence& testSequence)
 
     new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationsCreationTest1, *associationsTestSequence);
 
+    new HeapAllocationErrorsTest("set test 1", FileTypeAssociationsSetTest1, *associationsTestSequence);
+    new HeapAllocationErrorsTest("set test 2", FileTypeAssociationsSetTest2, *associationsTestSequence);
+
+    new HeapAllocationErrorsTest("remove test 1", FileTypeAssociationsRemoveTest1, *associationsTestSequence);
+    new HeapAllocationErrorsTest("remove test 2", FileTypeAssociationsRemoveTest2, *associationsTestSequence);
+
     new HeapAllocationErrorsTest("addNewFileTypeAssociations test 1", FileTypeAssociationsAddNewFileTypeAssociationsTest1,
         *associationsTestSequence);
     new HeapAllocationErrorsTest("addNewFileTypeAssociations test 2", FileTypeAssociationsAddNewFileTypeAssociationsTest2,
+        *associationsTestSequence);
+    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 3", FileTypeAssociationsAddNewFileTypeAssociationsTest3,
+        *associationsTestSequence);
+    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 4", FileTypeAssociationsAddNewFileTypeAssociationsTest4,
         *associationsTestSequence);
 }
 
 TestResult::EOutcome FileTypeAssociationsCreationTest1()
 {
     CodeSmithy::FileTypeAssociations associations;
+    if (associations.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsSetTest1()
+{
+    CodeSmithy::FileTypeAssociations associations;
+    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    associations.set(association);
+    if ((associations.size() == 1) &&
+        (associations[0]->documentTypeName() == "documentType1"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsSetTest2()
+{
+    CodeSmithy::FileTypeAssociations associations;
+    CodeSmithy::FileTypeAssociation::shared_ptr association1 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    associations.set(association1);
+
+    CodeSmithy::FileTypeAssociation::shared_ptr association2 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    association2->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
+    associations.set(association2);
+
+    if ((associations.size() == 1) &&
+        (associations[0]->documentTypeName() == "documentType1") &&
+        (associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsRemoveTest1()
+{
+    CodeSmithy::FileTypeAssociations associations;
+    associations.remove("absent");
+    if (associations.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsRemoveTest2()
+{
+    CodeSmithy::FileTypeAssociations associations;
+    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    associations.set(association);
+    associations.remove("documentType1");
     if (associations.size() == 0)
     {
         return TestResult::ePassed;
@@ -71,7 +149,52 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2()
     CodeSmithy::FileTypeAssociations associations;
     associations.addNewFileTypeAssociations(documentTypes);
     if ((associations.size() == 1) &&
-        (associations[0]->type() == "Bakefile"))
+        (associations[0]->documentTypeName() == "Bakefile"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest3()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+
+    CodeSmithy::FileTypeAssociations associations;
+    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    associations.set(association);
+
+    associations.addNewFileTypeAssociations(documentTypes);
+    if ((associations.size() == 2) &&
+        (associations[0]->documentTypeName() == "documentType1") &&
+        (associations[1]->documentTypeName() == "Bakefile"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest4()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+
+    CodeSmithy::FileTypeAssociations associations;
+    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("Bakefile");
+    association->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
+    associations.set(association);
+
+    associations.addNewFileTypeAssociations(documentTypes);
+    if ((associations.size() == 1) &&
+        (associations[0]->documentTypeName() == "Bakefile") &&
+        (associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen))
     {
         return TestResult::ePassed;
     }

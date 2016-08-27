@@ -44,7 +44,8 @@ public:
     const FileTypeAssociations& fileTypeAssociations() const;
 
     void registerFileTypeAssociation(const std::string& documentTypeName);
-    bool isFileTypeAssociationRegistered(const std::string& documentTypeName) const;
+    bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
+        bool& isDefault) const;
 
 private:
     const DocumentTypes& m_documentTypes;

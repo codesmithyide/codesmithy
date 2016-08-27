@@ -79,9 +79,11 @@ void AppSettings::registerFileTypeAssociation(const std::string& documentTypeNam
     }
 }
 
-bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTypeName) const
+bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTypeName, 
+                                                  bool& isDefault) const
 {
     bool result = false;
+    isDefault = false;
 
     try
     {
@@ -97,9 +99,29 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
 
             std::stringstream progID;
             progID << "CodeSmithy." << extension << ".0.1";
-            if (extInfo.progID() == progID.str())
+
+            std::vector<std::string> openWithProgIDs;
+            extInfo.getOpenWithProgids(openWithProgIDs);
+            for (size_t i = 0; i < openWithProgIDs.size(); ++i)
             {
-                result = true;
+                if (openWithProgIDs[i] == progID.str())
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            try
+            {
+                if (extInfo.progID() == progID.str())
+                {
+                    result = true;
+                    isDefault = true;
+                }
+            }
+            catch (const std::exception& e)
+            {
+                // Do nothing
             }
         }
     }

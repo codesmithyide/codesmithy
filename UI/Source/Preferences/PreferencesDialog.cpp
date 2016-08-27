@@ -21,7 +21,6 @@
 */
 
 #include "PreferencesDialog.h"
-#include "FileTypeAssociationsPreferencesPage.h"
 #include "../WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
@@ -53,8 +52,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 
                                                               AppSettings& settings)
 {
-    FileTypeAssociationsPreferencesPage* fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
-    treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
+    m_fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
+    treebook->AddPage(m_fileTypeAssociationsPage, "File Type Associations");
 }
 
 void PreferencesDialog::OnClose(wxCommandEvent& evt)
@@ -62,14 +61,8 @@ void PreferencesDialog::OnClose(wxCommandEvent& evt)
     Close();
 }
 
-void PreferencesDialog::OnApplyFileTypeAssociations(wxCommandEvent& evt)
-{
-    m_appSettings.registerFileTypeAssociation("Bakefile");
-}
-
 wxBEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
     EVT_BUTTON(PreferencesCloseButton, PreferencesDialog::OnClose)
-    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButton, PreferencesDialog::OnApplyFileTypeAssociations)
 wxEND_EVENT_TABLE()
 
 }
