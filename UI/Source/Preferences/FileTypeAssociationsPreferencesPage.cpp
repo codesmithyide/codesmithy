@@ -40,31 +40,23 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     description->SetBackgroundColour(*wxWHITE);
     description->SetWindowStyle(wxBORDER_SIMPLE);
 
-    wxBoxSizer* fileTypeAssociationsSizer = new wxBoxSizer(wxVERTICAL);
-    
-    wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
-        "Type and extensions", wxDefaultPosition, wxSize(150, wxDefaultCoord));
-    lineSizer->Add(fileTypeName, 0, wxEXPAND);
-    wxStaticText* actionChoice = new wxStaticText(this, wxID_ANY,
-        "Action", wxDefaultPosition, wxDefaultSize);
-    lineSizer->Add(actionChoice, 0, wxEXPAND);
-    wxStaticText* projectChoice = new wxStaticText(this, wxID_ANY,
-        "Associated Project Type", wxDefaultPosition, wxSize(200, wxDefaultCoord));
-    lineSizer->Add(projectChoice, 0, wxEXPAND);
-    fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
+    wxFlexGridSizer* fileTypeAssociationsSizer = new wxFlexGridSizer(3, 5, 10);
 
     const FileTypeAssociations& associations = settings.fileTypeAssociations();
+
+    wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY, "Type and extensions");
+    fileTypeAssociationsSizer->Add(fileTypeName, 0, wxEXPAND);
+    wxStaticText* actionChoice = new wxStaticText(this, wxID_ANY, "Action");
+    fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
+    wxStaticText* projectChoice = new wxStaticText(this, wxID_ANY, "Associated Project Type");
+    fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
+    
     for (size_t i = 0; i < associations.size(); ++i)
     {
         DocumentType::shared_ptr documentType = settings.documentTypes().find(associations[i]->type());
         if (documentType)
         {
-            wxBoxSizer* lineSizer = new wxBoxSizer(wxHORIZONTAL);
-
-            wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY,
-                getFileTypeAndExtensions(*documentType), wxDefaultPosition,
-                wxSize(150, wxDefaultCoord));
+            wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY, getFileTypeAndExtensions(*documentType));
 
             wxArrayString actionChoices;
             actionChoices.Add("Disabled");
@@ -92,15 +84,13 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
             projectChoice->SetSelection(0);
 
-            lineSizer->Add(fileTypeName, 0, wxEXPAND);
-            lineSizer->Add(actionChoice, 0, wxEXPAND);
-            lineSizer->AddSpacer(10);
-            lineSizer->Add(projectChoice, 0, wxEXPAND);
-
-            fileTypeAssociationsSizer->Add(lineSizer, 0, wxEXPAND | wxALL, 2);
+            fileTypeAssociationsSizer->Add(fileTypeName, 0, wxEXPAND);
+            fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
+            fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
         }
     }
 
+    
     wxButton* applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
 
     topSizer->Add(description, 0, wxEXPAND | wxALL, 10);
