@@ -20,28 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "ParentProjectTypeTests.h"
-#include "BakefileProjectTypeTests.h"
-#include "CMakeProjectTypeTests.h"
-#include "ProjectTypesTests.h"
-#include "ProjectFileRepositoryTests.h"
-#include "ParentProjectTests.h"
-#include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
+#include "Projects/CMake/CMakeProjectType.h"
 
-void AddProjectTests(TestHarness& theTestHarness)
+namespace CodeSmithy
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
 
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+CMakeProjectType::CMakeProjectType(const DocumentTypes& documentTypes)
+	: ProjectType("CodeSmithy.CMake")
+{
+    DocumentType::shared_ptr cmakelistsDocType = documentTypes.find("CMakeLists");
+    if (cmakelistsDocType)
+    {
+        supportedDocumentTypes().add(cmakelistsDocType);
+    }
+}
 
-    AddParentProjectTypeTests(projectTestSequence);
-    AddBakefileProjectTypeTests(projectTestSequence);
-    AddCMakeProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    AddProjectFileRepositoryTests(projectTestSequence);
-    AddParentProjectTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
 }

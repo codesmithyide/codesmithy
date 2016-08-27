@@ -28,6 +28,7 @@
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
+#include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
 
 namespace CodeSmithy
 {
@@ -50,6 +51,7 @@ App::App()
     // types (via plugins for instance) at this stage.
     m_projectTypes = std::make_shared<ProjectTypes>();
     m_projectTypes->add(std::make_shared<BakefileProjectType>(*m_documentTypes));
+    m_projectTypes->add(std::make_shared<CMakeProjectType>(*m_documentTypes));
 }
 
 bool App::OnInit()

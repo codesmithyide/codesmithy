@@ -170,6 +170,7 @@
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProjectType.cpp" />
+    <ClCompile Include="..\..\Source\Projects\CMake\CMakeProjectType.cpp" />
     <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
     <ClInclude Include="..\..\Source\Projects\ProjectFileRepositoryNode.h" />

@@ -25,6 +25,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/ProjectTests/ProjectTests.h
         ../../Source/ProjectTests/ParentProjectTypeTests.h
         ../../Source/ProjectTests/BakefileProjectTypeTests.h
+        ../../Source/ProjectTests/CMakeProjectTypeTests.h
         ../../Source/ProjectTests/ProjectTypesTests.h
         ../../Source/ProjectTests/ProjectFileRepositoryTests.h
         ../../Source/ProjectTests/ParentProjectTests.h
@@ -46,6 +47,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/ProjectTests/ProjectTests.cpp
         ../../Source/ProjectTests/ParentProjectTypeTests.cpp
         ../../Source/ProjectTests/BakefileProjectTypeTests.cpp
+        ../../Source/ProjectTests/CMakeProjectTypeTests.cpp
         ../../Source/ProjectTests/ProjectTypesTests.cpp
         ../../Source/ProjectTests/ProjectFileRepositoryTests.cpp
         ../../Source/ProjectTests/ParentProjectTests.cpp

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,28 +20,16 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTests.h"
-#include "ParentProjectTypeTests.h"
-#include "BakefileProjectTypeTests.h"
-#include "CMakeProjectTypeTests.h"
-#include "ProjectTypesTests.h"
-#include "ProjectFileRepositoryTests.h"
-#include "ParentProjectTests.h"
-#include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_CMAKEPROJECTTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_CMAKEPROJECTTYPETESTS_H_
 
-void AddProjectTests(TestHarness& theTestHarness)
-{
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+using namespace Ishiko::TestFramework;
 
-    AddParentProjectTypeTests(projectTestSequence);
-    AddBakefileProjectTypeTests(projectTestSequence);
-    AddCMakeProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    AddProjectFileRepositoryTests(projectTestSequence);
-    AddParentProjectTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
-}
+void AddCMakeProjectTypeTests(TestSequence& testSequence);
+
+TestResult::EOutcome CMakeProjectTypeCreationTest1();
+TestResult::EOutcome CMakeProjectTypeSupportedDocumentTypesTest1();
+
+#endif
