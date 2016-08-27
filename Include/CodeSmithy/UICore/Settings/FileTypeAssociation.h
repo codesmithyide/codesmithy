@@ -34,13 +34,35 @@ class FileTypeAssociation
 public:
     typedef std::shared_ptr<FileTypeAssociation> shared_ptr;
 
+    enum EAssociation
+    {
+        eDisabled,
+        eOpen,
+        eOpenWith
+    };
+
+    enum EActionType
+    {
+        eAskAtStartup,
+        eStandalone,
+        eProjectType
+    };
+
 public:
     FileTypeAssociation(const std::string& documentTypeName);
+    FileTypeAssociation(const FileTypeAssociation& other);
+    ~FileTypeAssociation();
 
     const std::string& type() const;
+    EAssociation association() const;
+    EActionType actionType() const;
+    const std::string& associatedProjectType() const;
 
 private:
     std::string m_documentTypeName;
+    EAssociation m_association;
+    EActionType m_actionType;
+    std::string m_associatedProjectType;
 };
 
 }

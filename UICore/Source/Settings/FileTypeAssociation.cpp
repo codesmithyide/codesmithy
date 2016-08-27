@@ -26,13 +26,39 @@ namespace CodeSmithy
 {
 
 FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
-    : m_documentTypeName(documentTypeName)
+    : m_documentTypeName(documentTypeName), m_association(eDisabled), 
+    m_actionType(eAskAtStartup)
+{
+}
+
+FileTypeAssociation::FileTypeAssociation(const FileTypeAssociation& other)
+    : m_documentTypeName(other.m_documentTypeName), m_association(other.m_association),
+    m_actionType(other.m_actionType), m_associatedProjectType(other.m_associatedProjectType)
+{
+}
+
+FileTypeAssociation::~FileTypeAssociation()
 {
 }
 
 const std::string& FileTypeAssociation::type() const
 {
     return m_documentTypeName;
+}
+
+FileTypeAssociation::EAssociation FileTypeAssociation::association() const
+{
+    return m_association;
+}
+
+FileTypeAssociation::EActionType FileTypeAssociation::actionType() const
+{
+    return m_actionType;
+}
+
+const std::string& FileTypeAssociation::associatedProjectType() const
+{
+    return m_associatedProjectType;
 }
 
 }

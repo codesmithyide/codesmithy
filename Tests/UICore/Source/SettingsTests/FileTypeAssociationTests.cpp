@@ -28,12 +28,37 @@ void AddFileTypeAssociationTests(TestSequence& testSequence)
     TestSequence* associationTestSequence = new TestSequence("FileTypeAssociation tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationCreationTest1, *associationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", FileTypeAssociationCreationTest2, *associationTestSequence);
 }
 
 TestResult::EOutcome FileTypeAssociationCreationTest1()
 {
     CodeSmithy::FileTypeAssociation association("dummyTypeName");
-    if (association.type() == "dummyTypeName")
+    if ((association.type() == "dummyTypeName") &&
+        (association.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
+        (association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
+        (association.associatedProjectType() == ""))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome FileTypeAssociationCreationTest2()
+{
+    CodeSmithy::FileTypeAssociation association1("dummyTypeName");
+    CodeSmithy::FileTypeAssociation association2(association1);
+    if ((association1.type() == "dummyTypeName") &&
+        (association1.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
+        (association1.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
+        (association1.associatedProjectType() == "") &&
+        (association2.type() == "dummyTypeName") &&
+        (association2.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
+        (association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
+        (association2.associatedProjectType() == ""))
     {
         return TestResult::ePassed;
     }
