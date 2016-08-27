@@ -1,13 +1,9 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/FileTypes/Include/Ishiko/FileTypes.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-setting CODESMITHY_ROOT
-{
-    help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHY)';
-}
-
-template CodeSmithyUICore : IshikoFileTypes
+template CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
     libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);

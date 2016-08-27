@@ -20,20 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "SettingsTests.h"
-#include "FileTypeAssociationTests.h"
-#include "FileTypeAssociationsTests.h"
-#include "AppSettingsTests.h"
-#include <boost/filesystem/operations.hpp>
+#ifndef _CODESMITHY_TEST_UICORE_SETTINGSTESTS_APPSETTINGSTESTS_H_
+#define _CODESMITHY_TEST_UICORE_SETTINGSTESTS_APPSETTINGSTESTS_H_
 
-void AddSettingsTests(TestHarness& theTestHarness)
-{
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "SettingsTests");
-    boost::filesystem::create_directories(outputPath);
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    TestSequence& settingsTestSequence = theTestHarness.appendTestSequence("Settings tests");
+using namespace Ishiko::TestFramework;
 
-    AddFileTypeAssociationTests(settingsTestSequence);
-    AddFileTypeAssociationsTests(settingsTestSequence);
-    AddAppSettingsTests(settingsTestSequence);
-}
+void AddAppSettingsTests(TestSequence& testSequence);
+
+TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test);
+
+#endif

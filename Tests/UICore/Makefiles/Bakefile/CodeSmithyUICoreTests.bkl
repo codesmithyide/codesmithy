@@ -15,6 +15,7 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
     headers
     {
         ../../Source/SettingsTests/SettingsTests.h
+        ../../Source/SettingsTests/AppSettingsTests.h
         ../../Source/SettingsTests/FileTypeAssociationTests.h
         ../../Source/SettingsTests/FileTypeAssociationsTests.h
     }
@@ -24,6 +25,7 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
         ../../Source/main.cpp
 
         ../../Source/SettingsTests/SettingsTests.cpp
+        ../../Source/SettingsTests/AppSettingsTests.cpp
         ../../Source/SettingsTests/FileTypeAssociationTests.cpp
         ../../Source/SettingsTests/FileTypeAssociationsTests.cpp
     }

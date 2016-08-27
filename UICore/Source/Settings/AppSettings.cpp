@@ -24,15 +24,56 @@
 #include "Ishiko/FileTypes/FileTypeAssociations.h"
 #include <windows.h>
 #include <Shlobj.h>
+#include <boost/filesystem/operations.hpp>
 #include <sstream>
 
 namespace CodeSmithy
 {
 	
+static const char* rootElementName = "codesmithy-application-settings";
+
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes)
     : m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
+    boost::filesystem::path settingsPath = getSettingsDirectory();
+    boost::filesystem::create_directories(settingsPath);
+    
+    settingsPath /= "settings.xml";
+    if (boost::filesystem::exists(settingsPath))
+    {
+    }
+    else
+    {
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+            std::ofstream file(settingsPath.wstring());
+            m_document.save(file);
+        }
+    }
+
+    m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
+}
+
+AppSettings::AppSettings(const DocumentTypes& documentTypes,
+                         const ProjectTypes& projectTypes,
+                         const boost::filesystem::path& settingsPath)
+    : m_documentTypes(documentTypes), m_projectTypes(projectTypes)
+{
+    if (boost::filesystem::exists(settingsPath))
+    {
+    }
+    else
+    {
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+            std::ofstream file(settingsPath.wstring());
+            m_document.save(file);
+        }
+    }
+
     m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
 }
 
@@ -149,6 +190,25 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
         // Do nothing
     }
 
+    return result;
+}
+
+boost::filesystem::path AppSettings::getSettingsDirectory()
+{
+    boost::filesystem::path result;
+    PWSTR ppszPath = NULL;
+    HRESULT hr = SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, NULL, &ppszPath);
+    if (SUCCEEDED(hr))
+    {
+        result = boost::filesystem::path(ppszPath);
+        result /= "CodeSmithyIDE";
+        result /= "CodeSmithy";
+    }
+    else
+    {
+        throw std::runtime_error("SHGetKnownFolderPath error");
+    }
+    CoTaskMemFree(ppszPath);
     return result;
 }
 

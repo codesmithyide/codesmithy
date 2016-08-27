@@ -20,20 +20,32 @@
     IN THE SOFTWARE.
 */
 
-#include "SettingsTests.h"
-#include "FileTypeAssociationTests.h"
-#include "FileTypeAssociationsTests.h"
 #include "AppSettingsTests.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddSettingsTests(TestHarness& theTestHarness)
+void AddAppSettingsTests(TestSequence& testSequence)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "SettingsTests");
-    boost::filesystem::create_directories(outputPath);
+    TestSequence* settingsTestSequence = new TestSequence("AppSettings tests", testSequence);
 
-    TestSequence& settingsTestSequence = theTestHarness.appendTestSequence("Settings tests");
+    new FileComparisonTest("Creation test 1", AppSettingsCreationTest1, *settingsTestSequence);
+}
 
-    AddFileTypeAssociationTests(settingsTestSequence);
-    AddFileTypeAssociationsTests(settingsTestSequence);
-    AddAppSettingsTests(settingsTestSequence);
+TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsCreationTest1.xml");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsCreationTest1.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
 }

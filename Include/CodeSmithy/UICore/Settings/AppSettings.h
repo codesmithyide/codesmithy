@@ -26,6 +26,8 @@
 #include "FileTypeAssociations.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
+#include <pugixml.hpp>
+#include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
 {
@@ -38,7 +40,14 @@ public:
     // we can load and save the file type associations.
     AppSettings(const DocumentTypes& documentTypes, 
         const ProjectTypes& projectTypes);
-    
+    // Use the given path rather than put the settings file
+    // in the usual location where application settings are
+    // stored for the platform. This is used by the test
+    // code to be able to test this class.
+    AppSettings(const DocumentTypes& documentTypes,
+        const ProjectTypes& projectTypes,
+        const boost::filesystem::path& settingsPath);
+    AppSettings(const AppSettings& other) = delete;
     const DocumentTypes& documentTypes() const;
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
@@ -49,6 +58,10 @@ public:
         bool& isDefault) const;
 
 private:
+    static boost::filesystem::path getSettingsDirectory();
+
+private:
+    pugi::xml_document m_document;
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;
