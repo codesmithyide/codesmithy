@@ -44,6 +44,7 @@ public:
     const FileTypeAssociations& fileTypeAssociations() const;
 
     void registerFileTypeAssociation(const std::string& documentTypeName);
+    void deregisterFileTypeAssociation(const std::string& documentTypeName);
     bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
         bool& isDefault) const;
 

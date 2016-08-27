@@ -28,6 +28,7 @@
 #include <wx/stattext.h>
 #include <wx/sizer.h>
 #include <wx/button.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -49,12 +50,14 @@ private:
     class CustomEventHandlerData : public wxObject
     {
     public:
-        CustomEventHandlerData(const std::string& documentTypeName);
+        CustomEventHandlerData(const std::string& documentTypeName, wxChoice* associationChoice);
 
         const std::string& documentTypeName() const;
+        FileTypeAssociation::EAssociation association() const;
 
     private:
         std::string m_documentTypeName;
+        wxChoice* m_associationChoice;
     };
 
 private:

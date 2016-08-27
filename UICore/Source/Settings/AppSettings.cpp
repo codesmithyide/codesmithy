@@ -79,6 +79,22 @@ void AppSettings::registerFileTypeAssociation(const std::string& documentTypeNam
     }
 }
 
+void AppSettings::deregisterFileTypeAssociation(const std::string& documentTypeName)
+{
+    DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+    if (documentType)
+    {
+        std::stringstream progID;
+        progID << "CodeSmithy." << documentType->extensions()[0] << ".0.1";
+
+        // It is recommended to only remove the progID info as other applications may be able to handle
+        // the extension
+        Ishiko::FileTypes::FileTypeAssociations::removeProgIDRegistryInfo(progID.str());
+
+        SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, NULL, NULL);
+    }
+}
+
 bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTypeName, 
                                                   bool& isDefault) const
 {
@@ -91,14 +107,17 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
         if (documentType)
         {
             const std::string& extension = documentType->extensions()[0];
-
             std::stringstream ext;
             ext << "." << extension;
-            Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
-                Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
-
             std::stringstream progID;
             progID << "CodeSmithy." << extension << ".0.1";
+
+            // This will throw if the progID is absent
+            Ishiko::FileTypes::ProgIDRegistryInfo progIDInfo = 
+                Ishiko::FileTypes::FileTypeAssociations::openProgIDRegistryInfo(progID.str());
+           
+            Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+                Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
 
             std::vector<std::string> openWithProgIDs;
             extInfo.getOpenWithProgids(openWithProgIDs);

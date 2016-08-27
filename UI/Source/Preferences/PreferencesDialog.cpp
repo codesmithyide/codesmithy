@@ -21,6 +21,7 @@
 */
 
 #include "PreferencesDialog.h"
+#include "FileTypeAssociationsPreferencesPage.h"
 #include "../WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
@@ -52,8 +53,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 
                                                               AppSettings& settings)
 {
-    m_fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
-    treebook->AddPage(m_fileTypeAssociationsPage, "File Type Associations");
+    FileTypeAssociationsPreferencesPage* fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
+    treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
 }
 
 void PreferencesDialog::OnClose(wxCommandEvent& evt)

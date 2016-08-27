@@ -22,7 +22,6 @@
 
 #include "FileTypeAssociationsPreferencesPage.h"
 #include "../WindowIDs.h"
-#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -55,7 +54,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             actionChoices.Add("Open With");
             wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxDefaultSize, actionChoices);
-            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName()));
+            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice));
             bool isDefault = false;
             if (m_appSettings.isFileTypeAssociationRegistered(associations[i]->documentTypeName(), isDefault))
             {
@@ -143,6 +142,7 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
     if (data)
     {
         FileTypeAssociation::shared_ptr association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
+        association->setAssociation(data->association());
         m_updatedFileTypeAssociations.set(association);
     }
     if (m_updatedFileTypeAssociations.size() != 0)
@@ -157,17 +157,46 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
 
 void FileTypeAssociationsPreferencesPage::OnApply(wxCommandEvent& evt)
 {
-    m_appSettings.registerFileTypeAssociation("Bakefile");
+    for (size_t i = 0; i < m_updatedFileTypeAssociations.size(); ++i)
+    {
+        if (m_updatedFileTypeAssociations[i]->association() == FileTypeAssociation::eDisabled)
+        {
+            m_appSettings.deregisterFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+        }
+        else
+        {
+            m_appSettings.registerFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+        }
+    }
 }
 
-FileTypeAssociationsPreferencesPage::CustomEventHandlerData::CustomEventHandlerData(const std::string& documentTypeName)
-    : m_documentTypeName(documentTypeName)
+FileTypeAssociationsPreferencesPage::CustomEventHandlerData::CustomEventHandlerData(const std::string& documentTypeName, 
+                                                                                    wxChoice* associationChoice)
+    : m_documentTypeName(documentTypeName), m_associationChoice(associationChoice)
 {
 }
 
 const std::string& FileTypeAssociationsPreferencesPage::CustomEventHandlerData::documentTypeName() const
 {
     return m_documentTypeName;
+}
+
+FileTypeAssociation::EAssociation FileTypeAssociationsPreferencesPage::CustomEventHandlerData::association() const
+{
+    switch (m_associationChoice->GetSelection())
+    {
+    case 0:
+        return FileTypeAssociation::eDisabled;
+
+    case 1:
+        return FileTypeAssociation::eOpen;
+
+    case 2:
+        return FileTypeAssociation::eOpenWith;
+
+    default:
+        return FileTypeAssociation::eDisabled;
+    }
 }
 
 wxBEGIN_EVENT_TABLE(FileTypeAssociationsPreferencesPage, wxPanel)
