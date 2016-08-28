@@ -122,6 +122,12 @@ void FileTypeAssociation::load(pugi::xml_node node)
 {
     pugi::xml_node documentTypeNameNode = node.child(documentTypeNameElementName);
     m_documentTypeName = documentTypeNameNode.child_value();
+    pugi::xml_node associationNode = node.child(associationElementName);
+    m_association = stringToAssociation(associationNode.child_value());
+    pugi::xml_node actionTypeNode = node.child(actionTypeElementName);
+    m_actionType = stringToActionType(actionTypeNode.child_value());
+    pugi::xml_node associatedProjectTypeNameNode = node.child(associatedProjectTypeNameElementName);
+    m_associatedProjectTypeName = associatedProjectTypeNameNode.child_value();
 }
 
 void FileTypeAssociation::save(pugi::xml_node node) const
@@ -148,6 +154,25 @@ std::string FileTypeAssociation::associationToString(EAssociation association)
 
     case eOpenWith:
         return "open-with";
+
+    default:
+        return "disabled";
+    }
+}
+
+FileTypeAssociation::EAssociation FileTypeAssociation::stringToAssociation(const std::string& association)
+{
+    if (association == "open")
+    {
+        return eOpen;
+    }
+    else if (association == "open-with")
+    {
+        return eOpenWith;
+    }
+    else
+    {
+        return eDisabled;
     }
 }
 
@@ -163,6 +188,25 @@ std::string FileTypeAssociation::actionTypeToString(EActionType actionType)
 
     case eProjectType:
         return "project-type";
+
+    default:
+        return "ask-at-startup";
+    }
+}
+
+FileTypeAssociation::EActionType FileTypeAssociation::stringToActionType(const std::string& actionType)
+{
+    if (actionType == "standalone")
+    {
+        return eStandalone;
+    }
+    else if (actionType == "project-type")
+    {
+        return eProjectType;
+    }
+    else
+    {
+        return eAskAtStartup;
     }
 }
 

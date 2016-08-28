@@ -71,7 +71,9 @@ public:
 
 private:
     static std::string associationToString(EAssociation association);
+    static EAssociation stringToAssociation(const std::string& association);
     static std::string actionTypeToString(EActionType actionType);
+    static EActionType stringToActionType(const std::string& actionType);
 
 private:
     std::string m_documentTypeName;

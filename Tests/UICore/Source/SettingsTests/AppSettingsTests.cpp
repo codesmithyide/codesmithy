@@ -33,6 +33,7 @@ void AddAppSettingsTests(TestSequence& testSequence)
     new FileComparisonTest("Creation test 2", AppSettingsCreationTest2, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 3", AppSettingsCreationTest3, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 4", AppSettingsCreationTest4, *settingsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 5", AppSettingsCreationTest5, *settingsTestSequence);
 
     new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
 }
@@ -117,6 +118,30 @@ TestResult::EOutcome AppSettingsCreationTest4(Test& test)
     return result;
 }
 
+TestResult::EOutcome AppSettingsCreationTest5(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest5.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
+    if (appSettings.fileTypeAssociations().size() == 1)
+    {
+        const CodeSmithy::FileTypeAssociation& association = *appSettings.fileTypeAssociations()[0];
+        if ((association.documentTypeName() == "Bakefile") &&
+            (association.association() == CodeSmithy::FileTypeAssociation::eOpen) &&
+            (association.actionType() == CodeSmithy::FileTypeAssociation::eProjectType) &&
+            (association.associatedProjectTypeName() == "CodeSmithy.Bakefile"))
+        {
+            result = TestResult::ePassed;
+        }
+    }
+
+    return result;
+}
+
 TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
@@ -131,6 +156,7 @@ TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test)
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
 
     appSettings.fileTypeAssociations()[0]->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
+    appSettings.fileTypeAssociations()[0]->setAction(CodeSmithy::FileTypeAssociation::eProjectType, "CodeSmithy.Bakefile");
     appSettings.save();
 
     result = TestResult::ePassed;
