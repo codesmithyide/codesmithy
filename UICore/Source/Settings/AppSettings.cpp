@@ -89,7 +89,7 @@ void AppSettings::registerFileTypeAssociation(const std::string& documentTypeNam
     std::stringstream command;
     command << "\"" << applicationPath << "\" \"%1\"";
 
-    DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+    std::shared_ptr<const DocumentType> documentType = m_documentTypes.find(documentTypeName);
     if (documentType)
     {
         const std::string& extension = documentType->extensions()[0];
@@ -112,7 +112,7 @@ void AppSettings::registerFileTypeAssociation(const std::string& documentTypeNam
 
 void AppSettings::deregisterFileTypeAssociation(const std::string& documentTypeName)
 {
-    DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+    std::shared_ptr<const DocumentType> documentType = m_documentTypes.find(documentTypeName);
     if (documentType)
     {
         std::stringstream progID;
@@ -134,7 +134,7 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
 
     try
     {
-        DocumentType::shared_ptr documentType = m_documentTypes.find(documentTypeName);
+        std::shared_ptr<const DocumentType> documentType = m_documentTypes.find(documentTypeName);
         if (documentType)
         {
             const std::string& extension = documentType->extensions()[0];

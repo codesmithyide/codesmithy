@@ -23,4 +23,23 @@
 #ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEWINDOW_H_
 #define _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEWINDOW_H_
 
+#include "StartPage.h"
+#include <wx/window.h>
+
+namespace CodeSmithy
+{
+
+class WorkspaceWindow : public wxWindow
+{
+public:
+    WorkspaceWindow(wxWindow* parent);
+
+private:
+    StartPage* m_startPage;
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

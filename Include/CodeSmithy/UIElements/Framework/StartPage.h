@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_STARTPAGE_H_
 #define _CODESMITHY_UIELEMENTS_FRAMEWORK_STARTPAGE_H_
 
+#include "wx/panel.h"
+
+namespace CodeSmithy
+{
+
+class StartPage : public wxPanel
+{
+public:
+    StartPage(wxWindow* parent);
+
+private:
+    void OnPaint(wxPaintEvent& evt);
+
+    wxDECLARE_EVENT_TABLE();
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

@@ -21,3 +21,34 @@
 */
 
 #include "Framework/StartPage.h"
+#include <wx/dcbuffer.h>
+#include <wx/graphics.h>
+
+namespace CodeSmithy
+{
+
+StartPage::StartPage(wxWindow* parent)
+    : wxPanel(parent)
+{
+    SetBackgroundStyle(wxBG_STYLE_PAINT);
+}
+
+void StartPage::OnPaint(wxPaintEvent& evt)
+{
+    wxAutoBufferedPaintDC dc(this);
+    dc.Clear();
+
+    wxGraphicsContext* gc = wxGraphicsContext::Create(dc);
+    if (gc)
+    {
+        wxFont font(20, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+        gc->SetFont(font, *wxBLACK);
+        gc->DrawText("CodeSmithy", 50, 50);
+    }
+}
+
+wxBEGIN_EVENT_TABLE(StartPage, wxPanel)
+    EVT_PAINT(StartPage::OnPaint)
+wxEND_EVENT_TABLE()
+
+}

@@ -21,3 +21,20 @@
 */
 
 #include "Framework/WorkspaceWindow.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+WorkspaceWindow::WorkspaceWindow(wxWindow* parent)
+    : wxWindow(parent, wxID_ANY)
+{
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+
+    m_startPage = new StartPage(this);
+    topSizer->Add(m_startPage, 1, wxEXPAND);
+
+    SetSizer(topSizer);
+}
+
+}

@@ -24,6 +24,7 @@
 #define _CODESMITHY_UI_FRAME_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/UIElements/Framework/WorkspaceWindow.h"
 #include <wx/frame.h>
 
 namespace CodeSmithy
@@ -35,6 +36,8 @@ public:
     Frame(const wxString& title, const DocumentTypes& documentTypes, 
         const ProjectTypes& projectTypes);
 
+	void OpenFile(const wxString& file);
+
 private:
     void CreateMenuBar();
 
@@ -44,6 +47,7 @@ private:
 
 private:
     AppSettings m_appSettings;
+    WorkspaceWindow* m_workspaceWindow;
 
     wxDECLARE_EVENT_TABLE();
 };

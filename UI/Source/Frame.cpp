@@ -33,9 +33,57 @@ Frame::Frame(const wxString& title,
              const DocumentTypes& documentTypes,
              const ProjectTypes& projectTypes)
     : wxFrame(NULL, wxID_ANY, title), 
-    m_appSettings(documentTypes, projectTypes)
+    m_appSettings(documentTypes, projectTypes), m_workspaceWindow(0)
 {
     CreateMenuBar();
+
+    m_workspaceWindow = new WorkspaceWindow(this);
+}
+
+void Frame::OpenFile(const wxString& file)
+{
+    boost::filesystem::path selectedPath(file);
+    if (selectedPath.has_extension())
+    {
+        boost::filesystem::path extension = selectedPath.extension();
+        if (!extension.empty() && (extension.string()[0] == '.'))
+        {
+            extension = extension.string().substr(1);
+        }
+
+        std::vector<std::shared_ptr<const DocumentType> > suitableDocumentTypes;
+        if (extension.size() > 0)
+        {
+            m_appSettings.documentTypes().getSuitableTypesForFileExtension(extension, suitableDocumentTypes);
+        }
+        if (suitableDocumentTypes.empty())
+        {
+            for (size_t i = 0; i < m_appSettings.documentTypes().size(); ++i)
+            {
+                suitableDocumentTypes.push_back(m_appSettings.documentTypes()[i]);
+            }
+        }
+        if (suitableDocumentTypes.size() == 1)
+        {
+            std::shared_ptr<FileTypeAssociation> association = 
+                m_appSettings.fileTypeAssociations().find(suitableDocumentTypes[0]->name());
+            if (association)
+            {
+                if (association->actionType() == FileTypeAssociation::eAskAtStartup)
+                {
+                }
+                else if (association->actionType() == FileTypeAssociation::eStandalone)
+                {
+                }
+                else if (association->actionType() == FileTypeAssociation::eProjectType)
+                {
+                }
+            }
+            else
+            {
+            }
+        }
+    }
 }
 
 void Frame::CreateMenuBar()
@@ -63,6 +111,8 @@ void Frame::OnOpenFile(wxCommandEvent& evt)
         wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter());
     if (fileDialog->ShowModal() == wxID_OK)
     {
+        wxString selectedFile = fileDialog->GetPath();
+        OpenFile(selectedFile);
     }
     fileDialog->Destroy();
 }

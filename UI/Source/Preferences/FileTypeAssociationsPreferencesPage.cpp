@@ -44,7 +44,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
     bool discrepancyDetected = false;
     for (size_t i = 0; i < associations.size(); ++i)
     {
-        DocumentType::shared_ptr documentType = m_appSettings.documentTypes().find(associations[i]->documentTypeName());
+        std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(associations[i]->documentTypeName());
         if (documentType)
         {
             bool isDefault = false;

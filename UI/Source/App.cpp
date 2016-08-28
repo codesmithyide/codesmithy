@@ -59,9 +59,10 @@ bool App::OnInit()
     Frame* frame = new Frame(L"CodeSmithy", *m_documentTypes, *m_projectTypes);
     frame->Show(true);
 
-	if (argc == 2)
-	{
-	}
+    if (argc == 2)
+    {
+        frame->OpenFile(argv[1]);
+    }
 
     return true;
 }
