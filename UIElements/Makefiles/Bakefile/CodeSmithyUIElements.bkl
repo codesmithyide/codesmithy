@@ -23,12 +23,16 @@ library CodeSmithyUIElements : wxWidgets
     {
         ../../../Include/CodeSmithy/UIElements/linkoptions.h
 
+        ../../../Include/CodeSmithy/UIElements/Editors/BakefileCtrl.h
+
         ../../../Include/CodeSmithy/UIElements/Framework/StartPage.h
         ../../../Include/CodeSmithy/UIElements/Framework/WorkspaceWindow.h
     }
 
     sources
     {
+        ../../Source/Editors/BakefileCtrl.cpp
+
         ../../Source/Framework/StartPage.cpp
         ../../Source/Framework/WorkspaceWindow.cpp
     }

@@ -150,11 +150,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Framework\StartPage.cpp" />
     <ClCompile Include="..\..\Source\Framework\WorkspaceWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\StartPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspaceWindow.h" />
   </ItemGroup>
