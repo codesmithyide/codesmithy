@@ -17,8 +17,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspaceWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Framework\WorkspaceWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

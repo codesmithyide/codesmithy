@@ -18,6 +18,13 @@ library CodeSmithyUIElements
 
     headers
     {
-        ../../../Include/CodeSmithy/UICore/linkoptions.h
+        ../../../Include/CodeSmithy/UIElements/linkoptions.h
+
+        ../../../Include/CodeSmithy/UIElements/Framework/WorkspaceWindow.h
+    }
+
+    sources
+    {
+        ../../Source/Framework/WorkspaceWindow.cpp
     }
 }
