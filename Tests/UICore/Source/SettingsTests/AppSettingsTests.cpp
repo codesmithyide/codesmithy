@@ -23,6 +23,7 @@
 #include "AppSettingsTests.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
+#include "CodeSmithy/Core/Documents/CppFileType.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddAppSettingsTests(TestSequence& testSequence)
@@ -36,6 +37,10 @@ void AddAppSettingsTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 5", AppSettingsCreationTest5, *settingsTestSequence);
 
     new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
+
+    new HeapAllocationErrorsTest("createFileTypesFilter test 1", AppSettingsCreateFileTypesFilterTest1, *settingsTestSequence);
+    new HeapAllocationErrorsTest("createFileTypesFilter test 2", AppSettingsCreateFileTypesFilterTest2, *settingsTestSequence);
+    new HeapAllocationErrorsTest("createFileTypesFilter test 3", AppSettingsCreateFileTypesFilterTest3, *settingsTestSequence);
 }
 
 TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
@@ -165,4 +170,52 @@ TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test)
     test.setReferenceFilePath(referencePath);
 
     return result;
+}
+
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest1()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
+    if (appSettings.createFileTypesFilter() == "All Files (*.*)|*.*")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest2()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
+    if (appSettings.createFileTypesFilter() == "Bakefile (*.bkl)|*.bkl|All Files (*.*)|*.*")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest3()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+    documentTypes.add(std::make_shared<CodeSmithy::CppFileType>());
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
+    if (appSettings.createFileTypesFilter() == "Bakefile (*.bkl)|*.bkl|C++ Source File (*.cpp;*.cxx)|*.cpp;*.cxx|All Files (*.*)|*.*")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

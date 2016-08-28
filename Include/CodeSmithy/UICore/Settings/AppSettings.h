@@ -61,6 +61,8 @@ public:
     bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
         bool& isDefault) const;
 
+    std::string createFileTypesFilter();
+
 private:
     static boost::filesystem::path getSettingsDirectory();
 

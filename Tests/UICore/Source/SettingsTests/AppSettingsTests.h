@@ -35,5 +35,8 @@ TestResult::EOutcome AppSettingsCreationTest3(Test& test);
 TestResult::EOutcome AppSettingsCreationTest4(Test& test);
 TestResult::EOutcome AppSettingsCreationTest5(Test& test);
 TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test);
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest1();
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest2();
+TestResult::EOutcome AppSettingsCreateFileTypesFilterTest3();
 
 #endif

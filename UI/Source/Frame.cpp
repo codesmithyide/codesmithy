@@ -21,8 +21,10 @@
 */
 
 #include "Frame.h"
+#include "WindowIDs.h"
 #include "Preferences/PreferencesDialog.h"
 #include <wx/menu.h>
+#include <wx/filedlg.h>
 
 namespace CodeSmithy
 {
@@ -41,12 +43,28 @@ void Frame::CreateMenuBar()
     wxMenuBar* menuBar = new wxMenuBar;
 
     wxMenu* menuFile = new wxMenu;
+
+    wxMenu* menuFileOpen = new wxMenu;
+    menuFileOpen->Append(wxID_OPEN_FILE, "&File...");
+    menuFile->AppendSubMenu(menuFileOpen, "&Open");
+
+    menuFile->AppendSeparator();
     menuFile->Append(wxID_PREFERENCES, "&Preferences...");
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
     menuBar->Append(menuFile, "&File");
 
     SetMenuBar(menuBar);
+}
+
+void Frame::OnOpenFile(wxCommandEvent& evt)
+{
+    wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
+        wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter());
+    if (fileDialog->ShowModal() == wxID_OK)
+    {
+    }
+    fileDialog->Destroy();
 }
 
 void Frame::OnPreferences(wxCommandEvent& evt)
@@ -61,6 +79,7 @@ void Frame::OnExit(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
+    EVT_MENU(wxID_OPEN_FILE, Frame::OnOpenFile)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
 wxEND_EVENT_TABLE()

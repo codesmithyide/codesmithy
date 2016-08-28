@@ -183,6 +183,39 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
     return result;
 }
 
+std::string AppSettings::createFileTypesFilter()
+{
+    std::string result;
+    for (size_t i = 0; i < m_documentTypes.size(); ++i)
+    {
+        const DocumentType& type = *m_documentTypes[i];
+        result += type.name();
+        result += " (";
+        for (size_t j = 0; j < type.extensions().size(); ++j)
+        {
+            if (j != 0)
+            {
+                result += ";";
+            }
+            result += "*.";
+            result += type.extensions()[j];
+        }
+        result += ")|";
+        for (size_t j = 0; j < type.extensions().size(); ++j)
+        {
+            if (j != 0)
+            {
+                result += ";";
+            }
+            result += "*.";
+            result += type.extensions()[j];
+        }
+        result += "|";
+    }
+    result += "All Files (*.*)|*.*";
+    return result;
+}
+
 boost::filesystem::path AppSettings::getSettingsDirectory()
 {
     boost::filesystem::path result;

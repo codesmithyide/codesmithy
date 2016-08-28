@@ -28,7 +28,9 @@
 namespace CodeSmithy
 {
 
-const wxWindowID PreferencesCloseButton = wxID_HIGHEST + 1;
+const wxWindowID wxID_OPEN_FILE = wxID_HIGHEST + 1;
+
+const wxWindowID PreferencesCloseButton = wxID_OPEN_FILE + 1;
 const wxWindowID PreferencesFileTypeAssociationsApplyButton = PreferencesCloseButton + 1;
 
 }

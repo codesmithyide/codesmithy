@@ -38,6 +38,7 @@ public:
 private:
     void CreateMenuBar();
 
+    void OnOpenFile(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
 
