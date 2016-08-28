@@ -52,6 +52,7 @@ public:
     const DocumentTypes& documentTypes() const;
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
+    FileTypeAssociations& fileTypeAssociations();
 
     void save();
 

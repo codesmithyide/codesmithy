@@ -41,11 +41,32 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
 
     AddTitleRow(this, fileTypeAssociationsSizer);
     
+    bool discrepancyDetected = false;
     for (size_t i = 0; i < associations.size(); ++i)
     {
         DocumentType::shared_ptr documentType = m_appSettings.documentTypes().find(associations[i]->documentTypeName());
         if (documentType)
         {
+            bool isDefault = false;
+            bool isRegistered = m_appSettings.isFileTypeAssociationRegistered(associations[i]->documentTypeName(), isDefault);
+            FileTypeAssociation::EAssociation association = FileTypeAssociation::eDisabled;
+            if (isRegistered)
+            {
+                if (isDefault)
+                {
+                    association = FileTypeAssociation::eOpen;
+                }
+                else
+                {
+                    association = FileTypeAssociation::eOpenWith;
+                }
+            }
+            if (association != associations[i]->association())
+            {
+                associations[i]->setAssociation(association);
+                discrepancyDetected = true;
+            }
+
             wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY, GetFileTypeAndExtensions(*documentType));
 
             wxArrayString actionChoices;
@@ -55,8 +76,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxDefaultSize, actionChoices);
             actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice));
-            bool isDefault = false;
-            if (m_appSettings.isFileTypeAssociationRegistered(associations[i]->documentTypeName(), isDefault))
+            if (isRegistered)
             {
                 if (isDefault)
                 {
@@ -87,6 +107,10 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
             fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
         }
+    }
+    if (discrepancyDetected)
+    {
+        m_appSettings.save();
     }
 
     m_applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
@@ -157,17 +181,33 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
 
 void FileTypeAssociationsPreferencesPage::OnApply(wxCommandEvent& evt)
 {
+    bool needsSaving = false;
     for (size_t i = 0; i < m_updatedFileTypeAssociations.size(); ++i)
     {
-        if (m_updatedFileTypeAssociations[i]->association() == FileTypeAssociation::eDisabled)
+        FileTypeAssociation::shared_ptr existingAssociation = m_appSettings.fileTypeAssociations().find(m_updatedFileTypeAssociations[i]->documentTypeName());
+        if (existingAssociation)
         {
-            m_appSettings.deregisterFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
-        }
-        else
-        {
-            m_appSettings.registerFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+            if (*existingAssociation != *m_updatedFileTypeAssociations[i])
+            {
+                *existingAssociation = *m_updatedFileTypeAssociations[i];
+                if (m_updatedFileTypeAssociations[i]->association() == FileTypeAssociation::eDisabled)
+                {
+                    m_appSettings.deregisterFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+                }
+                else
+                {
+                    m_appSettings.registerFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+                }
+                needsSaving = true;
+            }
         }
     }
+    if (needsSaving)
+    {
+        m_appSettings.save();
+    }
+    m_updatedFileTypeAssociations.clear();
+    m_applyButton->Disable();
 }
 
 FileTypeAssociationsPreferencesPage::CustomEventHandlerData::CustomEventHandlerData(const std::string& documentTypeName, 

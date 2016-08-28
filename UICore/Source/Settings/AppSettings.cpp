@@ -69,6 +69,11 @@ const FileTypeAssociations& AppSettings::fileTypeAssociations() const
     return m_fileTypeAssociations;
 }
 
+FileTypeAssociations& AppSettings::fileTypeAssociations()
+{
+    return m_fileTypeAssociations;
+}
+
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);

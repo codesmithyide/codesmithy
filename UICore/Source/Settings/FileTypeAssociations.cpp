@@ -82,6 +82,11 @@ void FileTypeAssociations::remove(const std::string& documentTypeName)
     }
 }
 
+void FileTypeAssociations::clear()
+{
+    m_associations.clear();
+}
+
 bool FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& documentTypes)
 {
     bool result = false;

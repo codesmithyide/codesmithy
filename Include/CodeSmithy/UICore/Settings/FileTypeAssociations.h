@@ -43,6 +43,7 @@ public:
 
     void set(FileTypeAssociation::shared_ptr association);
     void remove(const std::string& documentTypeName);
+    void clear();
     // Add file type associations for any document types not already in the
     // list
     bool addNewFileTypeAssociations(const DocumentTypes& documentTypes);
