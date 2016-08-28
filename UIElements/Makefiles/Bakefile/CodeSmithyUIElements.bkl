@@ -1,0 +1,23 @@
+toolsets = vs2015 vs2013;
+
+vs2015.solutionfile = ../VC14/CodeSmithyUIElements.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyUIElements.sln;
+
+library CodeSmithyUIElements
+{
+    archs = x86 x86_64;
+
+    includedirs += ../../../Include/CodeSmithy/UIElements;
+
+    outputdir = ../../../Lib/$(arch);
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyUIElements-d;
+    }
+
+    headers
+    {
+        ../../../Include/CodeSmithy/UICore/linkoptions.h
+    }
+}
