@@ -1,9 +1,12 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/wxWidgets.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyUIElements.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyUIElements.sln;
 
-library CodeSmithyUIElements
+library CodeSmithyUIElements : wxWidgets
 {
     archs = x86 x86_64;
 
@@ -20,11 +23,13 @@ library CodeSmithyUIElements
     {
         ../../../Include/CodeSmithy/UIElements/linkoptions.h
 
+        ../../../Include/CodeSmithy/UIElements/Framework/StartPage.h
         ../../../Include/CodeSmithy/UIElements/Framework/WorkspaceWindow.h
     }
 
     sources
     {
+        ../../Source/Framework/StartPage.cpp
         ../../Source/Framework/WorkspaceWindow.cpp
     }
 }
