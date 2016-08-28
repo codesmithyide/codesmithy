@@ -2,7 +2,12 @@
 *.opensdf
 *.sdf
 *.suo
+*.vcxproj.user
 *.opendb
 *.pdb
 Debug/
 Release/
+Bin/
+Lib/
+Tests/Core/TestOutput
+Tests/UICore/TestOutput
