@@ -40,25 +40,9 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
 {
     boost::filesystem::path settingsPath = getSettingsDirectory();
     boost::filesystem::create_directories(settingsPath);
-    
     settingsPath /= "settings.xml";
-    if (boost::filesystem::exists(settingsPath))
-    {
-    }
-    else
-    {
-        pugi::xml_node rootNode = m_document.append_child(rootElementName);
-        if (rootNode)
-        {
-            m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
-        }
-    }
 
-    m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
-    m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
-
-    std::ofstream file(settingsPath.wstring());
-    m_document.save(file);
+    initialize(settingsPath);
 }
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
@@ -67,23 +51,7 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
     : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
     m_projectTypes(projectTypes)
 {
-    if (boost::filesystem::exists(settingsPath))
-    {
-    }
-    else
-    {
-        pugi::xml_node rootNode = m_document.append_child(rootElementName);
-        if (rootNode)
-        {
-            m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
-        }
-    }
-
-    m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes);
-    m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
-
-    std::ofstream file(settingsPath.wstring());
-    m_document.save(file);
+    initialize(settingsPath);
 }
 
 const DocumentTypes& AppSettings::documentTypes() const
@@ -219,6 +187,39 @@ boost::filesystem::path AppSettings::getSettingsDirectory()
     }
     CoTaskMemFree(ppszPath);
     return result;
+}
+
+void AppSettings::initialize(const boost::filesystem::path& settingsPath)
+{
+    bool saveNeeded = false;
+    if (boost::filesystem::exists(settingsPath))
+    {
+        m_document.load_file(settingsPath.string().c_str());
+        m_fileTypeAssociationsNode = m_document.child(rootElementName).child(fileTypeAssociationsElementName);
+        m_fileTypeAssociations.load(m_fileTypeAssociationsNode);
+    }
+    else
+    {
+        saveNeeded = true;
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+            m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
+        }
+    }
+
+    if (m_fileTypeAssociations.addNewFileTypeAssociations(m_documentTypes))
+    {
+        saveNeeded = true;
+    }
+    
+    if (saveNeeded)
+    {
+        m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+
+        std::ofstream file(settingsPath.wstring());
+        m_document.save(file);
+    }
 }
 
 }

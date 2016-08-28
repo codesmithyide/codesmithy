@@ -61,6 +61,8 @@ public:
 private:
     static boost::filesystem::path getSettingsDirectory();
 
+    void initialize(const boost::filesystem::path& settingsPath);
+
 private:
     pugi::xml_document m_document;
     pugi::xml_node m_fileTypeAssociationsNode;

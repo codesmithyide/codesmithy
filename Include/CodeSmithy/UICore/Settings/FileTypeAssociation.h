@@ -50,6 +50,7 @@ public:
     };
 
 public:
+    FileTypeAssociation();
     FileTypeAssociation(const std::string& documentTypeName);
     FileTypeAssociation(const FileTypeAssociation& other);
     ~FileTypeAssociation();
@@ -65,7 +66,8 @@ public:
     bool operator==(const FileTypeAssociation& other) const;
     bool operator!=(const FileTypeAssociation& other) const;
 
-    void save(pugi::xml_node node);
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 
 private:
     static std::string associationToString(EAssociation association);

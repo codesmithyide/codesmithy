@@ -82,19 +82,34 @@ void FileTypeAssociations::remove(const std::string& documentTypeName)
     }
 }
 
-void FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& documentTypes)
+bool FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& documentTypes)
 {
+    bool result = false;
     for (size_t i = 0; i < documentTypes.size(); ++i)
     {
         if (!find(documentTypes[i]->name()))
         {
             FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
             m_associations.push_back(newAssociation);
+            result = true;
         }
+    }
+    return result;
+}
+
+void FileTypeAssociations::load(pugi::xml_node node)
+{
+    for (pugi::xml_node associationNode = node.child(fileTypeAssociationElementName); 
+         associationNode != 0;
+         associationNode = associationNode.next_sibling(fileTypeAssociationElementName))
+    {
+        FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>();
+        newAssociation->load(associationNode);
+        m_associations.push_back(newAssociation);
     }
 }
 
-void FileTypeAssociations::save(pugi::xml_node node)
+void FileTypeAssociations::save(pugi::xml_node node) const
 {
     for (size_t i = 0; i < m_associations.size(); ++i)
     {

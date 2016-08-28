@@ -45,9 +45,10 @@ public:
     void remove(const std::string& documentTypeName);
     // Add file type associations for any document types not already in the
     // list
-    void addNewFileTypeAssociations(const DocumentTypes& documentTypes);
+    bool addNewFileTypeAssociations(const DocumentTypes& documentTypes);
 
-    void save(pugi::xml_node node);
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 
 private:
     std::vector<FileTypeAssociation::shared_ptr> m_associations;

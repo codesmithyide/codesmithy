@@ -30,6 +30,11 @@ static const char* associationElementName = "association";
 static const char* actionTypeElementName = "action-type";
 static const char* associatedProjectTypeNameElementName = "associated-project-type-name";
 
+FileTypeAssociation::FileTypeAssociation()
+    : m_association(eDisabled), m_actionType(eAskAtStartup)
+{
+}
+
 FileTypeAssociation::FileTypeAssociation(const std::string& documentTypeName)
     : m_documentTypeName(documentTypeName), m_association(eDisabled), 
     m_actionType(eAskAtStartup)
@@ -113,7 +118,13 @@ bool FileTypeAssociation::operator!=(const FileTypeAssociation& other) const
     return !(*this == other);
 }
 
-void FileTypeAssociation::save(pugi::xml_node node)
+void FileTypeAssociation::load(pugi::xml_node node)
+{
+    pugi::xml_node documentTypeNameNode = node.child(documentTypeNameElementName);
+    m_documentTypeName = documentTypeNameNode.child_value();
+}
+
+void FileTypeAssociation::save(pugi::xml_node node) const
 {
     pugi::xml_node documentTypeNameNode = node.append_child(documentTypeNameElementName);
     documentTypeNameNode.append_child(pugi::node_pcdata).set_value(m_documentTypeName.c_str());

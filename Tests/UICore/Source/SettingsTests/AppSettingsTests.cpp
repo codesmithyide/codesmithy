@@ -31,6 +31,8 @@ void AddAppSettingsTests(TestSequence& testSequence)
 
     new FileComparisonTest("Creation test 1", AppSettingsCreationTest1, *settingsTestSequence);
     new FileComparisonTest("Creation test 2", AppSettingsCreationTest2, *settingsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 3", AppSettingsCreationTest3, *settingsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 4", AppSettingsCreationTest4, *settingsTestSequence);
 }
 
 TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
@@ -68,6 +70,47 @@ TestResult::EOutcome AppSettingsCreationTest2(FileComparisonTest& test)
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsCreationTest3(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest3.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
+    if (appSettings.fileTypeAssociations().size() == 0)
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsCreationTest4(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest4.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
+    if (appSettings.fileTypeAssociations().size() == 1)
+    {
+        const CodeSmithy::FileTypeAssociation& association = *appSettings.fileTypeAssociations()[0];
+        if ((association.documentTypeName() == "Bakefile") &&
+            (association.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
+            (association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
+            (association.associatedProjectTypeName() == ""))
+        {
+            result = TestResult::ePassed;
+        }
+    }
 
     return result;
 }
