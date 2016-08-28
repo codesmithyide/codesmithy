@@ -31,6 +31,11 @@ void AddDocumentTypesTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 1", DocumentTypesCreationTest1, *typesTestSequence);
 
     new HeapAllocationErrorsTest("add test 1", DocumentTypesAddTest1, *typesTestSequence);
+
+    new HeapAllocationErrorsTest("getSuitableTypesForFileExtension test 1", 
+        DocumentTypesGetSuitableTypesForFileExtensionTest1, *typesTestSequence);
+    new HeapAllocationErrorsTest("getSuitableTypesForFileExtension test 2",
+        DocumentTypesGetSuitableTypesForFileExtensionTest2, *typesTestSequence);
 }
 
 TestResult::EOutcome DocumentTypesCreationTest1()
@@ -52,6 +57,38 @@ TestResult::EOutcome DocumentTypesAddTest1()
     types.add(std::make_shared<CodeSmithy::BakefileType>());
     if ((types.size() == 1) &&
         (types[0]->name() == "Bakefile"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest1()
+{
+    CodeSmithy::DocumentTypes types;
+    std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
+    types.getSuitableTypesForFileExtension("dummy", suitableTypes);
+    if (suitableTypes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest2()
+{
+    CodeSmithy::DocumentTypes types;
+    types.add(std::make_shared<CodeSmithy::BakefileType>());
+    std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
+    types.getSuitableTypesForFileExtension("bkl", suitableTypes);
+    if ((suitableTypes.size() == 1) &&
+        (suitableTypes[0]->name() == "Bakefile"))
     {
         return TestResult::ePassed;
     }
