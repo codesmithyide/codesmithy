@@ -36,7 +36,7 @@ public:
     // supported by the application and that are passed in via the documentTypes
     // argument and store them in the ProjectType::m_supportedDocumentTypes member
     // variable.
-    BakefileProjectType(const DocumentTypes& documentTypes);
+    BakefileProjectType(DocumentTypes& documentTypes);
 };
 
 }

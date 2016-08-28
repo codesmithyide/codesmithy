@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPES_H_
 
 #include "DocumentType.h"
+#include <boost/filesystem/path.hpp>
 #include <vector>
 
 namespace CodeSmithy
@@ -36,12 +37,15 @@ public:
     ~DocumentTypes();
 
     size_t size() const;
-    const DocumentType::shared_ptr& operator[](size_t index) const;
-    void add(DocumentType::shared_ptr type);
-    DocumentType::shared_ptr find(const std::string& name) const;
+    std::shared_ptr<const DocumentType> operator[](size_t index) const;
+    std::shared_ptr<DocumentType>& operator[](size_t index);
+    void add(std::shared_ptr<DocumentType> type);
+    std::shared_ptr<const DocumentType> find(const std::string& name) const;
+    std::shared_ptr<DocumentType> find(const std::string& name);
+    void getSuitableTypesForFileExtension(const boost::filesystem::path& extension, std::vector<std::shared_ptr<const DocumentType> >& types) const;
 
 private:
-    std::vector<DocumentType::shared_ptr> m_types;
+    std::vector<std::shared_ptr<DocumentType> > m_types;
 };
 
 }

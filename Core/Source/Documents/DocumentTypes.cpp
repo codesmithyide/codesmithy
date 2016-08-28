@@ -38,17 +38,22 @@ size_t DocumentTypes::size() const
     return m_types.size();
 }
 
-const DocumentType::shared_ptr& DocumentTypes::operator[](size_t index) const
+std::shared_ptr<const DocumentType> DocumentTypes::operator[](size_t index) const
 {
     return m_types[index];
 }
 
-void DocumentTypes::add(DocumentType::shared_ptr type)
+std::shared_ptr<DocumentType>& DocumentTypes::operator[](size_t index)
+{
+    return m_types[index];
+}
+
+void DocumentTypes::add(std::shared_ptr<DocumentType> type)
 {
     m_types.push_back(type);
 }
 
-DocumentType::shared_ptr DocumentTypes::find(const std::string& name) const
+std::shared_ptr<const DocumentType> DocumentTypes::find(const std::string& name) const
 {
     for (size_t i = 0; i < m_types.size(); ++i)
     {
@@ -57,7 +62,31 @@ DocumentType::shared_ptr DocumentTypes::find(const std::string& name) const
             return m_types[i];
         }
     }
-    return DocumentType::shared_ptr();
+    return std::shared_ptr<const DocumentType>();
+}
+
+std::shared_ptr<DocumentType> DocumentTypes::find(const std::string& name)
+{
+    for (size_t i = 0; i < m_types.size(); ++i)
+    {
+        if (m_types[i]->name() == name)
+        {
+            return m_types[i];
+        }
+    }
+    return std::shared_ptr<DocumentType>();
+}
+
+void DocumentTypes::getSuitableTypesForFileExtension(const boost::filesystem::path& extension, 
+                                                     std::vector<std::shared_ptr<const DocumentType> >& types) const
+{
+    for (size_t i = 0; i < m_types.size(); ++i)
+    {
+        if (m_types[i]->hasExtension(extension))
+        {
+            types.push_back(m_types[i]);
+        }
+    }
 }
 
 }

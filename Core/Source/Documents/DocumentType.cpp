@@ -47,6 +47,19 @@ const std::vector<std::string>& DocumentType::extensions() const
     return m_extensions;
 }
 
+bool DocumentType::hasExtension(const boost::filesystem::path& extension) const
+{
+    for (size_t i = 0; i < m_extensions.size(); ++i)
+    {
+        if (m_extensions[i] == extension)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void DocumentType::appendExtension(const std::string& extension)
 {
     m_extensions.push_back(extension);

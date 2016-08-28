@@ -25,10 +25,10 @@
 namespace CodeSmithy
 {
 
-BakefileProjectType::BakefileProjectType(const DocumentTypes& documentTypes)
+BakefileProjectType::BakefileProjectType(DocumentTypes& documentTypes)
 	: ProjectType("CodeSmithy.Bakefile")
 {
-    DocumentType::shared_ptr bakefileDocType = documentTypes.find("Bakefile");
+    std::shared_ptr<DocumentType> bakefileDocType = documentTypes.find("Bakefile");
     if (bakefileDocType)
     {
         supportedDocumentTypes().add(bakefileDocType);

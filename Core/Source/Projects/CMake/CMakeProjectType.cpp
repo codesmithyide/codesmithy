@@ -25,10 +25,10 @@
 namespace CodeSmithy
 {
 
-CMakeProjectType::CMakeProjectType(const DocumentTypes& documentTypes)
+CMakeProjectType::CMakeProjectType(DocumentTypes& documentTypes)
 	: ProjectType("CodeSmithy.CMake")
 {
-    DocumentType::shared_ptr cmakelistsDocType = documentTypes.find("CMakeLists");
+    std::shared_ptr<DocumentType> cmakelistsDocType = documentTypes.find("CMakeLists");
     if (cmakelistsDocType)
     {
         supportedDocumentTypes().add(cmakelistsDocType);

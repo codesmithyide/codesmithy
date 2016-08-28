@@ -31,7 +31,7 @@ namespace CodeSmithy
 class CMakeProjectType : public ProjectType
 {
 public:
-    CMakeProjectType(const DocumentTypes& documentTypes);
+    CMakeProjectType(DocumentTypes& documentTypes);
 };
 
 }

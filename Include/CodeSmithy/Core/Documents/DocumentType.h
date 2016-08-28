@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPE_H_
 
+#include <boost/filesystem/path.hpp>
 #include <string>
 #include <vector>
 #include <memory>
@@ -33,9 +34,6 @@ namespace CodeSmithy
 class DocumentType
 {
 public:
-    typedef std::shared_ptr<DocumentType> shared_ptr;
-
-public:
     DocumentType(const std::string& name);
     DocumentType(const std::string& name, const std::string& extension);
 
@@ -44,6 +42,7 @@ public:
     // Returns the list of extensions typically 
     // used for a file of this type
     const std::vector<std::string>& extensions() const;
+    bool hasExtension(const boost::filesystem::path& extension) const;
 
 protected:
     void appendExtension(const std::string& extension);
