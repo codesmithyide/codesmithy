@@ -38,20 +38,20 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
     : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
     m_projectTypes(projectTypes)
 {
-    boost::filesystem::path settingsPath = getSettingsDirectory();
-    boost::filesystem::create_directories(settingsPath);
-    settingsPath /= "settings.xml";
+    m_path = getSettingsDirectory();
+    boost::filesystem::create_directories(m_path);
+    m_path /= "settings.xml";
 
-    initialize(settingsPath);
+    initialize(m_path);
 }
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes,
                          const boost::filesystem::path& settingsPath)
-    : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
-    m_projectTypes(projectTypes)
+    : m_path(settingsPath), m_fileTypeAssociationsNode(0), 
+    m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
-    initialize(settingsPath);
+    initialize(m_path);
 }
 
 const DocumentTypes& AppSettings::documentTypes() const
@@ -67,6 +67,14 @@ const ProjectTypes& AppSettings::projectTypes() const
 const FileTypeAssociations& AppSettings::fileTypeAssociations() const
 {
     return m_fileTypeAssociations;
+}
+
+void AppSettings::save()
+{
+    m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+
+    std::ofstream file(m_path.wstring());
+    m_document.save(file);
 }
 
 void AppSettings::registerFileTypeAssociation(const std::string& documentTypeName)
@@ -215,10 +223,7 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
     
     if (saveNeeded)
     {
-        m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
-
-        std::ofstream file(settingsPath.wstring());
-        m_document.save(file);
+        save();
     }
 }
 

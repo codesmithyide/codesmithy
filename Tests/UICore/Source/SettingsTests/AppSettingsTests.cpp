@@ -33,6 +33,8 @@ void AddAppSettingsTests(TestSequence& testSequence)
     new FileComparisonTest("Creation test 2", AppSettingsCreationTest2, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 3", AppSettingsCreationTest3, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 4", AppSettingsCreationTest4, *settingsTestSequence);
+
+    new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
 }
 
 TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)
@@ -111,6 +113,30 @@ TestResult::EOutcome AppSettingsCreationTest4(Test& test)
             result = TestResult::ePassed;
         }
     }
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsSaveTest1.xml");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsSaveTest1.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
+
+    appSettings.fileTypeAssociations()[0]->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
+    appSettings.save();
+
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
 
     return result;
 }

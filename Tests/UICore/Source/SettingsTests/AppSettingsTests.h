@@ -33,5 +33,6 @@ TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test);
 TestResult::EOutcome AppSettingsCreationTest2(FileComparisonTest& test);
 TestResult::EOutcome AppSettingsCreationTest3(Test& test);
 TestResult::EOutcome AppSettingsCreationTest4(Test& test);
+TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test);
 
 #endif

@@ -111,6 +111,9 @@ void FileTypeAssociations::load(pugi::xml_node node)
 
 void FileTypeAssociations::save(pugi::xml_node node) const
 {
+    while (node.remove_child(fileTypeAssociationElementName))
+    {
+    }
     for (size_t i = 0; i < m_associations.size(); ++i)
     {
         pugi::xml_node associationNode = node.append_child(fileTypeAssociationElementName);

@@ -53,6 +53,8 @@ public:
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
 
+    void save();
+
     void registerFileTypeAssociation(const std::string& documentTypeName);
     void deregisterFileTypeAssociation(const std::string& documentTypeName);
     bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
@@ -64,6 +66,7 @@ private:
     void initialize(const boost::filesystem::path& settingsPath);
 
 private:
+    boost::filesystem::path m_path;
     pugi::xml_document m_document;
     pugi::xml_node m_fileTypeAssociationsNode;
     const DocumentTypes& m_documentTypes;

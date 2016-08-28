@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<codesmithy-application-settings>
+	<file-type-associations>
+		<file-type-association>
+			<document-type-name>Bakefile</document-type-name>
+			<association>open</association>
+			<action-type>ask-at-startup</action-type>
+			<associated-project-type-name></associated-project-type-name>
+		</file-type-association>
+	</file-type-associations>
+</codesmithy-application-settings>
