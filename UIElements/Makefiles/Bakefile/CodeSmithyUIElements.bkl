@@ -26,7 +26,7 @@ library CodeSmithyUIElements : wxWidgets
         ../../../Include/CodeSmithy/UIElements/Editors/BakefileCtrl.h
 
         ../../../Include/CodeSmithy/UIElements/Framework/StartPage.h
-        ../../../Include/CodeSmithy/UIElements/Framework/WorkspaceWindow.h
+        ../../../Include/CodeSmithy/UIElements/Framework/WorkspacePanel.h
     }
 
     sources
@@ -34,6 +34,6 @@ library CodeSmithyUIElements : wxWidgets
         ../../Source/Editors/BakefileCtrl.cpp
 
         ../../Source/Framework/StartPage.cpp
-        ../../Source/Framework/WorkspaceWindow.cpp
+        ../../Source/Framework/WorkspacePanel.cpp
     }
 }

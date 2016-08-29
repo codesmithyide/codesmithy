@@ -20,19 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEWINDOW_H_
-#define _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEWINDOW_H_
+#ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEPANEL_H_
+#define _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEPANEL_H_
 
 #include "StartPage.h"
-#include <wx/window.h>
+#include <wx/panel.h>
 
 namespace CodeSmithy
 {
 
-class WorkspaceWindow : public wxWindow
+class WorkspacePanel : public wxPanel
 {
 public:
-    WorkspaceWindow(wxWindow* parent);
+    WorkspacePanel(wxWindow* parent);
 
 private:
     StartPage* m_startPage;

@@ -26,7 +26,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\StartPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspaceWindow.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspacePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -37,7 +37,7 @@
     <ClCompile Include="..\..\Source\Framework\StartPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Framework\WorkspaceWindow.cpp">
+    <ClCompile Include="..\..\Source\Framework\WorkspacePanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class BakefileCtrl : public wxPanel
+{
+public:
+    BakefileCtrl(wxWindow* parent);
+};
+
+}
+
 #endif

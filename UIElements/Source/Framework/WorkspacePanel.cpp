@@ -20,14 +20,14 @@
     IN THE SOFTWARE.
 */
 
-#include "Framework/WorkspaceWindow.h"
+#include "Framework/WorkspacePanel.h"
 #include <wx/sizer.h>
 
 namespace CodeSmithy
 {
 
-WorkspaceWindow::WorkspaceWindow(wxWindow* parent)
-    : wxWindow(parent, wxID_ANY)
+WorkspacePanel::WorkspacePanel(wxWindow* parent)
+    : wxPanel(parent, wxID_ANY)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 

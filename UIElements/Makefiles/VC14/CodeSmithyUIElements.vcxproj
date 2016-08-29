@@ -152,13 +152,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Framework\StartPage.cpp" />
-    <ClCompile Include="..\..\Source\Framework\WorkspaceWindow.cpp" />
+    <ClCompile Include="..\..\Source\Framework\WorkspacePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\StartPage.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspaceWindow.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Framework\WorkspacePanel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

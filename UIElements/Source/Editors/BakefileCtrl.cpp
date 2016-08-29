@@ -21,3 +21,13 @@
 */
 
 #include "Editors/BakefileCtrl.h"
+
+namespace CodeSmithy
+{
+
+BakefileCtrl::BakefileCtrl(wxWindow* parent)
+    : wxPanel(parent)
+{
+}
+
+}
