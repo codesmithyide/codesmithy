@@ -10,9 +10,9 @@ This repository contains the source code for the main components of the IDE.
 - Core
 - Make
 - UI
-- UICore
-- UIElements
-- UIImplementation
+  - UICore
+  - UIElements
+  - UIImplementation
 
 ## License
 
