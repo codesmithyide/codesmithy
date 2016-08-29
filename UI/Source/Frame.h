@@ -24,7 +24,7 @@
 #define _CODESMITHY_UI_FRAME_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include "CodeSmithy/UIElements/Framework/WorkspaceWindow.h"
+#include "CodeSmithy/UIElements/Framework/WorkspacePanel.h"
 #include <wx/frame.h>
 
 namespace CodeSmithy
@@ -47,7 +47,7 @@ private:
 
 private:
     AppSettings m_appSettings;
-    WorkspaceWindow* m_workspaceWindow;
+    WorkspacePanel* m_workspacePanel;
 
     wxDECLARE_EVENT_TABLE();
 };

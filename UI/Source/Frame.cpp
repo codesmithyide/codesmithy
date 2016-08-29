@@ -33,11 +33,11 @@ Frame::Frame(const wxString& title,
              const DocumentTypes& documentTypes,
              const ProjectTypes& projectTypes)
     : wxFrame(NULL, wxID_ANY, title), 
-    m_appSettings(documentTypes, projectTypes), m_workspaceWindow(0)
+    m_appSettings(documentTypes, projectTypes), m_workspacePanel(0)
 {
     CreateMenuBar();
 
-    m_workspaceWindow = new WorkspaceWindow(this);
+    m_workspacePanel = new WorkspacePanel(this);
 }
 
 void Frame::OpenFile(const wxString& file)

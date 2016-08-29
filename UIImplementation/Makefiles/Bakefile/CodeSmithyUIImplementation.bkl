@@ -1,9 +1,15 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/wxWidgets.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyUICore.bkl;
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyUIElements.bkl;
+
 toolsets = vs2015 vs2013;
 
 vs2015.solutionfile = ../VC14/CodeSmithyUIImplementation.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyUIImplementation.sln;
 
-library CodeSmithyUIImplementation
+library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIElements
 {
     archs = x86 x86_64;
 
