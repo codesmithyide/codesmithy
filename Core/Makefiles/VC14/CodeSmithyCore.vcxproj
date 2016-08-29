@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CMakeListsType.cpp" />
@@ -176,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h" />
