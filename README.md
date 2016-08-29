@@ -5,6 +5,15 @@ only really useful to me for my own projects.
 
 This repository contains the source code for the main components of the IDE.
 
+## Contents
+
+- Core
+- Make
+- UI
+- UICore
+- UIElements
+- UIImplementation
+
 ## License
 
 Copyright (c) 2015-2016 Xavier Leclercq
