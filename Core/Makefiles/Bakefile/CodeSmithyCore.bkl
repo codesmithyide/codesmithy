@@ -30,6 +30,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Documents/Document.h
         ../../../Include/CodeSmithy/Core/Documents/Documents.h
         ../../../Include/CodeSmithy/Core/Documents/DocumentsObserver.h
+        ../../../Include/CodeSmithy/Core/Documents/Bakefile.h
         ../../../Include/CodeSmithy/Core/Documents/BakefileType.h
         ../../../Include/CodeSmithy/Core/Documents/CMakeListsType.h
         ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h
@@ -66,6 +67,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Documents/Document.cpp
         ../../Source/Documents/Documents.cpp
         ../../Source/Documents/DocumentsObserver.cpp
+        ../../Source/Documents/Bakefile.cpp
         ../../Source/Documents/BakefileType.cpp
         ../../Source/Documents/CMakeListsType.cpp
         ../../Source/Documents/CodeSmithyProjectFileType.cpp

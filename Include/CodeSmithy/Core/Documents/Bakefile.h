@@ -20,16 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
-#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
-
-namespace CodeSmithy
-{
-
-class Document
-{
-};
-
-}
+#ifndef _CODESMITHY_CORE_DOCUMENTS_BAKEFILE_H_
+#define _CODESMITHY_CORE_DOCUMENTS_BAKEFILE_H_
 
 #endif

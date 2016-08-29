@@ -20,16 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
-#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
-
-namespace CodeSmithy
-{
-
-class Document
-{
-};
-
-}
-
-#endif
+#include "Documents/Bakefile.h"

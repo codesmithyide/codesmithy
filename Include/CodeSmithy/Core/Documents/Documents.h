@@ -23,12 +23,18 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
 
-#include "Documents/Document.h"
+#include "Document.h"
 #include <vector>
+#include <memory>
 
 namespace CodeSmithy
 {
 
+// The UI will have one or more open documents being viewed 
+// or edited. The UI needs to be informed of certain events
+// related to the documents. The Documents class serves that
+// purpose. It has a list of all the documents that are part
+// of the workspace across all projects.
 class Documents
 {
 public:
@@ -36,7 +42,7 @@ public:
     ~Documents();
 
 private:
-    //std::vector<std::shar
+    std::vector<std::shared_ptr<Document> > m_documents;
 };
 
 }
