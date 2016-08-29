@@ -31,6 +31,8 @@ namespace CodeSmithy
 class BakefileCtrl : public wxPanel
 {
 public:
+    static wxWindow* Create(wxWindow *parent);
+
     BakefileCtrl(wxWindow* parent);
 };
 

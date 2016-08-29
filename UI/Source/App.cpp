@@ -22,6 +22,8 @@
 
 #include "App.h"
 #include "Frame.h"
+#include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
+#include "CodeSmithy/UIElements/Editors/BakefileCtrl.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
@@ -40,12 +42,12 @@ App::App()
     // This is the list of document types supported by the
     // the CodeSmithy UI.
     m_documentTypes = std::make_shared<DocumentTypes>();
-    m_documentTypes->add(std::make_shared<BakefileType>());
+    m_documentTypes->add(std::make_shared<BakefileType>(std::make_shared<ControlCreationDocumentTypeData>(BakefileCtrl::Create)));
     m_documentTypes->add(std::make_shared<CMakeListsType>());
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>());
     m_documentTypes->add(std::make_shared<XMLDocumentType>());
-
+	
     // This is the list of project types supported by the
     // the CodeSmithy UI. There is no dynamic way to add project
     // types (via plugins for instance) at this stage.

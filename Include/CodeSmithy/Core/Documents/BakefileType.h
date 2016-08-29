@@ -32,6 +32,7 @@ class BakefileType : public DocumentType
 {
 public:
     BakefileType();
+    BakefileType(std::shared_ptr<CustomDocumentTypeData> customData);
 };
 
 }

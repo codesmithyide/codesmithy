@@ -25,6 +25,11 @@
 namespace CodeSmithy
 {
 
+wxWindow* BakefileCtrl::Create(wxWindow *parent)
+{
+    return new BakefileCtrl(parent);
+}
+
 BakefileCtrl::BakefileCtrl(wxWindow* parent)
     : wxPanel(parent)
 {

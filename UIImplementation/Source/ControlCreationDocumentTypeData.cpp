@@ -21,3 +21,22 @@
 */
 
 #include "ControlCreationDocumentTypeData.h"
+
+namespace CodeSmithy
+{
+
+ControlCreationDocumentTypeData::ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent))
+    : m_create(create)
+{
+}
+
+ControlCreationDocumentTypeData::~ControlCreationDocumentTypeData()
+{
+}
+
+wxWindow* ControlCreationDocumentTypeData::CreateDocumentCtrl(wxWindow* parent) const
+{
+    return m_create(parent);
+}
+
+}

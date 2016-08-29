@@ -30,4 +30,10 @@ BakefileType::BakefileType()
 {
 }
 
+BakefileType::BakefileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("Bakefile", "bkl")
+{
+    setCustomData(customData);
+}
+
 }

@@ -23,4 +23,29 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_CONTROLCREATIONDOCUMENTTYPEDATA_H_
 #define _CODESMITHY_UIIMPLEMENTATION_CONTROLCREATIONDOCUMENTTYPEDATA_H_
 
+#include "CodeSmithy/Core/Documents/CustomDocumentTypeData.h"
+#include <wx/window.h>
+
+namespace CodeSmithy
+{
+
+// CodeSmithy used this class to store extra data in the 
+// DocumentType classes to know which control needs to
+// be used to display a given document type.
+class ControlCreationDocumentTypeData : public CustomDocumentTypeData
+{
+public:
+    ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent));
+    virtual ~ControlCreationDocumentTypeData();
+
+    wxWindow* CreateDocumentCtrl(wxWindow* parent) const;
+
+private:
+    wxWindow* (*m_create)(wxWindow* parent);
+};
+
+}
+
+#include "linkoptions.h"
+
 #endif
