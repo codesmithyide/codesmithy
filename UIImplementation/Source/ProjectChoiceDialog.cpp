@@ -21,3 +21,23 @@
 */
 
 #include "ProjectChoiceDialog.h"
+#include <wx/sizer.h>
+#include <wx/button.h>
+
+namespace CodeSmithy
+{
+
+ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
+    : wxDialog(parent, wxID_ANY, "Project Selection", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+{
+    // Set up the sizer for the frame and resize the frame
+    // according to its contents
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+
+    wxButton* closeButton = new wxButton(this, wxID_ANY, "Close");
+    topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
+
+    SetSizerAndFit(topSizer);
+}
+
+}

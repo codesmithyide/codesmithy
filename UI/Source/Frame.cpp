@@ -23,6 +23,7 @@
 #include "Frame.h"
 #include "WindowIDs.h"
 #include "Preferences/PreferencesDialog.h"
+#include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include <wx/menu.h>
 #include <wx/filedlg.h>
 
@@ -71,6 +72,8 @@ void Frame::OpenFile(const wxString& file)
             {
                 if (association->actionType() == FileTypeAssociation::eAskAtStartup)
                 {
+                    ProjectChoiceDialog projectChoiceDialog(this);
+                    projectChoiceDialog.ShowModal();
                 }
                 else if (association->actionType() == FileTypeAssociation::eStandalone)
                 {

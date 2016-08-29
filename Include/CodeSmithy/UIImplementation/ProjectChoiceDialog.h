@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PROJECTCHOICEDIALOG_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PROJECTCHOICEDIALOG_H_
 
+#include <wx/dialog.h>
+
+namespace CodeSmithy
+{
+
+class ProjectChoiceDialog : public wxDialog
+{
+public:
+    ProjectChoiceDialog(wxWindow* parent);
+};
+
+}
+
 #endif
