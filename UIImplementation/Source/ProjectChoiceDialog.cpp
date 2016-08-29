@@ -27,9 +27,10 @@
 namespace CodeSmithy
 {
 
-ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
+ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent,
+                                         const std::vector<std::shared_ptr<const ProjectType> >& projectTypes)
     : wxDialog(parent, wxID_ANY, "Project Selection", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
-    m_standaloneButton(0), m_projectButton(0), m_projectList(0)
+    m_standaloneButton(0), m_projectButton(0), m_projectList(0), m_useAsDefaultCheckbox(0)
 {
     // Create radio buttons to choose between opening the 
     // document in a standalone editor or as part of 
@@ -38,11 +39,14 @@ ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
     m_projectButton = new wxRadioButton(this, ProjectChoiceProjectRadioButtonID, "Open the file in a new project (select project type below)");
 
     wxArrayString choices;
-    choices.Add("Option 1");
-    choices.Add("Option 2");
-    choices.Add("Option 3");
+    for (size_t i = 0; i < projectTypes.size(); ++i)
+    {
+        choices.Add(projectTypes[i]->name());
+    }
     m_projectList = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choices);
     m_projectList->Disable();
+
+    m_useAsDefaultCheckbox = new wxCheckBox(this, wxID_ANY, "Default to this action in the future");
 
     wxSizer* buttons = CreateButtonSizer(wxOK | wxCANCEL);
 
@@ -54,10 +58,21 @@ ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
     innerSizer->Add(m_standaloneButton, 0, wxEXPAND | wxALL, 3);
     innerSizer->Add(m_projectButton, 0, wxEXPAND | wxALL, 3);
     innerSizer->Add(m_projectList, 0, wxEXPAND | wxALL, 3);
+    innerSizer->Add(m_useAsDefaultCheckbox, 0, wxEXPAND | wxALL, 3);
     innerSizer->Add(buttons, 0, wxALIGN_RIGHT);
 
     topSizer->Add(innerSizer, 1, wxEXPAND | wxALL, 10);
     SetSizerAndFit(topSizer);
+}
+
+bool ProjectChoiceDialog::isStandalone() const
+{
+    return m_standaloneButton->IsEnabled();
+}
+
+bool ProjectChoiceDialog::useAsDefault() const
+{
+    return m_useAsDefaultCheckbox->IsChecked();
 }
 
 void ProjectChoiceDialog::OnRadioSelectionChange(wxCommandEvent& evt)

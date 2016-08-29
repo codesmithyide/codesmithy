@@ -97,7 +97,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             projectChoices.Add("Standalone");
             for (size_t j = 0; j < m_appSettings.projectTypes().size(); ++j)
             {
-                projectChoices.Add(m_appSettings.projectTypes()[j].name());
+                projectChoices.Add(m_appSettings.projectTypes()[j]->name());
             }
             wxChoice* projectChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);

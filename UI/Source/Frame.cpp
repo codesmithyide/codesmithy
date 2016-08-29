@@ -66,14 +66,21 @@ void Frame::OpenFile(const wxString& file)
         }
         if (suitableDocumentTypes.size() == 1)
         {
+            std::vector<std::shared_ptr<const ProjectType> > suitableProjectTypes;
+            m_appSettings.projectTypes().getSuitableTypesForDocumentType(suitableDocumentTypes[0]->name(), suitableProjectTypes);
             std::shared_ptr<FileTypeAssociation> association = 
                 m_appSettings.fileTypeAssociations().find(suitableDocumentTypes[0]->name());
             if (association)
             {
                 if (association->actionType() == FileTypeAssociation::eAskAtStartup)
                 {
-                    ProjectChoiceDialog projectChoiceDialog(this);
-                    projectChoiceDialog.ShowModal();
+                    ProjectChoiceDialog projectChoiceDialog(this, suitableProjectTypes);
+                    if (projectChoiceDialog.ShowModal() == wxID_OK)
+                    {
+                        if (projectChoiceDialog.useAsDefault())
+                        {
+                        }
+                    }
                 }
                 else if (association->actionType() == FileTypeAssociation::eStandalone)
                 {
@@ -84,8 +91,13 @@ void Frame::OpenFile(const wxString& file)
             }
             else
             {
-                ProjectChoiceDialog projectChoiceDialog(this);
-                projectChoiceDialog.ShowModal();
+                ProjectChoiceDialog projectChoiceDialog(this, suitableProjectTypes);
+                if (projectChoiceDialog.ShowModal() == wxID_OK)
+                {
+                    if (projectChoiceDialog.useAsDefault())
+                    {
+                    }
+                }
             }
         }
     }

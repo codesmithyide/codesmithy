@@ -23,9 +23,11 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PROJECTCHOICEDIALOG_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PROJECTCHOICEDIALOG_H_
 
+#include "CodeSmithy/Core/Projects/ProjectType.h"
 #include <wx/dialog.h>
 #include <wx/radiobut.h>
 #include <wx/listbox.h>
+#include <wx/checkbox.h>
 
 namespace CodeSmithy
 {
@@ -33,7 +35,10 @@ namespace CodeSmithy
 class ProjectChoiceDialog : public wxDialog
 {
 public:
-    ProjectChoiceDialog(wxWindow* parent);
+    ProjectChoiceDialog(wxWindow* parent, const std::vector<std::shared_ptr<const ProjectType> >& projectTypes);
+
+    bool isStandalone() const;
+    bool useAsDefault() const;
 
 private:
     void OnRadioSelectionChange(wxCommandEvent& evt);
@@ -42,6 +47,7 @@ private:
     wxRadioButton* m_standaloneButton;
     wxRadioButton* m_projectButton;
     wxListBox* m_projectList;
+    wxCheckBox* m_useAsDefaultCheckbox;
 
     wxDECLARE_EVENT_TABLE();
 };
