@@ -24,6 +24,8 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PROJECTCHOICEDIALOG_H_
 
 #include <wx/dialog.h>
+#include <wx/radiobut.h>
+#include <wx/listbox.h>
 
 namespace CodeSmithy
 {
@@ -32,6 +34,13 @@ class ProjectChoiceDialog : public wxDialog
 {
 public:
     ProjectChoiceDialog(wxWindow* parent);
+
+private:
+    wxRadioButton* m_standaloneButton;
+    wxRadioButton* m_projectButton;
+    wxListBox* m_projectList;
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 }

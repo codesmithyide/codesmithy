@@ -22,22 +22,43 @@
 
 #include "ProjectChoiceDialog.h"
 #include <wx/sizer.h>
-#include <wx/button.h>
 
 namespace CodeSmithy
 {
 
 ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
-    : wxDialog(parent, wxID_ANY, "Project Selection", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+    : wxDialog(parent, wxID_ANY, "Project Selection", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    m_standaloneButton(0), m_projectButton(0), m_projectList(0)
 {
+    // Create radio buttons to choose between opening the 
+    // document in a standalone editor or as part of 
+    // a project
+    m_standaloneButton = new wxRadioButton(this, wxID_ANY, "Open the file in a standalone editor");
+    m_projectButton = new wxRadioButton(this, wxID_ANY, "Open the file in a new project (select project type below)");
+
+    wxArrayString choices;
+    choices.Add("Option 1");
+    choices.Add("Option 2");
+    choices.Add("Option 3");
+    m_projectList = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choices);
+
+    wxSizer* buttons = CreateButtonSizer(wxOK | wxCANCEL);
+
     // Set up the sizer for the frame and resize the frame
     // according to its contents
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    wxButton* closeButton = new wxButton(this, wxID_ANY, "Close");
-    topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
+    wxBoxSizer* innerSizer = new wxBoxSizer(wxVERTICAL);
+    innerSizer->Add(m_standaloneButton, 0, wxEXPAND | wxALL, 3);
+    innerSizer->Add(m_projectButton, 0, wxEXPAND | wxALL, 3);
+    innerSizer->Add(m_projectList, 0, wxEXPAND | wxALL, 3);
+    innerSizer->Add(buttons, 0, wxALIGN_RIGHT);
 
+    topSizer->Add(innerSizer, 1, wxEXPAND | wxALL, 10);
     SetSizerAndFit(topSizer);
 }
+
+wxBEGIN_EVENT_TABLE(ProjectChoiceDialog, wxDialog)
+wxEND_EVENT_TABLE()
 
 }

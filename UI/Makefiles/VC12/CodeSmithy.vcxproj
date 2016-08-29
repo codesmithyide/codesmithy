@@ -92,7 +92,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\App.h" />
     <ClInclude Include="..\..\Source\Frame.h" />
-    <ClInclude Include="..\..\Source\WindowIDs.h" />
     <ClInclude Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\Source\Preferences\PreferencesDialog.h" />
   </ItemGroup>
