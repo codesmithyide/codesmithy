@@ -14,17 +14,11 @@ program CodeSmithy : CodeSmithyUIImplementation
     {
         ../../Source/App.h
         ../../Source/Frame.h
-
-        ../../Source/Preferences/FileTypeAssociationsPreferencesPage.h
-        ../../Source/Preferences/PreferencesDialog.h
     }
 
     sources
     {
         ../../Source/App.cpp
         ../../Source/Frame.cpp
-
-        ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
-        ../../Source/Preferences/PreferencesDialog.cpp
     }
 }

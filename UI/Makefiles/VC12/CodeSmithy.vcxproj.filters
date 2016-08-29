@@ -23,24 +23,12 @@
     <ClInclude Include="..\..\Source\Frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Preferences\PreferencesDialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Frame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

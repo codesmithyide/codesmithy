@@ -29,11 +29,17 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
 
         ../../../Include/CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h
         ../../../Include/CodeSmithy/UIImplementation/ProjectChoiceDialog.h
+
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/FileTypeAssociationsPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h
     }
 
     sources
     {
         ../../Source/ControlCreationDocumentTypeData.cpp
         ../../Source/ProjectChoiceDialog.cpp
+
+        ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
+        ../../Source/Preferences/PreferencesDialog.cpp
     }
 }

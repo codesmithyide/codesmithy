@@ -29,12 +29,24 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -152,12 +152,16 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

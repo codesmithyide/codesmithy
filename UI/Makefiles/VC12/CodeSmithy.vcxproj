@@ -86,14 +86,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\App.cpp" />
     <ClCompile Include="..\..\Source\Frame.cpp" />
-    <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
-    <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\App.h" />
     <ClInclude Include="..\..\Source\Frame.h" />
-    <ClInclude Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.h" />
-    <ClInclude Include="..\..\Source\Preferences\PreferencesDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
