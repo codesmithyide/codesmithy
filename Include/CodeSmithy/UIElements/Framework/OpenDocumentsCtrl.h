@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_OPENDOCUMENTSCTRL_H_
 #define _CODESMITHY_UIELEMENTS_FRAMEWORK_OPENDOCUMENTSCTRL_H_
 
+#include <wx/aui/aui.h>
+
+namespace CodeSmithy
+{
+
+class OpenDocumentsCtrl : public wxAuiNotebook
+{
+public:
+    OpenDocumentsCtrl(wxWindow* parent);
+};
+
+}
+
 #endif

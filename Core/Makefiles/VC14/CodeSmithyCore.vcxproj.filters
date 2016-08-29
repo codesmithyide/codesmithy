@@ -29,6 +29,12 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentManagerObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -101,6 +107,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Documents\DocumentManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Documents\DocumentManagerObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp">

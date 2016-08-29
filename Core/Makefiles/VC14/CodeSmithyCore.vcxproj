@@ -153,6 +153,8 @@
     <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
+    <ClCompile Include="..\..\Source\Documents\DocumentManager.cpp" />
+    <ClCompile Include="..\..\Source\Documents\DocumentManagerObserver.cpp" />
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CMakeListsType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFileType.cpp" />
@@ -179,6 +181,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentManager.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentManagerObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h" />

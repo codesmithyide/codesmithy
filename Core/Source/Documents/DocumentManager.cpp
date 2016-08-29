@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "Framework/OpenDocumentsCtrl.h"
-
-namespace CodeSmithy
-{
-
-OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent)
-    : wxAuiNotebook(parent)
-{
-}
-
-}
+#include "Documents/DocumentManager.h"

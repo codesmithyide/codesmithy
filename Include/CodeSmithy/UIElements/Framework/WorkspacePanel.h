@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_FRAMEWORK_WORKSPACEPANEL_H_
 
 #include "StartPage.h"
+#include "OpenDocumentsCtrl.h"
 #include <wx/panel.h>
 
 namespace CodeSmithy
@@ -36,6 +37,7 @@ public:
 
 private:
     StartPage* m_startPage;
+    OpenDocumentsCtrl* m_openDocuments;
 };
 
 }
