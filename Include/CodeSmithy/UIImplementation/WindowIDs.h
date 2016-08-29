@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UI_WINDOWIDS_H_
-#define _CODESMITHY_UI_WINDOWIDS_H_
+#ifndef _CODESMITHY_UIIMPLEMENTATION_WINDOWIDS_H_
+#define _CODESMITHY_UIIMPLEMENTATION_WINDOWIDS_H_
 
 #include <wx/defs.h>
 
@@ -30,8 +30,11 @@ namespace CodeSmithy
 
 const wxWindowID wxID_OPEN_FILE = wxID_HIGHEST + 1;
 
-const wxWindowID PreferencesCloseButton = wxID_OPEN_FILE + 1;
-const wxWindowID PreferencesFileTypeAssociationsApplyButton = PreferencesCloseButton + 1;
+const wxWindowID ProjectChoiceProjectRadioButtonID = wxID_OPEN_FILE + 1;
+const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButtonID + 1;
+
+const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;
+const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesCloseButtonID + 1;
 
 }
 

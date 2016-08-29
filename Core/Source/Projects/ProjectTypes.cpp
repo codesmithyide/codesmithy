@@ -38,14 +38,26 @@ size_t ProjectTypes::size() const
     return m_types.size();
 }
 
-const ProjectType& ProjectTypes::operator[](size_t index) const
+std::shared_ptr<const ProjectType> ProjectTypes::operator[](size_t index) const
 {
-    return *m_types[index];
+    return m_types[index];
 }
 
-void ProjectTypes::add(ProjectType::shared_ptr type)
+void ProjectTypes::add(std::shared_ptr<ProjectType> type)
 {
     m_types.push_back(type);
+}
+
+void ProjectTypes::getSuitableTypesForDocumentType(const std::string& documentTypeName,
+                                                   std::vector<std::shared_ptr<const ProjectType> >& types) const
+{
+    for (size_t i = 0; i < m_types.size(); ++i)
+    {
+        if (m_types[i]->supportsDocumentType(documentTypeName))
+        {
+            types.push_back(m_types[i]);
+        }
+    }
 }
 
 }

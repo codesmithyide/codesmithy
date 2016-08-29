@@ -22,7 +22,7 @@
 
 #include "PreferencesDialog.h"
 #include "FileTypeAssociationsPreferencesPage.h"
-#include "../WindowIDs.h"
+#include "CodeSmithy/UIImplementation/WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
 
@@ -44,7 +44,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     CreateFileTypeAssociationsPreferences(treebook, settings);
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
-    wxButton* closeButton = new wxButton(this, PreferencesCloseButton, "Close");
+    wxButton* closeButton = new wxButton(this, PreferencesCloseButtonID, "Close");
     topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
 
     SetSizerAndFit(topSizer);
@@ -63,7 +63,7 @@ void PreferencesDialog::OnClose(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(PreferencesDialog, wxDialog)
-    EVT_BUTTON(PreferencesCloseButton, PreferencesDialog::OnClose)
+    EVT_BUTTON(PreferencesCloseButtonID, PreferencesDialog::OnClose)
 wxEND_EVENT_TABLE()
 
 }

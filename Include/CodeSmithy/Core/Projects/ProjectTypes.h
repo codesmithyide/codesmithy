@@ -43,12 +43,15 @@ public:
     ~ProjectTypes();
 
     size_t size() const;
-    const ProjectType& operator[](size_t index) const;
+    std::shared_ptr<const ProjectType> operator[](size_t index) const;
+    
+    void add(std::shared_ptr<ProjectType> type);
 
-    void add(ProjectType::shared_ptr type);
+    void getSuitableTypesForDocumentType(const std::string& documentTypeName, 
+        std::vector<std::shared_ptr<const ProjectType> >& types) const;
 
 private:
-    std::vector<ProjectType::shared_ptr> m_types;
+    std::vector<std::shared_ptr<ProjectType> > m_types;
 };
 
 }

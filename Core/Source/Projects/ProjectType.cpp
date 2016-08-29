@@ -44,6 +44,19 @@ const DocumentTypes& ProjectType::supportedDocumentTypes() const
     return m_supportedDocumentTypes;
 }
 
+bool ProjectType::supportsDocumentType(const std::string& documentTypeName) const
+{
+    for (size_t i = 0; i < m_supportedDocumentTypes.size(); ++i)
+    {
+        if (m_supportedDocumentTypes[i]->name() == documentTypeName)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 DocumentTypes& ProjectType::supportedDocumentTypes()
 {
     return m_supportedDocumentTypes;

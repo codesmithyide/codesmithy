@@ -21,6 +21,7 @@
 */
 
 #include "ProjectChoiceDialog.h"
+#include "windowids.h"
 #include <wx/sizer.h>
 
 namespace CodeSmithy
@@ -33,14 +34,15 @@ ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
     // Create radio buttons to choose between opening the 
     // document in a standalone editor or as part of 
     // a project
-    m_standaloneButton = new wxRadioButton(this, wxID_ANY, "Open the file in a standalone editor");
-    m_projectButton = new wxRadioButton(this, wxID_ANY, "Open the file in a new project (select project type below)");
+    m_standaloneButton = new wxRadioButton(this, ProjectChoiceStandaloneButtonID, "Open the file in a standalone editor");
+    m_projectButton = new wxRadioButton(this, ProjectChoiceProjectRadioButtonID, "Open the file in a new project (select project type below)");
 
     wxArrayString choices;
     choices.Add("Option 1");
     choices.Add("Option 2");
     choices.Add("Option 3");
     m_projectList = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, choices);
+    m_projectList->Disable();
 
     wxSizer* buttons = CreateButtonSizer(wxOK | wxCANCEL);
 
@@ -58,7 +60,21 @@ ProjectChoiceDialog::ProjectChoiceDialog(wxWindow* parent)
     SetSizerAndFit(topSizer);
 }
 
+void ProjectChoiceDialog::OnRadioSelectionChange(wxCommandEvent& evt)
+{
+    if (evt.GetId() == ProjectChoiceProjectRadioButtonID)
+    {
+        m_projectList->Enable();
+    }
+    else
+    {
+        m_projectList->Disable();
+    }
+}
+
 wxBEGIN_EVENT_TABLE(ProjectChoiceDialog, wxDialog)
+    EVT_RADIOBUTTON(ProjectChoiceStandaloneButtonID, ProjectChoiceDialog::OnRadioSelectionChange)
+    EVT_RADIOBUTTON(ProjectChoiceProjectRadioButtonID, ProjectChoiceDialog::OnRadioSelectionChange)
 wxEND_EVENT_TABLE()
 
 }

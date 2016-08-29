@@ -36,6 +36,9 @@ public:
     ProjectChoiceDialog(wxWindow* parent);
 
 private:
+    void OnRadioSelectionChange(wxCommandEvent& evt);
+
+private:
     wxRadioButton* m_standaloneButton;
     wxRadioButton* m_projectButton;
     wxListBox* m_projectList;

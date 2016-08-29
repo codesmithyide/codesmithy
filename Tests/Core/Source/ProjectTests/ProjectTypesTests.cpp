@@ -32,6 +32,11 @@ void AddProjectTypesTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 1", ProjectTypesCreationTest1, *typesTestSequence);
 
     new HeapAllocationErrorsTest("add test 1", ProjectTypesAddTest1, *typesTestSequence);
+
+    new HeapAllocationErrorsTest("getSuitableTypesForDocumentType test 1", ProjectTypesGetSuitableTypesForDocumentTypeTest1,
+        *typesTestSequence);
+    new HeapAllocationErrorsTest("getSuitableTypesForDocumentType test 2", ProjectTypesGetSuitableTypesForDocumentTypeTest2,
+        *typesTestSequence);
 }
 
 TestResult::EOutcome ProjectTypesCreationTest1()
@@ -57,7 +62,44 @@ TestResult::EOutcome ProjectTypesAddTest1()
     types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
 
     if ((types.size() == 1) &&
-        (types[0].name() == "CodeSmithy.Bakefile"))
+        (types[0]->name() == "CodeSmithy.Bakefile"))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest1()
+{
+    CodeSmithy::ProjectTypes types;
+
+    std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
+    types.getSuitableTypesForDocumentType("dummy", suitableTypes);
+    if (suitableTypes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest2()
+{
+    CodeSmithy::DocumentTypes documentTypes;
+    documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
+
+    CodeSmithy::ProjectTypes types;
+    types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
+
+    std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
+    types.getSuitableTypesForDocumentType("Bakefile", suitableTypes);
+    if ((suitableTypes.size() == 1) &&
+        (suitableTypes[0]->name() == "CodeSmithy.Bakefile"))
     {
         return TestResult::ePassed;
     }

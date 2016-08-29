@@ -21,7 +21,7 @@
 */
 
 #include "FileTypeAssociationsPreferencesPage.h"
-#include "../WindowIDs.h"
+#include "CodeSmithy/UIImplementation/WindowIDs.h"
 
 namespace CodeSmithy
 {
@@ -113,7 +113,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
         m_appSettings.save();
     }
 
-    m_applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButton, "Apply");
+    m_applyButton = new wxButton(this, PreferencesFileTypeAssociationsApplyButtonID, "Apply");
     m_applyButton->Disable();
 
     topSizer->Add(description, 0, wxEXPAND | wxALL, 10);
@@ -240,7 +240,7 @@ FileTypeAssociation::EAssociation FileTypeAssociationsPreferencesPage::CustomEve
 }
 
 wxBEGIN_EVENT_TABLE(FileTypeAssociationsPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButton, FileTypeAssociationsPreferencesPage::OnApply)
+    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButtonID, FileTypeAssociationsPreferencesPage::OnApply)
 wxEND_EVENT_TABLE()
 
 }

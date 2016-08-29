@@ -31,5 +31,7 @@ void AddProjectTypesTests(TestSequence& testSequence);
 
 TestResult::EOutcome ProjectTypesCreationTest1();
 TestResult::EOutcome ProjectTypesAddTest1();
+TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest1();
+TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest2();
 
 #endif

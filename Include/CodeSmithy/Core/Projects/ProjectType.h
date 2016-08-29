@@ -33,9 +33,6 @@ namespace CodeSmithy
 class ProjectType
 {
 public:
-    typedef std::shared_ptr<ProjectType> shared_ptr;
-
-public:
     ProjectType(const std::string& name);
     virtual ~ProjectType();
 
@@ -43,6 +40,7 @@ public:
     // The list of document types that this project provides
     // dedicated support for.
     const DocumentTypes& supportedDocumentTypes() const;
+    bool supportsDocumentType(const std::string& documentTypeName) const;
 
 protected:
     DocumentTypes& supportedDocumentTypes();

@@ -21,9 +21,9 @@
 */
 
 #include "Frame.h"
-#include "WindowIDs.h"
 #include "Preferences/PreferencesDialog.h"
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
+#include "CodeSmithy/UIImplementation/WindowIDs.h"
 #include <wx/menu.h>
 #include <wx/filedlg.h>
 
@@ -84,6 +84,8 @@ void Frame::OpenFile(const wxString& file)
             }
             else
             {
+                ProjectChoiceDialog projectChoiceDialog(this);
+                projectChoiceDialog.ShowModal();
             }
         }
     }
