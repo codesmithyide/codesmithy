@@ -25,5 +25,12 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
     headers
     {
         ../../../Include/CodeSmithy/UIImplementation/linkoptions.h
+
+        ../../../Include/CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h
+    }
+
+    sources
+    {
+        ../../Source/ControlCreationDocumentTypeData.cpp
     }
 }
