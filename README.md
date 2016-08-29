@@ -8,7 +8,7 @@ This repository contains the source code for the main components of the IDE.
 ## Contents
 
 - Include - Common directory for public header files of all components
-- Core - Library containing all code that is not UI-related.
+- Core - Library containing all the code that is not UI-related.
 - Make - Command line build tool.
 - UI
  - UI
