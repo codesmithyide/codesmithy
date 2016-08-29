@@ -50,14 +50,18 @@ private:
     class CustomEventHandlerData : public wxObject
     {
     public:
-        CustomEventHandlerData(const std::string& documentTypeName, wxChoice* associationChoice);
+        CustomEventHandlerData(const std::string& documentTypeName, wxChoice* associationChoice,
+            wxChoice* actionChoice);
 
         const std::string& documentTypeName() const;
         FileTypeAssociation::EAssociation association() const;
+        FileTypeAssociation::EActionType actionType() const;
+        std::string projectName() const;
 
     private:
         std::string m_documentTypeName;
         wxChoice* m_associationChoice;
+        wxChoice* m_actionChoice;
     };
 
 private:

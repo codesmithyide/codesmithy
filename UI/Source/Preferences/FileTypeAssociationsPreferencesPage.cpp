@@ -75,7 +75,6 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             actionChoices.Add("Open With");
             wxChoice* actionChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxDefaultSize, actionChoices);
-            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice));
             if (isRegistered)
             {
                 if (isDefault)
@@ -102,6 +101,9 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             wxChoice* projectChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
             projectChoice->SetSelection(0);
+
+            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
+            projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
 
             fileTypeAssociationsSizer->Add(fileTypeName, 0, wxEXPAND);
             fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
@@ -167,6 +169,7 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
     {
         FileTypeAssociation::shared_ptr association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
         association->setAssociation(data->association());
+        association->setAction(data->actionType(), data->projectName());
         m_updatedFileTypeAssociations.set(association);
     }
     if (m_updatedFileTypeAssociations.size() != 0)
@@ -211,8 +214,9 @@ void FileTypeAssociationsPreferencesPage::OnApply(wxCommandEvent& evt)
 }
 
 FileTypeAssociationsPreferencesPage::CustomEventHandlerData::CustomEventHandlerData(const std::string& documentTypeName, 
-                                                                                    wxChoice* associationChoice)
-    : m_documentTypeName(documentTypeName), m_associationChoice(associationChoice)
+                                                                                    wxChoice* associationChoice,
+                                                                                    wxChoice* actionChoice)
+    : m_documentTypeName(documentTypeName), m_associationChoice(associationChoice), m_actionChoice(actionChoice)
 {
 }
 
@@ -236,6 +240,33 @@ FileTypeAssociation::EAssociation FileTypeAssociationsPreferencesPage::CustomEve
 
     default:
         return FileTypeAssociation::eDisabled;
+    }
+}
+
+FileTypeAssociation::EActionType FileTypeAssociationsPreferencesPage::CustomEventHandlerData::actionType() const
+{
+    switch (m_actionChoice->GetSelection())
+    {
+    case 0:
+        return FileTypeAssociation::eAskAtStartup;
+
+    case 1:
+        return FileTypeAssociation::eStandalone;
+
+    default:
+        return FileTypeAssociation::eProjectType;
+    }
+}
+
+std::string FileTypeAssociationsPreferencesPage::CustomEventHandlerData::projectName() const
+{
+    if (m_actionChoice->GetSelection() >= 2)
+    {
+        return m_actionChoice->GetStringSelection();
+    }
+    else
+    {
+        return "";
     }
 }
 
