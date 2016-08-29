@@ -43,6 +43,9 @@ Frame::Frame(const wxString& title,
 
 void Frame::OpenFile(const wxString& file)
 {
+    bool standalone = false;
+    std::string documentTypeName;
+
     boost::filesystem::path selectedPath(file);
     if (selectedPath.has_extension())
     {
@@ -64,6 +67,7 @@ void Frame::OpenFile(const wxString& file)
                 suitableDocumentTypes.push_back(m_appSettings.documentTypes()[i]);
             }
         }
+
         if (suitableDocumentTypes.size() == 1)
         {
             std::vector<std::shared_ptr<const ProjectType> > suitableProjectTypes;
@@ -84,6 +88,7 @@ void Frame::OpenFile(const wxString& file)
                 }
                 else if (association->actionType() == FileTypeAssociation::eStandalone)
                 {
+                    documentTypeName = association->documentTypeName();
                 }
                 else if (association->actionType() == FileTypeAssociation::eProjectType)
                 {
@@ -99,6 +104,14 @@ void Frame::OpenFile(const wxString& file)
                     }
                 }
             }
+        }
+    }
+
+    if (standalone)
+    {
+        if (!documentTypeName.empty())
+        {
+            std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
         }
     }
 }
