@@ -100,7 +100,22 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             }
             wxChoice* projectChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxSize(200, wxDefaultCoord), projectChoices);
-            projectChoice->SetSelection(0);
+            if (associations[i]->actionType() == FileTypeAssociation::eAskAtStartup)
+            {
+                projectChoice->SetSelection(0);
+            }
+            else if (associations[i]->actionType() == FileTypeAssociation::eStandalone)
+            {
+                projectChoice->SetSelection(1);
+            }
+            else
+            {
+                int n = projectChoice->FindString(associations[i]->associatedProjectTypeName());
+                if (n >= 2)
+                {
+                    projectChoice->SetSelection(n);
+                }
+            }
 
             actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
             projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
