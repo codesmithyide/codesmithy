@@ -23,9 +23,15 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

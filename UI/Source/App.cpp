@@ -47,7 +47,7 @@ App::App()
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>());
     m_documentTypes->add(std::make_shared<XMLDocumentType>());
-	
+
     // This is the list of project types supported by the
     // the CodeSmithy UI. There is no dynamic way to add project
     // types (via plugins for instance) at this stage.
