@@ -21,3 +21,25 @@
 */
 
 #include "DocumentsTestSequence.h"
+#include "BakefileTypeTests.h"
+#include "BakefileTests.h"
+#include "CMakeListsTypeTests.h"
+#include "CodeSmithyProjectFileTypeTests.h"
+#include "CppFileTypeTests.h"
+#include "XMLDocumentTypeTests.h"
+#include "DocumentTypesTests.h"
+#include "DocumentsTests.h"
+
+void AddDocumentsTestSequence(TestHarness& theTestHarness)
+{
+    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+
+    AddBakefileTypeTests(documentsTestSequence);
+    AddBakefileTests(documentsTestSequence);
+    AddCMakeListsTypeTests(documentsTestSequence);
+    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
+    AddCppFileTypeTests(documentsTestSequence);
+    AddXMLDocumentTypeTests(documentsTestSequence);
+    AddDocumentTypesTests(documentsTestSequence);
+    AddDocumentsTests(documentsTestSequence);
+}

@@ -27,6 +27,8 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddDocumentsTests(TestHarness& theTestHarness);
+void AddDocumentsTests(TestSequence& testSequence);
+
+TestResult::EOutcome DocumentsCreationTest1();
 
 #endif

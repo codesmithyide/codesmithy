@@ -33,4 +33,9 @@ Documents::~Documents()
 {
 }
 
+size_t Documents::size() const
+{
+    return m_documents.size();
+}
+
 }

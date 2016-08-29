@@ -21,23 +21,24 @@
 */
 
 #include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
-#include "BakefileTests.h"
-#include "CMakeListsTypeTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/Documents.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddDocumentsTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* documentsTestSequence = new TestSequence("Documents tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddBakefileTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", DocumentsCreationTest1, *documentsTestSequence);
+}
+
+TestResult::EOutcome DocumentsCreationTest1()
+{
+    CodeSmithy::Documents documents;
+    if (documents.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

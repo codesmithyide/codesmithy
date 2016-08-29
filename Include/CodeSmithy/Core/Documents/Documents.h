@@ -41,6 +41,8 @@ public:
     Documents();
     ~Documents();
 
+    size_t size() const;
+
 private:
     std::vector<std::shared_ptr<Document> > m_documents;
 };

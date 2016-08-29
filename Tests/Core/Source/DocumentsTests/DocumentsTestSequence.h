@@ -23,4 +23,10 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSTESTSEQUENCE_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSTESTSEQUENCE_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddDocumentsTestSequence(TestHarness& theTestHarness);
+
 #endif
