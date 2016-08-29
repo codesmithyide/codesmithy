@@ -23,4 +23,22 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGER_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGER_H_
 
+#include "Documents/Document.h"
+#include <vector>
+
+namespace CodeSmithy
+{
+
+class DocumentManager
+{
+public:
+    DocumentManager();
+    ~DocumentManager();
+
+private:
+    //std::vector<std::shar
+};
+
+}
+
 #endif

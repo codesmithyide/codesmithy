@@ -21,3 +21,16 @@
 */
 
 #include "Documents/DocumentManager.h"
+
+namespace CodeSmithy
+{
+
+DocumentManager::DocumentManager()
+{
+}
+
+DocumentManager::~DocumentManager()
+{
+}
+
+}

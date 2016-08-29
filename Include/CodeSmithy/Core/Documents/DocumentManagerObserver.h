@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGEROBSERVER_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGEROBSERVER_H_
 
+namespace CodeSmithy
+{
+
+class DocumentManagerObserver
+{
+};
+
+}
+
 #endif
