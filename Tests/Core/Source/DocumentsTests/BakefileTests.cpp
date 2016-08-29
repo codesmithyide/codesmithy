@@ -32,5 +32,6 @@ void AddBakefileTests(TestSequence& testSequence)
 
 TestResult::EOutcome BakefileCreationTest1()
 {
-    return TestResult::eFailed;
+    CodeSmithy::Bakefile document;
+    return TestResult::ePassed;
 }

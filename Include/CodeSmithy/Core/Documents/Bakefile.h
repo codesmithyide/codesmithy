@@ -23,4 +23,15 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_BAKEFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_BAKEFILE_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class Bakefile : public Document
+{
+};
+
+}
+
 #endif
