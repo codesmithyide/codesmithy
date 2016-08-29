@@ -160,8 +160,11 @@
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CMakeLists.cpp" />
     <ClCompile Include="..\..\Source\Documents\CMakeListsType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\CppFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\CppFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\XMLDocument.cpp" />
     <ClCompile Include="..\..\Source\Documents\XMLDocumentType.cpp" />
     <ClCompile Include="..\..\Source\Projects\Project.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
@@ -191,8 +194,11 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeLists.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
