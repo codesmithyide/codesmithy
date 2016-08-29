@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,24 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests.h"
-#include "BakefileTypeTests.h"
 #include "BakefileTests.h"
-#include "CMakeListsTypeTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CppFileTypeTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "DocumentTypesTests.h"
+#include "CodeSmithy/Core/Documents/Bakefile.h"
 
-void AddDocumentsTests(TestHarness& theTestHarness)
+void AddBakefileTests(TestSequence& testSequence)
 {
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+    TestSequence* bakefileTestSequence = new TestSequence("Bakefile tests", testSequence);
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddBakefileTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", BakefileCreationTest1, *bakefileTestSequence);
+}
+
+TestResult::EOutcome BakefileCreationTest1()
+{
+    return TestResult::eFailed;
 }
