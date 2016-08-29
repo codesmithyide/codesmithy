@@ -35,6 +35,9 @@
     <ClInclude Include="..\..\Source\DocumentsTests\CMakeListsTypeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\DocumentsTests\CMakeListsTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTypeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -89,6 +92,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\CMakeListsTypeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DocumentsTests\CMakeListsTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTypeTests.cpp">

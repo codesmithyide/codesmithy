@@ -22,18 +22,35 @@
 
 #include "DocumentsTests.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
+#include "CodeSmithy/Core/Documents/Bakefile.h"
 
 void AddDocumentsTests(TestSequence& testSequence)
 {
     TestSequence* documentsTestSequence = new TestSequence("Documents tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", DocumentsCreationTest1, *documentsTestSequence);
+
+    new HeapAllocationErrorsTest("add test 1", DocumentsAddTest1, *documentsTestSequence);
 }
 
 TestResult::EOutcome DocumentsCreationTest1()
 {
     CodeSmithy::Documents documents;
     if (documents.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome DocumentsAddTest1()
+{
+    CodeSmithy::Documents documents;
+    documents.add(std::make_shared<CodeSmithy::Bakefile>());
+    if (documents.size() == 1)
     {
         return TestResult::ePassed;
     }
