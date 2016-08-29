@@ -20,25 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
-#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
-
 #include "Documents/Document.h"
-#include <vector>
-
-namespace CodeSmithy
-{
-
-class Documents
-{
-public:
-    Documents();
-    ~Documents();
-
-private:
-    //std::vector<std::shar
-};
-
-}
-
-#endif

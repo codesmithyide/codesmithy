@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2015-2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,13 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGEROBSERVER_H_
-#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTMANAGEROBSERVER_H_
+#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTSOBSERVER_H_
+#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTSOBSERVER_H_
 
 namespace CodeSmithy
 {
 
-class DocumentManagerObserver
+class DocumentsObserver
 {
 };
 

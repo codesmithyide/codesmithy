@@ -27,6 +27,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Documents/DocumentType.h
         ../../../Include/CodeSmithy/Core/Documents/CustomDocumentTypeData.h
         ../../../Include/CodeSmithy/Core/Documents/DocumentTypes.h
+        ../../../Include/CodeSmithy/Core/Documents/Document.h
         ../../../Include/CodeSmithy/Core/Documents/Documents.h
         ../../../Include/CodeSmithy/Core/Documents/DocumentsObserver.h
         ../../../Include/CodeSmithy/Core/Documents/BakefileType.h
@@ -62,6 +63,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Documents/DocumentType.cpp
         ../../Source/Documents/CustomDocumentTypeData.cpp
         ../../Source/Documents/DocumentTypes.cpp
+        ../../Source/Documents/Document.cpp
         ../../Source/Documents/Documents.cpp
         ../../Source/Documents/DocumentsObserver.cpp
         ../../Source/Documents/BakefileType.cpp

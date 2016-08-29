@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
+    <ClCompile Include="..\..\Source\Documents\Document.cpp" />
     <ClCompile Include="..\..\Source\Documents\Documents.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentsObserver.cpp" />
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Document.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentsObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
