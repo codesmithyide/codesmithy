@@ -20,9 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "PreferencesDialog.h"
-#include "FileTypeAssociationsPreferencesPage.h"
-#include "CodeSmithy/UIImplementation/WindowIDs.h"
+#include "Preferences/PreferencesDialog.h"
+#include "Preferences/FileTypeAssociationsPreferencesPage.h"
+#include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
 

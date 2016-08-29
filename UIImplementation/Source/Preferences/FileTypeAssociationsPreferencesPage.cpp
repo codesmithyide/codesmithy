@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#include "FileTypeAssociationsPreferencesPage.h"
-#include "CodeSmithy/UIImplementation/WindowIDs.h"
+#include "Preferences/FileTypeAssociationsPreferencesPage.h"
+#include "WindowIDs.h"
 
 namespace CodeSmithy
 {

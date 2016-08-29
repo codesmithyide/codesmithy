@@ -21,7 +21,7 @@
 */
 
 #include "Frame.h"
-#include "Preferences/PreferencesDialog.h"
+#include "CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h"
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
 #include <wx/menu.h>
