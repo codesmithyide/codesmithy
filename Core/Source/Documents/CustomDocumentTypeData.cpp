@@ -21,3 +21,16 @@
 */
 
 #include "Documents/CustomDocumentTypeData.h"
+
+namespace CodeSmithy
+{
+
+CustomDocumentTypeData::CustomDocumentTypeData()
+{
+}
+
+CustomDocumentTypeData::~CustomDocumentTypeData()
+{
+}
+
+}

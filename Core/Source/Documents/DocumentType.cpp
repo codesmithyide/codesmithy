@@ -60,6 +60,16 @@ bool DocumentType::hasExtension(const boost::filesystem::path& extension) const
     return false;
 }
 
+std::shared_ptr<const CustomDocumentTypeData> DocumentType::customData() const
+{
+    return m_customData;
+}
+
+void DocumentType::setCustomData(std::shared_ptr<CustomDocumentTypeData> customData)
+{
+    m_customData = customData;
+}
+
 void DocumentType::appendExtension(const std::string& extension)
 {
     m_extensions.push_back(extension);

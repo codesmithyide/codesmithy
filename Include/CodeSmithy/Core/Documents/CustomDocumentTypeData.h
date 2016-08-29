@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_CUSTOMDOCUMENTTYPEDATA_H_
 #define _CODESMITHY_CORE_DOCUMENTS_CUSTOMDOCUMENTTYPEDATA_H_
 
+namespace CodeSmithy
+{
+
+class CustomDocumentTypeData
+{
+public:
+    CustomDocumentTypeData();
+    virtual ~CustomDocumentTypeData();
+};
+
+}
+
 #endif

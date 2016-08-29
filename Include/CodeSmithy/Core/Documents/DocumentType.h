@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTTYPE_H_
 
+#include "CustomDocumentTypeData.h"
 #include <boost/filesystem/path.hpp>
 #include <string>
 #include <vector>
@@ -44,12 +45,16 @@ public:
     const std::vector<std::string>& extensions() const;
     bool hasExtension(const boost::filesystem::path& extension) const;
 
+    std::shared_ptr<const CustomDocumentTypeData> customData() const;
+    void setCustomData(std::shared_ptr<CustomDocumentTypeData> customData);
+
 protected:
     void appendExtension(const std::string& extension);
 
 private:
     std::string m_name;
     std::vector<std::string> m_extensions;
+    std::shared_ptr<CustomDocumentTypeData> m_customData;
 };
 
 }
