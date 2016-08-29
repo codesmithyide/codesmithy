@@ -14,6 +14,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
 
     headers
     {
+        ../../Source/DocumentsTests/DocumentsTestSequence.h
         ../../Source/DocumentsTests/DocumentsTests.h
         ../../Source/DocumentsTests/DocumentTypesTests.h
         ../../Source/DocumentsTests/BakefileTypeTests.h
@@ -37,6 +38,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
     {
         ../../Source/main.cpp
 
+        ../../Source/DocumentsTests/DocumentsTestSequence.cpp
         ../../Source/DocumentsTests/DocumentsTests.cpp
         ../../Source/DocumentsTests/DocumentTypesTests.cpp
         ../../Source/DocumentsTests/BakefileTypeTests.cpp

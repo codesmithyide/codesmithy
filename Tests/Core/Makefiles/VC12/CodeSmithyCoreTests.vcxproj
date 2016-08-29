@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\DocumentsTests\DocumentsTestSequence.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentsTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentTypesTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\BakefileTypeTests.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTestSequence.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentTypesTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\BakefileTypeTests.h" />
