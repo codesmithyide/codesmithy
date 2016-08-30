@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,43 +20,27 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
-#define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
+#ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
+#define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 
-#include "Document.h"
-#include "DocumentsObserver.h"
-#include <vector>
-#include <memory>
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "CodeSmithy/Core/Documents/DocumentsObserver.h"
+#
+using namespace Ishiko::TestFramework;
 
-namespace CodeSmithy
-{
+void AddDocumentsObserverTests(TestSequence& testSequence);
 
-// The UI will have one or more open documents being viewed 
-// or edited. The UI needs to be informed of certain events
-// related to the documents. The Documents class serves that
-// purpose. It has a list of all the documents that are part
-// of the workspace across all projects.
-class Documents
+TestResult::EOutcome DocumentsObserverOnAddTest1();
+
+class TestDocumentsObserver : public CodeSmithy::DocumentsObserver
 {
 public:
-    Documents();
-    ~Documents();
+    const std::vector<std::shared_ptr<const CodeSmithy::Document> >& observedDocuments() const;
 
-    size_t size() const;
-    std::shared_ptr<const Document> operator[](size_t index) const;
-
-    void add(std::shared_ptr<Document> document);
-
-    void addObserver(std::shared_ptr<DocumentsObserver> observer);
+    void onAdd(std::shared_ptr<CodeSmithy::Document> document) override;
 
 private:
-    void notifyAdd(std::shared_ptr<Document> document);
-
-private:
-    std::vector<std::shared_ptr<Document> > m_documents;
-    std::vector<std::shared_ptr<DocumentsObserver> > m_observers;
+    std::vector<std::shared_ptr<const CodeSmithy::Document> > m_observedDocuments;
 };
-
-}
 
 #endif

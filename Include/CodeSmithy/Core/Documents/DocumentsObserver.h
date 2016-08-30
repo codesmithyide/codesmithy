@@ -23,11 +23,16 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTSOBSERVER_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTSOBSERVER_H_
 
+#include "Document.h"
+#include <memory>
+
 namespace CodeSmithy
 {
 
 class DocumentsObserver
 {
+public:
+    virtual void onAdd(std::shared_ptr<Document> document);
 };
 
 }

@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\DocumentsTests\DocumentsObserverTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentTypesTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -89,6 +92,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentsTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DocumentsTests\DocumentsObserverTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\DocumentTypesTests.cpp">

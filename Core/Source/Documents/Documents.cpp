@@ -38,9 +38,28 @@ size_t Documents::size() const
     return m_documents.size();
 }
 
+std::shared_ptr<const Document> Documents::operator[](size_t index) const
+{
+    return m_documents[index];
+}
+
 void Documents::add(std::shared_ptr<Document> document)
 {
     m_documents.push_back(document);
+    notifyAdd(document);
+}
+
+void Documents::addObserver(std::shared_ptr<DocumentsObserver> observer)
+{
+    m_observers.push_back(observer);
+}
+
+void Documents::notifyAdd(std::shared_ptr<Document> document)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        m_observers[i]->onAdd(document);
+    }
 }
 
 }

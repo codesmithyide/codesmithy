@@ -21,3 +21,12 @@
 */
 
 #include "Documents/DocumentsObserver.h"
+
+namespace CodeSmithy
+{
+
+void DocumentsObserver::onAdd(std::shared_ptr<Document> document)
+{
+}
+
+}

@@ -33,6 +33,7 @@
 #include "XMLDocumentTests.h"
 #include "DocumentTypesTests.h"
 #include "DocumentsTests.h"
+#include "DocumentsObserverTests.h"
 
 void AddDocumentsTestSequence(TestHarness& theTestHarness)
 {
@@ -50,4 +51,5 @@ void AddDocumentsTestSequence(TestHarness& theTestHarness)
     AddXMLDocumentTests(documentsTestSequence);
     AddDocumentTypesTests(documentsTestSequence);
     AddDocumentsTests(documentsTestSequence);
+    AddDocumentsObserverTests(documentsTestSequence);
 }
