@@ -150,6 +150,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ActiveDocument.cpp" />
+    <ClCompile Include="..\..\Source\ActiveDocumentObserver.cpp" />
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
@@ -158,6 +160,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocument.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocumentObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />

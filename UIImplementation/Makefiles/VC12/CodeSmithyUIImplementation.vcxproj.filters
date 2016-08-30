@@ -23,6 +23,12 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocumentObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -37,6 +43,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ActiveDocument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ActiveDocumentObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
