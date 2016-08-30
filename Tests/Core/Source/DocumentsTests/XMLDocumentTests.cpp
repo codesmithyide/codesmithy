@@ -34,7 +34,7 @@ void AddXMLDocumentTests(TestSequence& testSequence)
 TestResult::EOutcome XMLDocumentCreationTest1()
 {
     std::shared_ptr<CodeSmithy::XMLDocumentType> xmlDocumentType = std::make_shared<CodeSmithy::XMLDocumentType>();
-    CodeSmithy::XMLDocument document(xmlDocumentType);
+    CodeSmithy::XMLDocument document(xmlDocumentType, "XMLDocumentCreationTest1");
     if (document.type().name() == "XML")
     {
         return TestResult::ePassed;

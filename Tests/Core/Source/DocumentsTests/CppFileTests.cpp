@@ -34,7 +34,7 @@ void AddCppFileTests(TestSequence& testSequence)
 TestResult::EOutcome CppFileCreationTest1()
 {
     std::shared_ptr<CodeSmithy::CppFileType> cppFileType = std::make_shared<CodeSmithy::CppFileType>();
-    CodeSmithy::CppFile document(cppFileType);
+    CodeSmithy::CppFile document(cppFileType, "CppFileCreationTest1");
     if (document.type().name() == "C++ Source File")
     {
         return TestResult::ePassed;

@@ -34,7 +34,7 @@ void AddCodeSmithyProjectFileTests(TestSequence& testSequence)
 TestResult::EOutcome CodeSmithyProjectFileCreationTest1()
 {
     std::shared_ptr<CodeSmithy::CodeSmithyProjectFileType> projectFileType = std::make_shared<CodeSmithy::CodeSmithyProjectFileType>();
-    CodeSmithy::CodeSmithyProjectFile document(projectFileType);
+    CodeSmithy::CodeSmithyProjectFile document(projectFileType, "CodeSmithyProjectFileCreationTest1");
     if (document.type().name() == "CodeSmithy Project File")
     {
         return TestResult::ePassed;

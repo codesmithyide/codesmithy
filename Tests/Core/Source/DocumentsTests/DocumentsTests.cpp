@@ -57,7 +57,7 @@ TestResult::EOutcome DocumentsAddTest1()
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
-    documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType));
+    documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, "DocumentsAddTest1"));
     if (documents.size() == 1)
     {
         return TestResult::ePassed;
