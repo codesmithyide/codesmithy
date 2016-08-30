@@ -41,10 +41,19 @@
     <ClInclude Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTypeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DocumentsTests\CppFileTypeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\DocumentsTests\CppFileTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DocumentsTests\XMLDocumentTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h">
@@ -100,10 +109,19 @@
     <ClCompile Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTypeTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\DocumentsTests\CodeSmithyProjectFileTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\CppFileTypeTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\DocumentsTests\CppFileTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DocumentsTests\XMLDocumentTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp">

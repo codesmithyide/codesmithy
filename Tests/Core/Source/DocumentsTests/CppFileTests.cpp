@@ -20,34 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTestSequence.h"
-#include "BakefileTypeTests.h"
-#include "BakefileTests.h"
-#include "CMakeListsTypeTests.h"
-#include "CMakeListsTests.h"
-#include "CodeSmithyProjectFileTypeTests.h"
-#include "CodeSmithyProjectTypeTests.h"
-#include "CppFileTypeTests.h"
 #include "CppFileTests.h"
-#include "XMLDocumentTypeTests.h"
-#include "XMLDocumentTests.h"
-#include "DocumentTypesTests.h"
-#include "DocumentsTests.h"
-
-void AddDocumentsTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
-
-    AddBakefileTypeTests(documentsTestSequence);
-    AddBakefileTests(documentsTestSequence);
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCMakeListsTests(documentTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddCppFileTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
-    AddXMLDocumentTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
-    AddDocumentsTests(documentsTestSequence);
-}

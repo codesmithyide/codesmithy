@@ -22,8 +22,11 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/DocumentsTests/CMakeListsTypeTests.h
         ../../Source/DocumentsTests/CMakeListsTests.h
         ../../Source/DocumentsTests/CodeSmithyProjectFileTypeTests.h
+        ../../Source/DocumentsTests/CodeSmithyProjectFileTests.h
         ../../Source/DocumentsTests/CppFileTypeTests.h
+        ../../Source/DocumentsTests/CppFileTests.h
         ../../Source/DocumentsTests/XMLDocumentTypeTests.h
+        ../../Source/DocumentsTests/XMLDocumentTests.h
 
         ../../Source/ProjectTests/ProjectTests.h
         ../../Source/ProjectTests/ParentProjectTypeTests.h
@@ -47,8 +50,11 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/DocumentsTests/CMakeListsTypeTests.cpp
         ../../Source/DocumentsTests/CMakeListsTests.cpp
         ../../Source/DocumentsTests/CodeSmithyProjectFileTypeTests.cpp
+        ../../Source/DocumentsTests/CodeSmithyProjectFileTests.cpp
         ../../Source/DocumentsTests/CppFileTypeTests.cpp
+        ../../Source/DocumentsTests/CppFileTests.cpp
         ../../Source/DocumentsTests/XMLDocumentTypeTests.cpp
+        ../../Source/DocumentsTests/XMLDocumentTests.cpp
 
         ../../Source/ProjectTests/ProjectTests.cpp
         ../../Source/ProjectTests/ParentProjectTypeTests.cpp
