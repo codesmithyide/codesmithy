@@ -38,4 +38,9 @@ size_t Documents::size() const
     return m_documents.size();
 }
 
+void Documents::add(std::shared_ptr<Document> document)
+{
+    m_documents.push_back(document);
+}
+
 }

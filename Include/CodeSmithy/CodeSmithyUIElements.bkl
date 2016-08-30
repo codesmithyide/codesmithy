@@ -1,7 +1,9 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/wxWidgets.bkl;
+codesmithypath = envvar("CODESMITHY");
+import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-template CodeSmithyUIElements : wxWidgets
+template CodeSmithyUIElements : wxWidgets, CodeSmithyCore
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
     libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);

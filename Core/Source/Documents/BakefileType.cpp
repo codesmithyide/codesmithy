@@ -21,6 +21,7 @@
 */
 
 #include "Documents/BakefileType.h"
+#include "Documents/Bakefile.h"
 
 namespace CodeSmithy
 {
@@ -34,6 +35,11 @@ BakefileType::BakefileType(std::shared_ptr<CustomDocumentTypeData> customData)
     : DocumentType("Bakefile", "bkl")
 {
     setCustomData(customData);
+}
+
+std::shared_ptr<Document> BakefileType::createDocument() const
+{
+    return std::make_shared<Bakefile>();
 }
 
 }

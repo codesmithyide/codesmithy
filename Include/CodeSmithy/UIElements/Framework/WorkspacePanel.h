@@ -25,6 +25,7 @@
 
 #include "StartPage.h"
 #include "OpenDocumentsCtrl.h"
+#include "CodeSmithy/Core/Documents/Documents.h"
 #include <wx/panel.h>
 
 namespace CodeSmithy
@@ -33,7 +34,7 @@ namespace CodeSmithy
 class WorkspacePanel : public wxPanel
 {
 public:
-    WorkspacePanel(wxWindow* parent);
+    WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents);
 
 private:
     StartPage* m_startPage;

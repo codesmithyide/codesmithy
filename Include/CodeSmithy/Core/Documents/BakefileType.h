@@ -33,6 +33,8 @@ class BakefileType : public DocumentType
 public:
     BakefileType();
     BakefileType(std::shared_ptr<CustomDocumentTypeData> customData);
+
+    std::shared_ptr<Document> createDocument() const override;
 };
 
 }

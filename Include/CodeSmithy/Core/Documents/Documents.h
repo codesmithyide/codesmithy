@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
 
 #include "Document.h"
+#include "DocumentsObserver.h"
 #include <vector>
 #include <memory>
 
@@ -43,8 +44,11 @@ public:
 
     size_t size() const;
 
+    void add(std::shared_ptr<Document> document);
+
 private:
     std::vector<std::shared_ptr<Document> > m_documents;
+    std::vector<std::shared_ptr<DocumentsObserver> > m_observers;
 };
 
 }

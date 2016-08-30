@@ -38,7 +38,8 @@ Frame::Frame(const wxString& title,
 {
     CreateMenuBar();
 
-    m_workspacePanel = new WorkspacePanel(this);
+    m_documents = std::make_shared<Documents>();
+    m_workspacePanel = new WorkspacePanel(this, m_documents);
 }
 
 void Frame::OpenFile(const wxString& file)
@@ -112,6 +113,7 @@ void Frame::OpenFile(const wxString& file)
         if (!documentTypeName.empty())
         {
             std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
+            //std::shared_ptr<Document> document = documentType->
         }
     }
 }

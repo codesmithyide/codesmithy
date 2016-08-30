@@ -26,7 +26,8 @@
 namespace CodeSmithy
 {
 
-WorkspacePanel::WorkspacePanel(wxWindow* parent)
+WorkspacePanel::WorkspacePanel(wxWindow* parent, 
+                               std::shared_ptr<Documents> documents)
     : wxPanel(parent, wxID_ANY)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
