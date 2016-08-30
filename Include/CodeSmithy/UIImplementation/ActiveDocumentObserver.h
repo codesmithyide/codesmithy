@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENTOBSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENTOBSERVER_H_
 
+namespace CodeSmithy
+{
+
+class ActiveDocumentObserver
+{
+};
+
+}
+
 #endif

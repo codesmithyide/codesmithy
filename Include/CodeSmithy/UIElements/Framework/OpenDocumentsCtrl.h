@@ -36,6 +36,9 @@ public:
     OpenDocumentsCtrl(wxWindow* parent);
 
     void AddDocument(std::shared_ptr<Document> document);
+
+private:
+    void OnPageChanged(wxAuiNotebookEvent& evt);
 };
 
 }

@@ -23,4 +23,26 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENT_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENT_H_
 
+#include "CodeSmithy/Core/Documents/Document.h"
+
+namespace CodeSmithy
+{
+
+// This class keeps track of which document is
+// the active one and notifies observers when 
+// another document becomes the active document.
+class ActiveDocument
+{
+public:
+    ActiveDocument();
+
+    std::shared_ptr<const Document> activeDocument() const;
+    void setActiveDocument(std::shared_ptr<const Document> activeDocument);
+
+private:
+    std::shared_ptr<const Document> m_activeDocument;
+};
+
+}
+
 #endif

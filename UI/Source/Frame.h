@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UI_FRAME_H_
 #define _CODESMITHY_UI_FRAME_H_
 
+#include "CodeSmithy/UIImplementation/ActiveDocument.h"
 #include "CodeSmithy/UIElements/Framework/WorkspacePanel.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
@@ -49,6 +50,7 @@ private:
 private:
     AppSettings m_appSettings;
     std::shared_ptr<Documents> m_documents;
+    ActiveDocument m_activeDocument;
     WorkspacePanel* m_workspacePanel;
 
     wxDECLARE_EVENT_TABLE();

@@ -131,6 +131,10 @@ void Frame::CreateMenuBar()
     menuFile->AppendSubMenu(menuFileOpen, "&Open");
 
     menuFile->AppendSeparator();
+    wxMenuItem* closeMenuItem = menuFile->Append(wxID_CLOSE);
+    closeMenuItem->Enable(false);
+	
+    menuFile->AppendSeparator();
     menuFile->Append(wxID_PREFERENCES, "&Preferences...");
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);

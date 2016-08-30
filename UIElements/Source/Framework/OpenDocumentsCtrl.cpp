@@ -30,6 +30,7 @@ namespace CodeSmithy
 OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent)
     : wxAuiNotebook(parent)
 {
+    Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::OnPageChanged, this);
 }
 
 void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
@@ -41,6 +42,10 @@ void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
         wxWindow* newPage = data->CreateDocumentCtrl(this);
         AddPage(newPage, document->name());
     }
+}
+
+void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
+{
 }
 
 }

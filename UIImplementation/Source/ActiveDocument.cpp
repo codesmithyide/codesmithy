@@ -21,3 +21,22 @@
 */
 
 #include "ActiveDocument.h"
+
+namespace CodeSmithy
+{
+
+ActiveDocument::ActiveDocument()
+{
+}
+
+std::shared_ptr<const Document> ActiveDocument::activeDocument() const
+{
+    return m_activeDocument;
+}
+
+void ActiveDocument::setActiveDocument(std::shared_ptr<const Document> activeDocument)
+{
+    m_activeDocument = activeDocument;
+}
+
+}
