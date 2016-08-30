@@ -49,16 +49,37 @@ void Documents::add(std::shared_ptr<Document> document)
     notifyAdd(document);
 }
 
-void Documents::addObserver(std::shared_ptr<DocumentsObserver> observer)
+void Documents::addObserver(std::weak_ptr<DocumentsObserver> observer)
 {
     m_observers.push_back(observer);
+}
+
+void Documents::removeObserver(std::weak_ptr<DocumentsObserver> observer)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        if (m_observers[i].lock().get() == observer.lock().get())
+        {
+            m_observers.erase(m_observers.begin() + i);
+            break;
+        }
+    }
+}
+
+const std::vector<std::weak_ptr<DocumentsObserver> >& Documents::observers() const
+{
+    return m_observers;
 }
 
 void Documents::notifyAdd(std::shared_ptr<Document> document)
 {
     for (size_t i = 0; i < m_observers.size(); ++i)
     {
-        m_observers[i]->onAdd(document);
+        std::shared_ptr<DocumentsObserver> observer = m_observers[i].lock();
+        if (observer)
+        {
+            observer->onAdd(document);
+        }
     }
 }
 

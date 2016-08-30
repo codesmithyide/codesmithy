@@ -47,14 +47,18 @@ public:
 
     void add(std::shared_ptr<Document> document);
 
-    void addObserver(std::shared_ptr<DocumentsObserver> observer);
+    void addObserver(std::weak_ptr<DocumentsObserver> observer);
+    void removeObserver(std::weak_ptr<DocumentsObserver> observer);
+    // There should be no need to query the list of observers, this method
+    // is supposed to be used for testing only
+    const std::vector<std::weak_ptr<DocumentsObserver> >& observers() const;
 
 private:
     void notifyAdd(std::shared_ptr<Document> document);
 
 private:
     std::vector<std::shared_ptr<Document> > m_documents;
-    std::vector<std::shared_ptr<DocumentsObserver> > m_observers;
+    std::vector<std::weak_ptr<DocumentsObserver> > m_observers;
 };
 
 }

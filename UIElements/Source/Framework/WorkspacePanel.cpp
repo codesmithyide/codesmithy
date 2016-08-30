@@ -28,14 +28,21 @@ namespace CodeSmithy
 
 WorkspacePanel::WorkspacePanel(wxWindow* parent, 
                                std::shared_ptr<Documents> documents)
-    : wxPanel(parent, wxID_ANY)
+    : wxPanel(parent, wxID_ANY), m_documents(documents)
 {
+    m_documentsObserver = std::make_shared<Observer>();
+    m_documents->addObserver(m_documentsObserver);
+
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     m_startPage = new StartPage(this);
     topSizer->Add(m_startPage, 1, wxEXPAND);
 
     SetSizer(topSizer);
+}
+
+WorkspacePanel::Observer::Observer()
+{
 }
 
 }

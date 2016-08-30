@@ -37,6 +37,15 @@ public:
     WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents);
 
 private:
+    class Observer : public DocumentsObserver
+    {
+    public:
+        Observer();
+    };
+
+private:
+    std::shared_ptr<Documents> m_documents;
+    std::shared_ptr<Observer> m_documentsObserver;
     StartPage* m_startPage;
     OpenDocumentsCtrl* m_openDocuments;
 };

@@ -31,5 +31,9 @@ void AddDocumentsTests(TestSequence& testSequence);
 
 TestResult::EOutcome DocumentsCreationTest1();
 TestResult::EOutcome DocumentsAddTest1();
+TestResult::EOutcome DocumentsAddObserverTest1();
+TestResult::EOutcome DocumentsAddObserverTest2();
+TestResult::EOutcome DocumentsRemoveObserverTest1();
+TestResult::EOutcome DocumentsRemoveObserverTest2();
 
 #endif
