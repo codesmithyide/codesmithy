@@ -21,6 +21,8 @@
 */
 
 #include "Framework/OpenDocumentsCtrl.h"
+#include "CodeSmithy/Core/Documents/DocumentType.h"
+#include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 
 namespace CodeSmithy
 {
@@ -32,16 +34,13 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent)
 
 void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
 {
-    /*
-    std::shared
-    DocumentTypeData::const_ptr data =
-        std::dynamic_pointer_cast<const DocumentTypeData, const CustomAppData>(document->type().appData());
+    std::shared_ptr<const ControlCreationDocumentTypeData> data =
+        std::dynamic_pointer_cast<const ControlCreationDocumentTypeData, const CustomDocumentTypeData>(document->type().customData());
     if (data)
     {
-        wxWindow* newPage = data->CreateDocumentCtrl(this, document);
-        AddPage(newPage, document->name().c_str());
+        wxWindow* newPage = data->CreateDocumentCtrl(this);
+        AddPage(newPage, document->name());
     }
-    */
 }
 
 }

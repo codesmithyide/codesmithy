@@ -89,6 +89,7 @@ void Frame::OpenFile(const wxString& file)
                 }
                 else if (association->actionType() == FileTypeAssociation::eStandalone)
                 {
+                    standalone = true;
                     documentTypeName = association->documentTypeName();
                 }
                 else if (association->actionType() == FileTypeAssociation::eProjectType)
@@ -113,7 +114,7 @@ void Frame::OpenFile(const wxString& file)
         if (!documentTypeName.empty())
         {
             std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
-            std::shared_ptr<Document> document = documentType->createDocument();
+            std::shared_ptr<Document> document = documentType->createDocument(selectedPath.filename().generic_string());
             m_documents->add(document);
         }
     }
