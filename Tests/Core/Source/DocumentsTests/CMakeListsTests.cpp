@@ -22,6 +22,7 @@
 
 #include "CMakeListsTests.h"
 #include "CodeSmithy/Core/Documents/CMakeLists.h"
+#include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
 void AddCMakeListsTests(TestSequence& testSequence)
 {
@@ -32,6 +33,14 @@ void AddCMakeListsTests(TestSequence& testSequence)
 
 TestResult::EOutcome CMakeListsCreationTest1()
 {
-    CodeSmithy::CMakeLists document;
-    return TestResult::ePassed;
+    std::shared_ptr<CodeSmithy::CMakeListsType> cmakelistsType = std::make_shared<CodeSmithy::CMakeListsType>();
+    CodeSmithy::CMakeLists document(cmakelistsType);
+    if (document.type().name() == "CMakeLists")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

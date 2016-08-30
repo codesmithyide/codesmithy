@@ -21,3 +21,13 @@
 */
 
 #include "Documents/CppFile.h"
+
+namespace CodeSmithy
+{
+
+CppFile::CppFile(const std::shared_ptr<const DocumentType> type)
+    : Document(type)
+{
+}
+
+}

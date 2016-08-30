@@ -23,6 +23,7 @@
 #include "DocumentsObserverTests.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include "CodeSmithy/Core/Documents/Bakefile.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 
 void AddDocumentsObserverTests(TestSequence& testSequence)
 {
@@ -39,7 +40,8 @@ TestResult::EOutcome DocumentsObserverOnAddTest1()
     std::shared_ptr<TestDocumentsObserver> observer = std::make_shared<TestDocumentsObserver>();
     documents.addObserver(observer);
 
-    documents.add(std::make_shared<CodeSmithy::Bakefile>());
+    std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
+    documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType));
     if ((observer->observedDocuments().size() == 1) &&
         (observer->observedDocuments()[0].get() == documents[0].get()))
     {

@@ -33,7 +33,7 @@
 namespace CodeSmithy
 {
 
-class DocumentType
+class DocumentType : public std::enable_shared_from_this<DocumentType>
 {
 public:
     DocumentType(const std::string& name);

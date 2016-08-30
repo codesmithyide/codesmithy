@@ -23,11 +23,30 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
+#include <memory>
+
 namespace CodeSmithy
 {
 
+class DocumentType;
+
+// A document is an entity that a user can load, edit 
+// and save. Documents are the basic items that a project
+// manages. A project is essentially a list of related 
+// documents.
+// A document would typically be a file. However documents
+// don't have to reside on the filesystem. They could
+// also be stored in a database for instance.
 class Document
 {
+public:
+    Document(const std::shared_ptr<const DocumentType> type);
+    virtual ~Document();
+
+    const DocumentType& type() const;
+
+private:
+    const std::shared_ptr<const DocumentType> m_type;
 };
 
 }

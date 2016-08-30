@@ -22,6 +22,7 @@
 
 #include "XMLDocumentTests.h"
 #include "CodeSmithy/Core/Documents/XMLDocument.h"
+#include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
 void AddXMLDocumentTests(TestSequence& testSequence)
 {
@@ -32,6 +33,14 @@ void AddXMLDocumentTests(TestSequence& testSequence)
 
 TestResult::EOutcome XMLDocumentCreationTest1()
 {
-    CodeSmithy::XMLDocument document;
-    return TestResult::ePassed;
+    std::shared_ptr<CodeSmithy::XMLDocumentType> xmlDocumentType = std::make_shared<CodeSmithy::XMLDocumentType>();
+    CodeSmithy::XMLDocument document(xmlDocumentType);
+    if (document.type().name() == "XML")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

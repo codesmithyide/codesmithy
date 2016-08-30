@@ -21,3 +21,22 @@
 */
 
 #include "Documents/Document.h"
+
+namespace CodeSmithy
+{
+
+Document::Document(const std::shared_ptr<const DocumentType> type)
+    : m_type(type)
+{
+}
+
+Document::~Document()
+{
+}
+
+const DocumentType& Document::type() const
+{
+    return *m_type;
+}
+
+}

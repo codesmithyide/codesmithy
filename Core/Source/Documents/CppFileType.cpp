@@ -35,7 +35,7 @@ CppFileType::CppFileType()
 
 std::shared_ptr<Document> CppFileType::createDocument() const
 {
-    return std::make_shared<CppFile>();
+    return std::make_shared<CppFile>(shared_from_this());
 }
 
 }

@@ -30,7 +30,7 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
                                std::shared_ptr<Documents> documents)
     : wxPanel(parent, wxID_ANY), m_documents(documents)
 {
-    m_documentsObserver = std::make_shared<Observer>();
+    m_documentsObserver = std::make_shared<Observer>(*this);
     m_documents->addObserver(m_documentsObserver);
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
@@ -41,8 +41,23 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
     SetSizer(topSizer);
 }
 
-WorkspacePanel::Observer::Observer()
+WorkspacePanel::~WorkspacePanel()
 {
+    m_documents->removeObserver(m_documentsObserver);
+}
+
+void WorkspacePanel::OnAdd(std::shared_ptr<Document> document)
+{
+}
+
+WorkspacePanel::Observer::Observer(WorkspacePanel& workspace)
+    : m_workspace(workspace)
+{
+}
+
+void WorkspacePanel::Observer::onAdd(std::shared_ptr<Document> document)
+{
+    m_workspace.OnAdd(document);
 }
 
 }

@@ -30,6 +30,8 @@ namespace CodeSmithy
 
 class XMLDocument : public Document
 {
+public:
+    XMLDocument(const std::shared_ptr<const DocumentType> type);
 };
 
 }

@@ -30,6 +30,8 @@ namespace CodeSmithy
 
 class CppFile : public Document
 {
+public:
+    CppFile(const std::shared_ptr<const DocumentType> type);
 };
 
 }

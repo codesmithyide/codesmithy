@@ -33,7 +33,7 @@ CodeSmithyProjectFileType::CodeSmithyProjectFileType()
 
 std::shared_ptr<Document> CodeSmithyProjectFileType::createDocument() const
 {
-    return std::make_shared<CodeSmithyProjectFile>();
+    return std::make_shared<CodeSmithyProjectFile>(shared_from_this());
 }
 
 }

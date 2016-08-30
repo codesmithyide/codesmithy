@@ -23,7 +23,9 @@
 #ifndef _CODESMITHY_UIELEMENTS_FRAMEWORK_OPENDOCUMENTSCTRL_H_
 #define _CODESMITHY_UIELEMENTS_FRAMEWORK_OPENDOCUMENTSCTRL_H_
 
+#include <CodeSmithy/Core/Documents/Document.h>
 #include <wx/aui/aui.h>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -32,6 +34,8 @@ class OpenDocumentsCtrl : public wxAuiNotebook
 {
 public:
     OpenDocumentsCtrl(wxWindow* parent);
+
+    void AddDocument(std::shared_ptr<Document> document);
 };
 
 }

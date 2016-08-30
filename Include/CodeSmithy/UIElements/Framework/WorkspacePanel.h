@@ -35,12 +35,21 @@ class WorkspacePanel : public wxPanel
 {
 public:
     WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents);
+    ~WorkspacePanel();
+
+private:
+    void OnAdd(std::shared_ptr<Document> document);
 
 private:
     class Observer : public DocumentsObserver
     {
     public:
-        Observer();
+        Observer(WorkspacePanel& workspace);
+
+        void onAdd(std::shared_ptr<Document> document) override;
+
+    private:
+        WorkspacePanel& m_workspace;
     };
 
 private:

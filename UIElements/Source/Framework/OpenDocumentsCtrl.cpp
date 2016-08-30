@@ -30,4 +30,18 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent)
 {
 }
 
+void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
+{
+    /*
+    std::shared
+    DocumentTypeData::const_ptr data =
+        std::dynamic_pointer_cast<const DocumentTypeData, const CustomAppData>(document->type().appData());
+    if (data)
+    {
+        wxWindow* newPage = data->CreateDocumentCtrl(this, document);
+        AddPage(newPage, document->name().c_str());
+    }
+    */
+}
+
 }

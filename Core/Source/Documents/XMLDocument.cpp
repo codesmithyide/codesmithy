@@ -21,3 +21,13 @@
 */
 
 #include "Documents/XMLDocument.h"
+
+namespace CodeSmithy
+{
+
+XMLDocument::XMLDocument(const std::shared_ptr<const DocumentType> type)
+    : Document(type)
+{
+}
+
+}

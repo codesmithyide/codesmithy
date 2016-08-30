@@ -22,6 +22,7 @@
 
 #include "CodeSmithyProjectFileTests.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFile.h"
+#include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
 void AddCodeSmithyProjectFileTests(TestSequence& testSequence)
 {
@@ -32,6 +33,14 @@ void AddCodeSmithyProjectFileTests(TestSequence& testSequence)
 
 TestResult::EOutcome CodeSmithyProjectFileCreationTest1()
 {
-    CodeSmithy::CodeSmithyProjectFile document;
-    return TestResult::ePassed;
+    std::shared_ptr<CodeSmithy::CodeSmithyProjectFileType> projectFileType = std::make_shared<CodeSmithy::CodeSmithyProjectFileType>();
+    CodeSmithy::CodeSmithyProjectFile document(projectFileType);
+    if (document.type().name() == "CodeSmithy Project File")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

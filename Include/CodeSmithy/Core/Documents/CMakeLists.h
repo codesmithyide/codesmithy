@@ -30,6 +30,8 @@ namespace CodeSmithy
 
 class CMakeLists : public Document
 {
+public:
+    CMakeLists(const std::shared_ptr<const DocumentType> type);
 };
 
 }

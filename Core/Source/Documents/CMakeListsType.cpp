@@ -33,7 +33,7 @@ CMakeListsType::CMakeListsType()
 
 std::shared_ptr<Document> CMakeListsType::createDocument() const
 {
-    return std::make_shared<CMakeLists>();
+    return std::make_shared<CMakeLists>(shared_from_this());
 }
 
 }

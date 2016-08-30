@@ -33,7 +33,7 @@ XMLDocumentType::XMLDocumentType()
 
 std::shared_ptr<Document> XMLDocumentType::createDocument() const
 {
-    return std::make_shared<XMLDocument>();
+    return std::make_shared<XMLDocument>(shared_from_this());
 }
 
 }

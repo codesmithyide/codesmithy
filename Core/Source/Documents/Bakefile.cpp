@@ -21,3 +21,13 @@
 */
 
 #include "Documents/Bakefile.h"
+
+namespace CodeSmithy
+{
+
+Bakefile::Bakefile(const std::shared_ptr<const DocumentType> type)
+    : Document(type)
+{
+}
+
+}

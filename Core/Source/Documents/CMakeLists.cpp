@@ -21,3 +21,13 @@
 */
 
 #include "Documents/CMakeLists.h"
+
+namespace CodeSmithy
+{
+
+CMakeLists::CMakeLists(const std::shared_ptr<const DocumentType> type)
+    : Document(type)
+{
+}
+
+}

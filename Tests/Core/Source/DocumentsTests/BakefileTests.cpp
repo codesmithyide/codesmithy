@@ -22,6 +22,7 @@
 
 #include "BakefileTests.h"
 #include "CodeSmithy/Core/Documents/Bakefile.h"
+#include "CodeSmithy/Core/Documents/BakefileType.h"
 
 void AddBakefileTests(TestSequence& testSequence)
 {
@@ -32,6 +33,14 @@ void AddBakefileTests(TestSequence& testSequence)
 
 TestResult::EOutcome BakefileCreationTest1()
 {
-    CodeSmithy::Bakefile document;
-    return TestResult::ePassed;
+    std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
+    CodeSmithy::Bakefile document(bakefileType);
+    if (document.type().name() == "Bakefile")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

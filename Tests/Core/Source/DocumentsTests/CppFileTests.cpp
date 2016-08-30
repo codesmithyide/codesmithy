@@ -22,6 +22,7 @@
 
 #include "CppFileTests.h"
 #include "CodeSmithy/Core/Documents/CppFile.h"
+#include "CodeSmithy/Core/Documents/CppFileType.h"
 
 void AddCppFileTests(TestSequence& testSequence)
 {
@@ -32,6 +33,14 @@ void AddCppFileTests(TestSequence& testSequence)
 
 TestResult::EOutcome CppFileCreationTest1()
 {
-    CodeSmithy::CppFile document;
-    return TestResult::ePassed;
+    std::shared_ptr<CodeSmithy::CppFileType> cppFileType = std::make_shared<CodeSmithy::CppFileType>();
+    CodeSmithy::CppFile document(cppFileType);
+    if (document.type().name() == "C++ Source File")
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
