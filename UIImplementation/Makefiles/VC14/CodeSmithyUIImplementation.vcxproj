@@ -154,6 +154,9 @@
     <ClCompile Include="..\..\Source\ActiveDocumentObserver.cpp" />
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\OpenDocumentsCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\StartPage.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
   </ItemGroup>
@@ -164,6 +167,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocumentObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OpenDocumentsCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\StartPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h" />
   </ItemGroup>

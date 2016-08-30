@@ -35,6 +35,15 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OpenDocumentsCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\StartPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,6 +62,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Workspace\OpenDocumentsCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Workspace\StartPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp">

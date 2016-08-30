@@ -32,6 +32,10 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h
         ../../../Include/CodeSmithy/UIImplementation/ProjectChoiceDialog.h
 
+        ../../../Include/CodeSmithy/UIImplementation/Workspace/OpenDocumentsCtrl.h
+        ../../../Include/CodeSmithy/UIImplementation/Workspace/StartPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h
+
         ../../../Include/CodeSmithy/UIImplementation/Preferences/FileTypeAssociationsPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h
     }
@@ -42,6 +46,10 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/ActiveDocumentObserver.cpp
         ../../Source/ControlCreationDocumentTypeData.cpp
         ../../Source/ProjectChoiceDialog.cpp
+
+        ../../Source/Workspace/OpenDocumentsCtrl.cpp
+        ../../Source/Workspace/StartPage.cpp
+        ../../Source/Workspace/WorkspacePanel.cpp
 
         ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
         ../../Source/Preferences/PreferencesDialog.cpp
