@@ -20,9 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "Framework/OpenDocumentsCtrl.h"
+#include "Workspace/OpenDocumentsCtrl.h"
+#include "ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
-#include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 
 namespace CodeSmithy
 {

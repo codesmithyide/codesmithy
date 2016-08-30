@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Framework/StartPage.h"
+#include "Workspace/StartPage.h"
 #include <wx/dcbuffer.h>
 #include <wx/graphics.h>
 

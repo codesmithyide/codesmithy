@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Framework/WorkspacePanel.h"
+#include "Workspace/WorkspacePanel.h"
 #include <wx/sizer.h>
 
 namespace CodeSmithy
