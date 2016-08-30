@@ -26,7 +26,7 @@
 #include "CMakeListsTypeTests.h"
 #include "CMakeListsTests.h"
 #include "CodeSmithyProjectFileTypeTests.h"
-#include "CodeSmithyProjectTypeTests.h"
+#include "CodeSmithyProjectFileTests.h"
 #include "CppFileTypeTests.h"
 #include "CppFileTests.h"
 #include "XMLDocumentTypeTests.h"
@@ -41,7 +41,7 @@ void AddDocumentsTestSequence(TestHarness& theTestHarness)
     AddBakefileTypeTests(documentsTestSequence);
     AddBakefileTests(documentsTestSequence);
     AddCMakeListsTypeTests(documentsTestSequence);
-    AddCMakeListsTests(documentTestSequence);
+    AddCMakeListsTests(documentsTestSequence);
     AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
     AddCodeSmithyProjectFileTests(documentsTestSequence);
     AddCppFileTypeTests(documentsTestSequence);

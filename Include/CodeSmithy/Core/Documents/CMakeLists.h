@@ -23,4 +23,15 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_CMAKELISTS_H_
 #define _CODESMITHY_CORE_DOCUMENTS_CMAKELISTS_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class CMakeLists : public Document
+{
+};
+
+}
+
 #endif

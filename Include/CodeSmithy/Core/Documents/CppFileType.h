@@ -32,6 +32,8 @@ class CppFileType : public DocumentType
 {
 public:
     CppFileType();
+
+    std::shared_ptr<Document> createDocument() const override;
 };
 
 }

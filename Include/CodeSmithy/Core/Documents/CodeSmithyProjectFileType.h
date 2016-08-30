@@ -32,6 +32,8 @@ class CodeSmithyProjectFileType : public DocumentType
 {
 public:
     CodeSmithyProjectFileType();
+
+    std::shared_ptr<Document> createDocument() const override;
 };
 
 }

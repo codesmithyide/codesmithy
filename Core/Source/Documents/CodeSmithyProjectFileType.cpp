@@ -21,6 +21,7 @@
 */
 
 #include "Documents/CodeSmithyProjectFileType.h"
+#include "Documents/CodeSmithyProjectFile.h"
 
 namespace CodeSmithy
 {
@@ -28,6 +29,11 @@ namespace CodeSmithy
 CodeSmithyProjectFileType::CodeSmithyProjectFileType()
     : DocumentType("CodeSmithy Project File", "csmthprj")
 {
+}
+
+std::shared_ptr<Document> CodeSmithyProjectFileType::createDocument() const
+{
+    return std::make_shared<CodeSmithyProjectFile>();
 }
 
 }

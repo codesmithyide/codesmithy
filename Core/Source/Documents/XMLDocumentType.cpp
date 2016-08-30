@@ -21,6 +21,7 @@
 */
 
 #include "Documents/XMLDocumentType.h"
+#include "Documents/XMLDocument.h"
 
 namespace CodeSmithy
 {
@@ -28,6 +29,11 @@ namespace CodeSmithy
 XMLDocumentType::XMLDocumentType()
     : DocumentType("XML", "xml")
 {
+}
+
+std::shared_ptr<Document> XMLDocumentType::createDocument() const
+{
+    return std::make_shared<XMLDocument>();
 }
 
 }

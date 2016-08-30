@@ -21,6 +21,7 @@
 */
 
 #include "Documents/CMakeListsType.h"
+#include "Documents/CMakeLists.h"
 
 namespace CodeSmithy
 {
@@ -28,6 +29,11 @@ namespace CodeSmithy
 CMakeListsType::CMakeListsType()
 	: DocumentType("CMakeLists", "txt")
 {
+}
+
+std::shared_ptr<Document> CMakeListsType::createDocument() const
+{
+    return std::make_shared<CMakeLists>();
 }
 
 }

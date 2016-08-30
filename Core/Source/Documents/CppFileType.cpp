@@ -21,6 +21,7 @@
 */
 
 #include "Documents/CppFileType.h"
+#include "Documents/CppFile.h"
 
 namespace CodeSmithy
 {
@@ -30,6 +31,11 @@ CppFileType::CppFileType()
 {
     appendExtension("cpp");
     appendExtension("cxx");
+}
+
+std::shared_ptr<Document> CppFileType::createDocument() const
+{
+    return std::make_shared<CppFile>();
 }
 
 }

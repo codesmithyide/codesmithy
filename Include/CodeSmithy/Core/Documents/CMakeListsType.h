@@ -32,6 +32,8 @@ class CMakeListsType : public DocumentType
 {
 public:
     CMakeListsType();
+
+    std::shared_ptr<Document> createDocument() const override;
 };
 
 }

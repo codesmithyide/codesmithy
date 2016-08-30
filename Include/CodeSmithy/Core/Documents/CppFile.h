@@ -23,4 +23,15 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_CPPFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_CPPFILE_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class CppFile : public Document
+{
+};
+
+}
+
 #endif
