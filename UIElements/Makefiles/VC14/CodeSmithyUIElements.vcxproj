@@ -150,10 +150,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Editors\DocumentCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\DocumentCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -25,11 +25,13 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore
     {
         ../../../Include/CodeSmithy/UIElements/linkoptions.h
 
+        ../../../Include/CodeSmithy/UIElements/Editors/DocumentCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/BakefileCtrl.h
     }
 
     sources
     {
+        ../../Source/Editors/DocumentCtrl.cpp
         ../../Source/Editors/BakefileCtrl.cpp
     }
 }

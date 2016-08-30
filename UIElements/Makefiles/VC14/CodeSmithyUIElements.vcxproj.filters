@@ -20,11 +20,17 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\DocumentCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Editors\DocumentCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
