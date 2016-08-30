@@ -21,3 +21,17 @@
 */
 
 #include "CppFileTests.h"
+#include "CodeSmithy/Core/Documents/CppFile.h"
+
+void AddCppFileTests(TestSequence& testSequence)
+{
+    TestSequence* cppFileTestSequence = new TestSequence("CppFile tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CppFileCreationTest1, *cppFileTestSequence);
+}
+
+TestResult::EOutcome CppFileCreationTest1()
+{
+    CodeSmithy::CppFile document;
+    return TestResult::ePassed;
+}

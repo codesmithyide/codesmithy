@@ -21,3 +21,17 @@
 */
 
 #include "XMLDocumentTests.h"
+#include "CodeSmithy/Core/Documents/XMLDocument.h"
+
+void AddXMLDocumentTests(TestSequence& testSequence)
+{
+    TestSequence* xmlTestSequence = new TestSequence("XMLDocument tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", XMLDocumentCreationTest1, *xmlTestSequence);
+}
+
+TestResult::EOutcome XMLDocumentCreationTest1()
+{
+    CodeSmithy::XMLDocument document;
+    return TestResult::ePassed;
+}

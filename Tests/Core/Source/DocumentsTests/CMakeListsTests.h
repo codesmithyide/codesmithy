@@ -23,4 +23,12 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CMAKELISTSTESTS_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CMAKELISTSTESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddCMakeListsTests(TestSequence& testSequence);
+
+TestResult::EOutcome CMakeListsCreationTest1();
+
 #endif

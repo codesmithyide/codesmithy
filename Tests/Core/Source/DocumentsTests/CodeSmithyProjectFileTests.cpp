@@ -21,3 +21,17 @@
 */
 
 #include "CodeSmithyProjectFileTests.h"
+#include "CodeSmithy/Core/Documents/CodeSmithyProjectFile.h"
+
+void AddCodeSmithyProjectFileTests(TestSequence& testSequence)
+{
+    TestSequence* projectFileTestSequence = new TestSequence("CodeSmithyProjectFile tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CodeSmithyProjectFileCreationTest1, *projectFileTestSequence);
+}
+
+TestResult::EOutcome CodeSmithyProjectFileCreationTest1()
+{
+    CodeSmithy::CodeSmithyProjectFile document;
+    return TestResult::ePassed;
+}

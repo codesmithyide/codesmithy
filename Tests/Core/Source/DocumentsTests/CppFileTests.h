@@ -23,4 +23,12 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CPPFILETESTS_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_CPPFILETESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddCppFileTests(TestSequence& testSequence);
+
+TestResult::EOutcome CppFileCreationTest1();
+
 #endif

@@ -23,4 +23,12 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_XMLDOCUMENTTESTS_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_XMLDOCUMENTTESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddXMLDocumentTests(TestSequence& testSequence);
+
+TestResult::EOutcome XMLDocumentCreationTest1();
+
 #endif

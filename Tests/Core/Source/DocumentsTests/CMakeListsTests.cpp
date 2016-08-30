@@ -21,3 +21,17 @@
 */
 
 #include "CMakeListsTests.h"
+#include "CodeSmithy/Core/Documents/CMakeLists.h"
+
+void AddCMakeListsTests(TestSequence& testSequence)
+{
+    TestSequence* cmakelistsTestSequence = new TestSequence("CMakeLists tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CMakeListsCreationTest1, *cmakelistsTestSequence);
+}
+
+TestResult::EOutcome CMakeListsCreationTest1()
+{
+    CodeSmithy::CMakeLists document;
+    return TestResult::ePassed;
+}
