@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 
-CodeSmithyProjectFile::CodeSmithyProjectFile(const std::shared_ptr<const DocumentType> type)
-    : Document(type)
+CodeSmithyProjectFile::CodeSmithyProjectFile(const std::shared_ptr<const DocumentType> type,
+                                             const std::string& name)
+    : Document(type, name)
 {
 }
 

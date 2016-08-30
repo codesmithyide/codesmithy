@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
+#include <string>
 #include <memory>
 
 namespace CodeSmithy
@@ -40,13 +41,15 @@ class DocumentType;
 class Document
 {
 public:
-    Document(const std::shared_ptr<const DocumentType> type);
+    Document(const std::shared_ptr<const DocumentType> type, const std::string& name);
     virtual ~Document();
 
     const DocumentType& type() const;
+    const std::string& name() const;
 
 private:
     const std::shared_ptr<const DocumentType> m_type;
+    std::string m_name;
 };
 
 }

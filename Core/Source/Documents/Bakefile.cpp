@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 
-Bakefile::Bakefile(const std::shared_ptr<const DocumentType> type)
-    : Document(type)
+Bakefile::Bakefile(const std::shared_ptr<const DocumentType> type,
+                   const std::string& name)
+    : Document(type, name)
 {
 }
 

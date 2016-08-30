@@ -33,7 +33,7 @@ class XMLDocumentType : public DocumentType
 public:
     XMLDocumentType();
 
-    std::shared_ptr<Document> createDocument() const override;
+    std::shared_ptr<Document> createDocument(const std::string& name) const override;
 };
 
 }

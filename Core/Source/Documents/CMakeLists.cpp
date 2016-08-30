@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 
-CMakeLists::CMakeLists(const std::shared_ptr<const DocumentType> type)
-    : Document(type)
+CMakeLists::CMakeLists(const std::shared_ptr<const DocumentType> type,
+                       const std::string& name)
+    : Document(type, name)
 {
 }
 

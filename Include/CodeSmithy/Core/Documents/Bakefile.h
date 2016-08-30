@@ -31,7 +31,7 @@ namespace CodeSmithy
 class Bakefile : public Document
 {
 public:
-    Bakefile(const std::shared_ptr<const DocumentType> type);
+    Bakefile(const std::shared_ptr<const DocumentType> type, const std::string& name);
 };
 
 }

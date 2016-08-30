@@ -31,7 +31,7 @@ namespace CodeSmithy
 class CodeSmithyProjectFile : public Document
 {
 public:
-    CodeSmithyProjectFile(const std::shared_ptr<const DocumentType> type);
+    CodeSmithyProjectFile(const std::shared_ptr<const DocumentType> type, const std::string& name);
 };
 
 }

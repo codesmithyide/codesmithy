@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 
-XMLDocument::XMLDocument(const std::shared_ptr<const DocumentType> type)
-    : Document(type)
+XMLDocument::XMLDocument(const std::shared_ptr<const DocumentType> type,
+                         const std::string& name)
+    : Document(type, name)
 {
 }
 

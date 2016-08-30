@@ -33,9 +33,9 @@ CppFileType::CppFileType()
     appendExtension("cxx");
 }
 
-std::shared_ptr<Document> CppFileType::createDocument() const
+std::shared_ptr<Document> CppFileType::createDocument(const std::string& name) const
 {
-    return std::make_shared<CppFile>(shared_from_this());
+    return std::make_shared<CppFile>(shared_from_this(), name);
 }
 
 }
