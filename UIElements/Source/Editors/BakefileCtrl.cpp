@@ -25,14 +25,22 @@
 namespace CodeSmithy
 {
 
-wxWindow* BakefileCtrl::Create(wxWindow *parent)
+wxWindow* BakefileCtrl::Create(wxWindow *parent,
+                               std::shared_ptr<Document> document)
 {
-    return new BakefileCtrl(parent);
+    return new BakefileCtrl(parent, document);
 }
 
-BakefileCtrl::BakefileCtrl(wxWindow* parent)
-    : wxPanel(parent)
+BakefileCtrl::BakefileCtrl(wxWindow* parent, 
+                           std::shared_ptr<Document> document)
+    : DocumentCtrl(parent)
 {
+    m_document = std::dynamic_pointer_cast<Bakefile, Document>(document);
+}
+
+std::shared_ptr<const Document> BakefileCtrl::document() const
+{
+    return m_document;
 }
 
 }

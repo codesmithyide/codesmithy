@@ -23,4 +23,20 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_DOCUMENTCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_DOCUMENTCTRL_H_
 
+#include "CodeSmithy/Core/Documents/Document.h"
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class DocumentCtrl : public wxPanel
+{
+public:
+    DocumentCtrl(wxWindow* parent);
+
+    virtual std::shared_ptr<const Document> document() const = 0;
+};
+
+}
+
 #endif

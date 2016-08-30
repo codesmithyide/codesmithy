@@ -23,19 +23,27 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 
-#include <wx/panel.h>
+#include "DocumentCtrl.h"
+#include "CodeSmithy/Core/Documents/Bakefile.h"
 
 namespace CodeSmithy
 {
 
-class BakefileCtrl : public wxPanel
+class BakefileCtrl : public DocumentCtrl
 {
 public:
-    static wxWindow* Create(wxWindow *parent);
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document);
 
-    BakefileCtrl(wxWindow* parent);
+    BakefileCtrl(wxWindow* parent, std::shared_ptr<Document> document);
+
+    std::shared_ptr<const Document> document() const override;
+
+private:
+    std::shared_ptr<Bakefile> m_document;
 };
 
 }
+
+#include "../linkoptions.h"
 
 #endif

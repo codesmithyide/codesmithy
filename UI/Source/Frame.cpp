@@ -39,7 +39,8 @@ Frame::Frame(const wxString& title,
     CreateMenuBar();
 
     m_documents = std::make_shared<Documents>();
-    m_workspacePanel = new WorkspacePanel(this, m_documents);
+    m_activeDocument = std::make_shared<ActiveDocument>();
+    m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument);
 }
 
 void Frame::OpenFile(const wxString& file)

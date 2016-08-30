@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_WORKSPACEPANEL_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_WORKSPACEPANEL_H_
 
+#include "../ActiveDocument.h"
 #include "StartPage.h"
 #include "OpenDocumentsCtrl.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
@@ -34,7 +35,8 @@ namespace CodeSmithy
 class WorkspacePanel : public wxPanel
 {
 public:
-    WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents);
+    WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents,
+        std::shared_ptr<ActiveDocument> activeDocument);
     ~WorkspacePanel();
 
 private:
@@ -55,6 +57,7 @@ private:
 private:
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<Observer> m_documentsObserver;
+    std::shared_ptr<ActiveDocument> m_activeDocument;
     StartPage* m_startPage;
     OpenDocumentsCtrl* m_openDocuments;
 };

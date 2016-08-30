@@ -21,3 +21,13 @@
 */
 
 #include "Editors/DocumentCtrl.h"
+
+namespace CodeSmithy
+{
+
+DocumentCtrl::DocumentCtrl(wxWindow* parent)
+    : wxPanel(parent)
+{
+}
+
+}

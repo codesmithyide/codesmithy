@@ -22,13 +22,15 @@
 
 #include "Workspace/OpenDocumentsCtrl.h"
 #include "ControlCreationDocumentTypeData.h"
+#include "CodeSmithy/UIElements/Editors/DocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
 
 namespace CodeSmithy
 {
 
-OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent)
-    : wxAuiNotebook(parent)
+OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent, 
+                                     std::shared_ptr<ActiveDocument> activeDocument)
+    : wxAuiNotebook(parent), m_activeDocument(activeDocument)
 {
     Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::OnPageChanged, this);
 }
@@ -46,6 +48,19 @@ void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
 
 void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
 {
+    int selectedPageIndex = evt.GetSelection();
+    if (selectedPageIndex != wxNOT_FOUND)
+    {
+        wxWindow* selectedPage = GetPage(selectedPageIndex);
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            m_activeDocument->setActiveDocument(selectedDocumentCtrl->document());
+        }
+    }
+    else
+    {
+    }
 }
 
 }
