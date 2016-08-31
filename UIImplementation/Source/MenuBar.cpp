@@ -20,31 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OPENDOCUMENTSCTRL_H_
-#define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OPENDOCUMENTSCTRL_H_
-
-#include "../ActiveDocument.h"
-#include "CodeSmithy/Core/Documents/Document.h"
-#include <wx/aui/aui.h>
-#include <memory>
-
-namespace CodeSmithy
-{
-
-class OpenDocumentsCtrl : public wxAuiNotebook
-{
-public:
-    OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument);
-
-    void AddDocument(std::shared_ptr<Document> document);
-
-private:
-    void OnPageChanged(wxAuiNotebookEvent& evt);
-
-private:
-    std::shared_ptr<ActiveDocument> m_activeDocument;
-};
-
-}
-
-#endif
+#include "MenuBar.h"

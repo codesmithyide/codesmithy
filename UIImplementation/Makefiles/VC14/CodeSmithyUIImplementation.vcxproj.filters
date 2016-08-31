@@ -23,6 +23,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\MenuBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -52,6 +55,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MenuBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ActiveDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
