@@ -40,6 +40,8 @@ public:
     std::shared_ptr<const Document> document() const override;
     std::shared_ptr<Document> document() override;
 
+    void save(const boost::filesystem::path& path) override;
+
 private:
     void onModified(wxStyledTextEvent& evt);
 

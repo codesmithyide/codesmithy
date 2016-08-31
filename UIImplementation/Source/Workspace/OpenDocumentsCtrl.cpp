@@ -50,6 +50,18 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
     }
 }
 
+void OpenDocumentsCtrl::saveDocument(const DocumentId& id,
+                                     const boost::filesystem::path& path)
+{
+    size_t pageIndex = findPageByDocumentId(id);
+    if (pageIndex != wxNOT_FOUND)
+    {
+        wxWindow* page = GetPage(pageIndex);
+        DocumentCtrl* documentCtrl = static_cast<DocumentCtrl*>(page);
+        documentCtrl->save(path);
+    }
+}
+
 void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
 {
     size_t pageIndex = findPageByDocumentId(id);
@@ -116,13 +128,22 @@ OpenDocumentsCtrl::Observer::Observer(OpenDocumentsCtrl& ctrl)
 {
 }
 
-void OpenDocumentsCtrl::Observer::onModified(const Document& source)
+void OpenDocumentsCtrl::Observer::onModified(const Document& source,
+                                             bool modified)
 {
     size_t pageIndex = m_ctrl.findPageByDocumentId(source.id());
     if (pageIndex != wxNOT_FOUND)
     {
-        std::string text = source.name() + "*";
-        m_ctrl.SetPageText(pageIndex, text);
+        if (modified)
+        {
+            std::string text = source.name() + "*";
+            m_ctrl.SetPageText(pageIndex, text);
+        }
+        else
+        {
+            std::string text = source.name();
+            m_ctrl.SetPageText(pageIndex, text);
+        }
     }
 }
 

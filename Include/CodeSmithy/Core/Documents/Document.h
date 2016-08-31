@@ -73,7 +73,7 @@ public:
 private:
     virtual void doSave(const boost::filesystem::path& path) const = 0;
 
-    void notifyModified();
+    void notifyModified(bool modified);
 
 private:
     const std::shared_ptr<const DocumentType> m_type;

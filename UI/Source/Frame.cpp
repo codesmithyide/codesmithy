@@ -154,7 +154,7 @@ void Frame::OnSaveFile(wxCommandEvent& evt)
         }
         else
         {
-            activeDocument->save(activeDocument->filePath());
+            m_workspacePanel->saveDocument(activeDocument->id(), activeDocument->filePath());
         }
     }
 }
@@ -169,6 +169,8 @@ void Frame::OnSaveFileAs(wxCommandEvent& evt)
             wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
         if (fileDialog->ShowModal() == wxID_OK)
         {
+            boost::filesystem::path selectedPath(fileDialog->GetPath());
+            m_workspacePanel->saveDocument(activeDocument->id(), selectedPath);
         }
         fileDialog->Destroy();
     }

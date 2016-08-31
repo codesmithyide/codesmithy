@@ -53,6 +53,12 @@ WorkspacePanel::~WorkspacePanel()
     m_documents->removeObserver(m_documentsObserver);
 }
 
+void WorkspacePanel::saveDocument(const DocumentId& id,
+                                  const boost::filesystem::path& path)
+{
+    m_openDocuments->saveDocument(id, path);
+}
+
 void WorkspacePanel::closeDocument(const DocumentId& id)
 {
     m_openDocuments->closeDocument(id);

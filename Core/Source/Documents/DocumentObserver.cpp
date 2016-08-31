@@ -25,7 +25,8 @@
 namespace CodeSmithy
 {
 
-void DocumentObserver::onModified(const Document& source)
+void DocumentObserver::onModified(const Document& source, 
+                                  bool modified)
 {
 }
 

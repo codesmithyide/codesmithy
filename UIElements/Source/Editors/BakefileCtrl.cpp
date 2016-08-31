@@ -60,6 +60,11 @@ std::shared_ptr<Document> BakefileCtrl::document()
     return m_document;
 }
 
+void BakefileCtrl::save(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
+}
+
 void BakefileCtrl::onModified(wxStyledTextEvent& evt)
 {
     m_document->setModified(true);

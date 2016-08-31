@@ -73,7 +73,7 @@ bool Document::modified() const
 void Document::setModified(bool modified)
 {
     m_modified = modified;
-    notifyModified();
+    notifyModified(m_modified);
 }
 
 void Document::save(const boost::filesystem::path& path)
@@ -100,14 +100,14 @@ void Document::removeObserver(std::weak_ptr<DocumentObserver> observer)
     }
 }
 
-void Document::notifyModified()
+void Document::notifyModified(bool modified)
 {
     for (size_t i = 0; i < m_observers.size(); ++i)
     {
         std::shared_ptr<DocumentObserver> observer = m_observers[i].lock();
         if (observer)
         {
-            observer->onModified(*this);
+            observer->onModified(*this, modified);
         }
     }
 }

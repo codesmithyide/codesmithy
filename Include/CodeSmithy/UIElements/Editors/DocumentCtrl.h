@@ -36,6 +36,8 @@ public:
 
     virtual std::shared_ptr<const Document> document() const = 0;
     virtual std::shared_ptr<Document> document() = 0;
+
+    virtual void save(const boost::filesystem::path& path) = 0;
 };
 
 }

@@ -37,6 +37,7 @@ public:
     OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument);
 
     void addDocument(std::shared_ptr<Document> document);
+    void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
     void closeDocument(const DocumentId& id);
 
 private:
@@ -51,7 +52,7 @@ private:
     public:
         Observer(OpenDocumentsCtrl& ctrl);
 
-        void onModified(const Document& source) override;
+        void onModified(const Document& source, bool modified) override;
 
     private:
         OpenDocumentsCtrl& m_ctrl;

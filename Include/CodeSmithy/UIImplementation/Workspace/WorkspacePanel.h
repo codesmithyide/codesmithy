@@ -39,6 +39,7 @@ public:
         std::shared_ptr<ActiveDocument> activeDocument);
     ~WorkspacePanel();
 
+    void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
     void closeDocument(const DocumentId& id);
 
 private:
