@@ -23,4 +23,35 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_MENUBAR_H_
 #define _CODESMITHY_UIIMPLEMENTATION_MENUBAR_H_
 
+#include "ActiveDocument.h"
+#include "ActiveDocumentObserver.h"
+#include <wx/menu.h>
+
+namespace CodeSmithy
+{
+
+class MenuBar : public wxMenuBar
+{
+public:
+    MenuBar(std::shared_ptr<ActiveDocument> activeDocument);
+
+private:
+    class Observer : public ActiveDocumentObserver
+    {
+    public:
+        Observer(MenuBar& menuBar);
+
+        void onChange(std::shared_ptr<const Document> document) override;
+
+    private:
+        MenuBar& m_menuBar;
+    };
+
+private:
+    std::shared_ptr<Observer> m_activeDocumentObserver;
+    wxMenuItem* m_closeMenuItem;
+};
+
+}
+
 #endif

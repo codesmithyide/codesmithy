@@ -21,3 +21,57 @@
 */
 
 #include "MenuBar.h"
+#include "WindowIDs.h"
+
+namespace CodeSmithy
+{
+
+MenuBar::MenuBar(std::shared_ptr<ActiveDocument> activeDocument)
+    : m_closeMenuItem(0)
+{
+    m_activeDocumentObserver = std::make_shared<Observer>(*this);
+    activeDocument->addObserver(m_activeDocumentObserver);
+
+    wxMenu* menuFile = new wxMenu;
+
+    wxMenu* menuFileOpen = new wxMenu;
+    menuFileOpen->Append(wxID_OPEN_FILE, "&File...");
+    menuFile->AppendSubMenu(menuFileOpen, "&Open");
+
+    menuFile->AppendSeparator();
+    m_closeMenuItem = menuFile->Append(wxID_CLOSE);
+    m_closeMenuItem->Enable(false);
+
+    menuFile->AppendSeparator();
+    menuFile->Append(wxID_PREFERENCES, "&Preferences...");
+    menuFile->AppendSeparator();
+    menuFile->Append(wxID_EXIT);
+    
+    Append(menuFile, "&File");
+}
+
+MenuBar::Observer::Observer(MenuBar& menuBar)
+    : m_menuBar(menuBar)
+{
+}
+
+void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
+{
+    if (document)
+    {
+        std::string menuLabel = "&Close";
+        if (!document->name().empty())
+        {
+            menuLabel += " ";
+            menuLabel += document->name();
+        }
+        m_menuBar.m_closeMenuItem->SetItemLabel(menuLabel.c_str());
+        m_menuBar.m_closeMenuItem->Enable(true);
+    }
+    else
+    {
+        m_menuBar.m_closeMenuItem->Enable(false);
+    }
+}
+
+}

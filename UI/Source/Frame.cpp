@@ -21,6 +21,7 @@
 */
 
 #include "Frame.h"
+#include "CodeSmithy/UIImplementation/MenuBar.h"
 #include "CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h"
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
@@ -33,15 +34,14 @@ Frame::Frame(const wxString& title,
              const DocumentTypes& documentTypes,
              const ProjectTypes& projectTypes)
     : wxFrame(NULL, wxID_ANY, title), 
-    m_appSettings(documentTypes, projectTypes), m_closeMenuItem(0),
+    m_appSettings(documentTypes, projectTypes),
     m_workspacePanel(0)
 {
-    CreateMenuBar();
-
     m_documents = std::make_shared<Documents>();
     m_activeDocument = std::make_shared<ActiveDocument>();
-    m_activeDocumentObserver = std::make_shared<Observer>(*this);
-    m_activeDocument->addObserver(m_activeDocumentObserver);
+
+    SetMenuBar(new MenuBar(m_activeDocument));
+
     m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument);
 }
 
@@ -123,29 +123,6 @@ void Frame::OpenFile(const wxString& file)
     }
 }
 
-void Frame::CreateMenuBar()
-{
-    wxMenuBar* menuBar = new wxMenuBar;
-
-    wxMenu* menuFile = new wxMenu;
-
-    wxMenu* menuFileOpen = new wxMenu;
-    menuFileOpen->Append(wxID_OPEN_FILE, "&File...");
-    menuFile->AppendSubMenu(menuFileOpen, "&Open");
-
-    menuFile->AppendSeparator();
-    m_closeMenuItem = menuFile->Append(wxID_CLOSE);
-    m_closeMenuItem->Enable(false);
-	
-    menuFile->AppendSeparator();
-    menuFile->Append(wxID_PREFERENCES, "&Preferences...");
-    menuFile->AppendSeparator();
-    menuFile->Append(wxID_EXIT);
-    menuBar->Append(menuFile, "&File");
-
-    SetMenuBar(menuBar);
-}
-
 void Frame::OnOpenFile(wxCommandEvent& evt)
 {
     wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
@@ -167,30 +144,6 @@ void Frame::OnPreferences(wxCommandEvent& evt)
 void Frame::OnExit(wxCommandEvent& evt)
 {
     Close(true);
-}
-
-Frame::Observer::Observer(Frame& frame)
-    : m_frame(frame)
-{
-}
-
-void Frame::Observer::onChange(std::shared_ptr<const Document> document)
-{
-    if (document)
-    {
-        std::string menuLabel = "&Close";
-        if (!document->name().empty())
-        {
-            menuLabel += " ";
-            menuLabel += document->name();
-        }
-        m_frame.m_closeMenuItem->SetItemLabel(menuLabel.c_str());
-        m_frame.m_closeMenuItem->Enable(true);
-    }
-    else
-    {
-        m_frame.m_closeMenuItem->Enable(false);
-    }
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
