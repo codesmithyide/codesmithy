@@ -26,11 +26,18 @@ namespace CodeSmithy
 {
 
 DocumentId::DocumentId(unsigned int id)
+    : m_id(id)
 {
 }
 
 DocumentId::~DocumentId()
 {
+}
+
+DocumentId& DocumentId::operator++()
+{
+    ++m_id;
+    return *this;
 }
 
 }

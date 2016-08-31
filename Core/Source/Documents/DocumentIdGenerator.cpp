@@ -21,3 +21,18 @@
 */
 
 #include "Documents/DocumentIdGenerator.h"
+
+namespace CodeSmithy
+{
+
+DocumentIdGenerator::DocumentIdGenerator()
+    : m_lastGeneratedId(0)
+{
+}
+
+DocumentId DocumentIdGenerator::createNewId()
+{
+    return ++m_lastGeneratedId;
+}
+
+}

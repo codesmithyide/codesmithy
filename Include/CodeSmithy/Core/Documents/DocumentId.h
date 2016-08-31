@@ -31,6 +31,11 @@ class DocumentId
 public:
     DocumentId(unsigned int id);
     ~DocumentId();
+
+    DocumentId& operator++();
+
+private:
+    unsigned int m_id;
 };
 
 }
