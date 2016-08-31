@@ -124,7 +124,7 @@ void Frame::OpenFile(const wxString& file)
         if (!documentTypeName.empty())
         {
             std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
-            std::shared_ptr<Document> document = documentType->createDocumentFromFile(selectedPath);
+            std::shared_ptr<Document> document = documentType->createDocumentFromFile(m_documentIdGenerator.createNewId(), selectedPath);
             m_documents->add(document);
         }
     }

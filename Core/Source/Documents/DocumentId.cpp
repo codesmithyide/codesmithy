@@ -30,6 +30,11 @@ DocumentId::DocumentId(unsigned int id)
 {
 }
 
+DocumentId::DocumentId(const DocumentId& other)
+    : m_id(other.m_id)
+{
+}
+
 DocumentId::~DocumentId()
 {
 }

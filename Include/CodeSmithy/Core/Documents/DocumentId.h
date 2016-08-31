@@ -30,6 +30,7 @@ class DocumentId
 {
 public:
     DocumentId(unsigned int id);
+    DocumentId(const DocumentId& other);
     ~DocumentId();
 
     DocumentId& operator++();

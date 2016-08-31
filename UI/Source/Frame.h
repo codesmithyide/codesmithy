@@ -28,6 +28,7 @@
 #include "CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
+#include "CodeSmithy/Core/Documents/DocumentIdGenerator.h"
 #include <wx/frame.h>
 
 namespace CodeSmithy
@@ -52,6 +53,7 @@ private:
 
 private:
     AppSettings m_appSettings;
+    DocumentIdGenerator m_documentIdGenerator;
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<ActiveDocument> m_activeDocument;
     MenuBar* m_menuBar;
