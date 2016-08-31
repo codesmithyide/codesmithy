@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
 #include "DocumentId.h"
+#include "DocumentObserver.h"
 #include <boost/filesystem/path.hpp>
 #include <string>
 #include <memory>
@@ -47,6 +48,9 @@ class Document
 public:
     Document(const std::shared_ptr<const DocumentType> type, 
         const DocumentId& id, const std::string& name);
+    Document(const std::shared_ptr<const DocumentType> type,
+        const DocumentId& id, const std::string& name, 
+        const boost::filesystem::path& path);
     virtual ~Document();
 
     const DocumentType& type() const;
@@ -63,8 +67,13 @@ public:
 
     void save(const boost::filesystem::path& path);
 
+    void addObserver(std::weak_ptr<DocumentObserver> observer);
+    void removeObserver(std::weak_ptr<DocumentObserver> observer);
+
 private:
     virtual void doSave(const boost::filesystem::path& path) const = 0;
+
+    void notifyModified();
 
 private:
     const std::shared_ptr<const DocumentType> m_type;
@@ -72,6 +81,7 @@ private:
     std::string m_name;
     boost::filesystem::path m_filePath;
     bool m_modified;
+    std::vector<std::weak_ptr<DocumentObserver> > m_observers;
 };
 
 }

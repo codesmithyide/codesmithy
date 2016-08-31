@@ -29,10 +29,12 @@
 namespace CodeSmithy
 {
 
+class Documents;
+
 class DocumentsObserver
 {
 public:
-    virtual void onAdd(std::shared_ptr<Document> document);
+    virtual void onAdd(const Documents& source, std::shared_ptr<Document> document);
 };
 
 }

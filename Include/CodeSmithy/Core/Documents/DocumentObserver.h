@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTOBSERVER_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTOBSERVER_H_
 
+namespace CodeSmithy
+{
+
+class Document;
+
+class DocumentObserver
+{
+public:
+    virtual void onModified(const Document& source);
+};
+
+}
+
 #endif
