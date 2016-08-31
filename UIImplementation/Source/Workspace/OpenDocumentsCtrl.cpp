@@ -32,6 +32,7 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent,
                                      std::shared_ptr<ActiveDocument> activeDocument)
     : wxAuiNotebook(parent), m_activeDocument(activeDocument)
 {
+    Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::OnPageClose, this);
     Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::OnPageChanged, this);
 }
 
@@ -46,7 +47,7 @@ void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
     }
 }
 
-void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
+void OpenDocumentsCtrl::OnPageClose(wxAuiNotebookEvent& evt)
 {
     int selectedPageIndex = evt.GetSelection();
     if (selectedPageIndex != wxNOT_FOUND)
@@ -55,12 +56,30 @@ void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
         DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
         if (selectedDocumentCtrl)
         {
-            m_activeDocument->setActiveDocument(selectedDocumentCtrl->document());
+            if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
+            {
+                m_activeDocument->setActiveDocument(std::shared_ptr<const Document>());
+            }
         }
     }
-    else
+}
+
+void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
+{
+    std::shared_ptr<const Document> newActiveDocument;
+
+    int selectedPageIndex = evt.GetSelection();
+    if (selectedPageIndex != wxNOT_FOUND)
     {
+        wxWindow* selectedPage = GetPage(selectedPageIndex);
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            newActiveDocument = selectedDocumentCtrl->document();
+        }
     }
+
+    m_activeDocument->setActiveDocument(newActiveDocument);
 }
 
 }

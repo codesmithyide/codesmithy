@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UI_FRAME_H_
 #define _CODESMITHY_UI_FRAME_H_
 
+#include "CodeSmithy/UIImplementation/MenuBar.h"
 #include "CodeSmithy/UIImplementation/ActiveDocument.h"
 #include "CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
@@ -37,6 +38,7 @@ class Frame : public wxFrame
 public:
     Frame(const wxString& title, const DocumentTypes& documentTypes, 
         const ProjectTypes& projectTypes);
+    ~Frame() override;
 
 	void OpenFile(const wxString& file);
 
@@ -49,6 +51,7 @@ private:
     AppSettings m_appSettings;
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<ActiveDocument> m_activeDocument;
+    MenuBar* m_menuBar;
     WorkspacePanel* m_workspacePanel;
 
     wxDECLARE_EVENT_TABLE();

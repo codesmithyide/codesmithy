@@ -39,6 +39,7 @@ public:
     void AddDocument(std::shared_ptr<Document> document);
 
 private:
+    void OnPageClose(wxAuiNotebookEvent& evt);
     void OnPageChanged(wxAuiNotebookEvent& evt);
 
 private:

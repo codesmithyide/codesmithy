@@ -26,12 +26,9 @@
 namespace CodeSmithy
 {
 
-MenuBar::MenuBar(std::shared_ptr<ActiveDocument> activeDocument)
+MenuBar::MenuBar()
     : m_closeMenuItem(0)
 {
-    m_activeDocumentObserver = std::make_shared<Observer>(*this);
-    activeDocument->addObserver(m_activeDocumentObserver);
-
     wxMenu* menuFile = new wxMenu;
 
     wxMenu* menuFileOpen = new wxMenu;
@@ -48,6 +45,18 @@ MenuBar::MenuBar(std::shared_ptr<ActiveDocument> activeDocument)
     menuFile->Append(wxID_EXIT);
     
     Append(menuFile, "&File");
+}
+
+void MenuBar::registerObserver(std::shared_ptr<ActiveDocument> activeDocument)
+{
+    m_activeDocumentObserver = std::make_shared<Observer>(*this);
+    activeDocument->addObserver(m_activeDocumentObserver);
+}
+
+void MenuBar::deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument)
+{
+    activeDocument->removeObserver(m_activeDocumentObserver);
+    m_activeDocumentObserver.reset();
 }
 
 MenuBar::Observer::Observer(MenuBar& menuBar)
@@ -70,6 +79,8 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
     }
     else
     {
+        std::string menuLabel = "&Close";
+        m_menuBar.m_closeMenuItem->SetItemLabel(menuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(false);
     }
 }

@@ -33,7 +33,10 @@ namespace CodeSmithy
 class MenuBar : public wxMenuBar
 {
 public:
-    MenuBar(std::shared_ptr<ActiveDocument> activeDocument);
+    MenuBar();
+
+    void registerObserver(std::shared_ptr<ActiveDocument> activeDocument);
+    void deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument);
 
 private:
     class Observer : public ActiveDocumentObserver

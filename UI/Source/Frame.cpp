@@ -21,7 +21,6 @@
 */
 
 #include "Frame.h"
-#include "CodeSmithy/UIImplementation/MenuBar.h"
 #include "CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h"
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
@@ -35,14 +34,22 @@ Frame::Frame(const wxString& title,
              const ProjectTypes& projectTypes)
     : wxFrame(NULL, wxID_ANY, title), 
     m_appSettings(documentTypes, projectTypes),
-    m_workspacePanel(0)
+    m_menuBar(0), m_workspacePanel(0)
 {
     m_documents = std::make_shared<Documents>();
     m_activeDocument = std::make_shared<ActiveDocument>();
 
-    SetMenuBar(new MenuBar(m_activeDocument));
+    m_menuBar = new MenuBar();
+    m_menuBar->registerObserver(m_activeDocument);
+    SetMenuBar(m_menuBar);
 
     m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument);
+}
+
+Frame::~Frame()
+{
+    m_menuBar->deregisterObserver(m_activeDocument);
+    m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
 }
 
 void Frame::OpenFile(const wxString& file)
