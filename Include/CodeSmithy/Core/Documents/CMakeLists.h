@@ -32,8 +32,10 @@ namespace CodeSmithy
 class CMakeLists : public Document
 {
 public:
-    CMakeLists(const std::shared_ptr<const DocumentType> type, const std::string& name);
-    CMakeLists(const std::shared_ptr<const DocumentType> type, const std::string& name,
+    CMakeLists(const std::shared_ptr<const DocumentType> type,
+        const DocumentId& id, const std::string& name);
+    CMakeLists(const std::shared_ptr<const DocumentType> type,
+        const DocumentId& id, const std::string& name,
         const boost::filesystem::path& path);
 };
 

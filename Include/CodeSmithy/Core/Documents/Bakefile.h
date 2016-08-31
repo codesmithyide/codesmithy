@@ -32,9 +32,10 @@ namespace CodeSmithy
 class Bakefile : public Document
 {
 public:
-    Bakefile(const std::shared_ptr<const DocumentType> type, const std::string& name);
-    Bakefile(const std::shared_ptr<const DocumentType> type, const std::string& name, 
-        const boost::filesystem::path& path);
+    Bakefile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    Bakefile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
 };
 
 }

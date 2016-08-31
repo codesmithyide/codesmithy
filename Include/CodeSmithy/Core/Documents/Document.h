@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
+#include "DocumentId.h"
 #include <string>
 #include <memory>
 
@@ -38,17 +39,22 @@ class DocumentType;
 // A document would typically be a file. However documents
 // don't have to reside on the filesystem. They could
 // also be stored in a database for instance.
+// Each document has a unique id to identify it in the
+// workspace
 class Document
 {
 public:
-    Document(const std::shared_ptr<const DocumentType> type, const std::string& name);
+    Document(const std::shared_ptr<const DocumentType> type, 
+        const DocumentId& id, const std::string& name);
     virtual ~Document();
 
     const DocumentType& type() const;
+    const DocumentId& id() const;
     const std::string& name() const;
 
 private:
     const std::shared_ptr<const DocumentType> m_type;
+    DocumentId m_id;
     std::string m_name;
 };
 

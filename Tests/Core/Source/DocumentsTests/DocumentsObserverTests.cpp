@@ -41,7 +41,7 @@ TestResult::EOutcome DocumentsObserverOnAddTest1()
     documents.addObserver(observer);
 
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
-    documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, "DocumentsObserverOnAddTest1"));
+    documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsObserverOnAddTest1"));
     if ((observer->observedDocuments().size() == 1) &&
         (observer->observedDocuments()[0].get() == documents[0].get()))
     {

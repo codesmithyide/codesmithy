@@ -34,7 +34,7 @@ void AddCMakeListsTests(TestSequence& testSequence)
 TestResult::EOutcome CMakeListsCreationTest1()
 {
     std::shared_ptr<CodeSmithy::CMakeListsType> cmakelistsType = std::make_shared<CodeSmithy::CMakeListsType>();
-    CodeSmithy::CMakeLists document(cmakelistsType, "CMakeListsCreationTest1");
+    CodeSmithy::CMakeLists document(cmakelistsType, 1234, "CMakeListsCreationTest1");
     if (document.type().name() == "CMakeLists")
     {
         return TestResult::ePassed;

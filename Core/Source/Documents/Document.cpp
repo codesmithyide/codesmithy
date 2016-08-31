@@ -26,8 +26,9 @@ namespace CodeSmithy
 {
 
 Document::Document(const std::shared_ptr<const DocumentType> type,
+                   const DocumentId& id,
                    const std::string& name)
-    : m_type(type), m_name(name)
+    : m_type(type), m_id(id), m_name(name)
 {
 }
 
@@ -38,6 +39,11 @@ Document::~Document()
 const DocumentType& Document::type() const
 {
     return *m_type;
+}
+
+const DocumentId& Document::id() const
+{
+    return m_id;
 }
 
 const std::string& Document::name() const

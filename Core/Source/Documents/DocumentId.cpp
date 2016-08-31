@@ -21,3 +21,16 @@
 */
 
 #include "Documents/DocumentId.h"
+
+namespace CodeSmithy
+{
+
+DocumentId::DocumentId(unsigned int id)
+{
+}
+
+DocumentId::~DocumentId()
+{
+}
+
+}

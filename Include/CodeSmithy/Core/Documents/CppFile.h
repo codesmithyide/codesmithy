@@ -32,9 +32,10 @@ namespace CodeSmithy
 class CppFile : public Document
 {
 public:
-    CppFile(const std::shared_ptr<const DocumentType> type, const std::string& name);
-    CppFile(const std::shared_ptr<const DocumentType> type, const std::string& name,
-        const boost::filesystem::path& path);
+    CppFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    CppFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
 };
 
 }

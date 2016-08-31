@@ -32,9 +32,10 @@ namespace CodeSmithy
 class XMLDocument : public Document
 {
 public:
-    XMLDocument(const std::shared_ptr<const DocumentType> type, const std::string& name);
-    XMLDocument(const std::shared_ptr<const DocumentType> type, const std::string& name,
-        const boost::filesystem::path& path);
+    XMLDocument(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    XMLDocument(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
 };
 
 }

@@ -34,7 +34,7 @@ void AddBakefileTests(TestSequence& testSequence)
 TestResult::EOutcome BakefileCreationTest1()
 {
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
-    CodeSmithy::Bakefile document(bakefileType, "BakefileCreationTest1");
+    CodeSmithy::Bakefile document(bakefileType, 1234, "BakefileCreationTest1");
     if (document.type().name() == "Bakefile")
     {
         return TestResult::ePassed;

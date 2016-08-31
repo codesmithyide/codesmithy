@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_DOCUMENTID_H_
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTID_H_
 
+namespace CodeSmithy
+{
+
+class DocumentId
+{
+public:
+    DocumentId(unsigned int id);
+    ~DocumentId();
+};
+
+}
+
 #endif

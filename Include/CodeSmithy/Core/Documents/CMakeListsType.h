@@ -33,8 +33,10 @@ class CMakeListsType : public DocumentType
 public:
     CMakeListsType();
 
-    std::shared_ptr<Document> createNewDocument(const std::string& name) const override;
-    std::shared_ptr<Document> createDocumentFromFile(const boost::filesystem::path& path) const override;
+    std::shared_ptr<Document> createNewDocument(const DocumentId& id,
+        const std::string& name) const override;
+    std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
+        const boost::filesystem::path& path) const override;
 };
 
 }

@@ -31,14 +31,16 @@ CodeSmithyProjectFileType::CodeSmithyProjectFileType()
 {
 }
 
-std::shared_ptr<Document> CodeSmithyProjectFileType::createNewDocument(const std::string& name) const
+std::shared_ptr<Document> CodeSmithyProjectFileType::createNewDocument(const DocumentId& id,
+                                                                       const std::string& name) const
 {
-    return std::make_shared<CodeSmithyProjectFile>(shared_from_this(), name);
+    return std::make_shared<CodeSmithyProjectFile>(shared_from_this(), id, name);
 }
 
-std::shared_ptr<Document> CodeSmithyProjectFileType::createDocumentFromFile(const boost::filesystem::path& path) const
+std::shared_ptr<Document> CodeSmithyProjectFileType::createDocumentFromFile(const DocumentId& id,
+                                                                            const boost::filesystem::path& path) const
 {
-    return std::make_shared<CodeSmithyProjectFile>(shared_from_this(), path.filename().generic_string(), path);
+    return std::make_shared<CodeSmithyProjectFile>(shared_from_this(), id, path.filename().generic_string(), path);
 }
 
 }

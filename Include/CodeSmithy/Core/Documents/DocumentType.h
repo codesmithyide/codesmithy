@@ -46,8 +46,10 @@ public:
     const std::vector<std::string>& extensions() const;
     bool hasExtension(const boost::filesystem::path& extension) const;
 
-    virtual std::shared_ptr<Document> createNewDocument(const std::string& name) const = 0;
-    virtual std::shared_ptr<Document> createDocumentFromFile(const boost::filesystem::path& path) const = 0;
+    virtual std::shared_ptr<Document> createNewDocument(const DocumentId& id, 
+        const std::string& name) const = 0;
+    virtual std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
+        const boost::filesystem::path& path) const = 0;
 
     std::shared_ptr<const CustomDocumentTypeData> customData() const;
     void setCustomData(std::shared_ptr<CustomDocumentTypeData> customData);
