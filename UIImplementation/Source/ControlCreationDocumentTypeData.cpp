@@ -25,7 +25,7 @@
 namespace CodeSmithy
 {
 
-ControlCreationDocumentTypeData::ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent))
+ControlCreationDocumentTypeData::ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent, std::shared_ptr<Document> document))
     : m_create(create)
 {
 }
@@ -34,9 +34,10 @@ ControlCreationDocumentTypeData::~ControlCreationDocumentTypeData()
 {
 }
 
-wxWindow* ControlCreationDocumentTypeData::CreateDocumentCtrl(wxWindow* parent) const
+wxWindow* ControlCreationDocumentTypeData::CreateDocumentCtrl(wxWindow* parent, 
+                                                              std::shared_ptr<Document> document) const
 {
-    return m_create(parent);
+    return m_create(parent, document);
 }
 
 }

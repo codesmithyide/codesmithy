@@ -21,3 +21,12 @@
 */
 
 #include "ActiveDocumentObserver.h"
+
+namespace CodeSmithy
+{
+
+void ActiveDocumentObserver::onChange(std::shared_ptr<const Document> document)
+{
+}
+
+}

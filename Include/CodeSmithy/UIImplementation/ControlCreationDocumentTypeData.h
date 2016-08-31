@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_CONTROLCREATIONDOCUMENTTYPEDATA_H_
 
 #include "CodeSmithy/Core/Documents/CustomDocumentTypeData.h"
+#include "CodeSmithy/Core/Documents/Document.h"
 #include <wx/window.h>
 
 namespace CodeSmithy
@@ -35,13 +36,13 @@ namespace CodeSmithy
 class ControlCreationDocumentTypeData : public CustomDocumentTypeData
 {
 public:
-    ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent));
+    ControlCreationDocumentTypeData(wxWindow* (*create)(wxWindow* parent, std::shared_ptr<Document> document));
     virtual ~ControlCreationDocumentTypeData();
 
-    wxWindow* CreateDocumentCtrl(wxWindow* parent) const;
+    wxWindow* CreateDocumentCtrl(wxWindow* parent, std::shared_ptr<Document> document) const;
 
 private:
-    wxWindow* (*m_create)(wxWindow* parent);
+    wxWindow* (*m_create)(wxWindow* parent, std::shared_ptr<Document> document);
 };
 
 }

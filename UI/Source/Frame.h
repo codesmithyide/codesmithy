@@ -28,6 +28,7 @@
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include <wx/frame.h>
+#include <wx/menu.h>
 
 namespace CodeSmithy
 {
@@ -48,9 +49,23 @@ private:
     void OnExit(wxCommandEvent& evt);
 
 private:
+    class Observer : public ActiveDocumentObserver
+    {
+    public:
+        Observer(Frame& frame);
+
+        void onChange(std::shared_ptr<const Document> document) override;
+
+    private:
+        Frame& m_frame;
+    };
+
+private:
     AppSettings m_appSettings;
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<ActiveDocument> m_activeDocument;
+    std::shared_ptr<Observer> m_activeDocumentObserver;
+    wxMenuItem* m_closeMenuItem;
     WorkspacePanel* m_workspacePanel;
 
     wxDECLARE_EVENT_TABLE();

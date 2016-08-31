@@ -23,11 +23,15 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENTOBSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENTOBSERVER_H_
 
+#include "CodeSmithy/Core/Documents/Document.h"
+
 namespace CodeSmithy
 {
 
 class ActiveDocumentObserver
 {
+public:
+    virtual void onChange(std::shared_ptr<const Document> document);
 };
 
 }

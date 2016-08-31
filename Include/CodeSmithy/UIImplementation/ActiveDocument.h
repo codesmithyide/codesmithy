@@ -23,7 +23,9 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENT_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEDOCUMENT_H_
 
+#include "ActiveDocumentObserver.h"
 #include "CodeSmithy/Core/Documents/Document.h"
+#include <vector>
 
 namespace CodeSmithy
 {
@@ -39,8 +41,15 @@ public:
     std::shared_ptr<const Document> activeDocument() const;
     void setActiveDocument(std::shared_ptr<const Document> activeDocument);
 
+    void addObserver(std::weak_ptr<ActiveDocumentObserver> observer);
+    void removeObserver(std::weak_ptr<ActiveDocumentObserver> observer);
+
+private:
+    void notifyChange(std::shared_ptr<const Document> document);
+
 private:
     std::shared_ptr<const Document> m_activeDocument;
+    std::vector<std::weak_ptr<ActiveDocumentObserver> > m_observers;
 };
 
 }
