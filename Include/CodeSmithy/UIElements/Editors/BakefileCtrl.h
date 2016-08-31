@@ -38,6 +38,7 @@ public:
     BakefileCtrl(wxWindow* parent, std::shared_ptr<Document> document);
 
     std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
 
 private:
     wxStyledTextCtrl* m_ctrl;

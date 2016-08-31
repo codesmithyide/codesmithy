@@ -133,7 +133,8 @@ void Frame::OpenFile(const wxString& file)
 void Frame::OnOpenFile(wxCommandEvent& evt)
 {
     wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
-        wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter());
+        wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter(),
+        wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (fileDialog->ShowModal() == wxID_OK)
     {
         wxString selectedFile = fileDialog->GetPath();
@@ -144,18 +145,42 @@ void Frame::OnOpenFile(wxCommandEvent& evt)
 
 void Frame::OnSaveFile(wxCommandEvent& evt)
 {
+    std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
+    if (activeDocument)
+    {
+        if (activeDocument->filePath().empty())
+        {
+            OnSaveFileAs(evt);
+        }
+        else
+        {
+            activeDocument->save(activeDocument->filePath());
+        }
+    }
 }
 
 void Frame::OnSaveFileAs(wxCommandEvent& evt)
 {
+    std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
+    if (activeDocument)
+    {
+        wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
+            wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter(),
+            wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+        if (fileDialog->ShowModal() == wxID_OK)
+        {
+        }
+        fileDialog->Destroy();
+    }
 }
 
 void Frame::OnCloseFile(wxCommandEvent& evt)
 {
-    if (m_activeDocument->activeDocument())
+    std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
+    if (activeDocument)
     {
-        m_workspacePanel->closeDocument(m_activeDocument->activeDocument()->id());
-        m_activeDocument->setActiveDocument(std::shared_ptr<const Document>());
+        m_workspacePanel->closeDocument(activeDocument->id());
+        m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
     }
 }
 

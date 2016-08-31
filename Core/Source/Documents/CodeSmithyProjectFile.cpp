@@ -38,7 +38,10 @@ CodeSmithyProjectFile::CodeSmithyProjectFile(const std::shared_ptr<const Documen
                                              const boost::filesystem::path& path)
     : Document(type, id, name)
 {
+}
 
+void CodeSmithyProjectFile::doSave(const boost::filesystem::path& path) const
+{
 }
 
 }

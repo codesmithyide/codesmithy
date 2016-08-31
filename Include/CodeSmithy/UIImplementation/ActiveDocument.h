@@ -38,17 +38,17 @@ class ActiveDocument
 public:
     ActiveDocument();
 
-    std::shared_ptr<const Document> activeDocument() const;
-    void setActiveDocument(std::shared_ptr<const Document> activeDocument);
+    std::shared_ptr<Document> activeDocument() const;
+    void setActiveDocument(std::shared_ptr<Document> activeDocument);
 
     void addObserver(std::weak_ptr<ActiveDocumentObserver> observer);
     void removeObserver(std::weak_ptr<ActiveDocumentObserver> observer);
 
 private:
-    void notifyChange(std::shared_ptr<const Document> document);
+    void notifyChange(std::shared_ptr<Document> document);
 
 private:
-    std::shared_ptr<const Document> m_activeDocument;
+    std::shared_ptr<Document> m_activeDocument;
     std::vector<std::weak_ptr<ActiveDocumentObserver> > m_observers;
 };
 

@@ -29,12 +29,12 @@ ActiveDocument::ActiveDocument()
 {
 }
 
-std::shared_ptr<const Document> ActiveDocument::activeDocument() const
+std::shared_ptr<Document> ActiveDocument::activeDocument() const
 {
     return m_activeDocument;
 }
 
-void ActiveDocument::setActiveDocument(std::shared_ptr<const Document> activeDocument)
+void ActiveDocument::setActiveDocument(std::shared_ptr<Document> activeDocument)
 {
     m_activeDocument = activeDocument;
     notifyChange(m_activeDocument);
@@ -57,7 +57,7 @@ void ActiveDocument::removeObserver(std::weak_ptr<ActiveDocumentObserver> observ
     }
 }
 
-void ActiveDocument::notifyChange(std::shared_ptr<const Document> document)
+void ActiveDocument::notifyChange(std::shared_ptr<Document> document)
 {
     for (size_t i = 0; i < m_observers.size(); ++i)
     {

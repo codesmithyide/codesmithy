@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
 #include "DocumentId.h"
+#include <boost/filesystem/path.hpp>
 #include <string>
 #include <memory>
 
@@ -51,11 +52,26 @@ public:
     const DocumentType& type() const;
     const DocumentId& id() const;
     const std::string& name() const;
+    // If the document is associated with a file on disk
+    // this path will point to it. If not it will be empty.
+    const boost::filesystem::path& filePath() const;
+
+    // True if the document differs from the copy on disk
+    // or if there is no copy on disk.
+    bool modified() const;
+    void setModified(bool modified);
+
+    void save(const boost::filesystem::path& path);
+
+private:
+    virtual void doSave(const boost::filesystem::path& path) const = 0;
 
 private:
     const std::shared_ptr<const DocumentType> m_type;
     DocumentId m_id;
     std::string m_name;
+    boost::filesystem::path m_filePath;
+    bool m_modified;
 };
 
 }

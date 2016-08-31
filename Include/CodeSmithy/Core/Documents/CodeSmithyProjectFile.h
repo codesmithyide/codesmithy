@@ -37,6 +37,9 @@ public:
     CodeSmithyProjectFile(const std::shared_ptr<const DocumentType> type, 
         const DocumentId& id, const std::string& name,
         const boost::filesystem::path& path);
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
 };
 
 }

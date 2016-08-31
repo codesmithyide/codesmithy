@@ -35,6 +35,7 @@ public:
     DocumentCtrl(wxWindow* parent);
 
     virtual std::shared_ptr<const Document> document() const = 0;
+    virtual std::shared_ptr<Document> document() = 0;
 };
 
 }

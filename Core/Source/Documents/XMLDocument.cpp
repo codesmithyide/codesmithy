@@ -41,4 +41,8 @@ XMLDocument::XMLDocument(const std::shared_ptr<const DocumentType> type,
 
 }
 
+void XMLDocument::doSave(const boost::filesystem::path& path) const
+{
+}
+
 }

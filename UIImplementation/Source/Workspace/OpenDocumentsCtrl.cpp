@@ -84,7 +84,7 @@ void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
         {
             if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
             {
-                m_activeDocument->setActiveDocument(std::shared_ptr<const Document>());
+                m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
             }
         }
     }
@@ -92,7 +92,7 @@ void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
 
 void OpenDocumentsCtrl::onPageChanged(wxAuiNotebookEvent& evt)
 {
-    std::shared_ptr<const Document> newActiveDocument;
+    std::shared_ptr<Document> newActiveDocument;
 
     int selectedPageIndex = evt.GetSelection();
     if (selectedPageIndex != wxNOT_FOUND)

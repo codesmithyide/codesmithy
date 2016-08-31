@@ -50,4 +50,9 @@ std::shared_ptr<const Document> BakefileCtrl::document() const
     return m_document;
 }
 
+std::shared_ptr<Document> BakefileCtrl::document()
+{
+    return m_document;
+}
+
 }

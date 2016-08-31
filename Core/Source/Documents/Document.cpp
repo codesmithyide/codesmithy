@@ -28,7 +28,7 @@ namespace CodeSmithy
 Document::Document(const std::shared_ptr<const DocumentType> type,
                    const DocumentId& id,
                    const std::string& name)
-    : m_type(type), m_id(id), m_name(name)
+    : m_type(type), m_id(id), m_name(name), m_modified(true)
 {
 }
 
@@ -49,6 +49,28 @@ const DocumentId& Document::id() const
 const std::string& Document::name() const
 {
     return m_name;
+}
+
+const boost::filesystem::path& Document::filePath() const
+{
+    return m_filePath;
+}
+
+bool Document::modified() const
+{
+    return m_modified;
+}
+
+void Document::setModified(bool modified)
+{
+    m_modified = modified;
+}
+
+void Document::save(const boost::filesystem::path& path)
+{
+    m_filePath = path;
+    doSave(m_filePath);
+    setModified(false);
 }
 
 }
