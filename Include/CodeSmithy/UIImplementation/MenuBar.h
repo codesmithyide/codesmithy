@@ -52,6 +52,8 @@ private:
 
 private:
     std::shared_ptr<Observer> m_activeDocumentObserver;
+    wxMenuItem* m_saveMenuItem;
+    wxMenuItem* m_saveAsMenuItem;
     wxMenuItem* m_closeMenuItem;
 };
 

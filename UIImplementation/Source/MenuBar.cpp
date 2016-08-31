@@ -27,16 +27,22 @@ namespace CodeSmithy
 {
 
 MenuBar::MenuBar()
-    : m_closeMenuItem(0)
+    : m_saveMenuItem(0), m_saveAsMenuItem(0), m_closeMenuItem(0)
 {
     wxMenu* menuFile = new wxMenu;
 
     wxMenu* menuFileOpen = new wxMenu;
-    menuFileOpen->Append(wxID_OPEN_FILE, "&File...");
+    menuFileOpen->Append(WorkspaceOpenFileMenuID, "&File...");
     menuFile->AppendSubMenu(menuFileOpen, "&Open");
 
     menuFile->AppendSeparator();
-    m_closeMenuItem = menuFile->Append(wxID_CLOSE);
+    m_saveMenuItem = menuFile->Append(WorkspaceSaveFileMenuID, "&Save");
+    m_saveMenuItem->Enable(false);
+    m_saveAsMenuItem = menuFile->Append(WorkspaceSaveFileAsMenuID, "Save &As...");
+    m_saveAsMenuItem->Enable(false);
+
+    menuFile->AppendSeparator();
+    m_closeMenuItem = menuFile->Append(WorkspaceCloseFileMenuID, "&Close");
     m_closeMenuItem->Enable(false);
 
     menuFile->AppendSeparator();
@@ -68,19 +74,46 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
 {
     if (document)
     {
-        std::string menuLabel = "&Close";
+        std::string saveMenuLabel = "&Save";
         if (!document->name().empty())
         {
-            menuLabel += " ";
-            menuLabel += document->name();
+            saveMenuLabel += " ";
+            saveMenuLabel += document->name();
         }
-        m_menuBar.m_closeMenuItem->SetItemLabel(menuLabel.c_str());
+        m_menuBar.m_saveMenuItem->SetItemLabel(saveMenuLabel.c_str());
+        m_menuBar.m_saveMenuItem->Enable(true);
+
+        std::string saveAsMenuLabel = "Save ";
+        if (!document->name().empty())
+        {
+            saveAsMenuLabel += document->name();
+            saveAsMenuLabel += " ";
+        }
+        saveAsMenuLabel += "&As...";
+        m_menuBar.m_saveAsMenuItem->SetItemLabel(saveAsMenuLabel.c_str());
+        m_menuBar.m_saveAsMenuItem->Enable(true);
+
+        std::string closeMenuLabel = "&Close";
+        if (!document->name().empty())
+        {
+            closeMenuLabel += " ";
+            closeMenuLabel += document->name();
+        }
+        m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(true);
     }
     else
     {
-        std::string menuLabel = "&Close";
-        m_menuBar.m_closeMenuItem->SetItemLabel(menuLabel.c_str());
+        std::string saveMenuLabel = "&Save";
+        m_menuBar.m_saveMenuItem->SetItemLabel(saveMenuLabel.c_str());
+        m_menuBar.m_saveMenuItem->Enable(false);
+
+        std::string saveAsMenuLabel = "Save &As...";
+        m_menuBar.m_saveAsMenuItem->SetItemLabel(saveAsMenuLabel.c_str());
+        m_menuBar.m_saveAsMenuItem->Enable(false);
+
+        std::string closeMenuLabel = "&Close";
+        m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(false);
     }
 }

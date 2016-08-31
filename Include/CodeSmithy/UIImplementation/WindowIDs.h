@@ -28,9 +28,12 @@
 namespace CodeSmithy
 {
 
-const wxWindowID wxID_OPEN_FILE = wxID_HIGHEST + 1;
+const wxWindowID WorkspaceOpenFileMenuID = wxID_HIGHEST + 1;
+const wxWindowID WorkspaceSaveFileMenuID = WorkspaceOpenFileMenuID + 1;
+const wxWindowID WorkspaceSaveFileAsMenuID = WorkspaceSaveFileMenuID + 1;
+const wxWindowID WorkspaceCloseFileMenuID = WorkspaceSaveFileAsMenuID + 1;
 
-const wxWindowID ProjectChoiceProjectRadioButtonID = wxID_OPEN_FILE + 1;
+const wxWindowID ProjectChoiceProjectRadioButtonID = WorkspaceCloseFileMenuID + 1;
 const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButtonID + 1;
 
 const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;

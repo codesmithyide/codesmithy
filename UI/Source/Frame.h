@@ -44,6 +44,9 @@ public:
 
 private:
     void OnOpenFile(wxCommandEvent& evt);
+    void OnSaveFile(wxCommandEvent& evt);
+    void OnSaveFileAs(wxCommandEvent& evt);
+    void OnCloseFile(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
 

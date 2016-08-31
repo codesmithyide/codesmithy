@@ -124,7 +124,7 @@ void Frame::OpenFile(const wxString& file)
         if (!documentTypeName.empty())
         {
             std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
-            std::shared_ptr<Document> document = documentType->createDocument(selectedPath.filename().generic_string());
+            std::shared_ptr<Document> document = documentType->createDocumentFromFile(selectedPath);
             m_documents->add(document);
         }
     }
@@ -142,6 +142,18 @@ void Frame::OnOpenFile(wxCommandEvent& evt)
     fileDialog->Destroy();
 }
 
+void Frame::OnSaveFile(wxCommandEvent& evt)
+{
+}
+
+void Frame::OnSaveFileAs(wxCommandEvent& evt)
+{
+}
+
+void Frame::OnCloseFile(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnPreferences(wxCommandEvent& evt)
 {
     PreferencesDialog preferencesDialog(this, m_appSettings);
@@ -154,7 +166,10 @@ void Frame::OnExit(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
-    EVT_MENU(wxID_OPEN_FILE, Frame::OnOpenFile)
+    EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
+    EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
+    EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)
+    EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
 wxEND_EVENT_TABLE()
