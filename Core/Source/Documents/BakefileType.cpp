@@ -37,9 +37,14 @@ BakefileType::BakefileType(std::shared_ptr<CustomDocumentTypeData> customData)
     setCustomData(customData);
 }
 
-std::shared_ptr<Document> BakefileType::createDocument(const std::string& name) const
+std::shared_ptr<Document> BakefileType::createNewDocument(const std::string& name) const
 {
     return std::make_shared<Bakefile>(shared_from_this(), name);
+}
+
+std::shared_ptr<Document> BakefileType::createDocumentFromFile(const boost::filesystem::path& path) const
+{
+    return std::make_shared<Bakefile>(shared_from_this(), path.filename().generic_string(), path);
 }
 
 }

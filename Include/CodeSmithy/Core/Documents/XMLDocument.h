@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_XMLDOCUMENT_H_
 
 #include "Document.h"
+#include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
 {
@@ -32,6 +33,8 @@ class XMLDocument : public Document
 {
 public:
     XMLDocument(const std::shared_ptr<const DocumentType> type, const std::string& name);
+    XMLDocument(const std::shared_ptr<const DocumentType> type, const std::string& name,
+        const boost::filesystem::path& path);
 };
 
 }

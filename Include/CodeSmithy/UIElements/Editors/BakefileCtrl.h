@@ -25,6 +25,7 @@
 
 #include "DocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/Bakefile.h"
+#include <wx/stc/stc.h>
 
 namespace CodeSmithy
 {
@@ -39,6 +40,7 @@ public:
     std::shared_ptr<const Document> document() const override;
 
 private:
+    wxStyledTextCtrl* m_ctrl;
     std::shared_ptr<Bakefile> m_document;
 };
 

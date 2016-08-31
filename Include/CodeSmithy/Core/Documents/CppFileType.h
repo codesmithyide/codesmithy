@@ -33,7 +33,8 @@ class CppFileType : public DocumentType
 public:
     CppFileType();
 
-    std::shared_ptr<Document> createDocument(const std::string& name) const override;
+    std::shared_ptr<Document> createNewDocument(const std::string& name) const override;
+    std::shared_ptr<Document> createDocumentFromFile(const boost::filesystem::path& path) const override;
 };
 
 }

@@ -31,4 +31,12 @@ Bakefile::Bakefile(const std::shared_ptr<const DocumentType> type,
 {
 }
 
+Bakefile::Bakefile(const std::shared_ptr<const DocumentType> type,
+                   const std::string& name,
+                   const boost::filesystem::path& path)
+    : Document(type, name)
+{
+
+}
+
 }

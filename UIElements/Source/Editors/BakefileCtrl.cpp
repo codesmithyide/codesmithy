@@ -21,6 +21,7 @@
 */
 
 #include "Editors/BakefileCtrl.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -33,9 +34,15 @@ wxWindow* BakefileCtrl::Create(wxWindow *parent,
 
 BakefileCtrl::BakefileCtrl(wxWindow* parent, 
                            std::shared_ptr<Document> document)
-    : DocumentCtrl(parent)
+    : DocumentCtrl(parent), m_ctrl(0), m_document(0)
 {
+    m_ctrl = new wxStyledTextCtrl(this);
+
     m_document = std::dynamic_pointer_cast<Bakefile, Document>(document);
+    
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 std::shared_ptr<const Document> BakefileCtrl::document() const

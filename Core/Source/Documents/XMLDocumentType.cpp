@@ -31,9 +31,14 @@ XMLDocumentType::XMLDocumentType()
 {
 }
 
-std::shared_ptr<Document> XMLDocumentType::createDocument(const std::string& name) const
+std::shared_ptr<Document> XMLDocumentType::createNewDocument(const std::string& name) const
 {
     return std::make_shared<XMLDocument>(shared_from_this(), name);
+}
+
+std::shared_ptr<Document> XMLDocumentType::createDocumentFromFile(const boost::filesystem::path& path) const
+{
+    return std::make_shared<XMLDocument>(shared_from_this(), path.filename().generic_string(), path);
 }
 
 }
