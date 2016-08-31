@@ -36,7 +36,7 @@ CodeSmithyProjectFile::CodeSmithyProjectFile(const std::shared_ptr<const Documen
                                              const DocumentId& id,
                                              const std::string& name,
                                              const boost::filesystem::path& path)
-    : Document(type, id, name)
+    : Document(type, id, name, path)
 {
 }
 

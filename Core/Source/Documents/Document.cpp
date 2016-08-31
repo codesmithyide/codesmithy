@@ -32,6 +32,15 @@ Document::Document(const std::shared_ptr<const DocumentType> type,
 {
 }
 
+Document::Document(const std::shared_ptr<const DocumentType> type,
+                   const DocumentId& id, 
+                   const std::string& name,
+                   const boost::filesystem::path& path)
+    : m_type(type), m_id(id), m_name(name), m_filePath(path),
+    m_modified(true)
+{
+}
+
 Document::~Document()
 {
 }
@@ -64,6 +73,7 @@ bool Document::modified() const
 void Document::setModified(bool modified)
 {
     m_modified = modified;
+    notifyModified();
 }
 
 void Document::save(const boost::filesystem::path& path)
@@ -71,6 +81,35 @@ void Document::save(const boost::filesystem::path& path)
     m_filePath = path;
     doSave(m_filePath);
     setModified(false);
+}
+
+void Document::addObserver(std::weak_ptr<DocumentObserver> observer)
+{
+    m_observers.push_back(observer);
+}
+
+void Document::removeObserver(std::weak_ptr<DocumentObserver> observer)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        if (m_observers[i].lock().get() == observer.lock().get())
+        {
+            m_observers.erase(m_observers.begin() + i);
+            break;
+        }
+    }
+}
+
+void Document::notifyModified()
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        std::shared_ptr<DocumentObserver> observer = m_observers[i].lock();
+        if (observer)
+        {
+            observer->onModified(*this);
+        }
+    }
 }
 
 }

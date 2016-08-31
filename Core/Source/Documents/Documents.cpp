@@ -78,7 +78,7 @@ void Documents::notifyAdd(std::shared_ptr<Document> document)
         std::shared_ptr<DocumentsObserver> observer = m_observers[i].lock();
         if (observer)
         {
-            observer->onAdd(document);
+            observer->onAdd(*this, document);
         }
     }
 }

@@ -21,3 +21,12 @@
 */
 
 #include "Documents/DocumentObserver.h"
+
+namespace CodeSmithy
+{
+
+void DocumentObserver::onModified(const Document& source)
+{
+}
+
+}
