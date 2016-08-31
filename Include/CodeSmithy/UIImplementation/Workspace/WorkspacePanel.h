@@ -39,8 +39,10 @@ public:
         std::shared_ptr<ActiveDocument> activeDocument);
     ~WorkspacePanel();
 
+    void closeDocument(const DocumentId& id);
+
 private:
-    void OnAdd(std::shared_ptr<Document> document);
+    void onAdd(std::shared_ptr<Document> document);
 
 private:
     class Observer : public DocumentsObserver

@@ -36,11 +36,14 @@ class OpenDocumentsCtrl : public wxAuiNotebook
 public:
     OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument);
 
-    void AddDocument(std::shared_ptr<Document> document);
+    void addDocument(std::shared_ptr<Document> document);
+    void closeDocument(const DocumentId& id);
 
 private:
-    void OnPageClose(wxAuiNotebookEvent& evt);
-    void OnPageChanged(wxAuiNotebookEvent& evt);
+    size_t findPageByDocumentId(const DocumentId& id);
+
+    void onPageClose(wxAuiNotebookEvent& evt);
+    void onPageChanged(wxAuiNotebookEvent& evt);
 
 private:
     std::shared_ptr<ActiveDocument> m_activeDocument;

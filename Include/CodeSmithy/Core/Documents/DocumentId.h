@@ -33,6 +33,9 @@ public:
     DocumentId(const DocumentId& other);
     ~DocumentId();
 
+    bool operator==(const DocumentId& other) const;
+    bool operator!=(const DocumentId& other) const;
+
     DocumentId& operator++();
 
 private:

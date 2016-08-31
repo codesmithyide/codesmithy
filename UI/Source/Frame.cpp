@@ -152,6 +152,11 @@ void Frame::OnSaveFileAs(wxCommandEvent& evt)
 
 void Frame::OnCloseFile(wxCommandEvent& evt)
 {
+    if (m_activeDocument->activeDocument())
+    {
+        m_workspacePanel->closeDocument(m_activeDocument->activeDocument()->id());
+        m_activeDocument->setActiveDocument(std::shared_ptr<const Document>());
+    }
 }
 
 void Frame::OnPreferences(wxCommandEvent& evt)

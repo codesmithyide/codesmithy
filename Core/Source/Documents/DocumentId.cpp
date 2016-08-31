@@ -39,6 +39,16 @@ DocumentId::~DocumentId()
 {
 }
 
+bool DocumentId::operator==(const DocumentId& other) const
+{
+    return (m_id == other.m_id);
+}
+
+bool DocumentId::operator!=(const DocumentId& other) const
+{
+    return (m_id != other.m_id);
+}
+
 DocumentId& DocumentId::operator++()
 {
     ++m_id;

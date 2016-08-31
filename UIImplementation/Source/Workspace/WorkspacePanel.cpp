@@ -53,9 +53,14 @@ WorkspacePanel::~WorkspacePanel()
     m_documents->removeObserver(m_documentsObserver);
 }
 
-void WorkspacePanel::OnAdd(std::shared_ptr<Document> document)
+void WorkspacePanel::closeDocument(const DocumentId& id)
 {
-    m_openDocuments->AddDocument(document);
+    m_openDocuments->closeDocument(id);
+}
+
+void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
+{
+    m_openDocuments->addDocument(document);
     m_startPage->Hide();
     m_openDocuments->Show();
     GetSizer()->Layout();
@@ -68,7 +73,7 @@ WorkspacePanel::Observer::Observer(WorkspacePanel& workspace)
 
 void WorkspacePanel::Observer::onAdd(std::shared_ptr<Document> document)
 {
-    m_workspace.OnAdd(document);
+    m_workspace.onAdd(document);
 }
 
 }

@@ -32,11 +32,11 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent,
                                      std::shared_ptr<ActiveDocument> activeDocument)
     : wxAuiNotebook(parent), m_activeDocument(activeDocument)
 {
-    Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::OnPageClose, this);
-    Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::OnPageChanged, this);
+    Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::onPageClose, this);
+    Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::onPageChanged, this);
 }
 
-void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
+void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
 {
     std::shared_ptr<const ControlCreationDocumentTypeData> data =
         std::dynamic_pointer_cast<const ControlCreationDocumentTypeData, const CustomDocumentTypeData>(document->type().customData());
@@ -47,7 +47,33 @@ void OpenDocumentsCtrl::AddDocument(std::shared_ptr<Document> document)
     }
 }
 
-void OpenDocumentsCtrl::OnPageClose(wxAuiNotebookEvent& evt)
+void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
+{
+    size_t pageIndex = findPageByDocumentId(id);
+    if (pageIndex != wxNOT_FOUND)
+    {
+        DeletePage(pageIndex);
+    }
+}
+
+size_t OpenDocumentsCtrl::findPageByDocumentId(const DocumentId& id)
+{
+    for (size_t i = 0; i < GetPageCount(); ++i)
+    {
+        wxWindow* page = GetPage(i);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            if (documentCtrl->document()->id() == id)
+            {
+                return i;
+            }
+        }
+    }
+    return wxNOT_FOUND;
+}
+
+void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
 {
     int selectedPageIndex = evt.GetSelection();
     if (selectedPageIndex != wxNOT_FOUND)
@@ -64,7 +90,7 @@ void OpenDocumentsCtrl::OnPageClose(wxAuiNotebookEvent& evt)
     }
 }
 
-void OpenDocumentsCtrl::OnPageChanged(wxAuiNotebookEvent& evt)
+void OpenDocumentsCtrl::onPageChanged(wxAuiNotebookEvent& evt)
 {
     std::shared_ptr<const Document> newActiveDocument;
 
