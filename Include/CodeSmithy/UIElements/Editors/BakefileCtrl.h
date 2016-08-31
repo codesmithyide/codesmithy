@@ -41,6 +41,9 @@ public:
     std::shared_ptr<Document> document() override;
 
 private:
+    void onModified(wxStyledTextEvent& evt);
+
+private:
     wxStyledTextCtrl* m_ctrl;
     std::shared_ptr<Bakefile> m_document;
 };

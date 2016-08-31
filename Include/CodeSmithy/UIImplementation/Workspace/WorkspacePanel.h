@@ -50,7 +50,7 @@ private:
     public:
         Observer(WorkspacePanel& workspace);
 
-        void onAdd(std::shared_ptr<Document> document) override;
+        void onAdd(const Documents& source, std::shared_ptr<Document> document) override;
 
     private:
         WorkspacePanel& m_workspace;

@@ -46,7 +46,20 @@ private:
     void onPageChanged(wxAuiNotebookEvent& evt);
 
 private:
+    class Observer : public DocumentObserver
+    {
+    public:
+        Observer(OpenDocumentsCtrl& ctrl);
+
+        void onModified(const Document& source) override;
+
+    private:
+        OpenDocumentsCtrl& m_ctrl;
+    };
+
+private:
     std::shared_ptr<ActiveDocument> m_activeDocument;
+    std::shared_ptr<Observer> m_observer;
 };
 
 }

@@ -34,6 +34,8 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent,
 {
     Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::onPageClose, this);
     Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::onPageChanged, this);
+
+    m_observer = std::make_shared<Observer>(*this);
 }
 
 void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
@@ -44,6 +46,7 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
     {
         wxWindow* newPage = data->CreateDocumentCtrl(this, document);
         AddPage(newPage, document->name());
+        document->addObserver(m_observer);
     }
 }
 
@@ -106,6 +109,21 @@ void OpenDocumentsCtrl::onPageChanged(wxAuiNotebookEvent& evt)
     }
 
     m_activeDocument->setActiveDocument(newActiveDocument);
+}
+
+OpenDocumentsCtrl::Observer::Observer(OpenDocumentsCtrl& ctrl)
+    : m_ctrl(ctrl)
+{
+}
+
+void OpenDocumentsCtrl::Observer::onModified(const Document& source)
+{
+    size_t pageIndex = m_ctrl.findPageByDocumentId(source.id());
+    if (pageIndex != wxNOT_FOUND)
+    {
+        std::string text = source.name() + "*";
+        m_ctrl.SetPageText(pageIndex, text);
+    }
 }
 
 }

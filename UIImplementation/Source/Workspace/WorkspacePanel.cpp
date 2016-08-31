@@ -71,7 +71,8 @@ WorkspacePanel::Observer::Observer(WorkspacePanel& workspace)
 {
 }
 
-void WorkspacePanel::Observer::onAdd(std::shared_ptr<Document> document)
+void WorkspacePanel::Observer::onAdd(const Documents& source,
+                                     std::shared_ptr<Document> document)
 {
     m_workspace.onAdd(document);
 }

@@ -37,8 +37,13 @@ BakefileCtrl::BakefileCtrl(wxWindow* parent,
     : DocumentCtrl(parent), m_ctrl(0), m_document(0)
 {
     m_ctrl = new wxStyledTextCtrl(this);
-
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &BakefileCtrl::onModified, this);
+    
     m_document = std::dynamic_pointer_cast<Bakefile, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
     
     wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
     topSizer->Add(m_ctrl, 1, wxEXPAND);
@@ -53,6 +58,11 @@ std::shared_ptr<const Document> BakefileCtrl::document() const
 std::shared_ptr<Document> BakefileCtrl::document()
 {
     return m_document;
+}
+
+void BakefileCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
 }
 
 }
