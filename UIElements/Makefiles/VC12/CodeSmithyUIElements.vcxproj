@@ -152,11 +152,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Editors\DocumentCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\CppFileCtrl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\DocumentCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppFileCtrl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
