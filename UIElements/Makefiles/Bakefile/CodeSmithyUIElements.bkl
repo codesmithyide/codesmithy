@@ -28,6 +28,7 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore
         ../../../Include/CodeSmithy/UIElements/Editors/DocumentCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/BakefileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/CppFileCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h
     }
 
     sources
@@ -35,5 +36,6 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore
         ../../Source/Editors/DocumentCtrl.cpp
         ../../Source/Editors/BakefileCtrl.cpp
         ../../Source/Editors/CppFileCtrl.cpp
+        ../../Source/Editors/XMLDocumentCtrl.cpp
     }
 }
