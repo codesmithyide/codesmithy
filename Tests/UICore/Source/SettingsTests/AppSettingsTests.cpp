@@ -37,6 +37,7 @@ void AddAppSettingsTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 5", AppSettingsCreationTest5, *settingsTestSequence);
 
     new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
+    new FileComparisonTest("save test 2", AppSettingsSaveTest2, *settingsTestSequence);
 
     new HeapAllocationErrorsTest("createFileTypesFilter test 1", AppSettingsCreateFileTypesFilterTest1, *settingsTestSequence);
     new HeapAllocationErrorsTest("createFileTypesFilter test 2", AppSettingsCreateFileTypesFilterTest2, *settingsTestSequence);
@@ -163,6 +164,30 @@ TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test)
 
     appSettings.fileTypeAssociations()[0]->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
     appSettings.fileTypeAssociations()[0]->setAction(CodeSmithy::FileTypeAssociation::eProjectType, "CodeSmithy.Bakefile");
+    appSettings.save();
+
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsSaveTest2(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsSaveTest2.xml");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsSaveTest2.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
+
+    appSettings.editorSettings().defaultSettings().fontSettings().setFaceName("Arial");
+    appSettings.editorSettings().defaultSettings().fontSettings().setPointSize(12);
     appSettings.save();
 
     result = TestResult::ePassed;

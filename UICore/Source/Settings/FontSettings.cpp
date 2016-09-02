@@ -21,6 +21,7 @@
 */
 
 #include "Settings/FontSettings.h"
+#include <sstream>
 
 namespace CodeSmithy
 {
@@ -29,7 +30,7 @@ static const char* fontFaceNameElementName = "font-face-name";
 static const char* fontPointSizeElementName = "font-point-size";
 
 FontSettings::FontSettings()
-    : m_pointSize(0)
+    : m_faceName("Courier New"), m_pointSize(10)
 {
 }
 
@@ -42,9 +43,19 @@ const std::string& FontSettings::faceName() const
     return m_faceName;
 }
 
+void FontSettings::setFaceName(const std::string& faceName)
+{
+    m_faceName = faceName;
+}
+
 unsigned int FontSettings::pointSize() const
 {
     return m_pointSize;
+}
+
+void FontSettings::setPointSize(unsigned int pointSize)
+{
+    m_pointSize = pointSize;
 }
 
 void FontSettings::load(pugi::xml_node node)
@@ -61,13 +72,25 @@ void FontSettings::save(pugi::xml_node node) const
     if (!fontFaceNameNode)
     {
         fontFaceNameNode = node.append_child(fontFaceNameElementName);
-        fontFaceNameNode.append_child(pugi::node_pcdata).set_value("Courier New");
+        fontFaceNameNode.append_child(pugi::node_pcdata).set_value(m_faceName.c_str());
+    }
+    else
+    {
+        fontFaceNameNode.text().set(m_faceName.c_str());
     }
     pugi::xml_node fontPointSizeNode = node.child(fontPointSizeElementName);
     if (!fontPointSizeNode)
     {
         fontPointSizeNode = node.append_child(fontPointSizeElementName);
-        fontPointSizeNode.append_child(pugi::node_pcdata).set_value("10");
+        std::stringstream pointSizeStr;
+        pointSizeStr << m_pointSize;
+        fontPointSizeNode.append_child(pugi::node_pcdata).set_value(pointSizeStr.str().c_str());
+    }
+    else
+    {
+        std::stringstream pointSizeStr;
+        pointSizeStr << m_pointSize;
+        fontPointSizeNode.text().set(pointSizeStr.str().c_str());
     }
 }
 

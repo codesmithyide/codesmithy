@@ -40,7 +40,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_fontSize = new wxSpinCtrl(this, PreferencesDefaultEditorSizeSelectionButtonID);
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
-    m_fontSize->SetValue(10);
+    m_fontSize->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
     wxButton* fontButton = new wxButton(this, PreferencesDefaultEditorFontSelectionButtonID, "Select Font...");
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);

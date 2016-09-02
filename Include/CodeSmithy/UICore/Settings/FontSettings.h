@@ -35,7 +35,9 @@ public:
     ~FontSettings();
 
     const std::string& faceName() const;
+    void setFaceName(const std::string& faceName);
     unsigned int pointSize() const;
+    void setPointSize(unsigned int pointSize);
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

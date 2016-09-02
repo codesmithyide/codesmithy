@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<codesmithy-application-settings>
+	<file-type-associations />
+	<editor-settings>
+		<default-editor-settings>
+			<font-settings>
+				<font-face-name>Arial</font-face-name>
+				<font-point-size>12</font-point-size>
+			</font-settings>
+		</default-editor-settings>
+	</editor-settings>
+</codesmithy-application-settings>
