@@ -4,7 +4,8 @@
 	<editor-settings>
 		<default-editor-settings>
 			<font-settings>
-				<font-face-name />
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
 			</font-settings>
 		</default-editor-settings>
 	</editor-settings>

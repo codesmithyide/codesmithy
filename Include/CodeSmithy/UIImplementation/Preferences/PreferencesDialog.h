@@ -38,6 +38,8 @@ public:
         AppSettings& settings);
 
 private:
+    void CreateEditorPreferences(wxTreebook* treebook);
+    void CreateDefaultEditorPreferences(wxTreebook* treebook);
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
 
     void OnClose(wxCommandEvent& evt);

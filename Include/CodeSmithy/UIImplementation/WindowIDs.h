@@ -37,7 +37,9 @@ const wxWindowID ProjectChoiceProjectRadioButtonID = WorkspaceCloseFileMenuID + 
 const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButtonID + 1;
 
 const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;
-const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesCloseButtonID + 1;
+const wxWindowID PreferencesDefaultEditorFontSelectionButtonID = PreferencesCloseButtonID + 1;
+const wxWindowID PreferencesDefaultEditorPreferencesApplyButtonID = PreferencesDefaultEditorFontSelectionButtonID + 1;
+const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
 
 }
 

@@ -26,6 +26,7 @@ namespace CodeSmithy
 {
 
 static const char* fontFaceNameElementName = "font-face-name";
+static const char* fontPointSizeElementName = "font-point-size";
 
 FontSettings::FontSettings()
 {
@@ -45,6 +46,13 @@ void FontSettings::save(pugi::xml_node node) const
     if (!fontFaceNameNode)
     {
         fontFaceNameNode = node.append_child(fontFaceNameElementName);
+        fontFaceNameNode.append_child(pugi::node_pcdata).set_value("Courier New");
+    }
+    pugi::xml_node fontPointSizeNode = node.child(fontPointSizeElementName);
+    if (!fontPointSizeNode)
+    {
+        fontPointSizeNode = node.append_child(fontPointSizeElementName);
+        fontPointSizeNode.append_child(pugi::node_pcdata).set_value("10");
     }
 }
 

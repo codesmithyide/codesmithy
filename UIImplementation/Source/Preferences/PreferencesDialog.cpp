@@ -21,6 +21,7 @@
 */
 
 #include "Preferences/PreferencesDialog.h"
+#include "Preferences/DefaultEditorPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
@@ -41,6 +42,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
+    CreateEditorPreferences(treebook);
     CreateFileTypeAssociationsPreferences(treebook, settings);
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
@@ -48,6 +50,19 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
 
     SetSizerAndFit(topSizer);
+}
+
+void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook)
+{
+    treebook->AddPage(NULL, "Editors");
+
+    CreateDefaultEditorPreferences(treebook);
+}
+
+void PreferencesDialog::CreateDefaultEditorPreferences(wxTreebook* treebook)
+{
+    DefaultEditorPreferencesPage* defaultPage = new DefaultEditorPreferencesPage(treebook);
+    treebook->AddSubPage(defaultPage, "Defaults", true);
 }
 
 void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 
