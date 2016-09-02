@@ -93,7 +93,8 @@ TestResult::EOutcome AppSettingsCreationTest3(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
     if ((appSettings.fileTypeAssociations().size() == 0) &&
-        (appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New"))
+        (appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New") &&
+        (appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 10))
     {
         result = TestResult::ePassed;
     }

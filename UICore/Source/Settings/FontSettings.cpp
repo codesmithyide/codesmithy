@@ -63,7 +63,7 @@ void FontSettings::load(pugi::xml_node node)
     pugi::xml_node fontFaceNameNode = node.child(fontFaceNameElementName);
     m_faceName = fontFaceNameNode.child_value();
     pugi::xml_node fontPointSizeNode = node.child(fontPointSizeElementName);
-    m_pointSize = atoi(fontFaceNameNode.child_value());
+    m_pointSize = atoi(fontPointSizeNode.child_value());
 }
 
 void FontSettings::save(pugi::xml_node node) const

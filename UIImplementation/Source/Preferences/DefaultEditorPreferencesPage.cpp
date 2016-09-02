@@ -37,7 +37,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
-    m_fontSize = new wxSpinCtrl(this, PreferencesDefaultEditorSizeSelectionButtonID);
+    m_fontSize = new wxSpinCtrl(this, PreferencesDefaultEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
