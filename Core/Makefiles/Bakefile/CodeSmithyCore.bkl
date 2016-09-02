@@ -39,6 +39,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Documents/CMakeListsType.h
         ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFile.h
         ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h
+        ../../../Include/CodeSmithy/Core/Documents/CppDocument.h
         ../../../Include/CodeSmithy/Core/Documents/CppFile.h
         ../../../Include/CodeSmithy/Core/Documents/CppFileType.h
         ../../../Include/CodeSmithy/Core/Documents/XMLDocument.h
@@ -83,6 +84,7 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Documents/CMakeListsType.cpp
         ../../Source/Documents/CodeSmithyProjectFile.cpp
         ../../Source/Documents/CodeSmithyProjectFileType.cpp
+        ../../Source/Documents/CppDocument.cpp
         ../../Source/Documents/CppFile.cpp
         ../../Source/Documents/CppFileType.cpp
         ../../Source/Documents/XMLDocument.cpp
