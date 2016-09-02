@@ -25,6 +25,8 @@
 namespace CodeSmithy
 {
 
+static const char* fontSettingsElementName = "font-settings";
+
 DefaultEditorSettings::DefaultEditorSettings()
 {
 }
@@ -39,6 +41,13 @@ void DefaultEditorSettings::load(pugi::xml_node node)
 
 void DefaultEditorSettings::save(pugi::xml_node node) const
 {
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    if (!fontSettingsNode)
+    {
+        fontSettingsNode = node.append_child(fontSettingsElementName);
+    }
+
+    m_fontSettings.save(fontSettingsNode);
 }
 
 }

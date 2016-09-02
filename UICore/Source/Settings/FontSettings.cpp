@@ -21,3 +21,31 @@
 */
 
 #include "Settings/FontSettings.h"
+
+namespace CodeSmithy
+{
+
+static const char* fontFaceNameElementName = "font-face-name";
+
+FontSettings::FontSettings()
+{
+}
+
+FontSettings::~FontSettings()
+{
+}
+
+void FontSettings::load(pugi::xml_node node)
+{
+}
+
+void FontSettings::save(pugi::xml_node node) const
+{
+    pugi::xml_node fontFaceNameNode = node.child(fontFaceNameElementName);
+    if (!fontFaceNameNode)
+    {
+        fontFaceNameNode = node.append_child(fontFaceNameElementName);
+    }
+}
+
+}

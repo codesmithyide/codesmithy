@@ -9,6 +9,10 @@
 		</file-type-association>
 	</file-type-associations>
 	<editor-settings>
-		<default-editor-settings />
+		<default-editor-settings>
+			<font-settings>
+				<font-face-name />
+			</font-settings>
+		</default-editor-settings>
 	</editor-settings>
 </codesmithy-application-settings>

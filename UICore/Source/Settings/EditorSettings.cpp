@@ -46,6 +46,8 @@ void EditorSettings::save(pugi::xml_node node) const
     {
         defaultEditorSettingsNode = node.append_child(defaultEditorSettingsElementName);
     }
+
+    m_defaultEditorSettings.save(defaultEditorSettingsNode);
 }
 
 }

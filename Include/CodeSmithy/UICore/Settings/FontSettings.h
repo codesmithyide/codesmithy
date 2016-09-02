@@ -23,4 +23,25 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_FONTSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_FONTSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class FontSettings
+{
+public:
+    FontSettings();
+    ~FontSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+
+private:
+    unsigned int m_pointSize;
+    std::string m_faceName;
+};
+
+}
+
 #endif
