@@ -43,6 +43,7 @@ private:
     void onApply(wxCommandEvent& evt);
 
 private:
+    AppSettings& m_appSettings;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxTextCtrl* m_formatExample;

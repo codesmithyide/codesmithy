@@ -30,8 +30,8 @@ namespace CodeSmithy
 
 DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
                                                            AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY), m_fontFaceName(0), m_fontSize(0),
-        m_applyButton(0)
+    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    m_fontFaceName(0), m_fontSize(0), m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -45,6 +45,10 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
+    wxFont font = m_formatExample->GetFont();
+    font.SetFaceName(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
+    m_formatExample->SetFont(font);
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
@@ -63,9 +67,19 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
 void DefaultEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
 {
+    unsigned int newPointSize = evt.GetValue();
     wxFont font = m_formatExample->GetFont();
-    font.SetPointSize(evt.GetValue());
+    font.SetPointSize(newPointSize);
     m_formatExample->SetFont(font);
+
+    if (newPointSize != m_appSettings.editorSettings().defaultSettings().fontSettings().pointSize())
+    {
+        m_applyButton->Enable();
+    }
+    else if (m_fontFaceName->GetValue() == m_appSettings.editorSettings().defaultSettings().fontSettings().faceName())
+    {
+        m_applyButton->Disable();
+    }
 }
 
 void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
@@ -90,6 +104,12 @@ void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
 
 void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
+    FontSettings& fontSettings = m_appSettings.editorSettings().defaultSettings().fontSettings();
+    std::string faceName = m_fontFaceName->GetValue();
+    fontSettings.setFaceName(faceName);
+    fontSettings.setPointSize(m_fontSize->GetValue());
+    m_appSettings.save();
+    m_applyButton->Disable();
 }
 
 wxBEGIN_EVENT_TABLE(DefaultEditorPreferencesPage, wxPanel)
