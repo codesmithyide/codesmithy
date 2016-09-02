@@ -47,6 +47,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\DefaultEditorPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -77,6 +80,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\DefaultEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp">
