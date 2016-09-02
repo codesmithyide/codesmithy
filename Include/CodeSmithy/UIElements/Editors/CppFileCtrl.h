@@ -23,4 +23,30 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_CPPFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_CPPFILECTRL_H_
 
+#include "DocumentCtrl.h"
+#include "CodeSmithy/Core/Documents/CppDocument.h"
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+
+class CppFileCtrl : public DocumentCtrl
+{
+public:
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document);
+
+    CppFileCtrl(wxWindow* parent, std::shared_ptr<Document> document);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void save(const boost::filesystem::path& path) override;
+
+private:
+    wxStyledTextCtrl* m_ctrl;
+    std::shared_ptr<CppDocument> m_document;
+};
+
+}
+
 #endif

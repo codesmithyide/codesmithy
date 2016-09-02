@@ -33,6 +33,15 @@ CppFileType::CppFileType()
     appendExtension("cxx");
 }
 
+CppFileType::CppFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("C++ Source File")
+{
+    appendExtension("cpp");
+    appendExtension("cxx");
+
+    setCustomData(customData);
+}
+
 std::shared_ptr<Document> CppFileType::createNewDocument(const DocumentId& id,
                                                          const std::string& name) const
 {

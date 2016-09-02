@@ -87,22 +87,35 @@ void Frame::OpenFile(const wxString& file)
                 m_appSettings.fileTypeAssociations().find(suitableDocumentTypes[0]->name());
             if (association)
             {
-                if (association->actionType() == FileTypeAssociation::eAskAtStartup)
+                FileTypeAssociation::EActionType chosenActionType = association->actionType();
+
+                if (chosenActionType == FileTypeAssociation::eAskAtStartup)
                 {
                     ProjectChoiceDialog projectChoiceDialog(this, suitableProjectTypes);
                     if (projectChoiceDialog.ShowModal() == wxID_OK)
                     {
+                        if (projectChoiceDialog.isStandalone())
+                        {
+                            chosenActionType = FileTypeAssociation::eStandalone;
+                        }
+
                         if (projectChoiceDialog.useAsDefault())
                         {
                         }
                     }
+                    else
+                    {
+                        // Abandon opening the file
+                        // TODO
+                    }
                 }
-                else if (association->actionType() == FileTypeAssociation::eStandalone)
+
+                if (chosenActionType == FileTypeAssociation::eStandalone)
                 {
                     standalone = true;
                     documentTypeName = association->documentTypeName();
                 }
-                else if (association->actionType() == FileTypeAssociation::eProjectType)
+                else if (chosenActionType == FileTypeAssociation::eProjectType)
                 {
                 }
             }

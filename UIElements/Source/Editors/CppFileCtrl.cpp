@@ -21,3 +21,36 @@
 */
 
 #include "Editors/CppFileCtrl.h"
+
+namespace CodeSmithy
+{
+
+wxWindow* CppFileCtrl::Create(wxWindow *parent,
+                              std::shared_ptr<Document> document)
+{
+    return new CppFileCtrl(parent, document);
+}
+
+CppFileCtrl::CppFileCtrl(wxWindow* parent,
+                         std::shared_ptr<Document> document)
+    : DocumentCtrl(parent), m_ctrl(0), m_document(0)
+{
+    m_document = std::dynamic_pointer_cast<CppDocument, Document>(document);
+}
+
+std::shared_ptr<const Document> CppFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> CppFileCtrl::document()
+{
+    return m_document;
+}
+
+void CppFileCtrl::save(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
+}
+
+}

@@ -28,6 +28,9 @@
 namespace CodeSmithy
 {
 
+// There are several types related to C++ documents. 
+// In a lot of cases their exact type doesn't matter so
+// this base class is used to abtract them all.
 class CppDocument : public Document
 {
 public:
