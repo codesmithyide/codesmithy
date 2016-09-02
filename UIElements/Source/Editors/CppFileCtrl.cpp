@@ -21,6 +21,7 @@
 */
 
 #include "Editors/CppFileCtrl.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -35,7 +36,18 @@ CppFileCtrl::CppFileCtrl(wxWindow* parent,
                          std::shared_ptr<Document> document)
     : DocumentCtrl(parent), m_ctrl(0), m_document(0)
 {
+    m_ctrl = new wxStyledTextCtrl(this);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);
+
     m_document = std::dynamic_pointer_cast<CppDocument, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 std::shared_ptr<const Document> CppFileCtrl::document() const
@@ -51,6 +63,11 @@ std::shared_ptr<Document> CppFileCtrl::document()
 void CppFileCtrl::save(const boost::filesystem::path& path)
 {
     m_document->setModified(false);
+}
+
+void CppFileCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
 }
 
 }

@@ -43,6 +43,9 @@ public:
     void save(const boost::filesystem::path& path) override;
 
 private:
+    void onModified(wxStyledTextEvent& evt);
+
+private:
     wxStyledTextCtrl* m_ctrl;
     std::shared_ptr<CppDocument> m_document;
 };

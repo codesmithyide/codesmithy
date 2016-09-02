@@ -29,6 +29,8 @@
 namespace CodeSmithy
 {
 
+// Base class for all the controls that can display
+// documents in the OpenDocumentsCtrl
 class DocumentCtrl : public wxPanel
 {
 public:
