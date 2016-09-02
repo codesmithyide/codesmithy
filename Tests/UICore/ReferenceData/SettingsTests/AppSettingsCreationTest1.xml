@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <codesmithy-application-settings>
 	<file-type-associations />
-	<editor-settings />
+	<editor-settings>
+		<default-editor-settings />
+	</editor-settings>
 </codesmithy-application-settings>

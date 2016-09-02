@@ -78,6 +78,7 @@ FileTypeAssociations& AppSettings::fileTypeAssociations()
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+    m_editorSettings.save(m_editorSettingsNode);
 
     std::ofstream file(m_path.wstring());
     m_document.save(file);

@@ -21,3 +21,24 @@
 */
 
 #include "Settings/DefaultEditorSettings.h"
+
+namespace CodeSmithy
+{
+
+DefaultEditorSettings::DefaultEditorSettings()
+{
+}
+
+DefaultEditorSettings::~DefaultEditorSettings()
+{
+}
+
+void DefaultEditorSettings::load(pugi::xml_node node)
+{
+}
+
+void DefaultEditorSettings::save(pugi::xml_node node) const
+{
+}
+
+}

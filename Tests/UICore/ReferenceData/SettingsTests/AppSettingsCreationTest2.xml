@@ -8,5 +8,7 @@
 			<associated-project-type-name></associated-project-type-name>
 		</file-type-association>
 	</file-type-associations>
-	<editor-settings />
+	<editor-settings>
+		<default-editor-settings />
+	</editor-settings>
 </codesmithy-application-settings>
