@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\Source\Workspace\StartPage.cpp" />
     <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp" />
     <ClCompile Include="..\..\Source\Preferences\DefaultEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\CppEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
   </ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\StartPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\DefaultEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CppEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h" />
   </ItemGroup>
