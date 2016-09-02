@@ -29,6 +29,7 @@ static const char* fontFaceNameElementName = "font-face-name";
 static const char* fontPointSizeElementName = "font-point-size";
 
 FontSettings::FontSettings()
+    : m_pointSize(0)
 {
 }
 
@@ -36,8 +37,22 @@ FontSettings::~FontSettings()
 {
 }
 
+const std::string& FontSettings::faceName() const
+{
+    return m_faceName;
+}
+
+unsigned int FontSettings::pointSize() const
+{
+    return m_pointSize;
+}
+
 void FontSettings::load(pugi::xml_node node)
 {
+    pugi::xml_node fontFaceNameNode = node.child(fontFaceNameElementName);
+    m_faceName = fontFaceNameNode.child_value();
+    pugi::xml_node fontPointSizeNode = node.child(fontPointSizeElementName);
+    m_pointSize = atoi(fontFaceNameNode.child_value());
 }
 
 void FontSettings::save(pugi::xml_node node) const

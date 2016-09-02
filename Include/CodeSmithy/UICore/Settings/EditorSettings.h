@@ -35,6 +35,9 @@ public:
     EditorSettings();
     ~EditorSettings();
 
+    const DefaultEditorSettings& defaultSettings() const;
+    DefaultEditorSettings& defaultSettings();
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 

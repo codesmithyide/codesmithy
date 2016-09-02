@@ -23,8 +23,10 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_DEFAULTEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_DEFAULTEDITORPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
 #include <wx/textctrl.h>
+#include <wx/spinctrl.h>
 #include <wx/button.h>
 
 namespace CodeSmithy
@@ -33,14 +35,16 @@ namespace CodeSmithy
 class DefaultEditorPreferencesPage : public wxPanel
 {
 public:
-    DefaultEditorPreferencesPage(wxWindow *parent);
+    DefaultEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
-    void OnSelectFont(wxCommandEvent& evt);
-    void OnApply(wxCommandEvent& evt);
+    void onPointSizeChanged(wxSpinEvent& evt);
+    void onSelectFont(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
 
 private:
     wxTextCtrl* m_fontFaceName;
+    wxSpinCtrl* m_fontSize;
     wxTextCtrl* m_formatExample;
     wxButton* m_applyButton;
 

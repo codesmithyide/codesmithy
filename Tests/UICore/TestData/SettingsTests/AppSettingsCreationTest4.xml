@@ -8,4 +8,12 @@
 			<associated-project-type-name></associated-project-type-name>
 		</file-type-association>
 	</file-type-associations>
+	<editor-settings>
+		<default-editor-settings>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</default-editor-settings>
+	</editor-settings>
 </codesmithy-application-settings>

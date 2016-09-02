@@ -28,12 +28,19 @@
 namespace CodeSmithy
 {
 
-DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent)
-    : wxPanel(parent, wxID_ANY), m_fontFaceName(0), m_applyButton(0)
+DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
+                                                           AppSettings& appSettings)
+    : wxPanel(parent, wxID_ANY), m_fontFaceName(0), m_fontSize(0),
+        m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
+    m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
+    m_fontSize = new wxSpinCtrl(this, PreferencesDefaultEditorSizeSelectionButtonID);
+    m_fontSize->SetMin(6);
+    m_fontSize->SetMax(30);
+    m_fontSize->SetValue(10);
     wxButton* fontButton = new wxButton(this, PreferencesDefaultEditorFontSelectionButtonID, "Select Font...");
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
@@ -41,6 +48,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent)
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
+    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(fontButton, 0, wxALL, 2);
 
     m_applyButton = new wxButton(this, PreferencesDefaultEditorPreferencesApplyButtonID, "Apply");
@@ -53,27 +61,41 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent)
     SetSizer(topSizer);
 }
 
-void DefaultEditorPreferencesPage::OnSelectFont(wxCommandEvent& evt)
+void DefaultEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
+{
+    wxFont font = m_formatExample->GetFont();
+    font.SetPointSize(evt.GetValue());
+    m_formatExample->SetFont(font);
+}
+
+void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
 {
     wxFontDialog* fontDialog = new wxFontDialog(this);
+    wxFontData& fontData = fontDialog->GetFontData();
+    wxFont font = fontData.GetInitialFont();
+    font.SetFaceName(m_fontFaceName->GetValue());
+    font.SetPointSize(m_fontSize->GetValue());
+    fontData.SetInitialFont(font);
 
     if (fontDialog->ShowModal() == wxID_OK)
     {
         wxFontData data = fontDialog->GetFontData();
         m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
+        m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
         m_formatExample->SetFont(data.GetChosenFont());
     }
 
     fontDialog->Destroy();
 }
 
-void DefaultEditorPreferencesPage::OnApply(wxCommandEvent& evt)
+void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
 }
 
 wxBEGIN_EVENT_TABLE(DefaultEditorPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesDefaultEditorFontSelectionButtonID, DefaultEditorPreferencesPage::OnSelectFont)
-    EVT_BUTTON(PreferencesDefaultEditorPreferencesApplyButtonID, DefaultEditorPreferencesPage::OnApply)
+    EVT_SPINCTRL(PreferencesDefaultEditorSizeSelectionButtonID, DefaultEditorPreferencesPage::onPointSizeChanged)
+    EVT_BUTTON(PreferencesDefaultEditorFontSelectionButtonID, DefaultEditorPreferencesPage::onSelectFont)
+    EVT_BUTTON(PreferencesDefaultEditorPreferencesApplyButtonID, DefaultEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
 
 }

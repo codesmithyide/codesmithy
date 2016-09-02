@@ -35,8 +35,20 @@ DefaultEditorSettings::~DefaultEditorSettings()
 {
 }
 
+const FontSettings& DefaultEditorSettings::fontSettings() const
+{
+    return m_fontSettings;
+}
+
+FontSettings& DefaultEditorSettings::fontSettings()
+{
+    return m_fontSettings;
+}
+
 void DefaultEditorSettings::load(pugi::xml_node node)
 {
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    m_fontSettings.load(fontSettingsNode);
 }
 
 void DefaultEditorSettings::save(pugi::xml_node node) const

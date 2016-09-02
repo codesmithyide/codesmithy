@@ -42,7 +42,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
-    CreateEditorPreferences(treebook);
+    CreateEditorPreferences(treebook, settings);
     CreateFileTypeAssociationsPreferences(treebook, settings);
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
@@ -52,16 +52,18 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     SetSizerAndFit(topSizer);
 }
 
-void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook)
+void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
+                                                AppSettings& settings)
 {
     treebook->AddPage(NULL, "Editors");
 
-    CreateDefaultEditorPreferences(treebook);
+    CreateDefaultEditorPreferences(treebook, settings);
 }
 
-void PreferencesDialog::CreateDefaultEditorPreferences(wxTreebook* treebook)
+void PreferencesDialog::CreateDefaultEditorPreferences(wxTreebook* treebook,
+                                                       AppSettings& settings)
 {
-    DefaultEditorPreferencesPage* defaultPage = new DefaultEditorPreferencesPage(treebook);
+    DefaultEditorPreferencesPage* defaultPage = new DefaultEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(defaultPage, "Defaults", true);
 }
 

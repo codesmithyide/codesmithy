@@ -75,6 +75,16 @@ FileTypeAssociations& AppSettings::fileTypeAssociations()
     return m_fileTypeAssociations;
 }
 
+const EditorSettings& AppSettings::editorSettings() const
+{
+    return m_editorSettings;
+}
+
+EditorSettings& AppSettings::editorSettings()
+{
+    return m_editorSettings;
+}
+
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);

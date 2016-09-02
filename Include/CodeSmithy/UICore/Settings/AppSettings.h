@@ -54,6 +54,8 @@ public:
     const ProjectTypes& projectTypes() const;
     const FileTypeAssociations& fileTypeAssociations() const;
     FileTypeAssociations& fileTypeAssociations();
+    const EditorSettings& editorSettings() const;
+    EditorSettings& editorSettings();
 
     void save();
 

@@ -34,12 +34,15 @@ public:
     FontSettings();
     ~FontSettings();
 
+    const std::string& faceName() const;
+    unsigned int pointSize() const;
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
 private:
-    unsigned int m_pointSize;
     std::string m_faceName;
+    unsigned int m_pointSize;
 };
 
 }
