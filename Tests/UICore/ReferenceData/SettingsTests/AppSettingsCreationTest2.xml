@@ -15,5 +15,11 @@
 				<font-point-size>10</font-point-size>
 			</font-settings>
 		</default-editor-settings>
+		<cpp-editor-settings>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</cpp-editor-settings>
 	</editor-settings>
 </codesmithy-application-settings>

@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGS_H_
 
 #include "DefaultEditorSettings.h"
+#include "CppEditorSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
@@ -43,6 +44,7 @@ public:
 
 private:
     DefaultEditorSettings m_defaultEditorSettings;
+    CppEditorSettings m_cppEditorSettings;
 };
 
 }

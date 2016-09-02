@@ -26,6 +26,7 @@ namespace CodeSmithy
 {
 
 static const char* defaultEditorSettingsElementName = "default-editor-settings";
+static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 
 EditorSettings::EditorSettings()
 {
@@ -58,8 +59,14 @@ void EditorSettings::save(pugi::xml_node node) const
     {
         defaultEditorSettingsNode = node.append_child(defaultEditorSettingsElementName);
     }
-
     m_defaultEditorSettings.save(defaultEditorSettingsNode);
+
+    pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
+    if (!cppEditorSettingsNode)
+    {
+        cppEditorSettingsNode = node.append_child(cppEditorSettingsElementName);
+    }
+    m_cppEditorSettings.save(cppEditorSettingsNode);
 }
 
 }

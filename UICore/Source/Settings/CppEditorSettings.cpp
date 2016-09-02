@@ -21,3 +21,45 @@
 */
 
 #include "Settings/CppEditorSettings.h"
+
+namespace CodeSmithy
+{
+
+static const char* fontSettingsElementName = "font-settings";
+
+CppEditorSettings::CppEditorSettings()
+{
+}
+
+CppEditorSettings::~CppEditorSettings()
+{
+}
+
+const FontSettings& CppEditorSettings::fontSettings() const
+{
+    return m_fontSettings;
+}
+
+FontSettings& CppEditorSettings::fontSettings()
+{
+    return m_fontSettings;
+}
+
+void CppEditorSettings::load(pugi::xml_node node)
+{
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    m_fontSettings.load(fontSettingsNode);
+}
+
+void CppEditorSettings::save(pugi::xml_node node) const
+{
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    if (!fontSettingsNode)
+    {
+        fontSettingsNode = node.append_child(fontSettingsElementName);
+    }
+
+    m_fontSettings.save(fontSettingsNode);
+}
+
+}
