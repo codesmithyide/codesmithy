@@ -151,12 +151,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Settings\AppSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\EditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\EditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h" />
   </ItemGroup>
