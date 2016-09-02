@@ -28,6 +28,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/AppSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/EditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/DefaultEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/FontSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociation.h
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociations.h
     }
@@ -37,6 +38,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/AppSettings.cpp
         ../../Source/Settings/EditorSettings.cpp
         ../../Source/Settings/DefaultEditorSettings.cpp
+        ../../Source/Settings/FontSettings.cpp
         ../../Source/Settings/FileTypeAssociation.cpp
         ../../Source/Settings/FileTypeAssociations.cpp
     }
