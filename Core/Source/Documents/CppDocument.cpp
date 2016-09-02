@@ -21,3 +21,23 @@
 */
 
 #include "Documents/CppDocument.h"
+
+namespace CodeSmithy
+{
+
+CppDocument::CppDocument(const std::shared_ptr<const DocumentType> type,
+                         const DocumentId& id,
+                         const std::string& name)
+    : Document(type, id, name)
+{
+}
+
+CppDocument::CppDocument(const std::shared_ptr<const DocumentType> type,
+                         const DocumentId& id,
+                         const std::string& name,
+                         const boost::filesystem::path& path)
+    : Document(type, id, name, path)
+{
+}
+
+}

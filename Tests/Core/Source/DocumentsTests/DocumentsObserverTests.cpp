@@ -56,7 +56,8 @@ const std::vector<std::shared_ptr<const CodeSmithy::Document> >& TestDocumentsOb
     return m_observedDocuments;
 }
 
-void TestDocumentsObserver::onAdd(std::shared_ptr<CodeSmithy::Document> document)
+void TestDocumentsObserver::onAdd(const CodeSmithy::Documents& source,
+                                  std::shared_ptr<CodeSmithy::Document> document)
 {
     m_observedDocuments.push_back(document);
 }

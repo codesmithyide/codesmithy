@@ -23,13 +23,13 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_CPPFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_CPPFILE_H_
 
-#include "Document.h"
+#include "CppDocument.h"
 #include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
 {
 
-class CppFile : public Document
+class CppFile : public CppDocument
 {
 public:
     CppFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,

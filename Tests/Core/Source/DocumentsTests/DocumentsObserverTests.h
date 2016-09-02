@@ -37,7 +37,7 @@ class TestDocumentsObserver : public CodeSmithy::DocumentsObserver
 public:
     const std::vector<std::shared_ptr<const CodeSmithy::Document> >& observedDocuments() const;
 
-    void onAdd(std::shared_ptr<CodeSmithy::Document> document) override;
+    void onAdd(const CodeSmithy::Documents& source, std::shared_ptr<CodeSmithy::Document> document) override;
 
 private:
     std::vector<std::shared_ptr<const CodeSmithy::Document> > m_observedDocuments;

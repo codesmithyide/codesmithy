@@ -23,4 +23,20 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_CPPDOCUMENT_H_
 #define _CODESMITHY_CORE_DOCUMENTS_CPPDOCUMENT_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class CppDocument : public Document
+{
+public:
+    CppDocument(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    CppDocument(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+};
+
+}
+
 #endif
