@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class EditorSettings
+{
+public:
+    EditorSettings();
+    ~EditorSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
 #endif

@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_APPSETTINGS_H_
 
 #include "FileTypeAssociations.h"
+#include "EditorSettings.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
 #include <pugixml.hpp>
@@ -72,9 +73,11 @@ private:
     boost::filesystem::path m_path;
     pugi::xml_document m_document;
     pugi::xml_node m_fileTypeAssociationsNode;
+    pugi::xml_node m_editorSettingsNode;
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;
+    EditorSettings m_editorSettings;
 };
 
 }
