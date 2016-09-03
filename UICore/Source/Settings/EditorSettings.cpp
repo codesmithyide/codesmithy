@@ -37,6 +37,18 @@ EditorSettings::~EditorSettings()
 {
 }
 
+const FontSettings& EditorSettings::bakefileFontSettings() const
+{
+    if (m_bakefileEditorSettings.useDefaultFontSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_bakefileEditorSettings.fontSettings();
+    }
+}
+
 const FontSettings& EditorSettings::cppFontSettings() const
 {
     if (m_cppEditorSettings.useDefaultFontSettings())

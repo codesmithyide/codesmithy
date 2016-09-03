@@ -22,6 +22,7 @@
 
 #include "Preferences/PreferencesDialog.h"
 #include "Preferences/DefaultEditorPreferencesPage.h"
+#include "Preferences/BakefileEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
 #include "WindowIDs.h"
@@ -59,6 +60,7 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddPage(NULL, "Editors");
 
     CreateDefaultEditorPreferences(treebook, settings);
+    CreateBakefileEditorPreferences(treebook, settings);
     CreateCppEditorPreferences(treebook, settings);
 }
 
@@ -67,6 +69,13 @@ void PreferencesDialog::CreateDefaultEditorPreferences(wxTreebook* treebook,
 {
     DefaultEditorPreferencesPage* defaultPage = new DefaultEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(defaultPage, "Defaults", true);
+}
+
+void PreferencesDialog::CreateBakefileEditorPreferences(wxTreebook* treebook,
+                                                        AppSettings& settings)
+{
+    BakefileEditorPreferencesPage* bakefilePage = new BakefileEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(bakefilePage, "Bakefile");
 }
 
 void PreferencesDialog::CreateCppEditorPreferences(wxTreebook* treebook,

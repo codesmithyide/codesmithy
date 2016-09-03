@@ -37,6 +37,9 @@ public:
     EditorSettings();
     ~EditorSettings();
 
+    // Gets the Bakefile editor font settings or the default settings
+    // as appropriate.
+    const FontSettings& bakefileFontSettings() const;
     // Gets the C++ editor font settings or the default settings
     // as appropriate.
     const FontSettings& cppFontSettings() const;

@@ -23,4 +23,42 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/panel.h>
+#include <wx/checkbox.h>
+#include <wx/textctrl.h>
+#include <wx/spinctrl.h>
+#include <wx/button.h>
+
+namespace CodeSmithy
+{
+
+class BakefileEditorPreferencesPage : public wxPanel
+{
+public:
+    BakefileEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void onUseDefaultSettingChanged(wxCommandEvent& evt);
+    void onPointSizeChanged(wxSpinEvent& evt);
+    void onSelectFont(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
+
+    void updateExample();
+    void updateApplyButtonStatus();
+
+private:
+    AppSettings& m_appSettings;
+    wxCheckBox* m_useDefaultCheckBox;
+    wxTextCtrl* m_fontFaceName;
+    wxSpinCtrl* m_fontSize;
+    wxButton* m_fontButton;
+    wxTextCtrl* m_formatExample;
+    wxButton* m_applyButton;
+
+    wxDECLARE_EVENT_TABLE();
+};
+
+}
+
 #endif

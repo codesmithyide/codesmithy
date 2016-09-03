@@ -37,13 +37,21 @@ const wxWindowID ProjectChoiceProjectRadioButtonID = WorkspaceCloseFileMenuID + 
 const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButtonID + 1;
 
 const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;
+
 const wxWindowID PreferencesDefaultEditorSizeSelectionButtonID = PreferencesCloseButtonID + 1;
 const wxWindowID PreferencesDefaultEditorFontSelectionButtonID = PreferencesDefaultEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesDefaultEditorPreferencesApplyButtonID = PreferencesDefaultEditorFontSelectionButtonID + 1;
-const wxWindowID PreferencesCppEditorUseDefaultSettingsCheckBoxID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
+
+const wxWindowID PreferencesBakefileEditorUseDefaultSettingsCheckBoxID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesBakefileEditorSizeSelectionButtonID = PreferencesBakefileEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesBakefileEditorFontSelectionButtonID = PreferencesBakefileEditorSizeSelectionButtonID + 1;
+const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = PreferencesBakefileEditorFontSelectionButtonID + 1;
+
+const wxWindowID PreferencesCppEditorUseDefaultSettingsCheckBoxID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesCppEditorSizeSelectionButtonID = PreferencesCppEditorUseDefaultSettingsCheckBoxID + 1;
 const wxWindowID PreferencesCppEditorFontSelectionButtonID = PreferencesCppEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesCppEditorFontSelectionButtonID + 1;
+
 const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesCppEditorSizeSelectionButtonID + 1;
 
 }
