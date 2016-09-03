@@ -46,10 +46,22 @@ DefaultEditorSettings& EditorSettings::defaultSettings()
     return m_defaultEditorSettings;
 }
 
+const CppEditorSettings& EditorSettings::cppSettings() const
+{
+    return m_cppEditorSettings;
+}
+
+CppEditorSettings& EditorSettings::cppSettings()
+{
+    return m_cppEditorSettings;
+}
+
 void EditorSettings::load(pugi::xml_node node)
 {
     pugi::xml_node defaultEditorSettingsNode = node.child(defaultEditorSettingsElementName);
     m_defaultEditorSettings.load(defaultEditorSettingsNode);
+    pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
+    m_cppEditorSettings.load(cppEditorSettingsNode);
 }
 
 void EditorSettings::save(pugi::xml_node node) const

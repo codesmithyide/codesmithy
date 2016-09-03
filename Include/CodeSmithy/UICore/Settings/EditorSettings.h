@@ -38,6 +38,8 @@ public:
 
     const DefaultEditorSettings& defaultSettings() const;
     DefaultEditorSettings& defaultSettings();
+    const CppEditorSettings& cppSettings() const;
+    CppEditorSettings& cppSettings();
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

@@ -23,4 +23,35 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_CPPEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_CPPEDITORPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/panel.h>
+#include <wx/textctrl.h>
+#include <wx/spinctrl.h>
+#include <wx/button.h>
+
+namespace CodeSmithy
+{
+
+class CppEditorPreferencesPage : public wxPanel
+{
+public:
+    CppEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void onPointSizeChanged(wxSpinEvent& evt);
+    void onSelectFont(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
+
+private:
+    AppSettings& m_appSettings;
+    wxTextCtrl* m_fontFaceName;
+    wxSpinCtrl* m_fontSize;
+    wxTextCtrl* m_formatExample;
+    wxButton* m_applyButton;
+
+    wxDECLARE_EVENT_TABLE();
+};
+
+}
+
 #endif
