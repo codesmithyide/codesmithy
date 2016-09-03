@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\Source\Settings\DefaultEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\BakefileEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\CppEditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\XMLEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\DefaultEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\BakefileEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CppEditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\XMLEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h" />
