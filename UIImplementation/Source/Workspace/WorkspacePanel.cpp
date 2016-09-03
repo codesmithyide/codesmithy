@@ -28,7 +28,8 @@ namespace CodeSmithy
 
 WorkspacePanel::WorkspacePanel(wxWindow* parent, 
                                std::shared_ptr<Documents> documents,
-                               std::shared_ptr<ActiveDocument> activeDocument)
+                               std::shared_ptr<ActiveDocument> activeDocument,
+                               const AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_documents(documents), 
     m_activeDocument(activeDocument), m_startPage(0), 
     m_openDocuments(0)
@@ -41,7 +42,7 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
     m_startPage = new StartPage(this);
     topSizer->Add(m_startPage, 1, wxEXPAND);
 
-    m_openDocuments = new OpenDocumentsCtrl(this, m_activeDocument);
+    m_openDocuments = new OpenDocumentsCtrl(this, m_activeDocument, appSettings);
     m_openDocuments->Hide();
     topSizer->Add(m_openDocuments, 1, wxEXPAND);
 

@@ -36,7 +36,7 @@ class WorkspacePanel : public wxPanel
 {
 public:
     WorkspacePanel(wxWindow* parent, std::shared_ptr<Documents> documents,
-        std::shared_ptr<ActiveDocument> activeDocument);
+        std::shared_ptr<ActiveDocument> activeDocument, const AppSettings& appSettings);
     ~WorkspacePanel();
 
     void saveDocument(const DocumentId& id, const boost::filesystem::path& path);

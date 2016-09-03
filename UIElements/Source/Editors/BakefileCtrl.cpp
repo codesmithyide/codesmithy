@@ -27,13 +27,15 @@ namespace CodeSmithy
 {
 
 wxWindow* BakefileCtrl::Create(wxWindow *parent,
-                               std::shared_ptr<Document> document)
+                               std::shared_ptr<Document> document,
+                               const AppSettings& appSettings)
 {
-    return new BakefileCtrl(parent, document);
+    return new BakefileCtrl(parent, document, appSettings);
 }
 
 BakefileCtrl::BakefileCtrl(wxWindow* parent, 
-                           std::shared_ptr<Document> document)
+                           std::shared_ptr<Document> document,
+                           const AppSettings& appSettings)
     : DocumentCtrl(parent), m_ctrl(0), m_document(0)
 {
     m_ctrl = new wxStyledTextCtrl(this);

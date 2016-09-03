@@ -29,8 +29,9 @@ namespace CodeSmithy
 {
 
 OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent, 
-                                     std::shared_ptr<ActiveDocument> activeDocument)
-    : wxAuiNotebook(parent), m_activeDocument(activeDocument)
+                                     std::shared_ptr<ActiveDocument> activeDocument,
+                                     const AppSettings& appSettings)
+    : wxAuiNotebook(parent), m_appSettings(appSettings), m_activeDocument(activeDocument)
 {
     Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::onPageClose, this);
     Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::onPageChanged, this);
@@ -44,7 +45,7 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
         std::dynamic_pointer_cast<const ControlCreationDocumentTypeData, const CustomDocumentTypeData>(document->type().customData());
     if (data)
     {
-        wxWindow* newPage = data->CreateDocumentCtrl(this, document);
+        wxWindow* newPage = data->CreateDocumentCtrl(this, document, m_appSettings);
         AddPage(newPage, document->name());
         document->addObserver(m_observer);
     }

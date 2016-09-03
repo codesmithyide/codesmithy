@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include <wx/stc/stc.h>
 
@@ -33,9 +34,11 @@ namespace CodeSmithy
 class BakefileCtrl : public DocumentCtrl
 {
 public:
-    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document);
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
 
-    BakefileCtrl(wxWindow* parent, std::shared_ptr<Document> document);
+    BakefileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
 
     std::shared_ptr<const Document> document() const override;
     std::shared_ptr<Document> document() override;

@@ -27,17 +27,22 @@ namespace CodeSmithy
 {
 
 wxWindow* CppFileCtrl::Create(wxWindow *parent,
-                              std::shared_ptr<Document> document)
+                              std::shared_ptr<Document> document,
+                              const AppSettings& appSettings)
 {
-    return new CppFileCtrl(parent, document);
+    return new CppFileCtrl(parent, document, appSettings);
 }
 
 CppFileCtrl::CppFileCtrl(wxWindow* parent,
-                         std::shared_ptr<Document> document)
+                         std::shared_ptr<Document> document,
+                         const AppSettings& appSettings)
     : DocumentCtrl(parent), m_ctrl(0), m_document(0)
 {
     m_ctrl = new wxStyledTextCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);
+
+    wxFont font(100, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false);
+    m_ctrl->SetFont(font);
 
     m_document = std::dynamic_pointer_cast<CppDocument, Document>(document);
     if (!m_document->filePath().empty())

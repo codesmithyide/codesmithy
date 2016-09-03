@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OPENDOCUMENTSCTRL_H_
 
 #include "../ActiveDocument.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Document.h"
 #include <wx/aui/aui.h>
 #include <memory>
@@ -34,7 +35,7 @@ namespace CodeSmithy
 class OpenDocumentsCtrl : public wxAuiNotebook
 {
 public:
-    OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument);
+    OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument, const AppSettings& appSettings);
 
     void addDocument(std::shared_ptr<Document> document);
     void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
@@ -59,6 +60,7 @@ private:
     };
 
 private:
+    const AppSettings& m_appSettings;
     std::shared_ptr<ActiveDocument> m_activeDocument;
     std::shared_ptr<Observer> m_observer;
 };

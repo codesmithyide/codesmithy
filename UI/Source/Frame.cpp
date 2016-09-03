@@ -43,7 +43,7 @@ Frame::Frame(const wxString& title,
     m_menuBar->registerObserver(m_activeDocument);
     SetMenuBar(m_menuBar);
 
-    m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument);
+    m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument, m_appSettings);
 }
 
 Frame::~Frame()
