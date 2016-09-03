@@ -44,6 +44,7 @@ private:
     void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);
 
+    void updateExample();
     void updateApplyButtonStatus();
 
 private:
@@ -51,6 +52,7 @@ private:
     wxCheckBox* m_useDefaultCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
+    wxButton* m_fontButton;
     wxTextCtrl* m_formatExample;
     wxButton* m_applyButton;
 

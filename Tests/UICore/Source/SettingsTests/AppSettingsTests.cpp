@@ -35,6 +35,8 @@ void AddAppSettingsTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 3", AppSettingsCreationTest3, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 4", AppSettingsCreationTest4, *settingsTestSequence);
     new HeapAllocationErrorsTest("Creation test 5", AppSettingsCreationTest5, *settingsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 6", AppSettingsCreationTest6, *settingsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 7", AppSettingsCreationTest7, *settingsTestSequence);
 
     new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
     new FileComparisonTest("save test 2", AppSettingsSaveTest2, *settingsTestSequence);
@@ -146,6 +148,47 @@ TestResult::EOutcome AppSettingsCreationTest5(Test& test)
         {
             result = TestResult::ePassed;
         }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsCreationTest6(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest6.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
+    if ((appSettings.fileTypeAssociations().size() == 0) &&
+        (appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Arial") &&
+        (appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 12))
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsCreationTest7(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest7.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
+    if ((appSettings.fileTypeAssociations().size() == 0) &&
+        (appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New") &&
+        (appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 10) &&
+        (appSettings.editorSettings().cppSettings().useDefaultFontSettings() == false) &&
+        (appSettings.editorSettings().cppSettings().fontSettings().faceName() == "Arial") &&
+        (appSettings.editorSettings().cppSettings().fontSettings().pointSize() == 12))
+    {
+        result = TestResult::ePassed;
     }
 
     return result;

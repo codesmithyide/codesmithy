@@ -60,11 +60,11 @@ FontSettings& CppEditorSettings::fontSettings()
 void CppEditorSettings::load(pugi::xml_node node)
 {
     pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
-    if (useDefaultSettingsNode.child_value() == "true")
+    if (std::string(useDefaultSettingsNode.child_value()) == "true")
     {
         m_useDefaultFontSettings = true;
     }
-    else if (useDefaultSettingsNode.child_value() == "false")
+    else if (std::string(useDefaultSettingsNode.child_value()) == "false")
     {
         m_useDefaultFontSettings = false;
     }

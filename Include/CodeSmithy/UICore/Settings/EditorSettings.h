@@ -36,6 +36,10 @@ public:
     EditorSettings();
     ~EditorSettings();
 
+    // Gets the C++ editor font settings or the default settings
+    // as appropriate.
+    const FontSettings& cppFontSettings() const;
+
     const DefaultEditorSettings& defaultSettings() const;
     DefaultEditorSettings& defaultSettings();
     const CppEditorSettings& cppSettings() const;

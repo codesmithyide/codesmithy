@@ -36,6 +36,18 @@ EditorSettings::~EditorSettings()
 {
 }
 
+const FontSettings& EditorSettings::cppFontSettings() const
+{
+    if (m_cppEditorSettings.useDefaultFontSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_cppEditorSettings.fontSettings();
+    }
+}
+
 const DefaultEditorSettings& EditorSettings::defaultSettings() const
 {
     return m_defaultEditorSettings;

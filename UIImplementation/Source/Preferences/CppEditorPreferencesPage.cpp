@@ -31,7 +31,8 @@ namespace CodeSmithy
 CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
-    m_fontFaceName(0), m_fontSize(0), m_applyButton(0)
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
+    m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -43,20 +44,17 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
-    wxButton* fontButton = new wxButton(this, PreferencesCppEditorFontSelectionButtonID, "Select Font...");
+    m_fontButton = new wxButton(this, PreferencesCppEditorFontSelectionButtonID, "Select Font...");
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
-    wxFont font = m_formatExample->GetFont();
-    font.SetFaceName(appSettings.editorSettings().cppSettings().fontSettings().faceName());
-    font.SetPointSize(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
-    m_formatExample->SetFont(font);
+    updateExample();
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_useDefaultCheckBox);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
-    fontInfoSizer->Add(fontButton, 0, wxALL, 2);
+    fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
 
     m_applyButton = new wxButton(this, PreferencesCppEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
@@ -74,22 +72,21 @@ void CppEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
     {
         m_fontFaceName->Disable();
         m_fontSize->Disable();
+        m_fontButton->Disable();
     }
     else
     {
         m_fontFaceName->Enable();
         m_fontSize->Enable();
+        m_fontButton->Enable();
     }
+    updateExample();
     updateApplyButtonStatus();
 }
 
 void CppEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
 {
-    unsigned int newPointSize = evt.GetValue();
-    wxFont font = m_formatExample->GetFont();
-    font.SetPointSize(newPointSize);
-    m_formatExample->SetFont(font);
-
+    updateExample();
     updateApplyButtonStatus();
 }
 
@@ -107,7 +104,8 @@ void CppEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
         wxFontData data = fontDialog->GetFontData();
         m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
-        m_formatExample->SetFont(data.GetChosenFont());
+        updateExample();
+        updateApplyButtonStatus();
     }
 
     fontDialog->Destroy();
@@ -122,6 +120,22 @@ void CppEditorPreferencesPage::onApply(wxCommandEvent& evt)
     fontSettings.setPointSize(m_fontSize->GetValue());
     m_appSettings.save();
     m_applyButton->Disable();
+}
+
+void CppEditorPreferencesPage::updateExample()
+{
+    std::string faceName = m_fontFaceName->GetValue();
+    unsigned int pointSize = m_fontSize->GetValue();
+    if (m_useDefaultCheckBox->IsChecked())
+    {
+        faceName = m_appSettings.editorSettings().defaultSettings().fontSettings().faceName();
+        pointSize = m_appSettings.editorSettings().defaultSettings().fontSettings().pointSize();
+    }
+
+    wxFont font = m_formatExample->GetFont();
+    font.SetFaceName(faceName);
+    font.SetPointSize(pointSize);
+    m_formatExample->SetFont(font);
 }
 
 void CppEditorPreferencesPage::updateApplyButtonStatus()
