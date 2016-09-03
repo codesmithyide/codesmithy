@@ -28,6 +28,7 @@ namespace CodeSmithy
 static const char* defaultEditorSettingsElementName = "default-editor-settings";
 static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
+static const char* xmlEditorSettingsElementName = "xml-editor-settings";
 
 EditorSettings::EditorSettings()
 {
@@ -91,6 +92,16 @@ CppEditorSettings& EditorSettings::cppSettings()
     return m_cppEditorSettings;
 }
 
+const XMLEditorSettings& EditorSettings::xmlSettings() const
+{
+    return m_xmlEditorSettings;
+}
+
+XMLEditorSettings& EditorSettings::xmlSettings()
+{
+    return m_xmlEditorSettings;
+}
+
 void EditorSettings::load(pugi::xml_node node)
 {
     pugi::xml_node defaultEditorSettingsNode = node.child(defaultEditorSettingsElementName);
@@ -99,6 +110,8 @@ void EditorSettings::load(pugi::xml_node node)
     m_bakefileEditorSettings.load(bakefileEditorSettingsNode);
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     m_cppEditorSettings.load(cppEditorSettingsNode);
+    pugi::xml_node xmlEditorSettingsNode = node.child(xmlEditorSettingsElementName);
+    m_xmlEditorSettings.load(xmlEditorSettingsNode);
 }
 
 void EditorSettings::save(pugi::xml_node node) const
@@ -123,6 +136,13 @@ void EditorSettings::save(pugi::xml_node node) const
         cppEditorSettingsNode = node.append_child(cppEditorSettingsElementName);
     }
     m_cppEditorSettings.save(cppEditorSettingsNode);
+
+    pugi::xml_node xmlEditorSettingsNode = node.child(xmlEditorSettingsElementName);
+    if (!xmlEditorSettingsNode)
+    {
+        xmlEditorSettingsNode = node.append_child(xmlEditorSettingsElementName);
+    }
+    m_xmlEditorSettings.save(xmlEditorSettingsNode);
 }
 
 }

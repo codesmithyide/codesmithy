@@ -26,6 +26,7 @@
 #include "DefaultEditorSettings.h"
 #include "BakefileEditorSettings.h"
 #include "CppEditorSettings.h"
+#include "XMLEditorSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
@@ -50,6 +51,8 @@ public:
     BakefileEditorSettings& bakefileSettings();
     const CppEditorSettings& cppSettings() const;
     CppEditorSettings& cppSettings();
+    const XMLEditorSettings& xmlSettings() const;
+    XMLEditorSettings& xmlSettings();
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
@@ -58,6 +61,7 @@ private:
     DefaultEditorSettings m_defaultEditorSettings;
     BakefileEditorSettings m_bakefileEditorSettings;
     CppEditorSettings m_cppEditorSettings;
+    XMLEditorSettings m_xmlEditorSettings;
 };
 
 }
