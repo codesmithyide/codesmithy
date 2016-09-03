@@ -21,3 +21,91 @@
 */
 
 #include "Settings/BakefileEditorSettings.h"
+
+namespace CodeSmithy
+{
+
+static const char* useDefaultSettingsElementName = "use-default-settings";
+static const char* fontSettingsElementName = "font-settings";
+
+BakefileEditorSettings::BakefileEditorSettings()
+    : m_useDefaultFontSettings(true)
+{
+}
+
+BakefileEditorSettings::~BakefileEditorSettings()
+{
+}
+
+bool BakefileEditorSettings::useDefaultFontSettings() const
+{
+    return m_useDefaultFontSettings;
+}
+
+void BakefileEditorSettings::setUseDefaultFontSettings(bool useDefaultSettings)
+{
+    m_useDefaultFontSettings = useDefaultSettings;
+}
+
+const FontSettings& BakefileEditorSettings::fontSettings() const
+{
+    return m_fontSettings;
+}
+
+FontSettings& BakefileEditorSettings::fontSettings()
+{
+    return m_fontSettings;
+}
+
+void BakefileEditorSettings::load(pugi::xml_node node)
+{
+    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
+    if (std::string(useDefaultSettingsNode.child_value()) == "true")
+    {
+        m_useDefaultFontSettings = true;
+    }
+    else if (std::string(useDefaultSettingsNode.child_value()) == "false")
+    {
+        m_useDefaultFontSettings = false;
+    }
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    m_fontSettings.load(fontSettingsNode);
+}
+
+void BakefileEditorSettings::save(pugi::xml_node node) const
+{
+    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
+    if (!useDefaultSettingsNode)
+    {
+        useDefaultSettingsNode = node.append_child(useDefaultSettingsElementName);
+        if (m_useDefaultFontSettings)
+        {
+            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("true");
+        }
+        else
+        {
+            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("false");
+        }
+    }
+    else
+    {
+        if (m_useDefaultFontSettings)
+        {
+            useDefaultSettingsNode.text().set("true");
+        }
+        else
+        {
+            useDefaultSettingsNode.text().set("false");
+        }
+    }
+
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    if (!fontSettingsNode)
+    {
+        fontSettingsNode = node.append_child(fontSettingsElementName);
+    }
+
+    m_fontSettings.save(fontSettingsNode);
+}
+
+}

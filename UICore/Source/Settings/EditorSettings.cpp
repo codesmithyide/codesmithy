@@ -26,6 +26,7 @@ namespace CodeSmithy
 {
 
 static const char* defaultEditorSettingsElementName = "default-editor-settings";
+static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 
 EditorSettings::EditorSettings()
@@ -58,6 +59,16 @@ DefaultEditorSettings& EditorSettings::defaultSettings()
     return m_defaultEditorSettings;
 }
 
+const BakefileEditorSettings& EditorSettings::bakefileSettings() const
+{
+    return m_bakefileEditorSettings;
+}
+
+BakefileEditorSettings& EditorSettings::bakefileSettings()
+{
+    return m_bakefileEditorSettings;
+}
+
 const CppEditorSettings& EditorSettings::cppSettings() const
 {
     return m_cppEditorSettings;
@@ -72,6 +83,8 @@ void EditorSettings::load(pugi::xml_node node)
 {
     pugi::xml_node defaultEditorSettingsNode = node.child(defaultEditorSettingsElementName);
     m_defaultEditorSettings.load(defaultEditorSettingsNode);
+    pugi::xml_node bakefileEditorSettingsNode = node.child(bakefileEditorSettingsElementName);
+    m_bakefileEditorSettings.load(bakefileEditorSettingsNode);
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     m_cppEditorSettings.load(cppEditorSettingsNode);
 }
@@ -84,6 +97,13 @@ void EditorSettings::save(pugi::xml_node node) const
         defaultEditorSettingsNode = node.append_child(defaultEditorSettingsElementName);
     }
     m_defaultEditorSettings.save(defaultEditorSettingsNode);
+
+    pugi::xml_node bakefileEditorSettingsNode = node.child(bakefileEditorSettingsElementName);
+    if (!bakefileEditorSettingsNode)
+    {
+        bakefileEditorSettingsNode = node.append_child(bakefileEditorSettingsElementName);
+    }
+    m_bakefileEditorSettings.save(bakefileEditorSettingsNode);
 
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     if (!cppEditorSettingsNode)

@@ -40,6 +40,14 @@ BakefileCtrl::BakefileCtrl(wxWindow* parent,
 {
     m_ctrl = new wxStyledTextCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &BakefileCtrl::onModified, this);
+
+    // The Bakefile syntax is similar to C++ so use the C++ lexer
+    m_ctrl->SetLexer(wxSTC_LEX_CPP);
+
+    wxFont font = m_ctrl->StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().bakefileFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().bakefileFontSettings().pointSize());
+    m_ctrl->StyleSetFont(wxSTC_C_DEFAULT, font);
     
     m_document = std::dynamic_pointer_cast<Bakefile, Document>(document);
     if (!m_document->filePath().empty())

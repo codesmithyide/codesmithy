@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGS_H_
 
 #include "DefaultEditorSettings.h"
+#include "BakefileEditorSettings.h"
 #include "CppEditorSettings.h"
 #include <pugixml.hpp>
 
@@ -42,6 +43,8 @@ public:
 
     const DefaultEditorSettings& defaultSettings() const;
     DefaultEditorSettings& defaultSettings();
+    const BakefileEditorSettings& bakefileSettings() const;
+    BakefileEditorSettings& bakefileSettings();
     const CppEditorSettings& cppSettings() const;
     CppEditorSettings& cppSettings();
 
@@ -50,6 +53,7 @@ public:
 
 private:
     DefaultEditorSettings m_defaultEditorSettings;
+    BakefileEditorSettings m_bakefileEditorSettings;
     CppEditorSettings m_cppEditorSettings;
 };
 
