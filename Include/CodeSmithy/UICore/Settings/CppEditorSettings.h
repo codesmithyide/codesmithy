@@ -35,6 +35,8 @@ public:
     CppEditorSettings();
     ~CppEditorSettings();
 
+    bool useDefaultFontSettings() const;
+    void setUseDefaultFontSettings(bool useDefaultSettings);
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
 
@@ -42,6 +44,7 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
+    bool m_useDefaultFontSettings;
     FontSettings m_fontSettings;
 };
 

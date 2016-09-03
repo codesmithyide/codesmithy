@@ -25,14 +25,26 @@
 namespace CodeSmithy
 {
 
+static const char* useDefaultSettingsElementName = "use-default-settings";
 static const char* fontSettingsElementName = "font-settings";
 
 CppEditorSettings::CppEditorSettings()
+    : m_useDefaultFontSettings(true)
 {
 }
 
 CppEditorSettings::~CppEditorSettings()
 {
+}
+
+bool CppEditorSettings::useDefaultFontSettings() const
+{
+    return m_useDefaultFontSettings;
+}
+
+void CppEditorSettings::setUseDefaultFontSettings(bool useDefaultSettings)
+{
+    m_useDefaultFontSettings = useDefaultSettings;
 }
 
 const FontSettings& CppEditorSettings::fontSettings() const
@@ -47,12 +59,46 @@ FontSettings& CppEditorSettings::fontSettings()
 
 void CppEditorSettings::load(pugi::xml_node node)
 {
+    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
+    if (useDefaultSettingsNode.child_value() == "true")
+    {
+        m_useDefaultFontSettings = true;
+    }
+    else if (useDefaultSettingsNode.child_value() == "false")
+    {
+        m_useDefaultFontSettings = false;
+    }
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
 }
 
 void CppEditorSettings::save(pugi::xml_node node) const
 {
+    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
+    if (!useDefaultSettingsNode)
+    {
+        useDefaultSettingsNode = node.append_child(useDefaultSettingsElementName);
+        if (m_useDefaultFontSettings)
+        {
+            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("true");
+        }
+        else
+        {
+            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("false");
+        }
+    }
+    else
+    {
+        if (m_useDefaultFontSettings)
+        {
+            useDefaultSettingsNode.text().set("true");
+        }
+        else
+        {
+            useDefaultSettingsNode.text().set("false");
+        }
+    }
+
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     if (!fontSettingsNode)
     {

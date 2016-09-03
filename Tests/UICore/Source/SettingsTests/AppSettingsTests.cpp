@@ -38,6 +38,7 @@ void AddAppSettingsTests(TestSequence& testSequence)
 
     new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
     new FileComparisonTest("save test 2", AppSettingsSaveTest2, *settingsTestSequence);
+    new FileComparisonTest("save test 3", AppSettingsSaveTest3, *settingsTestSequence);
 
     new HeapAllocationErrorsTest("createFileTypesFilter test 1", AppSettingsCreateFileTypesFilterTest1, *settingsTestSequence);
     new HeapAllocationErrorsTest("createFileTypesFilter test 2", AppSettingsCreateFileTypesFilterTest2, *settingsTestSequence);
@@ -189,6 +190,31 @@ TestResult::EOutcome AppSettingsSaveTest2(FileComparisonTest& test)
 
     appSettings.editorSettings().defaultSettings().fontSettings().setFaceName("Arial");
     appSettings.editorSettings().defaultSettings().fontSettings().setPointSize(12);
+    appSettings.save();
+
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
+}
+
+TestResult::EOutcome AppSettingsSaveTest3(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsSaveTest3.xml");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsSaveTest3.xml");
+
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::ProjectTypes projectTypes;
+    CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
+
+    appSettings.editorSettings().cppSettings().setUseDefaultFontSettings(false);
+    appSettings.editorSettings().cppSettings().fontSettings().setFaceName("Arial");
+    appSettings.editorSettings().cppSettings().fontSettings().setPointSize(12);
     appSettings.save();
 
     result = TestResult::ePassed;

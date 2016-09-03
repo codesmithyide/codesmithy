@@ -23,6 +23,7 @@
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/checkbox.h>
 #include <wx/fontdlg.h>
 
 namespace CodeSmithy
@@ -35,6 +36,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
+    wxCheckBox* useDefaultCheckBox = new wxCheckBox(this, PreferencesCppEditorUseDefaultSettingsCheckBoxID, "Use default settings");
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
     m_fontSize = new wxSpinCtrl(this, PreferencesCppEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
@@ -51,6 +53,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_formatExample->SetFont(font);
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
+    fontInfoSizer->Add(useDefaultCheckBox);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(fontButton, 0, wxALL, 2);
@@ -63,6 +66,20 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+void CppEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
+{
+    if (evt.IsChecked())
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+    }
+    else
+    {
+        m_fontFaceName->Enable();
+        m_fontSize->Enable();
+    }
 }
 
 void CppEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
@@ -113,6 +130,7 @@ void CppEditorPreferencesPage::onApply(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(CppEditorPreferencesPage, wxPanel)
+    EVT_CHECKBOX(PreferencesCppEditorUseDefaultSettingsCheckBoxID, CppEditorPreferencesPage::onUseDefaultSettingChanged)
     EVT_SPINCTRL(PreferencesCppEditorSizeSelectionButtonID, CppEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesCppEditorFontSelectionButtonID, CppEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesCppEditorPreferencesApplyButtonID, CppEditorPreferencesPage::onApply)

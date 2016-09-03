@@ -9,10 +9,10 @@
 			</font-settings>
 		</default-editor-settings>
 		<cpp-editor-settings>
-			<use-default-settings>true</use-default-settings>
+			<use-default-settings>false</use-default-settings>
 			<font-settings>
-				<font-face-name>Courier New</font-face-name>
-				<font-point-size>10</font-point-size>
+				<font-face-name>Arial</font-face-name>
+				<font-point-size>12</font-point-size>
 			</font-settings>
 		</cpp-editor-settings>
 	</editor-settings>
