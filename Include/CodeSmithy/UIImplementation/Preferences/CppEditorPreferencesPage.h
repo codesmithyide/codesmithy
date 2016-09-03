@@ -25,6 +25,7 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/checkbox.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -43,8 +44,11 @@ private:
     void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);
 
+    void updateApplyButtonStatus();
+
 private:
     AppSettings& m_appSettings;
+    wxCheckBox* m_useDefaultCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxTextCtrl* m_formatExample;
