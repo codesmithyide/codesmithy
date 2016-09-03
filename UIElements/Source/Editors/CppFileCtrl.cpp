@@ -40,9 +40,13 @@ CppFileCtrl::CppFileCtrl(wxWindow* parent,
 {
     m_ctrl = new wxStyledTextCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);
+	
+    m_ctrl->SetLexer(wxSTC_LEX_CPP);
 
-    wxFont font(100, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false);
-    m_ctrl->SetFont(font);
+    wxFont font = m_ctrl->StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().cppFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().cppFontSettings().pointSize());
+    m_ctrl->StyleSetFont(wxSTC_C_DEFAULT, font);
 
     m_document = std::dynamic_pointer_cast<CppDocument, Document>(document);
     if (!m_document->filePath().empty())
