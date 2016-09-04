@@ -21,3 +21,55 @@
 */
 
 #include "Editors/XMLDocumentCtrl.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+wxWindow* XMLDocumentCtrl::Create(wxWindow *parent,
+                                  std::shared_ptr<Document> document,
+                                  const AppSettings& appSettings)
+{
+    return new XMLDocumentCtrl(parent, document, appSettings);
+}
+
+XMLDocumentCtrl::XMLDocumentCtrl(wxWindow* parent,
+                                 std::shared_ptr<Document> document,
+                                 const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
+{
+    m_ctrl = new wxStyledTextCtrl(this);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &XMLDocumentCtrl::onModified, this);
+
+    m_document = std::dynamic_pointer_cast<XMLDocument, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
+}
+
+std::shared_ptr<const Document> XMLDocumentCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> XMLDocumentCtrl::document()
+{
+    return m_document;
+}
+
+void XMLDocumentCtrl::save(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
+}
+
+void XMLDocumentCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
+}
+
+}

@@ -36,7 +36,7 @@ wxWindow* CppFileCtrl::Create(wxWindow *parent,
 CppFileCtrl::CppFileCtrl(wxWindow* parent,
                          std::shared_ptr<Document> document,
                          const AppSettings& appSettings)
-    : DocumentCtrl(parent), m_ctrl(0), m_document(0)
+    : DocumentCtrl(parent), m_ctrl(0)
 {
     m_ctrl = new wxStyledTextCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);

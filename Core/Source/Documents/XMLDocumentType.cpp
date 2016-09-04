@@ -31,6 +31,12 @@ XMLDocumentType::XMLDocumentType()
 {
 }
 
+XMLDocumentType::XMLDocumentType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("XML", "xml")
+{
+    setCustomData(customData);
+}
+
 std::shared_ptr<Document> XMLDocumentType::createNewDocument(const DocumentId& id,
                                                              const std::string& name) const
 {

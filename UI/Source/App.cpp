@@ -24,10 +24,11 @@
 #include "Frame.h"
 #include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/UIElements/Editors/BakefileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/CppFileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
-#include "CodeSmithy/UIElements/Editors/CppFileCtrl.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
@@ -47,7 +48,7 @@ App::App()
     m_documentTypes->add(std::make_shared<CMakeListsType>());
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));
-    m_documentTypes->add(std::make_shared<XMLDocumentType>());
+    m_documentTypes->add(std::make_shared<XMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(XMLDocumentCtrl::Create)));
 
     // This is the list of project types supported by the
     // the CodeSmithy UI. There is no dynamic way to add project
