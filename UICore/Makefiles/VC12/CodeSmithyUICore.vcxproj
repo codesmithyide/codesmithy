@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp" />
+    <ClCompile Include="..\..\Source\Settings\StartupSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StartupSettings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
