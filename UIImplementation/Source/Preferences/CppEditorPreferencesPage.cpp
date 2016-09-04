@@ -45,6 +45,12 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
     m_fontButton = new wxButton(this, PreferencesCppEditorFontSelectionButtonID, "Select Font...");
+    if (m_useDefaultCheckBox->IsChecked())
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+        m_fontButton->Disable();
+    }
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
