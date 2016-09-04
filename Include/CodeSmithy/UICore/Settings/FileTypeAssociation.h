@@ -33,8 +33,6 @@ namespace CodeSmithy
 class FileTypeAssociation
 {
 public:
-    typedef std::shared_ptr<FileTypeAssociation> shared_ptr;
-
     enum EAssociation
     {
         eDisabled,

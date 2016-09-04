@@ -62,6 +62,18 @@ const FontSettings& EditorSettings::cppFontSettings() const
     }
 }
 
+const FontSettings& EditorSettings::xmlFontSettings() const
+{
+    if (m_xmlEditorSettings.useDefaultFontSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_xmlEditorSettings.fontSettings();
+    }
+}
+
 const DefaultEditorSettings& EditorSettings::defaultSettings() const
 {
     return m_defaultEditorSettings;

@@ -37,7 +37,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
 
     wxFlexGridSizer* fileTypeAssociationsSizer = new wxFlexGridSizer(3, 5, 10);
 
-    const FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
+    FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
 
     AddTitleRow(this, fileTypeAssociationsSizer);
     
@@ -182,7 +182,7 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
     const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
     if (data)
     {
-        FileTypeAssociation::shared_ptr association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
+        std::shared_ptr<FileTypeAssociation> association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
         association->setAssociation(data->association());
         association->setAction(data->actionType(), data->projectName());
         m_updatedFileTypeAssociations.set(association);
@@ -202,7 +202,7 @@ void FileTypeAssociationsPreferencesPage::OnApply(wxCommandEvent& evt)
     bool needsSaving = false;
     for (size_t i = 0; i < m_updatedFileTypeAssociations.size(); ++i)
     {
-        FileTypeAssociation::shared_ptr existingAssociation = m_appSettings.fileTypeAssociations().find(m_updatedFileTypeAssociations[i]->documentTypeName());
+        std::shared_ptr<FileTypeAssociation> existingAssociation = m_appSettings.fileTypeAssociations().find(m_updatedFileTypeAssociations[i]->documentTypeName());
         if (existingAssociation)
         {
             if (*existingAssociation != *m_updatedFileTypeAssociations[i])

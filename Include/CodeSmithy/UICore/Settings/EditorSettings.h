@@ -44,6 +44,9 @@ public:
     // Gets the C++ editor font settings or the default settings
     // as appropriate.
     const FontSettings& cppFontSettings() const;
+    // Gets the XML editor font settings or the default settings
+    // as appropriate.
+    const FontSettings& xmlFontSettings() const;
 
     const DefaultEditorSettings& defaultSettings() const;
     DefaultEditorSettings& defaultSettings();

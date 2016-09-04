@@ -38,10 +38,11 @@ public:
     ~FileTypeAssociations();
 
     size_t size() const;
-    const FileTypeAssociation::shared_ptr& operator[](size_t index) const;
-    FileTypeAssociation::shared_ptr find(const std::string& documentTypeName);
+    std::shared_ptr<const FileTypeAssociation> operator[](size_t index) const;
+    std::shared_ptr<FileTypeAssociation> operator[](size_t index);
+    std::shared_ptr<FileTypeAssociation> find(const std::string& documentTypeName);
 
-    void set(FileTypeAssociation::shared_ptr association);
+    void set(std::shared_ptr<FileTypeAssociation> association);
     void remove(const std::string& documentTypeName);
     void clear();
     // Add file type associations for any document types not already in the
@@ -52,7 +53,7 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
-    std::vector<FileTypeAssociation::shared_ptr> m_associations;
+    std::vector<std::shared_ptr<FileTypeAssociation>> m_associations;
 };
 
 }

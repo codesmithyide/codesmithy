@@ -62,7 +62,7 @@ TestResult::EOutcome FileTypeAssociationsCreationTest1()
 TestResult::EOutcome FileTypeAssociationsSetTest1()
 {
     CodeSmithy::FileTypeAssociations associations;
-    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
     if ((associations.size() == 1) &&
         (associations[0]->documentTypeName() == "documentType1"))
@@ -78,10 +78,10 @@ TestResult::EOutcome FileTypeAssociationsSetTest1()
 TestResult::EOutcome FileTypeAssociationsSetTest2()
 {
     CodeSmithy::FileTypeAssociations associations;
-    CodeSmithy::FileTypeAssociation::shared_ptr association1 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association1 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association1);
 
-    CodeSmithy::FileTypeAssociation::shared_ptr association2 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association2 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     association2->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
     associations.set(association2);
 
@@ -114,7 +114,7 @@ TestResult::EOutcome FileTypeAssociationsRemoveTest1()
 TestResult::EOutcome FileTypeAssociationsRemoveTest2()
 {
     CodeSmithy::FileTypeAssociations associations;
-    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
     associations.remove("documentType1");
     if (associations.size() == 0)
@@ -165,7 +165,7 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest3()
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
 
     CodeSmithy::FileTypeAssociations associations;
-    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
 
     associations.addNewFileTypeAssociations(documentTypes);
@@ -187,7 +187,7 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest4()
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
 
     CodeSmithy::FileTypeAssociations associations;
-    CodeSmithy::FileTypeAssociation::shared_ptr association = std::make_shared<CodeSmithy::FileTypeAssociation>("Bakefile");
+    std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("Bakefile");
     association->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
     associations.set(association);
 

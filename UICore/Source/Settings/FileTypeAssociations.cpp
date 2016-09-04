@@ -40,12 +40,17 @@ size_t FileTypeAssociations::size() const
     return m_associations.size();
 }
 
-const FileTypeAssociation::shared_ptr& FileTypeAssociations::operator[](size_t index) const
+std::shared_ptr<const FileTypeAssociation> FileTypeAssociations::operator[](size_t index) const
 {
     return m_associations[index];
 }
 
-FileTypeAssociation::shared_ptr FileTypeAssociations::find(const std::string& documentTypeName)
+std::shared_ptr<FileTypeAssociation> FileTypeAssociations::operator[](size_t index)
+{
+    return m_associations[index];
+}
+
+std::shared_ptr<FileTypeAssociation> FileTypeAssociations::find(const std::string& documentTypeName)
 {
     for (size_t i = 0; i < m_associations.size(); ++i)
     {
@@ -54,12 +59,12 @@ FileTypeAssociation::shared_ptr FileTypeAssociations::find(const std::string& do
             return m_associations[i];
         }
     }
-    return FileTypeAssociation::shared_ptr();
+    return std::shared_ptr<FileTypeAssociation>();
 }
 
-void FileTypeAssociations::set(FileTypeAssociation::shared_ptr association)
+void FileTypeAssociations::set(std::shared_ptr<FileTypeAssociation> association)
 {
-    FileTypeAssociation::shared_ptr existingAssociation = find(association->documentTypeName());
+    std::shared_ptr<FileTypeAssociation> existingAssociation = find(association->documentTypeName());
     if (!existingAssociation)
     {
         m_associations.push_back(association);
@@ -94,7 +99,7 @@ bool FileTypeAssociations::addNewFileTypeAssociations(const DocumentTypes& docum
     {
         if (!find(documentTypes[i]->name()))
         {
-            FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
+            std::shared_ptr<FileTypeAssociation> newAssociation = std::make_shared<FileTypeAssociation>(documentTypes[i]->name());
             m_associations.push_back(newAssociation);
             result = true;
         }
@@ -108,7 +113,7 @@ void FileTypeAssociations::load(pugi::xml_node node)
          associationNode != 0;
          associationNode = associationNode.next_sibling(fileTypeAssociationElementName))
     {
-        FileTypeAssociation::shared_ptr newAssociation = std::make_shared<FileTypeAssociation>();
+        std::shared_ptr<FileTypeAssociation> newAssociation = std::make_shared<FileTypeAssociation>();
         newAssociation->load(associationNode);
         m_associations.push_back(newAssociation);
     }

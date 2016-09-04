@@ -36,6 +36,12 @@ Frame::Frame(const wxString& title,
     m_appSettings(documentTypes, projectTypes),
     m_menuBar(0), m_workspacePanel(0)
 {
+    if (m_appSettings.startupSettings().initialSizeType() == StartupSettings::eFixedSize)
+    {
+        SetSize(m_appSettings.startupSettings().initialWidth(), m_appSettings.startupSettings().initialHeight());
+    }
+    Center();
+
     m_documents = std::make_shared<Documents>();
     m_activeDocument = std::make_shared<ActiveDocument>();
 

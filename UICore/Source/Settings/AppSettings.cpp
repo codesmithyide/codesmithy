@@ -32,11 +32,13 @@ namespace CodeSmithy
 	
 static const char* rootElementName = "codesmithy-application-settings";
 static const char* fileTypeAssociationsElementName = "file-type-associations";
+static const char* startupSettingsElementName = "startup-settings";
 static const char* editorSettingsElementName = "editor-settings";
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes)
-    : m_fileTypeAssociationsNode(0), m_documentTypes(documentTypes), 
+    : m_fileTypeAssociationsNode(0), m_startupSettingsNode(0),
+    m_editorSettingsNode(0), m_documentTypes(documentTypes),
     m_projectTypes(projectTypes)
 {
     m_path = getSettingsDirectory();
@@ -50,6 +52,7 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes,
                          const boost::filesystem::path& settingsPath)
     : m_path(settingsPath), m_fileTypeAssociationsNode(0), 
+    m_startupSettingsNode(0), m_editorSettingsNode(0),
     m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
     initialize(m_path);
@@ -75,6 +78,16 @@ FileTypeAssociations& AppSettings::fileTypeAssociations()
     return m_fileTypeAssociations;
 }
 
+const StartupSettings& AppSettings::startupSettings() const
+{
+    return m_startupSettings;
+}
+
+StartupSettings& AppSettings::startupSettings()
+{
+    return m_startupSettings;
+}
+
 const EditorSettings& AppSettings::editorSettings() const
 {
     return m_editorSettings;
@@ -88,6 +101,7 @@ EditorSettings& AppSettings::editorSettings()
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
+    m_startupSettings.save(m_startupSettingsNode);
     m_editorSettings.save(m_editorSettingsNode);
 
     std::ofstream file(m_path.wstring());
@@ -255,6 +269,8 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
         m_document.load_file(settingsPath.string().c_str());
         m_fileTypeAssociationsNode = m_document.child(rootElementName).child(fileTypeAssociationsElementName);
         m_fileTypeAssociations.load(m_fileTypeAssociationsNode);
+        m_startupSettingsNode = m_document.child(rootElementName).child(startupSettingsElementName);
+        m_startupSettings.load(m_startupSettingsNode);
         m_editorSettingsNode = m_document.child(rootElementName).child(editorSettingsElementName);
         m_editorSettings.load(m_editorSettingsNode);
     }
@@ -265,6 +281,7 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
         if (rootNode)
         {
             m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
+            m_startupSettingsNode = rootNode.append_child(startupSettingsElementName);
             m_editorSettingsNode = rootNode.append_child(editorSettingsElementName);
         }
     }

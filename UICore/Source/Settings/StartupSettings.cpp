@@ -21,3 +21,58 @@
 */
 
 #include "Settings/StartupSettings.h"
+#include <sstream>
+
+namespace CodeSmithy
+{
+
+static const char* initialSizeElementName = "initial-size";
+static const char* initialSizeTypeElementName = "initial-size-type";
+static const char* initialWidthElementName = "width";
+static const char* initialHeightElementName = "height";
+
+StartupSettings::StartupSettings()
+    : m_initialSizeType(eFixedSize), m_initialWidth(800),
+    m_initialHeight(600)
+{
+}
+
+StartupSettings::~StartupSettings()
+{
+}
+
+StartupSettings::EInitialSizeType StartupSettings::initialSizeType() const
+{
+    return m_initialSizeType;
+}
+
+unsigned int StartupSettings::initialWidth() const
+{
+    return m_initialWidth;
+}
+
+unsigned int StartupSettings::initialHeight() const
+{
+    return m_initialHeight;
+}
+
+void StartupSettings::load(pugi::xml_node node)
+{
+}
+
+void StartupSettings::save(pugi::xml_node node) const
+{
+    pugi::xml_node initialSizeNode = node.append_child(initialSizeElementName);
+    pugi::xml_node initialSizeTypeNode = initialSizeNode.append_child(initialSizeTypeElementName);
+    initialSizeTypeNode.append_child(pugi::node_pcdata).set_value("fixed-size");
+    pugi::xml_node initialWidthNode = initialSizeNode.append_child(initialWidthElementName);
+    std::stringstream widthStr;
+    widthStr << m_initialWidth;
+    initialWidthNode.append_child(pugi::node_pcdata).set_value(widthStr.str().c_str());
+    pugi::xml_node initialHeightNode = initialSizeNode.append_child(initialHeightElementName);
+    std::stringstream heightStr;
+    heightStr << m_initialHeight;
+    initialHeightNode.append_child(pugi::node_pcdata).set_value(heightStr.str().c_str());
+}
+
+}

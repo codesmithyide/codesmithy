@@ -23,4 +23,36 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_STARTUPSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_STARTUPSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class StartupSettings
+{
+public:
+    enum EInitialSizeType
+    {
+        eFixedSize
+    };
+
+public:
+    StartupSettings();
+    ~StartupSettings();
+
+    EInitialSizeType initialSizeType() const;
+    unsigned int initialWidth() const;
+    unsigned int initialHeight() const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+
+private:
+    EInitialSizeType m_initialSizeType;
+    unsigned int m_initialWidth;
+    unsigned int m_initialHeight;
+};
+
+}
+
 #endif

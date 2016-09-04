@@ -41,6 +41,13 @@ XMLDocumentCtrl::XMLDocumentCtrl(wxWindow* parent,
     m_ctrl = new wxStyledTextCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &XMLDocumentCtrl::onModified, this);
 
+    m_ctrl->SetLexer(wxSTC_LEX_XML);
+
+    wxFont font = m_ctrl->StyleGetFont(wxSTC_H_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().xmlFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().xmlFontSettings().pointSize());
+    m_ctrl->StyleSetFont(wxSTC_H_DEFAULT, font);
+
     m_document = std::dynamic_pointer_cast<XMLDocument, Document>(document);
     if (!m_document->filePath().empty())
     {
