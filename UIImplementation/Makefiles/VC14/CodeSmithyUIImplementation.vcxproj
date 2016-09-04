@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\Source\Preferences\BakefileEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\CppEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
   </ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CppEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h" />
   </ItemGroup>
