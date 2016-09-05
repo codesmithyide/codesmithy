@@ -25,6 +25,7 @@
 #include "Preferences/BakefileEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
+#include "Preferences/StartupPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
@@ -46,6 +47,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
     CreateEditorPreferences(treebook, settings);
+    CreateStartupPreferences(treebook, settings);
     CreateFileTypeAssociationsPreferences(treebook, settings);
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
@@ -92,6 +94,13 @@ void PreferencesDialog::CreateXMLEditorPreferences(wxTreebook* treebook,
 {
     XMLEditorPreferencesPage* xmlPage = new XMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(xmlPage, "XML");
+}
+
+void PreferencesDialog::CreateStartupPreferences(wxTreebook* treebook,
+                                                 AppSettings& settings)
+{
+    StartupPreferencesPage* startupPage = new StartupPreferencesPage(treebook, settings);
+    treebook->AddPage(startupPage, "Startup");
 }
 
 void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebook, 

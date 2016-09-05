@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_STARTUPPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_STARTUPPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class StartupPreferencesPage : public wxPanel
+{
+public:
+    StartupPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+
+private:
+    AppSettings& m_appSettings;
+};
+
+}
+
 #endif

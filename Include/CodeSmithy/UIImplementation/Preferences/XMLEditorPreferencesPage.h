@@ -36,7 +36,7 @@ namespace CodeSmithy
 class XMLEditorPreferencesPage : public wxPanel
 {
 public:
-    XMLEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+    XMLEditorPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 
 private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);

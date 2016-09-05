@@ -28,7 +28,7 @@
 namespace CodeSmithy
 {
 
-XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow *parent,
+XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
     m_fontFaceName(0), m_fontSize(0), m_fontButton(0),

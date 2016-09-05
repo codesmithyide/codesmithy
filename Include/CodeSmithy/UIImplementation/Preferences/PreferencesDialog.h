@@ -43,6 +43,7 @@ private:
     void CreateBakefileEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateCppEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateXMLEditorPreferences(wxTreebook* treebook, AppSettings& settings);
+    void CreateStartupPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
 
     void OnClose(wxCommandEvent& evt);

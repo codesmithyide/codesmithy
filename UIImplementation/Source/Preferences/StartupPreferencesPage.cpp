@@ -21,3 +21,14 @@
 */
 
 #include "Preferences/StartupPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent, 
+                                               AppSettings& appSettings)
+    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings)
+{
+}
+
+}
