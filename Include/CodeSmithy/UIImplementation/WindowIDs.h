@@ -57,7 +57,10 @@ const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesXMLEdito
 const wxWindowID PreferencesXMLEditorFontSelectionButtonID = PreferencesXMLEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesXMLEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesXMLEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesStartupFixedSizeButtonID = PreferencesXMLEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesStartupPreviousSizeButtonID = PreferencesStartupFixedSizeButtonID + 1;
+
+const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesStartupPreviousSizeButtonID + 1;
 
 }
 

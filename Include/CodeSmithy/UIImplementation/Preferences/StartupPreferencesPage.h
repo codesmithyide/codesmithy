@@ -25,6 +25,8 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/radiobut.h>
+#include <wx/textctrl.h>
 
 namespace CodeSmithy
 {
@@ -35,7 +37,15 @@ public:
     StartupPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 
 private:
+    void onSizeTypeChange(wxCommandEvent& evt);
+
+private:
     AppSettings& m_appSettings;
+    wxRadioButton* m_startupSizeFixedButton;
+    wxTextCtrl* m_widthEntry;
+    wxTextCtrl* m_heightEntry;
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 }
