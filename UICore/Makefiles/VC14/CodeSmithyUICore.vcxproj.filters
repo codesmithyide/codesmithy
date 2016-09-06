@@ -41,6 +41,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StyleSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -71,6 +74,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Settings\StyleSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp">
