@@ -31,6 +31,7 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/CMakeListsCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/CppFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/XMLEditorCtrl.h
     }
 
     sources
@@ -40,5 +41,6 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/CMakeListsCtrl.cpp
         ../../Source/Editors/CppFileCtrl.cpp
         ../../Source/Editors/XMLDocumentCtrl.cpp
+        ../../Source/Editors/XMLEditorCtrl.cpp
     }
 }
