@@ -26,15 +26,20 @@
 namespace CodeSmithy
 {
 
-static const char* foregroundColorElementName = "foreground-color";
+static const char* textColorElementName = "text-color";
 
 StyleSettings::StyleSettings()
-    : m_foregroundColor(0x000000)
+    : m_textColor(0x000000)
 {
 }
 
 StyleSettings::~StyleSettings()
 {
+}
+
+unsigned int StyleSettings::textColor() const
+{
+    return m_textColor;
 }
 
 void StyleSettings::load(pugi::xml_node node)
@@ -43,19 +48,19 @@ void StyleSettings::load(pugi::xml_node node)
 
 void StyleSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node foregroundColorNode = node.child(foregroundColorElementName);
-    if (!foregroundColorNode)
+    pugi::xml_node textColorNode = node.child(textColorElementName);
+    if (!textColorNode)
     {
-        foregroundColorNode = node.append_child(foregroundColorElementName);
-        std::stringstream foregroundColorStr;
-        foregroundColorStr << m_foregroundColor;
-        foregroundColorNode.append_child(pugi::node_pcdata).set_value(foregroundColorStr.str().c_str());
+        textColorNode = node.append_child(textColorElementName);
+        std::stringstream textColorStr;
+        textColorStr << m_textColor;
+        textColorNode.append_child(pugi::node_pcdata).set_value(textColorStr.str().c_str());
     }
     else
     {
-        std::stringstream foregroundColorStr;
-        foregroundColorStr << m_foregroundColor;
-        foregroundColorNode.text().set(foregroundColorStr.str().c_str());
+        std::stringstream textColorStr;
+        textColorStr << m_textColor;
+        textColorNode.text().set(textColorStr.str().c_str());
     }
 }
 

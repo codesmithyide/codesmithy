@@ -49,6 +49,9 @@ public:
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
     unsigned int color(EStyleId id) const;
+    std::vector<StyleSettings>& styles();
+
+    std::string styleIdToDescription(EStyleId id);
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

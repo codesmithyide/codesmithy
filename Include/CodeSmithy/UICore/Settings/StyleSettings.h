@@ -34,11 +34,13 @@ public:
     StyleSettings();
     ~StyleSettings();
 
+    unsigned int textColor() const;
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
 private:
-    unsigned int m_foregroundColor;
+    unsigned int m_textColor;
 };
 
 }

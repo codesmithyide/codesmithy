@@ -61,9 +61,29 @@ FontSettings& XMLEditorSettings::fontSettings()
     return m_fontSettings;
 }
 
-unsigned int XMLEditorSettings::color(EStyleId entidity) const
+unsigned int XMLEditorSettings::color(EStyleId id) const
 {
-    return 0xFF5600;
+    return m_styles[id].textColor();
+}
+
+std::vector<StyleSettings>& XMLEditorSettings::styles()
+{
+    return m_styles;
+}
+
+std::string XMLEditorSettings::styleIdToDescription(EStyleId id)
+{
+    switch (id)
+    {
+    case eElementName:
+        return "Element names text color";
+
+    case eComment:
+        return "Comments text color";
+
+    default:
+        return "";
+    }
 }
 
 void XMLEditorSettings::load(pugi::xml_node node)
