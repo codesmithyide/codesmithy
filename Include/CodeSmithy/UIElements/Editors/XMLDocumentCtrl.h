@@ -46,6 +46,8 @@ public:
     void save(const boost::filesystem::path& path) override;
 
 private:
+    void setStyle(const AppSettings& appSettings);
+
     void onModified(wxStyledTextEvent& evt);
 
 private:

@@ -42,11 +42,7 @@ XMLDocumentCtrl::XMLDocumentCtrl(wxWindow* parent,
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &XMLDocumentCtrl::onModified, this);
 
     m_ctrl->SetLexer(wxSTC_LEX_XML);
-
-    wxFont font = m_ctrl->StyleGetFont(wxSTC_H_DEFAULT);
-    font.SetFaceName(appSettings.editorSettings().xmlFontSettings().faceName());
-    font.SetPointSize(appSettings.editorSettings().xmlFontSettings().pointSize());
-    m_ctrl->StyleSetFont(wxSTC_H_DEFAULT, font);
+    setStyle(appSettings);
 
     m_document = std::dynamic_pointer_cast<XMLDocument, Document>(document);
     if (!m_document->filePath().empty())
@@ -72,6 +68,48 @@ std::shared_ptr<Document> XMLDocumentCtrl::document()
 void XMLDocumentCtrl::save(const boost::filesystem::path& path)
 {
     m_document->setModified(false);
+}
+
+void XMLDocumentCtrl::setStyle(const AppSettings& appSettings)
+{
+    m_ctrl->SetBackgroundColour(0x222222);
+
+    wxFont font = m_ctrl->StyleGetFont(wxSTC_H_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().xmlFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().xmlFontSettings().pointSize());
+    m_ctrl->StyleSetFont(wxSTC_H_DEFAULT, font);
+    m_ctrl->StyleSetBackground(wxSTC_H_DEFAULT, 0x444444);
+    
+    m_ctrl->StyleSetFont(wxSTC_H_TAG, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_TAG, appSettings.editorSettings().xmlSettings().color(XMLEditorSettings::eElementName));
+
+    m_ctrl->StyleSetFont(wxSTC_H_TAGUNKNOWN, font);
+    m_ctrl->StyleSetFont(wxSTC_H_ATTRIBUTE, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_ATTRIBUTE, 0x666611);
+    m_ctrl->StyleSetFont(wxSTC_H_ATTRIBUTEUNKNOWN, font);
+    m_ctrl->StyleSetFont(wxSTC_H_NUMBER, font);
+    m_ctrl->StyleSetFont(wxSTC_H_DOUBLESTRING, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_DOUBLESTRING, 0x000066);
+    m_ctrl->StyleSetFont(wxSTC_H_SINGLESTRING, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_SINGLESTRING, 0x006666);
+    m_ctrl->StyleSetFont(wxSTC_H_OTHER, font);
+    m_ctrl->StyleSetFont(wxSTC_H_COMMENT, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_COMMENT, 0x006666);
+    m_ctrl->StyleSetFont(wxSTC_H_ENTITY, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_ENTITY, 0x0000FF);
+    m_ctrl->StyleSetFont(wxSTC_H_TAGEND, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_TAGEND, 0x666666);
+    m_ctrl->StyleSetFont(wxSTC_H_XMLSTART, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_XMLSTART, 0xFF00FF);
+    m_ctrl->StyleSetFont(wxSTC_H_XMLEND, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_XMLEND, 0x00FF00);
+    m_ctrl->StyleSetFont(wxSTC_H_SCRIPT, font);
+    m_ctrl->StyleSetFont(wxSTC_H_ASP, font);
+    m_ctrl->StyleSetFont(wxSTC_H_ASPAT, font);
+    m_ctrl->StyleSetFont(wxSTC_H_CDATA, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_CDATA, 0x0000FF);
+    m_ctrl->StyleSetFont(wxSTC_H_QUESTION, font);
+    m_ctrl->StyleSetForeground(wxSTC_H_QUESTION, 0xFF00FF);
 }
 
 void XMLDocumentCtrl::onModified(wxStyledTextEvent& evt)

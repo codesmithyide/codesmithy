@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <codesmithy-application-settings>
 	<file-type-associations />
+	<startup-settings>
+		<initial-size>
+			<initial-size-type>fixed-size</initial-size-type>
+			<width>800</width>
+			<height>600</height>
+		</initial-size>
+	</startup-settings>
 	<editor-settings>
 		<default-editor-settings>
 			<font-settings>
@@ -28,6 +35,7 @@
 				<font-face-name>Courier New</font-face-name>
 				<font-point-size>10</font-point-size>
 			</font-settings>
+			<entity-styles />
 		</xml-editor-settings>
 	</editor-settings>
 </codesmithy-application-settings>

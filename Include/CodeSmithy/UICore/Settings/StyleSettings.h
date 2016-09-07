@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_STYLESETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_STYLESETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class StyleSettings
+{
+public:
+    StyleSettings();
+    ~StyleSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+
+private:
+    unsigned int m_foregroundColor;
+};
+
+}
+
 #endif

@@ -21,3 +21,42 @@
 */
 
 #include "Settings/StyleSettings.h"
+#include <sstream>
+
+namespace CodeSmithy
+{
+
+static const char* foregroundColorElementName = "foreground-color";
+
+StyleSettings::StyleSettings()
+    : m_foregroundColor(0x000000)
+{
+}
+
+StyleSettings::~StyleSettings()
+{
+}
+
+void StyleSettings::load(pugi::xml_node node)
+{
+}
+
+void StyleSettings::save(pugi::xml_node node) const
+{
+    pugi::xml_node foregroundColorNode = node.child(foregroundColorElementName);
+    if (!foregroundColorNode)
+    {
+        foregroundColorNode = node.append_child(foregroundColorElementName);
+        std::stringstream foregroundColorStr;
+        foregroundColorStr << m_foregroundColor;
+        foregroundColorNode.append_child(pugi::node_pcdata).set_value(foregroundColorStr.str().c_str());
+    }
+    else
+    {
+        std::stringstream foregroundColorStr;
+        foregroundColorStr << m_foregroundColor;
+        foregroundColorNode.text().set(foregroundColorStr.str().c_str());
+    }
+}
+
+}

@@ -27,10 +27,14 @@ namespace CodeSmithy
 
 static const char* useDefaultSettingsElementName = "use-default-settings";
 static const char* fontSettingsElementName = "font-settings";
+static const char* stylesElementName = "styles";
+static const char* styleElementName = "style";
+static const char* styleIdElementName = "id";
 
 XMLEditorSettings::XMLEditorSettings()
     : m_useDefaultFontSettings(true)
 {
+    initializeStyles();
 }
 
 XMLEditorSettings::~XMLEditorSettings()
@@ -57,6 +61,11 @@ FontSettings& XMLEditorSettings::fontSettings()
     return m_fontSettings;
 }
 
+unsigned int XMLEditorSettings::color(EStyleId entidity) const
+{
+    return 0xFF5600;
+}
+
 void XMLEditorSettings::load(pugi::xml_node node)
 {
     pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
@@ -70,6 +79,14 @@ void XMLEditorSettings::load(pugi::xml_node node)
     }
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
+    pugi::xml_node stylesNode = node.child(stylesElementName);
+    for (pugi::xml_node styleSettingsNode = stylesNode.child(styleElementName);
+         styleSettingsNode != 0;
+         styleSettingsNode = styleSettingsNode.next_sibling(styleElementName))
+    {
+        StyleSettings newStyleSetting;
+        newStyleSetting.load(styleSettingsNode);
+    }
 }
 
 void XMLEditorSettings::save(pugi::xml_node node) const
@@ -104,8 +121,43 @@ void XMLEditorSettings::save(pugi::xml_node node) const
     {
         fontSettingsNode = node.append_child(fontSettingsElementName);
     }
-
     m_fontSettings.save(fontSettingsNode);
+
+    pugi::xml_node stylesNode = node.child(stylesElementName);
+    if (!stylesNode)
+    {
+        stylesNode = node.append_child(stylesElementName);
+        for (size_t i = 0; i < m_styles.size(); ++i)
+        {
+            pugi::xml_node styleNode = stylesNode.append_child(styleElementName);
+            pugi::xml_node idNode = styleNode.append_child(styleIdElementName);
+            idNode.append_child(pugi::node_pcdata).set_value(styleIdToString(EStyleId(i)).c_str());
+            m_styles[i].save(styleNode);
+        }
+    }
+}
+
+void XMLEditorSettings::initializeStyles()
+{
+    for (size_t i = 0; i <= eComment; ++i)
+    {
+        m_styles.push_back(StyleSettings());
+    }
+}
+
+std::string XMLEditorSettings::styleIdToString(EStyleId id)
+{
+    switch (id)
+    {
+    case eElementName:
+        return "element-name";
+
+    case eComment:
+        return "comment";
+
+    default:
+        return "";
+    }
 }
 
 }

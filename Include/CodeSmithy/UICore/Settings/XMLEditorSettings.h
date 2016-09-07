@@ -24,13 +24,22 @@
 #define _CODESMITHY_UICORE_SETTINGS_XMLEDITORSETTINGS_H_
 
 #include "FontSettings.h"
+#include "StyleSettings.h"
 #include <pugixml.hpp>
+#include <vector>
 
 namespace CodeSmithy
 {
 
 class XMLEditorSettings
 {
+public:
+    enum EStyleId
+    {
+        eElementName = 0,
+        eComment = 1
+    };
+
 public:
     XMLEditorSettings();
     ~XMLEditorSettings();
@@ -39,13 +48,20 @@ public:
     void setUseDefaultFontSettings(bool useDefaultSettings);
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
+    unsigned int color(EStyleId id) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
 private:
+    void initializeStyles();
+
+    static std::string styleIdToString(EStyleId id);
+
+private:
     bool m_useDefaultFontSettings;
     FontSettings m_fontSettings;
+    std::vector<StyleSettings> m_styles;
 };
 
 }
