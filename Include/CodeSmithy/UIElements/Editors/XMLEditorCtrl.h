@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_XMLEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_XMLEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+
+class XMLEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    XMLEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+
+private:
+    void setStyle(const AppSettings& appSettings);
+};
+
+}
+
 #endif

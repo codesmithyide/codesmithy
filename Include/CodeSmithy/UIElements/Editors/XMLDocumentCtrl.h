@@ -24,9 +24,9 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_XMLDOCUMENTCTRL_H_
 
 #include "DocumentCtrl.h"
+#include "XMLEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/XMLDocument.h"
-#include <wx/stc/stc.h>
 
 namespace CodeSmithy
 {
@@ -46,12 +46,10 @@ public:
     void save(const boost::filesystem::path& path) override;
 
 private:
-    void setStyle(const AppSettings& appSettings);
-
     void onModified(wxStyledTextEvent& evt);
 
 private:
-    wxStyledTextCtrl* m_ctrl;
+    XMLEditorCtrl* m_ctrl;
     std::shared_ptr<XMLDocument> m_document;
 
 };
