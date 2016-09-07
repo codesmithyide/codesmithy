@@ -24,6 +24,8 @@
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/fontdlg.h>
+#include <wx/stattext.h>
+#include <wx/clrpicker.h>
 
 namespace CodeSmithy
 {
@@ -52,7 +54,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
         m_fontButton->Disable();
     }
 
-    m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
+    m_formatExample = new XMLEditorCtrl(this, appSettings);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
@@ -62,10 +64,20 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
 
+    wxFlexGridSizer* stylesSizer = new wxFlexGridSizer(2, 5, 10);
+    for (size_t i = 0; i < m_appSettings.editorSettings().xmlSettings().styles().size(); ++i)
+    {
+        wxStaticText* styleDescription = new wxStaticText(this, wxID_ANY, m_appSettings.editorSettings().xmlSettings().styleIdToDescription(XMLEditorSettings::EStyleId(i)));
+        wxColourPickerCtrl* textColorPickerCtrl = new wxColourPickerCtrl(this, wxID_ANY);
+        stylesSizer->Add(styleDescription);
+        stylesSizer->Add(textColorPickerCtrl);
+    }
+
     m_applyButton = new wxButton(this, PreferencesXMLEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
+    topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
     topSizer->Add(m_applyButton);
 

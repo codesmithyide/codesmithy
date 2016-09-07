@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_XMLEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_XMLEDITORPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UIElements/Editors/XMLEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
 #include <wx/checkbox.h>
@@ -53,7 +54,7 @@ private:
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;
-    wxTextCtrl* m_formatExample;
+    XMLEditorCtrl* m_formatExample;
     wxButton* m_applyButton;
 
     wxDECLARE_EVENT_TABLE();
