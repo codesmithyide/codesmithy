@@ -154,6 +154,7 @@
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CMakeListsCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CppFileCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\CppEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\XMLDocumentCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\XMLEditorCtrl.cpp" />
   </ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CMakeListsCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppFileCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\XMLDocumentCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\XMLEditorCtrl.h" />
   </ItemGroup>
