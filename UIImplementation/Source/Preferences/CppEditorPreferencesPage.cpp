@@ -52,7 +52,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
         m_fontButton->Disable();
     }
 
-    m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
+    m_formatExample = new CppEditorCtrl(this, appSettings);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 

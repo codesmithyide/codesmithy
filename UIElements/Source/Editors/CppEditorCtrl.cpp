@@ -25,10 +25,20 @@
 namespace CodeSmithy
 {
 
-CppEditorCtrl::CppEditorCtrl(wxWindow* parent)
+CppEditorCtrl::CppEditorCtrl(wxWindow* parent, 
+                             const AppSettings& appSettings)
     : wxStyledTextCtrl(parent)
 {
     SetLexer(wxSTC_LEX_CPP);
+    setStyle(appSettings);
+}
+
+void CppEditorCtrl::setStyle(const AppSettings& appSettings)
+{
+    wxFont font = StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().cppFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().cppFontSettings().pointSize());
+    StyleSetFont(wxSTC_C_DEFAULT, font);
 }
 
 }

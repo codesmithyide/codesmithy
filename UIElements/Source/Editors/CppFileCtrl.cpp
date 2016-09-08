@@ -38,13 +38,8 @@ CppFileCtrl::CppFileCtrl(wxWindow* parent,
                          const AppSettings& appSettings)
     : DocumentCtrl(parent), m_ctrl(0)
 {
-    m_ctrl = new CppEditorCtrl(this);
+    m_ctrl = new CppEditorCtrl(this, appSettings);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);
-
-    wxFont font = m_ctrl->StyleGetFont(wxSTC_C_DEFAULT);
-    font.SetFaceName(appSettings.editorSettings().cppFontSettings().faceName());
-    font.SetPointSize(appSettings.editorSettings().cppFontSettings().pointSize());
-    m_ctrl->StyleSetFont(wxSTC_C_DEFAULT, font);
 
     m_document = std::dynamic_pointer_cast<CppDocument, Document>(document);
     if (!m_document->filePath().empty())
