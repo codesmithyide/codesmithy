@@ -24,9 +24,10 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_CPPFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "CppEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/CppDocument.h"
-#include <wx/stc/stc.h>
+
 
 namespace CodeSmithy
 {
@@ -49,7 +50,7 @@ private:
     void onModified(wxStyledTextEvent& evt);
 
 private:
-    wxStyledTextCtrl* m_ctrl;
+    CppEditorCtrl* m_ctrl;
     std::shared_ptr<CppDocument> m_document;
 };
 

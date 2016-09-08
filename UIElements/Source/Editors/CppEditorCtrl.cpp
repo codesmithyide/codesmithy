@@ -21,3 +21,14 @@
 */
 
 #include "Editors/CppEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+CppEditorCtrl::CppEditorCtrl(wxWindow* parent)
+    : wxStyledTextCtrl(parent)
+{
+    SetLexer(wxSTC_LEX_CPP);
+}
+
+}

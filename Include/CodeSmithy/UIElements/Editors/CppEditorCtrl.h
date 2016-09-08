@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_CPPEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_CPPEDITORCTRL_H_
 
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+    
+class CppEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    CppEditorCtrl(wxWindow* parent);
+};
+
+}
+
 #endif

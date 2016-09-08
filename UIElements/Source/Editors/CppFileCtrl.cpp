@@ -38,10 +38,8 @@ CppFileCtrl::CppFileCtrl(wxWindow* parent,
                          const AppSettings& appSettings)
     : DocumentCtrl(parent), m_ctrl(0)
 {
-    m_ctrl = new wxStyledTextCtrl(this);
+    m_ctrl = new CppEditorCtrl(this);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &CppFileCtrl::onModified, this);
-	
-    m_ctrl->SetLexer(wxSTC_LEX_CPP);
 
     wxFont font = m_ctrl->StyleGetFont(wxSTC_C_DEFAULT);
     font.SetFaceName(appSettings.editorSettings().cppFontSettings().faceName());
