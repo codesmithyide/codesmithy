@@ -21,3 +21,16 @@
 */
 
 #include "Settings/AppSettingsObserver.h"
+
+namespace CodeSmithy
+{
+
+AppSettingsObserver::AppSettingsObserver()
+{
+}
+
+AppSettingsObserver::~AppSettingsObserver()
+{
+}
+
+}

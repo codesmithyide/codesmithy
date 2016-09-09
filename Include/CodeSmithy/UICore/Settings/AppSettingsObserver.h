@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_APPSETTINGSOBSERVER_H_
 #define _CODESMITHY_UICORE_SETTINGS_APPSETTINGSOBSERVER_H_
 
+namespace CodeSmithy
+{
+
+class AppSettingsObserver
+{
+public:
+    AppSettingsObserver();
+    virtual ~AppSettingsObserver();
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

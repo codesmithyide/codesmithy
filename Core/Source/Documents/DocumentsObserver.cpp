@@ -25,6 +25,14 @@
 namespace CodeSmithy
 {
 
+DocumentsObserver::DocumentsObserver()
+{
+}
+
+DocumentsObserver::~DocumentsObserver()
+{
+}
+
 void DocumentsObserver::onAdd(const Documents& source, 
                               std::shared_ptr<Document> document)
 {

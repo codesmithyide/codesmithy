@@ -31,6 +31,9 @@ class Document;
 class DocumentObserver
 {
 public:
+    DocumentObserver();
+    virtual ~DocumentObserver();
+
     virtual void onModified(const Document& source, bool modified);
 };
 

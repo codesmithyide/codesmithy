@@ -34,6 +34,9 @@ class Documents;
 class DocumentsObserver
 {
 public:
+    DocumentsObserver();
+    virtual ~DocumentsObserver();
+
     virtual void onAdd(const Documents& source, std::shared_ptr<Document> document);
 };
 

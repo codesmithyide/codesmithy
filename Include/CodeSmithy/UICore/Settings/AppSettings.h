@@ -26,6 +26,7 @@
 #include "FileTypeAssociations.h"
 #include "StartupSettings.h"
 #include "EditorSettings.h"
+#include "AppSettingsObserver.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
 #include <pugixml.hpp>
@@ -85,6 +86,7 @@ private:
     FileTypeAssociations m_fileTypeAssociations;
     StartupSettings m_startupSettings;
     EditorSettings m_editorSettings;
+    std::vector<std::weak_ptr<AppSettingsObserver> > m_observers;
 };
 
 }
