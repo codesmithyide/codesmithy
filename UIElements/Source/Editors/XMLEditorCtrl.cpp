@@ -41,7 +41,7 @@ void XMLEditorCtrl::setStyle(const AppSettings& appSettings)
     StyleSetFont(wxSTC_H_DEFAULT, font);
     StyleSetBackground(wxSTC_H_DEFAULT, 0x444444);
 
-    unsigned int textColor = appSettings.editorSettings().xmlSettings().color(XMLEditorSettings::eElementName);
+    unsigned int textColor = appSettings.editorSettings().xmlSettings().textColor(XMLEditorSettings::eElementName);
 
     StyleSetFont(wxSTC_H_TAG, font);
     StyleSetForeground(wxSTC_H_TAG, textColor);

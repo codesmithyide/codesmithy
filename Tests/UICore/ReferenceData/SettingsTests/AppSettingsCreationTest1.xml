@@ -28,6 +28,12 @@
 				<font-face-name>Courier New</font-face-name>
 				<font-point-size>10</font-point-size>
 			</font-settings>
+			<styles>
+				<style>
+					<id>comment</id>
+					<text-color>0</text-color>
+				</style>
+			</styles>
 		</cpp-editor-settings>
 		<xml-editor-settings>
 			<use-default-settings>true</use-default-settings>
@@ -35,7 +41,16 @@
 				<font-face-name>Courier New</font-face-name>
 				<font-point-size>10</font-point-size>
 			</font-settings>
-			<entity-styles />
+			<styles>
+				<style>
+					<id>element-name</id>
+					<text-color>0</text-color>
+				</style>
+				<style>
+					<id>comment</id>
+					<text-color>0</text-color>
+				</style>
+			</styles>
 		</xml-editor-settings>
 	</editor-settings>
 </codesmithy-application-settings>

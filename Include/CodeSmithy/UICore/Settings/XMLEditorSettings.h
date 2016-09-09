@@ -48,10 +48,10 @@ public:
     void setUseDefaultFontSettings(bool useDefaultSettings);
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
-    unsigned int color(EStyleId id) const;
+    unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();
 
-    std::string styleIdToDescription(EStyleId id);
+    static std::string styleIdToDescription(EStyleId id);
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

@@ -24,6 +24,8 @@
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/fontdlg.h>
+#include <wx/stattext.h>
+#include <wx/clrpicker.h>
 
 namespace CodeSmithy
 {
@@ -62,10 +64,20 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
 
+    wxFlexGridSizer* stylesSizer = new wxFlexGridSizer(2, 5, 10);
+    for (size_t i = 0; i < m_appSettings.editorSettings().cppSettings().styles().size(); ++i)
+    {
+        wxStaticText* styleDescription = new wxStaticText(this, wxID_ANY, m_appSettings.editorSettings().cppSettings().styleIdToDescription(CppEditorSettings::EStyleId(i)));
+        wxColourPickerCtrl* textColorPickerCtrl = new wxColourPickerCtrl(this, wxID_ANY);
+        stylesSizer->Add(styleDescription);
+        stylesSizer->Add(textColorPickerCtrl);
+    }
+
     m_applyButton = new wxButton(this, PreferencesCppEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
+    topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
     topSizer->Add(m_applyButton);
 

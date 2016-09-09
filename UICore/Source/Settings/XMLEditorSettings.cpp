@@ -61,7 +61,7 @@ FontSettings& XMLEditorSettings::fontSettings()
     return m_fontSettings;
 }
 
-unsigned int XMLEditorSettings::color(EStyleId id) const
+unsigned int XMLEditorSettings::textColor(EStyleId id) const
 {
     return m_styles[id].textColor();
 }

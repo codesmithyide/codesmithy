@@ -24,13 +24,21 @@
 #define _CODESMITHY_UICORE_SETTINGS_CPPEDITORSETTINGS_H_
 
 #include "FontSettings.h"
+#include "StyleSettings.h"
 #include <pugixml.hpp>
+#include <vector>
 
 namespace CodeSmithy
 {
 
 class CppEditorSettings
 {
+public:
+    enum EStyleId
+    {
+        eComment = 0
+    };
+
 public:
     CppEditorSettings();
     ~CppEditorSettings();
@@ -39,13 +47,23 @@ public:
     void setUseDefaultFontSettings(bool useDefaultSettings);
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
+    unsigned int textColor(EStyleId id) const;
+    std::vector<StyleSettings>& styles();
+
+    static std::string styleIdToDescription(EStyleId id);
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
 private:
+    void initializeStyles();
+
+    static std::string styleIdToString(EStyleId id);
+
+private:
     bool m_useDefaultFontSettings;
     FontSettings m_fontSettings;
+    std::vector<StyleSettings> m_styles;
 };
 
 }

@@ -27,10 +27,14 @@ namespace CodeSmithy
 
 static const char* useDefaultSettingsElementName = "use-default-settings";
 static const char* fontSettingsElementName = "font-settings";
+static const char* stylesElementName = "styles";
+static const char* styleElementName = "style";
+static const char* styleIdElementName = "id";
 
 CppEditorSettings::CppEditorSettings()
     : m_useDefaultFontSettings(true)
 {
+    initializeStyles();
 }
 
 CppEditorSettings::~CppEditorSettings()
@@ -55,6 +59,28 @@ const FontSettings& CppEditorSettings::fontSettings() const
 FontSettings& CppEditorSettings::fontSettings()
 {
     return m_fontSettings;
+}
+
+unsigned int CppEditorSettings::textColor(EStyleId id) const
+{
+    return m_styles[id].textColor();
+}
+
+std::vector<StyleSettings>& CppEditorSettings::styles()
+{
+    return m_styles;
+}
+
+std::string CppEditorSettings::styleIdToDescription(EStyleId id)
+{
+    switch (id)
+    {
+    case eComment:
+        return "Comments text color";
+
+    default:
+        return "";
+    }
 }
 
 void CppEditorSettings::load(pugi::xml_node node)
@@ -104,8 +130,40 @@ void CppEditorSettings::save(pugi::xml_node node) const
     {
         fontSettingsNode = node.append_child(fontSettingsElementName);
     }
-
     m_fontSettings.save(fontSettingsNode);
+
+    pugi::xml_node stylesNode = node.child(stylesElementName);
+    if (!stylesNode)
+    {
+        stylesNode = node.append_child(stylesElementName);
+        for (size_t i = 0; i < m_styles.size(); ++i)
+        {
+            pugi::xml_node styleNode = stylesNode.append_child(styleElementName);
+            pugi::xml_node idNode = styleNode.append_child(styleIdElementName);
+            idNode.append_child(pugi::node_pcdata).set_value(styleIdToString(EStyleId(i)).c_str());
+            m_styles[i].save(styleNode);
+        }
+    }
+}
+
+void CppEditorSettings::initializeStyles()
+{
+    for (size_t i = 0; i <= eComment; ++i)
+    {
+        m_styles.push_back(StyleSettings());
+    }
+}
+
+std::string CppEditorSettings::styleIdToString(EStyleId id)
+{
+    switch (id)
+    {
+    case eComment:
+        return "comment";
+
+    default:
+        return "";
+    }
 }
 
 }
