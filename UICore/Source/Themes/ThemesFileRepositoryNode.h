@@ -36,6 +36,7 @@ public:
     ~ThemesFileRepositoryNode() noexcept override;
 
     std::string themeName() const override;
+    bool hasEditorTheme(const std::string& editorId) const override;
 
     void addEditorTheme(const std::string& editorId) override;
 

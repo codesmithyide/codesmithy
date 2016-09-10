@@ -45,13 +45,13 @@ ThemesFileRepository::~ThemesFileRepository()
 {
 }
 
-void ThemesFileRepository::getThemeNodes(std::vector<std::shared_ptr<const ThemesRepositoryNode> >& themeNodes) const
+void ThemesFileRepository::getThemeNodes(std::vector<std::shared_ptr<ThemesRepositoryNode> >& themeNodes)
 {
     for (pugi::xml_node themeNode = m_themesNode.child(themeElementName); 
          themeNode != 0;
          themeNode = themeNode.next_sibling(themeElementName))
     {
-        themeNodes.push_back(std::make_shared<const ThemesFileRepositoryNode>(themeNode));
+        themeNodes.push_back(std::make_shared<ThemesFileRepositoryNode>(themeNode));
     }
 }
 

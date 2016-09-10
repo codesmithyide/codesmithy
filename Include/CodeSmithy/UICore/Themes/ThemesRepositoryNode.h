@@ -35,6 +35,7 @@ public:
     virtual ~ThemesRepositoryNode() noexcept;
 
     virtual std::string themeName() const = 0;
+    virtual bool hasEditorTheme(const std::string& editorId) const = 0;
 
     virtual void addEditorTheme(const std::string& editorId) = 0;
 };

@@ -54,7 +54,7 @@ TestResult::EOutcome ThemesFileRepositoryGetThemeNodesTest1(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFileRepositoryGetThemeNodesTest1.csmththemes");
     CodeSmithy::ThemesFileRepository repository(inputPath);
 
-    std::vector<std::shared_ptr<const CodeSmithy::ThemesRepositoryNode> > themeNodes;
+    std::vector<std::shared_ptr<CodeSmithy::ThemesRepositoryNode> > themeNodes;
     repository.getThemeNodes(themeNodes);
     if ((themeNodes.size() == 1) &&
         (themeNodes[0]->themeName() == "Theme1"))

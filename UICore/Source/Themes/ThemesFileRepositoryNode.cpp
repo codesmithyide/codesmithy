@@ -21,6 +21,7 @@
 */
 
 #include "ThemesFileRepositoryNode.h"
+#include "Themes/Theme.h"
 
 namespace CodeSmithy
 {
@@ -41,6 +42,20 @@ ThemesFileRepositoryNode::~ThemesFileRepositoryNode()
 std::string ThemesFileRepositoryNode::themeName() const
 {
     return m_node.child(themeNameElementName).child_value();
+}
+
+bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const
+{
+    for (pugi::xml_node editorThemeNode = m_node.child(editorThemeElementName);
+         editorThemeNode != 0;
+         editorThemeNode = editorThemeNode.next_sibling(editorThemeElementName))
+    {
+        if (std::string(editorThemeNode.child(editorIdElementName).child_value()) == editorId)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void ThemesFileRepositoryNode::addEditorTheme(const std::string& editorId)
