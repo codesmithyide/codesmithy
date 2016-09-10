@@ -32,6 +32,7 @@ class FontSettings
 {
 public:
     FontSettings();
+    FontSettings(const FontSettings& other);
     ~FontSettings();
 
     const std::string& faceName() const;

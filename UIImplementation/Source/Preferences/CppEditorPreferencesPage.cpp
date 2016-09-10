@@ -55,7 +55,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     }
 
     m_formatExample = new CppEditorCtrl(this, appSettings);
-    m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
+    m_formatExample->SetValue("/* This is the main function */\r\nint main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);

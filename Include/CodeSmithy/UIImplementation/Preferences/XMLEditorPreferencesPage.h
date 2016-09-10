@@ -30,6 +30,7 @@
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
+#include <wx/clrpicker.h>
 
 namespace CodeSmithy
 {
@@ -43,6 +44,7 @@ private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
+    void onStyleChanged(wxColourPickerEvent& evt);
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
@@ -50,6 +52,7 @@ private:
 
 private:
     AppSettings& m_appSettings;
+    XMLEditorSettings m_newSettings;
     wxCheckBox* m_useDefaultCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;

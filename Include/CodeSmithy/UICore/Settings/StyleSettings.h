@@ -32,6 +32,7 @@ class StyleSettings
 {
 public:
     StyleSettings();
+    StyleSettings(const StyleSettings& other);
     ~StyleSettings();
 
     unsigned int textColor() const;

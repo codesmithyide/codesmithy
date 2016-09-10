@@ -33,6 +33,11 @@ StyleSettings::StyleSettings()
 {
 }
 
+StyleSettings::StyleSettings(const StyleSettings& other)
+    : m_textColor(other.m_textColor)
+{
+}
+
 StyleSettings::~StyleSettings()
 {
 }

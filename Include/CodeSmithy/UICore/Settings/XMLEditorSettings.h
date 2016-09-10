@@ -42,6 +42,7 @@ public:
 
 public:
     XMLEditorSettings();
+    XMLEditorSettings(const XMLEditorSettings& other);
     ~XMLEditorSettings();
 
     bool useDefaultFontSettings() const;

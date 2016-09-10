@@ -37,6 +37,12 @@ XMLEditorSettings::XMLEditorSettings()
     initializeStyles();
 }
 
+XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
+    : m_useDefaultFontSettings(other.m_useDefaultFontSettings),
+    m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
+{
+}
+
 XMLEditorSettings::~XMLEditorSettings()
 {
 }

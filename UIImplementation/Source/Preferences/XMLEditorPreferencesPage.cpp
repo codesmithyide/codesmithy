@@ -25,7 +25,6 @@
 #include <wx/sizer.h>
 #include <wx/fontdlg.h>
 #include <wx/stattext.h>
-#include <wx/clrpicker.h>
 
 namespace CodeSmithy
 {
@@ -33,6 +32,7 @@ namespace CodeSmithy
 XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    m_newSettings(appSettings.editorSettings().xmlSettings()),
     m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
     m_applyButton(0)
 {
@@ -69,6 +69,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     {
         wxStaticText* styleDescription = new wxStaticText(this, wxID_ANY, m_appSettings.editorSettings().xmlSettings().styleIdToDescription(XMLEditorSettings::EStyleId(i)));
         wxColourPickerCtrl* textColorPickerCtrl = new wxColourPickerCtrl(this, wxID_ANY);
+        textColorPickerCtrl->Bind(wxEVT_COLOURPICKER_CHANGED, &XMLEditorPreferencesPage::onStyleChanged, this);
         stylesSizer->Add(styleDescription);
         stylesSizer->Add(textColorPickerCtrl);
     }
@@ -127,6 +128,10 @@ void XMLEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
     }
 
     fontDialog->Destroy();
+}
+
+void XMLEditorPreferencesPage::onStyleChanged(wxColourPickerEvent& evt)
+{
 }
 
 void XMLEditorPreferencesPage::onApply(wxCommandEvent& evt)

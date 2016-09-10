@@ -34,6 +34,11 @@ FontSettings::FontSettings()
 {
 }
 
+FontSettings::FontSettings(const FontSettings& other)
+    : m_faceName(other.m_faceName), m_pointSize(other.m_pointSize)
+{
+}
+
 FontSettings::~FontSettings()
 {
 }
