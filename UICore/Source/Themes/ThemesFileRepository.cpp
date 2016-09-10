@@ -29,6 +29,7 @@ namespace CodeSmithy
 {
 
 static const char* rootElementName = "codesmithy-themes-repository";
+static const char* versionElementName = "file-format-version";
 static const char* repositoryNameElementName = "name";
 static const char* repositoryThemesElementName = "themes";
 static const char* themeElementName = "theme";
@@ -74,6 +75,8 @@ void ThemesFileRepository::initialize(const boost::filesystem::path& repositoryP
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
+            pugi::xml_node versionNode = rootNode.append_child(versionElementName);
+            versionNode.append_child(pugi::node_pcdata).set_value("0.1.0");
             m_themesNode = rootNode.append_child(repositoryThemesElementName);
         }
     }
