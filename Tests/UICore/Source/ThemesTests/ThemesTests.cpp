@@ -22,6 +22,7 @@
 
 #include "ThemesTests.h"
 #include "CodeSmithy/UICore/Themes/Themes.h"
+#include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 
 void AddThemesTests(TestSequence& testSequence)
 {
@@ -30,6 +31,7 @@ void AddThemesTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
 
     new HeapAllocationErrorsTest("findThemes test 1", ThemesFindThemesTest1, *themesTestSequence);
+    new HeapAllocationErrorsTest("findThemes test 2", ThemesFindThemesTest2, *themesTestSequence);
 }
 
 TestResult::EOutcome ThemesCreationTest1()
@@ -44,6 +46,27 @@ TestResult::EOutcome ThemesFindThemesTest1()
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemes("dummy", availableThemes);
     if (availableThemes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ThemesFindThemesTest2(Test& test)
+{
+    CodeSmithy::Themes themes;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFindThemesTest2.csmththemes");
+    std::shared_ptr<CodeSmithy::ThemesFileRepository> repository = std::make_shared<CodeSmithy::ThemesFileRepository>(inputPath);
+
+    themes.addRepository(repository);
+
+    std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
+    themes.findThemes("CodeSmithy.Editor.XML", availableThemes);
+    if (availableThemes.size() == 1)
     {
         return TestResult::ePassed;
     }

@@ -25,6 +25,7 @@
 namespace CodeSmithy
 {
 
+static const char* themeNameElementName = "name";
 static const char* editorThemeElementName = "editor-theme";
 static const char* editorIdElementName = "editor-id";
 
@@ -39,7 +40,7 @@ ThemesFileRepositoryNode::~ThemesFileRepositoryNode()
 
 std::string ThemesFileRepositoryNode::themeName() const
 {
-    return "";
+    return m_node.child(themeNameElementName).child_value();
 }
 
 void ThemesFileRepositoryNode::addEditorTheme(const std::string& editorId)

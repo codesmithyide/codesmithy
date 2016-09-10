@@ -25,6 +25,7 @@
 
 #include "ThemesRepositoryNode.h"
 #include <string>
+#include <vector>
 #include <memory>
 
 namespace CodeSmithy
@@ -36,6 +37,7 @@ public:
     ThemesRepository();
     virtual ~ThemesRepository();
 
+    virtual void getThemeNodes(std::vector<std::shared_ptr<const ThemesRepositoryNode> >& themeNodes) const = 0;
     virtual std::shared_ptr<ThemesRepositoryNode> addThemeNode(const std::string& name) = 0;
 };
 

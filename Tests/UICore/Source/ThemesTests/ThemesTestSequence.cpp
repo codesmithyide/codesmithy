@@ -22,8 +22,8 @@
 
 #include "ThemesTestSequence.h"
 #include "ThemeTests.h"
-#include "ThemesTests.h"
 #include "ThemesFileRepositoryTests.h"
+#include "ThemesTests.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddThemesTestSequence(TestHarness& theTestHarness)
@@ -34,6 +34,6 @@ void AddThemesTestSequence(TestHarness& theTestHarness)
     TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
 
     AddThemeTests(themesTestSequence);
-    AddThemesTests(themesTestSequence);
     AddThemesFileRepositoryTests(themesTestSequence);
+    AddThemesTests(themesTestSequence);
 }

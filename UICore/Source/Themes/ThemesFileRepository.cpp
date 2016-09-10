@@ -45,6 +45,16 @@ ThemesFileRepository::~ThemesFileRepository()
 {
 }
 
+void ThemesFileRepository::getThemeNodes(std::vector<std::shared_ptr<const ThemesRepositoryNode> >& themeNodes) const
+{
+    for (pugi::xml_node themeNode = m_themesNode.child(themeElementName); 
+         themeNode != 0;
+         themeNode = themeNode.next_sibling(themeElementName))
+    {
+        themeNodes.push_back(std::make_shared<const ThemesFileRepositoryNode>(themeNode));
+    }
+}
+
 std::shared_ptr<ThemesRepositoryNode> ThemesFileRepository::addThemeNode(const std::string& name)
 {
     if (m_themesNode)
@@ -71,6 +81,8 @@ void ThemesFileRepository::initialize(const boost::filesystem::path& repositoryP
     bool saveNeeded = false;
     if (boost::filesystem::exists(repositoryPath))
     {
+        m_document.load_file(repositoryPath.string().c_str());
+        m_themesNode = m_document.child(rootElementName).child(repositoryThemesElementName);
     }
     else
     {

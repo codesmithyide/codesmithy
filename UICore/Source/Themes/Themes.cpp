@@ -41,6 +41,10 @@ void Themes::addRepository(std::shared_ptr<ThemesRepository> repository)
 void Themes::findThemes(const std::string& documentTypeName, 
                         std::vector<std::shared_ptr<Theme> >& themes) const
 {
+    for (size_t i = 0; i < m_repositories.size(); ++i)
+    {
+        //m_repositories[i]->
+    }
 }
 
 }

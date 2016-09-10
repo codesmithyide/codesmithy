@@ -31,5 +31,6 @@ void AddThemesTests(TestSequence& testSequence);
 
 TestResult::EOutcome ThemesCreationTest1();
 TestResult::EOutcome ThemesFindThemesTest1();
+TestResult::EOutcome ThemesFindThemesTest2(Test& test);
 
 #endif
