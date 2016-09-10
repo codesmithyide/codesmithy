@@ -33,7 +33,7 @@ class BakefileProject : public MetaBuildSystemProject
 {
 public:
     BakefileProject(const BakefileProjectType& type, const std::string& name);
-    BakefileProject(const BakefileProjectType& type, ProjectRepositoryNode::shared_ptr node);
+    BakefileProject(const BakefileProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
     ~BakefileProject() override;
 
     const ProjectType& type() const override;
@@ -42,7 +42,7 @@ public:
 
 private:
     const BakefileProjectType& m_type;
-    ProjectRepositoryNode::shared_ptr m_node;
+    std::shared_ptr<ProjectRepositoryNode> m_node;
 };
 
 }

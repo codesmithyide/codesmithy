@@ -25,6 +25,7 @@
 
 #include "ProjectRepositoryNode.h"
 #include <string>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -38,11 +39,14 @@ namespace CodeSmithy
 class ProjectRepository
 {
 public:
+    ProjectRepository();
+    virtual ~ProjectRepository() noexcept;
+
     virtual std::string name() const = 0;
     virtual void setName(const std::string& name) = 0;
 
-    virtual ProjectRepositoryNode::shared_ptr getProject(const std::string& name) = 0;
-    virtual ProjectRepositoryNode::shared_ptr addProject(const std::string& name) = 0;
+    virtual std::shared_ptr<ProjectRepositoryNode> getProject(const std::string& name) = 0;
+    virtual std::shared_ptr<ProjectRepositoryNode> addProject(const std::string& name) = 0;
 
     virtual void save() = 0;
 };

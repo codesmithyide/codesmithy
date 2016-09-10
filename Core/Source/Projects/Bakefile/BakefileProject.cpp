@@ -32,7 +32,7 @@ BakefileProject::BakefileProject(const BakefileProjectType& type,
 }
 
 BakefileProject::BakefileProject(const BakefileProjectType& type,
-                                 ProjectRepositoryNode::shared_ptr node)
+                                 std::shared_ptr<ProjectRepositoryNode> node)
     : MetaBuildSystemProject(node->get("name")), m_type(type), 
     m_node(node)
 {

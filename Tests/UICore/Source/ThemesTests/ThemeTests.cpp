@@ -32,6 +32,6 @@ void AddThemeTests(TestSequence& testSequence)
 
 TestResult::EOutcome ThemeCreationTest1()
 {
-    CodeSmithy::Theme theme;
+    CodeSmithy::Theme theme("ThemeCreationTest1");
     return TestResult::ePassed;
 }

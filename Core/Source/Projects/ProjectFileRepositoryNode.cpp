@@ -30,6 +30,10 @@ ProjectFileRepositoryNode::ProjectFileRepositoryNode(pugi::xml_node node)
 {
 }
 
+ProjectFileRepositoryNode::~ProjectFileRepositoryNode()
+{
+}
+
 std::string ProjectFileRepositoryNode::get(const std::string& key) const
 {
     return m_node.child(key.c_str()).child_value();

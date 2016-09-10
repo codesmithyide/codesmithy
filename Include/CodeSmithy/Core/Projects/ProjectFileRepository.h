@@ -35,12 +35,13 @@ class ProjectFileRepository : public ProjectRepository
 {
 public:
     ProjectFileRepository(const boost::filesystem::path& path);
+    ~ProjectFileRepository() noexcept override;
 
     std::string name() const override;
     void setName(const std::string& name) override;
     
-    ProjectRepositoryNode::shared_ptr getProject(const std::string& name) override;
-    ProjectRepositoryNode::shared_ptr addProject(const std::string& name) override;
+    std::shared_ptr<ProjectRepositoryNode> getProject(const std::string& name) override;
+    std::shared_ptr<ProjectRepositoryNode> addProject(const std::string& name) override;
 
     void save() override;
 

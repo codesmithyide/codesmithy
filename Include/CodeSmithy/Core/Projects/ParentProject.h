@@ -33,7 +33,7 @@ class ParentProject : public Project
 {
 public:
     ParentProject(const ParentProjectType& type, const std::string& name);
-    ParentProject(const ParentProjectType& type, ProjectRepositoryNode::shared_ptr node);
+    ParentProject(const ParentProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
     ~ParentProject() override;
 
     const ProjectType& type() const override;
@@ -42,7 +42,7 @@ public:
 
 private:
     const ParentProjectType& m_type;
-    ProjectRepositoryNode::shared_ptr m_node;
+    std::shared_ptr<ProjectRepositoryNode> m_node;
 };
 
 }

@@ -32,7 +32,7 @@ ParentProject::ParentProject(const ParentProjectType& type,
 }
 
 ParentProject::ParentProject(const ParentProjectType& type, 
-                             ProjectRepositoryNode::shared_ptr node)
+                             std::shared_ptr<ProjectRepositoryNode> node)
     : Project(node->get("name")), m_type(type),
     m_node(node)
 {

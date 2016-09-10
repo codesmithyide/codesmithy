@@ -33,4 +33,8 @@ Themes::~Themes()
 {
 }
 
+void Themes::add(std::shared_ptr<Theme> theme)
+{
+}
+
 }

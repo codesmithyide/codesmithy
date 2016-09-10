@@ -21,3 +21,16 @@
 */
 
 #include "Projects/ProjectRepositoryNode.h"
+
+namespace CodeSmithy
+{
+
+ProjectRepositoryNode::ProjectRepositoryNode()
+{
+}
+
+ProjectRepositoryNode::~ProjectRepositoryNode()
+{
+}
+
+}

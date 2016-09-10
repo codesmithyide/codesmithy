@@ -23,6 +23,9 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMES_H_
 #define _CODESMITHY_UICORE_THEMES_THEMES_H_
 
+#include "Theme.h"
+#include <memory>
+
 namespace CodeSmithy
 {
 
@@ -31,6 +34,8 @@ class Themes
 public:
     Themes();
     ~Themes();
+
+    void add(std::shared_ptr<Theme> theme);
 };
 
 }

@@ -23,14 +23,19 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEME_H_
 #define _CODESMITHY_UICORE_THEMES_THEME_H_
 
+#include <string>
+
 namespace CodeSmithy
 {
 
 class Theme
 {
 public:
-    Theme();
+    Theme(const std::string& name);
     ~Theme();
+
+private:
+    std::string m_name;
 };
 
 }

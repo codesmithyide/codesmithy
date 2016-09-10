@@ -58,6 +58,10 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
     }
 }
 
+ProjectFileRepository::~ProjectFileRepository()
+{
+}
+
 std::string ProjectFileRepository::name() const
 {
     std::string result;
@@ -73,9 +77,9 @@ void ProjectFileRepository::setName(const std::string& name)
     m_nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
 }
 
-ProjectRepositoryNode::shared_ptr ProjectFileRepository::getProject(const std::string& name)
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::getProject(const std::string& name)
 {
-    ProjectRepositoryNode::shared_ptr result;
+    std::shared_ptr<ProjectRepositoryNode> result;
     for (pugi::xml_node projectNode = m_projectsNode.child(projectElementName); 
          projectNode != 0; 
          projectNode = projectNode.next_sibling(projectElementName))
@@ -90,7 +94,7 @@ ProjectRepositoryNode::shared_ptr ProjectFileRepository::getProject(const std::s
     return result;
 }
 
-ProjectRepositoryNode::shared_ptr ProjectFileRepository::addProject(const std::string& name)
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProject(const std::string& name)
 {
     if (m_projectsNode)
     {
@@ -101,7 +105,7 @@ ProjectRepositoryNode::shared_ptr ProjectFileRepository::addProject(const std::s
     }
     else
     {
-        return ProjectRepositoryNode::shared_ptr();
+        return std::shared_ptr<ProjectRepositoryNode>();
     }
 }
 
