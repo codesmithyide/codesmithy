@@ -21,8 +21,26 @@
 */
 
 #include "ThemesFileRepositoryTests.h"
+#include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddThemesFileRepositoryTests(TestSequence& testSequence)
 {
     TestSequence* themesFileRepositoryTestSequence = new TestSequence("ThemesFileRepository tests", testSequence);
+
+    new FileComparisonTest("Creation test 1", ThemesFileRepositoryCreationTest1, *themesFileRepositoryTestSequence);
+}
+
+TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/ThemesFileRepositoryCreationTest1.csmththemes");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ThemesTests/ThemesFileRepositoryCreationTest1.csmththemes");
+
+    CodeSmithy::ThemesFileRepository repository(outputPath);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
 }

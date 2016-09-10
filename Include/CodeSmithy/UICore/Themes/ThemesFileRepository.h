@@ -23,4 +23,31 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMESFILEREPOSITORY_H_
 #define _CODESMITHY_UICORE_THEMES_THEMESFILEREPOSITORY_H_
 
+#include "ThemesRepository.h"
+#include <pugixml.hpp>
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class ThemesFileRepository : public ThemesRepository
+{
+public:
+    ThemesFileRepository(const boost::filesystem::path& repositoryPath);
+    ~ThemesFileRepository() override;
+
+    void save();
+
+private:
+    void initialize(const boost::filesystem::path& repositoryPath);
+
+private:
+    boost::filesystem::path m_path;
+    pugi::xml_document m_document;
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

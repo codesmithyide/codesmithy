@@ -24,9 +24,13 @@
 #include "ThemeTests.h"
 #include "ThemesTests.h"
 #include "ThemesFileRepositoryTests.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddThemesTestSequence(TestHarness& theTestHarness)
 {
+    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ThemesTests");
+    boost::filesystem::create_directories(outputPath);
+
     TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
 
     AddThemeTests(themesTestSequence);

@@ -21,3 +21,16 @@
 */
 
 #include "Themes/ThemesRepository.h"
+
+namespace CodeSmithy
+{
+
+ThemesRepository::ThemesRepository()
+{
+}
+
+ThemesRepository::~ThemesRepository()
+{
+}
+
+}

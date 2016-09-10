@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddThemesFileRepositoryTests(TestSequence& testSequence);
 
+TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test);
+
 #endif

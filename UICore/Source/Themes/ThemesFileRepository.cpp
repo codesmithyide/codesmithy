@@ -21,3 +21,49 @@
 */
 
 #include "Themes/ThemesFileRepository.h"
+#include <boost/filesystem/operations.hpp>
+#include <fstream>
+
+namespace CodeSmithy
+{
+
+static const char* rootElementName = "codesmithy-themes-repository";
+
+ThemesFileRepository::ThemesFileRepository(const boost::filesystem::path& repositoryPath)
+    : m_path(repositoryPath)
+{
+    initialize(repositoryPath);
+}
+
+ThemesFileRepository::~ThemesFileRepository()
+{
+}
+
+void ThemesFileRepository::save()
+{
+    std::ofstream file(m_path.wstring());
+    m_document.save(file);
+}
+
+void ThemesFileRepository::initialize(const boost::filesystem::path& repositoryPath)
+{
+    bool saveNeeded = false;
+    if (boost::filesystem::exists(repositoryPath))
+    {
+    }
+    else
+    {
+        saveNeeded = true;
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+        }
+    }
+
+    if (saveNeeded)
+    {
+        save();
+    }
+}
+
+}
