@@ -164,7 +164,9 @@
     <ClCompile Include="..\..\Source\Settings\StartupSettings.cpp" />
     <ClCompile Include="..\..\Source\Themes\Themes.cpp" />
     <ClCompile Include="..\..\Source\Themes\ThemesRepository.cpp" />
+    <ClCompile Include="..\..\Source\Themes\ThemesRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Themes\ThemesFileRepository.cpp" />
+    <ClCompile Include="..\..\Source\Themes\ThemesFileRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Themes\Theme.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,8 +185,10 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StartupSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Themes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepository.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepositoryNode.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h" />
+    <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

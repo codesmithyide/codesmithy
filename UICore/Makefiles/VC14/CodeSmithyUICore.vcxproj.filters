@@ -62,10 +62,16 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepositoryNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesFileRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -112,7 +118,13 @@
     <ClCompile Include="..\..\Source\Themes\ThemesRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Themes\ThemesRepositoryNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Themes\ThemesFileRepository.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Themes\ThemesFileRepositoryNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Themes\Theme.cpp">
