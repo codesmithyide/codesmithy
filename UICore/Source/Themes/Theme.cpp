@@ -21,3 +21,16 @@
 */
 
 #include "Themes/Theme.h"
+
+namespace CodeSmithy
+{
+
+Theme::Theme()
+{
+}
+
+Theme::~Theme()
+{
+}
+
+}

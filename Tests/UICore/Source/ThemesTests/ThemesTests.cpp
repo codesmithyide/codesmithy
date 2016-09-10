@@ -21,8 +21,17 @@
 */
 
 #include "ThemesTests.h"
+#include "CodeSmithy/UICore/Themes/Themes.h"
 
 void AddThemesTests(TestSequence& testSequence)
 {
     TestSequence* themesTestSequence = new TestSequence("Themes tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
+}
+
+TestResult::EOutcome ThemesCreationTest1()
+{
+    CodeSmithy::Themes themes;
+    return TestResult::ePassed;
 }

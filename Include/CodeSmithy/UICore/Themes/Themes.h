@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMES_H_
 #define _CODESMITHY_UICORE_THEMES_THEMES_H_
 
+namespace CodeSmithy
+{
+
+class Themes
+{
+public:
+    Themes();
+    ~Themes();
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif
