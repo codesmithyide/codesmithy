@@ -37,6 +37,23 @@ CppEditorSettings::CppEditorSettings()
     initializeStyles();
 }
 
+CppEditorSettings::CppEditorSettings(const CppEditorSettings& other)
+    : m_useDefaultFontSettings(other.m_useDefaultFontSettings),
+    m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
+{
+}
+
+CppEditorSettings& CppEditorSettings::operator=(const CppEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_useDefaultFontSettings = other.m_useDefaultFontSettings;
+        m_fontSettings = other.m_fontSettings;
+        m_styles = other.m_styles;
+    }
+    return *this;
+}
+
 CppEditorSettings::~CppEditorSettings()
 {
 }
@@ -69,6 +86,18 @@ unsigned int CppEditorSettings::textColor(EStyleId id) const
 std::vector<StyleSettings>& CppEditorSettings::styles()
 {
     return m_styles;
+}
+
+bool CppEditorSettings::operator==(const CppEditorSettings& other) const
+{
+    return ((m_useDefaultFontSettings == other.m_useDefaultFontSettings) &&
+        (m_fontSettings == other.m_fontSettings) &&
+        (m_styles == other.m_styles));
+}
+
+bool CppEditorSettings::operator!=(const CppEditorSettings& other) const
+{
+    return !(*this == other);
 }
 
 std::string CppEditorSettings::styleIdToDescription(EStyleId id)

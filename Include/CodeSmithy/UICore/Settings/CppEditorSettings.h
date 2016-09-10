@@ -41,6 +41,8 @@ public:
 
 public:
     CppEditorSettings();
+    CppEditorSettings(const CppEditorSettings& other);
+    CppEditorSettings& operator=(const CppEditorSettings& other);
     ~CppEditorSettings();
 
     bool useDefaultFontSettings() const;
@@ -49,6 +51,9 @@ public:
     FontSettings& fontSettings();
     unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();
+
+    bool operator==(const CppEditorSettings& other) const;
+    bool operator!=(const CppEditorSettings& other) const;
 
     static std::string styleIdToDescription(EStyleId id);
 
