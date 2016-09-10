@@ -147,18 +147,7 @@ void XMLEditorPreferencesPage::onApply(wxCommandEvent& evt)
 
 void XMLEditorPreferencesPage::updateExample()
 {
-    std::string faceName = m_fontFaceName->GetValue();
-    unsigned int pointSize = m_fontSize->GetValue();
-    if (m_useDefaultCheckBox->IsChecked())
-    {
-        faceName = m_appSettings.editorSettings().defaultSettings().fontSettings().faceName();
-        pointSize = m_appSettings.editorSettings().defaultSettings().fontSettings().pointSize();
-    }
-
-    wxFont font = m_formatExample->GetFont();
-    font.SetFaceName(faceName);
-    font.SetPointSize(pointSize);
-    m_formatExample->SetFont(font);
+    m_formatExample->setCustomSettings(m_newSettings);
 }
 
 void XMLEditorPreferencesPage::updateApplyButtonStatus()

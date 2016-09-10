@@ -34,8 +34,14 @@ class XMLEditorCtrl : public wxStyledTextCtrl
 public:
     XMLEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
 
+    // Set settings that are not those from appSettings
+    void setCustomSettings(const XMLEditorSettings& settings);
+
 private:
     void setStyle(const AppSettings& appSettings);
+
+private:
+    const AppSettings& m_appSettings;
 };
 
 }
