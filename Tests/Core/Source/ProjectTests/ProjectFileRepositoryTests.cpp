@@ -34,9 +34,9 @@ void AddProjectFileRepositoryTests(TestSequence& testSequence)
 
     new FileComparisonTest("setName test 1", ProjectFileRepositorySetNameTest1, *repositoryTestSequence);
 
-    new FileComparisonTest("addProject test 1", ProjectFileRepositoryAddProjectNodeTest1, *repositoryTestSequence);
+    new FileComparisonTest("addProjectNode test 1", ProjectFileRepositoryAddProjectNodeTest1, *repositoryTestSequence);
 
-    new HeapAllocationErrorsTest("getProject test 1", ProjectFileRepositoryGetProjectNodeTest1, *repositoryTestSequence);
+    new HeapAllocationErrorsTest("getProjectNode test 1", ProjectFileRepositoryGetProjectNodeTest1, *repositoryTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test)

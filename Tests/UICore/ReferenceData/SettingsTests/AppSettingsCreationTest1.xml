@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <codesmithy-application-settings>
+	<file-format-version>0.1.0</file-format-version>
 	<file-type-associations />
 	<startup-settings>
 		<initial-size>

@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <codesmithy-application-settings>
+	<file-format-version>0.1.0</file-format-version>
 	<file-type-associations />
+	<startup-settings>
+		<initial-size>
+			<initial-size-type>fixed-size</initial-size-type>
+			<width>800</width>
+			<height>600</height>
+		</initial-size>
+	</startup-settings>
 	<editor-settings>
 		<default-editor-settings>
 			<font-settings>
@@ -21,6 +29,12 @@
 				<font-face-name>Arial</font-face-name>
 				<font-point-size>12</font-point-size>
 			</font-settings>
+			<styles>
+				<style>
+					<id>comment</id>
+					<text-color>0</text-color>
+				</style>
+			</styles>
 		</cpp-editor-settings>
 		<xml-editor-settings>
 			<use-default-settings>true</use-default-settings>
@@ -28,6 +42,16 @@
 				<font-face-name>Courier New</font-face-name>
 				<font-point-size>10</font-point-size>
 			</font-settings>
+			<styles>
+				<style>
+					<id>element-name</id>
+					<text-color>0</text-color>
+				</style>
+				<style>
+					<id>comment</id>
+					<text-color>0</text-color>
+				</style>
+			</styles>
 		</xml-editor-settings>
 	</editor-settings>
 </codesmithy-application-settings>
