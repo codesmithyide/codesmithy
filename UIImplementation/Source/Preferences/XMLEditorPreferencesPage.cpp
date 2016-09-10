@@ -87,6 +87,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 
 void XMLEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
+    m_newSettings.setUseDefaultFontSettings(m_useDefaultCheckBox->IsChecked());
     if (evt.IsChecked())
     {
         m_fontFaceName->Disable();
@@ -105,6 +106,7 @@ void XMLEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
 
 void XMLEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
 {
+    m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
     updateExample();
     updateApplyButtonStatus();
 }
@@ -123,6 +125,8 @@ void XMLEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
         wxFontData data = fontDialog->GetFontData();
         m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
+        std::string faceName = data.GetChosenFont().GetFaceName();
+        m_newSettings.fontSettings().setFaceName(faceName);
         updateExample();
         updateApplyButtonStatus();
     }
@@ -136,11 +140,7 @@ void XMLEditorPreferencesPage::onStyleChanged(wxColourPickerEvent& evt)
 
 void XMLEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
-    m_appSettings.editorSettings().xmlSettings().setUseDefaultFontSettings(m_useDefaultCheckBox->IsChecked());
-    FontSettings& fontSettings = m_appSettings.editorSettings().xmlSettings().fontSettings();
-    std::string faceName = m_fontFaceName->GetValue();
-    fontSettings.setFaceName(faceName);
-    fontSettings.setPointSize(m_fontSize->GetValue());
+    m_appSettings.editorSettings().xmlSettings() = m_newSettings;
     m_appSettings.save();
     m_applyButton->Disable();
 }
@@ -163,20 +163,7 @@ void XMLEditorPreferencesPage::updateExample()
 
 void XMLEditorPreferencesPage::updateApplyButtonStatus()
 {
-    bool anyValueDifferent = false;
-    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().xmlSettings().useDefaultFontSettings())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontSize->GetValue() != m_appSettings.editorSettings().xmlSettings().fontSettings().pointSize())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontFaceName->GetValue() != m_appSettings.editorSettings().xmlSettings().fontSettings().faceName())
-    {
-        anyValueDifferent = true;
-    }
-    if (anyValueDifferent)
+    if (m_appSettings.editorSettings().xmlSettings() != m_newSettings)
     {
         m_applyButton->Enable();
     }
