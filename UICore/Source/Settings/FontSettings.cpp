@@ -39,6 +39,16 @@ FontSettings::FontSettings(const FontSettings& other)
 {
 }
 
+FontSettings& FontSettings::operator=(const FontSettings& other)
+{
+    if (this != &other)
+    {
+        m_faceName = other.m_faceName;
+        m_pointSize = other.m_pointSize;
+    }
+    return *this;
+}
+
 FontSettings::~FontSettings()
 {
 }
@@ -61,6 +71,17 @@ unsigned int FontSettings::pointSize() const
 void FontSettings::setPointSize(unsigned int pointSize)
 {
     m_pointSize = pointSize;
+}
+
+bool FontSettings::operator==(const FontSettings& other) const
+{
+    return ((m_faceName == other.m_faceName) &&
+        (m_pointSize == other.m_pointSize));
+}
+
+bool FontSettings::operator!=(const FontSettings& other) const
+{
+    return !(*this == other);
 }
 
 void FontSettings::load(pugi::xml_node node)

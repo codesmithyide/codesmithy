@@ -33,12 +33,16 @@ class FontSettings
 public:
     FontSettings();
     FontSettings(const FontSettings& other);
+    FontSettings& operator=(const FontSettings& other);
     ~FontSettings();
 
     const std::string& faceName() const;
     void setFaceName(const std::string& faceName);
     unsigned int pointSize() const;
     void setPointSize(unsigned int pointSize);
+
+    bool operator==(const FontSettings& other) const;
+    bool operator!=(const FontSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

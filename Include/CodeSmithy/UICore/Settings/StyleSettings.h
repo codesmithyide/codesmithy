@@ -33,9 +33,13 @@ class StyleSettings
 public:
     StyleSettings();
     StyleSettings(const StyleSettings& other);
+    StyleSettings& operator=(const StyleSettings& other);
     ~StyleSettings();
 
     unsigned int textColor() const;
+
+    bool operator==(const StyleSettings& other) const;
+    bool operator!=(const StyleSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

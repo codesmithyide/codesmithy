@@ -43,6 +43,17 @@ XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
 {
 }
 
+XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_useDefaultFontSettings = other.m_useDefaultFontSettings;
+        m_fontSettings = other.m_fontSettings;
+        m_styles = other.m_styles;
+    }
+    return *this;
+}
+
 XMLEditorSettings::~XMLEditorSettings()
 {
 }
@@ -75,6 +86,18 @@ unsigned int XMLEditorSettings::textColor(EStyleId id) const
 std::vector<StyleSettings>& XMLEditorSettings::styles()
 {
     return m_styles;
+}
+
+bool XMLEditorSettings::operator==(const XMLEditorSettings& other) const
+{
+    return ((m_useDefaultFontSettings == other.m_useDefaultFontSettings) &&
+        (m_fontSettings == other.m_fontSettings) &&
+        (m_styles == other.m_styles));
+}
+
+bool XMLEditorSettings::operator!=(const XMLEditorSettings& other) const
+{
+    return !(*this == other);
 }
 
 std::string XMLEditorSettings::styleIdToDescription(EStyleId id)

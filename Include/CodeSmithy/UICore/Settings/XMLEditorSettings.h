@@ -43,6 +43,7 @@ public:
 public:
     XMLEditorSettings();
     XMLEditorSettings(const XMLEditorSettings& other);
+    XMLEditorSettings& operator=(const XMLEditorSettings& other);
     ~XMLEditorSettings();
 
     bool useDefaultFontSettings() const;
@@ -51,6 +52,9 @@ public:
     FontSettings& fontSettings();
     unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();
+
+    bool operator==(const XMLEditorSettings& other) const;
+    bool operator!=(const XMLEditorSettings& other) const;
 
     static std::string styleIdToDescription(EStyleId id);
 

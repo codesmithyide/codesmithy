@@ -38,6 +38,15 @@ StyleSettings::StyleSettings(const StyleSettings& other)
 {
 }
 
+StyleSettings& StyleSettings::operator=(const StyleSettings& other)
+{
+    if (this != &other)
+    {
+        m_textColor = other.m_textColor;
+    }
+    return *this;
+}
+
 StyleSettings::~StyleSettings()
 {
 }
@@ -45,6 +54,16 @@ StyleSettings::~StyleSettings()
 unsigned int StyleSettings::textColor() const
 {
     return m_textColor;
+}
+
+bool StyleSettings::operator==(const StyleSettings& other) const
+{
+    return (m_textColor == other.m_textColor);
+}
+
+bool StyleSettings::operator!=(const StyleSettings& other) const
+{
+    return !(*this == other);
 }
 
 void StyleSettings::load(pugi::xml_node node)
