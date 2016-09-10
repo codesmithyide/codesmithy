@@ -31,6 +31,7 @@ namespace CodeSmithy
 {
 	
 static const char* rootElementName = "codesmithy-application-settings";
+static const char* versionElementName = "file-format-version";
 static const char* fileTypeAssociationsElementName = "file-type-associations";
 static const char* startupSettingsElementName = "startup-settings";
 static const char* editorSettingsElementName = "editor-settings";
@@ -280,6 +281,8 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
+            pugi::xml_node versionNode = rootNode.append_child(versionElementName);
+            versionNode.append_child(pugi::node_pcdata).set_value("0.1.0");
             m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
             m_startupSettingsNode = rootNode.append_child(startupSettingsElementName);
             m_editorSettingsNode = rootNode.append_child(editorSettingsElementName);

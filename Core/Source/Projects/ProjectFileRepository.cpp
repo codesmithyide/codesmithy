@@ -29,6 +29,7 @@ namespace CodeSmithy
 {
 
 static const char* rootElementName = "codesmithy-project-repository";
+static const char* versionElementName = "file-format-version";
 static const char* repositoryNameElementName = "name";
 static const char* repositoryProjectsElementName = "projects";
 static const char* projectElementName = "codesmithy-project";
@@ -48,6 +49,8 @@ ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
+            pugi::xml_node versionNode = rootNode.append_child(versionElementName);
+            versionNode.append_child(pugi::node_pcdata).set_value("0.1.0");
             m_nameNode = rootNode.append_child(repositoryNameElementName);
             m_projectsNode = rootNode.append_child(repositoryProjectsElementName);
             if (m_nameNode && m_projectsNode)
