@@ -20,6 +20,9 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
         ../../Source/SettingsTests/FileTypeAssociationsTests.h
 
         ../../Source/ThemesTests/ThemesTestSequence.h
+        ../../Source/ThemesTests/ThemeTests.h
+        ../../Source/ThemesTests/ThemesTests.h
+        ../../Source/ThemesTests/ThemesFileRepositoryTests.h
     }
 
     sources
@@ -32,5 +35,8 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
         ../../Source/SettingsTests/FileTypeAssociationsTests.cpp
 
         ../../Source/ThemesTests/ThemesTestSequence.cpp
+        ../../Source/ThemesTests/ThemeTests.cpp
+        ../../Source/ThemesTests/ThemesTests.cpp
+        ../../Source/ThemesTests/ThemesFileRepositoryTests.cpp
     }
 }

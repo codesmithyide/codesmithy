@@ -20,16 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "ThemesTestSequence.h"
-#include "ThemeTests.h"
-#include "ThemesTests.h"
 #include "ThemesFileRepositoryTests.h"
 
-void AddThemesTestSequence(TestHarness& theTestHarness)
+void AddThemesFileRepositoryTests(TestSequence& testSequence)
 {
-    TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
-
-    AddThemeTests(themesTestSequence);
-    AddThemesTests(themesTestSequence);
-    AddThemesFileRepositoryTests(themesTestSequence);
+    TestSequence* themesFileRepositoryTestSequence = new TestSequence("ThemesFileRepository tests", testSequence);
 }

@@ -20,16 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "ThemesTestSequence.h"
-#include "ThemeTests.h"
-#include "ThemesTests.h"
-#include "ThemesFileRepositoryTests.h"
+#ifndef _CODESMITHY_TEST_UICORE_THEMESTESTS_THEMETESTS_H_
+#define _CODESMITHY_TEST_UICORE_THEMESTESTS_THEMETESTS_H_
 
-void AddThemesTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    AddThemeTests(themesTestSequence);
-    AddThemesTests(themesTestSequence);
-    AddThemesFileRepositoryTests(themesTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddThemeTests(TestSequence& testSequence);
+
+#endif

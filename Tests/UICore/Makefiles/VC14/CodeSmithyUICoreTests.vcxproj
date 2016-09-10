@@ -158,6 +158,9 @@
     <ClCompile Include="..\..\Source\SettingsTests\FileTypeAssociationTests.cpp" />
     <ClCompile Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.cpp" />
     <ClCompile Include="..\..\Source\ThemesTests\ThemesTestSequence.cpp" />
+    <ClCompile Include="..\..\Source\ThemesTests\ThemeTests.cpp" />
+    <ClCompile Include="..\..\Source\ThemesTests\ThemesTests.cpp" />
+    <ClCompile Include="..\..\Source\ThemesTests\ThemesFileRepositoryTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\SettingsTests\SettingsTests.h" />
@@ -165,6 +168,9 @@
     <ClInclude Include="..\..\Source\SettingsTests\FileTypeAssociationTests.h" />
     <ClInclude Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.h" />
     <ClInclude Include="..\..\Source\ThemesTests\ThemesTestSequence.h" />
+    <ClInclude Include="..\..\Source\ThemesTests\ThemeTests.h" />
+    <ClInclude Include="..\..\Source\ThemesTests\ThemesTests.h" />
+    <ClInclude Include="..\..\Source\ThemesTests\ThemesFileRepositoryTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
