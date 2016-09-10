@@ -20,22 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "SettingsTests/SettingsTests.h"
-#include "ThemesTests/ThemesTestSequence.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include <boost/filesystem/operations.hpp>
+#include "ThemesTestSequence.h"
 
-int main(int argc, char* argv[])
+void AddThemesTestSequence(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
-
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
-    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
-    boost::filesystem::create_directories("../../TestOutput");
-    theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
-
-    AddSettingsTests(theTestHarness);
-    AddThemesTestSequence(theTestHarness);
-
-    return theTestHarness.run();
+    TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
 }

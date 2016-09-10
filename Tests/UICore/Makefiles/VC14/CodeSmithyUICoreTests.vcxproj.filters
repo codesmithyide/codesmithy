@@ -29,6 +29,9 @@
     <ClInclude Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ThemesTests\ThemesTestSequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -44,6 +47,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SettingsTests\FileTypeAssociationsTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ThemesTests\ThemesTestSequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

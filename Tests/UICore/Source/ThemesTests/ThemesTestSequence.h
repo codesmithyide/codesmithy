@@ -20,22 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "SettingsTests/SettingsTests.h"
-#include "ThemesTests/ThemesTestSequence.h"
+#ifndef _CODESMITHY_TEST_UICORE_THEMESTESTS_THEMESTESTSEQUENCE_H_
+#define _CODESMITHY_TEST_UICORE_THEMESTESTS_THEMESTESTSEQUENCE_H_
+
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include <boost/filesystem/operations.hpp>
 
-int main(int argc, char* argv[])
-{
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+using namespace Ishiko::TestFramework;
 
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
-    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
-    boost::filesystem::create_directories("../../TestOutput");
-    theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
+void AddThemesTestSequence(TestHarness& theTestHarness);
 
-    AddSettingsTests(theTestHarness);
-    AddThemesTestSequence(theTestHarness);
-
-    return theTestHarness.run();
-}
+#endif
