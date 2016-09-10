@@ -39,13 +39,13 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     m_useDefaultCheckBox = new wxCheckBox(this, PreferencesXMLEditorUseDefaultSettingsCheckBoxID, "Use default settings");
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().xmlSettings().useDefaultFontSettings());
+    m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultFontSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
-    m_fontFaceName->SetValue(appSettings.editorSettings().xmlSettings().fontSettings().faceName());
+    m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize = new wxSpinCtrl(this, PreferencesXMLEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
-    m_fontSize->SetValue(appSettings.editorSettings().xmlSettings().fontSettings().pointSize());
+    m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
     m_fontButton = new wxButton(this, PreferencesXMLEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
@@ -65,9 +65,9 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
 
     wxFlexGridSizer* stylesSizer = new wxFlexGridSizer(2, 5, 10);
-    for (size_t i = 0; i < m_appSettings.editorSettings().xmlSettings().styles().size(); ++i)
+    for (size_t i = 0; i < m_newSettings.styles().size(); ++i)
     {
-        wxStaticText* styleDescription = new wxStaticText(this, wxID_ANY, m_appSettings.editorSettings().xmlSettings().styleIdToDescription(XMLEditorSettings::EStyleId(i)));
+        wxStaticText* styleDescription = new wxStaticText(this, wxID_ANY, m_newSettings.styleIdToDescription(XMLEditorSettings::EStyleId(i)));
         wxColourPickerCtrl* textColorPickerCtrl = new wxColourPickerCtrl(this, wxID_ANY);
         textColorPickerCtrl->Bind(wxEVT_COLOURPICKER_CHANGED, &XMLEditorPreferencesPage::onStyleChanged, this);
         stylesSizer->Add(styleDescription);
