@@ -23,4 +23,19 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMESFILEREPOSITORYNODE_H_
 #define _CODESMITHY_UICORE_THEMES_THEMESFILEREPOSITORYNODE_H_
 
+#include "Themes/ThemesRepositoryNode.h"
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class ThemesFileRepositoryNode : public ThemesRepositoryNode
+{
+public:
+    ThemesFileRepositoryNode(pugi::xml_node node);
+    ~ThemesFileRepositoryNode() noexcept override;
+};
+
+}
+
 #endif

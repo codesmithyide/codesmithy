@@ -77,7 +77,7 @@ void ProjectFileRepository::setName(const std::string& name)
     m_nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
 }
 
-std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::getProject(const std::string& name)
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::getProjectNode(const std::string& name)
 {
     std::shared_ptr<ProjectRepositoryNode> result;
     for (pugi::xml_node projectNode = m_projectsNode.child(projectElementName); 
@@ -94,7 +94,7 @@ std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::getProject(const s
     return result;
 }
 
-std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProject(const std::string& name)
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProjectNode(const std::string& name)
 {
     if (m_projectsNode)
     {

@@ -36,6 +36,8 @@ public:
     ThemesFileRepository(const boost::filesystem::path& repositoryPath);
     ~ThemesFileRepository() override;
 
+    std::shared_ptr<ThemesRepositoryNode> addThemeNode(const std::string& name) override;
+
     void save();
 
 private:
@@ -44,6 +46,7 @@ private:
 private:
     boost::filesystem::path m_path;
     pugi::xml_document m_document;
+    pugi::xml_node m_themesNode;
 };
 
 }

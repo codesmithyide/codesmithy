@@ -28,10 +28,27 @@ void AddThemesTests(TestSequence& testSequence)
     TestSequence* themesTestSequence = new TestSequence("Themes tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
+
+    new HeapAllocationErrorsTest("findThemes test 1", ThemesFindThemesTest1, *themesTestSequence);
 }
 
 TestResult::EOutcome ThemesCreationTest1()
 {
     CodeSmithy::Themes themes;
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome ThemesFindThemesTest1()
+{
+    CodeSmithy::Themes themes;
+    std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
+    themes.findThemes("dummy", availableThemes);
+    if (availableThemes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

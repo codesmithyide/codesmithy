@@ -21,3 +21,16 @@
 */
 
 #include "ThemesFileRepositoryNode.h"
+
+namespace CodeSmithy
+{
+
+ThemesFileRepositoryNode::ThemesFileRepositoryNode(pugi::xml_node node)
+{
+}
+
+ThemesFileRepositoryNode::~ThemesFileRepositoryNode()
+{
+}
+
+}

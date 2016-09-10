@@ -32,7 +32,7 @@ class Theme
 {
 public:
     Theme(const std::string& name);
-    ~Theme();
+    ~Theme() noexcept;
 
 private:
     std::string m_name;

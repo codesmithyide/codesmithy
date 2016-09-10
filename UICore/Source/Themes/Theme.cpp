@@ -30,7 +30,7 @@ Theme::Theme(const std::string& name)
 {
 }
 
-Theme::~Theme()
+Theme::~Theme() noexcept
 {
 }
 

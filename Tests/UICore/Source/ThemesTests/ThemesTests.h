@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddThemesTests(TestSequence& testSequence);
 
 TestResult::EOutcome ThemesCreationTest1();
+TestResult::EOutcome ThemesFindThemesTest1();
 
 #endif

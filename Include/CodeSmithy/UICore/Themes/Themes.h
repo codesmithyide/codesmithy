@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_THEMES_THEMES_H_
 
 #include "Theme.h"
+#include <vector>
 #include <memory>
 
 namespace CodeSmithy
@@ -33,9 +34,9 @@ class Themes
 {
 public:
     Themes();
-    ~Themes();
+    ~Themes() noexcept;
 
-    void add(std::shared_ptr<Theme> theme);
+    void findThemes(const std::string& documentTypeName, std::vector<std::shared_ptr<Theme> >& themes) const;
 };
 
 }

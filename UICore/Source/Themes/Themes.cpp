@@ -29,11 +29,12 @@ Themes::Themes()
 {
 }
 
-Themes::~Themes()
+Themes::~Themes() noexcept
 {
 }
 
-void Themes::add(std::shared_ptr<Theme> theme)
+void Themes::findThemes(const std::string& documentTypeName, 
+                        std::vector<std::shared_ptr<Theme> >& themes) const
 {
 }
 

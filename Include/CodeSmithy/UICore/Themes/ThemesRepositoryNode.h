@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMESREPOSITORYNODE_H_
 #define _CODESMITHY_UICORE_THEMES_THEMESREPOSITORYNODE_H_
 
+namespace CodeSmithy
+{
+
+class ThemesRepositoryNode
+{
+public:
+    ThemesRepositoryNode();
+    virtual ~ThemesRepositoryNode() noexcept;
+};
+
+}
+
 #endif

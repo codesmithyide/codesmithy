@@ -21,6 +21,7 @@
 */
 
 #include "Themes/ThemesFileRepository.h"
+#include "ThemesFileRepositoryNode.h"
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
@@ -28,15 +29,31 @@ namespace CodeSmithy
 {
 
 static const char* rootElementName = "codesmithy-themes-repository";
+static const char* repositoryNameElementName = "name";
+static const char* repositoryThemesElementName = "themes";
+static const char* themeElementName = "theme";
 
 ThemesFileRepository::ThemesFileRepository(const boost::filesystem::path& repositoryPath)
-    : m_path(repositoryPath)
+    : m_path(repositoryPath), m_themesNode(0)
 {
     initialize(repositoryPath);
 }
 
 ThemesFileRepository::~ThemesFileRepository()
 {
+}
+
+std::shared_ptr<ThemesRepositoryNode> ThemesFileRepository::addThemeNode(const std::string& name)
+{
+    if (m_themesNode)
+    {
+        pugi::xml_node themeNode = m_themesNode.append_child(themeElementName);
+        return std::make_shared<ThemesFileRepositoryNode>(themeNode);
+    }
+    else
+    {
+        return std::shared_ptr<ThemesRepositoryNode>();
+    }
 }
 
 void ThemesFileRepository::save()
@@ -57,6 +74,7 @@ void ThemesFileRepository::initialize(const boost::filesystem::path& repositoryP
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
+            m_themesNode = rootNode.append_child(repositoryThemesElementName);
         }
     }
 
