@@ -2,6 +2,8 @@
 <codesmithy-themes-repository>
 	<file-format-version>0.1.0</file-format-version>
 	<themes>
-		<theme />
+		<theme>
+			<name>Theme1</name>
+		</theme>
 	</themes>
 </codesmithy-themes-repository>

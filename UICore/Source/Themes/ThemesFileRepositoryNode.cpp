@@ -25,12 +25,28 @@
 namespace CodeSmithy
 {
 
+static const char* editorThemeElementName = "editor-theme";
+static const char* editorIdElementName = "editor-id";
+
 ThemesFileRepositoryNode::ThemesFileRepositoryNode(pugi::xml_node node)
+    : m_node(node)
 {
 }
 
 ThemesFileRepositoryNode::~ThemesFileRepositoryNode()
 {
+}
+
+std::string ThemesFileRepositoryNode::themeName() const
+{
+    return "";
+}
+
+void ThemesFileRepositoryNode::addEditorTheme(const std::string& editorId)
+{
+    pugi::xml_node editorThemeNode = m_node.append_child(editorThemeElementName);
+    pugi::xml_node editorIdNode = editorThemeNode.append_child(editorIdElementName);
+    editorIdNode.append_child(pugi::node_pcdata).set_value(editorId.c_str());
 }
 
 }

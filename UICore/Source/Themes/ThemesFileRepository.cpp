@@ -33,6 +33,7 @@ static const char* versionElementName = "file-format-version";
 static const char* repositoryNameElementName = "name";
 static const char* repositoryThemesElementName = "themes";
 static const char* themeElementName = "theme";
+static const char* themeNameElementName = "name";
 
 ThemesFileRepository::ThemesFileRepository(const boost::filesystem::path& repositoryPath)
     : m_path(repositoryPath), m_themesNode(0)
@@ -49,6 +50,8 @@ std::shared_ptr<ThemesRepositoryNode> ThemesFileRepository::addThemeNode(const s
     if (m_themesNode)
     {
         pugi::xml_node themeNode = m_themesNode.append_child(themeElementName);
+        pugi::xml_node nameNode = themeNode.append_child(themeNameElementName);
+        nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
         return std::make_shared<ThemesFileRepositoryNode>(themeNode);
     }
     else

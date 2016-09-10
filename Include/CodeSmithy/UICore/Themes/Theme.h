@@ -23,7 +23,9 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEME_H_
 #define _CODESMITHY_UICORE_THEMES_THEME_H_
 
+#include "ThemesRepositoryNode.h"
 #include <string>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -32,10 +34,14 @@ class Theme
 {
 public:
     Theme(const std::string& name);
+    Theme(std::shared_ptr<ThemesRepositoryNode> node);
     ~Theme() noexcept;
+
+    void save();
 
 private:
     std::string m_name;
+    std::shared_ptr<ThemesRepositoryNode> m_node;
 };
 
 }

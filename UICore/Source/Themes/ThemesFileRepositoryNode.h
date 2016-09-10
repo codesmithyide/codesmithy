@@ -34,6 +34,13 @@ class ThemesFileRepositoryNode : public ThemesRepositoryNode
 public:
     ThemesFileRepositoryNode(pugi::xml_node node);
     ~ThemesFileRepositoryNode() noexcept override;
+
+    std::string themeName() const override;
+
+    void addEditorTheme(const std::string& editorId) override;
+
+private:
+    pugi::xml_node m_node;
 };
 
 }

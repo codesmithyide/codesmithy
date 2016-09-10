@@ -33,6 +33,11 @@ Themes::~Themes() noexcept
 {
 }
 
+void Themes::addRepository(std::shared_ptr<ThemesRepository> repository)
+{
+    m_repositories.push_back(repository);
+}
+
 void Themes::findThemes(const std::string& documentTypeName, 
                         std::vector<std::shared_ptr<Theme> >& themes) const
 {

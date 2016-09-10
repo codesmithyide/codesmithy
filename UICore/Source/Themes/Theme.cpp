@@ -26,12 +26,22 @@ namespace CodeSmithy
 {
 
 Theme::Theme(const std::string& name)
-    : m_name(name)
+    : m_name(name), m_node(0)
+{
+}
+
+Theme::Theme(std::shared_ptr<ThemesRepositoryNode> node)
+    : m_name(node->themeName()), m_node(node)
 {
 }
 
 Theme::~Theme() noexcept
 {
+}
+
+void Theme::save()
+{
+    m_node->addEditorTheme("CodeSmithy.Editor.XML");
 }
 
 }

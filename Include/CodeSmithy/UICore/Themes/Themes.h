@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_THEMES_THEMES_H_
 
 #include "Theme.h"
+#include "ThemesRepository.h"
 #include <vector>
 #include <memory>
 
@@ -36,7 +37,12 @@ public:
     Themes();
     ~Themes() noexcept;
 
+    void addRepository(std::shared_ptr<ThemesRepository> repository);
+
     void findThemes(const std::string& documentTypeName, std::vector<std::shared_ptr<Theme> >& themes) const;
+
+private:
+    std::vector<std::shared_ptr<ThemesRepository> > m_repositories;
 };
 
 }
