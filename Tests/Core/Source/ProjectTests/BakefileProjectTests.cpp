@@ -50,7 +50,7 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.getProject("BakefileProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("BakefileProject");
 
     if (projectNode)
     {
@@ -74,7 +74,7 @@ TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.addProject("BakefileProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("BakefileProject");
     if (projectNode)
     {
         CodeSmithy::DocumentTypes documentTypes;

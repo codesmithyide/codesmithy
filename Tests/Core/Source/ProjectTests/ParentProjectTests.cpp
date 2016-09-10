@@ -49,7 +49,7 @@ TestResult::EOutcome ParentProjectCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.getProject("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("ParentProject");
 
     if (projectNode)
     {
@@ -72,7 +72,7 @@ TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    CodeSmithy::ProjectRepositoryNode::shared_ptr projectNode = repository.addProject("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
     if (projectNode)
     {
         CodeSmithy::ParentProjectType type;
