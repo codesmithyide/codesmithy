@@ -32,5 +32,6 @@ void AddThemesFileRepositoryTests(TestSequence& testSequence);
 TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test);
 TestResult::EOutcome ThemesFileRepositoryGetThemeNodesTest1(Test& test);
 TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest1(FileComparisonTest& test);
+TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest2(FileComparisonTest& test);
 
 #endif

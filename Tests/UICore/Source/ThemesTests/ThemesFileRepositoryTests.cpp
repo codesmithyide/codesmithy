@@ -33,6 +33,7 @@ void AddThemesFileRepositoryTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("getThemeNodes test 1", ThemesFileRepositoryGetThemeNodesTest1, *themesFileRepositoryTestSequence);
 
     new FileComparisonTest("addThemeNode test 1", ThemesFileRepositoryAddThemeNodeTest1, *themesFileRepositoryTestSequence);
+    new FileComparisonTest("addThemeNode test 2", ThemesFileRepositoryAddThemeNodeTest2, *themesFileRepositoryTestSequence);
 }
 
 TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test)
@@ -75,6 +76,24 @@ TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest1(FileComparisonTest& t
 
     CodeSmithy::ThemesFileRepository repository(outputPath);
     std::shared_ptr<CodeSmithy::ThemesRepositoryNode> theme1 = repository.addThemeNode("Theme1");
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest2(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/ThemesFileRepositoryAddThemeNodeTest2.csmththemes");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ThemesTests/ThemesFileRepositoryAddThemeNodeTest2.csmththemes");
+
+    CodeSmithy::ThemesFileRepository repository(outputPath);
+    std::shared_ptr<CodeSmithy::ThemesRepositoryNode> theme1 = repository.addThemeNode("Theme1");
+    std::shared_ptr<CodeSmithy::ThemesRepositoryNode> theme2 = repository.addThemeNode("Theme2");
 
     repository.save();
 
