@@ -30,8 +30,9 @@ void AddThemesTests(TestSequence& testSequence)
 
     new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
 
-    new HeapAllocationErrorsTest("findThemes test 1", ThemesFindThemesTest1, *themesTestSequence);
-    new HeapAllocationErrorsTest("findThemes test 2", ThemesFindThemesTest2, *themesTestSequence);
+    new HeapAllocationErrorsTest("findThemesForEditor test 1", ThemesFindThemesForEditorTest1, *themesTestSequence);
+    new HeapAllocationErrorsTest("findThemesForEditor test 2", ThemesFindThemesForEditorTest2, *themesTestSequence);
+    new HeapAllocationErrorsTest("findThemesForEditor test 3", ThemesFindThemesForEditorTest3, *themesTestSequence);
 }
 
 TestResult::EOutcome ThemesCreationTest1()
@@ -40,11 +41,11 @@ TestResult::EOutcome ThemesCreationTest1()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ThemesFindThemesTest1()
+TestResult::EOutcome ThemesFindThemesForEditorTest1()
 {
     CodeSmithy::Themes themes;
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
-    themes.findThemes("dummy", availableThemes);
+    themes.findThemesForEditor("dummy", availableThemes);
     if (availableThemes.size() == 0)
     {
         return TestResult::ePassed;
@@ -55,17 +56,38 @@ TestResult::EOutcome ThemesFindThemesTest1()
     }
 }
 
-TestResult::EOutcome ThemesFindThemesTest2(Test& test)
+TestResult::EOutcome ThemesFindThemesForEditorTest2(Test& test)
 {
     CodeSmithy::Themes themes;
 
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFindThemesTest2.csmththemes");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFindThemesForEditorTest2.csmththemes");
     std::shared_ptr<CodeSmithy::ThemesFileRepository> repository = std::make_shared<CodeSmithy::ThemesFileRepository>(inputPath);
 
     themes.addRepository(repository);
 
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
-    themes.findThemes("CodeSmithy.Editor.XML", availableThemes);
+    themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
+    if (availableThemes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome ThemesFindThemesForEditorTest3(Test& test)
+{
+    CodeSmithy::Themes themes;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFindThemesForEditorTest3.csmththemes");
+    std::shared_ptr<CodeSmithy::ThemesFileRepository> repository = std::make_shared<CodeSmithy::ThemesFileRepository>(inputPath);
+
+    themes.addRepository(repository);
+
+    std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
+    themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
     if (availableThemes.size() == 1)
     {
         return TestResult::ePassed;

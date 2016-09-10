@@ -39,7 +39,7 @@ public:
 
     void addRepository(std::shared_ptr<ThemesRepository> repository);
 
-    void findThemes(const std::string& documentTypeName, std::vector<std::shared_ptr<Theme> >& themes) const;
+    void findThemesForEditor(const std::string& editorId, std::vector<std::shared_ptr<Theme> >& themes) const;
 
 private:
     std::vector<std::shared_ptr<ThemesRepository> > m_repositories;
