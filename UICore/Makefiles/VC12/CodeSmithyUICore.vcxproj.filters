@@ -74,6 +74,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\EditorTheme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -134,6 +137,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Themes\Theme.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Themes\EditorTheme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
