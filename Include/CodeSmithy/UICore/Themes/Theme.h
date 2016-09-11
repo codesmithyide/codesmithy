@@ -24,6 +24,8 @@
 #define _CODESMITHY_UICORE_THEMES_THEME_H_
 
 #include "ThemesRepositoryNode.h"
+#include "EditorTheme.h"
+#include "CodeSmithy/UICore/Editors/EditorId.h"
 #include <string>
 #include <memory>
 
@@ -38,8 +40,8 @@ public:
     ~Theme() noexcept;
 
     const std::string& name() const;
-
-    void save();
+    std::shared_ptr<EditorTheme> getEditorTheme(const EditorId& id) const;
+    void setEditorTheme(const EditorTheme& editorTheme);
 
 private:
     std::string m_name;

@@ -44,9 +44,14 @@ const std::string& Theme::name() const
     return m_name;
 }
 
-void Theme::save()
+std::shared_ptr<EditorTheme> Theme::getEditorTheme(const EditorId& id) const
 {
-    m_node->addEditorTheme("CodeSmithy.Editor.XML");
+    return m_node->getEditorTheme(id.string());
+}
+
+void Theme::setEditorTheme(const EditorTheme& editorTheme)
+{
+    m_node->setEditorTheme(editorTheme);
 }
 
 }

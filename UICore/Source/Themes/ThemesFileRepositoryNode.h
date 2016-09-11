@@ -36,9 +36,10 @@ public:
     ~ThemesFileRepositoryNode() noexcept override;
 
     std::string themeName() const override;
-    bool hasEditorTheme(const std::string& editorId) const override;
+    std::shared_ptr<EditorTheme> getEditorTheme(const std::string& editorId) const override;
+    bool hasEditorTheme(const std::string& editorId) const noexcept override;
 
-    void addEditorTheme(const std::string& editorId) override;
+    void setEditorTheme(const EditorTheme& editorTheme) override;
 
 private:
     pugi::xml_node m_node;

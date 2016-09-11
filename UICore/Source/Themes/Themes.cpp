@@ -51,7 +51,7 @@ void Themes::getAllThemes(std::vector<std::shared_ptr<Theme> >& themes)
     }
 }
 
-void Themes::findThemesForEditor(const std::string& editorId,
+void Themes::findThemesForEditor(const EditorId& id,
                                  std::vector<std::shared_ptr<Theme> >& themes)
 {
     std::vector<std::shared_ptr<ThemesRepositoryNode> > themeNodes;
@@ -62,7 +62,7 @@ void Themes::findThemesForEditor(const std::string& editorId,
 
     for (size_t i = 0; i < themeNodes.size(); ++i)
     {
-        if (themeNodes[i]->hasEditorTheme(editorId))
+        if (themeNodes[i]->hasEditorTheme(id.string()))
         {
             themes.push_back(std::make_shared<Theme>(themeNodes[i]));
         }

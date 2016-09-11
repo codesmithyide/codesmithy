@@ -23,7 +23,9 @@
 #ifndef _CODESMITHY_UICORE_THEMES_THEMESREPOSITORYNODE_H_
 #define _CODESMITHY_UICORE_THEMES_THEMESREPOSITORYNODE_H_
 
+#include "EditorTheme.h"
 #include <string>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -35,9 +37,10 @@ public:
     virtual ~ThemesRepositoryNode() noexcept;
 
     virtual std::string themeName() const = 0;
-    virtual bool hasEditorTheme(const std::string& editorId) const = 0;
+    virtual std::shared_ptr<EditorTheme> getEditorTheme(const std::string& editorId) const = 0;
+    virtual bool hasEditorTheme(const std::string& editorId) const noexcept = 0;
 
-    virtual void addEditorTheme(const std::string& editorId) = 0;
+    virtual void setEditorTheme(const EditorTheme& editorTheme) = 0;
 };
 
 }

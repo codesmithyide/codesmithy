@@ -29,6 +29,7 @@ namespace CodeSmithy
 static const char* themeNameElementName = "name";
 static const char* editorThemeElementName = "editor-theme";
 static const char* editorIdElementName = "editor-id";
+static const char* mainTextFontSettingsElementName = "main-text-font-settings";
 
 ThemesFileRepositoryNode::ThemesFileRepositoryNode(pugi::xml_node node)
     : m_node(node)
@@ -44,7 +45,24 @@ std::string ThemesFileRepositoryNode::themeName() const
     return m_node.child(themeNameElementName).child_value();
 }
 
-bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const
+std::shared_ptr<EditorTheme> ThemesFileRepositoryNode::getEditorTheme(const std::string& editorId) const
+{
+    std::shared_ptr<EditorTheme> result;
+
+    for (pugi::xml_node editorThemeNode = m_node.child(editorThemeElementName);
+         editorThemeNode != 0;
+         editorThemeNode = editorThemeNode.next_sibling(editorThemeElementName))
+    {
+        if (std::string(editorThemeNode.child(editorIdElementName).child_value()) == editorId)
+        {
+            result = std::make_shared<EditorTheme>(editorId);
+        }
+    }
+
+    return result;
+}
+
+bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const noexcept
 {
     for (pugi::xml_node editorThemeNode = m_node.child(editorThemeElementName);
          editorThemeNode != 0;
@@ -58,11 +76,14 @@ bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const
     return false;
 }
 
-void ThemesFileRepositoryNode::addEditorTheme(const std::string& editorId)
+void ThemesFileRepositoryNode::setEditorTheme(const EditorTheme& editorTheme)
 {
     pugi::xml_node editorThemeNode = m_node.append_child(editorThemeElementName);
     pugi::xml_node editorIdNode = editorThemeNode.append_child(editorIdElementName);
-    editorIdNode.append_child(pugi::node_pcdata).set_value(editorId.c_str());
+    editorIdNode.append_child(pugi::node_pcdata).set_value(editorTheme.editorId().c_str());
+
+    pugi::xml_node mainTextFontSettingsNode = editorThemeNode.append_child(mainTextFontSettingsElementName);
+    editorTheme.mainTextFontSettings().save(mainTextFontSettingsNode);
 }
 
 }
