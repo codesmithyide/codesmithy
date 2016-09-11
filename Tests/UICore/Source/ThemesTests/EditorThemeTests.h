@@ -29,4 +29,7 @@ using namespace Ishiko::TestFramework;
 
 void AddEditorThemeTests(TestSequence& testSequence);
 
+TestResult::EOutcome EditorThemeCreationTest1();
+TestResult::EOutcome EditorThemeSaveTest1(FileComparisonTest& test);
+
 #endif
