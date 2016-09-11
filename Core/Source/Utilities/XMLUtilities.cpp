@@ -26,6 +26,19 @@
 namespace CodeSmithy
 {
     
+std::string XMLUtilities::getChildValueAsString(pugi::xml_node parentNode, 
+                                                const char* elementName,
+                                                const std::string& defaultValue) noexcept
+{
+    std::string result = defaultValue;
+    pugi::xml_node childNode = parentNode.child(elementName);
+    if (childNode)
+    {
+        result = childNode.child_value();
+    }
+    return result;
+}
+
 bool XMLUtilities::getChildValueAsBool(pugi::xml_node parentNode,
                                        const char* elementName,
                                        bool defaultValue) noexcept

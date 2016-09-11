@@ -101,6 +101,8 @@ bool DefaultEditorSettings::operator!=(const DefaultEditorSettings& other) const
 
 void DefaultEditorSettings::load(pugi::xml_node node)
 {
+    m_themeName = XMLUtilities::getChildValueAsString(node, themeNameElementName, "CodeSmithy Light Theme");
+    m_overrideTheme = XMLUtilities::getChildValueAsBool(node, overrideThemeElementName, false);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
 }

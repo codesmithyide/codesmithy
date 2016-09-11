@@ -44,15 +44,21 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
     wxArrayString themeChoices;
     m_appSettings.themes().getAllThemes(m_themes);
+    size_t selectedThemeIndex = 0;
     for (size_t i = 0; i < m_themes.size(); ++i)
     {
         themeChoices.Add(m_themes[i]->name());
+        if (m_themes[i]->name() == m_newSettings.themeName())
+        {
+            selectedThemeIndex = i;
+        }
     }
     wxChoice* themeChoice = new wxChoice(this, PreferencesDefaultEditorThemeChoiceID,
         wxDefaultPosition, wxDefaultSize, themeChoices);
-    themeChoice->SetSelection(0);
+    themeChoice->SetSelection(selectedThemeIndex);
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
+    m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
@@ -101,6 +107,7 @@ void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
 {
     m_selectedTheme = m_themes[evt.GetSelection()].get();
     m_newSettings.setThemeName(m_selectedTheme->name());
+    updateExample();
     updateApplyButtonStatus();
 }
 
