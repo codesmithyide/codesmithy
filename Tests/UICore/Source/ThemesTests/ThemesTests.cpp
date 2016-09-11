@@ -30,6 +30,8 @@ void AddThemesTests(TestSequence& testSequence)
 
     new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
 
+    new HeapAllocationErrorsTest("getAllThemes test 1", ThemesGetAllThemesTest1, *themesTestSequence);
+
     new HeapAllocationErrorsTest("findThemesForEditor test 1", ThemesFindThemesForEditorTest1, *themesTestSequence);
     new HeapAllocationErrorsTest("findThemesForEditor test 2", ThemesFindThemesForEditorTest2, *themesTestSequence);
     new HeapAllocationErrorsTest("findThemesForEditor test 3", ThemesFindThemesForEditorTest3, *themesTestSequence);
@@ -39,6 +41,21 @@ TestResult::EOutcome ThemesCreationTest1()
 {
     CodeSmithy::Themes themes;
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome ThemesGetAllThemesTest1()
+{
+    CodeSmithy::Themes themes;
+    std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
+    themes.getAllThemes(availableThemes);
+    if (availableThemes.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
 
 TestResult::EOutcome ThemesFindThemesForEditorTest1()
