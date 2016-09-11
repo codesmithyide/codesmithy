@@ -23,6 +23,9 @@
 #include "Preferences/DefaultEditorPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/choice.h>
+#include <wx/checkbox.h>
 #include <wx/fontdlg.h>
 
 namespace CodeSmithy
@@ -31,9 +34,25 @@ namespace CodeSmithy
 DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
                                                            AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
-    m_fontFaceName(0), m_fontSize(0), m_applyButton(0)
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
+    m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+
+    wxStaticText* themeText = new wxStaticText(this, wxID_ANY, "Selected theme:");
+
+    wxArrayString themeChoices;
+    std::vector<std::shared_ptr<Theme> > themes;
+    m_appSettings.themes().findThemesForEditor("CodeSmithy.Editor.XML", themes);
+    for (size_t i = 0; i < themes.size(); ++i)
+    {
+        themeChoices.Add(themes[i]->name());
+    }
+    wxChoice* themeChoice = new wxChoice(this, wxID_ANY,
+        wxDefaultPosition, wxDefaultSize, themeChoices);
+    themeChoice->SetSelection(0);
+
+    wxCheckBox* overrideThemeCheckbox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
@@ -41,7 +60,13 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
-    wxButton* fontButton = new wxButton(this, PreferencesDefaultEditorFontSelectionButtonID, "Select Font...");
+    m_fontButton = new wxButton(this, PreferencesDefaultEditorFontSelectionButtonID, "Select Font...");
+    if (!overrideThemeCheckbox->IsChecked())
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+        m_fontButton->Disable();
+    }
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
@@ -50,19 +75,42 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     font.SetPointSize(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
     m_formatExample->SetFont(font);
 
-    wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
-    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
-    fontInfoSizer->Add(fontButton, 0, wxALL, 2);
-
     m_applyButton = new wxButton(this, PreferencesDefaultEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
+    wxBoxSizer* themeSizer = new wxBoxSizer(wxHORIZONTAL);
+    themeSizer->Add(themeText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
+    themeSizer->AddSpacer(10);
+    themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
+
+    wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
+    fontInfoSizer->Add(overrideThemeCheckbox, 0, wxALL, 10);
+    fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
+    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
+    fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
+
+    topSizer->Add(themeSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
+{
+    if (evt.IsChecked())
+    {
+        m_fontFaceName->Enable();
+        m_fontSize->Enable();
+        m_fontButton->Enable();
+    }
+    else
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+        m_fontButton->Disable();
+    }
 }
 
 void DefaultEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
@@ -113,6 +161,7 @@ void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(DefaultEditorPreferencesPage, wxPanel)
+    EVT_CHECKBOX(PreferencesDefaultEditorOverrideThemeCheckBoxID, DefaultEditorPreferencesPage::onOverrideThemeChanged)
     EVT_SPINCTRL(PreferencesDefaultEditorSizeSelectionButtonID, DefaultEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesDefaultEditorFontSelectionButtonID, DefaultEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesDefaultEditorPreferencesApplyButtonID, DefaultEditorPreferencesPage::onApply)

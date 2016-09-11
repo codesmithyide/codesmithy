@@ -38,6 +38,7 @@ public:
     DefaultEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
+    void onOverrideThemeChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);
@@ -46,6 +47,7 @@ private:
     AppSettings& m_appSettings;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
+    wxButton* m_fontButton;
     wxTextCtrl* m_formatExample;
     wxButton* m_applyButton;
 
