@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<codesmithy-themes-repository>
+	<file-format-version>0.1.0</file-format-version>
+	<themes>
+		<theme>
+			<name>Theme1</name>
+			<editor-theme>
+				<editor-id>Editor1</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
+			</editor-theme>
+		</theme>
+	</themes>
+</codesmithy-themes-repository>

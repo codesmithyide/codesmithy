@@ -53,7 +53,7 @@ TestResult::EOutcome EditorThemeSaveTest1(FileComparisonTest& test)
     if (themeNode)
     {
         CodeSmithy::Theme theme(themeNode);
-        CodeSmithy::EditorTheme editorTheme("EditorTheme1");
+        CodeSmithy::EditorTheme editorTheme("Editor1");
         theme.setEditorTheme(editorTheme);
     }
 
