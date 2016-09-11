@@ -20,6 +20,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Editors\EditorIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +79,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Editors\EditorIds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Settings\AppSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
