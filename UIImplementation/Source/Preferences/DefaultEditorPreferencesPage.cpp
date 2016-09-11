@@ -48,6 +48,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
+    m_fontFaceName->SetEditable(false);
     m_fontSize = new wxSpinCtrl(this, PreferencesDefaultEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
@@ -76,10 +77,13 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALL, 10);
-    fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
-    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
-    fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
+    fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALIGN_CENTER_VERTICAL | wxBOTTOM, 2);
+    fontInfoSizer->AddSpacer(8);
+    fontInfoSizer->Add(m_fontFaceName, 1, wxALIGN_CENTER_VERTICAL, 2);
+    fontInfoSizer->AddSpacer(3);
+    fontInfoSizer->Add(m_fontSize, 0, wxALIGN_CENTER_VERTICAL, 2);
+    fontInfoSizer->AddSpacer(2);
+    fontInfoSizer->Add(m_fontButton, 0, wxALIGN_CENTER_VERTICAL, 2);
 
     topSizer->Add(themeSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
@@ -138,19 +142,9 @@ void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
 
 void DefaultEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
 {
-    unsigned int newPointSize = evt.GetValue();
-    wxFont font = m_formatExample->GetFont();
-    font.SetPointSize(newPointSize);
-    m_formatExample->SetFont(font);
-
-    if (newPointSize != m_appSettings.editorSettings().defaultSettings().fontSettings().pointSize())
-    {
-        m_applyButton->Enable();
-    }
-    else if (m_fontFaceName->GetValue() == m_appSettings.editorSettings().defaultSettings().fontSettings().faceName())
-    {
-        m_applyButton->Disable();
-    }
+    m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
+    updateExample();
+    updateApplyButtonStatus();
 }
 
 void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
@@ -169,6 +163,7 @@ void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
         std::string faceName = data.GetChosenFont().GetFaceName();
         m_newSettings.fontSettings().setFaceName(faceName);
+        m_newSettings.fontSettings().setPointSize(data.GetChosenFont().GetPointSize());
         updateExample();
         updateApplyButtonStatus();
     }
