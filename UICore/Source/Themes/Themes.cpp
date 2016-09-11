@@ -38,8 +38,21 @@ void Themes::addRepository(std::shared_ptr<ThemesRepository> repository)
     m_repositories.push_back(repository);
 }
 
+void Themes::getAllThemes(std::vector<std::shared_ptr<Theme> >& themes)
+{
+    std::vector<std::shared_ptr<ThemesRepositoryNode> > themeNodes;
+    for (size_t i = 0; i < m_repositories.size(); ++i)
+    {
+        m_repositories[i]->getThemeNodes(themeNodes);
+    }
+    for (size_t i = 0; i < themeNodes.size(); ++i)
+    {
+        themes.push_back(std::make_shared<Theme>(themeNodes[i]));
+    }
+}
+
 void Themes::findThemesForEditor(const std::string& editorId,
-                                 std::vector<std::shared_ptr<Theme> >& themes) const
+                                 std::vector<std::shared_ptr<Theme> >& themes)
 {
     std::vector<std::shared_ptr<ThemesRepositoryNode> > themeNodes;
     for (size_t i = 0; i < m_repositories.size(); ++i)

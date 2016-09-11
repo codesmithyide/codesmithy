@@ -1,5 +1,18 @@
 <?xml version="1.0"?>
 <codesmithy-themes-repository>
 	<file-format-version>0.1.0</file-format-version>
-	<themes />
+	<themes>
+		<theme>
+			<name>CodeSmithy Light Theme</name>
+			<editor-theme>
+				<editor-id>CodeSmithy.Editor.XML</editor-id>
+			</editor-theme>
+		</theme>
+		<theme>
+			<name>CodeSmithy Dark Theme</name>
+			<editor-theme>
+				<editor-id>CodeSmithy.Editor.XML</editor-id>
+			</editor-theme>
+		</theme>
+	</themes>
 </codesmithy-themes-repository>

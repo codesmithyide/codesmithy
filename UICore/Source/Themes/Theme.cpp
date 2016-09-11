@@ -39,6 +39,11 @@ Theme::~Theme() noexcept
 {
 }
 
+const std::string& Theme::name() const
+{
+    return m_name;
+}
+
 void Theme::save()
 {
     m_node->addEditorTheme("CodeSmithy.Editor.XML");

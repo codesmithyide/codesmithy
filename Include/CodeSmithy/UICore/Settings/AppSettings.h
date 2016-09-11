@@ -25,6 +25,7 @@
 
 #include "FileTypeAssociations.h"
 #include "StartupSettings.h"
+#include "../Themes/Themes.h"
 #include "EditorSettings.h"
 #include "AppSettingsObserver.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
@@ -58,6 +59,8 @@ public:
     FileTypeAssociations& fileTypeAssociations();
     const StartupSettings& startupSettings() const;
     StartupSettings& startupSettings();
+    const Themes& themes() const;
+    Themes& themes();
     const EditorSettings& editorSettings() const;
     EditorSettings& editorSettings();
 
@@ -85,6 +88,7 @@ private:
     const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;
     StartupSettings m_startupSettings;
+    Themes m_themes;
     EditorSettings m_editorSettings;
     std::vector<std::weak_ptr<AppSettingsObserver> > m_observers;
 };

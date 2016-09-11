@@ -37,6 +37,8 @@ public:
     Theme(std::shared_ptr<ThemesRepositoryNode> node);
     ~Theme() noexcept;
 
+    const std::string& name() const;
+
     void save();
 
 private:

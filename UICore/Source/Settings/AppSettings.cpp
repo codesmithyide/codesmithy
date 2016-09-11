@@ -21,6 +21,7 @@
 */
 
 #include "Settings/AppSettings.h"
+#include "Themes/ThemesFileRepository.h"
 #include "Ishiko/FileTypes/FileTypeAssociations.h"
 #include <windows.h>
 #include <Shlobj.h>
@@ -47,6 +48,11 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
     m_path /= "settings.xml";
 
     initialize(m_path);
+
+    boost::filesystem::path themesRepositoryPath = getSettingsDirectory();
+    themesRepositoryPath /= "Themes/DefaultThemes.csmththemes";
+    std::shared_ptr<ThemesFileRepository> themesRepository = std::make_shared<ThemesFileRepository>(themesRepositoryPath.string());
+    m_themes.addRepository(themesRepository);
 }
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
@@ -87,6 +93,16 @@ const StartupSettings& AppSettings::startupSettings() const
 StartupSettings& AppSettings::startupSettings()
 {
     return m_startupSettings;
+}
+
+const Themes& AppSettings::themes() const
+{
+    return m_themes;
+}
+
+Themes& AppSettings::themes()
+{
+    return m_themes;
 }
 
 const EditorSettings& AppSettings::editorSettings() const
