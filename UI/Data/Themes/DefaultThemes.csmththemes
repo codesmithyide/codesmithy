@@ -6,18 +6,34 @@
 			<name>CodeSmithy Light Theme</name>
 			<editor-theme>
 				<editor-id>CodeSmithy.Editor.Defaults</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
 			</editor-theme>
 			<editor-theme>
 				<editor-id>CodeSmithy.Editor.XML</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
 			</editor-theme>
 		</theme>
 		<theme>
 			<name>CodeSmithy Dark Theme</name>
 			<editor-theme>
 				<editor-id>CodeSmithy.Editor.Defaults</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
 			</editor-theme>
 			<editor-theme>
 				<editor-id>CodeSmithy.Editor.XML</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
 			</editor-theme>
 		</theme>
 	</themes>

@@ -40,6 +40,7 @@ public:
     ~Theme() noexcept;
 
     const std::string& name() const;
+    std::shared_ptr<EditorTheme> getDefaultEditorTheme() const;
     std::shared_ptr<EditorTheme> getEditorTheme(const EditorId& id) const;
     void setEditorTheme(const EditorTheme& editorTheme);
 

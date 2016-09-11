@@ -44,6 +44,11 @@ const std::string& Theme::name() const
     return m_name;
 }
 
+std::shared_ptr<EditorTheme> Theme::getDefaultEditorTheme() const
+{
+    return m_node->getEditorTheme("CodeSmithy.Editor.Defaults");
+}
+
 std::shared_ptr<EditorTheme> Theme::getEditorTheme(const EditorId& id) const
 {
     return m_node->getEditorTheme(id.string());

@@ -41,21 +41,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     wxStaticText* themeText = new wxStaticText(this, wxID_ANY, "Selected theme:");
-
-    wxArrayString themeChoices;
-    m_appSettings.themes().getAllThemes(m_themes);
-    size_t selectedThemeIndex = 0;
-    for (size_t i = 0; i < m_themes.size(); ++i)
-    {
-        themeChoices.Add(m_themes[i]->name());
-        if (m_themes[i]->name() == m_newSettings.themeName())
-        {
-            selectedThemeIndex = i;
-        }
-    }
-    wxChoice* themeChoice = new wxChoice(this, PreferencesDefaultEditorThemeChoiceID,
-        wxDefaultPosition, wxDefaultSize, themeChoices);
-    themeChoice->SetSelection(selectedThemeIndex);
+    wxControl* themeChoice = createThemeSelectionControl();
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
     m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
@@ -101,6 +87,26 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+wxControl* DefaultEditorPreferencesPage::createThemeSelectionControl()
+{
+    wxArrayString themeChoices;
+    m_appSettings.themes().getAllThemes(m_themes);
+    size_t selectedThemeIndex = 0;
+    for (size_t i = 0; i < m_themes.size(); ++i)
+    {
+        themeChoices.Add(m_themes[i]->name());
+        if (m_themes[i]->name() == m_newSettings.themeName())
+        {
+            selectedThemeIndex = i;
+            m_selectedTheme = m_themes[i].get();
+        }
+    }
+    wxChoice* themeChoice = new wxChoice(this, PreferencesDefaultEditorThemeChoiceID,
+        wxDefaultPosition, wxDefaultSize, themeChoices);
+    themeChoice->SetSelection(selectedThemeIndex);
+    return themeChoice;
 }
 
 void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
@@ -161,7 +167,10 @@ void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
         wxFontData data = fontDialog->GetFontData();
         m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
-        m_formatExample->SetFont(data.GetChosenFont());
+        std::string faceName = data.GetChosenFont().GetFaceName();
+        m_newSettings.fontSettings().setFaceName(faceName);
+        updateExample();
+        updateApplyButtonStatus();
     }
 
     fontDialog->Destroy();
@@ -176,6 +185,19 @@ void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 
 void DefaultEditorPreferencesPage::updateExample()
 {
+    wxFont font = m_formatExample->GetFont();
+    if (m_newSettings.overrideTheme())
+    {
+        font.SetFaceName(m_newSettings.fontSettings().faceName());
+        font.SetPointSize(m_newSettings.fontSettings().pointSize());
+    }
+    else
+    {
+        std::shared_ptr<EditorTheme> editorTheme = m_selectedTheme->getDefaultEditorTheme();
+        font.SetFaceName(editorTheme->mainTextFontSettings().faceName());
+        font.SetPointSize(editorTheme->mainTextFontSettings().pointSize());
+    }
+    m_formatExample->SetFont(font);
 }
 
 void DefaultEditorPreferencesPage::updateApplyButtonStatus()
