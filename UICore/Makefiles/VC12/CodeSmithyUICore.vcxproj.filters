@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Editors\EditorIds.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Editors\EditorId.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h">
@@ -79,7 +79,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Editors\EditorIds.cpp">
+    <ClCompile Include="..\..\Source\Editors\EditorId.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\AppSettings.cpp">

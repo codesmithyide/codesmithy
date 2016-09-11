@@ -25,7 +25,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
     {
         ../../../Include/CodeSmithy/UICore/linkoptions.h
 
-        ../../../Include/CodeSmithy/UICore/Editors/EditorIds.h
+        ../../../Include/CodeSmithy/UICore/Editors/EditorId.h
 
         ../../../Include/CodeSmithy/UICore/Settings/AppSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/AppSettingsObserver.h
@@ -51,7 +51,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
 
     sources
     {
-        ../../Source/Editors/EditorIds.cpp
+        ../../Source/Editors/EditorId.cpp
 
         ../../Source/Settings/AppSettings.cpp
         ../../Source/Settings/AppSettingsObserver.cpp
