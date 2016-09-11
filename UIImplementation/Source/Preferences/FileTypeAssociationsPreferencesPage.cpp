@@ -39,7 +39,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
 
     FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
 
-    AddTitleRow(this, fileTypeAssociationsSizer);
+    addTitleRow(this, fileTypeAssociationsSizer);
     
     bool discrepancyDetected = false;
     for (size_t i = 0; i < associations.size(); ++i)
@@ -67,7 +67,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 discrepancyDetected = true;
             }
 
-            wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY, GetFileTypeAndExtensions(*documentType));
+            wxStaticText* fileTypeName = new wxStaticText(this, wxID_ANY, getFileTypeAndExtensions(*documentType));
 
             wxArrayString actionChoices;
             actionChoices.Add("Disabled");
@@ -117,8 +117,8 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 }
             }
 
-            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
-            projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::OnAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
+            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
+            projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
 
             fileTypeAssociationsSizer->Add(fileTypeName, 0, wxEXPAND);
             fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
@@ -148,7 +148,7 @@ wxStaticText* FileTypeAssociationsPreferencesPage::CreateDescription(wxWindow *p
     return description;
 }
 
-void FileTypeAssociationsPreferencesPage::AddTitleRow(wxWindow *parent, 
+void FileTypeAssociationsPreferencesPage::addTitleRow(wxWindow *parent, 
                                                       wxFlexGridSizer* fileTypeAssociationsSizer)
 {
     wxStaticText* fileTypeName = new wxStaticText(parent, wxID_ANY, "Type and extensions");
@@ -159,7 +159,7 @@ void FileTypeAssociationsPreferencesPage::AddTitleRow(wxWindow *parent,
     fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
 }
 
-std::string FileTypeAssociationsPreferencesPage::GetFileTypeAndExtensions(const DocumentType& type)
+std::string FileTypeAssociationsPreferencesPage::getFileTypeAndExtensions(const DocumentType& type)
 {
     std::string result = type.name();
     result.append(" (");
@@ -177,7 +177,7 @@ std::string FileTypeAssociationsPreferencesPage::GetFileTypeAndExtensions(const 
     return result;
 }
 
-void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& evt)
+void FileTypeAssociationsPreferencesPage::onAssociationChanged(wxCommandEvent& evt)
 {
     const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
     if (data)
@@ -197,7 +197,7 @@ void FileTypeAssociationsPreferencesPage::OnAssociationChanged(wxCommandEvent& e
     }
 }
 
-void FileTypeAssociationsPreferencesPage::OnApply(wxCommandEvent& evt)
+void FileTypeAssociationsPreferencesPage::onApply(wxCommandEvent& evt)
 {
     bool needsSaving = false;
     for (size_t i = 0; i < m_updatedFileTypeAssociations.size(); ++i)
@@ -286,7 +286,7 @@ std::string FileTypeAssociationsPreferencesPage::CustomEventHandlerData::project
 }
 
 wxBEGIN_EVENT_TABLE(FileTypeAssociationsPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButtonID, FileTypeAssociationsPreferencesPage::OnApply)
+    EVT_BUTTON(PreferencesFileTypeAssociationsApplyButtonID, FileTypeAssociationsPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
 
 }

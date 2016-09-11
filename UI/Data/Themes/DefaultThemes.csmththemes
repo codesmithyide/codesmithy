@@ -5,11 +5,17 @@
 		<theme>
 			<name>CodeSmithy Light Theme</name>
 			<editor-theme>
+				<editor-id>CodeSmithy.Editor.Defaults</editor-id>
+			</editor-theme>
+			<editor-theme>
 				<editor-id>CodeSmithy.Editor.XML</editor-id>
 			</editor-theme>
 		</theme>
 		<theme>
 			<name>CodeSmithy Dark Theme</name>
+			<editor-theme>
+				<editor-id>CodeSmithy.Editor.Defaults</editor-id>
+			</editor-theme>
 			<editor-theme>
 				<editor-id>CodeSmithy.Editor.XML</editor-id>
 			</editor-theme>

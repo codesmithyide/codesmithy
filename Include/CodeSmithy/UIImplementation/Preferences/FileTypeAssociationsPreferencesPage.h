@@ -40,11 +40,11 @@ public:
 
 private:
     static wxStaticText* CreateDescription(wxWindow *parent);
-    static void AddTitleRow(wxWindow *parent, wxFlexGridSizer* fileTypeAssociationsSizer);
-    static std::string GetFileTypeAndExtensions(const DocumentType& type);
+    static void addTitleRow(wxWindow *parent, wxFlexGridSizer* fileTypeAssociationsSizer);
+    static std::string getFileTypeAndExtensions(const DocumentType& type);
 
-    void OnAssociationChanged(wxCommandEvent& evt);
-    void OnApply(wxCommandEvent& evt);
+    void onAssociationChanged(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
 
 private:
     class CustomEventHandlerData : public wxObject

@@ -38,7 +38,9 @@ const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButt
 
 const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;
 
-const wxWindowID PreferencesDefaultEditorSizeSelectionButtonID = PreferencesCloseButtonID + 1;
+const wxWindowID PreferencesDefaultEditorThemeChoiceID = PreferencesCloseButtonID + 1;
+const wxWindowID PreferencesDefaultEditorOverrideThemeCheckBoxID = PreferencesDefaultEditorThemeChoiceID + 1;
+const wxWindowID PreferencesDefaultEditorSizeSelectionButtonID = PreferencesDefaultEditorOverrideThemeCheckBoxID + 1;
 const wxWindowID PreferencesDefaultEditorFontSelectionButtonID = PreferencesDefaultEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesDefaultEditorPreferencesApplyButtonID = PreferencesDefaultEditorFontSelectionButtonID + 1;
 

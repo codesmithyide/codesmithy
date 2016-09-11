@@ -34,21 +34,20 @@ namespace CodeSmithy
 DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
                                                            AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
-    m_applyButton(0)
+    m_selectedTheme(0), m_fontFaceName(0), m_fontSize(0), 
+    m_fontButton(0), m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     wxStaticText* themeText = new wxStaticText(this, wxID_ANY, "Selected theme:");
 
     wxArrayString themeChoices;
-    std::vector<std::shared_ptr<Theme> > themes;
-    m_appSettings.themes().findThemesForEditor("CodeSmithy.Editor.XML", themes);
-    for (size_t i = 0; i < themes.size(); ++i)
+    m_appSettings.themes().getAllThemes(m_themes);
+    for (size_t i = 0; i < m_themes.size(); ++i)
     {
-        themeChoices.Add(themes[i]->name());
+        themeChoices.Add(m_themes[i]->name());
     }
-    wxChoice* themeChoice = new wxChoice(this, wxID_ANY,
+    wxChoice* themeChoice = new wxChoice(this, PreferencesDefaultEditorThemeChoiceID,
         wxDefaultPosition, wxDefaultSize, themeChoices);
     themeChoice->SetSelection(0);
 
@@ -95,6 +94,11 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
+{
+    m_selectedTheme = m_themes[evt.GetSelection()].get();
 }
 
 void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
@@ -160,7 +164,12 @@ void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
     m_applyButton->Disable();
 }
 
+void DefaultEditorPreferencesPage::updateExample()
+{
+}
+
 wxBEGIN_EVENT_TABLE(DefaultEditorPreferencesPage, wxPanel)
+    EVT_CHOICE(PreferencesDefaultEditorThemeChoiceID, DefaultEditorPreferencesPage::onThemeChanged)
     EVT_CHECKBOX(PreferencesDefaultEditorOverrideThemeCheckBoxID, DefaultEditorPreferencesPage::onOverrideThemeChanged)
     EVT_SPINCTRL(PreferencesDefaultEditorSizeSelectionButtonID, DefaultEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesDefaultEditorFontSelectionButtonID, DefaultEditorPreferencesPage::onSelectFont)

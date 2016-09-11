@@ -23,6 +23,7 @@
 #include "Preferences/XMLEditorPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/combobox.h>
 #include <wx/fontdlg.h>
 #include <wx/stattext.h>
 
@@ -37,6 +38,15 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+
+    wxComboBox* themeSelection = new wxComboBox(this, wxID_ANY);
+    std::vector<std::shared_ptr<Theme> > themes;
+    m_appSettings.themes().findThemesForEditor("CodeSmithy.Editor.XML", themes);
+    for (size_t i = 0; i < themes.size(); ++i)
+    {
+        themeSelection->Append(themes[i]->name());
+    }
+    
 
     m_useDefaultCheckBox = new wxCheckBox(this, PreferencesXMLEditorUseDefaultSettingsCheckBoxID, "Use default settings");
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultFontSettings());
@@ -77,6 +87,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_applyButton = new wxButton(this, PreferencesXMLEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
+    topSizer->Add(themeSelection, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);

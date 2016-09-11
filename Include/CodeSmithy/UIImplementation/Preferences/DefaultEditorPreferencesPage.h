@@ -38,13 +38,18 @@ public:
     DefaultEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
+    void onThemeChanged(wxCommandEvent& evt);
     void onOverrideThemeChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);
 
+    void updateExample();
+
 private:
     AppSettings& m_appSettings;
+    std::vector<std::shared_ptr<Theme> > m_themes;
+    Theme* m_selectedTheme;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;
