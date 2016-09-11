@@ -41,6 +41,9 @@
     <ClInclude Include="..\..\Source\ThemesTests\ThemesFileRepositoryTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ThemesTests\EditorThemeTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -68,6 +71,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ThemesTests\ThemesFileRepositoryTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ThemesTests\EditorThemeTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

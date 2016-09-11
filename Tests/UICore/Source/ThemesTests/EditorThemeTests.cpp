@@ -20,22 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "ThemesTestSequence.h"
-#include "ThemeTests.h"
 #include "EditorThemeTests.h"
-#include "ThemesFileRepositoryTests.h"
-#include "ThemesTests.h"
-#include <boost/filesystem/operations.hpp>
 
-void AddThemesTestSequence(TestHarness& theTestHarness)
+void AddEditorThemeTests(TestSequence& testSequence)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ThemesTests");
-    boost::filesystem::create_directories(outputPath);
-
-    TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
-
-    AddThemeTests(themesTestSequence);
-    AddEditorThemeTests(themesTestSequence);
-    AddThemesFileRepositoryTests(themesTestSequence);
-    AddThemesTests(themesTestSequence);
+    TestSequence* editorThemeTestSequence = new TestSequence("EditorTheme tests", testSequence);
 }

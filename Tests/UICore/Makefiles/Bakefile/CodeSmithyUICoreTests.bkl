@@ -23,6 +23,7 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
         ../../Source/ThemesTests/ThemeTests.h
         ../../Source/ThemesTests/ThemesTests.h
         ../../Source/ThemesTests/ThemesFileRepositoryTests.h
+        ../../Source/ThemesTests/EditorThemeTests.h
     }
 
     sources
@@ -38,5 +39,6 @@ program CodeSmithyUICoreTests : CodeSmithyUICore, IshikoTestFrameworkCore
         ../../Source/ThemesTests/ThemeTests.cpp
         ../../Source/ThemesTests/ThemesTests.cpp
         ../../Source/ThemesTests/ThemesFileRepositoryTests.cpp
+        ../../Source/ThemesTests/EditorThemeTests.cpp
     }
 }
