@@ -20,7 +20,29 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UICORE_EDITORS_EDITORIDS_H_
-#define _CODESMITHY_UICORE_EDITORS_EDITORIDS_H_
+#ifndef _CODESMITHY_UICORE_EDITORS_EDITORID_H_
+#define _CODESMITHY_UICORE_EDITORS_EDITORID_H_
+
+#include <string>
+
+namespace CodeSmithy
+{
+
+class EditorId
+{
+public:
+    static EditorId XMLEditorId;
+
+public:
+    EditorId(const char* stringForm);
+    ~EditorId();
+
+    const std::string& string() const;
+
+private:
+    std::string m_stringForm;
+};
+
+}
 
 #endif

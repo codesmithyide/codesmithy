@@ -20,4 +20,25 @@
     IN THE SOFTWARE.
 */
 
-#include "Editors/EditorIds.h"
+#include "Editors/EditorId.h"
+
+namespace CodeSmithy
+{
+
+EditorId EditorId::XMLEditorId("CodeSmithy.Editor.XML");
+
+EditorId::EditorId(const char* stringForm)
+    : m_stringForm(stringForm)
+{
+}
+
+EditorId::~EditorId()
+{
+}
+
+const std::string& EditorId::string() const
+{
+    return m_stringForm;
+}
+
+}
