@@ -21,13 +21,18 @@
 */
 
 #include "Settings/DefaultEditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
+static const char* themeNameElementName = "theme-name";
+static const char* overrideThemeElementName = "override-theme";
 static const char* fontSettingsElementName = "font-settings";
 
 DefaultEditorSettings::DefaultEditorSettings()
+    : m_themeName("CodeSmithy Light Theme"), 
+    m_overrideTheme(false)
 {
 }
 
@@ -35,12 +40,22 @@ DefaultEditorSettings::~DefaultEditorSettings()
 {
 }
 
-const FontSettings& DefaultEditorSettings::fontSettings() const
+const std::string& DefaultEditorSettings::themeName() const noexcept
+{
+    return m_themeName;
+}
+
+bool DefaultEditorSettings::overrideTheme() const noexcept
+{
+    return m_overrideTheme;
+}
+
+const FontSettings& DefaultEditorSettings::fontSettings() const noexcept
 {
     return m_fontSettings;
 }
 
-FontSettings& DefaultEditorSettings::fontSettings()
+FontSettings& DefaultEditorSettings::fontSettings() noexcept
 {
     return m_fontSettings;
 }
@@ -53,12 +68,7 @@ void DefaultEditorSettings::load(pugi::xml_node node)
 
 void DefaultEditorSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
-    if (!fontSettingsNode)
-    {
-        fontSettingsNode = node.append_child(fontSettingsElementName);
-    }
-
+    pugi::xml_node fontSettingsNode = XMLUtilities::getOrAppendChildNode(node, fontSettingsElementName);
     m_fontSettings.save(fontSettingsNode);
 }
 

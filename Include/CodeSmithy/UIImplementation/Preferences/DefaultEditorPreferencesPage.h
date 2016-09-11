@@ -45,6 +45,7 @@ private:
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
+    void updateApplyButtonStatus();
 
 private:
     AppSettings& m_appSettings;

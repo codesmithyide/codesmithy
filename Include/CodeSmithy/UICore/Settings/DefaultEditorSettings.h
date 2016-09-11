@@ -33,15 +33,19 @@ class DefaultEditorSettings
 {
 public:
     DefaultEditorSettings();
-    ~DefaultEditorSettings();
+    ~DefaultEditorSettings() noexcept;
 
-    const FontSettings& fontSettings() const;
-    FontSettings& fontSettings();
+    const std::string& themeName() const noexcept;
+    bool overrideTheme() const noexcept;
+    const FontSettings& fontSettings() const noexcept;
+    FontSettings& fontSettings() noexcept;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
 private:
+    std::string m_themeName;
+    bool m_overrideTheme;
     FontSettings m_fontSettings;
 };
 

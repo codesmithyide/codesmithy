@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_CORE_UTILITIES_XMLUTILITIES_H_
 #define _CODESMITHY_CORE_UTILITIES_XMLUTILITIES_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class XMLUtilities
+{
+public:
+    static pugi::xml_node getOrAppendChildNode(pugi::xml_node parentNode, const char* elementName);
+    static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
+        const std::string& value);
+    static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
+        unsigned int value);
+};
+
+}
+
 #endif

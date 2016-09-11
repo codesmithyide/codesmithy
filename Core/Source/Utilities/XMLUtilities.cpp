@@ -21,3 +21,45 @@
 */
 
 #include "Utilities/XMLUtilities.h"
+#include <sstream>
+
+namespace CodeSmithy
+{
+    
+pugi::xml_node XMLUtilities::getOrAppendChildNode(pugi::xml_node parentNode, 
+                                                  const char* elementName)
+{
+    pugi::xml_node childNode = parentNode.child(elementName);
+    if (!childNode)
+    {
+        childNode = parentNode.append_child(elementName);
+    }
+    return childNode;
+}
+
+void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
+                                        const char* elementName,
+                                        const std::string& value)
+{
+    pugi::xml_node childNode = parentNode.child(elementName);
+    if (!childNode)
+    {
+        childNode = parentNode.append_child(elementName);
+        childNode.append_child(pugi::node_pcdata).set_value(value.c_str());
+    }
+    else
+    {
+        childNode.text().set(value.c_str());
+    }
+}
+
+void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
+                                        const char* elementName,
+                                        unsigned int value)
+{
+    std::stringstream valueStr;
+    valueStr << value;
+    setOrAppendChildNode(parentNode, elementName, valueStr.str());
+}
+
+}

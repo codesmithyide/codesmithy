@@ -99,6 +99,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
 {
     m_selectedTheme = m_themes[evt.GetSelection()].get();
+    updateApplyButtonStatus();
 }
 
 void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
@@ -165,6 +166,10 @@ void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 }
 
 void DefaultEditorPreferencesPage::updateExample()
+{
+}
+
+void DefaultEditorPreferencesPage::updateApplyButtonStatus()
 {
 }
 

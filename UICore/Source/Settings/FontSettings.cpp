@@ -21,7 +21,7 @@
 */
 
 #include "Settings/FontSettings.h"
-#include <sstream>
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
@@ -94,30 +94,8 @@ void FontSettings::load(pugi::xml_node node)
 
 void FontSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node fontFaceNameNode = node.child(fontFaceNameElementName);
-    if (!fontFaceNameNode)
-    {
-        fontFaceNameNode = node.append_child(fontFaceNameElementName);
-        fontFaceNameNode.append_child(pugi::node_pcdata).set_value(m_faceName.c_str());
-    }
-    else
-    {
-        fontFaceNameNode.text().set(m_faceName.c_str());
-    }
-    pugi::xml_node fontPointSizeNode = node.child(fontPointSizeElementName);
-    if (!fontPointSizeNode)
-    {
-        fontPointSizeNode = node.append_child(fontPointSizeElementName);
-        std::stringstream pointSizeStr;
-        pointSizeStr << m_pointSize;
-        fontPointSizeNode.append_child(pugi::node_pcdata).set_value(pointSizeStr.str().c_str());
-    }
-    else
-    {
-        std::stringstream pointSizeStr;
-        pointSizeStr << m_pointSize;
-        fontPointSizeNode.text().set(pointSizeStr.str().c_str());
-    }
+    XMLUtilities::setOrAppendChildNode(node, fontFaceNameElementName, m_faceName);
+    XMLUtilities::setOrAppendChildNode(node, fontPointSizeElementName, m_pointSize);
 }
 
 }
