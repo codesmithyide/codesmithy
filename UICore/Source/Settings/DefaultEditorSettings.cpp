@@ -68,6 +68,8 @@ void DefaultEditorSettings::load(pugi::xml_node node)
 
 void DefaultEditorSettings::save(pugi::xml_node node) const
 {
+    XMLUtilities::setOrAppendChildNode(node, themeNameElementName, m_themeName);
+    XMLUtilities::setOrAppendChildNode(node, overrideThemeElementName, m_overrideTheme);
     pugi::xml_node fontSettingsNode = XMLUtilities::getOrAppendChildNode(node, fontSettingsElementName);
     m_fontSettings.save(fontSettingsNode);
 }

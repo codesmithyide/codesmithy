@@ -35,6 +35,10 @@ public:
     static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
         const std::string& value);
     static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
+        const char* value);
+    static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
+        bool value);
+    static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
         unsigned int value);
 };
 

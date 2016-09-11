@@ -41,15 +41,36 @@ void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
                                         const char* elementName,
                                         const std::string& value)
 {
+    setOrAppendChildNode(parentNode, elementName, value.c_str());
+}
+
+void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
+                                        const char* elementName,
+                                        const char* value)
+{
     pugi::xml_node childNode = parentNode.child(elementName);
     if (!childNode)
     {
         childNode = parentNode.append_child(elementName);
-        childNode.append_child(pugi::node_pcdata).set_value(value.c_str());
+        childNode.append_child(pugi::node_pcdata).set_value(value);
     }
     else
     {
-        childNode.text().set(value.c_str());
+        childNode.text().set(value);
+    }
+}
+
+void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
+                                        const char* elementName,
+                                        bool value)
+{
+    if (value)
+    {
+        setOrAppendChildNode(parentNode, elementName, "true");
+    }
+    else
+    {
+        setOrAppendChildNode(parentNode, elementName, "false");
     }
 }
 
