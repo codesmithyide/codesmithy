@@ -31,6 +31,8 @@ namespace CodeSmithy
 class XMLUtilities
 {
 public:
+    static bool getChildValueAsBool(pugi::xml_node parentNode, const char* elementName,
+        bool defaultValue) noexcept;
     static pugi::xml_node getOrAppendChildNode(pugi::xml_node parentNode, const char* elementName);
     static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
         const std::string& value);

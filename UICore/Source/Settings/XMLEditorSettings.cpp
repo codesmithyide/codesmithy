@@ -118,15 +118,7 @@ std::string XMLEditorSettings::styleIdToDescription(EStyleId id)
 
 void XMLEditorSettings::load(pugi::xml_node node)
 {
-    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
-    if (std::string(useDefaultSettingsNode.child_value()) == "true")
-    {
-        m_useDefaultFontSettings = true;
-    }
-    else if (std::string(useDefaultSettingsNode.child_value()) == "false")
-    {
-        m_useDefaultFontSettings = false;
-    }
+    m_useDefaultFontSettings = XMLUtilities::getChildValueAsBool(node, useDefaultSettingsElementName, true);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
     pugi::xml_node stylesNode = node.child(stylesElementName);
@@ -143,11 +135,7 @@ void XMLEditorSettings::save(pugi::xml_node node) const
 {
     XMLUtilities::setOrAppendChildNode(node, useDefaultSettingsElementName, m_useDefaultFontSettings);
 
-    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
-    if (!fontSettingsNode)
-    {
-        fontSettingsNode = node.append_child(fontSettingsElementName);
-    }
+    pugi::xml_node fontSettingsNode = XMLUtilities::getOrAppendChildNode(node, fontSettingsElementName);
     m_fontSettings.save(fontSettingsNode);
 
     pugi::xml_node stylesNode = node.child(stylesElementName);
