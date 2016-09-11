@@ -33,12 +33,19 @@ class DefaultEditorSettings
 {
 public:
     DefaultEditorSettings();
+    DefaultEditorSettings(const DefaultEditorSettings& other);
+    DefaultEditorSettings& operator=(const DefaultEditorSettings& other);
     ~DefaultEditorSettings() noexcept;
 
     const std::string& themeName() const noexcept;
+    void setThemeName(const std::string& themeName) noexcept;
     bool overrideTheme() const noexcept;
+    void setOverrideTheme(bool overrideTheme) noexcept;
     const FontSettings& fontSettings() const noexcept;
     FontSettings& fontSettings() noexcept;
+
+    bool operator==(const DefaultEditorSettings& other) const;
+    bool operator!=(const DefaultEditorSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

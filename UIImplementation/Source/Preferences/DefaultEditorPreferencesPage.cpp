@@ -25,7 +25,6 @@
 #include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/choice.h>
-#include <wx/checkbox.h>
 #include <wx/fontdlg.h>
 
 namespace CodeSmithy
@@ -34,7 +33,9 @@ namespace CodeSmithy
 DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
                                                            AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
-    m_selectedTheme(0), m_fontFaceName(0), m_fontSize(0), 
+    m_newSettings(appSettings.editorSettings().defaultSettings()),
+    m_selectedTheme(0), m_overrideThemeCheckBox(0),
+    m_fontFaceName(0), m_fontSize(0),
     m_fontButton(0), m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
@@ -51,7 +52,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
         wxDefaultPosition, wxDefaultSize, themeChoices);
     themeChoice->SetSelection(0);
 
-    wxCheckBox* overrideThemeCheckbox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
+    m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
@@ -60,7 +61,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
     m_fontButton = new wxButton(this, PreferencesDefaultEditorFontSelectionButtonID, "Select Font...");
-    if (!overrideThemeCheckbox->IsChecked())
+    if (!m_overrideThemeCheckBox->IsChecked())
     {
         m_fontFaceName->Disable();
         m_fontSize->Disable();
@@ -83,7 +84,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(overrideThemeCheckbox, 0, wxALL, 10);
+    fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALL, 10);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
@@ -99,11 +100,13 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
 {
     m_selectedTheme = m_themes[evt.GetSelection()].get();
+    m_newSettings.setThemeName(m_selectedTheme->name());
     updateApplyButtonStatus();
 }
 
 void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
 {
+    m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
     if (evt.IsChecked())
     {
         m_fontFaceName->Enable();
@@ -116,6 +119,8 @@ void DefaultEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
         m_fontSize->Disable();
         m_fontButton->Disable();
     }
+    updateExample();
+    updateApplyButtonStatus();
 }
 
 void DefaultEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
@@ -157,10 +162,7 @@ void DefaultEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
 
 void DefaultEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
-    FontSettings& fontSettings = m_appSettings.editorSettings().defaultSettings().fontSettings();
-    std::string faceName = m_fontFaceName->GetValue();
-    fontSettings.setFaceName(faceName);
-    fontSettings.setPointSize(m_fontSize->GetValue());
+    m_appSettings.editorSettings().defaultSettings() = m_newSettings;
     m_appSettings.save();
     m_applyButton->Disable();
 }
@@ -171,6 +173,14 @@ void DefaultEditorPreferencesPage::updateExample()
 
 void DefaultEditorPreferencesPage::updateApplyButtonStatus()
 {
+    if (m_appSettings.editorSettings().defaultSettings() != m_newSettings)
+    {
+        m_applyButton->Enable();
+    }
+    else
+    {
+        m_applyButton->Disable();
+    }
 }
 
 wxBEGIN_EVENT_TABLE(DefaultEditorPreferencesPage, wxPanel)

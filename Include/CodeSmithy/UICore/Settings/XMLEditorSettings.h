@@ -44,7 +44,7 @@ public:
     XMLEditorSettings();
     XMLEditorSettings(const XMLEditorSettings& other);
     XMLEditorSettings& operator=(const XMLEditorSettings& other);
-    ~XMLEditorSettings();
+    ~XMLEditorSettings() noexcept;
 
     bool useDefaultFontSettings() const;
     void setUseDefaultFontSettings(bool useDefaultSettings);

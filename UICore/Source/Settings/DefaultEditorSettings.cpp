@@ -36,6 +36,23 @@ DefaultEditorSettings::DefaultEditorSettings()
 {
 }
 
+DefaultEditorSettings::DefaultEditorSettings(const DefaultEditorSettings& other)
+    : m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme),
+    m_fontSettings(other.m_fontSettings)
+{
+}
+
+DefaultEditorSettings& DefaultEditorSettings::operator=(const DefaultEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_themeName = other.m_themeName;
+        m_overrideTheme = other.m_overrideTheme;
+        m_fontSettings = other.m_fontSettings;
+    }
+    return *this;
+}
+
 DefaultEditorSettings::~DefaultEditorSettings()
 {
 }
@@ -45,9 +62,19 @@ const std::string& DefaultEditorSettings::themeName() const noexcept
     return m_themeName;
 }
 
+void DefaultEditorSettings::setThemeName(const std::string& themeName) noexcept
+{
+    m_themeName = themeName;
+}
+
 bool DefaultEditorSettings::overrideTheme() const noexcept
 {
     return m_overrideTheme;
+}
+
+void DefaultEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
+{
+    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& DefaultEditorSettings::fontSettings() const noexcept
@@ -58,6 +85,18 @@ const FontSettings& DefaultEditorSettings::fontSettings() const noexcept
 FontSettings& DefaultEditorSettings::fontSettings() noexcept
 {
     return m_fontSettings;
+}
+
+bool DefaultEditorSettings::operator==(const DefaultEditorSettings& other) const
+{
+   return ((m_themeName == other.m_themeName) &&
+       (m_overrideTheme == other.m_overrideTheme) &&
+       (m_fontSettings == other.m_fontSettings));
+}
+
+bool DefaultEditorSettings::operator!=(const DefaultEditorSettings& other) const
+{
+    return !(*this == other);
 }
 
 void DefaultEditorSettings::load(pugi::xml_node node)
