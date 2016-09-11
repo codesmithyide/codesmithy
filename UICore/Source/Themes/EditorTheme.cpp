@@ -21,3 +21,27 @@
 */
 
 #include "Themes/EditorTheme.h"
+
+namespace CodeSmithy
+{
+
+EditorTheme::EditorTheme(const std::string& editorId)
+    : m_editorId(editorId)
+{
+}
+
+EditorTheme::~EditorTheme()
+{
+}
+
+const std::string& EditorTheme::editorId() const noexcept
+{
+    return m_editorId;
+}
+
+const FontSettings& EditorTheme::mainTextFontSettings() const noexcept
+{
+    return m_mainTextFontSettings;
+}
+
+}

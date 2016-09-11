@@ -23,4 +23,25 @@
 #ifndef _CODESMITHY_UICORE_THEMES_EDITORTHEME_H_
 #define _CODESMITHY_UICORE_THEMES_EDITORTHEME_H_
 
+#include "../Settings/FontSettings.h"
+
+namespace CodeSmithy
+{
+
+class EditorTheme
+{
+public:
+    EditorTheme(const std::string& editorId);
+    ~EditorTheme() noexcept;
+
+    const std::string& editorId() const noexcept;
+    const FontSettings& mainTextFontSettings() const noexcept;
+
+private:
+    std::string m_editorId;
+    FontSettings m_mainTextFontSettings;
+};
+
+}
+
 #endif
