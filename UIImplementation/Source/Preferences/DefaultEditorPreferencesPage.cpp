@@ -63,10 +63,7 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
 
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
-    wxFont font = m_formatExample->GetFont();
-    font.SetFaceName(appSettings.editorSettings().defaultSettings().fontSettings().faceName());
-    font.SetPointSize(appSettings.editorSettings().defaultSettings().fontSettings().pointSize());
-    m_formatExample->SetFont(font);
+    updateExample();
 
     m_applyButton = new wxButton(this, PreferencesDefaultEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();

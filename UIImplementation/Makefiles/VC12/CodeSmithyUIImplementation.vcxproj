@@ -165,6 +165,7 @@
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PreferencesDialog.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\PreferencesDialogUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\linkoptions.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PreferencesDialog.h" />
+    <ClInclude Include="..\..\Source\Preferences\PreferencesDialogUtilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
