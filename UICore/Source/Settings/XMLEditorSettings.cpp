@@ -21,6 +21,7 @@
 */
 
 #include "Settings/XMLEditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
@@ -140,30 +141,7 @@ void XMLEditorSettings::load(pugi::xml_node node)
 
 void XMLEditorSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
-    if (!useDefaultSettingsNode)
-    {
-        useDefaultSettingsNode = node.append_child(useDefaultSettingsElementName);
-        if (m_useDefaultFontSettings)
-        {
-            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("true");
-        }
-        else
-        {
-            useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("false");
-        }
-    }
-    else
-    {
-        if (m_useDefaultFontSettings)
-        {
-            useDefaultSettingsNode.text().set("true");
-        }
-        else
-        {
-            useDefaultSettingsNode.text().set("false");
-        }
-    }
+    XMLUtilities::setOrAppendChildNode(node, useDefaultSettingsElementName, m_useDefaultFontSettings);
 
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     if (!fontSettingsNode)

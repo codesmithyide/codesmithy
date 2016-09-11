@@ -11,6 +11,8 @@
 	</startup-settings>
 	<editor-settings>
 		<default-editor-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
 			<font-settings>
 				<font-face-name>Arial</font-face-name>
 				<font-point-size>12</font-point-size>
