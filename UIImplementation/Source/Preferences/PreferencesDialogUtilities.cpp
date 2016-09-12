@@ -21,3 +21,29 @@
 */
 
 #include "PreferencesDialogUtilities.h"
+#include <wx/choice.h>
+
+namespace CodeSmithy
+{
+
+wxControl* PreferencesDialogUtilities::createThemeSelectionControl(wxWindow* parent, 
+                                                                   wxWindowID id,
+                                                                   const std::vector<std::shared_ptr<Theme> >& themes,
+                                                                   const std::string& selectedThemeName)
+{
+    wxArrayString themeChoices;
+    size_t selectedThemeIndex = 0;
+    for (size_t i = 0; i < themes.size(); ++i)
+    {
+        themeChoices.Add(themes[i]->name());
+        if (themes[i]->name() == selectedThemeName)
+        {
+            selectedThemeIndex = i;
+        }
+    }
+    wxChoice* themeChoice = new wxChoice(parent, id, wxDefaultPosition, wxDefaultSize, themeChoices);
+    themeChoice->SetSelection(selectedThemeIndex);
+    return themeChoice;
+}
+
+}

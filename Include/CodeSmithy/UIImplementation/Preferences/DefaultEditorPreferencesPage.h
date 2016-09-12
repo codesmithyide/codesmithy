@@ -39,8 +39,6 @@ public:
     DefaultEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
-    wxControl* createThemeSelectionControl();
-
     void onThemeChanged(wxCommandEvent& evt);
     void onOverrideThemeChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);

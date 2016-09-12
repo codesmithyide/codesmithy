@@ -21,10 +21,10 @@
 */
 
 #include "Preferences/DefaultEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/stattext.h>
-#include <wx/choice.h>
 #include <wx/fontdlg.h>
 
 namespace CodeSmithy
@@ -38,10 +38,20 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_fontFaceName(0), m_fontSize(0),
     m_fontButton(0), m_applyButton(0)
 {
+    m_appSettings.themes().getAllThemes(m_themes);
+    for (size_t i = 0; i < m_themes.size(); ++i)
+    {
+        if (m_themes[i]->name() == m_newSettings.themeName())
+        {
+            m_selectedTheme = m_themes[i].get();
+        }
+    }
+
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     wxStaticText* themeText = new wxStaticText(this, wxID_ANY, "Selected theme:");
-    wxControl* themeChoice = createThemeSelectionControl();
+    wxControl* themeChoice = PreferencesDialogUtilities::createThemeSelectionControl(this, 
+        PreferencesDefaultEditorThemeChoiceID, m_themes, m_newSettings.themeName());
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
     m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
@@ -88,26 +98,6 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
-}
-
-wxControl* DefaultEditorPreferencesPage::createThemeSelectionControl()
-{
-    wxArrayString themeChoices;
-    m_appSettings.themes().getAllThemes(m_themes);
-    size_t selectedThemeIndex = 0;
-    for (size_t i = 0; i < m_themes.size(); ++i)
-    {
-        themeChoices.Add(m_themes[i]->name());
-        if (m_themes[i]->name() == m_newSettings.themeName())
-        {
-            selectedThemeIndex = i;
-            m_selectedTheme = m_themes[i].get();
-        }
-    }
-    wxChoice* themeChoice = new wxChoice(this, PreferencesDefaultEditorThemeChoiceID,
-        wxDefaultPosition, wxDefaultSize, themeChoices);
-    themeChoice->SetSelection(selectedThemeIndex);
-    return themeChoice;
 }
 
 void DefaultEditorPreferencesPage::onThemeChanged(wxCommandEvent& evt)
