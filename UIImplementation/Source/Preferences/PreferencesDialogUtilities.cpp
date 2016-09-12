@@ -21,15 +21,35 @@
 */
 
 #include "PreferencesDialogUtilities.h"
+#include <wx/sizer.h>
+#include <wx/stattext.h>
 #include <wx/choice.h>
 
 namespace CodeSmithy
 {
 
-wxControl* PreferencesDialogUtilities::createThemeSelectionControl(wxWindow* parent, 
-                                                                   wxWindowID id,
-                                                                   const std::vector<std::shared_ptr<Theme> >& themes,
-                                                                   const std::string& selectedThemeName)
+wxSizer* PreferencesDialogUtilities::createThemeSelectionSizer(wxWindow* parent,
+                                                               const char* text,
+                                                               wxWindowID id,
+                                                               const std::vector<std::shared_ptr<Theme> >& themes,
+                                                               const std::string& selectedThemeNam)
+{
+    wxStaticText* themeText = new wxStaticText(parent, wxID_ANY, text);
+    wxControl* themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(parent,
+        id, themes, selectedThemeNam);
+
+    wxBoxSizer* themeSizer = new wxBoxSizer(wxHORIZONTAL);
+    themeSizer->Add(themeText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
+    themeSizer->AddSpacer(10);
+    themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
+
+    return themeSizer;
+}
+
+wxChoice* PreferencesDialogUtilities::createThemeSelectionChoice(wxWindow* parent, 
+                                                                 wxWindowID id,
+                                                                 const std::vector<std::shared_ptr<Theme> >& themes,
+                                                                 const std::string& selectedThemeName)
 {
     wxArrayString themeChoices;
     size_t selectedThemeIndex = 0;

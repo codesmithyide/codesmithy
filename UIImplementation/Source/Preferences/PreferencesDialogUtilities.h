@@ -24,7 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_PREFERENCESDIALOGUTILITIES_H_
 
 #include "CodeSmithy/UICore/Themes/Theme.h"
-#include <wx/control.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -32,7 +32,12 @@ namespace CodeSmithy
 class PreferencesDialogUtilities
 {
 public:
-    static wxControl* createThemeSelectionControl(wxWindow* parent, wxWindowID id,
+    static wxSizer* createThemeSelectionSizer(wxWindow* parent, const char* text, 
+        wxWindowID id, const std::vector<std::shared_ptr<Theme> >& themes,
+        const std::string& selectedThemeName);
+
+private:
+    static wxChoice* createThemeSelectionChoice(wxWindow* parent, wxWindowID id,
         const std::vector<std::shared_ptr<Theme> >& themes, 
         const std::string& selectedThemeName);
 };

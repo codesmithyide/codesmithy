@@ -24,7 +24,6 @@
 #include "PreferencesDialogUtilities.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
-#include <wx/stattext.h>
 #include <wx/fontdlg.h>
 
 namespace CodeSmithy
@@ -48,10 +47,6 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     }
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
-    wxStaticText* themeText = new wxStaticText(this, wxID_ANY, "Selected theme:");
-    wxControl* themeChoice = PreferencesDialogUtilities::createThemeSelectionControl(this, 
-        PreferencesDefaultEditorThemeChoiceID, m_themes, m_newSettings.themeName());
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesDefaultEditorOverrideThemeCheckBoxID, "Override theme");
     m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
@@ -78,10 +73,8 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_applyButton = new wxButton(this, PreferencesDefaultEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
-    wxBoxSizer* themeSizer = new wxBoxSizer(wxHORIZONTAL);
-    themeSizer->Add(themeText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
-    themeSizer->AddSpacer(10);
-    themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:",
+        PreferencesDefaultEditorThemeChoiceID, m_themes, m_newSettings.themeName());
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALIGN_CENTER_VERTICAL | wxBOTTOM, 2);

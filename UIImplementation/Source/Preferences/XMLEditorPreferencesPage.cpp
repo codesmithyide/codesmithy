@@ -41,11 +41,9 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    wxControl* themeChoice = PreferencesDialogUtilities::createThemeSelectionControl(this,
-        PreferencesXMLEditorThemeChoiceID, m_themes, m_newSettings.themeName());
-    
     m_useDefaultCheckBox = new wxCheckBox(this, PreferencesXMLEditorUseDefaultSettingsCheckBoxID, "Use default settings");
-    m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultFontSettings());
+    m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
+
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize = new wxSpinCtrl(this, PreferencesXMLEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
@@ -64,8 +62,10 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:",
+        PreferencesXMLEditorThemeChoiceID, m_themes, m_newSettings.themeName());
+
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_useDefaultCheckBox);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
@@ -83,7 +83,8 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_applyButton = new wxButton(this, PreferencesXMLEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
-    topSizer->Add(themeChoice, 0, wxEXPAND | wxALL, 10);
+    topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->Add(themeSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
@@ -94,7 +95,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 
 void XMLEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
-    m_newSettings.setUseDefaultFontSettings(m_useDefaultCheckBox->IsChecked());
+    m_newSettings.setUseDefaultSettings(m_useDefaultCheckBox->IsChecked());
     if (evt.IsChecked())
     {
         m_fontFaceName->Disable();

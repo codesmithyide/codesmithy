@@ -37,7 +37,7 @@ void XMLEditorCtrl::setCustomSettings(const XMLEditorSettings& settings)
 {
     std::string faceName = settings.fontSettings().faceName();
     unsigned int pointSize = settings.fontSettings().pointSize();
-    if (settings.useDefaultFontSettings())
+    if (settings.useDefaultSettings())
     {
         faceName = m_appSettings.editorSettings().xmlFontSettings().faceName();
         pointSize = m_appSettings.editorSettings().xmlFontSettings().pointSize();
