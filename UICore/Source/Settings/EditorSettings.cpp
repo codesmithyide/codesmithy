@@ -64,7 +64,7 @@ const FontSettings& EditorSettings::cppFontSettings() const
 
 const FontSettings& EditorSettings::xmlFontSettings() const
 {
-    if (m_xmlEditorSettings.useDefaultFontSettings())
+    if (m_xmlEditorSettings.useDefaultSettings())
     {
         return m_defaultEditorSettings.fontSettings();
     }
