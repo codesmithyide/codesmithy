@@ -26,6 +26,7 @@
 namespace CodeSmithy
 {
 
+static const char* themeNameElementName = "theme-name";
 static const char* useDefaultSettingsElementName = "use-default-settings";
 static const char* fontSettingsElementName = "font-settings";
 static const char* stylesElementName = "styles";
@@ -33,13 +34,15 @@ static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 XMLEditorSettings::XMLEditorSettings()
-    : m_useDefaultFontSettings(true)
+    : m_themeName("CodeSmithy Light Theme"), 
+    m_useDefaultFontSettings(true)
 {
     initializeStyles();
 }
 
 XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
-    : m_useDefaultFontSettings(other.m_useDefaultFontSettings),
+    : m_themeName(other.m_themeName), 
+    m_useDefaultFontSettings(other.m_useDefaultFontSettings),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
 }
@@ -48,6 +51,7 @@ XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
 {
     if (this != &other)
     {
+        m_themeName = other.m_themeName;
         m_useDefaultFontSettings = other.m_useDefaultFontSettings;
         m_fontSettings = other.m_fontSettings;
         m_styles = other.m_styles;
@@ -57,6 +61,16 @@ XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
 
 XMLEditorSettings::~XMLEditorSettings()
 {
+}
+
+const std::string& XMLEditorSettings::themeName() const noexcept
+{
+    return m_themeName;
+}
+
+void XMLEditorSettings::setThemeName(const std::string& themeName) noexcept
+{
+    m_themeName = themeName;
 }
 
 bool XMLEditorSettings::useDefaultFontSettings() const
@@ -91,7 +105,8 @@ std::vector<StyleSettings>& XMLEditorSettings::styles()
 
 bool XMLEditorSettings::operator==(const XMLEditorSettings& other) const
 {
-    return ((m_useDefaultFontSettings == other.m_useDefaultFontSettings) &&
+    return ((m_themeName == other.m_themeName) &&
+        (m_useDefaultFontSettings == other.m_useDefaultFontSettings) &&
         (m_fontSettings == other.m_fontSettings) &&
         (m_styles == other.m_styles));
 }
@@ -118,6 +133,7 @@ std::string XMLEditorSettings::styleIdToDescription(EStyleId id)
 
 void XMLEditorSettings::load(pugi::xml_node node)
 {
+    m_themeName = XMLUtilities::getChildValueAsString(node, themeNameElementName, "CodeSmithy Light Theme");
     m_useDefaultFontSettings = XMLUtilities::getChildValueAsBool(node, useDefaultSettingsElementName, true);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
@@ -133,6 +149,7 @@ void XMLEditorSettings::load(pugi::xml_node node)
 
 void XMLEditorSettings::save(pugi::xml_node node) const
 {
+    XMLUtilities::setOrAppendChildNode(node, themeNameElementName, m_themeName);
     XMLUtilities::setOrAppendChildNode(node, useDefaultSettingsElementName, m_useDefaultFontSettings);
 
     pugi::xml_node fontSettingsNode = XMLUtilities::getOrAppendChildNode(node, fontSettingsElementName);

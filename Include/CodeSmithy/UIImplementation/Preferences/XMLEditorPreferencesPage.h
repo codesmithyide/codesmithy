@@ -52,6 +52,7 @@ private:
 
 private:
     AppSettings& m_appSettings;
+    std::vector<std::shared_ptr<Theme> > m_themes;
     XMLEditorSettings m_newSettings;
     wxCheckBox* m_useDefaultCheckBox;
     wxTextCtrl* m_fontFaceName;

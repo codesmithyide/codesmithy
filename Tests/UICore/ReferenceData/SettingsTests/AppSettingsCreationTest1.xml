@@ -39,6 +39,7 @@
 			</styles>
 		</cpp-editor-settings>
 		<xml-editor-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
 			<use-default-settings>true</use-default-settings>
 			<font-settings>
 				<font-face-name>Courier New</font-face-name>

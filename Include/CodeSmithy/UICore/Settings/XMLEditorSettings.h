@@ -46,6 +46,8 @@ public:
     XMLEditorSettings& operator=(const XMLEditorSettings& other);
     ~XMLEditorSettings() noexcept;
 
+    const std::string& themeName() const noexcept;
+    void setThemeName(const std::string& themeName) noexcept;
     bool useDefaultFontSettings() const;
     void setUseDefaultFontSettings(bool useDefaultSettings);
     const FontSettings& fontSettings() const;
@@ -67,6 +69,7 @@ private:
     static std::string styleIdToString(EStyleId id);
 
 private:
+    std::string m_themeName;
     bool m_useDefaultFontSettings;
     FontSettings m_fontSettings;
     std::vector<StyleSettings> m_styles;
