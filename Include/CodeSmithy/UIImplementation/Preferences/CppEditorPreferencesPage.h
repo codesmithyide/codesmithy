@@ -23,9 +23,9 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_CPPEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_CPPEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/CppEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
@@ -34,7 +34,7 @@
 namespace CodeSmithy
 {
 
-class CppEditorPreferencesPage : public wxPanel
+class CppEditorPreferencesPage : public EditorPreferencesBase
 {
 public:
     CppEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);

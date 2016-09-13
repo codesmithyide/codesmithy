@@ -23,8 +23,8 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
@@ -33,7 +33,7 @@
 namespace CodeSmithy
 {
 
-class BakefileEditorPreferencesPage : public wxPanel
+class BakefileEditorPreferencesPage : public EditorPreferencesBase
 {
 public:
     BakefileEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);

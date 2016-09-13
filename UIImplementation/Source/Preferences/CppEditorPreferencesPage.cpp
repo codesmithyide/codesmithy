@@ -32,7 +32,7 @@ namespace CodeSmithy
 
 CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    : EditorPreferencesBase(parent), m_appSettings(appSettings),
     m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
     m_applyButton(0)
 {
