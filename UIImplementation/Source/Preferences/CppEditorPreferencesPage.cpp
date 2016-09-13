@@ -38,7 +38,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    m_useDefaultCheckBox = new wxCheckBox(this, PreferencesCppEditorUseDefaultSettingsCheckBoxID, "Use default settings");
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultFontSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
@@ -82,6 +81,10 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+void CppEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
+{
 }
 
 void CppEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
@@ -182,7 +185,6 @@ void CppEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(CppEditorPreferencesPage, wxPanel)
-    EVT_CHECKBOX(PreferencesCppEditorUseDefaultSettingsCheckBoxID, CppEditorPreferencesPage::onUseDefaultSettingChanged)
     EVT_SPINCTRL(PreferencesCppEditorSizeSelectionButtonID, CppEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesCppEditorFontSelectionButtonID, CppEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesCppEditorPreferencesApplyButtonID, CppEditorPreferencesPage::onApply)

@@ -34,15 +34,13 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent), m_appSettings(appSettings),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
-    m_useDefaultCheckBox(0), m_themeChoice(0),
-    m_overrideThemeCheckBox(0), m_fontFaceName(0), m_fontSize(0),
-    m_fontButton(0), m_applyButton(0)
+    m_overrideThemeCheckBox(0), m_fontFaceName(0), 
+    m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
     m_appSettings.themes().findThemesForEditor(EditorId::XMLEditorId, m_themes);
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    m_useDefaultCheckBox = new wxCheckBox(this, PreferencesXMLEditorUseDefaultSettingsCheckBoxID, "Use default settings");
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesXMLEditorOverrideThemeCheckBoxID, "Override theme");
@@ -66,8 +64,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
-    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this,
-        PreferencesXMLEditorThemeChoiceID, m_themes, m_newSettings.themeName());
+    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, m_newSettings.themeName());
     wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
         
     wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
@@ -96,17 +93,9 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     SetSizer(topSizer);
 }
 
-void XMLEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
+void XMLEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
-    m_newSettings.setUseDefaultSettings(m_useDefaultCheckBox->IsChecked());
-    if (evt.IsChecked())
-    {
-        m_themeChoice->Disable();
-    }
-    else
-    {
-        m_themeChoice->Enable();
-    }
+    m_newSettings.setUseDefaultSettings(useDefaultSettings);
     updateExample();
     updateApplyButtonStatus();
 }
@@ -189,7 +178,6 @@ void XMLEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(XMLEditorPreferencesPage, wxPanel)
-    EVT_CHECKBOX(PreferencesXMLEditorUseDefaultSettingsCheckBoxID, XMLEditorPreferencesPage::onUseDefaultSettingChanged)
     EVT_CHECKBOX(PreferencesXMLEditorOverrideThemeCheckBoxID, XMLEditorPreferencesPage::onOverrideThemeChanged)
     EVT_SPINCTRL(PreferencesXMLEditorSizeSelectionButtonID, XMLEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesXMLEditorFontSelectionButtonID, XMLEditorPreferencesPage::onSelectFont)

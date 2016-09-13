@@ -26,7 +26,6 @@
 #include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/CppEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/checkbox.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -40,6 +39,8 @@ public:
     CppEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
+    void handleUseDefaultSettingChanged(bool useDefaultSettings) override;
+
     void onUseDefaultSettingChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
@@ -50,7 +51,6 @@ private:
 
 private:
     AppSettings& m_appSettings;
-    wxCheckBox* m_useDefaultCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;

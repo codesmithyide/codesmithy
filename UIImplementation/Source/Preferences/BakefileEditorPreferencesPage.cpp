@@ -36,7 +36,6 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    m_useDefaultCheckBox = new wxCheckBox(this, PreferencesBakefileEditorUseDefaultSettingsCheckBoxID, "Use default settings");
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultFontSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
@@ -70,6 +69,10 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 
     SetSizer(topSizer);
+}
+
+void BakefileEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
+{
 }
 
 void BakefileEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
@@ -170,7 +173,6 @@ void BakefileEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(BakefileEditorPreferencesPage, wxPanel)
-    EVT_CHECKBOX(PreferencesBakefileEditorUseDefaultSettingsCheckBoxID, BakefileEditorPreferencesPage::onUseDefaultSettingChanged)
     EVT_SPINCTRL(PreferencesBakefileEditorSizeSelectionButtonID, BakefileEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesBakefileEditorFontSelectionButtonID, BakefileEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesBakefileEditorPreferencesApplyButtonID, BakefileEditorPreferencesPage::onApply)

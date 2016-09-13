@@ -24,6 +24,8 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_EDITORPREFERENCESBASE_H_
 
 #include <wx/panel.h>
+#include <wx/checkbox.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -32,6 +34,15 @@ class EditorPreferencesBase : public wxPanel
 {
 public:
     EditorPreferencesBase(wxWindow* parent);
+
+private:
+    void onUseDefaultSettingChanged(wxCommandEvent& evt);
+
+    virtual void handleUseDefaultSettingChanged(bool useDefaultSettings) = 0;
+
+protected:
+    wxCheckBox* m_useDefaultCheckBox;
+    wxChoice* m_themeChoice;
 };
 
 }

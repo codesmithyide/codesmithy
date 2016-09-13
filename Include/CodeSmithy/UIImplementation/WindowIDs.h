@@ -44,19 +44,15 @@ const wxWindowID PreferencesDefaultEditorSizeSelectionButtonID = PreferencesDefa
 const wxWindowID PreferencesDefaultEditorFontSelectionButtonID = PreferencesDefaultEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesDefaultEditorPreferencesApplyButtonID = PreferencesDefaultEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesBakefileEditorUseDefaultSettingsCheckBoxID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesBakefileEditorSizeSelectionButtonID = PreferencesBakefileEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesBakefileEditorSizeSelectionButtonID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesBakefileEditorFontSelectionButtonID = PreferencesBakefileEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = PreferencesBakefileEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesCppEditorUseDefaultSettingsCheckBoxID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesCppEditorSizeSelectionButtonID = PreferencesCppEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesCppEditorSizeSelectionButtonID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesCppEditorFontSelectionButtonID = PreferencesCppEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesCppEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesXMLEditorThemeChoiceID = PreferencesCppEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesXMLEditorUseDefaultSettingsCheckBoxID = PreferencesXMLEditorThemeChoiceID + 1;
-const wxWindowID PreferencesXMLEditorOverrideThemeCheckBoxID = PreferencesXMLEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesXMLEditorOverrideThemeCheckBoxID = PreferencesCppEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesXMLEditorOverrideThemeCheckBoxID + 1;
 const wxWindowID PreferencesXMLEditorFontSelectionButtonID = PreferencesXMLEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesXMLEditorFontSelectionButtonID + 1;

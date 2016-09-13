@@ -26,8 +26,6 @@
 #include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/XMLEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/checkbox.h>
-#include <wx/choice.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -42,7 +40,8 @@ public:
     XMLEditorPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 
 private:
-    void onUseDefaultSettingChanged(wxCommandEvent& evt);
+    void handleUseDefaultSettingChanged(bool useDefaultSettings) override;
+
     void onOverrideThemeChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
@@ -56,8 +55,6 @@ private:
     AppSettings& m_appSettings;
     std::vector<std::shared_ptr<Theme> > m_themes;
     XMLEditorSettings m_newSettings;
-    wxCheckBox* m_useDefaultCheckBox;
-    wxChoice* m_themeChoice;
     wxCheckBox* m_overrideThemeCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
