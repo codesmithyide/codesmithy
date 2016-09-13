@@ -30,18 +30,14 @@ namespace CodeSmithy
 
 wxSizer* PreferencesDialogUtilities::createThemeSelectionSizer(wxWindow* parent,
                                                                const char* text,
-                                                               wxWindowID id,
-                                                               const std::vector<std::shared_ptr<Theme> >& themes,
-                                                               const std::string& selectedThemeNam)
+                                                               wxChoice* themeSelectionControl)
 {
     wxStaticText* themeText = new wxStaticText(parent, wxID_ANY, text);
-    wxControl* themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(parent,
-        id, themes, selectedThemeNam);
-
+    
     wxBoxSizer* themeSizer = new wxBoxSizer(wxHORIZONTAL);
     themeSizer->Add(themeText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
     themeSizer->AddSpacer(10);
-    themeSizer->Add(themeChoice, 1, wxALIGN_CENTER_VERTICAL);
+    themeSizer->Add(themeSelectionControl, 1, wxALIGN_CENTER_VERTICAL);
 
     return themeSizer;
 }

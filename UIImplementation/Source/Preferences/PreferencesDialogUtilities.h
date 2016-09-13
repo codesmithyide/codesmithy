@@ -33,10 +33,8 @@ class PreferencesDialogUtilities
 {
 public:
     static wxSizer* createThemeSelectionSizer(wxWindow* parent, const char* text, 
-        wxWindowID id, const std::vector<std::shared_ptr<Theme> >& themes,
-        const std::string& selectedThemeName);
+        wxChoice* themeSelectionControl);
 
-private:
     static wxChoice* createThemeSelectionChoice(wxWindow* parent, wxWindowID id,
         const std::vector<std::shared_ptr<Theme> >& themes, 
         const std::string& selectedThemeName);

@@ -62,8 +62,10 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
-    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:",
+    wxChoice* themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this,
         PreferencesXMLEditorThemeChoiceID, m_themes, m_newSettings.themeName());
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", themeChoice);
+        
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);

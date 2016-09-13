@@ -73,8 +73,9 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
     m_applyButton = new wxButton(this, PreferencesDefaultEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
-    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:",
+    wxChoice * themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, 
         PreferencesDefaultEditorThemeChoiceID, m_themes, m_newSettings.themeName());
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:", themeChoice);
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
     fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALIGN_CENTER_VERTICAL | wxBOTTOM, 2);
