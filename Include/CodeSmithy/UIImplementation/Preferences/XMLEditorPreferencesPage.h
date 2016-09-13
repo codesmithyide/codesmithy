@@ -27,6 +27,7 @@
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
 #include <wx/checkbox.h>
+#include <wx/choice.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -56,6 +57,7 @@ private:
     std::vector<std::shared_ptr<Theme> > m_themes;
     XMLEditorSettings m_newSettings;
     wxCheckBox* m_useDefaultCheckBox;
+    wxChoice* m_themeChoice;
     wxCheckBox* m_overrideThemeCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;

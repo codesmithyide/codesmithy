@@ -34,6 +34,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
+    m_useDefaultCheckBox(0), m_themeChoice(0),
     m_overrideThemeCheckBox(0), m_fontFaceName(0), m_fontSize(0),
     m_fontButton(0), m_applyButton(0)
 {
@@ -65,9 +66,9 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
-    wxChoice* themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this,
+    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this,
         PreferencesXMLEditorThemeChoiceID, m_themes, m_newSettings.themeName());
-    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", themeChoice);
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
         
     wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
         m_fontFaceName, m_fontSize, m_fontButton);
@@ -98,7 +99,14 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 void XMLEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
     m_newSettings.setUseDefaultSettings(m_useDefaultCheckBox->IsChecked());
-
+    if (evt.IsChecked())
+    {
+        m_themeChoice->Disable();
+    }
+    else
+    {
+        m_themeChoice->Enable();
+    }
     updateExample();
     updateApplyButtonStatus();
 }
@@ -108,15 +116,15 @@ void XMLEditorPreferencesPage::onOverrideThemeChanged(wxCommandEvent& evt)
     m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
     if (evt.IsChecked())
     {
-        m_fontFaceName->Disable();
-        m_fontSize->Disable();
-        m_fontButton->Disable();
-    }
-    else
-    {
         m_fontFaceName->Enable();
         m_fontSize->Enable();
         m_fontButton->Enable();
+    }
+    else
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+        m_fontButton->Disable();
     }
     updateExample();
     updateApplyButtonStatus();
