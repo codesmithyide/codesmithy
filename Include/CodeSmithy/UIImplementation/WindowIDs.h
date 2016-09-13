@@ -56,7 +56,8 @@ const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesCppEd
 
 const wxWindowID PreferencesXMLEditorThemeChoiceID = PreferencesCppEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesXMLEditorUseDefaultSettingsCheckBoxID = PreferencesXMLEditorThemeChoiceID + 1;
-const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesXMLEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesXMLEditorOverrideThemeCheckBoxID = PreferencesXMLEditorUseDefaultSettingsCheckBoxID + 1;
+const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesXMLEditorOverrideThemeCheckBoxID + 1;
 const wxWindowID PreferencesXMLEditorFontSelectionButtonID = PreferencesXMLEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesXMLEditorFontSelectionButtonID + 1;
 

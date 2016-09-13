@@ -25,6 +25,10 @@
 
 #include "CodeSmithy/UICore/Themes/Theme.h"
 #include <wx/choice.h>
+#include <wx/checkbox.h>
+#include <wx/textctrl.h>
+#include <wx/spinctrl.h>
+#include <wx/button.h>
 
 namespace CodeSmithy
 {
@@ -38,6 +42,9 @@ public:
     static wxChoice* createThemeSelectionChoice(wxWindow* parent, wxWindowID id,
         const std::vector<std::shared_ptr<Theme> >& themes, 
         const std::string& selectedThemeName);
+
+    static wxSizer* createFontSettingsSizer(wxCheckBox* overrideThemeCheckBox, wxTextCtrl* fontFaceName,
+        wxSpinCtrl* fontSize, wxButton* fontButton);
 };
 
 }

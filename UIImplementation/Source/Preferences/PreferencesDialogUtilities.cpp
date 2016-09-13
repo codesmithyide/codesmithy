@@ -62,4 +62,22 @@ wxChoice* PreferencesDialogUtilities::createThemeSelectionChoice(wxWindow* paren
     return themeChoice;
 }
 
+wxSizer* PreferencesDialogUtilities::createFontSettingsSizer(wxCheckBox* overrideThemeCheckBox,
+                                                             wxTextCtrl* fontFaceName,
+                                                             wxSpinCtrl* fontSize,
+                                                             wxButton* fontButton)
+{
+    wxBoxSizer* fontSettingsSizer = new wxBoxSizer(wxHORIZONTAL);
+
+    fontSettingsSizer->Add(overrideThemeCheckBox, 0, wxALIGN_CENTER_VERTICAL | wxBOTTOM, 2);
+    fontSettingsSizer->AddSpacer(8);
+    fontSettingsSizer->Add(fontFaceName, 1, wxALIGN_CENTER_VERTICAL, 2);
+    fontSettingsSizer->AddSpacer(3);
+    fontSettingsSizer->Add(fontSize, 0, wxALIGN_CENTER_VERTICAL, 2);
+    fontSettingsSizer->AddSpacer(2);
+    fontSettingsSizer->Add(fontButton, 0, wxALIGN_CENTER_VERTICAL, 2);
+
+    return fontSettingsSizer;
+}
+
 }

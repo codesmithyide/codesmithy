@@ -42,6 +42,7 @@ public:
 
 private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);
+    void onOverrideThemeChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
     void onStyleChanged(wxColourPickerEvent& evt);
@@ -55,6 +56,7 @@ private:
     std::vector<std::shared_ptr<Theme> > m_themes;
     XMLEditorSettings m_newSettings;
     wxCheckBox* m_useDefaultCheckBox;
+    wxCheckBox* m_overrideThemeCheckBox;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;

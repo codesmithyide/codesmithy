@@ -77,15 +77,9 @@ DefaultEditorPreferencesPage::DefaultEditorPreferencesPage(wxWindow *parent,
         PreferencesDefaultEditorThemeChoiceID, m_themes, m_newSettings.themeName());
     wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Selected theme:", themeChoice);
 
-    wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_overrideThemeCheckBox, 0, wxALIGN_CENTER_VERTICAL | wxBOTTOM, 2);
-    fontInfoSizer->AddSpacer(8);
-    fontInfoSizer->Add(m_fontFaceName, 1, wxALIGN_CENTER_VERTICAL, 2);
-    fontInfoSizer->AddSpacer(3);
-    fontInfoSizer->Add(m_fontSize, 0, wxALIGN_CENTER_VERTICAL, 2);
-    fontInfoSizer->AddSpacer(2);
-    fontInfoSizer->Add(m_fontButton, 0, wxALIGN_CENTER_VERTICAL, 2);
-
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
+    
     topSizer->Add(themeSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
