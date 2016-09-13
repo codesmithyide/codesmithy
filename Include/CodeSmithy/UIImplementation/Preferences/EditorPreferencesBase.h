@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_EDITORPREFERENCESBASE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_EDITORPREFERENCESBASE_H_
 
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class EditorPreferencesBase : public wxPanel
+{
+public:
+    EditorPreferencesBase(wxWindow* parent);
+};
+
+}
+
 #endif

@@ -23,9 +23,9 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_XMLEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_XMLEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/XMLEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
 #include <wx/textctrl.h>
@@ -36,7 +36,7 @@
 namespace CodeSmithy
 {
 
-class XMLEditorPreferencesPage : public wxPanel
+class XMLEditorPreferencesPage : public EditorPreferencesBase
 {
 public:
     XMLEditorPreferencesPage(wxWindow* parent, AppSettings& appSettings);

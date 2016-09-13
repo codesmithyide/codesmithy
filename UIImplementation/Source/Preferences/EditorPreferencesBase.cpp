@@ -21,3 +21,13 @@
 */
 
 #include "Preferences/EditorPreferencesBase.h"
+
+namespace CodeSmithy
+{
+    
+EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent)
+    : wxPanel(parent, wxID_ANY)
+{
+}
+
+}

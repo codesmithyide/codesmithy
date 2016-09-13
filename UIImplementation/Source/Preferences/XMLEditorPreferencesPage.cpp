@@ -32,7 +32,7 @@ namespace CodeSmithy
 
 XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    : EditorPreferencesBase(parent), m_appSettings(appSettings),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
     m_useDefaultCheckBox(0), m_themeChoice(0),
     m_overrideThemeCheckBox(0), m_fontFaceName(0), m_fontSize(0),
