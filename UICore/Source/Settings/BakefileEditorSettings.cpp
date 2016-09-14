@@ -21,15 +21,20 @@
 */
 
 #include "Settings/BakefileEditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
 static const char* useDefaultSettingsElementName = "use-default-settings";
+static const char* themeNameElementName = "theme-name";
+static const char* overrideThemeElementName = "override-theme";
 static const char* fontSettingsElementName = "font-settings";
 
 BakefileEditorSettings::BakefileEditorSettings()
-    : m_useDefaultFontSettings(true)
+    : m_useDefaultSettings(true),
+    m_themeName("CodeSmithy Light Theme"),
+    m_overrideTheme(false)
 {
 }
 
@@ -37,14 +42,34 @@ BakefileEditorSettings::~BakefileEditorSettings()
 {
 }
 
-bool BakefileEditorSettings::useDefaultFontSettings() const
+bool BakefileEditorSettings::useDefaultSettings() const
 {
-    return m_useDefaultFontSettings;
+    return m_useDefaultSettings;
 }
 
-void BakefileEditorSettings::setUseDefaultFontSettings(bool useDefaultSettings)
+void BakefileEditorSettings::setUseDefaultSettings(bool useDefaultSettings)
 {
-    m_useDefaultFontSettings = useDefaultSettings;
+    m_useDefaultSettings = useDefaultSettings;
+}
+
+const std::string& BakefileEditorSettings::themeName() const noexcept
+{
+    return m_themeName;
+}
+
+void BakefileEditorSettings::setThemeName(const std::string& themeName) noexcept
+{
+    m_themeName = themeName;
+}
+
+bool BakefileEditorSettings::overrideTheme() const noexcept
+{
+    return m_overrideTheme;
+}
+
+void BakefileEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
+{
+    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& BakefileEditorSettings::fontSettings() const
@@ -62,12 +87,14 @@ void BakefileEditorSettings::load(pugi::xml_node node)
     pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
     if (std::string(useDefaultSettingsNode.child_value()) == "true")
     {
-        m_useDefaultFontSettings = true;
+        m_useDefaultSettings = true;
     }
     else if (std::string(useDefaultSettingsNode.child_value()) == "false")
     {
-        m_useDefaultFontSettings = false;
+        m_useDefaultSettings = false;
     }
+    m_themeName = XMLUtilities::getChildValueAsString(node, themeNameElementName, "CodeSmithy Light Theme");
+    m_overrideTheme = XMLUtilities::getChildValueAsBool(node, overrideThemeElementName, false);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
 }
@@ -78,7 +105,7 @@ void BakefileEditorSettings::save(pugi::xml_node node) const
     if (!useDefaultSettingsNode)
     {
         useDefaultSettingsNode = node.append_child(useDefaultSettingsElementName);
-        if (m_useDefaultFontSettings)
+        if (m_useDefaultSettings)
         {
             useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("true");
         }
@@ -89,7 +116,7 @@ void BakefileEditorSettings::save(pugi::xml_node node) const
     }
     else
     {
-        if (m_useDefaultFontSettings)
+        if (m_useDefaultSettings)
         {
             useDefaultSettingsNode.text().set("true");
         }
@@ -98,7 +125,8 @@ void BakefileEditorSettings::save(pugi::xml_node node) const
             useDefaultSettingsNode.text().set("false");
         }
     }
-
+    XMLUtilities::setOrAppendChildNode(node, themeNameElementName, m_themeName);
+    XMLUtilities::setOrAppendChildNode(node, overrideThemeElementName, m_overrideTheme);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     if (!fontSettingsNode)
     {

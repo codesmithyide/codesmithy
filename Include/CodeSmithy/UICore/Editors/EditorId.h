@@ -31,6 +31,8 @@ namespace CodeSmithy
 class EditorId
 {
 public:
+    static EditorId BakefileEditorId;
+    static EditorId CppEditorId;
     static EditorId XMLEditorId;
 
 public:
