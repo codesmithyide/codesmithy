@@ -9,7 +9,9 @@
 			</font-settings>
 		</default-editor-settings>
 		<cpp-editor-settings>
-			<use-default-settings>false</use-default-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>true</override-theme>
 			<font-settings>
 				<font-face-name>Arial</font-face-name>
 				<font-point-size>12</font-point-size>

@@ -29,6 +29,8 @@
 		</bakefile-editor-settings>
 		<cpp-editor-settings>
 			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
 			<font-settings>
 				<font-face-name>Courier New</font-face-name>
 				<font-point-size>10</font-point-size>

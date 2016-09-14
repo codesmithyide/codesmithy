@@ -184,7 +184,7 @@ TestResult::EOutcome AppSettingsCreationTest7(Test& test)
     if ((appSettings.fileTypeAssociations().size() == 0) &&
         (appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New") &&
         (appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 10) &&
-        (appSettings.editorSettings().cppSettings().useDefaultFontSettings() == false) &&
+        (appSettings.editorSettings().cppSettings().overrideTheme() == true) &&
         (appSettings.editorSettings().cppSettings().fontSettings().faceName() == "Arial") &&
         (appSettings.editorSettings().cppSettings().fontSettings().pointSize() == 12))
     {
@@ -255,7 +255,7 @@ TestResult::EOutcome AppSettingsSaveTest3(FileComparisonTest& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, outputPath);
 
-    appSettings.editorSettings().cppSettings().setUseDefaultFontSettings(false);
+    appSettings.editorSettings().cppSettings().setOverrideTheme(true);
     appSettings.editorSettings().cppSettings().fontSettings().setFaceName("Arial");
     appSettings.editorSettings().cppSettings().fontSettings().setPointSize(12);
     appSettings.save();
