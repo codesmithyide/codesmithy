@@ -35,8 +35,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     : EditorPreferencesBase(parent, appSettings, EditorId::XMLEditorId,
         appSettings.editorSettings().xmlSettings().themeName()),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
-    m_overrideThemeCheckBox(0), m_fontFaceName(0), 
-    m_fontSize(0), m_fontButton(0), m_applyButton(0)
+    m_applyButton(0)
 {
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
 

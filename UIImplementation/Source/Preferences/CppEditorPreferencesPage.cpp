@@ -34,7 +34,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::CppEditorId,
         appSettings.editorSettings().cppSettings().themeName()),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
+    m_applyButton(0)
 {
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);

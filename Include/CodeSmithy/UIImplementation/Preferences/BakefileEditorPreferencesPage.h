@@ -25,7 +25,6 @@
 
 #include "EditorPreferencesBase.h"
 #include <wx/textctrl.h>
-#include <wx/spinctrl.h>
 #include <wx/button.h>
 
 namespace CodeSmithy
@@ -48,9 +47,6 @@ private:
     void updateApplyButtonStatus();
 
 private:
-    wxTextCtrl* m_fontFaceName;
-    wxSpinCtrl* m_fontSize;
-    wxButton* m_fontButton;
     wxTextCtrl* m_formatExample;
     wxButton* m_applyButton;
 

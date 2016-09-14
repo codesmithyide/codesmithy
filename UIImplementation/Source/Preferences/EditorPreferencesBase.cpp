@@ -32,7 +32,8 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
                                              const EditorId& editorId,
                                              const std::string& selectedThemeName)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings), 
-    m_useDefaultCheckBox(0), m_themeChoice(0)
+    m_useDefaultCheckBox(0), m_themeChoice(0), m_overrideThemeCheckBox(0),
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0)
 {
     m_appSettings.themes().findThemesForEditor(editorId, m_themes);
 

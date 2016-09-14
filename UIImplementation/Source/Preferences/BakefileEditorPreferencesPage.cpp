@@ -32,7 +32,7 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
                                                              AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::BakefileEditorId, 
         appSettings.editorSettings().bakefileSettings().themeName()),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
+    m_applyButton(0)
 {
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);

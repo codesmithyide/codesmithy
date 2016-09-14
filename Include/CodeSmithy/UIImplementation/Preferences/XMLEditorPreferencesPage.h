@@ -52,10 +52,6 @@ private:
 
 private:
     XMLEditorSettings m_newSettings;
-    wxCheckBox* m_overrideThemeCheckBox;
-    wxTextCtrl* m_fontFaceName;
-    wxSpinCtrl* m_fontSize;
-    wxButton* m_fontButton;
     XMLEditorCtrl* m_formatExample;
     wxButton* m_applyButton;
 
