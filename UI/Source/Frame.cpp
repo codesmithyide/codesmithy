@@ -23,6 +23,7 @@
 #include "Frame.h"
 #include "CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h"
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
+#include "CodeSmithy/UIImplementation/AboutDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
 #include <wx/filedlg.h>
 
@@ -218,6 +219,8 @@ void Frame::OnExit(wxCommandEvent& evt)
 
 void Frame::OnAbout(wxCommandEvent& evt)
 {
+    AboutDialog aboutDialog(this);
+    aboutDialog.ShowModal();
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)

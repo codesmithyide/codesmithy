@@ -21,3 +21,13 @@
 */
 
 #include "AboutDialog.h"
+
+namespace CodeSmithy
+{
+
+AboutDialog::AboutDialog(wxWindow* parent)
+    : wxDialog(parent, wxID_ANY, "About CodeSmithy")
+{
+}
+
+}

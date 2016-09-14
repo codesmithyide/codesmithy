@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ABOUTDIALOG_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ABOUTDIALOG_H_
 
+#include <wx/dialog.h>
+
+namespace CodeSmithy
+{
+
+class AboutDialog : public wxDialog
+{
+public:
+    AboutDialog(wxWindow* parent);
+};
+
+}
+
 #endif

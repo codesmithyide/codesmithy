@@ -51,6 +51,10 @@ MenuBar::MenuBar()
     menuFile->Append(wxID_EXIT);
     
     Append(menuFile, "&File");
+
+    wxMenu* menuHelp = new wxMenu;
+    menuHelp->Append(wxID_ABOUT);
+    Append(menuHelp, "&Help");
 }
 
 void MenuBar::registerObserver(std::shared_ptr<ActiveDocument> activeDocument)
