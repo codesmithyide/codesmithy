@@ -32,13 +32,12 @@ namespace CodeSmithy
 
 XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
-    : EditorPreferencesBase(parent), m_appSettings(appSettings),
+    : EditorPreferencesBase(parent, appSettings, EditorId::XMLEditorId,
+        appSettings.editorSettings().xmlSettings().themeName()),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
     m_overrideThemeCheckBox(0), m_fontFaceName(0), 
     m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
-    m_appSettings.themes().findThemesForEditor(EditorId::XMLEditorId, m_themes);
-
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());

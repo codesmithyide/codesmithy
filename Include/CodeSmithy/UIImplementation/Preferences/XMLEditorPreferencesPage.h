@@ -25,7 +25,6 @@
 
 #include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/XMLEditorCtrl.h"
-#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -52,8 +51,6 @@ private:
     void updateApplyButtonStatus();
 
 private:
-    AppSettings& m_appSettings;
-    std::vector<std::shared_ptr<Theme> > m_themes;
     XMLEditorSettings m_newSettings;
     wxCheckBox* m_overrideThemeCheckBox;
     wxTextCtrl* m_fontFaceName;

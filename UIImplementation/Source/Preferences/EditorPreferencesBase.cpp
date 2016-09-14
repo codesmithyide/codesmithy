@@ -25,17 +25,22 @@
 namespace CodeSmithy
 {
     
-EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent)
-    : wxPanel(parent, wxID_ANY), m_useDefaultCheckBox(0),
-    m_themeChoice(0)
+EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent, 
+                                             AppSettings& appSettings, 
+                                             const EditorId& editorId,
+                                             const std::string& selectedThemeName)
+    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings), 
+    m_useDefaultCheckBox(0), m_themeChoice(0)
 {
+    m_appSettings.themes().findThemesForEditor(editorId, m_themes);
+
     m_useDefaultCheckBox = new wxCheckBox(this, wxID_ANY, "Use default settings");
     m_useDefaultCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onUseDefaultSettingChanged, this);
 }
 
 void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
-    m_themeChoice->Enable(evt.IsChecked());
+    m_themeChoice->Enable(!evt.IsChecked());
     handleUseDefaultSettingChanged(evt.IsChecked());
 }
 

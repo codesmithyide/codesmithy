@@ -30,13 +30,13 @@ namespace CodeSmithy
 
 BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
                                                              AppSettings& appSettings)
-    : EditorPreferencesBase(parent), m_appSettings(appSettings),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
-    m_applyButton(0)
+    : EditorPreferencesBase(parent, appSettings, EditorId::BakefileEditorId, 
+        appSettings.editorSettings().bakefileSettings().themeName()),
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultFontSettings());
+    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
     m_fontSize = new wxSpinCtrl(this, PreferencesBakefileEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
@@ -122,7 +122,7 @@ void BakefileEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
 
 void BakefileEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
-    m_appSettings.editorSettings().bakefileSettings().setUseDefaultFontSettings(m_useDefaultCheckBox->IsChecked());
+    m_appSettings.editorSettings().bakefileSettings().setUseDefaultSettings(m_useDefaultCheckBox->IsChecked());
     FontSettings& fontSettings = m_appSettings.editorSettings().bakefileSettings().fontSettings();
     std::string faceName = m_fontFaceName->GetValue();
     fontSettings.setFaceName(faceName);
@@ -150,7 +150,7 @@ void BakefileEditorPreferencesPage::updateExample()
 void BakefileEditorPreferencesPage::updateApplyButtonStatus()
 {
     bool anyValueDifferent = false;
-    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().bakefileSettings().useDefaultFontSettings())
+    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().bakefileSettings().useDefaultSettings())
     {
         anyValueDifferent = true;
     }

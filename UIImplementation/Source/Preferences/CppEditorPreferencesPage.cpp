@@ -32,13 +32,13 @@ namespace CodeSmithy
 
 CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
-    : EditorPreferencesBase(parent), m_appSettings(appSettings),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0),
-    m_applyButton(0)
+    : EditorPreferencesBase(parent, appSettings, EditorId::CppEditorId,
+        appSettings.editorSettings().cppSettings().themeName()),
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
 
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultFontSettings());
+    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
     m_fontSize = new wxSpinCtrl(this, PreferencesCppEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
@@ -134,7 +134,7 @@ void CppEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
 
 void CppEditorPreferencesPage::onApply(wxCommandEvent& evt)
 {
-    m_appSettings.editorSettings().cppSettings().setUseDefaultFontSettings(m_useDefaultCheckBox->IsChecked());
+    m_appSettings.editorSettings().cppSettings().setUseDefaultSettings(m_useDefaultCheckBox->IsChecked());
     FontSettings& fontSettings = m_appSettings.editorSettings().cppSettings().fontSettings();
     std::string faceName = m_fontFaceName->GetValue();
     fontSettings.setFaceName(faceName);
@@ -162,7 +162,7 @@ void CppEditorPreferencesPage::updateExample()
 void CppEditorPreferencesPage::updateApplyButtonStatus()
 {
     bool anyValueDifferent = false;
-    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().cppSettings().useDefaultFontSettings())
+    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().cppSettings().useDefaultSettings())
     {
         anyValueDifferent = true;
     }

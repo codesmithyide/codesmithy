@@ -24,7 +24,6 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 
 #include "EditorPreferencesBase.h"
-#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
 #include <wx/button.h>
@@ -49,7 +48,6 @@ private:
     void updateApplyButtonStatus();
 
 private:
-    AppSettings& m_appSettings;
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;
