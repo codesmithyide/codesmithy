@@ -44,6 +44,14 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     
     m_overrideThemeCheckBox = new wxCheckBox(this, wxID_ANY, "Override theme");
     m_overrideThemeCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onOverrideThemeChanged, this);
+
+    m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
+    m_fontFaceName->SetEditable(false);
+
+    m_fontSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
+    m_fontSize->SetMin(6);
+    m_fontSize->SetMax(30);
+    m_fontSize->Bind(wxEVT_SPINCTRL, &EditorPreferencesBase::onPointSizeChanged, this);
     
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
@@ -63,6 +71,12 @@ void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
     m_fontFaceName->Enable(evt.IsChecked());
     m_fontSize->Enable(evt.IsChecked());
     m_fontButton->Enable(evt.IsChecked());
+    handleOverrideThemeChanged(evt.IsChecked());
+}
+
+void EditorPreferencesBase::onPointSizeChanged(wxSpinEvent& evt)
+{
+    handlePointSizeChanged(m_fontSize->GetValue());
 }
 
 }

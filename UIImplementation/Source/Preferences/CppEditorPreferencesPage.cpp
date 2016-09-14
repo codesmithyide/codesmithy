@@ -37,13 +37,10 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
         appSettings.editorSettings().cppSettings().themeName()),
     m_applyButton(0)
 {
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings());
-    m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
+    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings()); 
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
-    m_fontSize = new wxSpinCtrl(this, PreferencesCppEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
-    m_fontSize->SetMin(6);
-    m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
+
     m_fontButton = new wxButton(this, PreferencesCppEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
@@ -90,7 +87,7 @@ void CppEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
     updateApplyButtonStatus();
 }
 
-void CppEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
+void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     updateExample();
     updateApplyButtonStatus();
@@ -170,7 +167,6 @@ void CppEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(CppEditorPreferencesPage, wxPanel)
-    EVT_SPINCTRL(PreferencesCppEditorSizeSelectionButtonID, CppEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesCppEditorFontSelectionButtonID, CppEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesCppEditorPreferencesApplyButtonID, CppEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()

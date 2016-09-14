@@ -39,13 +39,9 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 {
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
     m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
-
-    m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
-    m_fontSize = new wxSpinCtrl(this, PreferencesXMLEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
-    m_fontSize->SetMin(6);
-    m_fontSize->SetMax(30);
     m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
+
     m_fontButton = new wxButton(this, PreferencesXMLEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
@@ -95,7 +91,7 @@ void XMLEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
     updateApplyButtonStatus();
 }
 
-void XMLEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
+void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
     updateExample();
@@ -154,7 +150,6 @@ void XMLEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(XMLEditorPreferencesPage, wxPanel)
-    EVT_SPINCTRL(PreferencesXMLEditorSizeSelectionButtonID, XMLEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesXMLEditorFontSelectionButtonID, XMLEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesXMLEditorPreferencesApplyButtonID, XMLEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()

@@ -42,9 +42,11 @@ public:
 private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);
     void onOverrideThemeChanged(wxCommandEvent& evt);
+    void onPointSizeChanged(wxSpinEvent& evt);
 
     virtual void handleUseDefaultSettingChanged(bool useDefaultSettings) = 0;
     virtual void handleOverrideThemeChanged(bool overrideTheme) = 0;
+    virtual void handlePointSizeChanged(unsigned pointSize) = 0;
 
 protected:
     AppSettings& m_appSettings;

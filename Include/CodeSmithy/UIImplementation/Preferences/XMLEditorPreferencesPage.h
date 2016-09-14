@@ -41,8 +41,8 @@ public:
 private:
     void handleUseDefaultSettingChanged(bool useDefaultSettings) override;
     void handleOverrideThemeChanged(bool overrideTheme) override;
+    void handlePointSizeChanged(unsigned pointSize) override;
 
-    void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
     void onStyleChanged(wxColourPickerEvent& evt);
     void onApply(wxCommandEvent& evt);

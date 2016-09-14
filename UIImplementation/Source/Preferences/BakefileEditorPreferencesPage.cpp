@@ -36,12 +36,9 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     m_applyButton(0)
 {
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultSettings());
-    m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
-    m_fontSize = new wxSpinCtrl(this, PreferencesBakefileEditorSizeSelectionButtonID, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
-    m_fontSize->SetMin(6);
-    m_fontSize->SetMax(30);
     m_fontSize->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().pointSize());
+
     m_fontButton = new wxButton(this, PreferencesBakefileEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
@@ -78,7 +75,7 @@ void BakefileEditorPreferencesPage::handleOverrideThemeChanged(bool overrideThem
     updateApplyButtonStatus();
 }
 
-void BakefileEditorPreferencesPage::onPointSizeChanged(wxSpinEvent& evt)
+void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     updateExample();
     updateApplyButtonStatus();
@@ -158,7 +155,6 @@ void BakefileEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(BakefileEditorPreferencesPage, wxPanel)
-    EVT_SPINCTRL(PreferencesBakefileEditorSizeSelectionButtonID, BakefileEditorPreferencesPage::onPointSizeChanged)
     EVT_BUTTON(PreferencesBakefileEditorFontSelectionButtonID, BakefileEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesBakefileEditorPreferencesApplyButtonID, BakefileEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
