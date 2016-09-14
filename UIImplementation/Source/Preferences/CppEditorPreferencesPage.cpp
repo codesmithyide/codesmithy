@@ -21,6 +21,7 @@
 */
 
 #include "Preferences/CppEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/fontdlg.h>
@@ -55,10 +56,8 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_formatExample->SetValue("/* This is the main function */\r\nint main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
-    wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
-    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
-    fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
 
     wxFlexGridSizer* stylesSizer = new wxFlexGridSizer(2, 5, 10);
     for (size_t i = 0; i < m_appSettings.editorSettings().cppSettings().styles().size(); ++i)
@@ -81,22 +80,12 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
 
 void CppEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
+    updateExample();
+    updateApplyButtonStatus();
 }
 
-void CppEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
+void CppEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
-    if (evt.IsChecked())
-    {
-        m_fontFaceName->Disable();
-        m_fontSize->Disable();
-        m_fontButton->Disable();
-    }
-    else
-    {
-        m_fontFaceName->Enable();
-        m_fontSize->Enable();
-        m_fontButton->Enable();
-    }
     updateExample();
     updateApplyButtonStatus();
 }

@@ -41,8 +41,10 @@ public:
 
 private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);
+    void onOverrideThemeChanged(wxCommandEvent& evt);
 
     virtual void handleUseDefaultSettingChanged(bool useDefaultSettings) = 0;
+    virtual void handleOverrideThemeChanged(bool overrideTheme) = 0;
 
 protected:
     AppSettings& m_appSettings;

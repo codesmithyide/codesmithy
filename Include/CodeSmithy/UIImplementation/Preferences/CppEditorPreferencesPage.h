@@ -38,8 +38,8 @@ public:
 
 private:
     void handleUseDefaultSettingChanged(bool useDefaultSettings) override;
+    void handleOverrideThemeChanged(bool overrideTheme) override;
 
-    void onUseDefaultSettingChanged(wxCommandEvent& evt);
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);

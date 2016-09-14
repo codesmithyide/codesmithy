@@ -21,6 +21,7 @@
 */
 
 #include "Preferences/BakefileEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/fontdlg.h>
@@ -53,10 +54,8 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
 
-    wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
-    fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
-    fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
 
     m_applyButton = new wxButton(this, PreferencesBakefileEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
@@ -69,22 +68,12 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
 
 void BakefileEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
+    updateExample();
+    updateApplyButtonStatus();
 }
 
-void BakefileEditorPreferencesPage::onUseDefaultSettingChanged(wxCommandEvent& evt)
+void BakefileEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
-    if (evt.IsChecked())
-    {
-        m_fontFaceName->Disable();
-        m_fontSize->Disable();
-        m_fontButton->Disable();
-    }
-    else
-    {
-        m_fontFaceName->Enable();
-        m_fontSize->Enable();
-        m_fontButton->Enable();
-    }
     updateExample();
     updateApplyButtonStatus();
 }

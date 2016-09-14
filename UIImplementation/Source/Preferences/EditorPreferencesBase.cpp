@@ -42,6 +42,9 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
 
     m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, selectedThemeName);
     
+    m_overrideThemeCheckBox = new wxCheckBox(this, wxID_ANY, "Override theme");
+    m_overrideThemeCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onOverrideThemeChanged, this);
+    
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
@@ -53,6 +56,13 @@ void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
     m_themeChoice->Enable(!evt.IsChecked());
     handleUseDefaultSettingChanged(evt.IsChecked());
+}
+
+void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
+{
+    m_fontFaceName->Enable(evt.IsChecked());
+    m_fontSize->Enable(evt.IsChecked());
+    m_fontButton->Enable(evt.IsChecked());
 }
 
 }

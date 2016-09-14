@@ -52,8 +52,7 @@ const wxWindowID PreferencesCppEditorSizeSelectionButtonID = PreferencesBakefile
 const wxWindowID PreferencesCppEditorFontSelectionButtonID = PreferencesCppEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesCppEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesXMLEditorOverrideThemeCheckBoxID = PreferencesCppEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesXMLEditorOverrideThemeCheckBoxID + 1;
+const wxWindowID PreferencesXMLEditorSizeSelectionButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesXMLEditorFontSelectionButtonID = PreferencesXMLEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesXMLEditorFontSelectionButtonID + 1;
 
