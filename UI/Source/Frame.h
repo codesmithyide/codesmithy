@@ -50,6 +50,7 @@ private:
     void OnCloseFile(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
+    void OnAbout(wxCommandEvent& evt);
 
 private:
     AppSettings m_appSettings;

@@ -216,6 +216,10 @@ void Frame::OnExit(wxCommandEvent& evt)
     Close(true);
 }
 
+void Frame::OnAbout(wxCommandEvent& evt)
+{
+}
+
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
@@ -223,6 +227,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
+    EVT_MENU(wxID_ABOUT, Frame::OnAbout)
 wxEND_EVENT_TABLE()
 
 }
