@@ -38,8 +38,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_overrideThemeCheckBox(0), m_fontFaceName(0), 
     m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
     m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
 
     m_overrideThemeCheckBox = new wxCheckBox(this, PreferencesXMLEditorOverrideThemeCheckBoxID, "Override theme");
@@ -62,10 +60,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_formatExample = new XMLEditorCtrl(this, appSettings);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
-
-    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, m_newSettings.themeName());
-    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
-        
+    
     wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
         m_fontFaceName, m_fontSize, m_fontButton);
 
@@ -82,14 +77,11 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_applyButton = new wxButton(this, PreferencesXMLEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
-    topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
-    topSizer->Add(themeSizer, 0, wxEXPAND | wxALL, 10);
+    wxSizer* topSizer = GetSizer();
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
     topSizer->Add(m_applyButton);
-
-    SetSizer(topSizer);
 }
 
 void XMLEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)

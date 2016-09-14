@@ -21,6 +21,8 @@
 */
 
 #include "Preferences/EditorPreferencesBase.h"
+#include "PreferencesDialogUtilities.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -36,6 +38,14 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
 
     m_useDefaultCheckBox = new wxCheckBox(this, wxID_ANY, "Use default settings");
     m_useDefaultCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onUseDefaultSettingChanged, this);
+
+    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, selectedThemeName);
+    
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
+    topSizer->Add(themeSizer, 0, wxEXPAND | wxALL, 10);
+    SetSizer(topSizer);
 }
 
 void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)

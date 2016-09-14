@@ -36,8 +36,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
         appSettings.editorSettings().cppSettings().themeName()),
     m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
     m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings());
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
@@ -58,7 +56,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     updateExample();
 
     wxBoxSizer* fontInfoSizer = new wxBoxSizer(wxHORIZONTAL);
-    fontInfoSizer->Add(m_useDefaultCheckBox);
     fontInfoSizer->Add(m_fontFaceName, 1, wxALL, 2);
     fontInfoSizer->Add(m_fontSize, 0, wxALL, 2);
     fontInfoSizer->Add(m_fontButton, 0, wxALL, 2);
@@ -75,12 +72,11 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_applyButton = new wxButton(this, PreferencesCppEditorPreferencesApplyButtonID, "Apply");
     m_applyButton->Disable();
 
+    wxSizer* topSizer = GetSizer();
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(stylesSizer, 0, wxEXPAND | wxALL, 10);
     topSizer->Add(m_formatExample, 0, wxEXPAND | wxALL, 2);
     topSizer->Add(m_applyButton);
-
-    SetSizer(topSizer);
 }
 
 void CppEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
