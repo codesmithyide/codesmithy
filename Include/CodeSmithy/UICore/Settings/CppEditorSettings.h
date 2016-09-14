@@ -43,10 +43,14 @@ public:
     CppEditorSettings();
     CppEditorSettings(const CppEditorSettings& other);
     CppEditorSettings& operator=(const CppEditorSettings& other);
-    ~CppEditorSettings();
+    ~CppEditorSettings() noexcept;
 
-    bool useDefaultFontSettings() const;
-    void setUseDefaultFontSettings(bool useDefaultSettings);
+    bool useDefaultSettings() const;
+    void setUseDefaultSettings(bool useDefaultSettings);
+    const std::string& themeName() const noexcept;
+    void setThemeName(const std::string& themeName) noexcept;
+    bool overrideTheme() const noexcept;
+    void setOverrideTheme(bool overrideTheme) noexcept;
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
     unsigned int textColor(EStyleId id) const;
@@ -66,7 +70,9 @@ private:
     static std::string styleIdToString(EStyleId id);
 
 private:
-    bool m_useDefaultFontSettings;
+    bool m_useDefaultSettings;
+    std::string m_themeName;
+    bool m_overrideTheme;
     FontSettings m_fontSettings;
     std::vector<StyleSettings> m_styles;
 };

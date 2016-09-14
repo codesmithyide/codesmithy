@@ -25,6 +25,8 @@
 namespace CodeSmithy
 {
 
+EditorId EditorId::BakefileEditorId("CodeSmithy.Editor.Bakefile");
+EditorId EditorId::CppEditorId("CodeSmithy.Editor.Cpp");
 EditorId EditorId::XMLEditorId("CodeSmithy.Editor.XML");
 
 EditorId::EditorId(const char* stringForm)

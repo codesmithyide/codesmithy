@@ -40,7 +40,7 @@ EditorSettings::~EditorSettings()
 
 const FontSettings& EditorSettings::bakefileFontSettings() const
 {
-    if (m_bakefileEditorSettings.useDefaultFontSettings())
+    if (m_bakefileEditorSettings.useDefaultSettings())
     {
         return m_defaultEditorSettings.fontSettings();
     }
@@ -52,7 +52,7 @@ const FontSettings& EditorSettings::bakefileFontSettings() const
 
 const FontSettings& EditorSettings::cppFontSettings() const
 {
-    if (m_cppEditorSettings.useDefaultFontSettings())
+    if (m_cppEditorSettings.useDefaultSettings())
     {
         return m_defaultEditorSettings.fontSettings();
     }

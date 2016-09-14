@@ -21,24 +21,30 @@
 */
 
 #include "Settings/CppEditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
 static const char* useDefaultSettingsElementName = "use-default-settings";
+static const char* themeNameElementName = "theme-name";
+static const char* overrideThemeElementName = "override-theme";
 static const char* fontSettingsElementName = "font-settings";
 static const char* stylesElementName = "styles";
 static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 CppEditorSettings::CppEditorSettings()
-    : m_useDefaultFontSettings(true)
+    : m_useDefaultSettings(true),
+    m_themeName("CodeSmithy Light Theme"),
+    m_overrideTheme(false)
 {
     initializeStyles();
 }
 
 CppEditorSettings::CppEditorSettings(const CppEditorSettings& other)
-    : m_useDefaultFontSettings(other.m_useDefaultFontSettings),
+    : m_useDefaultSettings(other.m_useDefaultSettings),
+    m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
 }
@@ -47,7 +53,9 @@ CppEditorSettings& CppEditorSettings::operator=(const CppEditorSettings& other)
 {
     if (this != &other)
     {
-        m_useDefaultFontSettings = other.m_useDefaultFontSettings;
+        m_useDefaultSettings = other.m_useDefaultSettings;
+        m_themeName = other.m_themeName;
+        m_overrideTheme = other.m_overrideTheme;
         m_fontSettings = other.m_fontSettings;
         m_styles = other.m_styles;
     }
@@ -58,14 +66,34 @@ CppEditorSettings::~CppEditorSettings()
 {
 }
 
-bool CppEditorSettings::useDefaultFontSettings() const
+bool CppEditorSettings::useDefaultSettings() const
 {
-    return m_useDefaultFontSettings;
+    return m_useDefaultSettings;
 }
 
-void CppEditorSettings::setUseDefaultFontSettings(bool useDefaultSettings)
+void CppEditorSettings::setUseDefaultSettings(bool useDefaultSettings)
 {
-    m_useDefaultFontSettings = useDefaultSettings;
+    m_useDefaultSettings = useDefaultSettings;
+}
+
+const std::string& CppEditorSettings::themeName() const noexcept
+{
+    return m_themeName;
+}
+
+void CppEditorSettings::setThemeName(const std::string& themeName) noexcept
+{
+    m_themeName = themeName;
+}
+
+bool CppEditorSettings::overrideTheme() const noexcept
+{
+    return m_overrideTheme;
+}
+
+void CppEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
+{
+    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& CppEditorSettings::fontSettings() const
@@ -90,7 +118,9 @@ std::vector<StyleSettings>& CppEditorSettings::styles()
 
 bool CppEditorSettings::operator==(const CppEditorSettings& other) const
 {
-    return ((m_useDefaultFontSettings == other.m_useDefaultFontSettings) &&
+    return ((m_useDefaultSettings == other.m_useDefaultSettings) &&
+        (m_themeName == other.m_themeName) &&
+        (m_overrideTheme == other.m_overrideTheme) &&
         (m_fontSettings == other.m_fontSettings) &&
         (m_styles == other.m_styles));
 }
@@ -117,12 +147,14 @@ void CppEditorSettings::load(pugi::xml_node node)
     pugi::xml_node useDefaultSettingsNode = node.child(useDefaultSettingsElementName);
     if (std::string(useDefaultSettingsNode.child_value()) == "true")
     {
-        m_useDefaultFontSettings = true;
+        m_useDefaultSettings = true;
     }
     else if (std::string(useDefaultSettingsNode.child_value()) == "false")
     {
-        m_useDefaultFontSettings = false;
+        m_useDefaultSettings = false;
     }
+    m_themeName = XMLUtilities::getChildValueAsString(node, themeNameElementName, "CodeSmithy Light Theme");
+    m_overrideTheme = XMLUtilities::getChildValueAsBool(node, overrideThemeElementName, false);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     m_fontSettings.load(fontSettingsNode);
 }
@@ -133,7 +165,7 @@ void CppEditorSettings::save(pugi::xml_node node) const
     if (!useDefaultSettingsNode)
     {
         useDefaultSettingsNode = node.append_child(useDefaultSettingsElementName);
-        if (m_useDefaultFontSettings)
+        if (m_useDefaultSettings)
         {
             useDefaultSettingsNode.append_child(pugi::node_pcdata).set_value("true");
         }
@@ -144,7 +176,7 @@ void CppEditorSettings::save(pugi::xml_node node) const
     }
     else
     {
-        if (m_useDefaultFontSettings)
+        if (m_useDefaultSettings)
         {
             useDefaultSettingsNode.text().set("true");
         }
@@ -153,7 +185,8 @@ void CppEditorSettings::save(pugi::xml_node node) const
             useDefaultSettingsNode.text().set("false");
         }
     }
-
+    XMLUtilities::setOrAppendChildNode(node, themeNameElementName, m_themeName);
+    XMLUtilities::setOrAppendChildNode(node, overrideThemeElementName, m_overrideTheme);
     pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
     if (!fontSettingsNode)
     {
