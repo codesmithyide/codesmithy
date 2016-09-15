@@ -35,15 +35,14 @@ static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 XMLEditorSettings::XMLEditorSettings()
-    : m_useDefaultSettings(true), 
-    m_themeName("CodeSmithy Light Theme"),
+    : m_themeName("CodeSmithy Light Theme"),
     m_overrideTheme(false)
 {
     initializeStyles();
 }
 
 XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
-    : m_useDefaultSettings(other.m_useDefaultSettings),
+    : EditorSettingsBase(other),
     m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
@@ -65,17 +64,6 @@ XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
 XMLEditorSettings::~XMLEditorSettings()
 {
 }
-
-bool XMLEditorSettings::useDefaultSettings() const
-{
-    return m_useDefaultSettings;
-}
-
-void XMLEditorSettings::setUseDefaultSettings(bool useDefaultSettings)
-{
-    m_useDefaultSettings = useDefaultSettings;
-}
-
 
 const std::string& XMLEditorSettings::themeName() const noexcept
 {

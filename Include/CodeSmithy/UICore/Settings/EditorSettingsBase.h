@@ -30,7 +30,14 @@ class EditorSettingsBase
 {
 public:
     EditorSettingsBase();
+    EditorSettingsBase(const EditorSettingsBase& other);
     virtual ~EditorSettingsBase() noexcept;
+
+    bool useDefaultSettings() const noexcept;
+    void setUseDefaultSettings(bool useDefaultSettings) noexcept;
+
+protected:
+    bool m_useDefaultSettings;
 };
 
 }

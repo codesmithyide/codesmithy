@@ -26,11 +26,27 @@ namespace CodeSmithy
 {
 
 EditorSettingsBase::EditorSettingsBase()
+    : m_useDefaultSettings(true)
+{
+}
+
+EditorSettingsBase::EditorSettingsBase(const EditorSettingsBase& other)
+    : m_useDefaultSettings(other.m_useDefaultSettings)
 {
 }
 
 EditorSettingsBase::~EditorSettingsBase()
 {
+}
+
+bool EditorSettingsBase::useDefaultSettings() const noexcept
+{
+    return m_useDefaultSettings;
+}
+
+void EditorSettingsBase::setUseDefaultSettings(bool useDefaultSettings) noexcept
+{
+    m_useDefaultSettings = useDefaultSettings;
 }
 
 }

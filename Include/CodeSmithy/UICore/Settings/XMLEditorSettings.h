@@ -47,8 +47,6 @@ public:
     XMLEditorSettings& operator=(const XMLEditorSettings& other);
     ~XMLEditorSettings() noexcept override;
 
-    bool useDefaultSettings() const;
-    void setUseDefaultSettings(bool useDefaultSettings);
     const std::string& themeName() const noexcept;
     void setThemeName(const std::string& themeName) noexcept;
     bool overrideTheme() const noexcept;
@@ -72,7 +70,6 @@ private:
     static std::string styleIdToString(EStyleId id);
 
 private:
-    bool m_useDefaultSettings;
     std::string m_themeName;
     bool m_overrideTheme;
     FontSettings m_fontSettings;
