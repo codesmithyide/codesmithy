@@ -35,8 +35,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::CppEditorId,
         appSettings.editorSettings().cppSettings()),
-    m_newSettings(appSettings.editorSettings().cppSettings()),
-    m_applyButton(0)
+    m_newSettings(appSettings.editorSettings().cppSettings())
 {
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
@@ -70,26 +69,22 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
 void CppEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void CppEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                  unsigned pointSize)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 bool CppEditorPreferencesPage::hasChanges() const noexcept
@@ -122,31 +117,6 @@ void CppEditorPreferencesPage::updateExample()
     font.SetFaceName(faceName);
     font.SetPointSize(pointSize);
     m_formatExample->SetFont(font);
-}
-
-void CppEditorPreferencesPage::updateApplyButtonStatus()
-{
-    bool anyValueDifferent = false;
-    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().cppSettings().useDefaultSettings())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontSize->GetValue() != m_appSettings.editorSettings().cppSettings().fontSettings().pointSize())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontFaceName->GetValue() != m_appSettings.editorSettings().cppSettings().fontSettings().faceName())
-    {
-        anyValueDifferent = true;
-    }
-    if (anyValueDifferent)
-    {
-        m_applyButton->Enable();
-    }
-    else
-    {
-        m_applyButton->Disable();
-    }
 }
 
 wxBEGIN_EVENT_TABLE(CppEditorPreferencesPage, wxPanel)

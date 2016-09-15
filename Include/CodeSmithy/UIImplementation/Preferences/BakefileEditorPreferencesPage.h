@@ -46,12 +46,10 @@ private:
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
-    void updateApplyButtonStatus();
-
+    
 private:
     BakefileEditorSettings m_newSettings;
     wxTextCtrl* m_formatExample;
-    wxButton* m_applyButton;
 
     wxDECLARE_EVENT_TABLE();
 };

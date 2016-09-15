@@ -33,8 +33,7 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
                                                              AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::BakefileEditorId, 
         appSettings.editorSettings().bakefileSettings()),
-    m_newSettings(appSettings.editorSettings().bakefileSettings()),
-    m_applyButton(0)
+    m_newSettings(appSettings.editorSettings().bakefileSettings())
 {
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().pointSize());
@@ -58,26 +57,22 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
 void BakefileEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void BakefileEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                       unsigned pointSize)
 {
     updateExample();
-    updateApplyButtonStatus();
 }
 
 bool BakefileEditorPreferencesPage::hasChanges() const noexcept
@@ -110,31 +105,6 @@ void BakefileEditorPreferencesPage::updateExample()
     font.SetFaceName(faceName);
     font.SetPointSize(pointSize);
     m_formatExample->SetFont(font);
-}
-
-void BakefileEditorPreferencesPage::updateApplyButtonStatus()
-{
-    bool anyValueDifferent = false;
-    if (m_useDefaultCheckBox->IsChecked() != m_appSettings.editorSettings().bakefileSettings().useDefaultSettings())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontSize->GetValue() != m_appSettings.editorSettings().bakefileSettings().fontSettings().pointSize())
-    {
-        anyValueDifferent = true;
-    }
-    else if (m_fontFaceName->GetValue() != m_appSettings.editorSettings().bakefileSettings().fontSettings().faceName())
-    {
-        anyValueDifferent = true;
-    }
-    if (anyValueDifferent)
-    {
-        m_applyButton->Enable();
-    }
-    else
-    {
-        m_applyButton->Disable();
-    }
 }
 
 wxBEGIN_EVENT_TABLE(BakefileEditorPreferencesPage, wxPanel)

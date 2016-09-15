@@ -50,12 +50,10 @@ private:
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
-    void updateApplyButtonStatus();
 
 private:
     XMLEditorSettings m_newSettings;
     XMLEditorCtrl* m_formatExample;
-    wxButton* m_applyButton;
 
     wxDECLARE_EVENT_TABLE();
 };

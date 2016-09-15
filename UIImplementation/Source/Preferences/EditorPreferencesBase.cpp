@@ -34,7 +34,7 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
                                              const EditorSettingsBase& editorSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings), 
     m_useDefaultCheckBox(0), m_themeChoice(0), m_overrideThemeCheckBox(0),
-    m_fontFaceName(0), m_fontSize(0), m_fontButton(0)
+    m_fontFaceName(0), m_fontSize(0), m_fontButton(0), m_applyButton(0)
 {
     m_appSettings.themes().findThemesForEditor(editorId, m_themes);
 
@@ -77,6 +77,7 @@ void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
     m_themeChoice->Enable(!evt.IsChecked());
     handleUseDefaultSettingChanged(evt.IsChecked());
+    updateApplyButtonStatus();
 }
 
 void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
@@ -85,11 +86,13 @@ void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
     m_fontSize->Enable(evt.IsChecked());
     m_fontButton->Enable(evt.IsChecked());
     handleOverrideThemeChanged(evt.IsChecked());
+    updateApplyButtonStatus();
 }
 
 void EditorPreferencesBase::onPointSizeChanged(wxSpinEvent& evt)
 {
     handlePointSizeChanged(m_fontSize->GetValue());
+    updateApplyButtonStatus();
 }
 
 void EditorPreferencesBase::onSelectFont(wxCommandEvent& evt)
@@ -108,9 +111,15 @@ void EditorPreferencesBase::onSelectFont(wxCommandEvent& evt)
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
         std::string faceName = data.GetChosenFont().GetFaceName();
         handleFontChanged(faceName, data.GetChosenFont().GetPointSize());
+        updateApplyButtonStatus();
     }
 
     fontDialog->Destroy();
+}
+
+void EditorPreferencesBase::updateApplyButtonStatus()
+{
+    m_applyButton->Enable(hasChanges());
 }
 
 }

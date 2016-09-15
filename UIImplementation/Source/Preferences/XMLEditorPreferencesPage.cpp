@@ -33,8 +33,7 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::XMLEditorId,
         appSettings.editorSettings().xmlSettings()),
-    m_newSettings(appSettings.editorSettings().xmlSettings()),
-    m_applyButton(0)
+    m_newSettings(appSettings.editorSettings().xmlSettings())
 {
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
@@ -70,21 +69,18 @@ void XMLEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSet
 {
     m_newSettings.setUseDefaultSettings(useDefaultSettings);
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void XMLEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
     m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
     updateExample();
-    updateApplyButtonStatus();
 }
 
 void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName, 
@@ -93,7 +89,6 @@ void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName,
     m_newSettings.fontSettings().setFaceName(faceName);
     m_newSettings.fontSettings().setPointSize(pointSize);
     updateExample();
-    updateApplyButtonStatus();
 }
 
 bool XMLEditorPreferencesPage::hasChanges() const noexcept
@@ -115,11 +110,6 @@ void XMLEditorPreferencesPage::onApply(wxCommandEvent& evt)
 void XMLEditorPreferencesPage::updateExample()
 {
     m_formatExample->setCustomSettings(m_newSettings);
-}
-
-void XMLEditorPreferencesPage::updateApplyButtonStatus()
-{
-    m_applyButton->Enable(hasChanges());
 }
 
 wxBEGIN_EVENT_TABLE(XMLEditorPreferencesPage, wxPanel)

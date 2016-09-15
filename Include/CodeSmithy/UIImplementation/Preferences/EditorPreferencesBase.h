@@ -52,6 +52,8 @@ private:
 
     virtual bool hasChanges() const noexcept = 0;
 
+    void updateApplyButtonStatus();
+
 protected:
     AppSettings& m_appSettings;
     std::vector<std::shared_ptr<Theme> > m_themes;
@@ -61,6 +63,7 @@ protected:
     wxTextCtrl* m_fontFaceName;
     wxSpinCtrl* m_fontSize;
     wxButton* m_fontButton;
+    wxButton* m_applyButton;
 };
 
 }

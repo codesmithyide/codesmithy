@@ -47,12 +47,10 @@ private:
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
-    void updateApplyButtonStatus();
-
+    
 private:
     CppEditorSettings m_newSettings;
     CppEditorCtrl* m_formatExample;
-    wxButton* m_applyButton;
 
     wxDECLARE_EVENT_TABLE();
 };
