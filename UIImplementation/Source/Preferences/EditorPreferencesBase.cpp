@@ -77,6 +77,7 @@ void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
     m_themeChoice->Enable(!evt.IsChecked());
     handleUseDefaultSettingChanged(evt.IsChecked());
+    updateExample();
     updateApplyButtonStatus();
 }
 
@@ -86,12 +87,14 @@ void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
     m_fontSize->Enable(evt.IsChecked());
     m_fontButton->Enable(evt.IsChecked());
     handleOverrideThemeChanged(evt.IsChecked());
+    updateExample();
     updateApplyButtonStatus();
 }
 
 void EditorPreferencesBase::onPointSizeChanged(wxSpinEvent& evt)
 {
     handlePointSizeChanged(m_fontSize->GetValue());
+    updateExample();
     updateApplyButtonStatus();
 }
 
@@ -111,6 +114,7 @@ void EditorPreferencesBase::onSelectFont(wxCommandEvent& evt)
         m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
         std::string faceName = data.GetChosenFont().GetFaceName();
         handleFontChanged(faceName, data.GetChosenFont().GetPointSize());
+        updateExample();
         updateApplyButtonStatus();
     }
 

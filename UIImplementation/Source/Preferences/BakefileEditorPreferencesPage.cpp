@@ -56,23 +56,19 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
 
 void BakefileEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
-    updateExample();
 }
 
 void BakefileEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
-    updateExample();
 }
 
 void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
-    updateExample();
 }
 
 void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                       unsigned pointSize)
 {
-    updateExample();
 }
 
 bool BakefileEditorPreferencesPage::hasChanges() const noexcept

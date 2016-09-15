@@ -52,6 +52,7 @@ private:
 
     virtual bool hasChanges() const noexcept = 0;
 
+    virtual void updateExample() = 0;
     void updateApplyButtonStatus();
 
 protected:

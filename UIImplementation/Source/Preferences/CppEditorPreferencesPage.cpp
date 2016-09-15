@@ -68,23 +68,19 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
 
 void CppEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
-    updateExample();
 }
 
 void CppEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
-    updateExample();
 }
 
 void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
-    updateExample();
 }
 
 void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                  unsigned pointSize)
 {
-    updateExample();
 }
 
 bool CppEditorPreferencesPage::hasChanges() const noexcept

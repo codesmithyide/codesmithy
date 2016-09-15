@@ -68,19 +68,16 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
 void XMLEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
 {
     m_newSettings.setUseDefaultSettings(useDefaultSettings);
-    updateExample();
 }
 
 void XMLEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
     m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
-    updateExample();
 }
 
 void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
-    updateExample();
 }
 
 void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName, 
@@ -88,7 +85,6 @@ void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName,
 {
     m_newSettings.fontSettings().setFaceName(faceName);
     m_newSettings.fontSettings().setPointSize(pointSize);
-    updateExample();
 }
 
 bool XMLEditorPreferencesPage::hasChanges() const noexcept
