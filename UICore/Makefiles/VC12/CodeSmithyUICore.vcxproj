@@ -154,6 +154,7 @@
     <ClCompile Include="..\..\Source\Settings\AppSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\AppSettingsObserver.cpp" />
     <ClCompile Include="..\..\Source\Settings\EditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\EditorSettingsBase.cpp" />
     <ClCompile Include="..\..\Source\Settings\DefaultEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\BakefileEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\CppEditorSettings.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettingsObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\EditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\EditorSettingsBase.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\DefaultEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\BakefileEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CppEditorSettings.h" />
