@@ -23,6 +23,7 @@
 #include "Preferences/EditorPreferencesBase.h"
 #include "PreferencesDialogUtilities.h"
 #include <wx/sizer.h>
+#include <wx/fontdlg.h>
 
 namespace CodeSmithy
 {
@@ -52,7 +53,10 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
     m_fontSize->Bind(wxEVT_SPINCTRL, &EditorPreferencesBase::onPointSizeChanged, this);
-    
+
+    m_fontButton = new wxButton(this, wxID_ANY, "Select Font...");
+    m_fontButton->Bind(wxEVT_BUTTON, &EditorPreferencesBase::onSelectFont, this);
+
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     wxSizer* themeSizer = PreferencesDialogUtilities::createThemeSelectionSizer(this, "Overriding theme:", m_themeChoice);
@@ -77,6 +81,27 @@ void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
 void EditorPreferencesBase::onPointSizeChanged(wxSpinEvent& evt)
 {
     handlePointSizeChanged(m_fontSize->GetValue());
+}
+
+void EditorPreferencesBase::onSelectFont(wxCommandEvent& evt)
+{
+    wxFontDialog* fontDialog = new wxFontDialog(this);
+    wxFontData& fontData = fontDialog->GetFontData();
+    wxFont font = fontData.GetInitialFont();
+    font.SetFaceName(m_fontFaceName->GetValue());
+    font.SetPointSize(m_fontSize->GetValue());
+    fontData.SetInitialFont(font);
+
+    if (fontDialog->ShowModal() == wxID_OK)
+    {
+        wxFontData data = fontDialog->GetFontData();
+        m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
+        m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
+        std::string faceName = data.GetChosenFont().GetFaceName();
+        handleFontChanged(faceName, data.GetChosenFont().GetPointSize());
+    }
+
+    fontDialog->Destroy();
 }
 
 }

@@ -24,7 +24,6 @@
 #include "PreferencesDialogUtilities.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
-#include <wx/fontdlg.h>
 #include <wx/stattext.h>
 
 namespace CodeSmithy
@@ -42,7 +41,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
 
-    m_fontButton = new wxButton(this, PreferencesXMLEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
         m_fontFaceName->Disable();
@@ -98,27 +96,13 @@ void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
     updateApplyButtonStatus();
 }
 
-void XMLEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
+void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName, 
+                                                 unsigned pointSize)
 {
-    wxFontDialog* fontDialog = new wxFontDialog(this);
-    wxFontData& fontData = fontDialog->GetFontData();
-    wxFont font = fontData.GetInitialFont();
-    font.SetFaceName(m_fontFaceName->GetValue());
-    font.SetPointSize(m_fontSize->GetValue());
-    fontData.SetInitialFont(font);
-
-    if (fontDialog->ShowModal() == wxID_OK)
-    {
-        wxFontData data = fontDialog->GetFontData();
-        m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
-        m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
-        std::string faceName = data.GetChosenFont().GetFaceName();
-        m_newSettings.fontSettings().setFaceName(faceName);
-        updateExample();
-        updateApplyButtonStatus();
-    }
-
-    fontDialog->Destroy();
+    m_newSettings.fontSettings().setFaceName(faceName);
+    m_newSettings.fontSettings().setPointSize(pointSize);
+    updateExample();
+    updateApplyButtonStatus();
 }
 
 void XMLEditorPreferencesPage::onStyleChanged(wxColourPickerEvent& evt)
@@ -150,7 +134,6 @@ void XMLEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(XMLEditorPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesXMLEditorFontSelectionButtonID, XMLEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesXMLEditorPreferencesApplyButtonID, XMLEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
 

@@ -44,14 +44,11 @@ const wxWindowID PreferencesDefaultEditorSizeSelectionButtonID = PreferencesDefa
 const wxWindowID PreferencesDefaultEditorFontSelectionButtonID = PreferencesDefaultEditorSizeSelectionButtonID + 1;
 const wxWindowID PreferencesDefaultEditorPreferencesApplyButtonID = PreferencesDefaultEditorFontSelectionButtonID + 1;
 
-const wxWindowID PreferencesBakefileEditorFontSelectionButtonID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = PreferencesBakefileEditorFontSelectionButtonID + 1;
+const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = PreferencesDefaultEditorPreferencesApplyButtonID + 1;
 
-const wxWindowID PreferencesCppEditorFontSelectionButtonID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesCppEditorFontSelectionButtonID + 1;
+const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
 
-const wxWindowID PreferencesXMLEditorFontSelectionButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
-const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesXMLEditorFontSelectionButtonID + 1;
+const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
 
 const wxWindowID PreferencesStartupFixedSizeButtonID = PreferencesXMLEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesStartupPreviousSizeButtonID = PreferencesStartupFixedSizeButtonID + 1;

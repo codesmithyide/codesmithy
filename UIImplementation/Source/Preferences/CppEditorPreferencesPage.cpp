@@ -41,7 +41,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
 
-    m_fontButton = new wxButton(this, PreferencesCppEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
         m_fontFaceName->Disable();
@@ -93,25 +92,11 @@ void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
     updateApplyButtonStatus();
 }
 
-void CppEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
+void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                 unsigned pointSize)
 {
-    wxFontDialog* fontDialog = new wxFontDialog(this);
-    wxFontData& fontData = fontDialog->GetFontData();
-    wxFont font = fontData.GetInitialFont();
-    font.SetFaceName(m_fontFaceName->GetValue());
-    font.SetPointSize(m_fontSize->GetValue());
-    fontData.SetInitialFont(font);
-
-    if (fontDialog->ShowModal() == wxID_OK)
-    {
-        wxFontData data = fontDialog->GetFontData();
-        m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
-        m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
-        updateExample();
-        updateApplyButtonStatus();
-    }
-
-    fontDialog->Destroy();
+    updateExample();
+    updateApplyButtonStatus();
 }
 
 void CppEditorPreferencesPage::onApply(wxCommandEvent& evt)
@@ -167,7 +152,6 @@ void CppEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(CppEditorPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesCppEditorFontSelectionButtonID, CppEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesCppEditorPreferencesApplyButtonID, CppEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
 

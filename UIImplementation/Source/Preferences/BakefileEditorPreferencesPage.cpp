@@ -39,7 +39,6 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().pointSize());
 
-    m_fontButton = new wxButton(this, PreferencesBakefileEditorFontSelectionButtonID, "Select Font...");
     if (m_useDefaultCheckBox->IsChecked())
     {
         m_fontFaceName->Disable();
@@ -81,25 +80,11 @@ void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
     updateApplyButtonStatus();
 }
 
-void BakefileEditorPreferencesPage::onSelectFont(wxCommandEvent& evt)
+void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                      unsigned pointSize)
 {
-    wxFontDialog* fontDialog = new wxFontDialog(this);
-    wxFontData& fontData = fontDialog->GetFontData();
-    wxFont font = fontData.GetInitialFont();
-    font.SetFaceName(m_fontFaceName->GetValue());
-    font.SetPointSize(m_fontSize->GetValue());
-    fontData.SetInitialFont(font);
-
-    if (fontDialog->ShowModal() == wxID_OK)
-    {
-        wxFontData data = fontDialog->GetFontData();
-        m_fontFaceName->SetValue(data.GetChosenFont().GetFaceName());
-        m_fontSize->SetValue(data.GetChosenFont().GetPointSize());
-        updateExample();
-        updateApplyButtonStatus();
-    }
-
-    fontDialog->Destroy();
+    updateExample();
+    updateApplyButtonStatus();
 }
 
 void BakefileEditorPreferencesPage::onApply(wxCommandEvent& evt)
@@ -155,7 +140,6 @@ void BakefileEditorPreferencesPage::updateApplyButtonStatus()
 }
 
 wxBEGIN_EVENT_TABLE(BakefileEditorPreferencesPage, wxPanel)
-    EVT_BUTTON(PreferencesBakefileEditorFontSelectionButtonID, BakefileEditorPreferencesPage::onSelectFont)
     EVT_BUTTON(PreferencesBakefileEditorPreferencesApplyButtonID, BakefileEditorPreferencesPage::onApply)
 wxEND_EVENT_TABLE()
 

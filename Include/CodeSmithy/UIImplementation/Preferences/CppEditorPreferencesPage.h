@@ -40,8 +40,8 @@ private:
     void handleUseDefaultSettingChanged(bool useDefaultSettings) override;
     void handleOverrideThemeChanged(bool overrideTheme) override;
     void handlePointSizeChanged(unsigned pointSize) override;
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
 
-    void onSelectFont(wxCommandEvent& evt);
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
