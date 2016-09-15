@@ -36,8 +36,6 @@ public:
     BakefileEditorSettings();
     ~BakefileEditorSettings() noexcept override;
 
-    const std::string& themeName() const noexcept;
-    void setThemeName(const std::string& themeName) noexcept;
     bool overrideTheme() const noexcept;
     void setOverrideTheme(bool overrideTheme) noexcept;
     const FontSettings& fontSettings() const;
@@ -47,7 +45,6 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
-    std::string m_themeName;
     bool m_overrideTheme;
     FontSettings m_fontSettings;
 };

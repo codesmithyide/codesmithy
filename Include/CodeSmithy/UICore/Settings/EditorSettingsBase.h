@@ -23,6 +23,8 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 
+#include <string>
+
 namespace CodeSmithy
 {
 
@@ -35,9 +37,12 @@ public:
 
     bool useDefaultSettings() const noexcept;
     void setUseDefaultSettings(bool useDefaultSettings) noexcept;
+    const std::string& themeName() const noexcept;
+    void setThemeName(const std::string& themeName) noexcept;
 
 protected:
     bool m_useDefaultSettings;
+    std::string m_themeName;
 };
 
 }

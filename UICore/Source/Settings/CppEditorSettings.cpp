@@ -35,15 +35,14 @@ static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 CppEditorSettings::CppEditorSettings()
-    : m_themeName("CodeSmithy Light Theme"),
-    m_overrideTheme(false)
+    : m_overrideTheme(false)
 {
     initializeStyles();
 }
 
 CppEditorSettings::CppEditorSettings(const CppEditorSettings& other)
     : EditorSettingsBase(other),
-    m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme),
+    m_overrideTheme(other.m_overrideTheme),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
 }
@@ -63,16 +62,6 @@ CppEditorSettings& CppEditorSettings::operator=(const CppEditorSettings& other)
 
 CppEditorSettings::~CppEditorSettings()
 {
-}
-
-const std::string& CppEditorSettings::themeName() const noexcept
-{
-    return m_themeName;
-}
-
-void CppEditorSettings::setThemeName(const std::string& themeName) noexcept
-{
-    m_themeName = themeName;
 }
 
 bool CppEditorSettings::overrideTheme() const noexcept

@@ -32,23 +32,12 @@ static const char* overrideThemeElementName = "override-theme";
 static const char* fontSettingsElementName = "font-settings";
 
 BakefileEditorSettings::BakefileEditorSettings()
-    : m_themeName("CodeSmithy Light Theme"),
-    m_overrideTheme(false)
+    : m_overrideTheme(false)
 {
 }
 
 BakefileEditorSettings::~BakefileEditorSettings()
 {
-}
-
-const std::string& BakefileEditorSettings::themeName() const noexcept
-{
-    return m_themeName;
-}
-
-void BakefileEditorSettings::setThemeName(const std::string& themeName) noexcept
-{
-    m_themeName = themeName;
 }
 
 bool BakefileEditorSettings::overrideTheme() const noexcept
