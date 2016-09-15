@@ -38,13 +38,6 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().pointSize());
 
-    if (m_useDefaultCheckBox->IsChecked())
-    {
-        m_fontFaceName->Disable();
-        m_fontSize->Disable();
-        m_fontButton->Disable();
-    }
-
     m_formatExample = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(wxDefaultCoord, 150), wxTE_MULTILINE);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();

@@ -36,16 +36,8 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     m_newSettings(appSettings.editorSettings().xmlSettings()),
     m_applyButton(0)
 {
-    m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
-
-    if (m_useDefaultCheckBox->IsChecked())
-    {
-        m_fontFaceName->Disable();
-        m_fontSize->Disable();
-        m_fontButton->Disable();
-    }
 
     m_formatExample = new XMLEditorCtrl(this, appSettings);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");

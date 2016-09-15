@@ -45,6 +45,7 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, editorSettings.themeName());
     
     m_overrideThemeCheckBox = new wxCheckBox(this, wxID_ANY, "Override theme");
+    m_overrideThemeCheckBox->SetValue(editorSettings.overrideTheme());
     m_overrideThemeCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onOverrideThemeChanged, this);
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
@@ -57,6 +58,13 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
 
     m_fontButton = new wxButton(this, wxID_ANY, "Select Font...");
     m_fontButton->Bind(wxEVT_BUTTON, &EditorPreferencesBase::onSelectFont, this);
+
+    if (!editorSettings.overrideTheme())
+    {
+        m_fontFaceName->Disable();
+        m_fontSize->Disable();
+        m_fontButton->Disable();
+    }
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(m_useDefaultCheckBox, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
