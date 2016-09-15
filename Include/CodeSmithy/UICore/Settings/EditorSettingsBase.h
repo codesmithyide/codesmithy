@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 
+namespace CodeSmithy
+{
+
+class EditorSettingsBase
+{
+public:
+    EditorSettingsBase();
+    virtual ~EditorSettingsBase() noexcept;
+};
+
+}
+
 #endif

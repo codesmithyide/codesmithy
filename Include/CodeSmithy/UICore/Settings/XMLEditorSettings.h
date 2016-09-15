@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_XMLEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_XMLEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
 #include "FontSettings.h"
 #include "StyleSettings.h"
 #include <pugixml.hpp>
@@ -31,7 +32,7 @@
 namespace CodeSmithy
 {
 
-class XMLEditorSettings
+class XMLEditorSettings : public EditorSettingsBase
 {
 public:
     enum EStyleId
@@ -44,7 +45,7 @@ public:
     XMLEditorSettings();
     XMLEditorSettings(const XMLEditorSettings& other);
     XMLEditorSettings& operator=(const XMLEditorSettings& other);
-    ~XMLEditorSettings() noexcept;
+    ~XMLEditorSettings() noexcept override;
 
     bool useDefaultSettings() const;
     void setUseDefaultSettings(bool useDefaultSettings);

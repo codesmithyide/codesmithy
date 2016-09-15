@@ -23,17 +23,18 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_BAKEFILEEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_BAKEFILEEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
 #include "FontSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
 {
 
-class BakefileEditorSettings
+class BakefileEditorSettings : public EditorSettingsBase
 {
 public:
     BakefileEditorSettings();
-    ~BakefileEditorSettings() noexcept;
+    ~BakefileEditorSettings() noexcept override;
 
     bool useDefaultSettings() const;
     void setUseDefaultSettings(bool useDefaultSettings);

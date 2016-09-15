@@ -21,3 +21,16 @@
 */
 
 #include "Settings/EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+EditorSettingsBase::EditorSettingsBase()
+{
+}
+
+EditorSettingsBase::~EditorSettingsBase()
+{
+}
+
+}
