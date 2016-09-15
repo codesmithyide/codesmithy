@@ -35,6 +35,24 @@ BakefileEditorSettings::BakefileEditorSettings()
 {
 }
 
+BakefileEditorSettings::BakefileEditorSettings(const BakefileEditorSettings& other)
+    : EditorSettingsBase(other),
+    m_fontSettings(other.m_fontSettings)
+{
+}
+
+BakefileEditorSettings& BakefileEditorSettings::operator=(const BakefileEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_useDefaultSettings = other.m_useDefaultSettings;
+        m_themeName = other.m_themeName;
+        m_overrideTheme = other.m_overrideTheme;
+        m_fontSettings = other.m_fontSettings;
+    }
+    return *this;
+}
+
 BakefileEditorSettings::~BakefileEditorSettings()
 {
 }
@@ -47,6 +65,19 @@ const FontSettings& BakefileEditorSettings::fontSettings() const
 FontSettings& BakefileEditorSettings::fontSettings()
 {
     return m_fontSettings;
+}
+
+bool BakefileEditorSettings::operator==(const BakefileEditorSettings& other) const
+{
+    return ((m_useDefaultSettings == other.m_useDefaultSettings) &&
+        (m_themeName == other.m_themeName) &&
+        (m_overrideTheme == other.m_overrideTheme) &&
+        (m_fontSettings == other.m_fontSettings));
+}
+
+bool BakefileEditorSettings::operator!=(const BakefileEditorSettings& other) const
+{
+    return !(*this == other);
 }
 
 void BakefileEditorSettings::load(pugi::xml_node node)

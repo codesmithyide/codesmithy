@@ -96,6 +96,11 @@ void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName,
     updateApplyButtonStatus();
 }
 
+bool XMLEditorPreferencesPage::hasChanges() const noexcept
+{
+    return (m_appSettings.editorSettings().xmlSettings() != m_newSettings);
+}
+
 void XMLEditorPreferencesPage::onStyleChanged(wxColourPickerEvent& evt)
 {
 }
@@ -114,14 +119,7 @@ void XMLEditorPreferencesPage::updateExample()
 
 void XMLEditorPreferencesPage::updateApplyButtonStatus()
 {
-    if (m_appSettings.editorSettings().xmlSettings() != m_newSettings)
-    {
-        m_applyButton->Enable();
-    }
-    else
-    {
-        m_applyButton->Disable();
-    }
+    m_applyButton->Enable(hasChanges());
 }
 
 wxBEGIN_EVENT_TABLE(XMLEditorPreferencesPage, wxPanel)

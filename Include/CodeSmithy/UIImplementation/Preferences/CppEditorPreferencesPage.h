@@ -42,12 +42,15 @@ private:
     void handlePointSizeChanged(unsigned pointSize) override;
     void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
 
+    bool hasChanges() const noexcept override;
+
     void onApply(wxCommandEvent& evt);
 
     void updateExample();
     void updateApplyButtonStatus();
 
 private:
+    CppEditorSettings m_newSettings;
     CppEditorCtrl* m_formatExample;
     wxButton* m_applyButton;
 

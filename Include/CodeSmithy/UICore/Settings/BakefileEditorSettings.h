@@ -34,10 +34,15 @@ class BakefileEditorSettings : public EditorSettingsBase
 {
 public:
     BakefileEditorSettings();
+    BakefileEditorSettings(const BakefileEditorSettings& other);
+    BakefileEditorSettings& operator=(const BakefileEditorSettings& other);
     ~BakefileEditorSettings() noexcept override;
 
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
+
+    bool operator==(const BakefileEditorSettings& other) const;
+    bool operator!=(const BakefileEditorSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

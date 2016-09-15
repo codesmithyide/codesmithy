@@ -35,6 +35,7 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::CppEditorId,
         appSettings.editorSettings().cppSettings()),
+    m_newSettings(appSettings.editorSettings().cppSettings()),
     m_applyButton(0)
 {
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
@@ -89,6 +90,11 @@ void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
 {
     updateExample();
     updateApplyButtonStatus();
+}
+
+bool CppEditorPreferencesPage::hasChanges() const noexcept
+{
+    return (m_appSettings.editorSettings().cppSettings() != m_newSettings);
 }
 
 void CppEditorPreferencesPage::onApply(wxCommandEvent& evt)

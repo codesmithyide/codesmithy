@@ -50,6 +50,8 @@ private:
     virtual void handlePointSizeChanged(unsigned pointSize) = 0;
     virtual void handleFontChanged(const std::string& faceName, unsigned pointSize) = 0;
 
+    virtual bool hasChanges() const noexcept = 0;
+
 protected:
     AppSettings& m_appSettings;
     std::vector<std::shared_ptr<Theme> > m_themes;

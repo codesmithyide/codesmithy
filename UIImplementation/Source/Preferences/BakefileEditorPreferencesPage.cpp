@@ -33,6 +33,7 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
                                                              AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::BakefileEditorId, 
         appSettings.editorSettings().bakefileSettings()),
+    m_newSettings(appSettings.editorSettings().bakefileSettings()),
     m_applyButton(0)
 {
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
@@ -77,6 +78,11 @@ void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceNam
 {
     updateExample();
     updateApplyButtonStatus();
+}
+
+bool BakefileEditorPreferencesPage::hasChanges() const noexcept
+{
+    return (m_appSettings.editorSettings().bakefileSettings() != m_newSettings);
 }
 
 void BakefileEditorPreferencesPage::onApply(wxCommandEvent& evt)
