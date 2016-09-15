@@ -32,22 +32,11 @@ static const char* overrideThemeElementName = "override-theme";
 static const char* fontSettingsElementName = "font-settings";
 
 BakefileEditorSettings::BakefileEditorSettings()
-    : m_overrideTheme(false)
 {
 }
 
 BakefileEditorSettings::~BakefileEditorSettings()
 {
-}
-
-bool BakefileEditorSettings::overrideTheme() const noexcept
-{
-    return m_overrideTheme;
-}
-
-void BakefileEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
-{
-    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& BakefileEditorSettings::fontSettings() const

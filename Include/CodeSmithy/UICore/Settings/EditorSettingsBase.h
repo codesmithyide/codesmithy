@@ -39,10 +39,13 @@ public:
     void setUseDefaultSettings(bool useDefaultSettings) noexcept;
     const std::string& themeName() const noexcept;
     void setThemeName(const std::string& themeName) noexcept;
+    bool overrideTheme() const noexcept;
+    void setOverrideTheme(bool overrideTheme) noexcept;
 
 protected:
     bool m_useDefaultSettings;
     std::string m_themeName;
+    bool m_overrideTheme;
 };
 
 }

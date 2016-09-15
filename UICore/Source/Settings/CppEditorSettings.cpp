@@ -35,14 +35,12 @@ static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 CppEditorSettings::CppEditorSettings()
-    : m_overrideTheme(false)
 {
     initializeStyles();
 }
 
 CppEditorSettings::CppEditorSettings(const CppEditorSettings& other)
     : EditorSettingsBase(other),
-    m_overrideTheme(other.m_overrideTheme),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
 }
@@ -62,16 +60,6 @@ CppEditorSettings& CppEditorSettings::operator=(const CppEditorSettings& other)
 
 CppEditorSettings::~CppEditorSettings()
 {
-}
-
-bool CppEditorSettings::overrideTheme() const noexcept
-{
-    return m_overrideTheme;
-}
-
-void CppEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
-{
-    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& CppEditorSettings::fontSettings() const

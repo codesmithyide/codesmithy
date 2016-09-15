@@ -24,7 +24,6 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_EDITORPREFERENCESBASE_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
-//#include "CodeSmithy/UICore/Settings/EditorSettingsBase.h"
 #include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>

@@ -46,8 +46,6 @@ public:
     CppEditorSettings& operator=(const CppEditorSettings& other);
     ~CppEditorSettings() noexcept override;
 
-    bool overrideTheme() const noexcept;
-    void setOverrideTheme(bool overrideTheme) noexcept;
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
     unsigned int textColor(EStyleId id) const;
@@ -67,7 +65,6 @@ private:
     static std::string styleIdToString(EStyleId id);
 
 private:
-    bool m_overrideTheme;
     FontSettings m_fontSettings;
     std::vector<StyleSettings> m_styles;
 };

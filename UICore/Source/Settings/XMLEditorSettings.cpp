@@ -35,14 +35,12 @@ static const char* styleElementName = "style";
 static const char* styleIdElementName = "id";
 
 XMLEditorSettings::XMLEditorSettings()
-    : m_overrideTheme(false)
 {
     initializeStyles();
 }
 
 XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
     : EditorSettingsBase(other),
-    m_overrideTheme(other.m_overrideTheme),
     m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
 {
 }
@@ -62,16 +60,6 @@ XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
 
 XMLEditorSettings::~XMLEditorSettings()
 {
-}
-
-bool XMLEditorSettings::overrideTheme() const noexcept
-{
-    return m_overrideTheme;
-}
-
-void XMLEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
-{
-    m_overrideTheme = overrideTheme;
 }
 
 const FontSettings& XMLEditorSettings::fontSettings() const

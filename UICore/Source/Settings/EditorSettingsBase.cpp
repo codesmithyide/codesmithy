@@ -26,13 +26,14 @@ namespace CodeSmithy
 {
 
 EditorSettingsBase::EditorSettingsBase()
-    : m_useDefaultSettings(true), m_themeName("CodeSmithy Light Theme")
+    : m_useDefaultSettings(true), m_themeName("CodeSmithy Light Theme"),
+    m_overrideTheme(false)
 {
 }
 
 EditorSettingsBase::EditorSettingsBase(const EditorSettingsBase& other)
     : m_useDefaultSettings(other.m_useDefaultSettings),
-    m_themeName(other.m_themeName)
+    m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme)
 {
 }
 
@@ -58,6 +59,16 @@ const std::string& EditorSettingsBase::themeName() const noexcept
 void EditorSettingsBase::setThemeName(const std::string& themeName) noexcept
 {
     m_themeName = themeName;
+}
+
+bool EditorSettingsBase::overrideTheme() const noexcept
+{
+    return m_overrideTheme;
+}
+
+void EditorSettingsBase::setOverrideTheme(bool overrideTheme) noexcept
+{
+    m_overrideTheme = overrideTheme;
 }
 
 }

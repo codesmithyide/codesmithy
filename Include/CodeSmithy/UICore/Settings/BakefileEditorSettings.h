@@ -36,8 +36,6 @@ public:
     BakefileEditorSettings();
     ~BakefileEditorSettings() noexcept override;
 
-    bool overrideTheme() const noexcept;
-    void setOverrideTheme(bool overrideTheme) noexcept;
     const FontSettings& fontSettings() const;
     FontSettings& fontSettings();
 
@@ -45,7 +43,6 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
-    bool m_overrideTheme;
     FontSettings m_fontSettings;
 };
 
