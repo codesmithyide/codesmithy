@@ -43,6 +43,10 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     m_useDefaultCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onUseDefaultSettingChanged, this);
 
     m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, editorSettings.themeName());
+    if (editorSettings.useDefaultSettings())
+    {
+        m_themeChoice->Disable();
+    }
     
     m_overrideThemeCheckBox = new wxCheckBox(this, wxID_ANY, "Override theme");
     m_overrideThemeCheckBox->SetValue(editorSettings.overrideTheme());
@@ -76,7 +80,7 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
 void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
     m_themeChoice->Enable(!evt.IsChecked());
-    handleUseDefaultSettingChanged(evt.IsChecked());
+    newSettings().setUseDefaultSettings(evt.IsChecked());
     updateExample();
     updateApplyButtonStatus();
 }

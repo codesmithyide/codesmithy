@@ -65,11 +65,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     topSizer->Add(m_applyButton);
 }
 
-void XMLEditorPreferencesPage::handleUseDefaultSettingChanged(bool useDefaultSettings)
-{
-    m_newSettings.setUseDefaultSettings(useDefaultSettings);
-}
-
 void XMLEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
 {
     m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
