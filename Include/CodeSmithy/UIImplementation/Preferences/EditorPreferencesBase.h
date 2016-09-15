@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_EDITORPREFERENCESBASE_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
+//#include "CodeSmithy/UICore/Settings/EditorSettingsBase.h"
 #include <wx/panel.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
@@ -37,7 +38,7 @@ class EditorPreferencesBase : public wxPanel
 {
 public:
     EditorPreferencesBase(wxWindow* parent, AppSettings& appSettings, const EditorId& editorId,
-        const std::string& selectedThemeName);
+        const EditorSettingsBase& editorSettings);
 
 private:
     void onUseDefaultSettingChanged(wxCommandEvent& evt);

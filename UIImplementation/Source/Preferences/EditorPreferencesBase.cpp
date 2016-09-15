@@ -31,7 +31,7 @@ namespace CodeSmithy
 EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent, 
                                              AppSettings& appSettings, 
                                              const EditorId& editorId,
-                                             const std::string& selectedThemeName)
+                                             const EditorSettingsBase& editorSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings), 
     m_useDefaultCheckBox(0), m_themeChoice(0), m_overrideThemeCheckBox(0),
     m_fontFaceName(0), m_fontSize(0), m_fontButton(0)
@@ -39,9 +39,10 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     m_appSettings.themes().findThemesForEditor(editorId, m_themes);
 
     m_useDefaultCheckBox = new wxCheckBox(this, wxID_ANY, "Use default settings");
+    m_useDefaultCheckBox->SetValue(editorSettings.useDefaultSettings());
     m_useDefaultCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onUseDefaultSettingChanged, this);
 
-    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, selectedThemeName);
+    m_themeChoice = PreferencesDialogUtilities::createThemeSelectionChoice(this, wxID_ANY, m_themes, editorSettings.themeName());
     
     m_overrideThemeCheckBox = new wxCheckBox(this, wxID_ANY, "Override theme");
     m_overrideThemeCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onOverrideThemeChanged, this);

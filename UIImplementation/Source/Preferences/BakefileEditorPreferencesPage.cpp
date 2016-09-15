@@ -32,10 +32,9 @@ namespace CodeSmithy
 BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
                                                              AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::BakefileEditorId, 
-        appSettings.editorSettings().bakefileSettings().themeName()),
+        appSettings.editorSettings().bakefileSettings()),
     m_applyButton(0)
 {
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().bakefileSettings().useDefaultSettings());
     m_fontFaceName->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().bakefileSettings().fontSettings().pointSize());
 

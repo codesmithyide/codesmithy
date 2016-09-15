@@ -32,11 +32,10 @@ namespace CodeSmithy
 XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::XMLEditorId,
-        appSettings.editorSettings().xmlSettings().themeName()),
+        appSettings.editorSettings().xmlSettings()),
     m_newSettings(appSettings.editorSettings().xmlSettings()),
     m_applyButton(0)
 {
-    m_useDefaultCheckBox->SetValue(m_newSettings.useDefaultSettings());
     m_overrideThemeCheckBox->SetValue(m_newSettings.overrideTheme());
     m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
     m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());

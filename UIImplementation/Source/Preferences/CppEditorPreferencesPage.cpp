@@ -34,10 +34,9 @@ namespace CodeSmithy
 CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
                                                    AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::CppEditorId,
-        appSettings.editorSettings().cppSettings().themeName()),
+        appSettings.editorSettings().cppSettings()),
     m_applyButton(0)
 {
-    m_useDefaultCheckBox->SetValue(m_appSettings.editorSettings().cppSettings().useDefaultSettings()); 
     m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
     m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
 
