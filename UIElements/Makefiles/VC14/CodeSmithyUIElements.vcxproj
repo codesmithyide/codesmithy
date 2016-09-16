@@ -154,6 +154,7 @@
     <ClCompile Include="..\..\Source\Editors\BakefileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\BakefileEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CMakeListsCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\CMakeListsEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CppFileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CppEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\XMLDocumentCtrl.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\BakefileEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CMakeListsCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CMakeListsEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppFileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\XMLDocumentCtrl.h" />
