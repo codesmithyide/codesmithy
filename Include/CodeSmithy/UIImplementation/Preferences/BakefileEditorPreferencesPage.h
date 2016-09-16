@@ -36,7 +36,6 @@ public:
     BakefileEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
 
 private:
-    void handlePointSizeChanged(unsigned pointSize) override;
     void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
 
     EditorSettingsBase& newSettings() noexcept override;

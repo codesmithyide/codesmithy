@@ -66,10 +66,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 }
 
-void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
-{
-}
-
 void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                  unsigned pointSize)
 {

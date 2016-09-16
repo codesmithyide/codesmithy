@@ -54,10 +54,6 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 }
 
-void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
-{
-}
-
 void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceName,
                                                       unsigned pointSize)
 {

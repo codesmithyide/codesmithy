@@ -24,7 +24,6 @@
 #define _CODESMITHY_UICORE_SETTINGS_BAKEFILEEDITORSETTINGS_H_
 
 #include "EditorSettingsBase.h"
-#include "FontSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
@@ -38,17 +37,11 @@ public:
     BakefileEditorSettings& operator=(const BakefileEditorSettings& other);
     ~BakefileEditorSettings() noexcept override;
 
-    const FontSettings& fontSettings() const;
-    FontSettings& fontSettings();
-
     bool operator==(const BakefileEditorSettings& other) const;
     bool operator!=(const BakefileEditorSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
-
-private:
-    FontSettings m_fontSettings;
 };
 
 }

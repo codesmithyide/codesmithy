@@ -40,8 +40,7 @@ XMLEditorSettings::XMLEditorSettings()
 }
 
 XMLEditorSettings::XMLEditorSettings(const XMLEditorSettings& other)
-    : EditorSettingsBase(other),
-    m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
+    : EditorSettingsBase(other), m_styles(other.m_styles)
 {
 }
 
@@ -60,16 +59,6 @@ XMLEditorSettings& XMLEditorSettings::operator=(const XMLEditorSettings& other)
 
 XMLEditorSettings::~XMLEditorSettings()
 {
-}
-
-const FontSettings& XMLEditorSettings::fontSettings() const
-{
-    return m_fontSettings;
-}
-
-FontSettings& XMLEditorSettings::fontSettings()
-{
-    return m_fontSettings;
 }
 
 unsigned int XMLEditorSettings::textColor(EStyleId id) const

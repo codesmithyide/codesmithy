@@ -36,8 +36,7 @@ BakefileEditorSettings::BakefileEditorSettings()
 }
 
 BakefileEditorSettings::BakefileEditorSettings(const BakefileEditorSettings& other)
-    : EditorSettingsBase(other),
-    m_fontSettings(other.m_fontSettings)
+    : EditorSettingsBase(other)
 {
 }
 
@@ -55,16 +54,6 @@ BakefileEditorSettings& BakefileEditorSettings::operator=(const BakefileEditorSe
 
 BakefileEditorSettings::~BakefileEditorSettings()
 {
-}
-
-const FontSettings& BakefileEditorSettings::fontSettings() const
-{
-    return m_fontSettings;
-}
-
-FontSettings& BakefileEditorSettings::fontSettings()
-{
-    return m_fontSettings;
 }
 
 bool BakefileEditorSettings::operator==(const BakefileEditorSettings& other) const

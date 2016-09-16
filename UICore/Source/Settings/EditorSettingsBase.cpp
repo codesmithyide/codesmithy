@@ -33,7 +33,8 @@ EditorSettingsBase::EditorSettingsBase()
 
 EditorSettingsBase::EditorSettingsBase(const EditorSettingsBase& other)
     : m_useDefaultSettings(other.m_useDefaultSettings),
-    m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme)
+    m_themeName(other.m_themeName), m_overrideTheme(other.m_overrideTheme),
+    m_fontSettings(other.m_fontSettings)
 {
 }
 
@@ -69,6 +70,16 @@ bool EditorSettingsBase::overrideTheme() const noexcept
 void EditorSettingsBase::setOverrideTheme(bool overrideTheme) noexcept
 {
     m_overrideTheme = overrideTheme;
+}
+
+const FontSettings& EditorSettingsBase::fontSettings() const noexcept
+{
+    return m_fontSettings;
+}
+
+FontSettings& EditorSettingsBase::fontSettings() noexcept
+{
+    return m_fontSettings;
 }
 
 }

@@ -40,8 +40,7 @@ CppEditorSettings::CppEditorSettings()
 }
 
 CppEditorSettings::CppEditorSettings(const CppEditorSettings& other)
-    : EditorSettingsBase(other),
-    m_fontSettings(other.m_fontSettings), m_styles(other.m_styles)
+    : EditorSettingsBase(other), m_styles(other.m_styles)
 {
 }
 
@@ -60,16 +59,6 @@ CppEditorSettings& CppEditorSettings::operator=(const CppEditorSettings& other)
 
 CppEditorSettings::~CppEditorSettings()
 {
-}
-
-const FontSettings& CppEditorSettings::fontSettings() const
-{
-    return m_fontSettings;
-}
-
-FontSettings& CppEditorSettings::fontSettings()
-{
-    return m_fontSettings;
 }
 
 unsigned int CppEditorSettings::textColor(EStyleId id) const

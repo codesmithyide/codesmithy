@@ -65,11 +65,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     topSizer->Add(m_applyButton);
 }
 
-void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
-{
-    m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());
-}
-
 void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName, 
                                                  unsigned pointSize)
 {

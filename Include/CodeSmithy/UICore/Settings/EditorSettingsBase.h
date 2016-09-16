@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 #define _CODESMITHY_UICORE_SETTINGS_EDITORSETTINGSBASE_H_
 
+#include "FontSettings.h"
 #include <string>
 
 namespace CodeSmithy
@@ -41,11 +42,14 @@ public:
     void setThemeName(const std::string& themeName) noexcept;
     bool overrideTheme() const noexcept;
     void setOverrideTheme(bool overrideTheme) noexcept;
+    const FontSettings& fontSettings() const noexcept;
+    FontSettings& fontSettings() noexcept;
 
 protected:
     bool m_useDefaultSettings;
     std::string m_themeName;
     bool m_overrideTheme;
+    FontSettings m_fontSettings;
 };
 
 }

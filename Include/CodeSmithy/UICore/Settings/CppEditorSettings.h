@@ -24,7 +24,6 @@
 #define _CODESMITHY_UICORE_SETTINGS_CPPEDITORSETTINGS_H_
 
 #include "EditorSettingsBase.h"
-#include "FontSettings.h"
 #include "StyleSettings.h"
 #include <pugixml.hpp>
 #include <vector>
@@ -46,8 +45,6 @@ public:
     CppEditorSettings& operator=(const CppEditorSettings& other);
     ~CppEditorSettings() noexcept override;
 
-    const FontSettings& fontSettings() const;
-    FontSettings& fontSettings();
     unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();
 
@@ -65,7 +62,6 @@ private:
     static std::string styleIdToString(EStyleId id);
 
 private:
-    FontSettings m_fontSettings;
     std::vector<StyleSettings> m_styles;
 };
 

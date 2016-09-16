@@ -99,7 +99,8 @@ void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
 
 void EditorPreferencesBase::onPointSizeChanged(wxSpinEvent& evt)
 {
-    handlePointSizeChanged(m_fontSize->GetValue());
+    newSettings().fontSettings().setPointSize(m_fontSize->GetValue());
+
     updateExample();
     updateApplyButtonStatus();
 }
