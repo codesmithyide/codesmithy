@@ -65,11 +65,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
     topSizer->Add(m_applyButton);
 }
 
-void XMLEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
-{
-    m_newSettings.setOverrideTheme(m_overrideThemeCheckBox->IsChecked());
-}
-
 void XMLEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
     m_newSettings.fontSettings().setPointSize(m_fontSize->GetValue());

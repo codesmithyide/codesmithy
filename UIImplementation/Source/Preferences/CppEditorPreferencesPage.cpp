@@ -66,10 +66,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 }
 
-void CppEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
-{
-}
-
 void CppEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
 }

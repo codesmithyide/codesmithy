@@ -79,18 +79,20 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
 
 void EditorPreferencesBase::onUseDefaultSettingChanged(wxCommandEvent& evt)
 {
-    m_themeChoice->Enable(!evt.IsChecked());
     newSettings().setUseDefaultSettings(evt.IsChecked());
+
+    m_themeChoice->Enable(!evt.IsChecked());
     updateExample();
     updateApplyButtonStatus();
 }
 
 void EditorPreferencesBase::onOverrideThemeChanged(wxCommandEvent& evt)
 {
+    newSettings().setOverrideTheme(evt.IsChecked());
+
     m_fontFaceName->Enable(evt.IsChecked());
     m_fontSize->Enable(evt.IsChecked());
     m_fontButton->Enable(evt.IsChecked());
-    handleOverrideThemeChanged(evt.IsChecked());
     updateExample();
     updateApplyButtonStatus();
 }

@@ -54,10 +54,6 @@ BakefileEditorPreferencesPage::BakefileEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(m_applyButton);
 }
 
-void BakefileEditorPreferencesPage::handleOverrideThemeChanged(bool overrideTheme)
-{
-}
-
 void BakefileEditorPreferencesPage::handlePointSizeChanged(unsigned pointSize)
 {
 }

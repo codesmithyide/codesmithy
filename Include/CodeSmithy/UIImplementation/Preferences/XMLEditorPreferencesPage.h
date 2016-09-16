@@ -39,7 +39,6 @@ public:
     XMLEditorPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 
 private:
-    void handleOverrideThemeChanged(bool overrideTheme) override;
     void handlePointSizeChanged(unsigned pointSize) override;
     void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
 

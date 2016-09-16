@@ -45,7 +45,6 @@ private:
     void onPointSizeChanged(wxSpinEvent& evt);
     void onSelectFont(wxCommandEvent& evt);
 
-    virtual void handleOverrideThemeChanged(bool overrideTheme) = 0;
     virtual void handlePointSizeChanged(unsigned pointSize) = 0;
     virtual void handleFontChanged(const std::string& faceName, unsigned pointSize) = 0;
 
