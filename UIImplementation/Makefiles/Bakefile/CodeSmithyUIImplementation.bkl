@@ -45,6 +45,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Preferences/XMLEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/StartupPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/FileTypeAssociationsPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/AdvancedPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PreferencesDialog.h
 
         ../../Source/Preferences/PreferencesDialogUtilities.h
@@ -71,6 +72,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Preferences/XMLEditorPreferencesPage.cpp
         ../../Source/Preferences/StartupPreferencesPage.cpp
         ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
+       ../../Source/Preferences/AdvancedPreferencesPage.cpp
         ../../Source/Preferences/PreferencesDialog.cpp
         ../../Source/Preferences/PreferencesDialogUtilities.cpp
     }
