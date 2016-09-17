@@ -26,6 +26,7 @@ namespace CodeSmithy
 {
 
 EditorId EditorId::BakefileEditorId("CodeSmithy.Editor.Bakefile");
+EditorId EditorId::CMakeListsEditorId("CodeSmithy.Editor.CMakeLists");
 EditorId EditorId::CppEditorId("CodeSmithy.Editor.Cpp");
 EditorId EditorId::XMLEditorId("CodeSmithy.Editor.XML");
 

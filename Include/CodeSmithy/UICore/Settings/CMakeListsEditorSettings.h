@@ -23,4 +23,26 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_CMAKELISTSEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_CMAKELISTSEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+class CMakeListsEditorSettings : public EditorSettingsBase
+{
+public:
+    CMakeListsEditorSettings();
+    CMakeListsEditorSettings(const CMakeListsEditorSettings& other);
+    CMakeListsEditorSettings& operator=(const CMakeListsEditorSettings& other);
+    ~CMakeListsEditorSettings() noexcept override;
+
+    bool operator==(const CMakeListsEditorSettings& other) const;
+    bool operator!=(const CMakeListsEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
 #endif

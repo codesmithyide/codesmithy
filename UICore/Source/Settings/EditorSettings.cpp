@@ -21,12 +21,14 @@
 */
 
 #include "Settings/EditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
 static const char* defaultEditorSettingsElementName = "default-editor-settings";
 static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings";
+static const char* cmakelistsEditorSettingsElementName = "cmakelists-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 static const char* xmlEditorSettingsElementName = "xml-editor-settings";
 
@@ -74,42 +76,52 @@ const FontSettings& EditorSettings::xmlFontSettings() const
     }
 }
 
-const DefaultEditorSettings& EditorSettings::defaultSettings() const
+const DefaultEditorSettings& EditorSettings::defaultSettings() const noexcept
 {
     return m_defaultEditorSettings;
 }
 
-DefaultEditorSettings& EditorSettings::defaultSettings()
+DefaultEditorSettings& EditorSettings::defaultSettings() noexcept
 {
     return m_defaultEditorSettings;
 }
 
-const BakefileEditorSettings& EditorSettings::bakefileSettings() const
+const BakefileEditorSettings& EditorSettings::bakefileSettings() const noexcept
 {
     return m_bakefileEditorSettings;
 }
 
-BakefileEditorSettings& EditorSettings::bakefileSettings()
+BakefileEditorSettings& EditorSettings::bakefileSettings() noexcept
 {
     return m_bakefileEditorSettings;
 }
 
-const CppEditorSettings& EditorSettings::cppSettings() const
+const CMakeListsEditorSettings& EditorSettings::cmakelistsSettings() const noexcept
+{
+    return m_cmakelistsEditorSettings;
+}
+
+CMakeListsEditorSettings& EditorSettings::cmakelistsSettings() noexcept
+{
+    return m_cmakelistsEditorSettings;
+}
+
+const CppEditorSettings& EditorSettings::cppSettings() const noexcept
 {
     return m_cppEditorSettings;
 }
 
-CppEditorSettings& EditorSettings::cppSettings()
+CppEditorSettings& EditorSettings::cppSettings() noexcept
 {
     return m_cppEditorSettings;
 }
 
-const XMLEditorSettings& EditorSettings::xmlSettings() const
+const XMLEditorSettings& EditorSettings::xmlSettings() const noexcept
 {
     return m_xmlEditorSettings;
 }
 
-XMLEditorSettings& EditorSettings::xmlSettings()
+XMLEditorSettings& EditorSettings::xmlSettings() noexcept
 {
     return m_xmlEditorSettings;
 }
@@ -141,6 +153,9 @@ void EditorSettings::save(pugi::xml_node node) const
         bakefileEditorSettingsNode = node.append_child(bakefileEditorSettingsElementName);
     }
     m_bakefileEditorSettings.save(bakefileEditorSettingsNode);
+
+    pugi::xml_node cmakelistsNode = XMLUtilities::getOrAppendChildNode(node, cmakelistsEditorSettingsElementName);
+    m_cmakelistsEditorSettings.save(cmakelistsNode);
 
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     if (!cppEditorSettingsNode)

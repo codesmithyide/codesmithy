@@ -21,3 +21,70 @@
 */
 
 #include "Settings/CMakeListsEditorSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
+
+namespace CodeSmithy
+{
+
+static const char* useDefaultSettingsElementName = "use-default-settings";
+static const char* themeNameElementName = "theme-name";
+static const char* overrideThemeElementName = "override-theme";
+static const char* fontSettingsElementName = "font-settings";
+
+CMakeListsEditorSettings::CMakeListsEditorSettings()
+{
+}
+
+CMakeListsEditorSettings::CMakeListsEditorSettings(const CMakeListsEditorSettings& other)
+    : EditorSettingsBase(other)
+{
+}
+
+CMakeListsEditorSettings& CMakeListsEditorSettings::operator=(const CMakeListsEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_useDefaultSettings = other.m_useDefaultSettings;
+        m_themeName = other.m_themeName;
+        m_overrideTheme = other.m_overrideTheme;
+        m_fontSettings = other.m_fontSettings;
+    }
+    return *this;
+}
+
+CMakeListsEditorSettings::~CMakeListsEditorSettings()
+{
+}
+
+bool CMakeListsEditorSettings::operator==(const CMakeListsEditorSettings& other) const
+{
+    return ((m_useDefaultSettings == other.m_useDefaultSettings) &&
+        (m_themeName == other.m_themeName) &&
+        (m_overrideTheme == other.m_overrideTheme) &&
+        (m_fontSettings == other.m_fontSettings));
+}
+
+bool CMakeListsEditorSettings::operator!=(const CMakeListsEditorSettings& other) const
+{
+    return !(*this == other);
+}
+
+void CMakeListsEditorSettings::load(pugi::xml_node node)
+{
+    m_useDefaultSettings = XMLUtilities::getChildValueAsBool(node, useDefaultSettingsElementName, true);
+    m_themeName = XMLUtilities::getChildValueAsString(node, themeNameElementName, "CodeSmithy Light Theme");
+    m_overrideTheme = XMLUtilities::getChildValueAsBool(node, overrideThemeElementName, false);
+    pugi::xml_node fontSettingsNode = node.child(fontSettingsElementName);
+    m_fontSettings.load(fontSettingsNode);
+}
+
+void CMakeListsEditorSettings::save(pugi::xml_node node) const
+{
+    XMLUtilities::setOrAppendChildNode(node, useDefaultSettingsElementName, m_useDefaultSettings);
+    XMLUtilities::setOrAppendChildNode(node, themeNameElementName, m_themeName);
+    XMLUtilities::setOrAppendChildNode(node, overrideThemeElementName, m_overrideTheme);
+    pugi::xml_node fontSettingsNode = XMLUtilities::getOrAppendChildNode(node, fontSettingsElementName);
+    m_fontSettings.save(fontSettingsNode);
+}
+
+}

@@ -32,6 +32,7 @@ class EditorId
 {
 public:
     static EditorId BakefileEditorId;
+    static EditorId CMakeListsEditorId;
     static EditorId CppEditorId;
     static EditorId XMLEditorId;
 
