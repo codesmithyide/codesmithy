@@ -35,14 +35,14 @@ public:
     DefaultEditorSettings();
     DefaultEditorSettings(const DefaultEditorSettings& other);
     DefaultEditorSettings& operator=(const DefaultEditorSettings& other);
-    ~DefaultEditorSettings() noexcept;
+    ~DefaultEditorSettings();
 
-    const std::string& themeName() const noexcept;
-    void setThemeName(const std::string& themeName) noexcept;
-    bool overrideTheme() const noexcept;
-    void setOverrideTheme(bool overrideTheme) noexcept;
-    const FontSettings& fontSettings() const noexcept;
-    FontSettings& fontSettings() noexcept;
+    const std::string& themeName() const;
+    void setThemeName(const std::string& themeName);
+    bool overrideTheme() const;
+    void setOverrideTheme(bool overrideTheme);
+    const FontSettings& fontSettings() const;
+    FontSettings& fontSettings();
 
     bool operator==(const DefaultEditorSettings& other) const;
     bool operator!=(const DefaultEditorSettings& other) const;

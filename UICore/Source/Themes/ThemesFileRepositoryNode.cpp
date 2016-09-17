@@ -62,7 +62,7 @@ std::shared_ptr<EditorTheme> ThemesFileRepositoryNode::getEditorTheme(const std:
     return result;
 }
 
-bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const noexcept
+bool ThemesFileRepositoryNode::hasEditorTheme(const std::string& editorId) const
 {
     for (pugi::xml_node editorThemeNode = m_node.child(editorThemeElementName);
          editorThemeNode != 0;

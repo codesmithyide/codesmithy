@@ -38,7 +38,7 @@ public:
 
 public:
     EditorId(const char* stringForm);
-    ~EditorId() noexcept;
+    ~EditorId();
 
     const std::string& string() const;
 

@@ -33,7 +33,7 @@ class ProjectFileRepositoryNode : public ProjectRepositoryNode
 {
 public:
     ProjectFileRepositoryNode(pugi::xml_node node);
-    ~ProjectFileRepositoryNode() noexcept override;
+    ~ProjectFileRepositoryNode() override;
 
     std::string get(const std::string& key) const override;
     void set(const std::string& key, const std::string& value) override;

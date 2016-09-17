@@ -29,7 +29,7 @@ Themes::Themes()
 {
 }
 
-Themes::~Themes() noexcept
+Themes::~Themes()
 {
 }
 

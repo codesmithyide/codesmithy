@@ -35,7 +35,7 @@ Theme::Theme(std::shared_ptr<ThemesRepositoryNode> node)
 {
 }
 
-Theme::~Theme() noexcept
+Theme::~Theme()
 {
 }
 

@@ -37,7 +37,7 @@ class EditorSettings
 {
 public:
     EditorSettings();
-    ~EditorSettings() noexcept;
+    ~EditorSettings();
 
     // Gets the Bakefile editor font settings or the default settings
     // as appropriate.
@@ -49,16 +49,16 @@ public:
     // as appropriate.
     const FontSettings& xmlFontSettings() const;
 
-    const DefaultEditorSettings& defaultSettings() const noexcept;
-    DefaultEditorSettings& defaultSettings() noexcept;
-    const BakefileEditorSettings& bakefileSettings() const noexcept;
-    BakefileEditorSettings& bakefileSettings() noexcept;
-    const CMakeListsEditorSettings& cmakelistsSettings() const noexcept;
-    CMakeListsEditorSettings& cmakelistsSettings() noexcept;
-    const CppEditorSettings& cppSettings() const noexcept;
-    CppEditorSettings& cppSettings() noexcept;
-    const XMLEditorSettings& xmlSettings() const noexcept;
-    XMLEditorSettings& xmlSettings() noexcept;
+    const DefaultEditorSettings& defaultSettings() const;
+    DefaultEditorSettings& defaultSettings();
+    const BakefileEditorSettings& bakefileSettings() const;
+    BakefileEditorSettings& bakefileSettings();
+    const CMakeListsEditorSettings& cmakelistsSettings() const;
+    CMakeListsEditorSettings& cmakelistsSettings();
+    const CppEditorSettings& cppSettings() const;
+    CppEditorSettings& cppSettings();
+    const XMLEditorSettings& xmlSettings() const;
+    XMLEditorSettings& xmlSettings();
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

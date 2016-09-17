@@ -76,52 +76,52 @@ const FontSettings& EditorSettings::xmlFontSettings() const
     }
 }
 
-const DefaultEditorSettings& EditorSettings::defaultSettings() const noexcept
+const DefaultEditorSettings& EditorSettings::defaultSettings() const
 {
     return m_defaultEditorSettings;
 }
 
-DefaultEditorSettings& EditorSettings::defaultSettings() noexcept
+DefaultEditorSettings& EditorSettings::defaultSettings()
 {
     return m_defaultEditorSettings;
 }
 
-const BakefileEditorSettings& EditorSettings::bakefileSettings() const noexcept
+const BakefileEditorSettings& EditorSettings::bakefileSettings() const
 {
     return m_bakefileEditorSettings;
 }
 
-BakefileEditorSettings& EditorSettings::bakefileSettings() noexcept
+BakefileEditorSettings& EditorSettings::bakefileSettings()
 {
     return m_bakefileEditorSettings;
 }
 
-const CMakeListsEditorSettings& EditorSettings::cmakelistsSettings() const noexcept
+const CMakeListsEditorSettings& EditorSettings::cmakelistsSettings() const
 {
     return m_cmakelistsEditorSettings;
 }
 
-CMakeListsEditorSettings& EditorSettings::cmakelistsSettings() noexcept
+CMakeListsEditorSettings& EditorSettings::cmakelistsSettings()
 {
     return m_cmakelistsEditorSettings;
 }
 
-const CppEditorSettings& EditorSettings::cppSettings() const noexcept
+const CppEditorSettings& EditorSettings::cppSettings() const
 {
     return m_cppEditorSettings;
 }
 
-CppEditorSettings& EditorSettings::cppSettings() noexcept
+CppEditorSettings& EditorSettings::cppSettings()
 {
     return m_cppEditorSettings;
 }
 
-const XMLEditorSettings& EditorSettings::xmlSettings() const noexcept
+const XMLEditorSettings& EditorSettings::xmlSettings() const
 {
     return m_xmlEditorSettings;
 }
 
-XMLEditorSettings& EditorSettings::xmlSettings() noexcept
+XMLEditorSettings& EditorSettings::xmlSettings()
 {
     return m_xmlEditorSettings;
 }

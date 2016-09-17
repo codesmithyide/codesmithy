@@ -32,10 +32,10 @@ class EditorTheme
 {
 public:
     EditorTheme(const std::string& editorId);
-    ~EditorTheme() noexcept;
+    ~EditorTheme();
 
-    const std::string& editorId() const noexcept;
-    const FontSettings& mainTextFontSettings() const noexcept;
+    const std::string& editorId() const;
+    const FontSettings& mainTextFontSettings() const;
 
 private:
     std::string m_editorId;

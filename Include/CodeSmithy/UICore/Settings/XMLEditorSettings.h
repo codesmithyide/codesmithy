@@ -44,7 +44,7 @@ public:
     XMLEditorSettings();
     XMLEditorSettings(const XMLEditorSettings& other);
     XMLEditorSettings& operator=(const XMLEditorSettings& other);
-    ~XMLEditorSettings() noexcept override;
+    ~XMLEditorSettings() override;
 
     unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();

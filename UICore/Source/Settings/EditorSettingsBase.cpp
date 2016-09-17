@@ -42,42 +42,42 @@ EditorSettingsBase::~EditorSettingsBase()
 {
 }
 
-bool EditorSettingsBase::useDefaultSettings() const noexcept
+bool EditorSettingsBase::useDefaultSettings() const
 {
     return m_useDefaultSettings;
 }
 
-void EditorSettingsBase::setUseDefaultSettings(bool useDefaultSettings) noexcept
+void EditorSettingsBase::setUseDefaultSettings(bool useDefaultSettings)
 {
     m_useDefaultSettings = useDefaultSettings;
 }
 
-const std::string& EditorSettingsBase::themeName() const noexcept
+const std::string& EditorSettingsBase::themeName() const
 {
     return m_themeName;
 }
 
-void EditorSettingsBase::setThemeName(const std::string& themeName) noexcept
+void EditorSettingsBase::setThemeName(const std::string& themeName)
 {
     m_themeName = themeName;
 }
 
-bool EditorSettingsBase::overrideTheme() const noexcept
+bool EditorSettingsBase::overrideTheme() const
 {
     return m_overrideTheme;
 }
 
-void EditorSettingsBase::setOverrideTheme(bool overrideTheme) noexcept
+void EditorSettingsBase::setOverrideTheme(bool overrideTheme)
 {
     m_overrideTheme = overrideTheme;
 }
 
-const FontSettings& EditorSettingsBase::fontSettings() const noexcept
+const FontSettings& EditorSettingsBase::fontSettings() const
 {
     return m_fontSettings;
 }
 
-FontSettings& EditorSettingsBase::fontSettings() noexcept
+FontSettings& EditorSettingsBase::fontSettings()
 {
     return m_fontSettings;
 }

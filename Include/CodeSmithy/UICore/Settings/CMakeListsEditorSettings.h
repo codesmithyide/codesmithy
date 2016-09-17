@@ -34,7 +34,7 @@ public:
     CMakeListsEditorSettings();
     CMakeListsEditorSettings(const CMakeListsEditorSettings& other);
     CMakeListsEditorSettings& operator=(const CMakeListsEditorSettings& other);
-    ~CMakeListsEditorSettings() noexcept override;
+    ~CMakeListsEditorSettings() override;
 
     bool operator==(const CMakeListsEditorSettings& other) const;
     bool operator!=(const CMakeListsEditorSettings& other) const;

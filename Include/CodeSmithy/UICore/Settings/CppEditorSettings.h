@@ -43,7 +43,7 @@ public:
     CppEditorSettings();
     CppEditorSettings(const CppEditorSettings& other);
     CppEditorSettings& operator=(const CppEditorSettings& other);
-    ~CppEditorSettings() noexcept override;
+    ~CppEditorSettings() override;
 
     unsigned int textColor(EStyleId id) const;
     std::vector<StyleSettings>& styles();

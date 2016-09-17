@@ -21,3 +21,24 @@
 */
 
 #include "Settings/AdvancedSettings.h"
+
+namespace CodeSmithy
+{
+
+AdvancedSettings::AdvancedSettings()
+{
+}
+
+AdvancedSettings::~AdvancedSettings()
+{
+}
+
+void AdvancedSettings::load(pugi::xml_node node)
+{
+}
+
+void AdvancedSettings::save(pugi::xml_node node) const
+{
+}
+
+}

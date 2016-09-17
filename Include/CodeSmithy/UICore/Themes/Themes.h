@@ -35,7 +35,7 @@ class Themes
 {
 public:
     Themes();
-    ~Themes() noexcept;
+    ~Themes();
 
     void addRepository(std::shared_ptr<ThemesRepository> repository);
 

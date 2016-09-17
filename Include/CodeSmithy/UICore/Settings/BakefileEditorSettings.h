@@ -35,7 +35,7 @@ public:
     BakefileEditorSettings();
     BakefileEditorSettings(const BakefileEditorSettings& other);
     BakefileEditorSettings& operator=(const BakefileEditorSettings& other);
-    ~BakefileEditorSettings() noexcept override;
+    ~BakefileEditorSettings() override;
 
     bool operator==(const BakefileEditorSettings& other) const;
     bool operator!=(const BakefileEditorSettings& other) const;

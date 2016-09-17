@@ -34,12 +34,12 @@ EditorTheme::~EditorTheme()
 {
 }
 
-const std::string& EditorTheme::editorId() const noexcept
+const std::string& EditorTheme::editorId() const
 {
     return m_editorId;
 }
 
-const FontSettings& EditorTheme::mainTextFontSettings() const noexcept
+const FontSettings& EditorTheme::mainTextFontSettings() const
 {
     return m_mainTextFontSettings;
 }

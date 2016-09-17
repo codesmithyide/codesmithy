@@ -57,32 +57,32 @@ DefaultEditorSettings::~DefaultEditorSettings()
 {
 }
 
-const std::string& DefaultEditorSettings::themeName() const noexcept
+const std::string& DefaultEditorSettings::themeName() const
 {
     return m_themeName;
 }
 
-void DefaultEditorSettings::setThemeName(const std::string& themeName) noexcept
+void DefaultEditorSettings::setThemeName(const std::string& themeName)
 {
     m_themeName = themeName;
 }
 
-bool DefaultEditorSettings::overrideTheme() const noexcept
+bool DefaultEditorSettings::overrideTheme() const
 {
     return m_overrideTheme;
 }
 
-void DefaultEditorSettings::setOverrideTheme(bool overrideTheme) noexcept
+void DefaultEditorSettings::setOverrideTheme(bool overrideTheme)
 {
     m_overrideTheme = overrideTheme;
 }
 
-const FontSettings& DefaultEditorSettings::fontSettings() const noexcept
+const FontSettings& DefaultEditorSettings::fontSettings() const
 {
     return m_fontSettings;
 }
 
-FontSettings& DefaultEditorSettings::fontSettings() noexcept
+FontSettings& DefaultEditorSettings::fontSettings()
 {
     return m_fontSettings;
 }

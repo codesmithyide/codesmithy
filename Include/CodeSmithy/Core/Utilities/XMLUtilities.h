@@ -32,9 +32,9 @@ class XMLUtilities
 {
 public:
     static std::string getChildValueAsString(pugi::xml_node parentNode, const char* elementName,
-        const std::string& defaultValue) noexcept;
+        const std::string& defaultValue);
     static bool getChildValueAsBool(pugi::xml_node parentNode, const char* elementName,
-        bool defaultValue) noexcept;
+        bool defaultValue);
     static pugi::xml_node getOrAppendChildNode(pugi::xml_node parentNode, const char* elementName);
     static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
         const std::string& value);

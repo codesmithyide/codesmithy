@@ -37,7 +37,7 @@ class Theme
 public:
     Theme(const std::string& name);
     Theme(std::shared_ptr<ThemesRepositoryNode> node);
-    ~Theme() noexcept;
+    ~Theme();
 
     const std::string& name() const;
     std::shared_ptr<EditorTheme> getDefaultEditorTheme() const;

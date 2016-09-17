@@ -38,8 +38,8 @@ public:
 private:
     void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
 
-    EditorSettingsBase& newSettings() noexcept override;
-    bool hasChanges() const noexcept override;
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
 
     void onStyleChanged(wxColourPickerEvent& evt);
     void onApply(wxCommandEvent& evt);

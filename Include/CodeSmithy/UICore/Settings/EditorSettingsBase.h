@@ -34,16 +34,16 @@ class EditorSettingsBase
 public:
     EditorSettingsBase();
     EditorSettingsBase(const EditorSettingsBase& other);
-    virtual ~EditorSettingsBase() noexcept;
+    virtual ~EditorSettingsBase();
 
-    bool useDefaultSettings() const noexcept;
-    void setUseDefaultSettings(bool useDefaultSettings) noexcept;
-    const std::string& themeName() const noexcept;
-    void setThemeName(const std::string& themeName) noexcept;
-    bool overrideTheme() const noexcept;
-    void setOverrideTheme(bool overrideTheme) noexcept;
-    const FontSettings& fontSettings() const noexcept;
-    FontSettings& fontSettings() noexcept;
+    bool useDefaultSettings() const;
+    void setUseDefaultSettings(bool useDefaultSettings);
+    const std::string& themeName() const;
+    void setThemeName(const std::string& themeName);
+    bool overrideTheme() const;
+    void setOverrideTheme(bool overrideTheme);
+    const FontSettings& fontSettings() const;
+    FontSettings& fontSettings();
 
 protected:
     bool m_useDefaultSettings;

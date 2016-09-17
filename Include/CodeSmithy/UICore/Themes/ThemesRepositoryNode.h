@@ -34,11 +34,11 @@ class ThemesRepositoryNode
 {
 public:
     ThemesRepositoryNode();
-    virtual ~ThemesRepositoryNode() noexcept;
+    virtual ~ThemesRepositoryNode();
 
     virtual std::string themeName() const = 0;
     virtual std::shared_ptr<EditorTheme> getEditorTheme(const std::string& editorId) const = 0;
-    virtual bool hasEditorTheme(const std::string& editorId) const noexcept = 0;
+    virtual bool hasEditorTheme(const std::string& editorId) const = 0;
 
     virtual void setEditorTheme(const EditorTheme& editorTheme) = 0;
 };

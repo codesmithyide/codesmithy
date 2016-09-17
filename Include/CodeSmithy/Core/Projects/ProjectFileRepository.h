@@ -35,7 +35,7 @@ class ProjectFileRepository : public ProjectRepository
 {
 public:
     ProjectFileRepository(const boost::filesystem::path& path);
-    ~ProjectFileRepository() noexcept override;
+    ~ProjectFileRepository() override;
 
     std::string name() const override;
     void setName(const std::string& name) override;
