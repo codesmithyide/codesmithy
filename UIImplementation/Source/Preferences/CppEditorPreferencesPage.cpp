@@ -71,12 +71,12 @@ void CppEditorPreferencesPage::handleFontChanged(const std::string& faceName,
 {
 }
 
-EditorSettingsBase& CppEditorPreferencesPage::newSettings() noexcept
+EditorSettingsBase& CppEditorPreferencesPage::newSettings()
 {
     return m_newSettings;
 }
 
-bool CppEditorPreferencesPage::hasChanges() const noexcept
+bool CppEditorPreferencesPage::hasChanges() const
 {
     return (m_appSettings.editorSettings().cppSettings() != m_newSettings);
 }

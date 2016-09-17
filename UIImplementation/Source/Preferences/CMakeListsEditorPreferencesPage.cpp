@@ -38,12 +38,12 @@ void CMakeListsEditorPreferencesPage::handleFontChanged(const std::string& faceN
 {
 }
 
-EditorSettingsBase& CMakeListsEditorPreferencesPage::newSettings() noexcept
+EditorSettingsBase& CMakeListsEditorPreferencesPage::newSettings()
 {
     return m_newSettings;
 }
 
-bool CMakeListsEditorPreferencesPage::hasChanges() const noexcept
+bool CMakeListsEditorPreferencesPage::hasChanges() const
 {
     return (m_appSettings.editorSettings().cmakelistsSettings() != m_newSettings);
 }

@@ -72,12 +72,12 @@ void XMLEditorPreferencesPage::handleFontChanged(const std::string& faceName,
     m_newSettings.fontSettings().setPointSize(pointSize);
 }
 
-EditorSettingsBase& XMLEditorPreferencesPage::newSettings() noexcept
+EditorSettingsBase& XMLEditorPreferencesPage::newSettings()
 {
     return m_newSettings;
 }
 
-bool XMLEditorPreferencesPage::hasChanges() const noexcept
+bool XMLEditorPreferencesPage::hasChanges() const
 {
     return (m_appSettings.editorSettings().xmlSettings() != m_newSettings);
 }

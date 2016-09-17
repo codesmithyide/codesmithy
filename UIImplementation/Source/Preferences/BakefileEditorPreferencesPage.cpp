@@ -59,12 +59,12 @@ void BakefileEditorPreferencesPage::handleFontChanged(const std::string& faceNam
 {
 }
 
-EditorSettingsBase& BakefileEditorPreferencesPage::newSettings() noexcept
+EditorSettingsBase& BakefileEditorPreferencesPage::newSettings()
 {
     return m_newSettings;
 }
 
-bool BakefileEditorPreferencesPage::hasChanges() const noexcept
+bool BakefileEditorPreferencesPage::hasChanges() const
 {
     return (m_appSettings.editorSettings().bakefileSettings() != m_newSettings);
 }
