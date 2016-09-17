@@ -24,4 +24,13 @@
 
 namespace CodeSmithy
 {
+
+BakefileEditorCtrl::BakefileEditorCtrl(wxWindow* parent,
+                                       const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+    // The Bakefile syntax is similar to C++ so use the C++ lexer
+    SetLexer(wxSTC_LEX_CPP);
+}
+
 }

@@ -38,11 +38,8 @@ BakefileCtrl::BakefileCtrl(wxWindow* parent,
                            const AppSettings& appSettings)
     : DocumentCtrl(parent), m_ctrl(0)
 {
-    m_ctrl = new wxStyledTextCtrl(this);
+    m_ctrl = new BakefileEditorCtrl(this, appSettings);
     m_ctrl->Bind(wxEVT_STC_MODIFIED, &BakefileCtrl::onModified, this);
-
-    // The Bakefile syntax is similar to C++ so use the C++ lexer
-    m_ctrl->SetLexer(wxSTC_LEX_CPP);
 
     wxFont font = m_ctrl->StyleGetFont(wxSTC_C_DEFAULT);
     font.SetFaceName(appSettings.editorSettings().bakefileFontSettings().faceName());

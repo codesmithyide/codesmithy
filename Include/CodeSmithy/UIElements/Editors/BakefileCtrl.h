@@ -24,9 +24,9 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "BakefileEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Bakefile.h"
-#include <wx/stc/stc.h>
 
 namespace CodeSmithy
 {
@@ -49,7 +49,7 @@ private:
     void onModified(wxStyledTextEvent& evt);
 
 private:
-    wxStyledTextCtrl* m_ctrl;
+    BakefileEditorCtrl* m_ctrl;
     std::shared_ptr<Bakefile> m_document;
 };
 

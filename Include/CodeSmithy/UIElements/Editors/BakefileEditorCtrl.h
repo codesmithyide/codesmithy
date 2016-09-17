@@ -23,8 +23,18 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILEEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_BAKEFILEEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
 namespace CodeSmithy
 {
+
+class BakefileEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    BakefileEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+};
+
 }
 
 #endif
