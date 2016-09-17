@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Logs\UILog.cpp" />
     <ClCompile Include="..\..\Source\Editors\EditorId.cpp" />
     <ClCompile Include="..\..\Source\Settings\AppSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\AppSettingsObserver.cpp" />
@@ -176,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Logs\UILog.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Editors\EditorId.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AppSettingsObserver.h" />

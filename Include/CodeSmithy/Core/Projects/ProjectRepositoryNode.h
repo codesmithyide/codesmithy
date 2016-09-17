@@ -32,7 +32,7 @@ class ProjectRepositoryNode
 {
 public:
     ProjectRepositoryNode();
-    virtual ~ProjectRepositoryNode() noexcept;
+    virtual ~ProjectRepositoryNode();
 
     virtual std::string get(const std::string& key) const = 0;
     virtual void set(const std::string& key, const std::string& value) = 0;
