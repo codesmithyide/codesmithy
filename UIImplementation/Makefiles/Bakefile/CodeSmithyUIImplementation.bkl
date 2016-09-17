@@ -40,6 +40,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Preferences/EditorPreferencesBase.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/DefaultEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/BakefileEditorPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/CMakeListsEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/CppEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/XMLEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/StartupPreferencesPage.h
@@ -65,6 +66,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Preferences/EditorPreferencesBase.cpp
         ../../Source/Preferences/DefaultEditorPreferencesPage.cpp
         ../../Source/Preferences/BakefileEditorPreferencesPage.cpp
+        ../../Source/Preferences/CMakeListsEditorPreferencesPage.cpp
         ../../Source/Preferences/CppEditorPreferencesPage.cpp
         ../../Source/Preferences/XMLEditorPreferencesPage.cpp
         ../../Source/Preferences/StartupPreferencesPage.cpp

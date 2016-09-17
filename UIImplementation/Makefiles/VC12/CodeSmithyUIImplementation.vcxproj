@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\Source\Preferences\EditorPreferencesBase.cpp" />
     <ClCompile Include="..\..\Source\Preferences\DefaultEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\BakefileEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\CMakeListsEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\CppEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\EditorPreferencesBase.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\DefaultEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CMakeListsEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CppEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h" />

@@ -59,6 +59,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CMakeListsEditorPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CppEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,6 +116,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\BakefileEditorPreferencesPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\CMakeListsEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\CppEditorPreferencesPage.cpp">
