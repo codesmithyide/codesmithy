@@ -21,6 +21,9 @@
 */
 
 #include "Preferences/AdvancedPreferencesPage.h"
+#include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -29,6 +32,22 @@ AdvancedPreferencesPage::AdvancedPreferencesPage(wxWindow* parent,
                                                  AppSettings& appSettings)
     : wxPanel(parent)
 {
+    wxStaticText* uiLogLevelText = new wxStaticText(this, wxID_ANY, "UI Log Level");
+
+    wxArrayString uiLogLevelChoices;
+    uiLogLevelChoices.Add("Disabled");
+    uiLogLevelChoices.Add("Trace");
+    wxChoice* uiLogLevelChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, uiLogLevelChoices);
+    uiLogLevelChoice->SetSelection(0);
+
+    wxBoxSizer* uiLogLevelSizer = new wxBoxSizer(wxHORIZONTAL);
+    uiLogLevelSizer->Add(uiLogLevelText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
+    uiLogLevelSizer->AddSpacer(10);
+    uiLogLevelSizer->Add(uiLogLevelChoice, 1, wxALIGN_CENTER_VERTICAL);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(uiLogLevelSizer, 0, wxRIGHT | wxLEFT, 10);
+    SetSizer(topSizer);
 }
 
 }

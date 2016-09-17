@@ -47,8 +47,8 @@ private:
 
     virtual void handleFontChanged(const std::string& faceName, unsigned pointSize) = 0;
 
-    virtual EditorSettingsBase& newSettings() noexcept = 0;
-    virtual bool hasChanges() const noexcept = 0;
+    virtual EditorSettingsBase& newSettings() = 0;
+    virtual bool hasChanges() const = 0;
 
     virtual void updateExample() = 0;
     void updateApplyButtonStatus();
