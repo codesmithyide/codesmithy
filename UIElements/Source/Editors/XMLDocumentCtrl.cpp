@@ -62,7 +62,7 @@ std::shared_ptr<Document> XMLDocumentCtrl::document()
     return m_document;
 }
 
-void XMLDocumentCtrl::save(const boost::filesystem::path& path)
+void XMLDocumentCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());
     m_document->setModified(false);

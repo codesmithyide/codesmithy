@@ -52,15 +52,14 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
     }
 }
 
-void OpenDocumentsCtrl::saveDocument(const DocumentId& id,
-                                     const boost::filesystem::path& path)
+void OpenDocumentsCtrl::saveDocument(const DocumentId& id)
 {
     size_t pageIndex = findPageByDocumentId(id);
     if (pageIndex != wxNOT_FOUND)
     {
         wxWindow* page = GetPage(pageIndex);
         DocumentCtrl* documentCtrl = static_cast<DocumentCtrl*>(page);
-        documentCtrl->save(path);
+        documentCtrl->save(m_appSettings);
     }
 }
 
@@ -122,14 +121,8 @@ void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
                 switch (prompt.ShowModal())
                 {
                 case ClosingModifiedDocumentDialog::eSave:
-                    if (selectedDocumentCtrl->document()->filePath().empty())
-                    {
-                    }
-                    else
-                    {
-                        selectedDocumentCtrl->save(selectedDocumentCtrl->document()->filePath());
-                        okToClose = true;
-                    }
+                    selectedDocumentCtrl->save(m_appSettings);
+                    okToClose = true;
                     break;
 
                 case ClosingModifiedDocumentDialog::eDiscard:

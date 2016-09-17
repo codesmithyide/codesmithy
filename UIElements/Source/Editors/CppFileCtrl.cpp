@@ -62,7 +62,7 @@ std::shared_ptr<Document> CppFileCtrl::document()
     return m_document;
 }
 
-void CppFileCtrl::save(const boost::filesystem::path& path)
+void CppFileCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());
     m_document->setModified(false);

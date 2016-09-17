@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_DOCUMENTCTRL_H_
 
 #include "CodeSmithy/Core/Documents/Document.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
 
 namespace CodeSmithy
@@ -35,11 +36,15 @@ class DocumentCtrl : public wxPanel
 {
 public:
     DocumentCtrl(wxWindow* parent);
+    ~DocumentCtrl() override;
 
     virtual std::shared_ptr<const Document> document() const = 0;
     virtual std::shared_ptr<Document> document() = 0;
 
-    virtual void save(const boost::filesystem::path& path) = 0;
+    void save(const AppSettings& appSettings);
+
+private:
+    virtual void doSave(const boost::filesystem::path& path) = 0;
 };
 
 }

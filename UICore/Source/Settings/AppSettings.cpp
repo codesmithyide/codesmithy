@@ -229,7 +229,7 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
     return result;
 }
 
-std::string AppSettings::createFileTypesFilter()
+std::string AppSettings::createFileTypesFilter() const
 {
     std::string result;
     for (size_t i = 0; i < m_documentTypes.size(); ++i)

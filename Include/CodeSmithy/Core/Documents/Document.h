@@ -59,6 +59,7 @@ public:
     // If the document is associated with a file on disk
     // this path will point to it. If not it will be empty.
     const boost::filesystem::path& filePath() const;
+    void setFilePath(const boost::filesystem::path& filePath);
 
     // True if the document differs from the copy on disk
     // or if there is no copy on disk.

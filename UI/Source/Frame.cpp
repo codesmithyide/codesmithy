@@ -168,14 +168,7 @@ void Frame::OnSaveFile(wxCommandEvent& evt)
     std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
     if (activeDocument)
     {
-        if (activeDocument->filePath().empty())
-        {
-            OnSaveFileAs(evt);
-        }
-        else
-        {
-            m_workspacePanel->saveDocument(activeDocument->id(), activeDocument->filePath());
-        }
+        m_workspacePanel->saveDocument(activeDocument->id());
     }
 }
 
@@ -190,7 +183,8 @@ void Frame::OnSaveFileAs(wxCommandEvent& evt)
         if (fileDialog->ShowModal() == wxID_OK)
         {
             boost::filesystem::path selectedPath(fileDialog->GetPath());
-            m_workspacePanel->saveDocument(activeDocument->id(), selectedPath);
+            activeDocument->setFilePath(selectedPath);
+            m_workspacePanel->saveDocument(activeDocument->id());
         }
         fileDialog->Destroy();
     }
@@ -202,22 +196,7 @@ void Frame::OnSaveAll(wxCommandEvent& evt)
     m_workspacePanel->getModifiedDocuments(modifiedDocuments);
     for (size_t i = 0; i < modifiedDocuments.size(); ++i)
     {
-        if (modifiedDocuments[i]->filePath().empty())
-        {
-            wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
-                wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter(),
-                wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-            if (fileDialog->ShowModal() == wxID_OK)
-            {
-                boost::filesystem::path selectedPath(fileDialog->GetPath());
-                m_workspacePanel->saveDocument(modifiedDocuments[i]->id(), selectedPath);
-            }
-            fileDialog->Destroy();
-        }
-        else
-        {
-            m_workspacePanel->saveDocument(modifiedDocuments[i]->id(), modifiedDocuments[i]->filePath());
-        }
+        m_workspacePanel->saveDocument(modifiedDocuments[i]->id());
     }
 }
 
@@ -227,7 +206,6 @@ void Frame::OnCloseFile(wxCommandEvent& evt)
     if (activeDocument)
     {
         m_workspacePanel->closeDocument(activeDocument->id());
-        m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
     }
 }
 

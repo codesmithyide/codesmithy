@@ -65,6 +65,11 @@ const boost::filesystem::path& Document::filePath() const
     return m_filePath;
 }
 
+void Document::setFilePath(const boost::filesystem::path& filePath)
+{
+    m_filePath = filePath;
+}
+
 bool Document::modified() const
 {
     return m_modified;

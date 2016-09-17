@@ -38,7 +38,7 @@ public:
     OpenDocumentsCtrl(wxWindow* parent, std::shared_ptr<ActiveDocument> activeDocument, const AppSettings& appSettings);
 
     void addDocument(std::shared_ptr<Document> document);
-    void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
+    void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
 
     void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;

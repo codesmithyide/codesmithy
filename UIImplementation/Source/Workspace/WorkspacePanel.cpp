@@ -54,10 +54,9 @@ WorkspacePanel::~WorkspacePanel()
     m_documents->removeObserver(m_documentsObserver);
 }
 
-void WorkspacePanel::saveDocument(const DocumentId& id,
-                                  const boost::filesystem::path& path)
+void WorkspacePanel::saveDocument(const DocumentId& id)
 {
-    m_openDocuments->saveDocument(id, path);
+    m_openDocuments->saveDocument(id);
 }
 
 void WorkspacePanel::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
@@ -68,6 +67,7 @@ void WorkspacePanel::getModifiedDocuments(std::vector<std::shared_ptr<Document> 
 void WorkspacePanel::closeDocument(const DocumentId& id)
 {
     m_openDocuments->closeDocument(id);
+    m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
 }
 
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)

@@ -21,6 +21,7 @@
 */
 
 #include "Editors/DocumentCtrl.h"
+#include <wx/filedlg.h>
 
 namespace CodeSmithy
 {
@@ -28,6 +29,28 @@ namespace CodeSmithy
 DocumentCtrl::DocumentCtrl(wxWindow* parent)
     : wxPanel(parent)
 {
+}
+
+DocumentCtrl::~DocumentCtrl()
+{
+}
+
+void DocumentCtrl::save(const AppSettings& appSettings)
+{
+    if (document()->filePath().empty())
+    {
+        wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
+            wxEmptyString, wxEmptyString, appSettings.createFileTypesFilter(),
+            wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+        if (fileDialog->ShowModal() == wxID_OK)
+        {
+            boost::filesystem::path selectedPath(fileDialog->GetPath());
+            document()->setFilePath(selectedPath);
+        }
+        fileDialog->Destroy();
+    }
+
+    doSave(document()->filePath());
 }
 
 }
