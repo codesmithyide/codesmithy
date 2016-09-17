@@ -28,7 +28,27 @@ namespace CodeSmithy
 CMakeListsEditorPreferencesPage::CMakeListsEditorPreferencesPage(wxWindow *parent,
                                                                  AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::CMakeListsEditorId,
-        appSettings.editorSettings().cmakelistsSettings())
+        appSettings.editorSettings().cmakelistsSettings()),
+    m_newSettings(appSettings.editorSettings().cmakelistsSettings())
+{
+}
+
+void CMakeListsEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                        unsigned pointSize)
+{
+}
+
+EditorSettingsBase& CMakeListsEditorPreferencesPage::newSettings() noexcept
+{
+    return m_newSettings;
+}
+
+bool CMakeListsEditorPreferencesPage::hasChanges() const noexcept
+{
+    return (m_appSettings.editorSettings().cmakelistsSettings() != m_newSettings);
+}
+
+void CMakeListsEditorPreferencesPage::updateExample()
 {
 }
 

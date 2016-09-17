@@ -44,7 +44,7 @@ private:
     void onStyleChanged(wxColourPickerEvent& evt);
     void onApply(wxCommandEvent& evt);
 
-    void updateExample();
+    void updateExample() override;
 
 private:
     XMLEditorSettings m_newSettings;

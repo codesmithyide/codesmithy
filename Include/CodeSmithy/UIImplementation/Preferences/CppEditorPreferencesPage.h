@@ -42,7 +42,7 @@ private:
 
     void onApply(wxCommandEvent& evt);
 
-    void updateExample();
+    void updateExample() override;
     
 private:
     CppEditorSettings m_newSettings;

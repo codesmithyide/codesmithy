@@ -32,6 +32,17 @@ class CMakeListsEditorPreferencesPage : public EditorPreferencesBase
 {
 public:
     CMakeListsEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() noexcept override;
+    bool hasChanges() const noexcept override;
+
+    void updateExample() override;
+
+private:
+    CMakeListsEditorSettings m_newSettings;
 };
 
 }
