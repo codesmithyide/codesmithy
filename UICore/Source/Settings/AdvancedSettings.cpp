@@ -21,11 +21,15 @@
 */
 
 #include "Settings/AdvancedSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
+static const char* uiLogLevelElementName = "ui-log-level";
+
 AdvancedSettings::AdvancedSettings()
+    : m_uiLogLevel(eUILogDisabled)
 {
 }
 
@@ -39,6 +43,18 @@ void AdvancedSettings::load(pugi::xml_node node)
 
 void AdvancedSettings::save(pugi::xml_node node) const
 {
+    std::string uiLogLevelStr;
+    switch (m_uiLogLevel)
+    {
+    case eUILogDisabled:
+        uiLogLevelStr = "disabled";
+        break;
+
+    case eUILogTrace:
+        uiLogLevelStr = "trace";
+        break;
+    }
+    XMLUtilities::setOrAppendChildNode(node, uiLogLevelElementName, uiLogLevelStr);
 }
 
 }

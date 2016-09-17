@@ -31,11 +31,21 @@ namespace CodeSmithy
 class AdvancedSettings
 {
 public:
+    enum EUILogLevel
+    {
+        eUILogDisabled,
+        eUILogTrace
+    };
+
+public:
     AdvancedSettings();
     ~AdvancedSettings();
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
+
+private:
+    EUILogLevel m_uiLogLevel;
 };
 
 }
