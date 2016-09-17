@@ -33,8 +33,9 @@ const wxWindowID WorkspaceSaveFileMenuID = WorkspaceOpenFileMenuID + 1;
 const wxWindowID WorkspaceSaveFileAsMenuID = WorkspaceSaveFileMenuID + 1;
 const wxWindowID WorkspaceSaveAllMenuID = WorkspaceSaveFileAsMenuID + 1;
 const wxWindowID WorkspaceCloseFileMenuID = WorkspaceSaveAllMenuID + 1;
+const wxWindowID WorkspaceCloseAllMenuID = WorkspaceCloseFileMenuID + 1;
 
-const wxWindowID ProjectChoiceProjectRadioButtonID = WorkspaceCloseFileMenuID + 1;
+const wxWindowID ProjectChoiceProjectRadioButtonID = WorkspaceCloseAllMenuID + 1;
 const wxWindowID ProjectChoiceStandaloneButtonID = ProjectChoiceProjectRadioButtonID + 1;
 
 const wxWindowID PreferencesCloseButtonID = ProjectChoiceStandaloneButtonID + 1;

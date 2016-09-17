@@ -69,6 +69,11 @@ void WorkspacePanel::closeDocument(const DocumentId& id)
     m_openDocuments->closeDocument(id);
 }
 
+void WorkspacePanel::closeAllDocuments()
+{
+    m_openDocuments->closeAllDocuments();
+}
+
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
 {
     m_openDocuments->addDocument(document);

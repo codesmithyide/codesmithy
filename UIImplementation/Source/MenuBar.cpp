@@ -44,6 +44,7 @@ MenuBar::MenuBar()
 
     menuFile->AppendSeparator();
     m_closeMenuItem = menuFile->Append(WorkspaceCloseFileMenuID, "&Close");
+    menuFile->Append(WorkspaceCloseAllMenuID, "Close All Documents");
     m_closeMenuItem->Enable(false);
 
     menuFile->AppendSeparator();

@@ -150,6 +150,28 @@ void Frame::OpenFile(const wxString& file)
     }
 }
 
+void Frame::OnWindowClose(wxCloseEvent& evt)
+{
+    if (evt.CanVeto())
+    {
+        m_workspacePanel->closeAllDocuments();
+        std::vector<std::shared_ptr<Document> > modifiedDocuments;
+        m_workspacePanel->getModifiedDocuments(modifiedDocuments);
+        if (!modifiedDocuments.empty())
+        {
+            evt.Veto();
+        }
+        else
+        {
+            Destroy();
+        }
+    }
+    else
+    {
+        Destroy();
+    }
+}
+
 void Frame::OnOpenFile(wxCommandEvent& evt)
 {
     wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
@@ -209,6 +231,11 @@ void Frame::OnCloseFile(wxCommandEvent& evt)
     }
 }
 
+void Frame::OnCloseAll(wxCommandEvent& evt)
+{
+    m_workspacePanel->closeAllDocuments();
+}
+
 void Frame::OnPreferences(wxCommandEvent& evt)
 {
     PreferencesDialog preferencesDialog(this, m_appSettings);
@@ -217,7 +244,7 @@ void Frame::OnPreferences(wxCommandEvent& evt)
 
 void Frame::OnExit(wxCommandEvent& evt)
 {
-    Close(true);
+    Close();
 }
 
 void Frame::OnAbout(wxCommandEvent& evt)
@@ -227,11 +254,13 @@ void Frame::OnAbout(wxCommandEvent& evt)
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
+    EVT_CLOSE(Frame::OnWindowClose)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
     EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)
     EVT_MENU(WorkspaceSaveAllMenuID, Frame::OnSaveAll)
     EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
+    EVT_MENU(WorkspaceCloseAllMenuID, Frame::OnCloseAll)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
     EVT_MENU(wxID_ABOUT, Frame::OnAbout)

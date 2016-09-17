@@ -41,6 +41,7 @@ public:
 
     void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
+    void closeAllDocuments();
 
     void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
 

@@ -80,6 +80,24 @@ void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
     }
 }
 
+void OpenDocumentsCtrl::closeAllDocuments()
+{
+    size_t i = 0;
+    while (i < GetPageCount())
+    {
+        wxWindow* page = GetPage(i);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl && tryCloseDocument(*documentCtrl))
+        {
+            DeletePage(i);
+        }
+        else
+        {
+            ++i;
+        }
+    }
+}
+
 void OpenDocumentsCtrl::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
 {
     for (size_t i = 0; i < GetPageCount(); ++i)

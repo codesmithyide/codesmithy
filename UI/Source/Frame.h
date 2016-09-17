@@ -44,11 +44,13 @@ public:
 	void OpenFile(const wxString& file);
 
 private:
+    void OnWindowClose(wxCloseEvent& evt);
     void OnOpenFile(wxCommandEvent& evt);
     void OnSaveFile(wxCommandEvent& evt);
     void OnSaveFileAs(wxCommandEvent& evt);
     void OnSaveAll(wxCommandEvent& evt);
     void OnCloseFile(wxCommandEvent& evt);
+    void OnCloseAll(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
     void OnAbout(wxCommandEvent& evt);
