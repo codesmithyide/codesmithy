@@ -31,6 +31,12 @@ CMakeListsType::CMakeListsType()
 {
 }
 
+CMakeListsType::CMakeListsType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("CMakeLists", "txt")
+{
+    setCustomData(customData);
+}
+
 std::shared_ptr<Document> CMakeListsType::createNewDocument(const DocumentId& id,
                                                             const std::string& name) const
 {

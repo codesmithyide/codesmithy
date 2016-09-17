@@ -23,4 +23,36 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_CMAKELISTSCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_CMAKELISTSCTRL_H_
 
+#include "DocumentCtrl.h"
+#include "CMakeListsEditorCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/CMakeLists.h"
+
+namespace CodeSmithy
+{
+
+class CMakeListsCtrl : public DocumentCtrl
+{
+public:
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    CMakeListsCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void save(const boost::filesystem::path& path) override;
+
+private:
+    void onModified(wxStyledTextEvent& evt);
+
+private:
+    CMakeListsEditorCtrl* m_ctrl;
+    std::shared_ptr<CMakeLists> m_document;
+};
+
+}
+
 #endif

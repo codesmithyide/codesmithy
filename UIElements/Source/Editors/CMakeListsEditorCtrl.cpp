@@ -21,3 +21,14 @@
 */
 
 #include "Editors/CMakeListsEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+CMakeListsEditorCtrl::CMakeListsEditorCtrl(wxWindow* parent,
+                                           const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+}
+
+}

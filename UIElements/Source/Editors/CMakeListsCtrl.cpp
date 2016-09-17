@@ -21,3 +21,55 @@
 */
 
 #include "Editors/CMakeListsCtrl.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+wxWindow* CMakeListsCtrl::Create(wxWindow *parent,
+                                 std::shared_ptr<Document> document,
+                                 const AppSettings& appSettings)
+{
+    return new CMakeListsCtrl(parent, document, appSettings);
+}
+
+CMakeListsCtrl::CMakeListsCtrl(wxWindow* parent,
+                               std::shared_ptr<Document> document,
+                               const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
+{
+    m_ctrl = new CMakeListsEditorCtrl(this, appSettings);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &CMakeListsCtrl::onModified, this);
+
+    m_document = std::dynamic_pointer_cast<CMakeLists, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
+}
+
+std::shared_ptr<const Document> CMakeListsCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> CMakeListsCtrl::document()
+{
+    return m_document;
+}
+
+void CMakeListsCtrl::save(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
+}
+
+void CMakeListsCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
+}
+
+}

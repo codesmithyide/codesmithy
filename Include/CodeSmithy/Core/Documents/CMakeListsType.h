@@ -32,6 +32,7 @@ class CMakeListsType : public DocumentType
 {
 public:
     CMakeListsType();
+    CMakeListsType(std::shared_ptr<CustomDocumentTypeData> customData);
 
     std::shared_ptr<Document> createNewDocument(const DocumentId& id,
         const std::string& name) const override;

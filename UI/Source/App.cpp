@@ -24,6 +24,7 @@
 #include "Frame.h"
 #include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/UIElements/Editors/BakefileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/CMakeListsCtrl.h"
 #include "CodeSmithy/UIElements/Editors/CppFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
@@ -45,7 +46,7 @@ App::App()
     // the CodeSmithy UI.
     m_documentTypes = std::make_shared<DocumentTypes>();
     m_documentTypes->add(std::make_shared<BakefileType>(std::make_shared<ControlCreationDocumentTypeData>(BakefileCtrl::Create)));
-    m_documentTypes->add(std::make_shared<CMakeListsType>());
+    m_documentTypes->add(std::make_shared<CMakeListsType>(std::make_shared<ControlCreationDocumentTypeData>(CMakeListsCtrl::Create)));
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<XMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(XMLDocumentCtrl::Create)));

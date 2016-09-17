@@ -21,3 +21,7 @@
 */
 
 #include "Editors/BakefileEditorCtrl.h"
+
+namespace CodeSmithy
+{
+}

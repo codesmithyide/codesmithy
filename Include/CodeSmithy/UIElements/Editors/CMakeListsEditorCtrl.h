@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_CMAKELISTSEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_CMAKELISTSEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+
+class CMakeListsEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    CMakeListsEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+};
+
+}
+
 #endif
