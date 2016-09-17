@@ -41,6 +41,7 @@ private:
     void CreateEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateDefaultEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateBakefileEditorPreferences(wxTreebook* treebook, AppSettings& settings);
+    void CreateCMakeListsEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateCppEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateXMLEditorPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateStartupPreferences(wxTreebook* treebook, AppSettings& settings);

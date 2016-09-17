@@ -21,3 +21,15 @@
 */
 
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+CMakeListsEditorPreferencesPage::CMakeListsEditorPreferencesPage(wxWindow *parent,
+                                                                 AppSettings& appSettings)
+    : EditorPreferencesBase(parent, appSettings, EditorId::CMakeListsEditorId,
+        appSettings.editorSettings().cmakelistsSettings())
+{
+}
+
+}

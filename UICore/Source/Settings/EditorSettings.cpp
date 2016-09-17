@@ -140,35 +140,15 @@ void EditorSettings::load(pugi::xml_node node)
 
 void EditorSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node defaultEditorSettingsNode = node.child(defaultEditorSettingsElementName);
-    if (!defaultEditorSettingsNode)
-    {
-        defaultEditorSettingsNode = node.append_child(defaultEditorSettingsElementName);
-    }
+    pugi::xml_node defaultEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, defaultEditorSettingsElementName);
     m_defaultEditorSettings.save(defaultEditorSettingsNode);
-
-    pugi::xml_node bakefileEditorSettingsNode = node.child(bakefileEditorSettingsElementName);
-    if (!bakefileEditorSettingsNode)
-    {
-        bakefileEditorSettingsNode = node.append_child(bakefileEditorSettingsElementName);
-    }
+    pugi::xml_node bakefileEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, bakefileEditorSettingsElementName);
     m_bakefileEditorSettings.save(bakefileEditorSettingsNode);
-
     pugi::xml_node cmakelistsNode = XMLUtilities::getOrAppendChildNode(node, cmakelistsEditorSettingsElementName);
     m_cmakelistsEditorSettings.save(cmakelistsNode);
-
-    pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
-    if (!cppEditorSettingsNode)
-    {
-        cppEditorSettingsNode = node.append_child(cppEditorSettingsElementName);
-    }
+    pugi::xml_node cppEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, cppEditorSettingsElementName);
     m_cppEditorSettings.save(cppEditorSettingsNode);
-
-    pugi::xml_node xmlEditorSettingsNode = node.child(xmlEditorSettingsElementName);
-    if (!xmlEditorSettingsNode)
-    {
-        xmlEditorSettingsNode = node.append_child(xmlEditorSettingsElementName);
-    }
+    pugi::xml_node xmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, xmlEditorSettingsElementName);
     m_xmlEditorSettings.save(xmlEditorSettingsNode);
 }
 

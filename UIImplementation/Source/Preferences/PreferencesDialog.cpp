@@ -23,6 +23,7 @@
 #include "Preferences/PreferencesDialog.h"
 #include "Preferences/DefaultEditorPreferencesPage.h"
 #include "Preferences/BakefileEditorPreferencesPage.h"
+#include "Preferences/CMakeListsEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
 #include "Preferences/StartupPreferencesPage.h"
@@ -64,6 +65,7 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
 
     CreateDefaultEditorPreferences(treebook, settings);
     CreateBakefileEditorPreferences(treebook, settings);
+    CreateCMakeListsEditorPreferences(treebook, settings);
     CreateCppEditorPreferences(treebook, settings);
     CreateXMLEditorPreferences(treebook, settings);
 }
@@ -80,6 +82,13 @@ void PreferencesDialog::CreateBakefileEditorPreferences(wxTreebook* treebook,
 {
     BakefileEditorPreferencesPage* bakefilePage = new BakefileEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(bakefilePage, "Bakefile");
+}
+
+void PreferencesDialog::CreateCMakeListsEditorPreferences(wxTreebook* treebook,
+                                                          AppSettings& settings)
+{
+    CMakeListsEditorPreferencesPage* cmakelistsPage = new CMakeListsEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(cmakelistsPage, "CMakeLists");
 }
 
 void PreferencesDialog::CreateCppEditorPreferences(wxTreebook* treebook,
