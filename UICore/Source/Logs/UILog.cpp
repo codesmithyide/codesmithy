@@ -21,3 +21,7 @@
 */
 
 #include "Logs/UILog.h"
+
+namespace CodeSmithy
+{
+}

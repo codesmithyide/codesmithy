@@ -36,6 +36,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Workspace/OpenDocumentsCtrl.h
         ../../../Include/CodeSmithy/UIImplementation/Workspace/StartPage.h
         ../../../Include/CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h
+        ../../../Include/CodeSmithy/UIImplementation/Workspace/ClosingModifiedDocumentDialog.h
 
         ../../../Include/CodeSmithy/UIImplementation/Preferences/EditorPreferencesBase.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/DefaultEditorPreferencesPage.h
@@ -63,6 +64,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Workspace/OpenDocumentsCtrl.cpp
         ../../Source/Workspace/StartPage.cpp
         ../../Source/Workspace/WorkspacePanel.cpp
+        ../../Source/Workspace/ClosingModifiedDocumentDialog.cpp
 
         ../../Source/Preferences/EditorPreferencesBase.cpp
         ../../Source/Preferences/DefaultEditorPreferencesPage.cpp

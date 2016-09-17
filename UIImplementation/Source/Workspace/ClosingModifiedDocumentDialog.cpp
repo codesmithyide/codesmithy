@@ -20,11 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UICORE_LOGS_UILOG_H_
-#define _CODESMITHY_UICORE_LOGS_UILOG_H_
-
-namespace CodeSmithy
-{
-}
-
-#endif
+#include "Workspace/ClosingModifiedDocumentDialog.h"
