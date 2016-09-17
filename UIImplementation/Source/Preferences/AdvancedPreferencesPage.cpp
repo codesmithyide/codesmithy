@@ -21,3 +21,14 @@
 */
 
 #include "Preferences/AdvancedPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+AdvancedPreferencesPage::AdvancedPreferencesPage(wxWindow* parent, 
+                                                 AppSettings& appSettings)
+    : wxPanel(parent)
+{
+}
+
+}

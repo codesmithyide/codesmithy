@@ -20,21 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_ADVANCEDPREFERENCESPAGE_H_
-#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_ADVANCEDPREFERENCESPAGE_H_
-
-#include "CodeSmithy/UICore/Settings/AppSettings.h"
-#include <wx/panel.h>
-
-namespace CodeSmithy
-{
-
-class AdvancedPreferencesPage : public wxPanel
-{
-public:
-    AdvancedPreferencesPage(wxWindow* parent, AppSettings& appSettings);
-};
-
-}
+#ifndef _CODESMITHY_UICORE_SETTINGS_ADVANCEDSETTINGS_H_
+#define _CODESMITHY_UICORE_SETTINGS_ADVANCEDSETTINGS_H_
 
 #endif

@@ -28,6 +28,7 @@
 #include "Preferences/XMLEditorPreferencesPage.h"
 #include "Preferences/StartupPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
+#include "Preferences/AdvancedPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
@@ -50,6 +51,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     CreateEditorPreferences(treebook, settings);
     CreateStartupPreferences(treebook, settings);
     CreateFileTypeAssociationsPreferences(treebook, settings);
+    CreateAdvancedPreferences(treebook, settings);
     topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
     wxButton* closeButton = new wxButton(this, PreferencesCloseButtonID, "Close");
@@ -63,44 +65,14 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
 {
     treebook->AddPage(NULL, "Editors");
 
-    CreateDefaultEditorPreferences(treebook, settings);
-    CreateBakefileEditorPreferences(treebook, settings);
-    CreateCMakeListsEditorPreferences(treebook, settings);
-    CreateCppEditorPreferences(treebook, settings);
-    CreateXMLEditorPreferences(treebook, settings);
-}
-
-void PreferencesDialog::CreateDefaultEditorPreferences(wxTreebook* treebook,
-                                                       AppSettings& settings)
-{
     DefaultEditorPreferencesPage* defaultPage = new DefaultEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(defaultPage, "Defaults", true);
-}
-
-void PreferencesDialog::CreateBakefileEditorPreferences(wxTreebook* treebook,
-                                                        AppSettings& settings)
-{
     BakefileEditorPreferencesPage* bakefilePage = new BakefileEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(bakefilePage, "Bakefile");
-}
-
-void PreferencesDialog::CreateCMakeListsEditorPreferences(wxTreebook* treebook,
-                                                          AppSettings& settings)
-{
     CMakeListsEditorPreferencesPage* cmakelistsPage = new CMakeListsEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(cmakelistsPage, "CMakeLists");
-}
-
-void PreferencesDialog::CreateCppEditorPreferences(wxTreebook* treebook,
-                                                   AppSettings& settings)
-{
     CppEditorPreferencesPage* cppPage = new CppEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(cppPage, "C/C++");
-}
-
-void PreferencesDialog::CreateXMLEditorPreferences(wxTreebook* treebook,
-                                                   AppSettings& settings)
-{
     XMLEditorPreferencesPage* xmlPage = new XMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(xmlPage, "XML");
 }
@@ -117,6 +89,13 @@ void PreferencesDialog::CreateFileTypeAssociationsPreferences(wxTreebook* treebo
 {
     FileTypeAssociationsPreferencesPage* fileTypeAssociationsPage = new FileTypeAssociationsPreferencesPage(treebook, settings);
     treebook->AddPage(fileTypeAssociationsPage, "File Type Associations");
+}
+
+void PreferencesDialog::CreateAdvancedPreferences(wxTreebook* treebook, 
+                                                  AppSettings& settings)
+{
+    AdvancedPreferencesPage* advancedPage = new AdvancedPreferencesPage(treebook, settings);
+    treebook->AddPage(advancedPage, "Advanced");
 }
 
 void PreferencesDialog::OnClose(wxCommandEvent& evt)
