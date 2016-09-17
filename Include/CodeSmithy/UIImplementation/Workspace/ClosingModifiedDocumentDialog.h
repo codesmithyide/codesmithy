@@ -23,4 +23,31 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_CLOSINGMODIFIEDDOCUMENTDIALOG_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_CLOSINGMODIFIEDDOCUMENTDIALOG_H_
 
+#include "CodeSmithy/Core/Documents/Document.h"
+#include <wx/dialog.h>
+
+namespace CodeSmithy
+{
+
+class ClosingModifiedDocumentDialog : public wxDialog
+{
+public:
+    enum EDecision
+    {
+        eSave,
+        eDiscard,
+        eCancel
+    };
+
+public:
+    ClosingModifiedDocumentDialog(wxWindow* parent, const Document& document);
+
+private:
+    void onSave(wxCommandEvent& evt);
+    void onDiscard(wxCommandEvent& evt);
+    void onCancel(wxCommandEvent& evt);
+};
+
+}
+
 #endif

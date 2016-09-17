@@ -21,6 +21,7 @@
 */
 
 #include "Workspace/OpenDocumentsCtrl.h"
+#include "Workspace/ClosingModifiedDocumentDialog.h"
 #include "ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/UIElements/Editors/DocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
@@ -114,9 +115,43 @@ void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
         DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
         if (selectedDocumentCtrl)
         {
-            if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
+            bool okToClose = false;
+            if (selectedDocumentCtrl->document()->modified())
             {
-                m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
+                ClosingModifiedDocumentDialog prompt(this, *selectedDocumentCtrl->document());
+                switch (prompt.ShowModal())
+                {
+                case ClosingModifiedDocumentDialog::eSave:
+                    if (selectedDocumentCtrl->document()->filePath().empty())
+                    {
+                    }
+                    else
+                    {
+                        selectedDocumentCtrl->save(selectedDocumentCtrl->document()->filePath());
+                        okToClose = true;
+                    }
+                    break;
+
+                case ClosingModifiedDocumentDialog::eDiscard:
+                    okToClose = true;
+                    break;
+                }
+            }
+            else
+            {
+                okToClose = true;
+            }
+
+            if (okToClose)
+            {
+                if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
+                {
+                    m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
+                }
+            }
+            else
+            {
+                evt.Veto();
             }
         }
     }

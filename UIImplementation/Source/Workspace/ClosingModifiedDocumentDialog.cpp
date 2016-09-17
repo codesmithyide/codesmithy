@@ -21,3 +21,50 @@
 */
 
 #include "Workspace/ClosingModifiedDocumentDialog.h"
+#include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/button.h>
+
+namespace CodeSmithy
+{
+
+ClosingModifiedDocumentDialog::ClosingModifiedDocumentDialog(wxWindow* parent, 
+                                                             const Document& document)
+    : wxDialog(parent, wxID_ANY, "Warning")
+{
+    wxStaticText* text = new wxStaticText(this, wxID_ANY, "You are about to close a document with unsaved changes");
+
+    wxButton* saveButton = new wxButton(this, wxID_ANY, "Save changes");
+    saveButton->Bind(wxEVT_BUTTON, &ClosingModifiedDocumentDialog::onSave, this);
+    wxButton* discardButton = new wxButton(this, wxID_ANY, "Discard changes");
+    discardButton->Bind(wxEVT_BUTTON, &ClosingModifiedDocumentDialog::onDiscard, this);
+    wxButton* cancelButton = new wxButton(this, wxID_ANY, "Cancel");
+    cancelButton->Bind(wxEVT_BUTTON, &ClosingModifiedDocumentDialog::onCancel, this);
+
+    wxBoxSizer* buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
+    buttonsSizer->Add(saveButton);
+    buttonsSizer->Add(discardButton);
+    buttonsSizer->Add(cancelButton);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(text);
+    topSizer->Add(buttonsSizer);
+    SetSizerAndFit(topSizer);
+}
+
+void ClosingModifiedDocumentDialog::onSave(wxCommandEvent& evt)
+{
+    EndModal(eSave);
+}
+
+void ClosingModifiedDocumentDialog::onDiscard(wxCommandEvent& evt)
+{
+    EndModal(eDiscard);
+}
+
+void ClosingModifiedDocumentDialog::onCancel(wxCommandEvent& evt)
+{
+    EndModal(eCancel);
+}
+
+}
