@@ -85,6 +85,7 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
             saveMenuLabel += " ";
             saveMenuLabel += document->name();
         }
+        saveMenuLabel += "\tCtrl+S";
         m_menuBar.m_saveMenuItem->SetItemLabel(saveMenuLabel.c_str());
         m_menuBar.m_saveMenuItem->Enable(true);
 
@@ -109,7 +110,7 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
     }
     else
     {
-        std::string saveMenuLabel = "&Save";
+        std::string saveMenuLabel = "&Save\tCtrl+S";
         m_menuBar.m_saveMenuItem->SetItemLabel(saveMenuLabel.c_str());
         m_menuBar.m_saveMenuItem->Enable(false);
 

@@ -69,6 +69,7 @@ std::shared_ptr<Document> BakefileCtrl::document()
 
 void BakefileCtrl::save(const boost::filesystem::path& path)
 {
+    m_ctrl->SaveFile(path.string());
     m_document->setModified(false);
 }
 

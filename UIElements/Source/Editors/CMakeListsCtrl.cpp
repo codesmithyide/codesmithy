@@ -64,6 +64,7 @@ std::shared_ptr<Document> CMakeListsCtrl::document()
 
 void CMakeListsCtrl::save(const boost::filesystem::path& path)
 {
+    m_ctrl->SaveFile(path.string());
     m_document->setModified(false);
 }
 
