@@ -196,6 +196,31 @@ void Frame::OnSaveFileAs(wxCommandEvent& evt)
     }
 }
 
+void Frame::OnSaveAll(wxCommandEvent& evt)
+{
+    std::vector<std::shared_ptr<Document> > modifiedDocuments;
+    m_workspacePanel->getModifiedDocuments(modifiedDocuments);
+    for (size_t i = 0; i < modifiedDocuments.size(); ++i)
+    {
+        if (modifiedDocuments[i]->filePath().empty())
+        {
+            wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
+                wxEmptyString, wxEmptyString, m_appSettings.createFileTypesFilter(),
+                wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+            if (fileDialog->ShowModal() == wxID_OK)
+            {
+                boost::filesystem::path selectedPath(fileDialog->GetPath());
+                m_workspacePanel->saveDocument(modifiedDocuments[i]->id(), selectedPath);
+            }
+            fileDialog->Destroy();
+        }
+        else
+        {
+            m_workspacePanel->saveDocument(modifiedDocuments[i]->id(), modifiedDocuments[i]->filePath());
+        }
+    }
+}
+
 void Frame::OnCloseFile(wxCommandEvent& evt)
 {
     std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
@@ -227,6 +252,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
     EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)
+    EVT_MENU(WorkspaceSaveAllMenuID, Frame::OnSaveAll)
     EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)

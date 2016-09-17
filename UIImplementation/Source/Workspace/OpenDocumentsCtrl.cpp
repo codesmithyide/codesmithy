@@ -72,6 +72,22 @@ void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
     }
 }
 
+void OpenDocumentsCtrl::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
+{
+    for (size_t i = 0; i < GetPageCount(); ++i)
+    {
+        wxWindow* page = GetPage(i);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            if (documentCtrl->document()->modified())
+            {
+                modifiedDocuments.push_back(documentCtrl->document());
+            }
+        }
+    }
+}
+
 size_t OpenDocumentsCtrl::findPageByDocumentId(const DocumentId& id)
 {
     for (size_t i = 0; i < GetPageCount(); ++i)

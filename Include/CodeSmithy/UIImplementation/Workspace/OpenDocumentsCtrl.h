@@ -41,6 +41,8 @@ public:
     void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
     void closeDocument(const DocumentId& id);
 
+    void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
+
 private:
     size_t findPageByDocumentId(const DocumentId& id);
 

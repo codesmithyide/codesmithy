@@ -60,6 +60,11 @@ void WorkspacePanel::saveDocument(const DocumentId& id,
     m_openDocuments->saveDocument(id, path);
 }
 
+void WorkspacePanel::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
+{
+    m_openDocuments->getModifiedDocuments(modifiedDocuments);
+}
+
 void WorkspacePanel::closeDocument(const DocumentId& id)
 {
     m_openDocuments->closeDocument(id);

@@ -42,6 +42,8 @@ public:
     void saveDocument(const DocumentId& id, const boost::filesystem::path& path);
     void closeDocument(const DocumentId& id);
 
+    void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
+
 private:
     void onAdd(std::shared_ptr<Document> document);
 

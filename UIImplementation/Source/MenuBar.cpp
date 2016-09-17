@@ -38,7 +38,8 @@ MenuBar::MenuBar()
     menuFile->AppendSeparator();
     m_saveMenuItem = menuFile->Append(WorkspaceSaveFileMenuID, "&Save\tCtrl+S");
     m_saveMenuItem->Enable(false);
-    m_saveAsMenuItem = menuFile->Append(WorkspaceSaveFileAsMenuID, "Save &As...\tCtrl+Shift+S");
+    m_saveAsMenuItem = menuFile->Append(WorkspaceSaveFileAsMenuID, "Save &As...");
+    menuFile->Append(WorkspaceSaveAllMenuID, "Save A&ll\tCtrl+Shift+S");
     m_saveAsMenuItem->Enable(false);
 
     menuFile->AppendSeparator();
