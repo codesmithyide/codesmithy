@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OPENDOCUMENTSCTRL_H_
 
 #include "../ActiveDocument.h"
+#include "CodeSmithy/UIElements/Editors/DocumentCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/Document.h"
 #include <wx/aui/aui.h>
@@ -45,6 +46,7 @@ public:
 
 private:
     size_t findPageByDocumentId(const DocumentId& id);
+    bool tryCloseDocument(DocumentCtrl& documentCtrl);
 
     void onPageClose(wxAuiNotebookEvent& evt);
     void onPageChanged(wxAuiNotebookEvent& evt);

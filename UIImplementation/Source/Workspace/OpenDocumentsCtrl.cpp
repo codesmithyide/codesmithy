@@ -23,7 +23,6 @@
 #include "Workspace/OpenDocumentsCtrl.h"
 #include "Workspace/ClosingModifiedDocumentDialog.h"
 #include "ControlCreationDocumentTypeData.h"
-#include "CodeSmithy/UIElements/Editors/DocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
 
 namespace CodeSmithy
@@ -68,7 +67,16 @@ void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
     size_t pageIndex = findPageByDocumentId(id);
     if (pageIndex != wxNOT_FOUND)
     {
-        DeletePage(pageIndex);
+        wxWindow* page = GetPage(pageIndex);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            if (tryCloseDocument(*documentCtrl))
+            {
+                DeletePage(pageIndex);
+                m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
+            }
+        }
     }
 }
 
@@ -105,6 +113,31 @@ size_t OpenDocumentsCtrl::findPageByDocumentId(const DocumentId& id)
     return wxNOT_FOUND;
 }
 
+bool OpenDocumentsCtrl::tryCloseDocument(DocumentCtrl& documentCtrl)
+{
+    bool okToClose = false;
+    if (documentCtrl.document()->modified())
+    {
+        ClosingModifiedDocumentDialog prompt(this, *documentCtrl.document());
+        switch (prompt.ShowModal())
+        {
+        case ClosingModifiedDocumentDialog::eSave:
+            documentCtrl.save(m_appSettings);
+            okToClose = true;
+            break;
+
+        case ClosingModifiedDocumentDialog::eDiscard:
+            okToClose = true;
+            break;
+        }
+    }
+    else
+    {
+        okToClose = true;
+    }
+    return okToClose;
+}
+
 void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
 {
     int selectedPageIndex = evt.GetSelection();
@@ -114,28 +147,7 @@ void OpenDocumentsCtrl::onPageClose(wxAuiNotebookEvent& evt)
         DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
         if (selectedDocumentCtrl)
         {
-            bool okToClose = false;
-            if (selectedDocumentCtrl->document()->modified())
-            {
-                ClosingModifiedDocumentDialog prompt(this, *selectedDocumentCtrl->document());
-                switch (prompt.ShowModal())
-                {
-                case ClosingModifiedDocumentDialog::eSave:
-                    selectedDocumentCtrl->save(m_appSettings);
-                    okToClose = true;
-                    break;
-
-                case ClosingModifiedDocumentDialog::eDiscard:
-                    okToClose = true;
-                    break;
-                }
-            }
-            else
-            {
-                okToClose = true;
-            }
-
-            if (okToClose)
+            if (tryCloseDocument(*selectedDocumentCtrl))
             {
                 if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
                 {

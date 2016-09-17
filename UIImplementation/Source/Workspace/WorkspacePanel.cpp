@@ -67,7 +67,6 @@ void WorkspacePanel::getModifiedDocuments(std::vector<std::shared_ptr<Document> 
 void WorkspacePanel::closeDocument(const DocumentId& id)
 {
     m_openDocuments->closeDocument(id);
-    m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
 }
 
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
