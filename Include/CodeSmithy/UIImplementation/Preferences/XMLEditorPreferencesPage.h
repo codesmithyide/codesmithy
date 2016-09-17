@@ -25,9 +25,6 @@
 
 #include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/XMLEditorCtrl.h"
-#include <wx/textctrl.h>
-#include <wx/spinctrl.h>
-#include <wx/button.h>
 #include <wx/clrpicker.h>
 
 namespace CodeSmithy

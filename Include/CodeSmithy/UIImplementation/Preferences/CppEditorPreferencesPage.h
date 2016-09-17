@@ -25,8 +25,6 @@
 
 #include "EditorPreferencesBase.h"
 #include "CodeSmithy/UIElements/Editors/CppEditorCtrl.h"
-#include <wx/textctrl.h>
-#include <wx/button.h>
 
 namespace CodeSmithy
 {

@@ -24,8 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILEEDITORPREFERENCESPAGE_H_
 
 #include "EditorPreferencesBase.h"
-#include <wx/textctrl.h>
-#include <wx/button.h>
+#include "CodeSmithy/UIElements/Editors/BakefileEditorCtrl.h"
 
 namespace CodeSmithy
 {
@@ -47,7 +46,7 @@ private:
     
 private:
     BakefileEditorSettings m_newSettings;
-    wxTextCtrl* m_formatExample;
+    BakefileEditorCtrl* m_formatExample;
 
     wxDECLARE_EVENT_TABLE();
 };
