@@ -32,13 +32,13 @@ MenuBar::MenuBar()
     wxMenu* menuFile = new wxMenu;
 
     wxMenu* menuFileOpen = new wxMenu;
-    menuFileOpen->Append(WorkspaceOpenFileMenuID, "&File...");
+    menuFileOpen->Append(WorkspaceOpenFileMenuID, "&File...\tCtrl+O");
     menuFile->AppendSubMenu(menuFileOpen, "&Open");
 
     menuFile->AppendSeparator();
-    m_saveMenuItem = menuFile->Append(WorkspaceSaveFileMenuID, "&Save");
+    m_saveMenuItem = menuFile->Append(WorkspaceSaveFileMenuID, "&Save\tCtrl+S");
     m_saveMenuItem->Enable(false);
-    m_saveAsMenuItem = menuFile->Append(WorkspaceSaveFileAsMenuID, "Save &As...");
+    m_saveAsMenuItem = menuFile->Append(WorkspaceSaveFileAsMenuID, "Save &As...\tCtrl+Shift+S");
     m_saveAsMenuItem->Enable(false);
 
     menuFile->AppendSeparator();
@@ -48,7 +48,7 @@ MenuBar::MenuBar()
     menuFile->AppendSeparator();
     menuFile->Append(wxID_PREFERENCES, "&Preferences...");
     menuFile->AppendSeparator();
-    menuFile->Append(wxID_EXIT);
+    menuFile->Append(wxID_EXIT, "Exit\tAlt+F4");
     
     Append(menuFile, "&File");
 
