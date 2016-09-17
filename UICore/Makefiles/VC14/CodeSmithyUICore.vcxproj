@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\Source\Settings\EditorSettingsBase.cpp" />
     <ClCompile Include="..\..\Source\Settings\DefaultEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\BakefileEditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\CMakeListsEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\CppEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\XMLEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\EditorSettingsBase.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\DefaultEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\BakefileEditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CMakeListsEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CppEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\XMLEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h" />
