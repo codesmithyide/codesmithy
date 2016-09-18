@@ -168,6 +168,8 @@
     <ClCompile Include="..\..\Source\Documents\CppDocument.cpp" />
     <ClCompile Include="..\..\Source\Documents\CppFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\CppFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PowerShellFile.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PowerShellFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\XMLDocument.cpp" />
@@ -209,6 +211,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppDocument.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFile.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h" />
