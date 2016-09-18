@@ -43,6 +43,8 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Preferences/BakefileEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/CMakeListsEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/CppEditorPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/PowerShellEditorPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/PythonEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/XMLEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/StartupPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/FileTypeAssociationsPreferencesPage.h
@@ -71,6 +73,8 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Preferences/BakefileEditorPreferencesPage.cpp
         ../../Source/Preferences/CMakeListsEditorPreferencesPage.cpp
         ../../Source/Preferences/CppEditorPreferencesPage.cpp
+        ../../Source/Preferences/PowerShellEditorPreferencesPage.cpp
+        ../../Source/Preferences/PythonEditorPreferencesPage.cpp
         ../../Source/Preferences/XMLEditorPreferencesPage.cpp
         ../../Source/Preferences/StartupPreferencesPage.cpp
         ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
