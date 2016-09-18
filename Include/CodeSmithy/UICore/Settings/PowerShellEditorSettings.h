@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_POWERSHELLEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_POWERSHELLEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+class PowerShellEditorSettings : public EditorSettingsBase
+{
+public:
+    PowerShellEditorSettings();
+    PowerShellEditorSettings(const PowerShellEditorSettings& other);
+    PowerShellEditorSettings& operator=(const PowerShellEditorSettings& other);
+    ~PowerShellEditorSettings() override;
+
+    bool operator==(const PowerShellEditorSettings& other) const;
+    bool operator!=(const PowerShellEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

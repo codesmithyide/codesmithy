@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_PYTHONEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_PYTHONEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+class PythonEditorSettings : public EditorSettingsBase
+{
+public:
+    PythonEditorSettings();
+    PythonEditorSettings(const PythonEditorSettings& other);
+    PythonEditorSettings& operator=(const PythonEditorSettings& other);
+    ~PythonEditorSettings() override;
+
+    bool operator==(const PythonEditorSettings& other) const;
+    bool operator!=(const PythonEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif
