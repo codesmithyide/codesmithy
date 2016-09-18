@@ -21,3 +21,32 @@
 */
 
 #include "Documents/PythonFileType.h"
+#include "Documents/PythonFile.h"
+
+namespace CodeSmithy
+{
+
+PythonFileType::PythonFileType()
+    : DocumentType("Python", "py")
+{
+}
+
+PythonFileType::PythonFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("Python", "py")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> PythonFileType::createNewDocument(const DocumentId& id,
+                                                            const std::string& name) const
+{
+    return std::make_shared<PythonFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> PythonFileType::createDocumentFromFile(const DocumentId& id,
+                                                                 const boost::filesystem::path& path) const
+{
+    return std::make_shared<PythonFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}

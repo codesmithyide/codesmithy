@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_POWERSHELLFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_POWERSHELLFILE_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class PowerShellFile : public Document
+{
+public:
+    PowerShellFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    PowerShellFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+    ~PowerShellFile() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif

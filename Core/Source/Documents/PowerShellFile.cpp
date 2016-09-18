@@ -21,3 +21,31 @@
 */
 
 #include "Documents/PowerShellFile.h"
+
+namespace CodeSmithy
+{
+
+PowerShellFile::PowerShellFile(const std::shared_ptr<const DocumentType> type,
+                               const DocumentId& id,
+                               const std::string& name)
+    : Document(type, id, name)
+{
+}
+
+PowerShellFile::PowerShellFile(const std::shared_ptr<const DocumentType> type,
+                               const DocumentId& id,
+                               const std::string& name,
+                               const boost::filesystem::path& path)
+    : Document(type, id, name, path)
+{
+}
+
+PowerShellFile::~PowerShellFile()
+{
+}
+
+void PowerShellFile::doSave(const boost::filesystem::path& path) const
+{
+}
+
+}

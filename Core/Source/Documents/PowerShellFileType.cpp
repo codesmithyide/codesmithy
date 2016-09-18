@@ -21,3 +21,32 @@
 */
 
 #include "Documents/PowerShellFileType.h"
+#include "Documents/PowerShellFile.h"
+
+namespace CodeSmithy
+{
+
+PowerShellFileType::PowerShellFileType()
+    : DocumentType("PowerShell", "ps1")
+{
+}
+
+PowerShellFileType::PowerShellFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("PowerShell", "ps1")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> PowerShellFileType::createNewDocument(const DocumentId& id,
+                                                                const std::string& name) const
+{
+    return std::make_shared<PowerShellFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> PowerShellFileType::createDocumentFromFile(const DocumentId& id,
+                                                                     const boost::filesystem::path& path) const
+{
+    return std::make_shared<PowerShellFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}
