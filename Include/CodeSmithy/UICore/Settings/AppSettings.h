@@ -64,6 +64,8 @@ public:
     Themes& themes();
     const EditorSettings& editorSettings() const;
     EditorSettings& editorSettings();
+    const AdvancedSettings& advancedSettings() const;
+    AdvancedSettings& advancedSettings();
 
     void save();
 

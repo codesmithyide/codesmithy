@@ -37,6 +37,11 @@ AdvancedSettings::~AdvancedSettings()
 {
 }
 
+AdvancedSettings::EUILogLevel AdvancedSettings::uiLogLevel() const
+{
+    return m_uiLogLevel;
+}
+
 void AdvancedSettings::load(pugi::xml_node node)
 {
 }

@@ -24,4 +24,13 @@
 
 namespace CodeSmithy
 {
+
+UILog::UILog(AdvancedSettings::EUILogLevel logLevel)
+{
+}
+
+UILog::~UILog()
+{
+}
+
 }

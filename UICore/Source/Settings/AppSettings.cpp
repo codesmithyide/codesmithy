@@ -117,6 +117,16 @@ EditorSettings& AppSettings::editorSettings()
     return m_editorSettings;
 }
 
+const AdvancedSettings& AppSettings::advancedSettings() const
+{
+    return m_advancedSettings;
+}
+
+AdvancedSettings& AppSettings::advancedSettings()
+{
+    return m_advancedSettings;
+}
+
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);

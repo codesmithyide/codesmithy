@@ -23,8 +23,18 @@
 #ifndef _CODESMITHY_UICORE_LOGS_UILOG_H_
 #define _CODESMITHY_UICORE_LOGS_UILOG_H_
 
+#include "../Settings/AdvancedSettings.h"
+
 namespace CodeSmithy
 {
+
+class UILog
+{
+public:
+    UILog(AdvancedSettings::EUILogLevel logLevel);
+    ~UILog();
+};
+
 }
 
 #endif
