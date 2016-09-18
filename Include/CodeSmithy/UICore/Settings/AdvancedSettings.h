@@ -44,6 +44,7 @@ public:
     ~AdvancedSettings();
 
     EUILogLevel uiLogLevel() const;
+    void setUILogLevel(EUILogLevel logLevel);
 
     bool operator==(const AdvancedSettings& other) const;
     bool operator!=(const AdvancedSettings& other) const;

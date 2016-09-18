@@ -29,18 +29,24 @@ namespace CodeSmithy
 
 AdvancedPreferencesPage::AdvancedPreferencesPage(wxWindow* parent, 
                                                  AppSettings& appSettings)
-    : wxPanel(parent), m_newSettings(appSettings.advancedSettings()),
-    m_uiLogLevelChoice(0)
+    : wxPanel(parent), m_appSettings(appSettings),
+    m_newSettings(appSettings.advancedSettings()),
+    m_uiLogLevelChoice(0), m_applyButton(0)
 {
-    wxStaticText* uiLogLevelText = new wxStaticText(this, wxID_ANY, "UI Log Level");
+    wxStaticText* uiLogLevelText = new wxStaticText(this, wxID_ANY, "UI Log Level:");
 
     wxArrayString uiLogLevelChoices;
     uiLogLevelChoices.Add("Disabled");
     uiLogLevelChoices.Add("Trace");
     m_uiLogLevelChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, uiLogLevelChoices);
     m_uiLogLevelChoice->SetSelection(uiLogLevelToChoiceIndex(m_newSettings.uiLogLevel()));
+    m_uiLogLevelChoice->Bind(wxEVT_CHOICE, &AdvancedPreferencesPage::onUILogLevelChanged, this);
 
     wxStaticText* uiLogLevelRestartAdvice = new wxStaticText(this, wxID_ANY, "(only takes effect after application restart)");
+
+    m_applyButton = new wxButton(this, wxID_ANY, "Apply");
+    m_applyButton->Disable();
+    m_applyButton->Bind(wxEVT_BUTTON, &AdvancedPreferencesPage::onApply, this);
 
     wxBoxSizer* uiLogLevelSizer = new wxBoxSizer(wxHORIZONTAL);
     uiLogLevelSizer->Add(uiLogLevelText, 0, wxALIGN_CENTER_VERTICAL | wxTOP, 1);
@@ -51,11 +57,26 @@ AdvancedPreferencesPage::AdvancedPreferencesPage(wxWindow* parent,
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(uiLogLevelSizer, 0, wxRIGHT | wxLEFT, 10);
+    topSizer->Add(m_applyButton);
     SetSizer(topSizer);
 }
 
 void AdvancedPreferencesPage::onUILogLevelChanged(wxCommandEvent& evt)
 {
+    m_newSettings.setUILogLevel(choiceIndexToUILogLevel(evt.GetSelection()));
+    updateApplyButtonStatus();
+}
+
+void AdvancedPreferencesPage::onApply(wxCommandEvent& evt)
+{
+    m_appSettings.advancedSettings() = m_newSettings;
+    m_appSettings.save();
+    m_applyButton->Disable();
+}
+
+void AdvancedPreferencesPage::updateApplyButtonStatus()
+{
+    m_applyButton->Enable(m_appSettings.advancedSettings() != m_newSettings);
 }
 
 unsigned int AdvancedPreferencesPage::uiLogLevelToChoiceIndex(AdvancedSettings::EUILogLevel logLevel)

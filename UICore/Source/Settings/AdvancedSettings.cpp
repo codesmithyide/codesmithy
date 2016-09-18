@@ -56,6 +56,11 @@ AdvancedSettings::EUILogLevel AdvancedSettings::uiLogLevel() const
     return m_uiLogLevel;
 }
 
+void AdvancedSettings::setUILogLevel(EUILogLevel logLevel)
+{
+    m_uiLogLevel = logLevel;
+}
+
 bool AdvancedSettings::operator==(const AdvancedSettings& other) const
 {
     return (m_uiLogLevel == other.m_uiLogLevel);

@@ -26,6 +26,7 @@
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
 #include <wx/choice.h>
+#include <wx/button.h>
 
 namespace CodeSmithy
 {
@@ -37,13 +38,18 @@ public:
 
 private:
     void onUILogLevelChanged(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
+
+    void updateApplyButtonStatus();
 
     static unsigned int uiLogLevelToChoiceIndex(AdvancedSettings::EUILogLevel logLevel);
     static AdvancedSettings::EUILogLevel choiceIndexToUILogLevel(unsigned int choiceIndex);
 
 private:
+    AppSettings& m_appSettings;
     AdvancedSettings m_newSettings;
     wxChoice* m_uiLogLevelChoice;
+    wxButton* m_applyButton;
 };
 
 }
