@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_PYTHONEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_PYTHONEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+
+namespace CodeSmithy
+{
+
+class PythonEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    PythonEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void updateExample() override;
+
+private:
+    PythonEditorSettings m_newSettings;
+};
+
+}
+
 #endif

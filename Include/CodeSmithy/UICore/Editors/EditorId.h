@@ -34,6 +34,8 @@ public:
     static EditorId BakefileEditorId;
     static EditorId CMakeListsEditorId;
     static EditorId CppEditorId;
+    static EditorId PowerShellEditorId;
+    static EditorId PythonEditorId;
     static EditorId XMLEditorId;
 
 public:

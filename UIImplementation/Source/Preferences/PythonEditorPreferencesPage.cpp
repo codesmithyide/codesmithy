@@ -21,3 +21,35 @@
 */
 
 #include "Preferences/PythonEditorPreferencesPage.h"
+
+namespace CodeSmithy
+{
+    
+PythonEditorPreferencesPage::PythonEditorPreferencesPage(wxWindow *parent,
+                                                         AppSettings& appSettings)
+    : EditorPreferencesBase(parent, appSettings, EditorId::PythonEditorId,
+        appSettings.editorSettings().pythonSettings()),
+    m_newSettings(appSettings.editorSettings().pythonSettings())
+{
+}
+
+void PythonEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                    unsigned pointSize)
+{
+}
+
+EditorSettingsBase& PythonEditorPreferencesPage::newSettings()
+{
+    return m_newSettings;
+}
+
+bool PythonEditorPreferencesPage::hasChanges() const
+{
+    return (m_appSettings.editorSettings().pythonSettings() != m_newSettings);
+}
+
+void PythonEditorPreferencesPage::updateExample()
+{
+}
+
+}

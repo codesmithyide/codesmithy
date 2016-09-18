@@ -59,6 +59,10 @@ public:
     CMakeListsEditorSettings& cmakelistsSettings();
     const CppEditorSettings& cppSettings() const;
     CppEditorSettings& cppSettings();
+    const PowerShellEditorSettings& powershellSettings() const;
+    PowerShellEditorSettings& powershellSettings();
+    const PythonEditorSettings& pythonSettings() const;
+    PythonEditorSettings& pythonSettings();
     const XMLEditorSettings& xmlSettings() const;
     XMLEditorSettings& xmlSettings();
 

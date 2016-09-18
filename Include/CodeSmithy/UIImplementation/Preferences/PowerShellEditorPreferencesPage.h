@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_POWERSHELLEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_POWERSHELLEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+
+namespace CodeSmithy
+{
+
+class PowerShellEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    PowerShellEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void updateExample() override;
+
+private:
+    PowerShellEditorSettings m_newSettings;
+};
+
+}
+
 #endif

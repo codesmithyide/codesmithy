@@ -21,3 +21,35 @@
 */
 
 #include "Preferences/PowerShellEditorPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+PowerShellEditorPreferencesPage::PowerShellEditorPreferencesPage(wxWindow *parent,
+                                                                 AppSettings& appSettings)
+    : EditorPreferencesBase(parent, appSettings, EditorId::PowerShellEditorId,
+        appSettings.editorSettings().powershellSettings()),
+    m_newSettings(appSettings.editorSettings().powershellSettings())
+{
+}
+
+void PowerShellEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                        unsigned pointSize)
+{
+}
+
+EditorSettingsBase& PowerShellEditorPreferencesPage::newSettings()
+{
+    return m_newSettings;
+}
+
+bool PowerShellEditorPreferencesPage::hasChanges() const
+{
+    return (m_appSettings.editorSettings().powershellSettings() != m_newSettings);
+}
+
+void PowerShellEditorPreferencesPage::updateExample()
+{
+}
+
+}

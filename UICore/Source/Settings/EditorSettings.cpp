@@ -118,6 +118,26 @@ CppEditorSettings& EditorSettings::cppSettings()
     return m_cppEditorSettings;
 }
 
+const PowerShellEditorSettings& EditorSettings::powershellSettings() const
+{
+    return m_powershellEditorSettings;
+}
+
+PowerShellEditorSettings& EditorSettings::powershellSettings()
+{
+    return m_powershellEditorSettings;
+}
+
+const PythonEditorSettings& EditorSettings::pythonSettings() const
+{
+    return m_pythonEditorSettings;
+}
+
+PythonEditorSettings& EditorSettings::pythonSettings()
+{
+    return m_pythonEditorSettings;
+}
+
 const XMLEditorSettings& EditorSettings::xmlSettings() const
 {
     return m_xmlEditorSettings;
