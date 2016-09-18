@@ -25,6 +25,7 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/choice.h>
 
 namespace CodeSmithy
 {
@@ -33,6 +34,16 @@ class AdvancedPreferencesPage : public wxPanel
 {
 public:
     AdvancedPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+
+private:
+    void onUILogLevelChanged(wxCommandEvent& evt);
+
+    static unsigned int uiLogLevelToChoiceIndex(AdvancedSettings::EUILogLevel logLevel);
+    static AdvancedSettings::EUILogLevel choiceIndexToUILogLevel(unsigned int choiceIndex);
+
+private:
+    AdvancedSettings m_newSettings;
+    wxChoice* m_uiLogLevelChoice;
 };
 
 }

@@ -33,6 +33,20 @@ AdvancedSettings::AdvancedSettings()
 {
 }
 
+AdvancedSettings::AdvancedSettings(const AdvancedSettings& other)
+    : m_uiLogLevel(other.m_uiLogLevel)
+{
+}
+
+AdvancedSettings& AdvancedSettings::operator=(const AdvancedSettings& other)
+{
+    if (this != &other)
+    {
+        m_uiLogLevel = other.m_uiLogLevel;
+    }
+    return *this;
+}
+
 AdvancedSettings::~AdvancedSettings()
 {
 }
@@ -42,8 +56,28 @@ AdvancedSettings::EUILogLevel AdvancedSettings::uiLogLevel() const
     return m_uiLogLevel;
 }
 
+bool AdvancedSettings::operator==(const AdvancedSettings& other) const
+{
+    return (m_uiLogLevel == other.m_uiLogLevel);
+}
+
+bool AdvancedSettings::operator!=(const AdvancedSettings& other) const
+{
+    return !(*this == other);
+}
+
 void AdvancedSettings::load(pugi::xml_node node)
 {
+    m_uiLogLevel = eUILogDisabled;
+    std::string uiLogLevelStr = XMLUtilities::getChildValueAsString(node, uiLogLevelElementName, "disabled");
+    if (uiLogLevelStr == "disabled")
+    {
+        m_uiLogLevel = eUILogDisabled;
+    }
+    else if (uiLogLevelStr == "trace")
+    {
+        m_uiLogLevel = eUILogTrace;
+    }
 }
 
 void AdvancedSettings::save(pugi::xml_node node) const

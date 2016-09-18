@@ -39,9 +39,14 @@ public:
 
 public:
     AdvancedSettings();
+    AdvancedSettings(const AdvancedSettings& other);
+    AdvancedSettings& operator=(const AdvancedSettings& other);
     ~AdvancedSettings();
 
     EUILogLevel uiLogLevel() const;
+
+    bool operator==(const AdvancedSettings& other) const;
+    bool operator!=(const AdvancedSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
