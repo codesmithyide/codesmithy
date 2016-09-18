@@ -37,6 +37,8 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/BakefileEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/CMakeListsEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/CppEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/PowerShellEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/PythonEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/XMLEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/FontSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/StyleSettings.h
@@ -69,6 +71,8 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/BakefileEditorSettings.cpp
         ../../Source/Settings/CMakeListsEditorSettings.cpp
         ../../Source/Settings/CppEditorSettings.cpp
+        ../../Source/Settings/PowerShellEditorSettings.cpp
+        ../../Source/Settings/PythonEditorSettings.cpp
         ../../Source/Settings/XMLEditorSettings.cpp
         ../../Source/Settings/FontSettings.cpp
         ../../Source/Settings/StyleSettings.cpp
