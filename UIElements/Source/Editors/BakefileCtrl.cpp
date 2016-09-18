@@ -67,6 +67,21 @@ std::shared_ptr<Document> BakefileCtrl::document()
     return m_document;
 }
 
+void BakefileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void BakefileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void BakefileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
 void BakefileCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());

@@ -43,6 +43,10 @@ public:
     std::shared_ptr<const Document> document() const override;
     std::shared_ptr<Document> document() override;
 
+    void cut() override;
+    void copy() override;
+    void paste() override;
+
 private:
     void doSave(const boost::filesystem::path& path) override;
 

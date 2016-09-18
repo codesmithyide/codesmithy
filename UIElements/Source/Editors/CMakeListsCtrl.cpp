@@ -62,6 +62,21 @@ std::shared_ptr<Document> CMakeListsCtrl::document()
     return m_document;
 }
 
+void CMakeListsCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void CMakeListsCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void CMakeListsCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
 void CMakeListsCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());

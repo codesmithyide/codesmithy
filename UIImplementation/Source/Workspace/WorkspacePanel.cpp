@@ -74,6 +74,21 @@ void WorkspacePanel::closeAllDocuments()
     m_openDocuments->closeAllDocuments();
 }
 
+void WorkspacePanel::forwardCutEvent(const DocumentId& id)
+{
+    m_openDocuments->forwardCutEvent(id);
+}
+
+void WorkspacePanel::forwardCopyEvent(const DocumentId& id)
+{
+    m_openDocuments->forwardCopyEvent(id);
+}
+
+void WorkspacePanel::forwardPasteEvent(const DocumentId& id)
+{
+    m_openDocuments->forwardPasteEvent(id);
+}
+
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
 {
     m_openDocuments->addDocument(document);

@@ -53,6 +53,9 @@ private:
     void OnCloseAll(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
+    void OnCut(wxCommandEvent& evt);
+    void OnCopy(wxCommandEvent& evt);
+    void OnPaste(wxCommandEvent& evt);
     void OnAbout(wxCommandEvent& evt);
 
 private:

@@ -55,6 +55,9 @@ private:
     wxMenuItem* m_saveMenuItem;
     wxMenuItem* m_saveAsMenuItem;
     wxMenuItem* m_closeMenuItem;
+    wxMenuItem* m_cutMenuItem;
+    wxMenuItem* m_copyMenuItem;
+    wxMenuItem* m_pasteMenuItem;
 };
 
 }

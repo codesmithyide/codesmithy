@@ -54,6 +54,15 @@ MenuBar::MenuBar()
     
     Append(menuFile, "&File");
 
+    wxMenu* menuEdit = new wxMenu;
+    m_cutMenuItem = menuEdit->Append(wxID_CUT);
+    m_cutMenuItem->Enable(false);
+    m_copyMenuItem = menuEdit->Append(wxID_COPY);
+    m_copyMenuItem->Enable(false);
+    m_pasteMenuItem = menuEdit->Append(wxID_PASTE);
+    m_pasteMenuItem->Enable(false);
+    Append(menuEdit, "&Edit");
+
     wxMenu* menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
     Append(menuHelp, "&Help");
@@ -108,6 +117,10 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
         }
         m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(true);
+
+        m_menuBar.m_cutMenuItem->Enable(true);
+        m_menuBar.m_copyMenuItem->Enable(true);
+        m_menuBar.m_pasteMenuItem->Enable(true);
     }
     else
     {
@@ -122,6 +135,10 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
         std::string closeMenuLabel = "&Close";
         m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(false);
+
+        m_menuBar.m_cutMenuItem->Enable(false);
+        m_menuBar.m_copyMenuItem->Enable(false);
+        m_menuBar.m_pasteMenuItem->Enable(false);
     }
 }
 

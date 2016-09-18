@@ -43,6 +43,10 @@ public:
     void closeDocument(const DocumentId& id);
     void closeAllDocuments();
 
+    void forwardCutEvent(const DocumentId& id);
+    void forwardCopyEvent(const DocumentId& id);
+    void forwardPasteEvent(const DocumentId& id);
+
     void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
 
 private:

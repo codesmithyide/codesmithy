@@ -247,6 +247,30 @@ void Frame::OnExit(wxCommandEvent& evt)
     Close();
 }
 
+void Frame::OnCut(wxCommandEvent& evt)
+{
+    if (m_activeDocument->activeDocument())
+    {
+        m_workspacePanel->forwardCutEvent(m_activeDocument->activeDocument()->id());
+    }
+}
+
+void Frame::OnCopy(wxCommandEvent& evt)
+{
+    if (m_activeDocument->activeDocument())
+    {
+        m_workspacePanel->forwardCopyEvent(m_activeDocument->activeDocument()->id());
+    }
+}
+
+void Frame::OnPaste(wxCommandEvent& evt)
+{
+    if (m_activeDocument->activeDocument())
+    {
+        m_workspacePanel->forwardPasteEvent(m_activeDocument->activeDocument()->id());
+    }
+}
+
 void Frame::OnAbout(wxCommandEvent& evt)
 {
     AboutDialog aboutDialog(this);
@@ -263,6 +287,9 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceCloseAllMenuID, Frame::OnCloseAll)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
+    EVT_MENU(wxID_CUT, Frame::OnCut)
+    EVT_MENU(wxID_COPY, Frame::OnCopy)
+    EVT_MENU(wxID_PASTE, Frame::OnPaste)
     EVT_MENU(wxID_ABOUT, Frame::OnAbout)
 wxEND_EVENT_TABLE()
 

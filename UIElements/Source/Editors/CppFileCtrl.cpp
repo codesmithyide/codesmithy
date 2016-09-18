@@ -62,6 +62,21 @@ std::shared_ptr<Document> CppFileCtrl::document()
     return m_document;
 }
 
+void CppFileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void CppFileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void CppFileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
 void CppFileCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());

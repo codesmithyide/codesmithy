@@ -62,6 +62,21 @@ std::shared_ptr<Document> XMLDocumentCtrl::document()
     return m_document;
 }
 
+void XMLDocumentCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void XMLDocumentCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void XMLDocumentCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
 void XMLDocumentCtrl::doSave(const boost::filesystem::path& path)
 {
     m_ctrl->SaveFile(path.string());

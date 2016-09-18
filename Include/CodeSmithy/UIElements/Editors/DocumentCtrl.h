@@ -43,6 +43,10 @@ public:
 
     void save(const AppSettings& appSettings);
 
+    virtual void cut() = 0;
+    virtual void copy() = 0;
+    virtual void paste() = 0;
+
 private:
     virtual void doSave(const boost::filesystem::path& path) = 0;
 };

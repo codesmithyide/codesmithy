@@ -98,6 +98,48 @@ void OpenDocumentsCtrl::closeAllDocuments()
     }
 }
 
+void OpenDocumentsCtrl::forwardCutEvent(const DocumentId& id)
+{
+    size_t pageIndex = findPageByDocumentId(id);
+    if (pageIndex != wxNOT_FOUND)
+    {
+        wxWindow* page = GetPage(pageIndex);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            documentCtrl->cut();
+        }
+    }
+}
+
+void OpenDocumentsCtrl::forwardCopyEvent(const DocumentId& id)
+{
+    size_t pageIndex = findPageByDocumentId(id);
+    if (pageIndex != wxNOT_FOUND)
+    {
+        wxWindow* page = GetPage(pageIndex);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            documentCtrl->copy();
+        }
+    }
+}
+
+void OpenDocumentsCtrl::forwardPasteEvent(const DocumentId& id)
+{
+    size_t pageIndex = findPageByDocumentId(id);
+    if (pageIndex != wxNOT_FOUND)
+    {
+        wxWindow* page = GetPage(pageIndex);
+        DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+        if (documentCtrl)
+        {
+            documentCtrl->paste();
+        }
+    }
+}
+
 void OpenDocumentsCtrl::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
 {
     for (size_t i = 0; i < GetPageCount(); ++i)
