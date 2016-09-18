@@ -30,6 +30,8 @@ static const char* defaultEditorSettingsElementName = "default-editor-settings";
 static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings";
 static const char* cmakelistsEditorSettingsElementName = "cmakelists-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
+static const char* powershellEditorSettingsElementName = "powershell-editor-settings";
+static const char* pythonEditorSettingsElementName = "python-editor-settings";
 static const char* xmlEditorSettingsElementName = "xml-editor-settings";
 
 EditorSettings::EditorSettings()
@@ -134,6 +136,10 @@ void EditorSettings::load(pugi::xml_node node)
     m_bakefileEditorSettings.load(bakefileEditorSettingsNode);
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     m_cppEditorSettings.load(cppEditorSettingsNode);
+    pugi::xml_node powershellEditorSettingsNode = node.child(powershellEditorSettingsElementName);
+    m_powershellEditorSettings.load(powershellEditorSettingsNode);
+    pugi::xml_node pythonEditorSettingsNode = node.child(pythonEditorSettingsElementName);
+    m_pythonEditorSettings.load(pythonEditorSettingsNode);
     pugi::xml_node xmlEditorSettingsNode = node.child(xmlEditorSettingsElementName);
     m_xmlEditorSettings.load(xmlEditorSettingsNode);
 }
@@ -148,6 +154,10 @@ void EditorSettings::save(pugi::xml_node node) const
     m_cmakelistsEditorSettings.save(cmakelistsNode);
     pugi::xml_node cppEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, cppEditorSettingsElementName);
     m_cppEditorSettings.save(cppEditorSettingsNode);
+    pugi::xml_node powershellEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, powershellEditorSettingsElementName);
+    m_powershellEditorSettings.save(powershellEditorSettingsNode);
+    pugi::xml_node pythonEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, pythonEditorSettingsElementName);
+    m_pythonEditorSettings.save(pythonEditorSettingsNode);
     pugi::xml_node xmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, xmlEditorSettingsElementName);
     m_xmlEditorSettings.save(xmlEditorSettingsNode);
 }

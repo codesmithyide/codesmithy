@@ -27,6 +27,8 @@
 #include "BakefileEditorSettings.h"
 #include "CMakeListsEditorSettings.h"
 #include "CppEditorSettings.h"
+#include "PowerShellEditorSettings.h"
+#include "PythonEditorSettings.h"
 #include "XMLEditorSettings.h"
 #include <pugixml.hpp>
 
@@ -68,6 +70,8 @@ private:
     BakefileEditorSettings m_bakefileEditorSettings;
     CMakeListsEditorSettings m_cmakelistsEditorSettings;
     CppEditorSettings m_cppEditorSettings;
+    PowerShellEditorSettings m_powershellEditorSettings;
+    PythonEditorSettings m_pythonEditorSettings;
     XMLEditorSettings m_xmlEditorSettings;
 };
 
