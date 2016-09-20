@@ -86,8 +86,8 @@ void OpenDocumentsCtrl::closeDocument(const DocumentId& id)
 
 void OpenDocumentsCtrl::closeAllDocuments()
 {
-    size_t i = 0;
-    while (i < GetPageCount())
+    int i = (GetPageCount() - 1);
+    while (i >= 0)
     {
         wxWindow* page = GetPage(i);
         DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
@@ -95,10 +95,25 @@ void OpenDocumentsCtrl::closeAllDocuments()
         {
             DeletePage(i);
         }
-        else
+        --i;
+    }
+}
+
+void OpenDocumentsCtrl::closeAllDocumentsExcept(int excludedPageIndex)
+{
+    int i = (GetPageCount() - 1);
+    while (i >= 0)
+    {
+        if (i != excludedPageIndex)
         {
-            ++i;
+            wxWindow* page = GetPage(i);
+            DocumentCtrl* documentCtrl = dynamic_cast<DocumentCtrl*>(page);
+            if (documentCtrl && tryCloseDocument(*documentCtrl))
+            {
+                DeletePage(i);
+            }
         }
+        --i;
     }
 }
 
@@ -259,9 +274,13 @@ void OpenDocumentsCtrl::onContextMenu(wxAuiNotebookEvent& evt)
     wxMenu menu;
     menu.Append(OpenDocumentsContextMenuSave, saveMenuLabel);
     menu.Append(OpenDocumentsContextMenuClose, closeMenuLabel);
+    menu.Append(OpenDocumentsContextMenuCloseAllDocuments, "Close All Documents");
+    menu.Append(OpenDocumentsContextMenuCloseAllOtherDocuments, "Close All Other Documents");
 
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuSave, this, OpenDocumentsContextMenuSave, OpenDocumentsContextMenuSave, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuClose, this, OpenDocumentsContextMenuClose, OpenDocumentsContextMenuClose, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCloseAllDocuments, this, OpenDocumentsContextMenuCloseAllDocuments, OpenDocumentsContextMenuCloseAllDocuments, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCloseAllOtherDocuments, this, OpenDocumentsContextMenuCloseAllOtherDocuments, OpenDocumentsContextMenuCloseAllOtherDocuments, new CustomEventHandlerData(pageIndex));
 
     PopupMenu(&menu);
 }
@@ -298,6 +317,20 @@ void OpenDocumentsCtrl::onContextMenuClose(wxCommandEvent& evt)
                 DeletePage(data->pageIndex());
             }
         }
+    }
+}
+
+void OpenDocumentsCtrl::onContextMenuCloseAllDocuments(wxCommandEvent& evt)
+{
+    closeAllDocuments();
+}
+
+void OpenDocumentsCtrl::onContextMenuCloseAllOtherDocuments(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        closeAllDocumentsExcept(data->pageIndex());
     }
 }
 

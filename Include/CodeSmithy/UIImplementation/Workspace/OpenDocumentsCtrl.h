@@ -42,6 +42,7 @@ public:
     void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
     void closeAllDocuments();
+    void closeAllDocumentsExcept(int excludedPageIndex);
 
     void forwardCutEvent(const DocumentId& id);
     void forwardCopyEvent(const DocumentId& id);
@@ -58,6 +59,8 @@ private:
     void onContextMenu(wxAuiNotebookEvent& evt);
     void onContextMenuSave(wxCommandEvent& evt);
     void onContextMenuClose(wxCommandEvent& evt);
+    void onContextMenuCloseAllDocuments(wxCommandEvent& evt);
+    void onContextMenuCloseAllOtherDocuments(wxCommandEvent& evt);
 
 private:
     class Observer : public DocumentObserver

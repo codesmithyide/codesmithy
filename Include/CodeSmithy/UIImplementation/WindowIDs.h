@@ -59,6 +59,8 @@ const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesStart
 
 const wxWindowID OpenDocumentsContextMenuSave = PreferencesFileTypeAssociationsApplyButtonID + 1;
 const wxWindowID OpenDocumentsContextMenuClose = OpenDocumentsContextMenuSave + 1;
+const wxWindowID OpenDocumentsContextMenuCloseAllDocuments = OpenDocumentsContextMenuClose + 1;
+const wxWindowID OpenDocumentsContextMenuCloseAllOtherDocuments = OpenDocumentsContextMenuCloseAllDocuments + 1;
 
 }
 
