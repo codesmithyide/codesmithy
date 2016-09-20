@@ -57,6 +57,9 @@ const wxWindowID PreferencesStartupPreviousSizeButtonID = PreferencesStartupFixe
 
 const wxWindowID PreferencesFileTypeAssociationsApplyButtonID = PreferencesStartupPreviousSizeButtonID + 1;
 
+const wxWindowID OpenDocumentsContextMenuSave = PreferencesFileTypeAssociationsApplyButtonID + 1;
+const wxWindowID OpenDocumentsContextMenuClose = OpenDocumentsContextMenuSave + 1;
+
 }
 
 #endif

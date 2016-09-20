@@ -23,7 +23,9 @@
 #include "Workspace/OpenDocumentsCtrl.h"
 #include "Workspace/ClosingModifiedDocumentDialog.h"
 #include "ControlCreationDocumentTypeData.h"
+#include "WindowIDs.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
+#include <wx/menu.h>
 
 namespace CodeSmithy
 {
@@ -35,6 +37,7 @@ OpenDocumentsCtrl::OpenDocumentsCtrl(wxWindow* parent,
 {
     Bind(wxEVT_AUINOTEBOOK_PAGE_CLOSE, &OpenDocumentsCtrl::onPageClose, this);
     Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &OpenDocumentsCtrl::onPageChanged, this);
+    Bind(wxEVT_AUINOTEBOOK_TAB_RIGHT_UP, &OpenDocumentsCtrl::onContextMenu, this);
 
     m_observer = std::make_shared<Observer>(*this);
 }
@@ -47,6 +50,7 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
     {
         wxWindow* newPage = data->CreateDocumentCtrl(this, document, m_appSettings);
         AddPage(newPage, document->name());
+        SetPageToolTip(GetPageCount() - 1, document->filePath().string());
         document->addObserver(m_observer);
     }
 }
@@ -240,6 +244,63 @@ void OpenDocumentsCtrl::onPageChanged(wxAuiNotebookEvent& evt)
     m_activeDocument->setActiveDocument(newActiveDocument);
 }
 
+void OpenDocumentsCtrl::onContextMenu(wxAuiNotebookEvent& evt)
+{
+    int pageIndex = evt.GetSelection();
+
+    wxString documentName = GetPageText(pageIndex);
+    std::string saveMenuLabel = "Save ";
+    saveMenuLabel.append(documentName);
+    saveMenuLabel.append("\tCtrl+S");
+    std::string closeMenuLabel = "Close ";
+    closeMenuLabel.append(documentName);
+    closeMenuLabel.append("\tCtrl+F4");
+
+    wxMenu menu;
+    menu.Append(OpenDocumentsContextMenuSave, saveMenuLabel);
+    menu.Append(OpenDocumentsContextMenuClose, closeMenuLabel);
+
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuSave, this, OpenDocumentsContextMenuSave, OpenDocumentsContextMenuSave, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuClose, this, OpenDocumentsContextMenuClose, OpenDocumentsContextMenuClose, new CustomEventHandlerData(pageIndex));
+
+    PopupMenu(&menu);
+}
+
+void OpenDocumentsCtrl::onContextMenuSave(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        wxWindow* selectedPage = GetPage(data->pageIndex());
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            selectedDocumentCtrl->save(m_appSettings);
+        }
+    }
+}
+
+void OpenDocumentsCtrl::onContextMenuClose(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        wxWindow* selectedPage = GetPage(data->pageIndex());
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            if (tryCloseDocument(*selectedDocumentCtrl))
+            {
+                if (m_activeDocument->activeDocument().get() == selectedDocumentCtrl->document().get())
+                {
+                    m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
+                }
+                DeletePage(data->pageIndex());
+            }
+        }
+    }
+}
+
 OpenDocumentsCtrl::Observer::Observer(OpenDocumentsCtrl& ctrl)
     : m_ctrl(ctrl)
 {
@@ -262,6 +323,16 @@ void OpenDocumentsCtrl::Observer::onModified(const Document& source,
             m_ctrl.SetPageText(pageIndex, text);
         }
     }
+}
+
+OpenDocumentsCtrl::CustomEventHandlerData::CustomEventHandlerData(int pageIndex)
+    : m_pageIndex(pageIndex)
+{
+}
+
+int OpenDocumentsCtrl::CustomEventHandlerData::pageIndex() const
+{
+    return m_pageIndex;
 }
 
 }

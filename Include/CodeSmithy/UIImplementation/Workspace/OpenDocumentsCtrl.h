@@ -55,6 +55,9 @@ private:
 
     void onPageClose(wxAuiNotebookEvent& evt);
     void onPageChanged(wxAuiNotebookEvent& evt);
+    void onContextMenu(wxAuiNotebookEvent& evt);
+    void onContextMenuSave(wxCommandEvent& evt);
+    void onContextMenuClose(wxCommandEvent& evt);
 
 private:
     class Observer : public DocumentObserver
@@ -66,6 +69,17 @@ private:
 
     private:
         OpenDocumentsCtrl& m_ctrl;
+    };
+
+    class CustomEventHandlerData : public wxObject
+    {
+    public:
+        CustomEventHandlerData(int pageIndex);
+
+        int pageIndex() const;
+
+    private:
+        int m_pageIndex;
     };
 
 private:

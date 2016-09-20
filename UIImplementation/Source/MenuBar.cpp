@@ -43,7 +43,7 @@ MenuBar::MenuBar()
     m_saveAsMenuItem->Enable(false);
 
     menuFile->AppendSeparator();
-    m_closeMenuItem = menuFile->Append(WorkspaceCloseFileMenuID, "&Close");
+    m_closeMenuItem = menuFile->Append(WorkspaceCloseFileMenuID, "&Close\tCtrl+F4");
     menuFile->Append(WorkspaceCloseAllMenuID, "Close All Documents");
     m_closeMenuItem->Enable(false);
 
@@ -115,6 +115,7 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
             closeMenuLabel += " ";
             closeMenuLabel += document->name();
         }
+        closeMenuLabel += "\tCtrl+F4";
         m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(true);
 
@@ -132,7 +133,7 @@ void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
         m_menuBar.m_saveAsMenuItem->SetItemLabel(saveAsMenuLabel.c_str());
         m_menuBar.m_saveAsMenuItem->Enable(false);
 
-        std::string closeMenuLabel = "&Close";
+        std::string closeMenuLabel = "&Close\tCtrl+F4";
         m_menuBar.m_closeMenuItem->SetItemLabel(closeMenuLabel.c_str());
         m_menuBar.m_closeMenuItem->Enable(false);
 
