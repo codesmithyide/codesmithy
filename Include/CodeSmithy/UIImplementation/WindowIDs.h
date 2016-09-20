@@ -63,6 +63,7 @@ const wxWindowID OpenDocumentsContextMenuCloseAllDocuments = OpenDocumentsContex
 const wxWindowID OpenDocumentsContextMenuCloseAllOtherDocuments = OpenDocumentsContextMenuCloseAllDocuments + 1;
 const wxWindowID OpenDocumentsContextMenuCopyFullPath = OpenDocumentsContextMenuCloseAllOtherDocuments + 1;
 const wxWindowID OpenDocumentsContextMenuOpenFolder = OpenDocumentsContextMenuCopyFullPath + 1;
+const wxWindowID OpenDocumentsContextMenuOpenPrompt = OpenDocumentsContextMenuOpenFolder + 1;
 
 }
 

@@ -280,6 +280,7 @@ void OpenDocumentsCtrl::onContextMenu(wxAuiNotebookEvent& evt)
     menu.AppendSeparator();
     menu.Append(OpenDocumentsContextMenuCopyFullPath, "Copy Full Path");
     menu.Append(OpenDocumentsContextMenuOpenFolder, "Open Folder");
+    menu.Append(OpenDocumentsContextMenuOpenPrompt, "Open Command Prompt");
 
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuSave, this, OpenDocumentsContextMenuSave, OpenDocumentsContextMenuSave, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuClose, this, OpenDocumentsContextMenuClose, OpenDocumentsContextMenuClose, new CustomEventHandlerData(pageIndex));
@@ -287,6 +288,7 @@ void OpenDocumentsCtrl::onContextMenu(wxAuiNotebookEvent& evt)
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCloseAllOtherDocuments, this, OpenDocumentsContextMenuCloseAllOtherDocuments, OpenDocumentsContextMenuCloseAllOtherDocuments, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCopyFullPath, this, OpenDocumentsContextMenuCopyFullPath, OpenDocumentsContextMenuCopyFullPath, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuOpenFolder, this, OpenDocumentsContextMenuOpenFolder, OpenDocumentsContextMenuOpenFolder, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuOpenPrompt, this, OpenDocumentsContextMenuOpenPrompt, OpenDocumentsContextMenuOpenPrompt, new CustomEventHandlerData(pageIndex));
 
     PopupMenu(&menu);
 }
@@ -371,6 +373,24 @@ void OpenDocumentsCtrl::onContextMenuOpenFolder(wxCommandEvent& evt)
             boost::filesystem::path folderPath = selectedDocumentCtrl->document()->filePath().parent_path();
             std::string command = "explorer ";
             command.append(folderPath.string());
+            wxExecute(command, wxEXEC_ASYNC, NULL);
+        }
+    }
+}
+
+void OpenDocumentsCtrl::onContextMenuOpenPrompt(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        wxWindow* selectedPage = GetPage(data->pageIndex());
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            boost::filesystem::path folderPath = selectedDocumentCtrl->document()->filePath().parent_path();
+            std::string command = "cmd /K \"cd ";
+            command.append(folderPath.string());
+            command.append("\"");
             wxExecute(command, wxEXEC_ASYNC, NULL);
         }
     }
