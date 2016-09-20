@@ -61,6 +61,8 @@ const wxWindowID OpenDocumentsContextMenuSave = PreferencesFileTypeAssociationsA
 const wxWindowID OpenDocumentsContextMenuClose = OpenDocumentsContextMenuSave + 1;
 const wxWindowID OpenDocumentsContextMenuCloseAllDocuments = OpenDocumentsContextMenuClose + 1;
 const wxWindowID OpenDocumentsContextMenuCloseAllOtherDocuments = OpenDocumentsContextMenuCloseAllDocuments + 1;
+const wxWindowID OpenDocumentsContextMenuCopyFullPath = OpenDocumentsContextMenuCloseAllOtherDocuments + 1;
+const wxWindowID OpenDocumentsContextMenuOpenFolder = OpenDocumentsContextMenuCopyFullPath + 1;
 
 }
 

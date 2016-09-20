@@ -61,6 +61,8 @@ private:
     void onContextMenuClose(wxCommandEvent& evt);
     void onContextMenuCloseAllDocuments(wxCommandEvent& evt);
     void onContextMenuCloseAllOtherDocuments(wxCommandEvent& evt);
+    void onContextMenuCopyFullPath(wxCommandEvent& evt);
+    void onContextMenuOpenFolder(wxCommandEvent& evt);
 
 private:
     class Observer : public DocumentObserver

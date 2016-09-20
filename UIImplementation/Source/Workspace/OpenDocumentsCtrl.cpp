@@ -26,6 +26,7 @@
 #include "WindowIDs.h"
 #include "CodeSmithy/Core/Documents/DocumentType.h"
 #include <wx/menu.h>
+#include <wx/clipbrd.h>
 
 namespace CodeSmithy
 {
@@ -276,11 +277,16 @@ void OpenDocumentsCtrl::onContextMenu(wxAuiNotebookEvent& evt)
     menu.Append(OpenDocumentsContextMenuClose, closeMenuLabel);
     menu.Append(OpenDocumentsContextMenuCloseAllDocuments, "Close All Documents");
     menu.Append(OpenDocumentsContextMenuCloseAllOtherDocuments, "Close All Other Documents");
+    menu.AppendSeparator();
+    menu.Append(OpenDocumentsContextMenuCopyFullPath, "Copy Full Path");
+    menu.Append(OpenDocumentsContextMenuOpenFolder, "Open Folder");
 
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuSave, this, OpenDocumentsContextMenuSave, OpenDocumentsContextMenuSave, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuClose, this, OpenDocumentsContextMenuClose, OpenDocumentsContextMenuClose, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCloseAllDocuments, this, OpenDocumentsContextMenuCloseAllDocuments, OpenDocumentsContextMenuCloseAllDocuments, new CustomEventHandlerData(pageIndex));
     menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCloseAllOtherDocuments, this, OpenDocumentsContextMenuCloseAllOtherDocuments, OpenDocumentsContextMenuCloseAllOtherDocuments, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuCopyFullPath, this, OpenDocumentsContextMenuCopyFullPath, OpenDocumentsContextMenuCopyFullPath, new CustomEventHandlerData(pageIndex));
+    menu.Bind(wxEVT_MENU, &OpenDocumentsCtrl::onContextMenuOpenFolder, this, OpenDocumentsContextMenuOpenFolder, OpenDocumentsContextMenuOpenFolder, new CustomEventHandlerData(pageIndex));
 
     PopupMenu(&menu);
 }
@@ -331,6 +337,42 @@ void OpenDocumentsCtrl::onContextMenuCloseAllOtherDocuments(wxCommandEvent& evt)
     if (data)
     {
         closeAllDocumentsExcept(data->pageIndex());
+    }
+}
+
+void OpenDocumentsCtrl::onContextMenuCopyFullPath(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        wxWindow* selectedPage = GetPage(data->pageIndex());
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            if (wxTheClipboard->Open())
+            {
+                wxTheClipboard->SetData(new wxTextDataObject(selectedDocumentCtrl->document()->filePath().string()));
+                wxTheClipboard->Flush();
+                wxTheClipboard->Close();
+            }
+        }
+    }
+}
+
+void OpenDocumentsCtrl::onContextMenuOpenFolder(wxCommandEvent& evt)
+{
+    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    if (data)
+    {
+        wxWindow* selectedPage = GetPage(data->pageIndex());
+        DocumentCtrl* selectedDocumentCtrl = dynamic_cast<DocumentCtrl*>(selectedPage);
+        if (selectedDocumentCtrl)
+        {
+            boost::filesystem::path folderPath = selectedDocumentCtrl->document()->filePath().parent_path();
+            std::string command = "explorer ";
+            command.append(folderPath.string());
+            wxExecute(command, wxEXEC_ASYNC, NULL);
+        }
     }
 }
 
