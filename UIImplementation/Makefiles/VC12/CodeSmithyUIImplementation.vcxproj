@@ -168,6 +168,7 @@
     <ClCompile Include="..\..\Source\Preferences\PowerShellEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PythonEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\ToolsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\AdvancedPreferencesPage.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PowerShellEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PythonEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\ToolsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\AdvancedPreferencesPage.h" />
