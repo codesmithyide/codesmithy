@@ -21,3 +21,24 @@
 */
 
 #include "Settings/ToolsSettings.h"
+
+namespace CodeSmithy
+{
+
+ToolsSettings::ToolsSettings()
+{
+}
+
+ToolsSettings::~ToolsSettings()
+{
+}
+
+void ToolsSettings::load(pugi::xml_node node)
+{
+}
+
+void ToolsSettings::save(pugi::xml_node node) const
+{
+}
+
+}

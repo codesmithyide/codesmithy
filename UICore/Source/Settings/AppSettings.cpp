@@ -36,13 +36,15 @@ static const char* versionElementName = "file-format-version";
 static const char* fileTypeAssociationsElementName = "file-type-associations";
 static const char* startupSettingsElementName = "startup-settings";
 static const char* editorSettingsElementName = "editor-settings";
+static const char* toolsSettingsElementName = "tools-settings";
 static const char* advancedSettingsElementName = "advanced-settings";
 
 AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const ProjectTypes& projectTypes)
     : m_fileTypeAssociationsNode(0), m_startupSettingsNode(0),
-    m_editorSettingsNode(0), m_advancedSettingsNode(0),
-    m_documentTypes(documentTypes), m_projectTypes(projectTypes)
+    m_editorSettingsNode(0), m_toolsSettingsNode(0),
+    m_advancedSettingsNode(0), m_documentTypes(documentTypes),
+    m_projectTypes(projectTypes)
 {
     m_path = getSettingsDirectory();
     boost::filesystem::create_directories(m_path);
@@ -61,8 +63,8 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
                          const boost::filesystem::path& settingsPath)
     : m_path(settingsPath), m_fileTypeAssociationsNode(0), 
     m_startupSettingsNode(0), m_editorSettingsNode(0),
-    m_advancedSettingsNode(0), m_documentTypes(documentTypes),
-    m_projectTypes(projectTypes)
+    m_toolsSettingsNode(0), m_advancedSettingsNode(0),
+    m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
     initialize(m_path);
 }
@@ -132,6 +134,7 @@ void AppSettings::save()
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
     m_startupSettings.save(m_startupSettingsNode);
     m_editorSettings.save(m_editorSettingsNode);
+    m_toolsSettings.save(m_toolsSettingsNode);
     m_advancedSettings.save(m_advancedSettingsNode);
 
     std::ofstream file(m_path.wstring());
@@ -303,6 +306,8 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
         m_startupSettings.load(m_startupSettingsNode);
         m_editorSettingsNode = m_document.child(rootElementName).child(editorSettingsElementName);
         m_editorSettings.load(m_editorSettingsNode);
+        m_toolsSettingsNode = m_document.child(rootElementName).child(toolsSettingsElementName);
+        m_toolsSettings.load(m_toolsSettingsNode);
         m_advancedSettingsNode = m_document.child(rootElementName).child(advancedSettingsElementName);
         m_advancedSettings.load(m_advancedSettingsNode);
     }
@@ -317,7 +322,8 @@ void AppSettings::initialize(const boost::filesystem::path& settingsPath)
             m_fileTypeAssociationsNode = rootNode.append_child(fileTypeAssociationsElementName);
             m_startupSettingsNode = rootNode.append_child(startupSettingsElementName);
             m_editorSettingsNode = rootNode.append_child(editorSettingsElementName);
-            m_advancedSettingsNode = rootNode.append_child(advancedSettingsElementName);
+            m_toolsSettingsNode = rootNode.append_child(toolsSettingsElementName);
+            m_advancedSettingsNode = rootNode.append_child(advancedSettingsElementName);   
         }
     }
 

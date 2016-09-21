@@ -27,6 +27,7 @@
 #include "StartupSettings.h"
 #include "../Themes/Themes.h"
 #include "EditorSettings.h"
+#include "ToolsSettings.h"
 #include "AdvancedSettings.h"
 #include "AppSettingsObserver.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
@@ -87,6 +88,7 @@ private:
     pugi::xml_node m_fileTypeAssociationsNode;
     pugi::xml_node m_startupSettingsNode;
     pugi::xml_node m_editorSettingsNode;
+    pugi::xml_node m_toolsSettingsNode;
     pugi::xml_node m_advancedSettingsNode;
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;
@@ -94,6 +96,7 @@ private:
     StartupSettings m_startupSettings;
     Themes m_themes;
     EditorSettings m_editorSettings;
+    ToolsSettings m_toolsSettings;
     AdvancedSettings m_advancedSettings;
     std::vector<std::weak_ptr<AppSettingsObserver> > m_observers;
 };

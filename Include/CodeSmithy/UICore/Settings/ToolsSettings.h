@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_TOOLSSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_TOOLSSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class ToolsSettings
+{
+public:
+    ToolsSettings();
+    ~ToolsSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
 #endif
