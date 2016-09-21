@@ -28,6 +28,8 @@
 #include "Preferences/PowerShellEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
+#include "Preferences/BakefileToolPreferencesPage.h"
+#include "Preferences/GitBashToolPreferencesPage.h"
 #include "Preferences/StartupPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
 #include "Preferences/AdvancedPreferencesPage.h"
@@ -88,6 +90,11 @@ void PreferencesDialog::CreateToolsPreferences(wxTreebook* treebook,
                                                AppSettings& settings)
 {
     treebook->AddPage(NULL, "Tools");
+
+    BakefileToolPreferencesPage* bakefilePage = new BakefileToolPreferencesPage(treebook, settings);
+    treebook->AddSubPage(bakefilePage, "Bakefile");
+    GitBashToolPreferencesPage* gitbashPage = new GitBashToolPreferencesPage(treebook, settings);
+    treebook->AddSubPage(gitbashPage, "Git Bash");
 }
 
 void PreferencesDialog::CreateStartupPreferences(wxTreebook* treebook,
