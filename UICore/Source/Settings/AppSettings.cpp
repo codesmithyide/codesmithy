@@ -119,6 +119,16 @@ EditorSettings& AppSettings::editorSettings()
     return m_editorSettings;
 }
 
+const ToolsSettings& AppSettings::toolsSettings() const
+{
+    return m_toolsSettings;
+}
+
+ToolsSettings& AppSettings::toolsSettings()
+{
+    return m_toolsSettings;
+}
+
 const AdvancedSettings& AppSettings::advancedSettings() const
 {
     return m_advancedSettings;

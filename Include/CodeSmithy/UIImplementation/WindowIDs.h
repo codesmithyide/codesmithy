@@ -64,6 +64,7 @@ const wxWindowID OpenDocumentsContextMenuCloseAllOtherDocuments = OpenDocumentsC
 const wxWindowID OpenDocumentsContextMenuCopyFullPath = OpenDocumentsContextMenuCloseAllOtherDocuments + 1;
 const wxWindowID OpenDocumentsContextMenuOpenFolder = OpenDocumentsContextMenuCopyFullPath + 1;
 const wxWindowID OpenDocumentsContextMenuOpenPrompt = OpenDocumentsContextMenuOpenFolder + 1;
+const wxWindowID OpenDocumentsContextMenuOpenGitBash = OpenDocumentsContextMenuOpenPrompt + 1;
 
 }
 

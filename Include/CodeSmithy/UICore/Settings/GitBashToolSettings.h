@@ -34,8 +34,14 @@ public:
     GitBashToolSettings();
     ~GitBashToolSettings();
 
+    const std::string& executablePath() const;
+    void setExecutablePath(const std::string& path);
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
+
+private:
+    std::string m_executablePath;
 };
 
 }

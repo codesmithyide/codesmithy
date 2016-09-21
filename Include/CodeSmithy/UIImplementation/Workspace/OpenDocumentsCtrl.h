@@ -63,7 +63,8 @@ private:
     void onContextMenuCloseAllOtherDocuments(wxCommandEvent& evt);
     void onContextMenuCopyFullPath(wxCommandEvent& evt);
     void onContextMenuOpenFolder(wxCommandEvent& evt);
-    void onContextMenuOpenPrompt(wxCommandEvent& evt);
+    void onContextMenuOpenCommandPrompt(wxCommandEvent& evt);
+    void onContextMenuOpenGitBashPrompt(wxCommandEvent& evt);
 
 private:
     class Observer : public DocumentObserver

@@ -26,11 +26,22 @@ namespace CodeSmithy
 {
 
 GitBashToolSettings::GitBashToolSettings()
+    : m_executablePath("C:\\Program Files\\Git\\git-bash.exe")
 {
 }
 
 GitBashToolSettings::~GitBashToolSettings()
 {
+}
+
+const std::string& GitBashToolSettings::executablePath() const
+{
+    return m_executablePath;
+}
+
+void GitBashToolSettings::setExecutablePath(const std::string& path)
+{
+    m_executablePath = path;
 }
 
 void GitBashToolSettings::load(pugi::xml_node node)

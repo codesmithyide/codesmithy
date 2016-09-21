@@ -65,6 +65,8 @@ public:
     Themes& themes();
     const EditorSettings& editorSettings() const;
     EditorSettings& editorSettings();
+    const ToolsSettings& toolsSettings() const;
+    ToolsSettings& toolsSettings();
     const AdvancedSettings& advancedSettings() const;
     AdvancedSettings& advancedSettings();
 

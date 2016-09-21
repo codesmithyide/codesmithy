@@ -37,6 +37,26 @@ ToolsSettings::~ToolsSettings()
 {
 }
 
+const BakefileToolSettings& ToolsSettings::bakefileToolSetting() const
+{
+    return m_bakefileToolSettings;
+}
+
+BakefileToolSettings& ToolsSettings::bakefileToolSetting()
+{
+    return m_bakefileToolSettings;
+}
+
+const GitBashToolSettings& ToolsSettings::gitbashToolSetting() const
+{
+    return m_gitbashToolSettings;
+}
+
+GitBashToolSettings& ToolsSettings::gitbashToolSetting()
+{
+    return m_gitbashToolSettings;
+}
+
 void ToolsSettings::load(pugi::xml_node node)
 {
     pugi::xml_node bakefileToolSettingsElementNode = node.child(bakefileToolSettingsElementName);

@@ -36,6 +36,11 @@ public:
     ToolsSettings();
     ~ToolsSettings();
 
+    const BakefileToolSettings& bakefileToolSetting() const;
+    BakefileToolSettings& bakefileToolSetting();
+    const GitBashToolSettings& gitbashToolSetting() const;
+    GitBashToolSettings& gitbashToolSetting();
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
 
