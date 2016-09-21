@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_GITBASHTOOLSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_GITBASHTOOLSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class GitBashToolSettings
+{
+public:
+    GitBashToolSettings();
+    ~GitBashToolSettings();
+};
+
+}
+
 #endif

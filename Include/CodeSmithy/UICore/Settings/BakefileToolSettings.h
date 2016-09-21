@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_BAKEFILETOOLSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_BAKEFILETOOLSETTINGS_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class BakefileToolSettings
+{
+public:
+    BakefileToolSettings();
+    ~BakefileToolSettings();
+};
+
+}
+
 #endif

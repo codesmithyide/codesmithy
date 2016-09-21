@@ -21,3 +21,16 @@
 */
 
 #include "Settings/GitBashToolSettings.h"
+
+namespace CodeSmithy
+{
+
+GitBashToolSettings::GitBashToolSettings()
+{
+}
+
+GitBashToolSettings::~GitBashToolSettings()
+{
+}
+
+}

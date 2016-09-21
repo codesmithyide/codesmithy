@@ -21,3 +21,16 @@
 */
 
 #include "Settings/BakefileToolSettings.h"
+
+namespace CodeSmithy
+{
+
+BakefileToolSettings::BakefileToolSettings()
+{
+}
+
+BakefileToolSettings::~BakefileToolSettings()
+{
+}
+
+}
