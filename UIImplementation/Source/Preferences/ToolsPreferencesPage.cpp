@@ -21,3 +21,14 @@
 */
 
 #include "Preferences/ToolsPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+ToolsPreferencesPage::ToolsPreferencesPage(wxWindow* parent,
+                                           AppSettings& appSettings)
+    : wxPanel(parent, wxID_ANY)
+{
+}
+
+}

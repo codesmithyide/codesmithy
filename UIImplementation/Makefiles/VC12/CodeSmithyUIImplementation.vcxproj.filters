@@ -77,7 +77,10 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\ToolsPreferencesPage.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileToolPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\GitBashToolPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h">
@@ -151,7 +154,10 @@
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Preferences\ToolsPreferencesPage.cpp">
+    <ClCompile Include="..\..\Source\Preferences\BakefileToolPreferencesPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\GitBashToolPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp">

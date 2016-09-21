@@ -39,6 +39,7 @@ public:
 
 private:
     void CreateEditorPreferences(wxTreebook* treebook, AppSettings& settings);
+    void CreateToolsPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateStartupPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateFileTypeAssociationsPreferences(wxTreebook* treebook, AppSettings& settings);
     void CreateAdvancedPreferences(wxTreebook* treebook, AppSettings& settings);

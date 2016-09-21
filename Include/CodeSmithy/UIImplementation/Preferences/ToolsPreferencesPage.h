@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_TOOLSPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_TOOLSPREFERENCESPAGE_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class ToolsPreferencesPage : public wxPanel
+{
+public:
+    ToolsPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+};
+
+}
+
 #endif

@@ -46,7 +46,8 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PowerShellEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PythonEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/XMLEditorPreferencesPage.h
-        ../../../Include/CodeSmithy/UIImplementation/Preferences/ToolsPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/BakefileToolPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/GitBashToolPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/StartupPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/FileTypeAssociationsPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/AdvancedPreferencesPage.h
@@ -77,7 +78,8 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Preferences/PowerShellEditorPreferencesPage.cpp
         ../../Source/Preferences/PythonEditorPreferencesPage.cpp
         ../../Source/Preferences/XMLEditorPreferencesPage.cpp
-        ../../Source/Preferences/ToolsPreferencesPage.cpp
+        ../../Source/Preferences/BakefileToolPreferencesPage.cpp
+        ../../Source/Preferences/GitBashToolPreferencesPage.cpp
         ../../Source/Preferences/StartupPreferencesPage.cpp
         ../../Source/Preferences/FileTypeAssociationsPreferencesPage.cpp
         ../../Source/Preferences/AdvancedPreferencesPage.cpp

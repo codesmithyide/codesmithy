@@ -51,6 +51,7 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
     CreateEditorPreferences(treebook, settings);
+    CreateToolsPreferences(treebook, settings);
     CreateStartupPreferences(treebook, settings);
     CreateFileTypeAssociationsPreferences(treebook, settings);
     CreateAdvancedPreferences(treebook, settings);
@@ -81,6 +82,12 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(pythonPage, "Python");
     XMLEditorPreferencesPage* xmlPage = new XMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(xmlPage, "XML");
+}
+
+void PreferencesDialog::CreateToolsPreferences(wxTreebook* treebook, 
+                                               AppSettings& settings)
+{
+    treebook->AddPage(NULL, "Tools");
 }
 
 void PreferencesDialog::CreateStartupPreferences(wxTreebook* treebook,
