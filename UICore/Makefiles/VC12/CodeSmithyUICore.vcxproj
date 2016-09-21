@@ -166,6 +166,8 @@
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\StyleSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\ToolsSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\BakefileToolSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\GitBashToolSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociation.cpp" />
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp" />
     <ClCompile Include="..\..\Source\Settings\StartupSettings.cpp" />
@@ -196,6 +198,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StyleSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\ToolsSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\BakefileToolSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\GitBashToolSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StartupSettings.h" />
