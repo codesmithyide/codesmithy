@@ -20,13 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "Preferences/ToolsPreferencesPage.h"
+#include "Preferences/BakefileToolPreferencesPage.h"
 
 namespace CodeSmithy
 {
 
-ToolsPreferencesPage::ToolsPreferencesPage(wxWindow* parent,
-                                           AppSettings& appSettings)
+BakefileToolPreferencesPage::BakefileToolPreferencesPage(wxWindow* parent,
+                                                         AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY)
 {
 }

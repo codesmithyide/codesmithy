@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILETOOLPREFERENCESPAGE_H_
-#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BAKEFILETOOLPREFERENCESPAGE_H_
+#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_GITBASHTOOLPREFERENCESPAGE_H_
+#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_GITBASHTOOLPREFERENCESPAGE_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
@@ -29,10 +29,10 @@
 namespace CodeSmithy
 {
 
-class BakefileToolPreferencesPage : public wxPanel
+class GitBashToolPreferencesPage : public wxPanel
 {
 public:
-    BakefileToolPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+    GitBashToolPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 };
 
 }
