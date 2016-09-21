@@ -33,4 +33,12 @@ BakefileToolSettings::~BakefileToolSettings()
 {
 }
 
+void BakefileToolSettings::load(pugi::xml_node node)
+{
+}
+
+void BakefileToolSettings::save(pugi::xml_node node) const
+{
+}
+
 }

@@ -23,6 +23,8 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_TOOLSSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_TOOLSSETTINGS_H_
 
+#include "BakefileToolSettings.h"
+#include "GitBashToolSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
@@ -36,6 +38,10 @@ public:
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
+
+private:
+    BakefileToolSettings m_bakefileToolSettings;
+    GitBashToolSettings m_gitbashToolSettings;
 };
 
 }

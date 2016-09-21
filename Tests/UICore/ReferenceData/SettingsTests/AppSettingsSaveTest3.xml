@@ -89,7 +89,10 @@
 			</styles>
 		</xml-editor-settings>
 	</editor-settings>
-	<tools-settings />
+	<tools-settings>
+		<bakefile-tool-settings />
+		<gitbash-tool-settings />
+	</tools-settings>
 	<advanced-settings>
 		<ui-log-level>disabled</ui-log-level>
 	</advanced-settings>

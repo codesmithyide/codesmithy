@@ -33,6 +33,9 @@ class GitBashToolSettings
 public:
     GitBashToolSettings();
     ~GitBashToolSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 };
 
 }

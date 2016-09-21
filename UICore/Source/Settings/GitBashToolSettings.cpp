@@ -33,4 +33,12 @@ GitBashToolSettings::~GitBashToolSettings()
 {
 }
 
+void GitBashToolSettings::load(pugi::xml_node node)
+{
+}
+
+void GitBashToolSettings::save(pugi::xml_node node) const
+{
+}
+
 }

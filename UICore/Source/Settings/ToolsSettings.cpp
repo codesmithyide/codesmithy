@@ -21,9 +21,13 @@
 */
 
 #include "Settings/ToolsSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
+
+static const char* bakefileToolSettingsElementName = "bakefile-tool-settings";
+static const char* gitbashToolSettingsElementName = "gitbash-tool-settings";
 
 ToolsSettings::ToolsSettings()
 {
@@ -35,10 +39,18 @@ ToolsSettings::~ToolsSettings()
 
 void ToolsSettings::load(pugi::xml_node node)
 {
+    pugi::xml_node bakefileToolSettingsElementNode = node.child(bakefileToolSettingsElementName);
+    m_bakefileToolSettings.load(bakefileToolSettingsElementNode);
+    pugi::xml_node gitbashToolSettingsElementNode = node.child(gitbashToolSettingsElementName);
+    m_gitbashToolSettings.load(gitbashToolSettingsElementNode);
 }
 
 void ToolsSettings::save(pugi::xml_node node) const
 {
+    pugi::xml_node bakefileToolSettingsElementNode = XMLUtilities::getOrAppendChildNode(node, bakefileToolSettingsElementName);
+    m_bakefileToolSettings.save(bakefileToolSettingsElementNode);
+    pugi::xml_node gitbashToolSettingsElementNode = XMLUtilities::getOrAppendChildNode(node, gitbashToolSettingsElementName);
+    m_gitbashToolSettings.save(gitbashToolSettingsElementNode);
 }
 
 }

@@ -33,6 +33,9 @@ class BakefileToolSettings
 public:
     BakefileToolSettings();
     ~BakefileToolSettings();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 };
 
 }
