@@ -21,6 +21,7 @@
 */
 
 #include "Settings/StartupSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 #include <sstream>
 
 namespace CodeSmithy
@@ -30,10 +31,14 @@ static const char* initialSizeElementName = "initial-size";
 static const char* initialSizeTypeElementName = "initial-size-type";
 static const char* initialWidthElementName = "width";
 static const char* initialHeightElementName = "height";
+static const char* startupBehaviorElementName = "startup-behavior";
+static const char* startupWorkspaceElementName = "startup-workspace";
+static const char* osBootBehaviorElementName = "os-boot-behavior";
 
 StartupSettings::StartupSettings()
     : m_initialSizeType(eFixedSize), m_initialWidth(800),
-    m_initialHeight(600)
+    m_initialHeight(600), m_startupBehavior(eStartupPage),
+    m_OSBootBehavior(eDoNothing)
 {
 }
 
@@ -108,6 +113,71 @@ void StartupSettings::save(pugi::xml_node node) const
         std::stringstream heightStr;
         heightStr << m_initialHeight;
         initialHeightNode.text().set(heightStr.str().c_str());
+    }
+
+    XMLUtilities::setOrAppendChildNode(node, startupBehaviorElementName, startupBehaviorToString(m_startupBehavior));
+    XMLUtilities::setOrAppendChildNode(node, startupWorkspaceElementName, m_startupWorkspacePath);
+    XMLUtilities::setOrAppendChildNode(node, osBootBehaviorElementName, osBootBehaviorToString(m_OSBootBehavior));
+}
+
+StartupSettings::EStartupBehavior StartupSettings::stringToStartupBehavior(const std::string& behavior)
+{
+    if (behavior == "restore-state")
+    {
+        return ePreviousState;
+    }
+    else if (behavior == "load-workspace")
+    {
+        return eSpecificWorkspace;
+    }
+    else
+    {
+        return eStartupPage;
+    }
+}
+
+std::string StartupSettings::startupBehaviorToString(EStartupBehavior behavior)
+{
+    switch (behavior)
+    {
+    case eStartupPage:
+        return "display-startup-page";
+
+    case ePreviousState:
+        return "restore-state";
+
+    case eSpecificWorkspace:
+        return "load-workspace";
+
+    default:
+        return "display-startup-page";
+    }
+}
+
+StartupSettings::EOSBootBehavior StartupSettings::stringToOSBootBehavior(const std::string& behavior)
+{
+    if (behavior == "restore")
+    {
+        return eRestore;
+    }
+    else
+    {
+        return eDoNothing;
+    }
+}
+
+std::string StartupSettings::osBootBehaviorToString(EOSBootBehavior behavior)
+{
+    switch (behavior)
+    {
+    case eDoNothing:
+        return "none";
+
+    case eRestore:
+        return "restore";
+
+    default:
+        return "none";
     }
 }
 

@@ -15,6 +15,9 @@
 			<width>800</width>
 			<height>600</height>
 		</initial-size>
+		<startup-behavior>display-startup-page</startup-behavior>
+		<startup-workspace></startup-workspace>
+		<os-boot-behavior>none</os-boot-behavior>
 	</startup-settings>
 	<editor-settings>
 		<default-editor-settings>

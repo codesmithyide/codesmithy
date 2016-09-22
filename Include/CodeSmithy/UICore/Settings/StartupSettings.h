@@ -36,6 +36,27 @@ public:
         eFixedSize
     };
 
+    enum EStartupBehavior
+    {
+        // Display the startup page, don't load
+        // any files or workspaces
+        eStartupPage,
+        // Restore the application as it was when
+        // it was last closed.
+        ePreviousState,
+        // Always load the workspace specified 
+        // in the startup-workspace setting
+        eSpecificWorkspace
+    };
+
+    enum EOSBootBehavior
+    {
+        eDoNothing,
+        // If the OS was rebooted while the 
+        // application was running restore it
+        eRestore
+    };
+
 public:
     StartupSettings();
     ~StartupSettings();
@@ -48,9 +69,18 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
+    static EStartupBehavior stringToStartupBehavior(const std::string& behavior);
+    static std::string startupBehaviorToString(EStartupBehavior behavior);
+    static EOSBootBehavior stringToOSBootBehavior(const std::string& behavior);
+    static std::string osBootBehaviorToString(EOSBootBehavior behavior);
+
+private:
     EInitialSizeType m_initialSizeType;
     unsigned int m_initialWidth;
     unsigned int m_initialHeight;
+    EStartupBehavior m_startupBehavior;
+    std::string m_startupWorkspacePath;
+    EOSBootBehavior m_OSBootBehavior;
 };
 
 }
