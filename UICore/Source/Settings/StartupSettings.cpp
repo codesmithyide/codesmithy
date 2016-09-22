@@ -67,12 +67,8 @@ void StartupSettings::load(pugi::xml_node node)
 
 void StartupSettings::save(pugi::xml_node node) const
 {
-    pugi::xml_node initialSizeNode = node.child(initialSizeElementName);
-    if (!initialSizeNode)
-    {
-        initialSizeNode = node.append_child(initialSizeElementName);
-    }
-
+    pugi::xml_node initialSizeNode = XMLUtilities::getOrAppendChildNode(node, initialSizeElementName);
+    
     pugi::xml_node initialSizeTypeNode = initialSizeNode.child(initialSizeTypeElementName);
     if (!initialSizeTypeNode)
     {
@@ -84,37 +80,8 @@ void StartupSettings::save(pugi::xml_node node) const
         initialSizeTypeNode.text().set("fixed-size");
     }
 
-
-    pugi::xml_node initialWidthNode = initialSizeNode.child(initialWidthElementName);
-    if (!initialWidthNode)
-    {
-        initialWidthNode = initialSizeNode.append_child(initialWidthElementName);
-        std::stringstream widthStr;
-        widthStr << m_initialWidth;
-        initialWidthNode.append_child(pugi::node_pcdata).set_value(widthStr.str().c_str());
-    }
-    else
-    {
-        std::stringstream widthStr;
-        widthStr << m_initialWidth;
-        initialWidthNode.text().set(widthStr.str().c_str());
-    }
-
-    pugi::xml_node initialHeightNode = initialSizeNode.child(initialHeightElementName);
-    if (!initialHeightNode)
-    {
-        initialHeightNode = initialSizeNode.append_child(initialHeightElementName);
-        std::stringstream heightStr;
-        heightStr << m_initialHeight;
-        initialHeightNode.append_child(pugi::node_pcdata).set_value(heightStr.str().c_str());
-    }
-    else
-    {
-        std::stringstream heightStr;
-        heightStr << m_initialHeight;
-        initialHeightNode.text().set(heightStr.str().c_str());
-    }
-
+    XMLUtilities::setOrAppendChildNode(initialSizeNode, initialWidthElementName, m_initialWidth);
+    XMLUtilities::setOrAppendChildNode(initialSizeNode, initialHeightElementName, m_initialHeight);
     XMLUtilities::setOrAppendChildNode(node, startupBehaviorElementName, startupBehaviorToString(m_startupBehavior));
     XMLUtilities::setOrAppendChildNode(node, startupWorkspaceElementName, m_startupWorkspacePath);
     XMLUtilities::setOrAppendChildNode(node, osBootBehaviorElementName, osBootBehaviorToString(m_OSBootBehavior));
