@@ -64,6 +64,7 @@ public:
     EInitialSizeType initialSizeType() const;
     unsigned int initialWidth() const;
     unsigned int initialHeight() const;
+    EStartupBehavior startupBehavior() const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

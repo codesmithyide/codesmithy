@@ -23,6 +23,8 @@
 #include "Preferences/StartupPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/choice.h>
 #include <sstream>
 
 namespace CodeSmithy
@@ -33,14 +35,14 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
     m_startupSizeFixedButton(0), m_widthEntry(0), m_heightEntry(0)
 {
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
-    m_startupSizeFixedButton = new wxRadioButton(this, PreferencesStartupFixedSizeButtonID, "Fixed size");
-    m_widthEntry = new wxTextCtrl(this, wxID_ANY);
+    wxStaticText* startupSizeText = new wxStaticText(this, wxID_ANY, "Window size at startup:");
+    m_startupSizeFixedButton = new wxRadioButton(this, PreferencesStartupFixedSizeButtonID, "Fixed size:");
+    m_widthEntry = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     std::stringstream widthValueStr;
     widthValueStr << m_appSettings.startupSettings().initialWidth();
     m_widthEntry->SetValue(widthValueStr.str().c_str());
-    m_heightEntry = new wxTextCtrl(this, wxID_ANY);
+    wxStaticText* xText = new wxStaticText(this, wxID_ANY, "x");
+    m_heightEntry = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     std::stringstream heightValueStr;
     heightValueStr << m_appSettings.startupSettings().initialHeight();
     m_heightEntry->SetValue(heightValueStr.str().c_str());
@@ -50,14 +52,37 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
         m_startupSizeFixedButton->SetValue(true);
     }
 
+    wxStaticText* startupBehaviourText = new wxStaticText(this, wxID_ANY, "Startup state:");
+    wxArrayString startupBehaviorChoices;
+    startupBehaviorChoices.Add("Display start page");
+    startupBehaviorChoices.Add("Restore previous state");
+    startupBehaviorChoices.Add("Load specific workspace");
+    wxChoice* startupBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, startupBehaviorChoices);
+    startupBehaviorChoice->SetSelection(0);
+    
     wxBoxSizer* fixedSizedSizer = new wxBoxSizer(wxHORIZONTAL);
-    fixedSizedSizer->Add(m_startupSizeFixedButton);
+    fixedSizedSizer->Add(m_startupSizeFixedButton, 0, wxTOP, 3);
     fixedSizedSizer->Add(m_widthEntry);
+    fixedSizedSizer->AddSpacer(3);
+    fixedSizedSizer->Add(xText, 0, wxTOP, 3);
+    fixedSizedSizer->AddSpacer(3);
     fixedSizedSizer->Add(m_heightEntry);
 
-    topSizer->Add(fixedSizedSizer);
-    topSizer->Add(startupSizePreviousButton);
+    wxBoxSizer* startupSizeSizer = new wxBoxSizer(wxVERTICAL);
+    startupSizeSizer->Add(startupSizeText, 0, wxBOTTOM, 5);
+    startupSizeSizer->Add(fixedSizedSizer, 0, wxLEFT, 10);
+    startupSizeSizer->AddSpacer(3);
+    startupSizeSizer->Add(startupSizePreviousButton, 0, wxLEFT, 10);
 
+    wxBoxSizer* startupBehaviourSizer = new wxBoxSizer(wxVERTICAL);
+    startupBehaviourSizer->Add(startupBehaviourText);
+    startupBehaviourSizer->AddSpacer(4);
+    startupBehaviourSizer->Add(startupBehaviorChoice, 0, wxLEFT, 7);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(startupSizeSizer, 0, wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(20);
+    topSizer->Add(startupBehaviourSizer, 0, wxLEFT | wxRIGHT, 10);
     SetSizer(topSizer);
 }
 

@@ -61,6 +61,11 @@ unsigned int StartupSettings::initialHeight() const
     return m_initialHeight;
 }
 
+StartupSettings::EStartupBehavior StartupSettings::startupBehavior() const
+{
+    return m_startupBehavior;
+}
+
 void StartupSettings::load(pugi::xml_node node)
 {
 }
