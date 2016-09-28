@@ -66,6 +66,16 @@ StartupSettings::EStartupBehavior StartupSettings::startupBehavior() const
     return m_startupBehavior;
 }
 
+const std::string& StartupSettings::startupWorkspacePath() const
+{
+    return m_startupWorkspacePath;
+}
+
+StartupSettings::EOSBootBehavior StartupSettings::osBootBehavior() const
+{
+    return m_OSBootBehavior;
+}
+
 void StartupSettings::load(pugi::xml_node node)
 {
 }

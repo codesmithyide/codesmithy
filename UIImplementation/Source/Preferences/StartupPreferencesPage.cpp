@@ -24,7 +24,7 @@
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/stattext.h>
-#include <wx/choice.h>
+#include <wx/statline.h>
 #include <sstream>
 
 namespace CodeSmithy
@@ -33,7 +33,8 @@ namespace CodeSmithy
 StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent, 
                                                AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
-    m_startupSizeFixedButton(0), m_widthEntry(0), m_heightEntry(0)
+    m_startupSizeFixedButton(0), m_widthEntry(0), m_heightEntry(0),
+    m_startupBehaviorChoice(0), m_workspacePath(0)
 {
     wxStaticText* startupSizeText = new wxStaticText(this, wxID_ANY, "Window size at startup:");
     m_startupSizeFixedButton = new wxRadioButton(this, PreferencesStartupFixedSizeButtonID, "Fixed size:");
@@ -57,8 +58,18 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     startupBehaviorChoices.Add("Display start page");
     startupBehaviorChoices.Add("Restore previous state");
     startupBehaviorChoices.Add("Load specific workspace");
-    wxChoice* startupBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, startupBehaviorChoices);
-    startupBehaviorChoice->SetSelection(0);
+    m_startupBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, startupBehaviorChoices);
+    m_startupBehaviorChoice->SetSelection(0);
+    m_startupBehaviorChoice->Bind(wxEVT_COMMAND_CHOICE_SELECTED, &StartupPreferencesPage::onStartupBehaviorChanged, this);
+    m_workspacePath = new wxFilePickerCtrl(this, wxID_ANY);
+    updateWorkspacePathFilePickerStatus();
+
+    wxStaticText* osBootBehaviorText = new wxStaticText(this, wxID_ANY, "OS start behavior:");
+    wxArrayString osBootBehaviorChoices;
+    osBootBehaviorChoices.Add("Don't do anything");
+    osBootBehaviorChoices.Add("Restore previous state");
+    wxChoice* osBootBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, osBootBehaviorChoices);
+    osBootBehaviorChoice->SetSelection(0);
     
     wxBoxSizer* fixedSizedSizer = new wxBoxSizer(wxHORIZONTAL);
     fixedSizedSizer->Add(m_startupSizeFixedButton, 0, wxTOP, 3);
@@ -77,12 +88,25 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     wxBoxSizer* startupBehaviourSizer = new wxBoxSizer(wxVERTICAL);
     startupBehaviourSizer->Add(startupBehaviourText);
     startupBehaviourSizer->AddSpacer(4);
-    startupBehaviourSizer->Add(startupBehaviorChoice, 0, wxLEFT, 7);
+    startupBehaviourSizer->Add(m_startupBehaviorChoice, 0, wxLEFT, 7);
+    startupBehaviourSizer->AddSpacer(4);
+    startupBehaviourSizer->Add(m_workspacePath);
+
+    wxBoxSizer* osBootBehaviorSizer = new wxBoxSizer(wxHORIZONTAL);
+    osBootBehaviorSizer->Add(osBootBehaviorText, 0, wxTOP, 4);
+    osBootBehaviorSizer->AddSpacer(6);
+    osBootBehaviorSizer->Add(osBootBehaviorChoice);
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(startupSizeSizer, 0, wxLEFT | wxRIGHT, 10);
-    topSizer->AddSpacer(20);
+    topSizer->AddSpacer(10);
+    topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
     topSizer->Add(startupBehaviourSizer, 0, wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(osBootBehaviorSizer, 0, wxLEFT | wxRIGHT, 10);
     SetSizer(topSizer);
 }
 
@@ -98,6 +122,16 @@ void StartupPreferencesPage::onSizeTypeChange(wxCommandEvent& evt)
         m_widthEntry->Disable();
         m_heightEntry->Disable();
     }
+}
+
+void StartupPreferencesPage::onStartupBehaviorChanged(wxCommandEvent& evt)
+{
+    updateWorkspacePathFilePickerStatus();
+}
+
+void StartupPreferencesPage::updateWorkspacePathFilePickerStatus()
+{
+    m_workspacePath->Enable(m_startupBehaviorChoice->GetSelection() == 2);
 }
 
 wxBEGIN_EVENT_TABLE(StartupPreferencesPage, wxPanel)

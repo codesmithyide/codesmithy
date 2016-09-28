@@ -65,6 +65,8 @@ public:
     unsigned int initialWidth() const;
     unsigned int initialHeight() const;
     EStartupBehavior startupBehavior() const;
+    const std::string& startupWorkspacePath() const;
+    EOSBootBehavior osBootBehavior() const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

@@ -27,6 +27,8 @@
 #include <wx/panel.h>
 #include <wx/radiobut.h>
 #include <wx/textctrl.h>
+#include <wx/choice.h>
+#include <wx/filepicker.h>
 
 namespace CodeSmithy
 {
@@ -38,12 +40,17 @@ public:
 
 private:
     void onSizeTypeChange(wxCommandEvent& evt);
+    void onStartupBehaviorChanged(wxCommandEvent& evt);
+
+    void updateWorkspacePathFilePickerStatus();
 
 private:
     AppSettings& m_appSettings;
     wxRadioButton* m_startupSizeFixedButton;
     wxTextCtrl* m_widthEntry;
     wxTextCtrl* m_heightEntry;
+    wxChoice* m_startupBehaviorChoice;
+    wxFilePickerCtrl* m_workspacePath;
 
     wxDECLARE_EVENT_TABLE();
 };
