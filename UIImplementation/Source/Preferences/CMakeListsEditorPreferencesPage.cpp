@@ -21,6 +21,8 @@
 */
 
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -31,6 +33,11 @@ CMakeListsEditorPreferencesPage::CMakeListsEditorPreferencesPage(wxWindow *paren
         appSettings.editorSettings().cmakelistsSettings()),
     m_newSettings(appSettings.editorSettings().cmakelistsSettings())
 {
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
+
+    wxSizer* topSizer = GetSizer();
+    topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
 }
 
 void CMakeListsEditorPreferencesPage::handleFontChanged(const std::string& faceName,

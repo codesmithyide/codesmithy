@@ -44,6 +44,7 @@ private:
     void onStartupBehaviorChanged(wxCommandEvent& evt);
 
     void updateWorkspacePathFilePickerStatus();
+    void updateApplyButtonStatus();
 
 private:
     AppSettings& m_appSettings;

@@ -140,13 +140,35 @@ void StartupPreferencesPage::onSizeTypeChange(wxCommandEvent& evt)
 
 void StartupPreferencesPage::onStartupBehaviorChanged(wxCommandEvent& evt)
 {
+    StartupSettings::EStartupBehavior behavior = StartupSettings::eStartupPage;
+    switch (m_startupBehaviorChoice->GetSelection())
+    {
+    case 0:
+        behavior = StartupSettings::eStartupPage;
+        break;
+
+    case 1:
+        behavior = StartupSettings::ePreviousState;
+        break;
+
+    case 2:
+        behavior = StartupSettings::eSpecificWorkspace;
+        break;
+    }
+    m_newSettings.setStartupBehavior(behavior);
     updateWorkspacePathFilePickerStatus();
+    updateApplyButtonStatus();
 }
 
 void StartupPreferencesPage::updateWorkspacePathFilePickerStatus()
 {
     m_workspaceLabel->Enable(m_startupBehaviorChoice->GetSelection() == 2);
     m_workspacePath->Enable(m_startupBehaviorChoice->GetSelection() == 2);
+}
+
+void StartupPreferencesPage::updateApplyButtonStatus()
+{
+    m_applyButton->Enable(m_appSettings.startupSettings() != m_newSettings);
 }
 
 wxBEGIN_EVENT_TABLE(StartupPreferencesPage, wxPanel)

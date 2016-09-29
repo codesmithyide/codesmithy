@@ -21,6 +21,8 @@
 */
 
 #include "Preferences/PythonEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -31,6 +33,11 @@ PythonEditorPreferencesPage::PythonEditorPreferencesPage(wxWindow *parent,
         appSettings.editorSettings().pythonSettings()),
     m_newSettings(appSettings.editorSettings().pythonSettings())
 {
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
+
+    wxSizer* topSizer = GetSizer();
+    topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
 }
 
 void PythonEditorPreferencesPage::handleFontChanged(const std::string& faceName,

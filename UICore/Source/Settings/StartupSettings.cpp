@@ -73,9 +73,19 @@ StartupSettings::EInitialSizeType StartupSettings::initialSizeType() const
     return m_initialSizeType;
 }
 
+void StartupSettings::setInitialSizeType(EInitialSizeType type)
+{
+    m_initialSizeType = type;
+}
+
 unsigned int StartupSettings::initialWidth() const
 {
     return m_initialWidth;
+}
+
+void StartupSettings::setInitialWidth(unsigned int width)
+{
+    m_initialWidth = width;
 }
 
 unsigned int StartupSettings::initialHeight() const
@@ -83,9 +93,19 @@ unsigned int StartupSettings::initialHeight() const
     return m_initialHeight;
 }
 
+void StartupSettings::setInitialHeight(unsigned int height)
+{
+    m_initialHeight = height;
+}
+
 StartupSettings::EStartupBehavior StartupSettings::startupBehavior() const
 {
     return m_startupBehavior;
+}
+
+void StartupSettings::setStartupBehavior(EStartupBehavior behavior)
+{
+    m_startupBehavior = behavior;
 }
 
 const std::string& StartupSettings::startupWorkspacePath() const
@@ -93,9 +113,19 @@ const std::string& StartupSettings::startupWorkspacePath() const
     return m_startupWorkspacePath;
 }
 
+void StartupSettings::setStartupWorkspacePath(const std::string& path)
+{
+    m_startupWorkspacePath = path;
+}
+
 StartupSettings::EOSBootBehavior StartupSettings::osBootBehavior() const
 {
     return m_OSBootBehavior;
+}
+
+void StartupSettings::setOSBootBehavior(EOSBootBehavior behavior)
+{
+    m_OSBootBehavior = behavior;
 }
 
 bool StartupSettings::operator==(const StartupSettings& other) const

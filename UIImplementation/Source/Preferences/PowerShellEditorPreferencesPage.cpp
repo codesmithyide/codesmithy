@@ -21,6 +21,8 @@
 */
 
 #include "Preferences/PowerShellEditorPreferencesPage.h"
+#include "PreferencesDialogUtilities.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -31,6 +33,11 @@ PowerShellEditorPreferencesPage::PowerShellEditorPreferencesPage(wxWindow *paren
         appSettings.editorSettings().powershellSettings()),
     m_newSettings(appSettings.editorSettings().powershellSettings())
 {
+    wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
+        m_fontFaceName, m_fontSize, m_fontButton);
+
+    wxSizer* topSizer = GetSizer();
+    topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
 }
 
 void PowerShellEditorPreferencesPage::handleFontChanged(const std::string& faceName,

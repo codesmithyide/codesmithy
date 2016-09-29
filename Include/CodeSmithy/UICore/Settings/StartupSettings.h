@@ -64,11 +64,17 @@ public:
     ~StartupSettings();
 
     EInitialSizeType initialSizeType() const;
+    void setInitialSizeType(EInitialSizeType type);
     unsigned int initialWidth() const;
+    void setInitialWidth(unsigned int width);
     unsigned int initialHeight() const;
+    void setInitialHeight(unsigned int height);
     EStartupBehavior startupBehavior() const;
+    void setStartupBehavior(EStartupBehavior behavior);
     const std::string& startupWorkspacePath() const;
+    void setStartupWorkspacePath(const std::string& path);
     EOSBootBehavior osBootBehavior() const;
+    void setOSBootBehavior(EOSBootBehavior behavior);
 
     bool operator==(const StartupSettings& other) const;
     bool operator!=(const StartupSettings& other) const;
