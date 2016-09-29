@@ -28,6 +28,7 @@
 #include <wx/radiobut.h>
 #include <wx/textctrl.h>
 #include <wx/choice.h>
+#include <wx/stattext.h>
 #include <wx/filepicker.h>
 
 namespace CodeSmithy
@@ -50,6 +51,7 @@ private:
     wxTextCtrl* m_widthEntry;
     wxTextCtrl* m_heightEntry;
     wxChoice* m_startupBehaviorChoice;
+    wxStaticText* m_workspaceLabel;
     wxFilePickerCtrl* m_workspacePath;
 
     wxDECLARE_EVENT_TABLE();

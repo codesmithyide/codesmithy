@@ -23,7 +23,6 @@
 #include "Preferences/StartupPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
-#include <wx/stattext.h>
 #include <wx/statline.h>
 #include <sstream>
 
@@ -34,7 +33,7 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
                                                AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
     m_startupSizeFixedButton(0), m_widthEntry(0), m_heightEntry(0),
-    m_startupBehaviorChoice(0), m_workspacePath(0)
+    m_startupBehaviorChoice(0), m_workspaceLabel(0), m_workspacePath(0)
 {
     wxStaticText* startupSizeText = new wxStaticText(this, wxID_ANY, "Window size at startup:");
     m_startupSizeFixedButton = new wxRadioButton(this, PreferencesStartupFixedSizeButtonID, "Fixed size:");
@@ -61,6 +60,7 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     m_startupBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, startupBehaviorChoices);
     m_startupBehaviorChoice->SetSelection(0);
     m_startupBehaviorChoice->Bind(wxEVT_COMMAND_CHOICE_SELECTED, &StartupPreferencesPage::onStartupBehaviorChanged, this);
+    m_workspaceLabel = new wxStaticText(this, wxID_ANY, "Workspace:");
     m_workspacePath = new wxFilePickerCtrl(this, wxID_ANY);
     updateWorkspacePathFilePickerStatus();
 
@@ -85,12 +85,17 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     startupSizeSizer->AddSpacer(3);
     startupSizeSizer->Add(startupSizePreviousButton, 0, wxLEFT, 10);
 
+    wxBoxSizer* startupWorkspaceSizer = new wxBoxSizer(wxHORIZONTAL);
+    startupWorkspaceSizer->Add(m_workspaceLabel, 0, wxTOP, 4);
+    startupWorkspaceSizer->AddSpacer(6);
+    startupWorkspaceSizer->Add(m_workspacePath);
+
     wxBoxSizer* startupBehaviourSizer = new wxBoxSizer(wxVERTICAL);
     startupBehaviourSizer->Add(startupBehaviourText);
     startupBehaviourSizer->AddSpacer(4);
     startupBehaviourSizer->Add(m_startupBehaviorChoice, 0, wxLEFT, 7);
-    startupBehaviourSizer->AddSpacer(4);
-    startupBehaviourSizer->Add(m_workspacePath);
+    startupBehaviourSizer->AddSpacer(6);
+    startupBehaviourSizer->Add(startupWorkspaceSizer, 0, wxLEFT, 7);
 
     wxBoxSizer* osBootBehaviorSizer = new wxBoxSizer(wxHORIZONTAL);
     osBootBehaviorSizer->Add(osBootBehaviorText, 0, wxTOP, 4);
@@ -131,6 +136,7 @@ void StartupPreferencesPage::onStartupBehaviorChanged(wxCommandEvent& evt)
 
 void StartupPreferencesPage::updateWorkspacePathFilePickerStatus()
 {
+    m_workspaceLabel->Enable(m_startupBehaviorChoice->GetSelection() == 2);
     m_workspacePath->Enable(m_startupBehaviorChoice->GetSelection() == 2);
 }
 
