@@ -59,6 +59,8 @@ public:
 
 public:
     StartupSettings();
+    StartupSettings(const StartupSettings& other);
+    StartupSettings& operator=(const StartupSettings& other);
     ~StartupSettings();
 
     EInitialSizeType initialSizeType() const;
@@ -67,6 +69,9 @@ public:
     EStartupBehavior startupBehavior() const;
     const std::string& startupWorkspacePath() const;
     EOSBootBehavior osBootBehavior() const;
+
+    bool operator==(const StartupSettings& other) const;
+    bool operator!=(const StartupSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

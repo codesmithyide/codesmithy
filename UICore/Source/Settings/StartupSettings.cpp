@@ -42,6 +42,28 @@ StartupSettings::StartupSettings()
 {
 }
 
+StartupSettings::StartupSettings(const StartupSettings& other)
+    : m_initialSizeType(other.m_initialSizeType),
+    m_initialWidth(other.m_initialWidth), m_initialHeight(other.m_initialHeight),
+    m_startupBehavior(other.m_startupBehavior), m_startupWorkspacePath(other.m_startupWorkspacePath),
+    m_OSBootBehavior(other.m_OSBootBehavior)
+{
+}
+
+StartupSettings& StartupSettings::operator=(const StartupSettings& other)
+{
+    if (this != &other)
+    {
+        m_initialSizeType = other.m_initialSizeType;
+        m_initialWidth = other.m_initialWidth;
+        m_initialHeight = other.m_initialHeight;
+        m_startupBehavior = other.m_startupBehavior;
+        m_startupWorkspacePath = other.m_startupWorkspacePath;
+        m_OSBootBehavior = other.m_OSBootBehavior;
+    }
+    return *this;
+}
+
 StartupSettings::~StartupSettings()
 {
 }
@@ -74,6 +96,21 @@ const std::string& StartupSettings::startupWorkspacePath() const
 StartupSettings::EOSBootBehavior StartupSettings::osBootBehavior() const
 {
     return m_OSBootBehavior;
+}
+
+bool StartupSettings::operator==(const StartupSettings& other) const
+{
+    return ((m_initialSizeType == other.m_initialSizeType) &&
+        (m_initialWidth == other.m_initialWidth) &&
+        (m_initialHeight == other.m_initialHeight) &&
+        (m_startupBehavior == other.m_startupBehavior) &&
+        (m_startupWorkspacePath == other.m_startupWorkspacePath) &&
+        (m_OSBootBehavior == other.m_OSBootBehavior));
+}
+
+bool StartupSettings::operator!=(const StartupSettings& other) const
+{
+    return !(*this == other);
 }
 
 void StartupSettings::load(pugi::xml_node node)
