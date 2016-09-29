@@ -60,7 +60,20 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     startupBehaviorChoices.Add("Restore previous state");
     startupBehaviorChoices.Add("Load specific workspace");
     m_startupBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, startupBehaviorChoices);
-    m_startupBehaviorChoice->SetSelection(0);
+    switch (m_newSettings.startupBehavior())
+    {
+    case StartupSettings::eStartupPage:
+        m_startupBehaviorChoice->SetSelection(0);
+        break;
+
+    case StartupSettings::ePreviousState:
+        m_startupBehaviorChoice->SetSelection(1);
+        break;
+
+    case StartupSettings::eSpecificWorkspace:
+        m_startupBehaviorChoice->SetSelection(2);
+        break;
+    }
     m_startupBehaviorChoice->Bind(wxEVT_COMMAND_CHOICE_SELECTED, &StartupPreferencesPage::onStartupBehaviorChanged, this);
     m_workspaceLabel = new wxStaticText(this, wxID_ANY, "Workspace:");
     m_workspacePath = new wxFilePickerCtrl(this, wxID_ANY);
@@ -74,6 +87,7 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     osBootBehaviorChoice->SetSelection(0);
 
     m_applyButton = new wxButton(this, wxID_ANY, "Apply");
+    m_applyButton->Bind(wxEVT_BUTTON, &StartupPreferencesPage::onApply, this);
     m_applyButton->Disable();
     
     wxBoxSizer* fixedSizedSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -158,6 +172,13 @@ void StartupPreferencesPage::onStartupBehaviorChanged(wxCommandEvent& evt)
     m_newSettings.setStartupBehavior(behavior);
     updateWorkspacePathFilePickerStatus();
     updateApplyButtonStatus();
+}
+
+void StartupPreferencesPage::onApply(wxCommandEvent& evt)
+{
+    m_appSettings.startupSettings() = m_newSettings;
+    m_appSettings.save();
+    m_applyButton->Disable();
 }
 
 void StartupPreferencesPage::updateWorkspacePathFilePickerStatus()

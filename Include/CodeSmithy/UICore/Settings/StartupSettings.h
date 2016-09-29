@@ -83,6 +83,8 @@ public:
     void save(pugi::xml_node node) const;
 
 private:
+    static EInitialSizeType stringToInitialSizeType(const std::string& type);
+    static std::string initialSizeTypeToString(EInitialSizeType type);
     static EStartupBehavior stringToStartupBehavior(const std::string& behavior);
     static std::string startupBehaviorToString(EStartupBehavior behavior);
     static EOSBootBehavior stringToOSBootBehavior(const std::string& behavior);

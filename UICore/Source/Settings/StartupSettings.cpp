@@ -145,28 +145,35 @@ bool StartupSettings::operator!=(const StartupSettings& other) const
 
 void StartupSettings::load(pugi::xml_node node)
 {
+    pugi::xml_node initialSizeNode = node.child(initialSizeElementName);
+    m_initialSizeType = stringToInitialSizeType(XMLUtilities::getChildValueAsString(initialSizeNode, initialSizeTypeElementName, "fixed-size"));
+    m_initialWidth = XMLUtilities::getChildValueAsUnsignedInt(initialSizeNode, initialWidthElementName, 800);
+    m_initialHeight = XMLUtilities::getChildValueAsUnsignedInt(initialSizeNode, initialHeightElementName, 600);
+
+    m_startupBehavior = stringToStartupBehavior(XMLUtilities::getChildValueAsString(node, startupBehaviorElementName, "display-startup-page"));
+    m_startupWorkspacePath = XMLUtilities::getChildValueAsString(node, startupWorkspaceElementName, "");
+    m_OSBootBehavior = stringToOSBootBehavior(XMLUtilities::getChildValueAsString(node, osBootBehaviorElementName, "none"));
 }
 
 void StartupSettings::save(pugi::xml_node node) const
 {
     pugi::xml_node initialSizeNode = XMLUtilities::getOrAppendChildNode(node, initialSizeElementName);
-    
-    pugi::xml_node initialSizeTypeNode = initialSizeNode.child(initialSizeTypeElementName);
-    if (!initialSizeTypeNode)
-    {
-        initialSizeTypeNode = initialSizeNode.append_child(initialSizeTypeElementName);
-        initialSizeTypeNode.append_child(pugi::node_pcdata).set_value("fixed-size");
-    }
-    else
-    {
-        initialSizeTypeNode.text().set("fixed-size");
-    }
-
+    XMLUtilities::setOrAppendChildNode(initialSizeNode, initialSizeTypeElementName, initialSizeTypeToString(m_initialSizeType));
     XMLUtilities::setOrAppendChildNode(initialSizeNode, initialWidthElementName, m_initialWidth);
     XMLUtilities::setOrAppendChildNode(initialSizeNode, initialHeightElementName, m_initialHeight);
     XMLUtilities::setOrAppendChildNode(node, startupBehaviorElementName, startupBehaviorToString(m_startupBehavior));
     XMLUtilities::setOrAppendChildNode(node, startupWorkspaceElementName, m_startupWorkspacePath);
     XMLUtilities::setOrAppendChildNode(node, osBootBehaviorElementName, osBootBehaviorToString(m_OSBootBehavior));
+}
+
+StartupSettings::EInitialSizeType StartupSettings::stringToInitialSizeType(const std::string& type)
+{
+    return eFixedSize;
+}
+
+std::string StartupSettings::initialSizeTypeToString(EInitialSizeType type)
+{
+    return "fixed-size";
 }
 
 StartupSettings::EStartupBehavior StartupSettings::stringToStartupBehavior(const std::string& behavior)

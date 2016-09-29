@@ -59,6 +59,19 @@ bool XMLUtilities::getChildValueAsBool(pugi::xml_node parentNode,
     return result;
 }
 
+unsigned int XMLUtilities::getChildValueAsUnsignedInt(pugi::xml_node parentNode, 
+                                                      const char* elementName,
+                                                      unsigned int defaultValue)
+{
+    unsigned int result = defaultValue;
+    pugi::xml_node childNode = parentNode.child(elementName);
+    if (childNode)
+    {
+        result = childNode.text().as_uint();
+    }
+    return defaultValue;
+}
+
 pugi::xml_node XMLUtilities::getOrAppendChildNode(pugi::xml_node parentNode, 
                                                   const char* elementName)
 {

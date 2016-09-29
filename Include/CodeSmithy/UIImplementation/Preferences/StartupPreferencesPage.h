@@ -42,6 +42,7 @@ public:
 private:
     void onSizeTypeChange(wxCommandEvent& evt);
     void onStartupBehaviorChanged(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
 
     void updateWorkspacePathFilePickerStatus();
     void updateApplyButtonStatus();

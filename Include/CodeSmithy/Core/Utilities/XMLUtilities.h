@@ -35,6 +35,8 @@ public:
         const std::string& defaultValue);
     static bool getChildValueAsBool(pugi::xml_node parentNode, const char* elementName,
         bool defaultValue);
+    static unsigned int getChildValueAsUnsignedInt(pugi::xml_node parentNode, const char* elementName,
+        unsigned int defaultValue);
     static pugi::xml_node getOrAppendChildNode(pugi::xml_node parentNode, const char* elementName);
     static void setOrAppendChildNode(pugi::xml_node parentNode, const char* elementName,
         const std::string& value);
