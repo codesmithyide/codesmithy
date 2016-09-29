@@ -32,8 +32,10 @@ namespace CodeSmithy
 StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent, 
                                                AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    m_newSettings(appSettings.startupSettings()),
     m_startupSizeFixedButton(0), m_widthEntry(0), m_heightEntry(0),
-    m_startupBehaviorChoice(0), m_workspaceLabel(0), m_workspacePath(0)
+    m_startupBehaviorChoice(0), m_workspaceLabel(0), m_workspacePath(0),
+    m_applyButton(0)
 {
     wxStaticText* startupSizeText = new wxStaticText(this, wxID_ANY, "Window size at startup:");
     m_startupSizeFixedButton = new wxRadioButton(this, PreferencesStartupFixedSizeButtonID, "Fixed size:");
@@ -70,6 +72,9 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     osBootBehaviorChoices.Add("Restore previous state");
     wxChoice* osBootBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, osBootBehaviorChoices);
     osBootBehaviorChoice->SetSelection(0);
+
+    m_applyButton = new wxButton(this, wxID_ANY, "Apply");
+    m_applyButton->Disable();
     
     wxBoxSizer* fixedSizedSizer = new wxBoxSizer(wxHORIZONTAL);
     fixedSizedSizer->Add(m_startupSizeFixedButton, 0, wxTOP, 3);
@@ -112,6 +117,10 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
     topSizer->AddSpacer(10);
     topSizer->Add(osBootBehaviorSizer, 0, wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(m_applyButton, 0, wxALIGN_RIGHT | wxRIGHT, 10);
     SetSizer(topSizer);
 }
 

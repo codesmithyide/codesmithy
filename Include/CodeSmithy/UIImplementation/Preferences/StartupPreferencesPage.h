@@ -47,12 +47,14 @@ private:
 
 private:
     AppSettings& m_appSettings;
+    StartupSettings m_newSettings;
     wxRadioButton* m_startupSizeFixedButton;
     wxTextCtrl* m_widthEntry;
     wxTextCtrl* m_heightEntry;
     wxChoice* m_startupBehaviorChoice;
     wxStaticText* m_workspaceLabel;
     wxFilePickerCtrl* m_workspacePath;
+    wxButton* m_applyButton;
 
     wxDECLARE_EVENT_TABLE();
 };
