@@ -22,6 +22,7 @@
 
 #include "Preferences/GitBashToolPreferencesPage.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 
 namespace CodeSmithy
 {
@@ -31,7 +32,18 @@ GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
     : wxPanel(parent, wxID_ANY),
     m_executablePath(0)
 {
+    wxStaticText* executablePathLabel = new wxStaticText(this, wxID_ANY, "Executable:");
+    m_executablePath = new wxFilePickerCtrl(this, wxID_ANY);
+    wxString fileName = appSettings.toolsSettings().gitbashToolSetting().executablePath();
+    m_executablePath->SetFileName(fileName);
+
+    wxBoxSizer* executablePathSizer = new wxBoxSizer(wxHORIZONTAL);
+    executablePathSizer->Add(executablePathLabel, 0, wxTOP, 4);
+    executablePathSizer->AddSpacer(6);
+    executablePathSizer->Add(m_executablePath, 1);
+
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(executablePathSizer, 0, wxEXPAND);
     SetSizer(topSizer);
 }
 
