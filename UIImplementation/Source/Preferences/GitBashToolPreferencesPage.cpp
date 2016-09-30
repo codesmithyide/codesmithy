@@ -21,14 +21,18 @@
 */
 
 #include "Preferences/GitBashToolPreferencesPage.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
 
 GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
                                                        AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY)
+    : wxPanel(parent, wxID_ANY),
+    m_executablePath(0)
 {
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    SetSizer(topSizer);
 }
 
 }

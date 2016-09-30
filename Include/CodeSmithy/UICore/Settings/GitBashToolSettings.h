@@ -32,10 +32,15 @@ class GitBashToolSettings
 {
 public:
     GitBashToolSettings();
+    GitBashToolSettings(const GitBashToolSettings& other);
+    GitBashToolSettings& operator=(const GitBashToolSettings& other);
     ~GitBashToolSettings();
 
     const std::string& executablePath() const;
     void setExecutablePath(const std::string& path);
+
+    bool operator==(const GitBashToolSettings& other) const;
+    bool operator!=(const GitBashToolSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

@@ -25,6 +25,7 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/filepicker.h>
 
 namespace CodeSmithy
 {
@@ -33,6 +34,9 @@ class GitBashToolPreferencesPage : public wxPanel
 {
 public:
     GitBashToolPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+
+private:
+    wxFilePickerCtrl* m_executablePath;
 };
 
 }

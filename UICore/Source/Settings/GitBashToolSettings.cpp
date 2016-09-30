@@ -30,6 +30,20 @@ GitBashToolSettings::GitBashToolSettings()
 {
 }
 
+GitBashToolSettings::GitBashToolSettings(const GitBashToolSettings& other)
+    : m_executablePath(other.m_executablePath)
+{
+}
+
+GitBashToolSettings& GitBashToolSettings::operator=(const GitBashToolSettings& other)
+{
+    if (this != &other)
+    {
+        m_executablePath = other.m_executablePath;
+    }
+    return *this;
+}
+
 GitBashToolSettings::~GitBashToolSettings()
 {
 }
@@ -42,6 +56,16 @@ const std::string& GitBashToolSettings::executablePath() const
 void GitBashToolSettings::setExecutablePath(const std::string& path)
 {
     m_executablePath = path;
+}
+
+bool GitBashToolSettings::operator==(const GitBashToolSettings& other) const
+{
+    return (m_executablePath == other.m_executablePath);
+}
+
+bool GitBashToolSettings::operator!=(const GitBashToolSettings& other) const
+{
+    return !(*this == other);
 }
 
 void GitBashToolSettings::load(pugi::xml_node node)
