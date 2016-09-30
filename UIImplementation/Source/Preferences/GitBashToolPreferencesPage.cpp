@@ -30,13 +30,15 @@ namespace CodeSmithy
 
 GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
                                                        AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY),
+    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    m_newSettings(appSettings.toolsSettings().gitbashToolSetting()),
     m_executablePath(0), m_applyButton(0)
 {
     wxStaticText* executablePathLabel = new wxStaticText(this, wxID_ANY, "Executable:");
     m_executablePath = new wxFilePickerCtrl(this, wxID_ANY);
     wxString fileName = appSettings.toolsSettings().gitbashToolSetting().executablePath();
     m_executablePath->SetFileName(fileName);
+    m_executablePath->Bind(wxEVT_FILEPICKER_CHANGED, &GitBashToolPreferencesPage::onExecutablePathChanged, this);
 
     wxBoxSizer* executablePathSizer = new wxBoxSizer(wxHORIZONTAL);
     executablePathSizer->Add(executablePathLabel, 0, wxTOP, 4);
@@ -56,8 +58,23 @@ GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
     SetSizer(topSizer);
 }
 
+void GitBashToolPreferencesPage::onExecutablePathChanged(wxFileDirPickerEvent& evt)
+{
+    std::string path = m_executablePath->GetPath();
+    m_newSettings.setExecutablePath(path);
+    updateApplyButtonStatus();
+}
+
 void GitBashToolPreferencesPage::onApply(wxCommandEvent& evt)
 {
+    m_appSettings.toolsSettings().gitbashToolSetting() = m_newSettings;
+    m_appSettings.save();
+    m_applyButton->Disable();
+}
+
+void GitBashToolPreferencesPage::updateApplyButtonStatus()
+{
+    m_applyButton->Enable(m_appSettings.toolsSettings().gitbashToolSetting() != m_newSettings);
 }
 
 }

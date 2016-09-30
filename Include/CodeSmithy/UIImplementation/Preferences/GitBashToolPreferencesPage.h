@@ -36,9 +36,14 @@ public:
     GitBashToolPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 
 private:
+    void onExecutablePathChanged(wxFileDirPickerEvent& evt);
     void onApply(wxCommandEvent& evt);
 
+    void updateApplyButtonStatus();
+
 private:
+    AppSettings& m_appSettings;
+    GitBashToolSettings m_newSettings;
     wxFilePickerCtrl* m_executablePath;
     wxButton* m_applyButton;
 };

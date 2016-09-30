@@ -21,9 +21,12 @@
 */
 
 #include "Settings/GitBashToolSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
+
+static const char* executablePathElementName = "executable-path";
 
 GitBashToolSettings::GitBashToolSettings()
     : m_executablePath("C:\\Program Files\\Git\\git-bash.exe")
@@ -70,10 +73,12 @@ bool GitBashToolSettings::operator!=(const GitBashToolSettings& other) const
 
 void GitBashToolSettings::load(pugi::xml_node node)
 {
+    m_executablePath = XMLUtilities::getChildValueAsString(node, executablePathElementName, m_executablePath);
 }
 
 void GitBashToolSettings::save(pugi::xml_node node) const
 {
+    XMLUtilities::setOrAppendChildNode(node, executablePathElementName, m_executablePath);
 }
 
 }

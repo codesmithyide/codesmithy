@@ -94,7 +94,9 @@
 	</editor-settings>
 	<tools-settings>
 		<bakefile-tool-settings />
-		<gitbash-tool-settings />
+		<gitbash-tool-settings>
+			<executable-path>C:\Program Files\Git\git-bash.exe</executable-path>
+		</gitbash-tool-settings>
 	</tools-settings>
 	<advanced-settings>
 		<ui-log-level>disabled</ui-log-level>
