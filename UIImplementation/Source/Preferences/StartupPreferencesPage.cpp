@@ -84,7 +84,17 @@ StartupPreferencesPage::StartupPreferencesPage(wxWindow* parent,
     osBootBehaviorChoices.Add("Don't do anything");
     osBootBehaviorChoices.Add("Restore previous state");
     wxChoice* osBootBehaviorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, osBootBehaviorChoices);
-    osBootBehaviorChoice->SetSelection(0);
+    switch (m_newSettings.osBootBehavior())
+    {
+    case StartupSettings::eDoNothing:
+        osBootBehaviorChoice->SetSelection(0);
+        break;
+
+    case StartupSettings::eRestore:
+        osBootBehaviorChoice->SetSelection(1);
+        break;
+    }
+    osBootBehaviorChoice->Bind(wxEVT_COMMAND_CHOICE_SELECTED, &StartupPreferencesPage::onOSBootBehaviorChanged, this);
 
     m_applyButton = new wxButton(this, wxID_ANY, "Apply");
     m_applyButton->Bind(wxEVT_BUTTON, &StartupPreferencesPage::onApply, this);
@@ -171,6 +181,23 @@ void StartupPreferencesPage::onStartupBehaviorChanged(wxCommandEvent& evt)
     }
     m_newSettings.setStartupBehavior(behavior);
     updateWorkspacePathFilePickerStatus();
+    updateApplyButtonStatus();
+}
+
+void StartupPreferencesPage::onOSBootBehaviorChanged(wxCommandEvent& evt)
+{
+    StartupSettings::EOSBootBehavior behavior = StartupSettings::eDoNothing;
+    switch (evt.GetSelection())
+    {
+    case 0:
+        behavior = StartupSettings::eDoNothing;
+        break;
+
+    case 1:
+        behavior = StartupSettings::eRestore;
+        break;
+    }
+    m_newSettings.setOSBootBehavior(behavior);
     updateApplyButtonStatus();
 }
 
