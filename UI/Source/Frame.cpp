@@ -38,6 +38,11 @@ Frame::Frame(const wxString& title,
     m_log(m_appSettings.advancedSettings().uiLogLevel()),
     m_menuBar(0), m_workspacePanel(0)
 {
+    if (m_appSettings.startupSettings().osBootBehavior() == StartupSettings::eRestore)
+    {
+        RegisterApplicationRestart(L"/restart", 0);
+    }
+
     if (m_appSettings.startupSettings().initialSizeType() == StartupSettings::eFixedSize)
     {
         SetSize(m_appSettings.startupSettings().initialWidth(), m_appSettings.startupSettings().initialHeight());

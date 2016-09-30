@@ -68,7 +68,7 @@ bool App::OnInit()
     Frame* frame = new Frame(L"CodeSmithy", *m_documentTypes, *m_projectTypes);
     frame->Show(true);
 
-    if (argc == 2)
+    if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
     {
         frame->OpenFile(argv[1]);
     }

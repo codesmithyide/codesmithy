@@ -198,6 +198,14 @@ void StartupPreferencesPage::onOSBootBehaviorChanged(wxCommandEvent& evt)
         break;
     }
     m_newSettings.setOSBootBehavior(behavior);
+    if (behavior == StartupSettings::eRestore)
+    {
+        RegisterApplicationRestart(L"/restart", 0);
+    }
+    else
+    {
+        UnregisterApplicationRestart();
+    }
     updateApplyButtonStatus();
 }
 
