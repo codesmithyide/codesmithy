@@ -21,24 +21,53 @@
 */
 
 #include "Settings/BakefileToolSettings.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
 
+static const char* commandLineElementName = "command-line";
+
 BakefileToolSettings::BakefileToolSettings()
 {
+}
+
+BakefileToolSettings::BakefileToolSettings(const BakefileToolSettings& other)
+    : m_commandLine(other.m_commandLine)
+{
+}
+
+BakefileToolSettings& BakefileToolSettings::operator=(const BakefileToolSettings& other)
+{
+    if (this != &other)
+    {
+        m_commandLine = other.m_commandLine;
+    }
+    return *this;
 }
 
 BakefileToolSettings::~BakefileToolSettings()
 {
 }
 
+bool BakefileToolSettings::operator==(const BakefileToolSettings& other) const
+{
+    return (m_commandLine == other.m_commandLine);
+}
+
+bool BakefileToolSettings::operator!=(const BakefileToolSettings& other) const
+{
+    return !(*this == other);
+}
+
 void BakefileToolSettings::load(pugi::xml_node node)
 {
+    m_commandLine = XMLUtilities::getChildValueAsString(node, commandLineElementName, m_commandLine);
 }
 
 void BakefileToolSettings::save(pugi::xml_node node) const
 {
+    XMLUtilities::setOrAppendChildNode(node, commandLineElementName, m_commandLine);
 }
 
 }

@@ -32,10 +32,18 @@ class BakefileToolSettings
 {
 public:
     BakefileToolSettings();
+    BakefileToolSettings(const BakefileToolSettings& other);
+    BakefileToolSettings& operator=(const BakefileToolSettings& other);
     ~BakefileToolSettings();
+
+    bool operator==(const BakefileToolSettings& other) const;
+    bool operator!=(const BakefileToolSettings& other) const;
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
+
+private:
+    std::string m_commandLine;
 };
 
 }

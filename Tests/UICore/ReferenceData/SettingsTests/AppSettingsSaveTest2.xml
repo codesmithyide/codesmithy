@@ -93,7 +93,9 @@
 		</xml-editor-settings>
 	</editor-settings>
 	<tools-settings>
-		<bakefile-tool-settings />
+		<bakefile-tool-settings>
+			<command-line></command-line>
+		</bakefile-tool-settings>
 		<gitbash-tool-settings>
 			<executable-path>C:\Program Files\Git\git-bash.exe</executable-path>
 		</gitbash-tool-settings>
