@@ -23,6 +23,7 @@
 #include "Preferences/GitBashToolPreferencesPage.h"
 #include <wx/sizer.h>
 #include <wx/stattext.h>
+#include <wx/statline.h>
 
 namespace CodeSmithy
 {
@@ -30,7 +31,7 @@ namespace CodeSmithy
 GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
                                                        AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY),
-    m_executablePath(0)
+    m_executablePath(0), m_applyButton(0)
 {
     wxStaticText* executablePathLabel = new wxStaticText(this, wxID_ANY, "Executable:");
     m_executablePath = new wxFilePickerCtrl(this, wxID_ANY);
@@ -42,9 +43,21 @@ GitBashToolPreferencesPage::GitBashToolPreferencesPage(wxWindow* parent,
     executablePathSizer->AddSpacer(6);
     executablePathSizer->Add(m_executablePath, 1);
 
+    m_applyButton = new wxButton(this, wxID_ANY, "Apply");
+    m_applyButton->Bind(wxEVT_BUTTON, &GitBashToolPreferencesPage::onApply, this);
+    m_applyButton->Disable();
+
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-    topSizer->Add(executablePathSizer, 0, wxEXPAND);
+    topSizer->Add(executablePathSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(m_applyButton, 0, wxALIGN_RIGHT | wxRIGHT, 10);
     SetSizer(topSizer);
+}
+
+void GitBashToolPreferencesPage::onApply(wxCommandEvent& evt)
+{
 }
 
 }
