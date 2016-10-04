@@ -21,3 +21,32 @@
 */
 
 #include "Documents/WiXSourceFileType.h"
+#include "Documents/WiXSourceFile.h"
+
+namespace CodeSmithy
+{
+
+WiXSourceFileType::WiXSourceFileType()
+    : DocumentType("WiX Source File", "wxs")
+{
+}
+
+WiXSourceFileType::WiXSourceFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("WiX Source File", "wxs")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> WiXSourceFileType::createNewDocument(const DocumentId& id,
+                                                               const std::string& name) const
+{
+    return std::make_shared<WiXSourceFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> WiXSourceFileType::createDocumentFromFile(const DocumentId& id,
+                                                                    const boost::filesystem::path& path) const
+{
+    return std::make_shared<WiXSourceFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}

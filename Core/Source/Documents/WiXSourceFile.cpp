@@ -21,3 +21,31 @@
 */
 
 #include "Documents/WiXSourceFile.h"
+
+namespace CodeSmithy
+{
+
+WiXSourceFile::WiXSourceFile(const std::shared_ptr<const DocumentType> type,
+                             const DocumentId& id,
+                             const std::string& name)
+    : Document(type, id, name)
+{
+}
+
+WiXSourceFile::WiXSourceFile(const std::shared_ptr<const DocumentType> type,
+                             const DocumentId& id,
+                             const std::string& name,
+                             const boost::filesystem::path& path)
+    : Document(type, id, name, path)
+{
+}
+
+WiXSourceFile::~WiXSourceFile()
+{
+}
+
+void WiXSourceFile::doSave(const boost::filesystem::path& path) const
+{
+}
+
+}

@@ -23,4 +23,25 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_WIXSOURCEFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_WIXSOURCEFILE_H_
 
+#include "Document.h"
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class WiXSourceFile : public Document
+{
+public:
+    WiXSourceFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    WiXSourceFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+    ~WiXSourceFile() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif
