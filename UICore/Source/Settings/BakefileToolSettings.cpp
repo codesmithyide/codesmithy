@@ -50,6 +50,16 @@ BakefileToolSettings::~BakefileToolSettings()
 {
 }
 
+const std::string& BakefileToolSettings::commandLine() const
+{
+    return m_commandLine;
+}
+
+void BakefileToolSettings::setCommandLine(const std::string& commandLine)
+{
+    m_commandLine = commandLine;
+}
+
 bool BakefileToolSettings::operator==(const BakefileToolSettings& other) const
 {
     return (m_commandLine == other.m_commandLine);

@@ -25,6 +25,8 @@
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
+#include <wx/textctrl.h>
+#include <wx/button.h>
 
 namespace CodeSmithy
 {
@@ -33,6 +35,18 @@ class BakefileToolPreferencesPage : public wxPanel
 {
 public:
     BakefileToolPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+
+private:
+    void onCommandLineChanged(wxCommandEvent& evt);
+    void onApply(wxCommandEvent& evt);
+
+    void updateApplyButtonStatus();
+
+private:
+    AppSettings& m_appSettings;
+    BakefileToolSettings m_newSettings;
+    wxTextCtrl* m_commandLine;
+    wxButton* m_applyButton;
 };
 
 }

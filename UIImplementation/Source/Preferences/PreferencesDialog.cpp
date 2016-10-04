@@ -36,6 +36,7 @@
 #include "WindowIDs.h"
 #include <wx/sizer.h>
 #include <wx/button.h>
+#include <wx/statline.h>
 
 namespace CodeSmithy
 {
@@ -45,10 +46,6 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     : wxDialog(parent, wxID_ANY, "Preferences", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), 
     m_appSettings(settings)
 {
-    // Set up the sizer for the frame and resize the frame
-    // according to its contents
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
 	// Create a wxTreebook control
 	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
 	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
@@ -57,11 +54,16 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     CreateStartupPreferences(treebook, settings);
     CreateFileTypeAssociationsPreferences(treebook, settings);
     CreateAdvancedPreferences(treebook, settings);
-    topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
 
     wxButton* closeButton = new wxButton(this, PreferencesCloseButtonID, "Close");
-    topSizer->Add(closeButton, 0, wxALIGN_RIGHT);
 
+    // Set up the sizer for the frame and resize the frame
+    // according to its contents
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(treebook, 1, wxEXPAND | wxALL, 10);
+    topSizer->Add(new wxStaticLine(this), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    topSizer->AddSpacer(10);
+    topSizer->Add(closeButton, 0, wxALIGN_RIGHT | wxRIGHT | wxBOTTOM, 10);
     SetSizerAndFit(topSizer);
 }
 

@@ -36,6 +36,9 @@ public:
     BakefileToolSettings& operator=(const BakefileToolSettings& other);
     ~BakefileToolSettings();
 
+    const std::string& commandLine() const;
+    void setCommandLine(const std::string& commandLine);
+
     bool operator==(const BakefileToolSettings& other) const;
     bool operator!=(const BakefileToolSettings& other) const;
 
