@@ -37,6 +37,7 @@
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 #include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
+#include "CodeSmithy/Core/Projects/WiX/WiXProjectType.h"
 
 namespace CodeSmithy
 {
@@ -63,6 +64,7 @@ App::App()
     m_projectTypes = std::make_shared<ProjectTypes>();
     m_projectTypes->add(std::make_shared<BakefileProjectType>(*m_documentTypes));
     m_projectTypes->add(std::make_shared<CMakeProjectType>(*m_documentTypes));
+    m_projectTypes->add(std::make_shared<WiXProjectType>(*m_documentTypes));
 }
 
 bool App::OnInit()

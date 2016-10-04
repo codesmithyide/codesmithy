@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_WIXTOOLKITPREFERENCESPAGE_H_
-#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_WIXTOOLKITPREFERENCESPAGE_H_
+#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_WIXTOOLSETPREFERENCESPAGE_H_
+#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_WIXTOOLSETPREFERENCESPAGE_H_
 
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include <wx/panel.h>
@@ -29,10 +29,10 @@
 namespace CodeSmithy
 {
 
-class WiXToolkitPreferencesPage : public wxPanel
+class WiXToolsetPreferencesPage : public wxPanel
 {
 public:
-    WiXToolkitPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+    WiXToolsetPreferencesPage(wxWindow* parent, AppSettings& appSettings);
 };
 
 }

@@ -20,12 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#include "Preferences/WiXToolkitPreferencesPage.h"
+#include "Preferences/WiXToolsetPreferencesPage.h"
 
 namespace CodeSmithy
 {
 
-WiXToolkitPreferencesPage::WiXToolkitPreferencesPage(wxWindow* parent,
+WiXToolsetPreferencesPage::WiXToolsetPreferencesPage(wxWindow* parent,
                                                      AppSettings& appSettings)
     : wxPanel(parent, wxID_ANY)
 {
