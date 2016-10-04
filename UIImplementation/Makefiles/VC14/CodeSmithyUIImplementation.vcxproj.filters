@@ -41,6 +41,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AboutDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewDocumentWizard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OpenDocumentsCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -119,6 +122,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wizards\NewDocumentWizard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Workspace\OpenDocumentsCtrl.cpp">
