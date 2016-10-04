@@ -19,7 +19,28 @@
 				</main-text-font-settings>
 			</editor-theme>
 			<editor-theme>
+				<editor-id>CodeSmithy.Editor.CMakeLists</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
+			</editor-theme>
+			<editor-theme>
 				<editor-id>CodeSmithy.Editor.Cpp</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
+			</editor-theme>
+			<editor-theme>
+				<editor-id>CodeSmithy.Editor.PowerShell</editor-id>
+				<main-text-font-settings>
+					<font-face-name>Courier New</font-face-name>
+					<font-point-size>10</font-point-size>
+				</main-text-font-settings>
+			</editor-theme>
+			<editor-theme>
+				<editor-id>CodeSmithy.Editor.Python</editor-id>
 				<main-text-font-settings>
 					<font-face-name>Courier New</font-face-name>
 					<font-point-size>10</font-point-size>
