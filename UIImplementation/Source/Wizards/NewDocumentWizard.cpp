@@ -21,3 +21,19 @@
 */
 
 #include "Wizards/NewDocumentWizard.h"
+
+namespace CodeSmithy
+{
+
+NewDocumentWizard::NewDocumentWizard(wxWindow* parent)
+    : wxWizard(parent, wxID_ANY, "Select the document type"), m_firstPage(0)
+{
+}
+
+
+bool NewDocumentWizard::RunWizard()
+{
+    return wxWizard::RunWizard(m_firstPage);
+}
+
+}

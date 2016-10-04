@@ -25,6 +25,7 @@
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include "CodeSmithy/UIImplementation/AboutDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
+#include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include <wx/filedlg.h>
 
 namespace CodeSmithy
@@ -178,6 +179,15 @@ void Frame::OnWindowClose(wxCloseEvent& evt)
     }
 }
 
+void Frame::OnNewFile(wxCommandEvent& evt)
+{
+    NewDocumentWizard* newDocumentWizard = new NewDocumentWizard(this);
+    if (newDocumentWizard->RunWizard())
+    {
+    }
+    newDocumentWizard->Destroy();
+}
+
 void Frame::OnOpenFile(wxCommandEvent& evt)
 {
     wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
@@ -285,6 +295,7 @@ void Frame::OnAbout(wxCommandEvent& evt)
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CLOSE(Frame::OnWindowClose)
+    EVT_MENU(WorkspaceNewFileMenuID, Frame::OnNewFile)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
     EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)

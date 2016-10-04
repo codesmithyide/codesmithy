@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWDOCUMENTWIZARD_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWDOCUMENTWIZARD_H_
 
+#include <wx/wizard.h>
+
+namespace CodeSmithy
+{
+
+class DocumentCreationPage;
+
+class NewDocumentWizard : public wxWizard
+{
+public:
+    NewDocumentWizard(wxWindow* parent);
+
+    bool RunWizard();
+
+private:
+    DocumentCreationPage* m_firstPage;
+};
+
+class DocumentCreationPage : public wxWizardPageSimple
+{
+};
+
+}
+
 #endif

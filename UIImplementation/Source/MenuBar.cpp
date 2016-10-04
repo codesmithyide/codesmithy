@@ -32,6 +32,7 @@ MenuBar::MenuBar()
     wxMenu* menuFile = new wxMenu;
 
     wxMenu* menuFileNew = new wxMenu;
+    menuFileNew->Append(WorkspaceNewFileMenuID, "&File...\tCtrl+N");
     menuFile->AppendSubMenu(menuFileNew, "&New");
 
     wxMenu* menuFileOpen = new wxMenu;
