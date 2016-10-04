@@ -30,6 +30,7 @@
 #include "Preferences/XMLEditorPreferencesPage.h"
 #include "Preferences/BakefileToolPreferencesPage.h"
 #include "Preferences/GitBashToolPreferencesPage.h"
+#include "Preferences/WiXToolkitPreferencesPage.h"
 #include "Preferences/StartupPreferencesPage.h"
 #include "Preferences/FileTypeAssociationsPreferencesPage.h"
 #include "Preferences/AdvancedPreferencesPage.h"
@@ -97,6 +98,8 @@ void PreferencesDialog::CreateToolsPreferences(wxTreebook* treebook,
     treebook->AddSubPage(bakefilePage, "Bakefile");
     GitBashToolPreferencesPage* gitbashPage = new GitBashToolPreferencesPage(treebook, settings);
     treebook->AddSubPage(gitbashPage, "Git Bash");
+    WiXToolkitPreferencesPage* wixPage = new WiXToolkitPreferencesPage(treebook, settings);
+    treebook->AddSubPage(wixPage, "WiX Toolset");
 }
 
 void PreferencesDialog::CreateStartupPreferences(wxTreebook* treebook,
