@@ -66,6 +66,9 @@ MenuBar::MenuBar()
     m_pasteMenuItem->Enable(false);
     Append(menuEdit, "&Edit");
 
+    wxMenu* menuView = new wxMenu;
+    Append(menuView, "&View");
+
     wxMenu* menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
     Append(menuHelp, "&Help");

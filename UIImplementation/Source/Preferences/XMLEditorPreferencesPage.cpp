@@ -35,9 +35,6 @@ XMLEditorPreferencesPage::XMLEditorPreferencesPage(wxWindow* parent,
         appSettings.editorSettings().xmlSettings()),
     m_newSettings(appSettings.editorSettings().xmlSettings())
 {
-    m_fontFaceName->SetValue(m_newSettings.fontSettings().faceName());
-    m_fontSize->SetValue(m_newSettings.fontSettings().pointSize());
-
     m_formatExample = new XMLEditorCtrl(this, appSettings);
     m_formatExample->SetValue("int main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();

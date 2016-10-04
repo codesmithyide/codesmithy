@@ -53,11 +53,13 @@ EditorPreferencesBase::EditorPreferencesBase(wxWindow* parent,
     m_overrideThemeCheckBox->Bind(wxEVT_CHECKBOX, &EditorPreferencesBase::onOverrideThemeChanged, this);
 
     m_fontFaceName = new wxTextCtrl(this, wxID_ANY);
+    m_fontFaceName->SetValue(editorSettings.fontSettings().faceName());
     m_fontFaceName->SetEditable(false);
 
     m_fontSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(50, wxDefaultCoord));
     m_fontSize->SetMin(6);
     m_fontSize->SetMax(30);
+    m_fontSize->SetValue(editorSettings.fontSettings().pointSize());
     m_fontSize->Bind(wxEVT_SPINCTRL, &EditorPreferencesBase::onPointSizeChanged, this);
 
     m_fontButton = new wxButton(this, wxID_ANY, "Select Font...");

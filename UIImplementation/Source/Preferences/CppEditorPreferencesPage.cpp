@@ -37,9 +37,6 @@ CppEditorPreferencesPage::CppEditorPreferencesPage(wxWindow *parent,
         appSettings.editorSettings().cppSettings()),
     m_newSettings(appSettings.editorSettings().cppSettings())
 {
-    m_fontFaceName->SetValue(appSettings.editorSettings().cppSettings().fontSettings().faceName());
-    m_fontSize->SetValue(appSettings.editorSettings().cppSettings().fontSettings().pointSize());
-
     m_formatExample = new CppEditorCtrl(this, appSettings);
     m_formatExample->SetValue("/* This is the main function */\r\nint main(int argc, char* argv[])\r\n{\r\n\treturn 0;\r\n}\r\n");
     updateExample();
