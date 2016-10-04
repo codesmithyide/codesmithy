@@ -46,6 +46,8 @@ library CodeSmithyCore : Boost, pugixml
         ../../../Include/CodeSmithy/Core/Documents/PowerShellFileType.h
         ../../../Include/CodeSmithy/Core/Documents/PythonFile.h
         ../../../Include/CodeSmithy/Core/Documents/PythonFileType.h
+        ../../../Include/CodeSmithy/Core/Documents/WiXSourceFile.h
+        ../../../Include/CodeSmithy/Core/Documents/WiXSourceFileType.h
         ../../../Include/CodeSmithy/Core/Documents/XMLDocument.h
         ../../../Include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
@@ -97,6 +99,8 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Documents/PowerShellFileType.cpp
         ../../Source/Documents/PythonFile.cpp
         ../../Source/Documents/PythonFileType.cpp
+        ../../Source/Documents/WiXSourceFile.cpp
+        ../../Source/Documents/WiXSourceFileType.cpp
         ../../Source/Documents/XMLDocument.cpp
         ../../Source/Documents/XMLDocumentType.cpp
 
