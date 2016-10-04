@@ -170,6 +170,7 @@
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\BakefileToolPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\GitBashToolPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\WiXToolkitPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\FileTypeAssociationsPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\AdvancedPreferencesPage.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileToolPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\GitBashToolPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\WiXToolkitPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\FileTypeAssociationsPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\AdvancedPreferencesPage.h" />

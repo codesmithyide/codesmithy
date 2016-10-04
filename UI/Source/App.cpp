@@ -33,6 +33,7 @@
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include "CodeSmithy/Core/Documents/PowerShellFileType.h"
 #include "CodeSmithy/Core/Documents/PythonFileType.h"
+#include "CodeSmithy/Core/Documents/WiXSourceFileType.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 #include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
@@ -53,6 +54,7 @@ App::App()
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PowerShellFileType>());
     m_documentTypes->add(std::make_shared<PythonFileType>());
+    m_documentTypes->add(std::make_shared<WiXSourceFileType>());
     m_documentTypes->add(std::make_shared<XMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(XMLDocumentCtrl::Create)));
 
     // This is the list of project types supported by the
