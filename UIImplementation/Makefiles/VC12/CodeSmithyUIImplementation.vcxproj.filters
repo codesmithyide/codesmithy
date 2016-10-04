@@ -83,7 +83,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\GitBashToolPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\WiXToolkitPreferencesPage.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\WiXToolsetPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\StartupPreferencesPage.h">
@@ -163,7 +163,7 @@
     <ClCompile Include="..\..\Source\Preferences\GitBashToolPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Preferences\WiXToolkitPreferencesPage.cpp">
+    <ClCompile Include="..\..\Source\Preferences\WiXToolsetPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\StartupPreferencesPage.cpp">
