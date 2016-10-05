@@ -53,7 +53,12 @@ Frame::Frame(const wxString& title,
     m_documents = std::make_shared<Documents>();
     m_activeDocument = std::make_shared<ActiveDocument>();
 
-    m_menuBar = new MenuBar();
+    m_menuBar = new MenuBar(m_fileHistory);
+    const RecentDocuments& recentFiles = m_appSettings.recentDocuments();
+    for (size_t i = 0; i < recentFiles.size(); ++i)
+    {
+        m_fileHistory.AddFileToHistory(recentFiles[i]);
+    }
     m_menuBar->registerObserver(m_activeDocument);
     SetMenuBar(m_menuBar);
 
@@ -153,6 +158,7 @@ void Frame::OpenFile(const wxString& file)
             std::shared_ptr<const DocumentType> documentType = m_appSettings.documentTypes().find(documentTypeName);
             std::shared_ptr<Document> document = documentType->createDocumentFromFile(m_documentIdGenerator.createNewId(), selectedPath);
             m_documents->add(document);
+            AddToRecentFiles(selectedPath.string());
         }
     }
 }
@@ -258,6 +264,12 @@ void Frame::OnPreferences(wxCommandEvent& evt)
     preferencesDialog.ShowModal();
 }
 
+void Frame::OnRecentFile(wxCommandEvent& evt)
+{
+    wxString path = m_fileHistory.GetHistoryFile(evt.GetId() - wxID_FILE1);
+    OpenFile(path);
+}
+
 void Frame::OnExit(wxCommandEvent& evt)
 {
     Close();
@@ -293,6 +305,13 @@ void Frame::OnAbout(wxCommandEvent& evt)
     aboutDialog.ShowModal();
 }
 
+void Frame::AddToRecentFiles(const std::string& file)
+{
+    m_fileHistory.AddFileToHistory(file);
+    m_appSettings.recentDocuments().set(file);
+    m_appSettings.save();
+}
+
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CLOSE(Frame::OnWindowClose)
     EVT_MENU(WorkspaceNewFileMenuID, Frame::OnNewFile)
@@ -303,6 +322,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
     EVT_MENU(WorkspaceCloseAllMenuID, Frame::OnCloseAll)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
+    EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, Frame::OnRecentFile)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
     EVT_MENU(wxID_CUT, Frame::OnCut)
     EVT_MENU(wxID_COPY, Frame::OnCopy)

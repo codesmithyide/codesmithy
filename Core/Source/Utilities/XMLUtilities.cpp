@@ -129,4 +129,19 @@ void XMLUtilities::setOrAppendChildNode(pugi::xml_node parentNode,
     setOrAppendChildNode(parentNode, elementName, valueStr.str());
 }
 
+void XMLUtilities::appendChildNode(pugi::xml_node parentNode,
+                                   const char* elementName,
+                                   const std::string& value)
+{
+    appendChildNode(parentNode, elementName, value.c_str());
+}
+
+void XMLUtilities::appendChildNode(pugi::xml_node parentNode,
+                                   const char* elementName,
+                                   const char* value)
+{
+    pugi::xml_node childNode = parentNode.append_child(elementName);
+    childNode.append_child(pugi::node_pcdata).set_value(value);
+}
+
 }

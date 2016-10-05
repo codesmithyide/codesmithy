@@ -26,6 +26,7 @@
 #include "ActiveDocument.h"
 #include "ActiveDocumentObserver.h"
 #include <wx/menu.h>
+#include <wx/filehistory.h>
 
 namespace CodeSmithy
 {
@@ -33,7 +34,7 @@ namespace CodeSmithy
 class MenuBar : public wxMenuBar
 {
 public:
-    MenuBar();
+    MenuBar(wxFileHistory& fileHistory);
 
     void registerObserver(std::shared_ptr<ActiveDocument> activeDocument);
     void deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument);

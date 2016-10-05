@@ -46,8 +46,16 @@ const std::string& RecentDocuments::operator[](size_t index) const
     return m_documents[index];
 }
 
-void RecentDocuments::append(const std::string& filePath)
+void RecentDocuments::set(const std::string& filePath)
 {
+    for (size_t i = 0; i < m_documents.size(); ++i)
+    {
+        if (m_documents[i] == filePath)
+        {
+            m_documents.erase(m_documents.begin() + i);
+            break;
+        }
+    }
     m_documents.push_back(filePath);
 }
 
@@ -68,7 +76,7 @@ void RecentDocuments::save(pugi::xml_node node) const
     }
     for (size_t i = 0; i < m_documents.size(); ++i)
     {
-        XMLUtilities::setOrAppendChildNode(node, fileElementName, m_documents[i]);
+        XMLUtilities::appendChildNode(node, fileElementName, m_documents[i]);
     }
 }
 

@@ -38,7 +38,7 @@ public:
 
     size_t size() const;
     const std::string& operator[](size_t index) const;
-    void append(const std::string& filePath);
+    void set(const std::string& filePath);
 
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;

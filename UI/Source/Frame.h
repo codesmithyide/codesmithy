@@ -55,11 +55,14 @@ private:
     void OnCloseFile(wxCommandEvent& evt);
     void OnCloseAll(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
+    void OnRecentFile(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
     void OnCut(wxCommandEvent& evt);
     void OnCopy(wxCommandEvent& evt);
     void OnPaste(wxCommandEvent& evt);
     void OnAbout(wxCommandEvent& evt);
+
+    void AddToRecentFiles(const std::string& file);
 
 private:
     AppSettings m_appSettings;
