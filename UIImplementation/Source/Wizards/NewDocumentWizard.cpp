@@ -21,6 +21,7 @@
 */
 
 #include "Wizards/NewDocumentWizard.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -28,12 +29,22 @@ namespace CodeSmithy
 NewDocumentWizard::NewDocumentWizard(wxWindow* parent)
     : wxWizard(parent, wxID_ANY, "Select the document type"), m_firstPage(0)
 {
+    m_firstPage = new DocumentCreationPage(this);
+
+    // wxWizard has its own sizer to which the pages need
+    // to be added.
+    GetPageAreaSizer()->Add(m_firstPage);
 }
 
 
 bool NewDocumentWizard::RunWizard()
 {
     return wxWizard::RunWizard(m_firstPage);
+}
+
+DocumentCreationPage::DocumentCreationPage(wxWizard *parent)
+    : wxWizardPageSimple(parent)
+{
 }
 
 }

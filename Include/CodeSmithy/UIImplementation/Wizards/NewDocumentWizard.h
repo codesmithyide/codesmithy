@@ -43,6 +43,8 @@ private:
 
 class DocumentCreationPage : public wxWizardPageSimple
 {
+public:
+	DocumentCreationPage(wxWizard *parent);
 };
 
 }
