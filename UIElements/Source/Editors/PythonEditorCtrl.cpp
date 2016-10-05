@@ -21,3 +21,7 @@
 */
 
 #include "Editors/PythonEditorCtrl.h"
+
+namespace CodeSmithy
+{
+}

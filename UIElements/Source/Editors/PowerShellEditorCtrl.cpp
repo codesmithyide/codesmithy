@@ -21,3 +21,7 @@
 */
 
 #include "Editors/PowerShellEditorCtrl.h"
+
+namespace CodeSmithy
+{
+}

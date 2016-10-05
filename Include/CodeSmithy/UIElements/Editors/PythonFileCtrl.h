@@ -23,4 +23,22 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_PYTHONFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_PYTHONFILECTRL_H_
 
+#include "DocumentCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+
+namespace CodeSmithy
+{
+
+class PythonFileCtrl : public DocumentCtrl
+{
+public:
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    PythonFileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+};
+
+}
+
 #endif

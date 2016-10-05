@@ -21,3 +21,22 @@
 */
 
 #include "Editors/WiXSourceFileCtrl.h"
+
+namespace CodeSmithy
+{
+
+wxWindow* WiXSourceFileCtrl::Create(wxWindow *parent,
+                                    std::shared_ptr<Document> document,
+                                    const AppSettings& appSettings)
+{
+    return new WiXSourceFileCtrl(parent, document, appSettings);
+}
+
+WiXSourceFileCtrl::WiXSourceFileCtrl(wxWindow* parent,
+                                     std::shared_ptr<Document> document,
+                                     const AppSettings& appSettings)
+    : DocumentCtrl(parent)
+{
+}
+
+}

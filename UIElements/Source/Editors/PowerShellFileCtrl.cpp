@@ -21,3 +21,22 @@
 */
 
 #include "Editors/PowerShellFileCtrl.h"
+
+namespace CodeSmithy
+{
+
+wxWindow* PowerShellFileCtrl::Create(wxWindow *parent,
+                                     std::shared_ptr<Document> document,
+                                     const AppSettings& appSettings)
+{
+    return new PowerShellFileCtrl(parent, document, appSettings);
+}
+
+PowerShellFileCtrl::PowerShellFileCtrl(wxWindow* parent,
+                                       std::shared_ptr<Document> document,
+                                       const AppSettings& appSettings)
+    : DocumentCtrl(parent)
+{
+}
+
+}

@@ -21,3 +21,7 @@
 */
 
 #include "Editors/WiXSourceEditorCtrl.h"
+
+namespace CodeSmithy
+{
+}

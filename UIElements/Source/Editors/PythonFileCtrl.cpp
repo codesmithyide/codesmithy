@@ -21,3 +21,22 @@
 */
 
 #include "Editors/PythonFileCtrl.h"
+
+namespace CodeSmithy
+{
+
+wxWindow* PythonFileCtrl::Create(wxWindow *parent,
+                                 std::shared_ptr<Document> document,
+                                 const AppSettings& appSettings)
+{
+    return new PythonFileCtrl(parent, document, appSettings);
+}
+
+PythonFileCtrl::PythonFileCtrl(wxWindow* parent,
+                               std::shared_ptr<Document> document,
+                               const AppSettings& appSettings)
+    : DocumentCtrl(parent)
+{
+}
+
+}
