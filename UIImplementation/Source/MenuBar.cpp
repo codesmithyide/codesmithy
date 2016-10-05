@@ -53,6 +53,11 @@ MenuBar::MenuBar()
 
     menuFile->AppendSeparator();
     menuFile->Append(wxID_PREFERENCES, "&Preferences...");
+
+    menuFile->AppendSeparator();
+    wxMenu* menuRecentFiles = new wxMenu;
+    menuFile->AppendSubMenu(menuRecentFiles, "Recent &Files");
+
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT, "Exit\tAlt+F4");
     

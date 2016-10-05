@@ -29,6 +29,7 @@
 #include "EditorSettings.h"
 #include "ToolsSettings.h"
 #include "AdvancedSettings.h"
+#include "RecentDocuments.h"
 #include "AppSettingsObserver.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
@@ -92,6 +93,7 @@ private:
     pugi::xml_node m_editorSettingsNode;
     pugi::xml_node m_toolsSettingsNode;
     pugi::xml_node m_advancedSettingsNode;
+    pugi::xml_node m_recentDocumentsNode;
     const DocumentTypes& m_documentTypes;
     const ProjectTypes& m_projectTypes;
     FileTypeAssociations m_fileTypeAssociations;
@@ -100,6 +102,7 @@ private:
     EditorSettings m_editorSettings;
     ToolsSettings m_toolsSettings;
     AdvancedSettings m_advancedSettings;
+    RecentDocuments m_recentDocuments;
     std::vector<std::weak_ptr<AppSettingsObserver> > m_observers;
 };
 

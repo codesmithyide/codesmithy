@@ -21,3 +21,24 @@
 */
 
 #include "Settings/RecentDocuments.h"
+
+namespace CodeSmithy
+{
+
+RecentDocuments::RecentDocuments()
+{
+}
+
+RecentDocuments::~RecentDocuments()
+{
+}
+
+void RecentDocuments::load(pugi::xml_node node)
+{
+}
+
+void RecentDocuments::save(pugi::xml_node node) const
+{
+}
+
+}

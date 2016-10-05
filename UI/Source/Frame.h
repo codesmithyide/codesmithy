@@ -31,6 +31,7 @@
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include "CodeSmithy/Core/Documents/DocumentIdGenerator.h"
 #include <wx/frame.h>
+#include <wx/filehistory.h>
 
 namespace CodeSmithy
 {
@@ -68,6 +69,7 @@ private:
     std::shared_ptr<ActiveDocument> m_activeDocument;
     MenuBar* m_menuBar;
     WorkspacePanel* m_workspacePanel;
+    wxFileHistory m_fileHistory;
 
     wxDECLARE_EVENT_TABLE();
 };

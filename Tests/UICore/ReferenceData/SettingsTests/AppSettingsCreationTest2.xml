@@ -110,4 +110,5 @@
 	<advanced-settings>
 		<ui-log-level>disabled</ui-log-level>
 	</advanced-settings>
+	<recent-documents />
 </codesmithy-application-settings>
