@@ -70,6 +70,8 @@ public:
     ToolsSettings& toolsSettings();
     const AdvancedSettings& advancedSettings() const;
     AdvancedSettings& advancedSettings();
+    const RecentDocuments& recentDocuments() const;
+    RecentDocuments& recentDocuments();
 
     void save();
 

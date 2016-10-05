@@ -21,9 +21,12 @@
 */
 
 #include "Settings/RecentDocuments.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
+
+static const char* fileElementName = "file";
 
 RecentDocuments::RecentDocuments()
 {
@@ -33,12 +36,40 @@ RecentDocuments::~RecentDocuments()
 {
 }
 
+size_t RecentDocuments::size() const
+{
+    return m_documents.size();
+}
+
+const std::string& RecentDocuments::operator[](size_t index) const
+{
+    return m_documents[index];
+}
+
+void RecentDocuments::append(const std::string& filePath)
+{
+    m_documents.push_back(filePath);
+}
+
 void RecentDocuments::load(pugi::xml_node node)
 {
+    for (pugi::xml_node fileNode = node.child(fileElementName);
+         fileNode != 0;
+         fileNode = fileNode.next_sibling(fileElementName))
+    {
+        m_documents.push_back(fileNode.child_value());
+    }
 }
 
 void RecentDocuments::save(pugi::xml_node node) const
 {
+    while (node.remove_child(fileElementName))
+    {
+    }
+    for (size_t i = 0; i < m_documents.size(); ++i)
+    {
+        XMLUtilities::setOrAppendChildNode(node, fileElementName, m_documents[i]);
+    }
 }
 
 }

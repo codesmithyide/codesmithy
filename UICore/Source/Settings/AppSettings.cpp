@@ -141,6 +141,16 @@ AdvancedSettings& AppSettings::advancedSettings()
     return m_advancedSettings;
 }
 
+const RecentDocuments& AppSettings::recentDocuments() const
+{
+    return m_recentDocuments;
+}
+
+RecentDocuments& AppSettings::recentDocuments()
+{
+    return m_recentDocuments;
+}
+
 void AppSettings::save()
 {
     m_fileTypeAssociations.save(m_fileTypeAssociationsNode);
