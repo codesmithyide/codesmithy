@@ -35,8 +35,10 @@ wxWindow* PowerShellFileCtrl::Create(wxWindow *parent,
 PowerShellFileCtrl::PowerShellFileCtrl(wxWindow* parent,
                                        std::shared_ptr<Document> document,
                                        const AppSettings& appSettings)
-    : DocumentCtrl(parent)
+    : DocumentCtrl(parent), m_ctrl(0)
 {
+    m_ctrl = new PowerShellEditorCtrl(this, appSettings);
+
     m_document = std::dynamic_pointer_cast<PowerShellFile, Document>(document);
 }
 
@@ -52,14 +54,17 @@ std::shared_ptr<Document> PowerShellFileCtrl::document()
 
 void PowerShellFileCtrl::cut()
 {
+    m_ctrl->Cut();
 }
 
 void PowerShellFileCtrl::copy()
 {
+    m_ctrl->Copy();
 }
 
 void PowerShellFileCtrl::paste()
 {
+    m_ctrl->Paste();
 }
 
 void PowerShellFileCtrl::doSave(const boost::filesystem::path& path)

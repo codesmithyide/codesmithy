@@ -35,8 +35,10 @@ wxWindow* WiXSourceFileCtrl::Create(wxWindow *parent,
 WiXSourceFileCtrl::WiXSourceFileCtrl(wxWindow* parent,
                                      std::shared_ptr<Document> document,
                                      const AppSettings& appSettings)
-    : DocumentCtrl(parent)
+    : DocumentCtrl(parent), m_ctrl(0)
 {
+    m_ctrl = new WiXSourceEditorCtrl(this, appSettings);
+
     m_document = std::dynamic_pointer_cast<WiXSourceFile, Document>(document);
 }
 
@@ -52,14 +54,17 @@ std::shared_ptr<Document> WiXSourceFileCtrl::document()
 
 void WiXSourceFileCtrl::cut()
 {
+    m_ctrl->Cut();
 }
 
 void WiXSourceFileCtrl::copy()
 {
+    m_ctrl->Copy();
 }
 
 void WiXSourceFileCtrl::paste()
 {
+    m_ctrl->Paste();
 }
 
 void WiXSourceFileCtrl::doSave(const boost::filesystem::path& path)

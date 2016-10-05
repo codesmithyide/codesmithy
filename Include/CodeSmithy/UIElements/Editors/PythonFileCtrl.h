@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_PYTHONFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "PythonEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/PythonFile.h"
 
@@ -50,6 +51,7 @@ private:
     void doSave(const boost::filesystem::path& path) override;
 
 private:
+    PythonEditorCtrl* m_ctrl;
     std::shared_ptr<PythonFile> m_document;
 };
 

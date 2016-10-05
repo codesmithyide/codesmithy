@@ -35,8 +35,10 @@ wxWindow* PythonFileCtrl::Create(wxWindow *parent,
 PythonFileCtrl::PythonFileCtrl(wxWindow* parent,
                                std::shared_ptr<Document> document,
                                const AppSettings& appSettings)
-    : DocumentCtrl(parent)
+    : DocumentCtrl(parent), m_ctrl(0)
 {
+    m_ctrl = new PythonEditorCtrl(this, appSettings);
+
     m_document = std::dynamic_pointer_cast<PythonFile, Document>(document);
 }
 
@@ -52,14 +54,17 @@ std::shared_ptr<Document> PythonFileCtrl::document()
 
 void PythonFileCtrl::cut()
 {
+    m_ctrl->Cut();
 }
 
 void PythonFileCtrl::copy()
 {
+    m_ctrl->Copy();
 }
 
 void PythonFileCtrl::paste()
 {
+    m_ctrl->Paste();
 }
 
 void PythonFileCtrl::doSave(const boost::filesystem::path& path)

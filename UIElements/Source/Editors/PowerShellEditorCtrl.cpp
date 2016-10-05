@@ -24,4 +24,11 @@
 
 namespace CodeSmithy
 {
+
+PowerShellEditorCtrl::PowerShellEditorCtrl(wxWindow* parent,
+                                           const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+}
+
 }

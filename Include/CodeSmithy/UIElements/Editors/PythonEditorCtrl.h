@@ -23,8 +23,18 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_PYTHONEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_PYTHONEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
 namespace CodeSmithy
 {
+
+class PythonEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    PythonEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+};
+
 }
 
 #endif

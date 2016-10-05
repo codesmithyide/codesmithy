@@ -23,8 +23,18 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_POWERSHELLEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_POWERSHELLEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
 namespace CodeSmithy
 {
+
+class PowerShellEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    PowerShellEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+};
+
 }
 
 #endif

@@ -24,4 +24,11 @@
 
 namespace CodeSmithy
 {
+
+PythonEditorCtrl::PythonEditorCtrl(wxWindow* parent,
+                                   const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+}
+
 }

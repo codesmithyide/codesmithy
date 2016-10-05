@@ -24,4 +24,11 @@
 
 namespace CodeSmithy
 {
+
+WiXSourceEditorCtrl::WiXSourceEditorCtrl(wxWindow* parent,
+                                         const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+}
+
 }

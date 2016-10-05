@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_POWERSHELLFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "PowerShellEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/PowerShellFile.h"
 
@@ -50,6 +51,7 @@ private:
     void doSave(const boost::filesystem::path& path) override;
 
 private:
+    PowerShellEditorCtrl* m_ctrl;
     std::shared_ptr<PowerShellFile> m_document;
 };
 

@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIELEMENTS_EDITORS_WIXSOURCEFILECTRL_H_
 
 #include "DocumentCtrl.h"
+#include "WiXSourceEditorCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/WiXSourceFile.h"
 
@@ -50,6 +51,7 @@ private:
     void doSave(const boost::filesystem::path& path) override;
 
 private:
+    WiXSourceEditorCtrl* m_ctrl;
     std::shared_ptr<WiXSourceFile> m_document;
 };
 
