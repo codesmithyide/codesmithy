@@ -37,6 +37,34 @@ PythonFileCtrl::PythonFileCtrl(wxWindow* parent,
                                const AppSettings& appSettings)
     : DocumentCtrl(parent)
 {
+    m_document = std::dynamic_pointer_cast<PythonFile, Document>(document);
+}
+
+std::shared_ptr<const Document> PythonFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> PythonFileCtrl::document()
+{
+    return m_document;
+}
+
+void PythonFileCtrl::cut()
+{
+}
+
+void PythonFileCtrl::copy()
+{
+}
+
+void PythonFileCtrl::paste()
+{
+}
+
+void PythonFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
 }
 
 }

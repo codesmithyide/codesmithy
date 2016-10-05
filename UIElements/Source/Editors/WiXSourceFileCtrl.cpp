@@ -37,6 +37,34 @@ WiXSourceFileCtrl::WiXSourceFileCtrl(wxWindow* parent,
                                      const AppSettings& appSettings)
     : DocumentCtrl(parent)
 {
+    m_document = std::dynamic_pointer_cast<WiXSourceFile, Document>(document);
+}
+
+std::shared_ptr<const Document> WiXSourceFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> WiXSourceFileCtrl::document()
+{
+    return m_document;
+}
+
+void WiXSourceFileCtrl::cut()
+{
+}
+
+void WiXSourceFileCtrl::copy()
+{
+}
+
+void WiXSourceFileCtrl::paste()
+{
+}
+
+void WiXSourceFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
 }
 
 }

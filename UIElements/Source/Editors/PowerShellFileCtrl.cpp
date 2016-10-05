@@ -37,6 +37,34 @@ PowerShellFileCtrl::PowerShellFileCtrl(wxWindow* parent,
                                        const AppSettings& appSettings)
     : DocumentCtrl(parent)
 {
+    m_document = std::dynamic_pointer_cast<PowerShellFile, Document>(document);
+}
+
+std::shared_ptr<const Document> PowerShellFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> PowerShellFileCtrl::document()
+{
+    return m_document;
+}
+
+void PowerShellFileCtrl::cut()
+{
+}
+
+void PowerShellFileCtrl::copy()
+{
+}
+
+void PowerShellFileCtrl::paste()
+{
+}
+
+void PowerShellFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
 }
 
 }

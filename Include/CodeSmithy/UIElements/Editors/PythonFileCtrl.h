@@ -25,6 +25,7 @@
 
 #include "DocumentCtrl.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/PythonFile.h"
 
 namespace CodeSmithy
 {
@@ -37,6 +38,19 @@ public:
 
     PythonFileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
         const AppSettings& appSettings);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void cut() override;
+    void copy() override;
+    void paste() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) override;
+
+private:
+    std::shared_ptr<PythonFile> m_document;
 };
 
 }
