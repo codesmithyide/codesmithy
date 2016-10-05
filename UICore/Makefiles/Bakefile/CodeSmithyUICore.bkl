@@ -49,6 +49,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociations.h
         ../../../Include/CodeSmithy/UICore/Settings/StartupSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/AdvancedSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/RecentDocuments.h
 
         ../../../Include/CodeSmithy/UICore/Themes/Themes.h
         ../../../Include/CodeSmithy/UICore/Themes/ThemesRepository.h
@@ -86,6 +87,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/FileTypeAssociations.cpp
         ../../Source/Settings/StartupSettings.cpp
         ../../Source/Settings/AdvancedSettings.cpp
+        ../../Source/Settings/RecentDocuments.cpp
 
         ../../Source/Themes/Themes.cpp
         ../../Source/Themes/ThemesRepository.cpp
