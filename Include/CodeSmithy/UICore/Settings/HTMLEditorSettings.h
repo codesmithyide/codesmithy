@@ -38,6 +38,9 @@ public:
 
     bool operator==(const HTMLEditorSettings& other) const;
     bool operator!=(const HTMLEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 };
 
 }

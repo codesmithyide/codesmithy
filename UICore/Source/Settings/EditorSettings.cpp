@@ -30,6 +30,7 @@ static const char* defaultEditorSettingsElementName = "default-editor-settings";
 static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings";
 static const char* cmakelistsEditorSettingsElementName = "cmakelists-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
+static const char* htmlEditorSettingsElementName = "html-editor-settings";
 static const char* powershellEditorSettingsElementName = "powershell-editor-settings";
 static const char* pythonEditorSettingsElementName = "python-editor-settings";
 static const char* xmlEditorSettingsElementName = "xml-editor-settings";
@@ -166,6 +167,8 @@ void EditorSettings::load(pugi::xml_node node)
     m_bakefileEditorSettings.load(bakefileEditorSettingsNode);
     pugi::xml_node cppEditorSettingsNode = node.child(cppEditorSettingsElementName);
     m_cppEditorSettings.load(cppEditorSettingsNode);
+    pugi::xml_node htmlEditorSettingsNode = node.child(htmlEditorSettingsElementName);
+    m_htmlEditorSettings.load(htmlEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = node.child(powershellEditorSettingsElementName);
     m_powershellEditorSettings.load(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = node.child(pythonEditorSettingsElementName);
@@ -184,6 +187,8 @@ void EditorSettings::save(pugi::xml_node node) const
     m_cmakelistsEditorSettings.save(cmakelistsNode);
     pugi::xml_node cppEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, cppEditorSettingsElementName);
     m_cppEditorSettings.save(cppEditorSettingsNode);
+    pugi::xml_node htmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, htmlEditorSettingsElementName);
+    m_htmlEditorSettings.save(htmlEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, powershellEditorSettingsElementName);
     m_powershellEditorSettings.save(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, pythonEditorSettingsElementName);
