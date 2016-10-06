@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_HTMLEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_HTMLEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+class HTMLEditorSettings : public EditorSettingsBase
+{
+public:
+    HTMLEditorSettings();
+    ~HTMLEditorSettings() override;
+};
+
+}
+
 #endif

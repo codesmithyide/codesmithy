@@ -21,3 +21,16 @@
 */
 
 #include "Settings/HTMLEditorSettings.h"
+
+namespace CodeSmithy
+{
+
+HTMLEditorSettings::HTMLEditorSettings()
+{
+}
+
+HTMLEditorSettings::~HTMLEditorSettings()
+{
+}
+
+}

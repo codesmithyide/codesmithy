@@ -27,6 +27,7 @@
 #include "BakefileEditorSettings.h"
 #include "CMakeListsEditorSettings.h"
 #include "CppEditorSettings.h"
+#include "HTMLEditorSettings.h"
 #include "PowerShellEditorSettings.h"
 #include "PythonEditorSettings.h"
 #include "XMLEditorSettings.h"
@@ -74,6 +75,7 @@ private:
     BakefileEditorSettings m_bakefileEditorSettings;
     CMakeListsEditorSettings m_cmakelistsEditorSettings;
     CppEditorSettings m_cppEditorSettings;
+    HTMLEditorSettings m_htmlEditorSettings;
     PowerShellEditorSettings m_powershellEditorSettings;
     PythonEditorSettings m_pythonEditorSettings;
     XMLEditorSettings m_xmlEditorSettings;
