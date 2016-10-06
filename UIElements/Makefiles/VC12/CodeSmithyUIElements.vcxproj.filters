@@ -41,6 +41,12 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppEditorCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\HTMLDocumentCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\HTMLEditorCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellFileCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -86,6 +92,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Editors\CppEditorCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Editors\HTMLDocumentCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Editors\HTMLEditorCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Editors\PowerShellFileCtrl.cpp">

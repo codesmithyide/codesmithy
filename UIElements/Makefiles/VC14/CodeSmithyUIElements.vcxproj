@@ -157,6 +157,8 @@
     <ClCompile Include="..\..\Source\Editors\CMakeListsEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CppFileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\CppEditorCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\HTMLDocumentCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\HTMLEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PowerShellFileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PowerShellEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PythonFileCtrl.cpp" />
@@ -175,6 +177,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CMakeListsEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppFileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\CppEditorCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\HTMLDocumentCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\HTMLEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellFileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PythonFileCtrl.h" />
