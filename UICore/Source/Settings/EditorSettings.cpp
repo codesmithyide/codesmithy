@@ -118,6 +118,16 @@ CppEditorSettings& EditorSettings::cppSettings()
     return m_cppEditorSettings;
 }
 
+const HTMLEditorSettings& EditorSettings::htmlSettings() const
+{
+    return m_htmlEditorSettings;
+}
+
+HTMLEditorSettings& EditorSettings::htmlSettings()
+{
+    return m_htmlEditorSettings;
+}
+
 const PowerShellEditorSettings& EditorSettings::powershellSettings() const
 {
     return m_powershellEditorSettings;

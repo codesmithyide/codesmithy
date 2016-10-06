@@ -25,6 +25,7 @@
 #include "Preferences/BakefileEditorPreferencesPage.h"
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
+#include "Preferences/HTMLEditorPreferencesPage.h"
 #include "Preferences/PowerShellEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
@@ -81,6 +82,8 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(cmakelistsPage, "CMakeLists");
     CppEditorPreferencesPage* cppPage = new CppEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(cppPage, "C/C++");
+    HTMLEditorPreferencesPage* htmlPage = new HTMLEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(htmlPage, "HTML");
     PowerShellEditorPreferencesPage* powershellPage = new PowerShellEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(powershellPage, "PowerShell");
     PythonEditorPreferencesPage* pythonPage = new PythonEditorPreferencesPage(treebook, settings);

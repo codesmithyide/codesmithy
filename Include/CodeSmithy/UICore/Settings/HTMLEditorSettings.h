@@ -32,7 +32,12 @@ class HTMLEditorSettings : public EditorSettingsBase
 {
 public:
     HTMLEditorSettings();
+    HTMLEditorSettings(const HTMLEditorSettings& other);
+    HTMLEditorSettings& operator=(const HTMLEditorSettings& other);
     ~HTMLEditorSettings() override;
+
+    bool operator==(const HTMLEditorSettings& other) const;
+    bool operator!=(const HTMLEditorSettings& other) const;
 };
 
 }

@@ -29,8 +29,38 @@ HTMLEditorSettings::HTMLEditorSettings()
 {
 }
 
+HTMLEditorSettings::HTMLEditorSettings(const HTMLEditorSettings& other)
+    : EditorSettingsBase(other)
+{
+}
+
+HTMLEditorSettings& HTMLEditorSettings::operator=(const HTMLEditorSettings& other)
+{
+    if (this != &other)
+    {
+        m_useDefaultSettings = other.m_useDefaultSettings;
+        m_themeName = other.m_themeName;
+        m_overrideTheme = other.m_overrideTheme;
+        m_fontSettings = other.m_fontSettings;
+    }
+    return *this;
+}
+
 HTMLEditorSettings::~HTMLEditorSettings()
 {
+}
+
+bool HTMLEditorSettings::operator==(const HTMLEditorSettings& other) const
+{
+    return ((m_useDefaultSettings == other.m_useDefaultSettings) &&
+        (m_themeName == other.m_themeName) &&
+        (m_overrideTheme == other.m_overrideTheme) &&
+        (m_fontSettings == other.m_fontSettings));
+}
+
+bool HTMLEditorSettings::operator!=(const HTMLEditorSettings& other) const
+{
+    return !(*this == other);
 }
 
 }

@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_HTMLEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_HTMLEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+
+namespace CodeSmithy
+{
+
+class HTMLEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    HTMLEditorPreferencesPage(wxWindow* parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void updateExample() override;
+
+private:
+    HTMLEditorSettings m_newSettings;
+};
+
+}
+
 #endif

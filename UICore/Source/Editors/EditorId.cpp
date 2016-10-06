@@ -28,6 +28,7 @@ namespace CodeSmithy
 EditorId EditorId::BakefileEditorId("CodeSmithy.Editor.Bakefile");
 EditorId EditorId::CMakeListsEditorId("CodeSmithy.Editor.CMakeLists");
 EditorId EditorId::CppEditorId("CodeSmithy.Editor.Cpp");
+EditorId EditorId::HTMLEditorId("CodeSmithy.Editor.HTML");
 EditorId EditorId::PowerShellEditorId("CodeSmithy.Editor.PowerShell");
 EditorId EditorId::PythonEditorId("CodeSmithy.Editor.Python");
 EditorId EditorId::XMLEditorId("CodeSmithy.Editor.XML");

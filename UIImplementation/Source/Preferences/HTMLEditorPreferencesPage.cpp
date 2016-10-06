@@ -21,3 +21,35 @@
 */
 
 #include "Preferences/HTMLEditorPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+HTMLEditorPreferencesPage::HTMLEditorPreferencesPage(wxWindow* parent,
+                                                     AppSettings& appSettings)
+    : EditorPreferencesBase(parent, appSettings, EditorId::HTMLEditorId,
+        appSettings.editorSettings().htmlSettings()),
+    m_newSettings(appSettings.editorSettings().htmlSettings())
+{
+}
+
+void HTMLEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                  unsigned pointSize)
+{
+}
+
+EditorSettingsBase& HTMLEditorPreferencesPage::newSettings()
+{
+    return m_newSettings;
+}
+
+bool HTMLEditorPreferencesPage::hasChanges() const
+{
+    return (m_appSettings.editorSettings().htmlSettings() != m_newSettings);
+}
+
+void HTMLEditorPreferencesPage::updateExample()
+{
+}
+
+}

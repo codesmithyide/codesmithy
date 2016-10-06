@@ -60,6 +60,8 @@ public:
     CMakeListsEditorSettings& cmakelistsSettings();
     const CppEditorSettings& cppSettings() const;
     CppEditorSettings& cppSettings();
+    const HTMLEditorSettings& htmlSettings() const;
+    HTMLEditorSettings& htmlSettings();
     const PowerShellEditorSettings& powershellSettings() const;
     PowerShellEditorSettings& powershellSettings();
     const PythonEditorSettings& pythonSettings() const;
