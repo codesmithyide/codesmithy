@@ -181,6 +181,7 @@
     <ClCompile Include="..\..\Source\Themes\ThemesFileRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Themes\Theme.cpp" />
     <ClCompile Include="..\..\Source\Themes\EditorTheme.cpp" />
+    <ClCompile Include="..\..\Source\State\AppState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\EditorTheme.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\AppState.h" />
     <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
