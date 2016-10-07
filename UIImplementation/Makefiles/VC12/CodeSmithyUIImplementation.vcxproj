@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp" />
     <ClCompile Include="..\..\Source\AboutDialog.cpp" />
     <ClCompile Include="..\..\Source\Wizards\NewDocumentWizard.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\ExplorerCtrl.cpp" />
     <ClCompile Include="..\..\Source\Workspace\OpenDocumentsCtrl.cpp" />
     <ClCompile Include="..\..\Source\Workspace\StartPage.cpp" />
     <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AboutDialog.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewDocumentWizard.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\ExplorerCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OpenDocumentsCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\StartPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h" />
