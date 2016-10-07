@@ -36,6 +36,8 @@
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include "CodeSmithy/Core/Documents/HTMLDocumentType.h"
+#include "CodeSmithy/Core/Documents/JavaScriptFileType.h"
+#include "CodeSmithy/Core/Documents/JavaSourceFileType.h"
 #include "CodeSmithy/Core/Documents/PowerShellFileType.h"
 #include "CodeSmithy/Core/Documents/PythonFileType.h"
 #include "CodeSmithy/Core/Documents/WiXSourceFileType.h"
@@ -59,6 +61,8 @@ App::App()
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<HTMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(HTMLDocumentCtrl::Create)));
+    m_documentTypes->add(std::make_shared<JavaSourceFileType>());
+    m_documentTypes->add(std::make_shared<JavaScriptFileType>());
     m_documentTypes->add(std::make_shared<PowerShellFileType>(std::make_shared<ControlCreationDocumentTypeData>(PowerShellFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PythonFileType>(std::make_shared<ControlCreationDocumentTypeData>(PythonFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<WiXSourceFileType>(std::make_shared<ControlCreationDocumentTypeData>(WiXSourceFileCtrl::Create)));
