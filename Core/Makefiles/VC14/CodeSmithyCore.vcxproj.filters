@@ -158,6 +158,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\Workspace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -311,6 +314,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Projects\WiX\WiXProjectType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Workspaces\Workspace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp">
