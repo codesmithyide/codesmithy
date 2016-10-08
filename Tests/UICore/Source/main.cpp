@@ -22,6 +22,7 @@
 
 #include "SettingsTests/SettingsTests.h"
 #include "ThemesTests/ThemesTestSequence.h"
+#include "StateTests/StateTestSequence.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -36,6 +37,7 @@ int main(int argc, char* argv[])
 
     AddSettingsTests(theTestHarness);
     AddThemesTestSequence(theTestHarness);
+    AddStateTestSequence(theTestHarness);
 
     return theTestHarness.run();
 }

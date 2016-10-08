@@ -23,4 +23,12 @@
 #ifndef _CODESMITHY_TEST_UICORE_STATETESTS_APPSTATETESTS_H_
 #define _CODESMITHY_TEST_UICORE_STATETESTS_APPSTATETESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddAppStateTests(TestSequence& testSequence);
+
+TestResult::EOutcome AppStateCreationTest1(FileComparisonTest& test);
+
 #endif

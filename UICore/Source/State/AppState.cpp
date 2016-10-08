@@ -21,3 +21,43 @@
 */
 
 #include "State/AppState.h"
+#include <boost/filesystem/operations.hpp>
+
+namespace CodeSmithy
+{
+
+static const char* rootElementName = "codesmithy-application-state";
+
+AppState::AppState(const boost::filesystem::path& filePath)
+    : m_path(filePath)
+{
+    bool saveNeeded = false;
+    if (boost::filesystem::exists(filePath))
+    {
+    }
+    else
+    {
+        saveNeeded = true;
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+        }
+    }
+
+    if (saveNeeded)
+    {
+        save();
+    }
+}
+
+AppState::~AppState()
+{
+}
+
+void AppState::save()
+{
+    std::ofstream file(m_path.wstring());
+    m_document.save(file);
+}
+
+}

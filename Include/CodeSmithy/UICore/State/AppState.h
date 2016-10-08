@@ -23,4 +23,25 @@
 #ifndef _CODESMITHY_UICORE_STATE_APPSTATE_H_
 #define _CODESMITHY_UICORE_STATE_APPSTATE_H_
 
+#include <pugixml.hpp>
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class AppState
+{
+public:
+    AppState(const boost::filesystem::path& filePath);
+    ~AppState();
+
+    void save();
+
+private:
+    boost::filesystem::path m_path;
+    pugi::xml_document m_document;
+};
+
+}
+
 #endif

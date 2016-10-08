@@ -21,3 +21,15 @@
 */
 
 #include "StateTestSequence.h"
+#include "AppStateTests.h"
+#include <boost/filesystem/operations.hpp>
+
+void AddStateTestSequence(TestHarness& theTestHarness)
+{
+    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "StateTests");
+    boost::filesystem::create_directories(outputPath);
+
+    TestSequence& stateTestSequence = theTestHarness.appendTestSequence("State tests");
+
+    AddAppStateTests(stateTestSequence);
+}
