@@ -49,6 +49,9 @@ public:
     void forwardCopyEvent(const DocumentId& id);
     void forwardPasteEvent(const DocumentId& id);
 
+    void showWorkspaceExplorer();
+    void showStartPage();
+
     void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
 
 private:

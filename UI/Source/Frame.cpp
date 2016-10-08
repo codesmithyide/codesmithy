@@ -299,6 +299,15 @@ void Frame::OnPaste(wxCommandEvent& evt)
     }
 }
 
+void Frame::OnShowWorkspaceExplorer(wxCommandEvent& evt)
+{
+    m_workspacePanel->showWorkspaceExplorer();
+}
+
+void Frame::OnShowStartPage(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnAbout(wxCommandEvent& evt)
 {
     AboutDialog aboutDialog(this);
@@ -327,6 +336,8 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(wxID_CUT, Frame::OnCut)
     EVT_MENU(wxID_COPY, Frame::OnCopy)
     EVT_MENU(wxID_PASTE, Frame::OnPaste)
+    EVT_MENU(ShowWorkspaceExplorerMenuID, Frame::OnShowWorkspaceExplorer)
+    EVT_MENU(ShowStartPageMenuID, Frame::OnShowStartPage)
     EVT_MENU(wxID_ABOUT, Frame::OnAbout)
 wxEND_EVENT_TABLE()
 

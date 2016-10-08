@@ -45,7 +45,7 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
 
     m_explorer = new ExplorerCtrl(this);
     wxAuiPaneInfo explorerPaneInfo;
-    explorerPaneInfo.Left().Floatable(false).CaptionVisible(false);
+    explorerPaneInfo.Left().Floatable(false).Caption("Workspace Explorer");
     explorerPaneInfo.Hide();
     m_auiManager.AddPane(m_explorer, explorerPaneInfo);
 
@@ -109,6 +109,16 @@ void WorkspacePanel::forwardCopyEvent(const DocumentId& id)
 void WorkspacePanel::forwardPasteEvent(const DocumentId& id)
 {
     m_openDocuments->forwardPasteEvent(id);
+}
+
+void WorkspacePanel::showWorkspaceExplorer()
+{
+    m_auiManager.GetPane(m_explorer).Show();
+    m_auiManager.Update();
+}
+
+void WorkspacePanel::showStartPage()
+{
 }
 
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)

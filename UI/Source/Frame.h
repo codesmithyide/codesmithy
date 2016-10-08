@@ -60,6 +60,8 @@ private:
     void OnCut(wxCommandEvent& evt);
     void OnCopy(wxCommandEvent& evt);
     void OnPaste(wxCommandEvent& evt);
+    void OnShowWorkspaceExplorer(wxCommandEvent& evt);
+    void OnShowStartPage(wxCommandEvent& evt);
     void OnAbout(wxCommandEvent& evt);
 
     void AddToRecentFiles(const std::string& file);

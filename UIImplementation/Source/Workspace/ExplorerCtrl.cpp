@@ -21,13 +21,19 @@
 */
 
 #include "Workspace/ExplorerCtrl.h"
+#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
 
 ExplorerCtrl::ExplorerCtrl(wxWindow* parent)
-    : wxPanel(parent)
+    : wxPanel(parent), m_treeCtrl(0)
 {
+	m_treeCtrl = new wxTreeCtrl(this, wxID_ANY);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(m_treeCtrl, 1, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 }
