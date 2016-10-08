@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_EXPLORERCTRL_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_EXPLORERCTRL_H_
 
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class ExplorerCtrl : public wxPanel
+{
+public:
+    ExplorerCtrl(wxWindow* parent);
+};
+
+}
+
 #endif

@@ -25,9 +25,11 @@
 
 #include "../ActiveDocument.h"
 #include "StartPage.h"
+#include "ExplorerCtrl.h"
 #include "OpenDocumentsCtrl.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include <wx/panel.h>
+#include <wx/aui/aui.h>
 
 namespace CodeSmithy
 {
@@ -68,7 +70,9 @@ private:
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<Observer> m_documentsObserver;
     std::shared_ptr<ActiveDocument> m_activeDocument;
+    wxAuiManager m_auiManager;
     StartPage* m_startPage;
+    ExplorerCtrl* m_explorer;
     OpenDocumentsCtrl* m_openDocuments;
 };
 

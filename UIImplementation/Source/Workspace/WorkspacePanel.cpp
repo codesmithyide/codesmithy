@@ -21,7 +21,6 @@
 */
 
 #include "Workspace/WorkspacePanel.h"
-#include <wx/sizer.h>
 
 namespace CodeSmithy
 {
@@ -30,48 +29,71 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
                                std::shared_ptr<Documents> documents,
                                std::shared_ptr<ActiveDocument> activeDocument,
                                const AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY), m_documents(documents), 
-    m_activeDocument(activeDocument), m_startPage(0), 
-    m_openDocuments(0)
+    : wxPanel(parent, wxID_ANY),
+    m_documents(documents), m_activeDocument(activeDocument), 
+    m_startPage(0), m_explorer(0), m_openDocuments(0)
 {
+    m_auiManager.SetManagedWindow(this);
+
     m_documentsObserver = std::make_shared<Observer>(*this);
     m_documents->addObserver(m_documentsObserver);
 
-    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-
     m_startPage = new StartPage(this);
-    topSizer->Add(m_startPage, 1, wxEXPAND);
+    wxAuiPaneInfo startPagePaneInfo;
+    startPagePaneInfo.Center().Floatable(false).CaptionVisible(false);
+    m_auiManager.AddPane(m_startPage, startPagePaneInfo);
+
+    m_explorer = new ExplorerCtrl(this);
+    wxAuiPaneInfo explorerPaneInfo;
+    explorerPaneInfo.Left().Floatable(false).CaptionVisible(false);
+    explorerPaneInfo.Hide();
+    m_auiManager.AddPane(m_explorer, explorerPaneInfo);
 
     m_openDocuments = new OpenDocumentsCtrl(this, m_activeDocument, appSettings);
-    m_openDocuments->Hide();
-    topSizer->Add(m_openDocuments, 1, wxEXPAND);
+    wxAuiPaneInfo openDocumentsPaneInfo;
+    openDocumentsPaneInfo.Center().Floatable(false).CaptionVisible(false);
+    openDocumentsPaneInfo.Hide();
+    m_auiManager.AddPane(m_openDocuments, openDocumentsPaneInfo);
 
-    SetSizer(topSizer);
+    m_auiManager.Update();
 }
 
 WorkspacePanel::~WorkspacePanel()
 {
     m_documents->removeObserver(m_documentsObserver);
+    m_auiManager.UnInit();
 }
 
 void WorkspacePanel::saveDocument(const DocumentId& id)
 {
-    m_openDocuments->saveDocument(id);
+    if (m_openDocuments)
+    {
+        m_openDocuments->saveDocument(id);
+    }
 }
 
 void WorkspacePanel::getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const
 {
-    m_openDocuments->getModifiedDocuments(modifiedDocuments);
+    if (m_openDocuments)
+    {
+        m_openDocuments->getModifiedDocuments(modifiedDocuments);
+    }
 }
 
 void WorkspacePanel::closeDocument(const DocumentId& id)
 {
-    m_openDocuments->closeDocument(id);
+    if (m_openDocuments)
+    {
+        m_openDocuments->closeDocument(id);
+    }
 }
 
 void WorkspacePanel::closeAllDocuments()
 {
-    m_openDocuments->closeAllDocuments();
+    if (m_openDocuments)
+    {
+        m_openDocuments->closeAllDocuments();
+    }
 }
 
 void WorkspacePanel::forwardCutEvent(const DocumentId& id)
@@ -92,9 +114,9 @@ void WorkspacePanel::forwardPasteEvent(const DocumentId& id)
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
 {
     m_openDocuments->addDocument(document);
-    m_startPage->Hide();
-    m_openDocuments->Show();
-    GetSizer()->Layout();
+    m_auiManager.GetPane(m_startPage).Hide();
+    m_auiManager.GetPane(m_openDocuments).Show();
+    m_auiManager.Update();
 }
 
 WorkspacePanel::Observer::Observer(WorkspacePanel& workspace)

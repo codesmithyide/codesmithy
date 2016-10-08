@@ -21,3 +21,13 @@
 */
 
 #include "Workspace/ExplorerCtrl.h"
+
+namespace CodeSmithy
+{
+
+ExplorerCtrl::ExplorerCtrl(wxWindow* parent)
+    : wxPanel(parent)
+{
+}
+
+}
