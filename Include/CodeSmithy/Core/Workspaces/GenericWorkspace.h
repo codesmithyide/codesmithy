@@ -20,17 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Workspaces/Workspace.h"
+#ifndef _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
+#define _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
 
-namespace CodeSmithy
-{
-
-Workspace::Workspace()
-{
-}
-
-Workspace::~Workspace()
-{
-}
-
-}
+#endif

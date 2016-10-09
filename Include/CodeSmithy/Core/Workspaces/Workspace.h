@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 #define _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 
+namespace CodeSmithy
+{
+
+class Workspace
+{
+public:
+    Workspace();
+    ~Workspace();
+};
+
+}
+
 #endif

@@ -20,17 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "Workspaces/Workspace.h"
-
-namespace CodeSmithy
-{
-
-Workspace::Workspace()
-{
-}
-
-Workspace::~Workspace()
-{
-}
-
-}
+#include "Workspaces/GenericWorkspace.h"
