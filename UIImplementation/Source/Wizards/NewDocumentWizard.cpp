@@ -42,7 +42,7 @@ bool NewDocumentWizard::RunWizard()
     return wxWizard::RunWizard(m_firstPage);
 }
 
-DocumentCreationPage::DocumentCreationPage(wxWizard *parent)
+DocumentCreationPage::DocumentCreationPage(wxWizard* parent)
     : wxWizardPageSimple(parent)
 {
 }

@@ -23,4 +23,30 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWWORKSPACEWIZARD_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWWORKSPACEWIZARD_H_
 
+#include <wx/wizard.h>
+
+namespace CodeSmithy
+{
+
+class WorkspaceCreationPage;
+
+class NewWorkspaceWizard : public wxWizard
+{
+public:
+    NewWorkspaceWizard(wxWindow* parent);
+
+    bool RunWizard();
+
+private:
+    WorkspaceCreationPage* m_firstPage;
+};
+
+class WorkspaceCreationPage : public wxWizardPageSimple
+{
+public:
+    WorkspaceCreationPage(wxWizard* parent);
+};
+
+}
+
 #endif

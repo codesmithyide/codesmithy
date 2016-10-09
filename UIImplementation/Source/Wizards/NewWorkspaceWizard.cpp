@@ -21,3 +21,29 @@
 */
 
 #include "Wizards/NewWorkspaceWizard.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+NewWorkspaceWizard::NewWorkspaceWizard(wxWindow* parent)
+	: wxWizard(parent, wxID_ANY, "New Workspace"), m_firstPage(0)
+{
+    m_firstPage = new WorkspaceCreationPage(this);
+
+    // wxWizard has its own sizer to which the pages need
+    // to be added.
+    GetPageAreaSizer()->Add(m_firstPage);
+}
+
+bool NewWorkspaceWizard::RunWizard()
+{
+    return wxWizard::RunWizard(m_firstPage);
+}
+
+WorkspaceCreationPage::WorkspaceCreationPage(wxWizard* parent)
+    : wxWizardPageSimple(parent)
+{
+}
+
+}

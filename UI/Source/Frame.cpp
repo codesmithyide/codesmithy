@@ -25,6 +25,7 @@
 #include "CodeSmithy/UIImplementation/ProjectChoiceDialog.h"
 #include "CodeSmithy/UIImplementation/AboutDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
+#include "CodeSmithy/UIImplementation/Wizards/NewWorkspaceWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include <wx/filedlg.h>
 
@@ -185,6 +186,15 @@ void Frame::OnWindowClose(wxCloseEvent& evt)
     }
 }
 
+void Frame::OnNewWorkspace(wxCommandEvent& evt)
+{
+    NewWorkspaceWizard* newWorkspaceWizard = new NewWorkspaceWizard(this);
+    if (newWorkspaceWizard->RunWizard())
+    {
+    }
+    newWorkspaceWizard->Destroy();
+}
+
 void Frame::OnNewFile(wxCommandEvent& evt)
 {
     NewDocumentWizard* newDocumentWizard = new NewDocumentWizard(this);
@@ -323,6 +333,7 @@ void Frame::AddToRecentFiles(const std::string& file)
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CLOSE(Frame::OnWindowClose)
+    EVT_MENU(WorkspaceNewWorkspaceMenuID, Frame::OnNewWorkspace)
     EVT_MENU(WorkspaceNewFileMenuID, Frame::OnNewFile)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
