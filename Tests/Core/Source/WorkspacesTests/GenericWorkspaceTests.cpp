@@ -21,8 +21,17 @@
 */
 
 #include "GenericWorkspaceTests.h"
+#include "CodeSmithy/Core/Workspaces/GenericWorkspace.h"
 
 void AddGenericWorkspaceTests(TestSequence& testSequence)
 {
-    TestSequence* workspaceTestSequence = new TestSequence("GenericWorkspace tests", testSequence);
+    TestSequence* genericWorkspaceTestSequence = new TestSequence("GenericWorkspace tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", GenericWorkspaceCreationTest1, *genericWorkspaceTestSequence);
+}
+
+TestResult::EOutcome GenericWorkspaceCreationTest1()
+{
+    CodeSmithy::GenericWorkspace workspace("GenericWorkspaceCreationTest1");
+    return TestResult::ePassed;
 }

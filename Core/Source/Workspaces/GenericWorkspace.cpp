@@ -25,12 +25,18 @@
 namespace CodeSmithy
 {
 
-GenericWorkspace::GenericWorkspace()
+GenericWorkspace::GenericWorkspace(const std::string& name)
+    : m_name(name)
 {
 }
 
 GenericWorkspace::~GenericWorkspace()
 {
+}
+
+const std::string& GenericWorkspace::name() const
+{
+    return m_name;
 }
 
 }

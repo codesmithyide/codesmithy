@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
 
 #include "Workspace.h"
+#include <string>
 
 namespace CodeSmithy
 {
@@ -31,8 +32,13 @@ namespace CodeSmithy
 class GenericWorkspace : public Workspace
 {
 public:
-    GenericWorkspace();
+    GenericWorkspace(const std::string& name);
     ~GenericWorkspace() override;
+
+    const std::string& name() const;
+
+private:
+    std::string m_name;
 };
 
 }

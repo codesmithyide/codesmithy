@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddGenericWorkspaceTests(TestSequence& testSequence);
 
+TestResult::EOutcome GenericWorkspaceCreationTest1();
+
 #endif
