@@ -44,6 +44,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewDocumentWizard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewWorkspaceWizard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\ExplorerCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,6 +134,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Wizards\NewDocumentWizard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wizards\NewWorkspaceWizard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Workspace\ExplorerCtrl.cpp">

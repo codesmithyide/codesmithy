@@ -34,6 +34,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/AboutDialog.h
 
         ../../../Include/CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h
+        ../../../Include/CodeSmithy/UIImplementation/Wizards/NewWorkspaceWizard.h
 
         ../../../Include/CodeSmithy/UIImplementation/Workspace/ExplorerCtrl.h
         ../../../Include/CodeSmithy/UIImplementation/Workspace/OpenDocumentsCtrl.h
@@ -71,6 +72,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/AboutDialog.cpp
 
         ../../Source/Wizards/NewDocumentWizard.cpp
+        ../../Source/Wizards/NewWorkspaceWizard.cpp
 
         ../../Source/Workspace/ExplorerCtrl.cpp
         ../../Source/Workspace/OpenDocumentsCtrl.cpp
