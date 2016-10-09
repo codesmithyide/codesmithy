@@ -20,21 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
-#define _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
+#include "WorkspacesTestSequence.h"
+#include "GenericWorkspaceTests.h"
 
-#include "Workspace.h"
-
-namespace CodeSmithy
+void AddWorkspacesTestSequence(TestHarness& theTestHarness)
 {
+    TestSequence& workspacesTestSequence = theTestHarness.appendTestSequence("Workspaces tests");
 
-class GenericWorkspace : public Workspace
-{
-public:
-    GenericWorkspace();
-    ~GenericWorkspace() override;
-};
-
+    AddGenericWorkspaceTests(workspacesTestSequence);
 }
-
-#endif

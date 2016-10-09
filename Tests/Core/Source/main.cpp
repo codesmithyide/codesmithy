@@ -22,6 +22,7 @@
 
 #include "DocumentsTests/DocumentsTestSequence.h"
 #include "ProjectTests/ProjectTests.h"
+#include "WorkspacesTests/WorkspacesTestSequence.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -36,6 +37,7 @@ int main(int argc, char* argv[])
 
     AddDocumentsTestSequence(theTestHarness);
     AddProjectTests(theTestHarness);
+    AddWorkspacesTestSequence(theTestHarness);
 
     return theTestHarness.run();
 }

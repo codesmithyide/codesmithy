@@ -83,6 +83,12 @@
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -152,6 +158,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

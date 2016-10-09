@@ -21,3 +21,16 @@
 */
 
 #include "Workspaces/GenericWorkspace.h"
+
+namespace CodeSmithy
+{
+
+GenericWorkspace::GenericWorkspace()
+{
+}
+
+GenericWorkspace::~GenericWorkspace()
+{
+}
+
+}

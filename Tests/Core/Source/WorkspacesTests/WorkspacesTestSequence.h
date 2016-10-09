@@ -20,21 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
-#define _CODESMITHY_CORE_WORKSPACES_GENERICWORKSPACE_H_
+#ifndef _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACESTESTSEQUENCE_H_
+#define _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACESTESTSEQUENCE_H_
 
-#include "Workspace.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-namespace CodeSmithy
-{
+using namespace Ishiko::TestFramework;
 
-class GenericWorkspace : public Workspace
-{
-public:
-    GenericWorkspace();
-    ~GenericWorkspace() override;
-};
-
-}
+void AddWorkspacesTestSequence(TestHarness& theTestHarness);
 
 #endif
