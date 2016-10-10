@@ -43,6 +43,16 @@ bool NewWorkspaceWizard::RunWizard()
     return wxWizard::RunWizard(m_firstPage);
 }
 
+wxString NewWorkspaceWizard::workspaceName() const
+{
+    return m_firstPage->workspaceName();
+}
+
+wxFileName NewWorkspaceWizard::workspaceLocation() const
+{
+    return m_firstPage->workspaceLocation();
+}
+
 WorkspaceCreationPage::WorkspaceCreationPage(wxWizard* parent)
     : wxWizardPageSimple(parent), m_workspaceNameCtrl(0),
     m_workspaceLocationCtrl(0)
@@ -69,6 +79,16 @@ WorkspaceCreationPage::WorkspaceCreationPage(wxWizard* parent)
     topSizer->AddSpacer(15);
     topSizer->Add(locationSizer, 0, wxEXPAND);
     SetSizer(topSizer);
+}
+
+wxString WorkspaceCreationPage::workspaceName() const
+{
+    return m_workspaceNameCtrl->GetValue();
+}
+
+wxFileName WorkspaceCreationPage::workspaceLocation() const
+{
+    return m_workspaceLocationCtrl->GetDirName();
 }
 
 }

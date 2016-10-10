@@ -39,6 +39,9 @@ public:
 
     bool RunWizard();
 
+    wxString workspaceName() const;
+    wxFileName workspaceLocation() const;
+
 private:
     WorkspaceCreationPage* m_firstPage;
 };
@@ -47,6 +50,9 @@ class WorkspaceCreationPage : public wxWizardPageSimple
 {
 public:
     WorkspaceCreationPage(wxWizard* parent);
+
+    wxString workspaceName() const;
+    wxFileName workspaceLocation() const;
 
 private:
     wxTextCtrl* m_workspaceNameCtrl;
