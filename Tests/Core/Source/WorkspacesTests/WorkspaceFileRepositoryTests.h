@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddWorkspaceFileRepositoryTests(TestSequence& testSequence);
 
+TestResult::EOutcome WorkspaceFileRepositoryCreationTest1(FileComparisonTest& test);
+
 #endif

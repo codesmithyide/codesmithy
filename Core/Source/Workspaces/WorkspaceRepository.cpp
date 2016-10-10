@@ -21,3 +21,16 @@
 */
 
 #include "Workspaces/WorkspaceRepository.h"
+
+namespace CodeSmithy
+{
+
+WorkspaceRepository::WorkspaceRepository()
+{
+}
+
+WorkspaceRepository::~WorkspaceRepository()
+{
+}
+
+}

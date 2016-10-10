@@ -23,4 +23,18 @@
 #ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACEREPOSITORY_H_
 #define _CODESMITHY_CORE_WORKSPACES_WORKSPACEREPOSITORY_H_
 
+namespace CodeSmithy
+{
+
+class WorkspaceRepository
+{
+public:
+    WorkspaceRepository();
+    virtual ~WorkspaceRepository();
+
+    virtual void save() = 0;
+};
+
+}
+
 #endif

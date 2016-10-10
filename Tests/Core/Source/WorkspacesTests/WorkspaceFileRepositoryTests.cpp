@@ -21,8 +21,29 @@
 */
 
 #include "WorkspaceFileRepositoryTests.h"
+#include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddWorkspaceFileRepositoryTests(TestSequence& testSequence)
 {
     TestSequence* repositoryTestSequence = new TestSequence("WorkspaceFileRepository tests", testSequence);
+
+    new FileComparisonTest("Creation test 1", WorkspaceFileRepositoryCreationTest1, *repositoryTestSequence);
+}
+
+TestResult::EOutcome WorkspaceFileRepositoryCreationTest1(FileComparisonTest& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
+
+    CodeSmithy::WorkspaceFileRepository repository(outputPath);
+    result = TestResult::ePassed;
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return result;
 }

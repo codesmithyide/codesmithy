@@ -21,3 +21,41 @@
 */
 
 #include "Workspaces/WorkspaceFileRepository.h"
+#include <boost/filesystem/operations.hpp>
+#include <fstream>
+
+namespace CodeSmithy
+{
+
+static const char* rootElementName = "codesmithy-workspace-repository";
+static const char* versionElementName = "file-format-version";
+
+WorkspaceFileRepository::WorkspaceFileRepository(const boost::filesystem::path& path)
+    : m_path(path)
+{
+    if (boost::filesystem::exists(path))
+    {
+    }
+    else
+    {
+        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+        if (rootNode)
+        {
+            pugi::xml_node versionNode = rootNode.append_child(versionElementName);
+            versionNode.append_child(pugi::node_pcdata).set_value("0.1.0");
+            save();
+        }
+    }
+}
+
+WorkspaceFileRepository::~WorkspaceFileRepository()
+{
+}
+
+void WorkspaceFileRepository::save()
+{
+    std::ofstream file(m_path.wstring());
+    m_document.save(file);
+}
+
+}

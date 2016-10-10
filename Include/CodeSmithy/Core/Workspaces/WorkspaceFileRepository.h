@@ -23,4 +23,26 @@
 #ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACEFILEREPOSITORY_H_
 #define _CODESMITHY_CORE_WORKSPACES_WORKSPACEFILEREPOSITORY_H_
 
+#include "WorkspaceRepository.h"
+#include <pugixml.hpp>
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class WorkspaceFileRepository : public WorkspaceRepository
+{
+public:
+    WorkspaceFileRepository(const boost::filesystem::path& path);
+    ~WorkspaceFileRepository() override;
+
+    void save() override;
+
+private:
+    boost::filesystem::path m_path;
+    pugi::xml_document m_document;
+};
+
+}
+
 #endif
