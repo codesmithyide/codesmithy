@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#include "WorkspacesTestSequence.h"
-#include "WorkspaceFileRepositoryTests.h"
-#include "GenericWorkspaceTests.h"
+#ifndef _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACEFILEREPOSITORYTESTS_H_
+#define _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACEFILEREPOSITORYTESTS_H_
 
-void AddWorkspacesTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& workspacesTestSequence = theTestHarness.appendTestSequence("Workspaces tests");
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-    AddWorkspaceFileRepositoryTests(workspacesTestSequence);
-    AddGenericWorkspaceTests(workspacesTestSequence);
-}
+using namespace Ishiko::TestFramework;
+
+void AddWorkspaceFileRepositoryTests(TestSequence& testSequence);
+
+#endif

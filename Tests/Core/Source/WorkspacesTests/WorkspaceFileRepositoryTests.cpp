@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2016 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,14 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "WorkspacesTestSequence.h"
 #include "WorkspaceFileRepositoryTests.h"
-#include "GenericWorkspaceTests.h"
 
-void AddWorkspacesTestSequence(TestHarness& theTestHarness)
+void AddWorkspaceFileRepositoryTests(TestSequence& testSequence)
 {
-    TestSequence& workspacesTestSequence = theTestHarness.appendTestSequence("Workspaces tests");
-
-    AddWorkspaceFileRepositoryTests(workspacesTestSequence);
-    AddGenericWorkspaceTests(workspacesTestSequence);
+    TestSequence* repositoryTestSequence = new TestSequence("WorkspaceFileRepository tests", testSequence);
 }

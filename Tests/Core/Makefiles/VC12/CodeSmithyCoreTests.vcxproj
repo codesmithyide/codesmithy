@@ -176,6 +176,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\ParentProjectTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp" />
+    <ClCompile Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\ParentProjectTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
+    <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
