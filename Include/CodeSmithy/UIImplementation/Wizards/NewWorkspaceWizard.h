@@ -24,6 +24,7 @@
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWWORKSPACEWIZARD_H_
 
 #include <wx/wizard.h>
+#include <wx/textctrl.h>
 
 namespace CodeSmithy
 {
@@ -45,6 +46,9 @@ class WorkspaceCreationPage : public wxWizardPageSimple
 {
 public:
     WorkspaceCreationPage(wxWizard* parent);
+
+private:
+    wxTextCtrl* m_workspaceNameCtrl;
 };
 
 }

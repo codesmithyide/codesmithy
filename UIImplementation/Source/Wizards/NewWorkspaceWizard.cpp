@@ -22,6 +22,7 @@
 
 #include "Wizards/NewWorkspaceWizard.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 
 namespace CodeSmithy
 {
@@ -44,6 +45,17 @@ bool NewWorkspaceWizard::RunWizard()
 WorkspaceCreationPage::WorkspaceCreationPage(wxWizard* parent)
     : wxWizardPageSimple(parent)
 {
+    wxStaticText* workspaceNameLabel = new wxStaticText(this, wxID_ANY, "Name:");
+    m_workspaceNameCtrl = new wxTextCtrl(this, wxID_ANY);
+    
+    wxBoxSizer* nameSizer = new wxBoxSizer(wxHORIZONTAL);
+    nameSizer->Add(workspaceNameLabel, 0, wxALIGN_CENTER_VERTICAL);
+    nameSizer->AddSpacer(10);
+    nameSizer->Add(m_workspaceNameCtrl, 1, wxALIGN_CENTER_VERTICAL);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(nameSizer, 0, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 }
