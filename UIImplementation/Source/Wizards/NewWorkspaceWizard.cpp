@@ -28,7 +28,8 @@ namespace CodeSmithy
 {
 
 NewWorkspaceWizard::NewWorkspaceWizard(wxWindow* parent)
-	: wxWizard(parent, wxID_ANY, "New Workspace"), m_firstPage(0)
+	: wxWizard(parent, wxID_ANY, "New Workspace", wxNullBitmap, wxDefaultPosition, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    m_firstPage(0)
 {
     m_firstPage = new WorkspaceCreationPage(this);
 
@@ -43,18 +44,30 @@ bool NewWorkspaceWizard::RunWizard()
 }
 
 WorkspaceCreationPage::WorkspaceCreationPage(wxWizard* parent)
-    : wxWizardPageSimple(parent)
+    : wxWizardPageSimple(parent), m_workspaceNameCtrl(0),
+    m_workspaceLocationCtrl(0)
 {
     wxStaticText* workspaceNameLabel = new wxStaticText(this, wxID_ANY, "Name:");
     m_workspaceNameCtrl = new wxTextCtrl(this, wxID_ANY);
     
-    wxBoxSizer* nameSizer = new wxBoxSizer(wxHORIZONTAL);
-    nameSizer->Add(workspaceNameLabel, 0, wxALIGN_CENTER_VERTICAL);
-    nameSizer->AddSpacer(10);
-    nameSizer->Add(m_workspaceNameCtrl, 1, wxALIGN_CENTER_VERTICAL);
+    wxBoxSizer* nameSizer = new wxBoxSizer(wxVERTICAL);
+    nameSizer->Add(workspaceNameLabel, 0);
+    nameSizer->AddSpacer(4);
+    nameSizer->Add(m_workspaceNameCtrl, 0, wxEXPAND);
+
+    wxStaticText* locationLabel = new wxStaticText(this, wxID_ANY, "Location:");
+    m_workspaceLocationCtrl = new wxDirPickerCtrl(this, wxID_ANY, wxEmptyString, 
+        wxDirSelectorPromptStr, wxDefaultPosition, wxSize(400, wxDefaultCoord));
+		
+    wxBoxSizer* locationSizer = new wxBoxSizer(wxVERTICAL);
+    locationSizer->Add(locationLabel, 0);
+    locationSizer->AddSpacer(4);
+    locationSizer->Add(m_workspaceLocationCtrl, 0, wxEXPAND);
 
     wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
     topSizer->Add(nameSizer, 0, wxEXPAND);
+    topSizer->AddSpacer(15);
+    topSizer->Add(locationSizer, 0, wxEXPAND);
     SetSizer(topSizer);
 }
 

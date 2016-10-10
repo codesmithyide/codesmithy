@@ -25,6 +25,7 @@
 
 #include <wx/wizard.h>
 #include <wx/textctrl.h>
+#include <wx/filepicker.h>
 
 namespace CodeSmithy
 {
@@ -49,6 +50,7 @@ public:
 
 private:
     wxTextCtrl* m_workspaceNameCtrl;
+    wxDirPickerCtrl* m_workspaceLocationCtrl;
 };
 
 }

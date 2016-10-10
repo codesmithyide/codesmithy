@@ -27,7 +27,8 @@ namespace CodeSmithy
 {
 
 NewDocumentWizard::NewDocumentWizard(wxWindow* parent)
-    : wxWizard(parent, wxID_ANY, "Select the document type"), m_firstPage(0)
+    : wxWizard(parent, wxID_ANY, "Select the document type", wxNullBitmap, wxDefaultPosition, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    m_firstPage(0)
 {
     m_firstPage = new DocumentCreationPage(this);
 
