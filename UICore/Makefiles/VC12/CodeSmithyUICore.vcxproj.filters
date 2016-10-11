@@ -92,6 +92,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\RecentDocuments.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\RecentWorkspaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Themes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -188,6 +191,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\RecentDocuments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Settings\RecentWorkspaces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Themes\Themes.cpp">
