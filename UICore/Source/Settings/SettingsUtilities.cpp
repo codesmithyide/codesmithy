@@ -21,3 +21,29 @@
 */
 
 #include "SettingsUtilities.h"
+#include <windows.h>
+#include <Shlobj.h>
+
+namespace CodeSmithy
+{
+
+boost::filesystem::path SettingsUtilities::getSettingsDirectory()
+{
+    boost::filesystem::path result;
+    PWSTR ppszPath = NULL;
+    HRESULT hr = SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, NULL, &ppszPath);
+    if (SUCCEEDED(hr))
+    {
+        result = boost::filesystem::path(ppszPath);
+        result /= "CodeSmithyIDE";
+        result /= "CodeSmithy";
+    }
+    else
+    {
+        throw std::runtime_error("SHGetKnownFolderPath error");
+    }
+    CoTaskMemFree(ppszPath);
+    return result;
+}
+
+}

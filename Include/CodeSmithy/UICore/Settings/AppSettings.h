@@ -83,8 +83,6 @@ public:
     std::string createFileTypesFilter() const;
 
 private:
-    static boost::filesystem::path getSettingsDirectory();
-
     void initialize(const boost::filesystem::path& settingsPath);
 
 private:

@@ -21,11 +21,12 @@
 */
 
 #include "Settings/AppSettings.h"
+#include "SettingsUtilities.h"
 #include "Themes/ThemesFileRepository.h"
 #include "Ishiko/FileTypes/FileTypeAssociations.h"
+#include <boost/filesystem/operations.hpp>
 #include <windows.h>
 #include <Shlobj.h>
-#include <boost/filesystem/operations.hpp>
 #include <sstream>
 
 namespace CodeSmithy
@@ -47,13 +48,13 @@ AppSettings::AppSettings(const DocumentTypes& documentTypes,
     m_advancedSettingsNode(0), m_recentDocumentsNode(0),
     m_documentTypes(documentTypes), m_projectTypes(projectTypes)
 {
-    m_path = getSettingsDirectory();
+    m_path = SettingsUtilities::getSettingsDirectory();
     boost::filesystem::create_directories(m_path);
     m_path /= "settings.xml";
 
     initialize(m_path);
 
-    boost::filesystem::path themesRepositoryPath = getSettingsDirectory();
+    boost::filesystem::path themesRepositoryPath = SettingsUtilities::getSettingsDirectory();
     themesRepositoryPath /= "Themes/DefaultThemes.csmththemes";
     std::shared_ptr<ThemesFileRepository> themesRepository = std::make_shared<ThemesFileRepository>(themesRepositoryPath.string());
     m_themes.addRepository(themesRepository);
@@ -295,25 +296,6 @@ std::string AppSettings::createFileTypesFilter() const
         result += "|";
     }
     result += "All Files (*.*)|*.*";
-    return result;
-}
-
-boost::filesystem::path AppSettings::getSettingsDirectory()
-{
-    boost::filesystem::path result;
-    PWSTR ppszPath = NULL;
-    HRESULT hr = SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, NULL, &ppszPath);
-    if (SUCCEEDED(hr))
-    {
-        result = boost::filesystem::path(ppszPath);
-        result /= "CodeSmithyIDE";
-        result /= "CodeSmithy";
-    }
-    else
-    {
-        throw std::runtime_error("SHGetKnownFolderPath error");
-    }
-    CoTaskMemFree(ppszPath);
     return result;
 }
 

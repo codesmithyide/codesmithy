@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_SETTINGSUTILITIES_H_
 #define _CODESMITHY_UICORE_SETTINGS_SETTINGSUTILITIES_H_
 
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+class SettingsUtilities
+{
+public:
+    static boost::filesystem::path getSettingsDirectory();
+};
+
+}
+
 #endif
