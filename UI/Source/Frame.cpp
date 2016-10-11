@@ -37,6 +37,7 @@ Frame::Frame(const wxString& title,
              const ProjectTypes& projectTypes)
     : wxFrame(NULL, wxID_ANY, title), 
     m_appSettings(documentTypes, projectTypes),
+    m_appState(m_appSettings.advancedSettings().appStateFilePath()),
     m_log(m_appSettings.advancedSettings().uiLogLevel()),
     m_menuBar(0), m_workspacePanel(0), m_fileHistory(9)
 {

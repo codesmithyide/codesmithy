@@ -27,6 +27,7 @@
 #include "CodeSmithy/UIImplementation/ActiveDocument.h"
 #include "CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/UICore/State/AppState.h"
 #include "CodeSmithy/UICore/Logs/UILog.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include "CodeSmithy/Core/Documents/DocumentIdGenerator.h"
@@ -69,6 +70,7 @@ private:
 
 private:
     AppSettings m_appSettings;
+    AppState m_appState;
     UILog m_log;
     DocumentIdGenerator m_documentIdGenerator;
     std::shared_ptr<Documents> m_documents;

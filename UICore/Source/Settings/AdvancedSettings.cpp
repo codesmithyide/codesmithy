@@ -21,6 +21,7 @@
 */
 
 #include "Settings/AdvancedSettings.h"
+#include "SettingsUtilities.h"
 #include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
@@ -31,6 +32,8 @@ static const char* uiLogLevelElementName = "ui-log-level";
 AdvancedSettings::AdvancedSettings()
     : m_uiLogLevel(eUILogDisabled)
 {
+    m_appStateFilePath = SettingsUtilities::getSettingsDirectory();
+    m_appStateFilePath /= "State/AppState.xml";
 }
 
 AdvancedSettings::AdvancedSettings(const AdvancedSettings& other)
@@ -59,6 +62,11 @@ AdvancedSettings::EUILogLevel AdvancedSettings::uiLogLevel() const
 void AdvancedSettings::setUILogLevel(EUILogLevel logLevel)
 {
     m_uiLogLevel = logLevel;
+}
+
+const boost::filesystem::path& AdvancedSettings::appStateFilePath() const
+{
+    return m_appStateFilePath;
 }
 
 bool AdvancedSettings::operator==(const AdvancedSettings& other) const

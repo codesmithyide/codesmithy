@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_SETTINGS_ADVANCEDSETTINGS_H_
 
 #include <pugixml.hpp>
+#include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
 {
@@ -46,6 +47,8 @@ public:
     EUILogLevel uiLogLevel() const;
     void setUILogLevel(EUILogLevel logLevel);
 
+    const boost::filesystem::path& appStateFilePath() const;
+
     bool operator==(const AdvancedSettings& other) const;
     bool operator!=(const AdvancedSettings& other) const;
 
@@ -54,6 +57,7 @@ public:
 
 private:
     EUILogLevel m_uiLogLevel;
+    boost::filesystem::path m_appStateFilePath;
 };
 
 }
