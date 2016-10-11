@@ -41,7 +41,7 @@ AppState::AppState(const boost::filesystem::path& filePath)
     }
     else
     {
-        boost::filesystem::create_directories(filePath.root_path());
+        boost::filesystem::create_directories(filePath.parent_path());
 
         saveNeeded = true;
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
