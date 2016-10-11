@@ -175,6 +175,7 @@
     <ClCompile Include="..\..\Source\Settings\AdvancedSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\RecentDocuments.cpp" />
     <ClCompile Include="..\..\Source\Settings\RecentWorkspaces.cpp" />
+    <ClCompile Include="..\..\Source\Settings\SettingsUtilities.cpp" />
     <ClCompile Include="..\..\Source\Themes\Themes.cpp" />
     <ClCompile Include="..\..\Source\Themes\ThemesRepository.cpp" />
     <ClCompile Include="..\..\Source\Themes\ThemesRepositoryNode.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\EditorTheme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\AppState.h" />
+    <ClInclude Include="..\..\Source\Settings\SettingsUtilities.h" />
     <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
