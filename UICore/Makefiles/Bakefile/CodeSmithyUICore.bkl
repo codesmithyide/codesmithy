@@ -50,8 +50,6 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/FileTypeAssociations.h
         ../../../Include/CodeSmithy/UICore/Settings/StartupSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/AdvancedSettings.h
-        ../../../Include/CodeSmithy/UICore/Settings/RecentDocuments.h
-        ../../../Include/CodeSmithy/UICore/Settings/RecentWorkspaces.h
 
         ../../../Include/CodeSmithy/UICore/Themes/Themes.h
         ../../../Include/CodeSmithy/UICore/Themes/ThemesRepository.h
@@ -61,6 +59,8 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Themes/EditorTheme.h
 
         ../../../Include/CodeSmithy/UICore/State/AppState.h
+        ../../../Include/CodeSmithy/UICore/State/RecentDocuments.h
+        ../../../Include/CodeSmithy/UICore/State/RecentWorkspaces.h
 
         ../../Source/Settings/SettingsUtilities.h
 
@@ -94,8 +94,6 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/FileTypeAssociations.cpp
         ../../Source/Settings/StartupSettings.cpp
         ../../Source/Settings/AdvancedSettings.cpp
-        ../../Source/Settings/RecentDocuments.cpp
-        ../../Source/Settings/RecentWorkspaces.cpp
         ../../Source/Settings/SettingsUtilities.cpp
 
         ../../Source/Themes/Themes.cpp
@@ -107,5 +105,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Themes/EditorTheme.cpp
 
         ../../Source/State/AppState.cpp
+        ../../Source/State/RecentDocuments.cpp
+        ../../Source/State/RecentWorkspaces.cpp
     }
 }

@@ -173,8 +173,6 @@
     <ClCompile Include="..\..\Source\Settings\FileTypeAssociations.cpp" />
     <ClCompile Include="..\..\Source\Settings\StartupSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\AdvancedSettings.cpp" />
-    <ClCompile Include="..\..\Source\Settings\RecentDocuments.cpp" />
-    <ClCompile Include="..\..\Source\Settings\RecentWorkspaces.cpp" />
     <ClCompile Include="..\..\Source\Settings\SettingsUtilities.cpp" />
     <ClCompile Include="..\..\Source\Themes\Themes.cpp" />
     <ClCompile Include="..\..\Source\Themes\ThemesRepository.cpp" />
@@ -184,6 +182,8 @@
     <ClCompile Include="..\..\Source\Themes\Theme.cpp" />
     <ClCompile Include="..\..\Source\Themes\EditorTheme.cpp" />
     <ClCompile Include="..\..\Source\State\AppState.cpp" />
+    <ClCompile Include="..\..\Source\State\RecentDocuments.cpp" />
+    <ClCompile Include="..\..\Source\State\RecentWorkspaces.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\linkoptions.h" />
@@ -210,8 +210,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FileTypeAssociations.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StartupSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\AdvancedSettings.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\RecentDocuments.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\RecentWorkspaces.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Themes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesRepositoryNode.h" />
@@ -219,6 +217,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\EditorTheme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\AppState.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\RecentDocuments.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\RecentWorkspaces.h" />
     <ClInclude Include="..\..\Source\Settings\SettingsUtilities.h" />
     <ClInclude Include="..\..\Source\Themes\ThemesFileRepositoryNode.h" />
   </ItemGroup>
