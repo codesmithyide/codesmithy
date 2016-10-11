@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Settings/RecentDocuments.h"
+#include "State/RecentDocuments.h"
 #include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy

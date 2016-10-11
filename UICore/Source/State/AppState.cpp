@@ -27,13 +27,17 @@ namespace CodeSmithy
 {
 
 static const char* rootElementName = "codesmithy-application-state";
+static const char* recentDocumentsElementName = "recent-documents";
 
 AppState::AppState(const boost::filesystem::path& filePath)
-    : m_path(filePath)
+    : m_path(filePath), m_recentDocumentsNode(0)
 {
     bool saveNeeded = false;
     if (boost::filesystem::exists(filePath))
     {
+        m_document.load_file(filePath.string().c_str());
+        m_recentDocumentsNode = m_document.child(rootElementName).child(recentDocumentsElementName);
+        m_recentDocuments.load(m_recentDocumentsNode);
     }
     else
     {
@@ -43,6 +47,7 @@ AppState::AppState(const boost::filesystem::path& filePath)
         pugi::xml_node rootNode = m_document.append_child(rootElementName);
         if (rootNode)
         {
+            m_recentDocumentsNode = rootNode.append_child(recentDocumentsElementName);
         }
     }
 
@@ -56,8 +61,20 @@ AppState::~AppState()
 {
 }
 
+const RecentDocuments& AppState::recentDocuments() const
+{
+    return m_recentDocuments;
+}
+
+RecentDocuments& AppState::recentDocuments()
+{
+    return m_recentDocuments;
+}
+
 void AppState::save()
 {
+    m_recentDocuments.save(m_recentDocumentsNode);
+
     std::ofstream file(m_path.wstring());
     m_document.save(file);
 }

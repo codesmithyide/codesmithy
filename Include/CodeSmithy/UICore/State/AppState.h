@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UICORE_STATE_APPSTATE_H_
 #define _CODESMITHY_UICORE_STATE_APPSTATE_H_
 
+#include "RecentDocuments.h"
 #include <pugixml.hpp>
 #include <boost/filesystem/path.hpp>
 
@@ -35,11 +36,16 @@ public:
     AppState(const boost::filesystem::path& filePath);
     ~AppState();
 
+    const RecentDocuments& recentDocuments() const;
+    RecentDocuments& recentDocuments();
+
     void save();
 
 private:
     boost::filesystem::path m_path;
     pugi::xml_document m_document;
+    pugi::xml_node m_recentDocumentsNode;
+    RecentDocuments m_recentDocuments;
 };
 
 }
