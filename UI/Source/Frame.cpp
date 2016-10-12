@@ -198,6 +198,9 @@ void Frame::OnNewWorkspace(wxCommandEvent& evt)
     NewWorkspaceWizard* newWorkspaceWizard = new NewWorkspaceWizard(this);
     if (newWorkspaceWizard->RunWizard())
     {
+        std::string directoryPath = newWorkspaceWizard->workspaceLocation().GetFullPath();
+        std::string workspaceName = newWorkspaceWizard->workspaceName();
+        m_workspacePanel->createWorkspace(directoryPath, workspaceName);
     }
     newWorkspaceWizard->Destroy();
 }

@@ -21,6 +21,7 @@
 */
 
 #include "Workspace/WorkspacePanel.h"
+#include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
 
 namespace CodeSmithy
 {
@@ -62,6 +63,14 @@ WorkspacePanel::~WorkspacePanel()
 {
     m_documents->removeObserver(m_documentsObserver);
     m_auiManager.UnInit();
+}
+
+void WorkspacePanel::createWorkspace(const std::string& directoryPath, 
+                                     const std::string& workspaceName)
+{
+    boost::filesystem::path fileRepositoryPath = directoryPath;
+    fileRepositoryPath /= (workspaceName + ".csmthws");
+    m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
 }
 
 void WorkspacePanel::saveDocument(const DocumentId& id)

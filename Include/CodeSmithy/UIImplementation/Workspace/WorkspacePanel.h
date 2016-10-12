@@ -27,6 +27,7 @@
 #include "StartPage.h"
 #include "ExplorerCtrl.h"
 #include "OpenDocumentsCtrl.h"
+#include "CodeSmithy/Core/Workspaces/WorkspaceRepository.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include <wx/panel.h>
 #include <wx/aui/aui.h>
@@ -41,6 +42,7 @@ public:
         std::shared_ptr<ActiveDocument> activeDocument, const AppSettings& appSettings);
     ~WorkspacePanel();
 
+    void createWorkspace(const std::string& directoryPath, const std::string& workspaceName);
     void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
     void closeAllDocuments();
@@ -70,6 +72,7 @@ private:
     };
 
 private:
+    std::shared_ptr<WorkspaceRepository> m_workspaceRepository;
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<Observer> m_documentsObserver;
     std::shared_ptr<ActiveDocument> m_activeDocument;
