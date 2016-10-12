@@ -21,3 +21,24 @@
 */
 
 #include "State/RecentWorkspaces.h"
+
+namespace CodeSmithy
+{
+
+RecentWorkspaces::RecentWorkspaces()
+{
+}
+
+RecentWorkspaces::~RecentWorkspaces()
+{
+}
+
+void RecentWorkspaces::load(pugi::xml_node node)
+{
+}
+
+void RecentWorkspaces::save(pugi::xml_node node) const
+{
+}
+
+}

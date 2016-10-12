@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_STATE_APPSTATE_H_
 
 #include "RecentDocuments.h"
+#include "RecentWorkspaces.h"
 #include <pugixml.hpp>
 #include <boost/filesystem/path.hpp>
 
@@ -38,6 +39,8 @@ public:
 
     const RecentDocuments& recentDocuments() const;
     RecentDocuments& recentDocuments();
+    const RecentWorkspaces& recentWorkspaces() const;
+    RecentWorkspaces& recentWorkspaces();
 
     void save();
 
@@ -46,6 +49,8 @@ private:
     pugi::xml_document m_document;
     pugi::xml_node m_recentDocumentsNode;
     RecentDocuments m_recentDocuments;
+    pugi::xml_node m_recentWorkspacesNode;
+    RecentWorkspaces m_recentWorkspaces;
 };
 
 }

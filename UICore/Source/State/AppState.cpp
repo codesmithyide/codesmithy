@@ -28,9 +28,11 @@ namespace CodeSmithy
 
 static const char* rootElementName = "codesmithy-application-state";
 static const char* recentDocumentsElementName = "recent-documents";
+static const char* recentWorkspacesElementName = "recent-workspaces";
 
 AppState::AppState(const boost::filesystem::path& filePath)
-    : m_path(filePath), m_recentDocumentsNode(0)
+    : m_path(filePath), m_recentDocumentsNode(0),
+    m_recentWorkspacesNode(0)
 {
     bool saveNeeded = false;
     if (boost::filesystem::exists(filePath))
@@ -38,6 +40,8 @@ AppState::AppState(const boost::filesystem::path& filePath)
         m_document.load_file(filePath.string().c_str());
         m_recentDocumentsNode = m_document.child(rootElementName).child(recentDocumentsElementName);
         m_recentDocuments.load(m_recentDocumentsNode);
+        m_recentWorkspacesNode = m_document.child(rootElementName).child(recentWorkspacesElementName);
+        m_recentWorkspaces.load(m_recentWorkspacesNode);
     }
     else
     {
@@ -48,6 +52,7 @@ AppState::AppState(const boost::filesystem::path& filePath)
         if (rootNode)
         {
             m_recentDocumentsNode = rootNode.append_child(recentDocumentsElementName);
+            m_recentWorkspacesNode = rootNode.append_child(recentWorkspacesElementName);
         }
     }
 
@@ -71,9 +76,20 @@ RecentDocuments& AppState::recentDocuments()
     return m_recentDocuments;
 }
 
+const RecentWorkspaces& AppState::recentWorkspaces() const
+{
+    return m_recentWorkspaces;
+}
+
+RecentWorkspaces& AppState::recentWorkspaces()
+{
+    return m_recentWorkspaces;
+}
+
 void AppState::save()
 {
     m_recentDocuments.save(m_recentDocumentsNode);
+    m_recentWorkspaces.save(m_recentWorkspacesNode);
 
     std::ofstream file(m_path.wstring());
     m_document.save(file);

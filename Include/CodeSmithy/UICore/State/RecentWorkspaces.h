@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UICORE_STATE_RECENTWORKSPACES_H_
 #define _CODESMITHY_UICORE_STATE_RECENTWORKSPACES_H_
 
+#include <pugixml.hpp>
+
+namespace CodeSmithy
+{
+
+class RecentWorkspaces
+{
+public:
+    RecentWorkspaces();
+    ~RecentWorkspaces();
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
 #endif
