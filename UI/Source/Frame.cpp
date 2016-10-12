@@ -56,7 +56,7 @@ Frame::Frame(const wxString& title,
     m_activeDocument = std::make_shared<ActiveDocument>();
 
     m_menuBar = new MenuBar(m_fileHistory);
-    const RecentDocuments& recentFiles = m_appSettings.recentDocuments();
+    const RecentDocuments& recentFiles = m_appState.recentDocuments();
     for (size_t i = 0; i < recentFiles.size(); ++i)
     {
         m_fileHistory.AddFileToHistory(recentFiles[i]);
@@ -328,8 +328,8 @@ void Frame::OnAbout(wxCommandEvent& evt)
 void Frame::AddToRecentFiles(const std::string& file)
 {
     m_fileHistory.AddFileToHistory(file);
-    m_appSettings.recentDocuments().set(file);
-    m_appSettings.save();
+    m_appState.recentDocuments().set(file);
+    m_appState.save();
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
