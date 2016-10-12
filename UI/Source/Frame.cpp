@@ -40,7 +40,7 @@ Frame::Frame(const wxString& title,
     m_appState(m_appSettings.advancedSettings().appStateFilePath()),
     m_log(m_appSettings.advancedSettings().uiLogLevel()),
     m_menuBar(0), m_workspacePanel(0), m_fileHistory(9),
-    m_workspaceHistory(9)
+    m_workspaceHistory(9, RecentWorkspace1ID)
 {
     if (m_appSettings.startupSettings().osBootBehavior() == StartupSettings::eRestore)
     {
@@ -201,6 +201,9 @@ void Frame::OnNewWorkspace(wxCommandEvent& evt)
         std::string directoryPath = newWorkspaceWizard->workspaceLocation().GetFullPath();
         std::string workspaceName = newWorkspaceWizard->workspaceName();
         m_workspacePanel->createWorkspace(directoryPath, workspaceName);
+        boost::filesystem::path fileRepositoryPath = directoryPath;
+        fileRepositoryPath /= (workspaceName + ".csmthws");
+        AddToRecentWorkspaces(fileRepositoryPath.string());
     }
     newWorkspaceWizard->Destroy();
 }
@@ -342,6 +345,13 @@ void Frame::AddToRecentFiles(const std::string& file)
 {
     m_fileHistory.AddFileToHistory(file);
     m_appState.recentDocuments().set(file);
+    m_appState.save();
+}
+
+void Frame::AddToRecentWorkspaces(const std::string& file)
+{
+    m_workspaceHistory.AddFileToHistory(file);
+    m_appState.recentWorkspaces().set(file);
     m_appState.save();
 }
 

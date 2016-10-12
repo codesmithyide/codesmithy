@@ -68,6 +68,7 @@ private:
     void OnAbout(wxCommandEvent& evt);
 
     void AddToRecentFiles(const std::string& file);
+    void AddToRecentWorkspaces(const std::string& file);
 
 private:
     AppSettings m_appSettings;
