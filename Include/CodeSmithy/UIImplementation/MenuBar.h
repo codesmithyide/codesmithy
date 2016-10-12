@@ -34,7 +34,7 @@ namespace CodeSmithy
 class MenuBar : public wxMenuBar
 {
 public:
-    MenuBar(wxFileHistory& fileHistory);
+    MenuBar(wxFileHistory& fileHistory, wxFileHistory& workspaceHistory);
 
     void registerObserver(std::shared_ptr<ActiveDocument> activeDocument);
     void deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument);

@@ -58,6 +58,7 @@ private:
     void OnCloseAll(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnRecentFile(wxCommandEvent& evt);
+    void OnRecentWorkspace(wxCommandEvent& evt);
     void OnExit(wxCommandEvent& evt);
     void OnCut(wxCommandEvent& evt);
     void OnCopy(wxCommandEvent& evt);
@@ -78,6 +79,7 @@ private:
     MenuBar* m_menuBar;
     WorkspacePanel* m_workspacePanel;
     wxFileHistory m_fileHistory;
+    wxFileHistory m_workspaceHistory;
 
     wxDECLARE_EVENT_TABLE();
 };

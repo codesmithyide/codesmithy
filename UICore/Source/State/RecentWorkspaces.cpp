@@ -21,9 +21,12 @@
 */
 
 #include "State/RecentWorkspaces.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
+
+static const char* workspaceElementName = "workspace";
 
 RecentWorkspaces::RecentWorkspaces()
 {
@@ -33,12 +36,48 @@ RecentWorkspaces::~RecentWorkspaces()
 {
 }
 
+size_t RecentWorkspaces::size() const
+{
+    return m_workspaces.size();
+}
+
+const std::string& RecentWorkspaces::operator[](size_t index) const
+{
+    return m_workspaces[index];
+}
+
+void RecentWorkspaces::set(const std::string& filePath)
+{
+    for (size_t i = 0; i < m_workspaces.size(); ++i)
+    {
+        if (m_workspaces[i] == filePath)
+        {
+            m_workspaces.erase(m_workspaces.begin() + i);
+            break;
+        }
+    }
+    m_workspaces.push_back(filePath);
+}
+
 void RecentWorkspaces::load(pugi::xml_node node)
 {
+    for (pugi::xml_node workspaceNode = node.child(workspaceElementName);
+         workspaceNode != 0;
+         workspaceNode = workspaceNode.next_sibling(workspaceElementName))
+    {
+        m_workspaces.push_back(workspaceNode.child_value());
+    }
 }
 
 void RecentWorkspaces::save(pugi::xml_node node) const
 {
+    while (node.remove_child(workspaceElementName))
+    {
+    }
+    for (size_t i = 0; i < m_workspaces.size(); ++i)
+    {
+        XMLUtilities::appendChildNode(node, workspaceElementName, m_workspaces[i]);
+    }
 }
 
 }

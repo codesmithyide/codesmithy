@@ -24,6 +24,8 @@
 #define _CODESMITHY_UICORE_STATE_RECENTWORKSPACES_H_
 
 #include <pugixml.hpp>
+#include <vector>
+#include <string>
 
 namespace CodeSmithy
 {
@@ -34,8 +36,15 @@ public:
     RecentWorkspaces();
     ~RecentWorkspaces();
 
+    size_t size() const;
+    const std::string& operator[](size_t index) const;
+    void set(const std::string& filePath);
+
     void load(pugi::xml_node node);
     void save(pugi::xml_node node) const;
+
+private:
+    std::vector<std::string> m_workspaces;
 };
 
 }

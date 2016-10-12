@@ -39,7 +39,8 @@ Frame::Frame(const wxString& title,
     m_appSettings(documentTypes, projectTypes),
     m_appState(m_appSettings.advancedSettings().appStateFilePath()),
     m_log(m_appSettings.advancedSettings().uiLogLevel()),
-    m_menuBar(0), m_workspacePanel(0), m_fileHistory(9)
+    m_menuBar(0), m_workspacePanel(0), m_fileHistory(9),
+    m_workspaceHistory(9)
 {
     if (m_appSettings.startupSettings().osBootBehavior() == StartupSettings::eRestore)
     {
@@ -55,11 +56,16 @@ Frame::Frame(const wxString& title,
     m_documents = std::make_shared<Documents>();
     m_activeDocument = std::make_shared<ActiveDocument>();
 
-    m_menuBar = new MenuBar(m_fileHistory);
+    m_menuBar = new MenuBar(m_fileHistory, m_workspaceHistory);
     const RecentDocuments& recentFiles = m_appState.recentDocuments();
     for (size_t i = 0; i < recentFiles.size(); ++i)
     {
         m_fileHistory.AddFileToHistory(recentFiles[i]);
+    }
+    const RecentWorkspaces& recentWorkspaces = m_appState.recentWorkspaces();
+    for (size_t i = 0; i < recentWorkspaces.size(); ++i)
+    {
+        m_workspaceHistory.AddFileToHistory(recentWorkspaces[i]);
     }
     m_menuBar->registerObserver(m_activeDocument);
     SetMenuBar(m_menuBar);
@@ -281,6 +287,10 @@ void Frame::OnRecentFile(wxCommandEvent& evt)
     OpenFile(path);
 }
 
+void Frame::OnRecentWorkspace(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnExit(wxCommandEvent& evt)
 {
     Close();
@@ -344,6 +354,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceCloseAllMenuID, Frame::OnCloseAll)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, Frame::OnRecentFile)
+    EVT_MENU_RANGE(RecentWorkspace1ID, RecentWorkspace9ID, Frame::OnRecentWorkspace)
     EVT_MENU(wxID_EXIT, Frame::OnExit)
     EVT_MENU(wxID_CUT, Frame::OnCut)
     EVT_MENU(wxID_COPY, Frame::OnCopy)

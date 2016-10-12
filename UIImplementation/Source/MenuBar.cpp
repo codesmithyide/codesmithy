@@ -26,7 +26,8 @@
 namespace CodeSmithy
 {
 
-MenuBar::MenuBar(wxFileHistory& fileHistory)
+MenuBar::MenuBar(wxFileHistory& fileHistory, 
+                 wxFileHistory& workspaceHistory)
     : m_saveMenuItem(0), m_saveAsMenuItem(0), m_closeMenuItem(0)
 {
     wxMenu* menuFile = new wxMenu;
@@ -59,6 +60,9 @@ MenuBar::MenuBar(wxFileHistory& fileHistory)
     wxMenu* menuRecentFiles = new wxMenu;
     fileHistory.UseMenu(menuRecentFiles);
     menuFile->AppendSubMenu(menuRecentFiles, "Recent &Files");
+    wxMenu* menuRecentWorkspaces = new wxMenu;
+    workspaceHistory.UseMenu(menuRecentWorkspaces);
+    menuFile->AppendSubMenu(menuRecentWorkspaces, "Recent &Workspaces");
 
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT, "Exit\tAlt+F4");
