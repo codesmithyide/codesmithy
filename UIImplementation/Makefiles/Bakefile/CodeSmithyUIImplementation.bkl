@@ -29,6 +29,10 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/MenuBar.h
         ../../../Include/CodeSmithy/UIImplementation/ActiveDocument.h
         ../../../Include/CodeSmithy/UIImplementation/ActiveDocumentObserver.h
+        ../../../Include/CodeSmithy/UIImplementation/ActiveProject.h
+        ../../../Include/CodeSmithy/UIImplementation/ActiveProjectObserver.h
+        ../../../Include/CodeSmithy/UIImplementation/ActiveWorkspace.h
+        ../../../Include/CodeSmithy/UIImplementation/ActiveWorkspaceObserver.h
         ../../../Include/CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h
         ../../../Include/CodeSmithy/UIImplementation/ProjectChoiceDialog.h
         ../../../Include/CodeSmithy/UIImplementation/AboutDialog.h
@@ -67,6 +71,10 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/MenuBar.cpp
         ../../Source/ActiveDocument.cpp
         ../../Source/ActiveDocumentObserver.cpp
+        ../../Source/ActiveProject.cpp
+        ../../Source/ActiveProjectObserver.cpp
+        ../../Source/ActiveWorkspace.cpp
+        ../../Source/ActiveWorkspaceObserver.cpp
         ../../Source/ControlCreationDocumentTypeData.cpp
         ../../Source/ProjectChoiceDialog.cpp
         ../../Source/AboutDialog.cpp

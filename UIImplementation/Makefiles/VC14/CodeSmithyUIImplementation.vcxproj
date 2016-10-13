@@ -153,6 +153,10 @@
     <ClCompile Include="..\..\Source\MenuBar.cpp" />
     <ClCompile Include="..\..\Source\ActiveDocument.cpp" />
     <ClCompile Include="..\..\Source\ActiveDocumentObserver.cpp" />
+    <ClCompile Include="..\..\Source\ActiveProject.cpp" />
+    <ClCompile Include="..\..\Source\ActiveProjectObserver.cpp" />
+    <ClCompile Include="..\..\Source\ActiveWorkspace.cpp" />
+    <ClCompile Include="..\..\Source\ActiveWorkspaceObserver.cpp" />
     <ClCompile Include="..\..\Source\ControlCreationDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\ProjectChoiceDialog.cpp" />
     <ClCompile Include="..\..\Source\AboutDialog.cpp" />
@@ -187,6 +191,10 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\MenuBar.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocument.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocumentObserver.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveProject.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveProjectObserver.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveWorkspace.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveWorkspaceObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ControlCreationDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ProjectChoiceDialog.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AboutDialog.h" />
