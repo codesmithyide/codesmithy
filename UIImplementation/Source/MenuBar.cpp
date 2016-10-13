@@ -33,11 +33,12 @@ MenuBar::MenuBar(wxFileHistory& fileHistory,
     wxMenu* menuFile = new wxMenu;
 
     wxMenu* menuFileNew = new wxMenu;
-    menuFileNew->Append(WorkspaceNewWorkspaceMenuID, "&Workspace");
+    menuFileNew->Append(WorkspaceNewWorkspaceMenuID, "&Workspace...");
     menuFileNew->Append(WorkspaceNewFileMenuID, "&File...\tCtrl+N");
     menuFile->AppendSubMenu(menuFileNew, "&New");
 
     wxMenu* menuFileOpen = new wxMenu;
+    menuFileOpen->Append(WorkspaceOpenWorkspaceMenuID, "&Workspace...");
     menuFileOpen->Append(WorkspaceOpenFileMenuID, "&File...\tCtrl+O");
     menuFile->AppendSubMenu(menuFileOpen, "&Open");
 

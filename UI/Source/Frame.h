@@ -44,12 +44,14 @@ public:
         const ProjectTypes& projectTypes);
     ~Frame() override;
 
+    void OpenWorkspace(const wxString& file);
 	void OpenFile(const wxString& file);
 
 private:
     void OnWindowClose(wxCloseEvent& evt);
     void OnNewWorkspace(wxCommandEvent& evt);
     void OnNewFile(wxCommandEvent& evt);
+    void OnOpenWorkspace(wxCommandEvent& evt);
     void OnOpenFile(wxCommandEvent& evt);
     void OnSaveFile(wxCommandEvent& evt);
     void OnSaveFileAs(wxCommandEvent& evt);

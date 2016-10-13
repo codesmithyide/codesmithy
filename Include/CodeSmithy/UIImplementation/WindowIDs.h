@@ -31,7 +31,8 @@ namespace CodeSmithy
 // File menu IDs
 const wxWindowID WorkspaceNewWorkspaceMenuID = wxID_HIGHEST + 1;
 const wxWindowID WorkspaceNewFileMenuID = WorkspaceNewWorkspaceMenuID + 1;
-const wxWindowID WorkspaceOpenFileMenuID = WorkspaceNewFileMenuID + 1;
+const wxWindowID WorkspaceOpenWorkspaceMenuID = WorkspaceNewFileMenuID + 1;
+const wxWindowID WorkspaceOpenFileMenuID = WorkspaceOpenWorkspaceMenuID + 1;
 const wxWindowID WorkspaceSaveFileMenuID = WorkspaceOpenFileMenuID + 1;
 const wxWindowID WorkspaceSaveFileAsMenuID = WorkspaceSaveFileMenuID + 1;
 const wxWindowID WorkspaceSaveAllMenuID = WorkspaceSaveFileAsMenuID + 1;

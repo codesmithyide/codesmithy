@@ -73,6 +73,11 @@ void WorkspacePanel::createWorkspace(const std::string& directoryPath,
     m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
 }
 
+void WorkspacePanel::openWorkspace(const boost::filesystem::path& fileRepositoryPath)
+{
+    m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
+}
+
 void WorkspacePanel::saveDocument(const DocumentId& id)
 {
     if (m_openDocuments)

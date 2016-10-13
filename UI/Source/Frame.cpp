@@ -79,6 +79,13 @@ Frame::~Frame()
     m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
 }
 
+void Frame::OpenWorkspace(const wxString& file)
+{
+    boost::filesystem::path selectedPath(file);
+    m_workspacePanel->openWorkspace(selectedPath);
+    AddToRecentWorkspaces(selectedPath.string());
+}
+
 void Frame::OpenFile(const wxString& file)
 {
     bool standalone = false;
@@ -217,6 +224,19 @@ void Frame::OnNewFile(wxCommandEvent& evt)
     newDocumentWizard->Destroy();
 }
 
+void Frame::OnOpenWorkspace(wxCommandEvent& evt)
+{
+    wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
+        wxEmptyString, wxEmptyString, "CodeSmithy Workspace (*.csmthws)|*.csmthws",
+        wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    if (fileDialog->ShowModal() == wxID_OK)
+    {
+        wxString selectedFile = fileDialog->GetPath();
+        OpenWorkspace(selectedFile);
+    }
+    fileDialog->Destroy();
+}
+
 void Frame::OnOpenFile(wxCommandEvent& evt)
 {
     wxFileDialog* fileDialog = new wxFileDialog(this, wxFileSelectorPromptStr,
@@ -295,6 +315,8 @@ void Frame::OnRecentFile(wxCommandEvent& evt)
 
 void Frame::OnRecentWorkspace(wxCommandEvent& evt)
 {
+    wxString path = m_workspaceHistory.GetHistoryFile(evt.GetId() - RecentWorkspace1ID);
+    OpenWorkspace(path);
 }
 
 void Frame::OnExit(wxCommandEvent& evt)
@@ -359,6 +381,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_CLOSE(Frame::OnWindowClose)
     EVT_MENU(WorkspaceNewWorkspaceMenuID, Frame::OnNewWorkspace)
     EVT_MENU(WorkspaceNewFileMenuID, Frame::OnNewFile)
+    EVT_MENU(WorkspaceOpenWorkspaceMenuID, Frame::OnOpenWorkspace)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
     EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)

@@ -43,6 +43,7 @@ public:
     ~WorkspacePanel();
 
     void createWorkspace(const std::string& directoryPath, const std::string& workspaceName);
+    void openWorkspace(const boost::filesystem::path& fileRepositoryPath);
     void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
     void closeAllDocuments();
