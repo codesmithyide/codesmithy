@@ -37,6 +37,7 @@ class ActiveDocument
 {
 public:
     ActiveDocument();
+    ~ActiveDocument();
 
     std::shared_ptr<Document> activeDocument() const;
     void setActiveDocument(std::shared_ptr<Document> activeDocument);

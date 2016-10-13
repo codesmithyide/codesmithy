@@ -21,3 +21,56 @@
 */
 
 #include "ActiveProject.h"
+
+namespace CodeSmithy
+{
+
+ActiveProject::ActiveProject()
+{
+}
+
+ActiveProject::~ActiveProject()
+{
+}
+
+std::shared_ptr<Project> ActiveProject::activeProject() const
+{
+    return m_activeProject;
+}
+
+void ActiveProject::setActiveProject(std::shared_ptr<Project> activeProject)
+{
+    m_activeProject = activeProject;
+    notifyChange(m_activeProject);
+}
+
+void ActiveProject::addObserver(std::weak_ptr<ActiveProjectObserver> observer)
+{
+    m_observers.push_back(observer);
+}
+
+void ActiveProject::removeObserver(std::weak_ptr<ActiveProjectObserver> observer)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        if (m_observers[i].lock().get() == observer.lock().get())
+        {
+            m_observers.erase(m_observers.begin() + i);
+            break;
+        }
+    }
+}
+
+void ActiveProject::notifyChange(std::shared_ptr<Project> project)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        std::shared_ptr<ActiveProjectObserver> observer = m_observers[i].lock();
+        if (observer)
+        {
+            observer->onChange(project);
+        }
+    }
+}
+
+}

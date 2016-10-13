@@ -23,4 +23,32 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEWORKSPACE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEWORKSPACE_H_
 
+#include "ActiveWorkspaceObserver.h"
+#include "CodeSmithy/Core/Workspaces/Workspace.h"
+
+namespace CodeSmithy
+{
+
+class ActiveWorkspace
+{
+public:
+    ActiveWorkspace();
+    ~ActiveWorkspace();
+
+    std::shared_ptr<Workspace> activeWorkspace() const;
+    void setActiveWorkspace(std::shared_ptr<Workspace> activeWorkspace);
+
+    void addObserver(std::weak_ptr<ActiveWorkspaceObserver> observer);
+    void removeObserver(std::weak_ptr<ActiveWorkspaceObserver> observer);
+
+private:
+    void notifyChange(std::shared_ptr<Workspace> workspace);
+
+private:
+    std::shared_ptr<Workspace> m_activeWorkspace;
+    std::vector<std::weak_ptr<ActiveWorkspaceObserver> > m_observers;
+};
+
+}
+
 #endif

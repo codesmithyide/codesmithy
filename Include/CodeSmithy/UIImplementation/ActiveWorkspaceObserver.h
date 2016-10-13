@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEWORKSPACEOBSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEWORKSPACEOBSERVER_H_
 
+#include "CodeSmithy/Core/Workspaces/Workspace.h"
+
+namespace CodeSmithy
+{
+
+class ActiveWorkspaceObserver
+{
+public:
+    virtual void onChange(std::shared_ptr<const Workspace> workspace);
+};
+
+}
+
 #endif

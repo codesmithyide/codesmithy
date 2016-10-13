@@ -21,3 +21,12 @@
 */
 
 #include "ActiveProjectObserver.h"
+
+namespace CodeSmithy
+{
+
+void ActiveProjectObserver::onChange(std::shared_ptr<const Project> project)
+{
+}
+
+}

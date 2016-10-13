@@ -23,4 +23,32 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEPROJECT_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEPROJECT_H_
 
+#include "ActiveProjectObserver.h"
+#include "CodeSmithy/Core/Projects/Project.h"
+
+namespace CodeSmithy
+{
+
+class ActiveProject
+{
+public:
+    ActiveProject();
+    ~ActiveProject();
+
+    std::shared_ptr<Project> activeProject() const;
+    void setActiveProject(std::shared_ptr<Project> activeProject);
+
+    void addObserver(std::weak_ptr<ActiveProjectObserver> observer);
+    void removeObserver(std::weak_ptr<ActiveProjectObserver> observer);
+
+private:
+    void notifyChange(std::shared_ptr<Project> project);
+
+private:
+    std::shared_ptr<Project> m_activeProject;
+    std::vector<std::weak_ptr<ActiveProjectObserver> > m_observers;
+};
+
+}
+
 #endif

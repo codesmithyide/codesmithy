@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_ACTIVEPROJECTOBSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_ACTIVEPROJECTOBSERVER_H_
 
+#include "CodeSmithy/Core/Projects/Project.h"
+
+namespace CodeSmithy
+{
+
+class ActiveProjectObserver
+{
+public:
+    virtual void onChange(std::shared_ptr<const Project> project);
+};
+
+}
+
 #endif

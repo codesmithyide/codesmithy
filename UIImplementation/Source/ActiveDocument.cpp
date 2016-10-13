@@ -29,6 +29,10 @@ ActiveDocument::ActiveDocument()
 {
 }
 
+ActiveDocument::~ActiveDocument()
+{
+}
+
 std::shared_ptr<Document> ActiveDocument::activeDocument() const
 {
     return m_activeDocument;

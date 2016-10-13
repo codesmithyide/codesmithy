@@ -21,3 +21,12 @@
 */
 
 #include "ActiveWorkspaceObserver.h"
+
+namespace CodeSmithy
+{
+
+void ActiveWorkspaceObserver::onChange(std::shared_ptr<const Workspace> workspace)
+{
+}
+
+}

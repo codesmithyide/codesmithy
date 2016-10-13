@@ -21,3 +21,56 @@
 */
 
 #include "ActiveWorkspace.h"
+
+namespace CodeSmithy
+{
+
+ActiveWorkspace::ActiveWorkspace()
+{
+}
+
+ActiveWorkspace::~ActiveWorkspace()
+{
+}
+
+std::shared_ptr<Workspace> ActiveWorkspace::activeWorkspace() const
+{
+    return m_activeWorkspace;
+}
+
+void ActiveWorkspace::setActiveWorkspace(std::shared_ptr<Workspace> activeWorkspace)
+{
+    m_activeWorkspace = activeWorkspace;
+    notifyChange(m_activeWorkspace);
+}
+
+void ActiveWorkspace::addObserver(std::weak_ptr<ActiveWorkspaceObserver> observer)
+{
+    m_observers.push_back(observer);
+}
+
+void ActiveWorkspace::removeObserver(std::weak_ptr<ActiveWorkspaceObserver> observer)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        if (m_observers[i].lock().get() == observer.lock().get())
+        {
+            m_observers.erase(m_observers.begin() + i);
+            break;
+        }
+    }
+}
+
+void ActiveWorkspace::notifyChange(std::shared_ptr<Workspace> workspace)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        std::shared_ptr<ActiveWorkspaceObserver> observer = m_observers[i].lock();
+        if (observer)
+        {
+            observer->onChange(workspace);
+        }
+    }
+}
+
+}
