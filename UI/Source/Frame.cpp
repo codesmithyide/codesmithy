@@ -26,6 +26,7 @@
 #include "CodeSmithy/UIImplementation/AboutDialog.h"
 #include "CodeSmithy/UIImplementation/WindowIDs.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewWorkspaceWizard.h"
+#include "CodeSmithy/UIImplementation/Wizards/NewProjectWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include <wx/filedlg.h>
 
@@ -367,6 +368,12 @@ void Frame::OnShowStartPage(wxCommandEvent& evt)
 
 void Frame::OnAddNewProject(wxCommandEvent& evt)
 {
+    NewProjectWizard* newProjectWizard = new NewProjectWizard(this);
+    if (newProjectWizard->RunWizard())
+    {
+        m_workspacePanel->addNewProject();
+    }
+    newProjectWizard->Destroy();
 }
 
 void Frame::OnAddExistingProject(wxCommandEvent& evt)

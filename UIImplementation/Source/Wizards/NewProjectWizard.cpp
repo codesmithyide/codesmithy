@@ -21,3 +21,30 @@
 */
 
 #include "Wizards/NewProjectWizard.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+NewProjectWizard::NewProjectWizard(wxWindow* parent)
+    : wxWizard(parent, wxID_ANY, "New Project", wxNullBitmap, wxDefaultPosition, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    m_firstPage(0)
+{
+    m_firstPage = new ProjectCreationPage(this);
+
+    // wxWizard has its own sizer to which the pages need
+    // to be added.
+    GetPageAreaSizer()->Add(m_firstPage);
+}
+
+bool NewProjectWizard::RunWizard()
+{
+    return wxWizard::RunWizard(m_firstPage);
+}
+
+ProjectCreationPage::ProjectCreationPage(wxWizard* parent)
+    : wxWizardPageSimple(parent)
+{
+}
+
+}

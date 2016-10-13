@@ -23,4 +23,30 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWPROJECTWIZARD_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWPROJECTWIZARD_H_
 
+#include <wx/wizard.h>
+
+namespace CodeSmithy
+{
+
+class ProjectCreationPage;
+
+class NewProjectWizard : public wxWizard
+{
+public:
+    NewProjectWizard(wxWindow* parent);
+
+    bool RunWizard();
+
+private:
+    ProjectCreationPage* m_firstPage;
+};
+
+class ProjectCreationPage : public wxWizardPageSimple
+{
+public:
+    ProjectCreationPage(wxWizard* parent);
+};
+
+}
+
 #endif

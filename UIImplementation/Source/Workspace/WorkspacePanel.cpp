@@ -147,6 +147,10 @@ void WorkspacePanel::showStartPage()
 {
 }
 
+void WorkspacePanel::addNewProject()
+{
+}
+
 void WorkspacePanel::onAdd(std::shared_ptr<Document> document)
 {
     m_openDocuments->addDocument(document);

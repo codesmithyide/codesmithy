@@ -60,6 +60,8 @@ public:
     void showWorkspaceExplorer();
     void showStartPage();
 
+    void addNewProject();
+
     void getModifiedDocuments(std::vector<std::shared_ptr<Document> >& modifiedDocuments) const;
 
 private:
