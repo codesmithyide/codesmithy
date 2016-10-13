@@ -25,8 +25,9 @@
 namespace CodeSmithy
 {
 
-GenericWorkspace::GenericWorkspace(const std::string& name)
-    : m_name(name)
+GenericWorkspace::GenericWorkspace(const std::string& name,
+                                   const ProjectTypes& projectTypes)
+    : Workspace(projectTypes), m_name(name)
 {
 }
 

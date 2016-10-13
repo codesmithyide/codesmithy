@@ -23,6 +23,8 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_MENUBAR_H_
 #define _CODESMITHY_UIIMPLEMENTATION_MENUBAR_H_
 
+#include "ActiveWorkspace.h"
+#include "ActiveWorkspaceObserver.h"
 #include "ActiveDocument.h"
 #include "ActiveDocumentObserver.h"
 #include <wx/menu.h>
@@ -36,14 +38,27 @@ class MenuBar : public wxMenuBar
 public:
     MenuBar(wxFileHistory& fileHistory, wxFileHistory& workspaceHistory);
 
-    void registerObserver(std::shared_ptr<ActiveDocument> activeDocument);
-    void deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument);
+    void registerObservers(std::shared_ptr<ActiveWorkspace> activeWorkspace,
+        std::shared_ptr<ActiveDocument> activeDocument);
+    void deregisterObservers(std::shared_ptr<ActiveWorkspace> activeWorkspace, 
+        std::shared_ptr<ActiveDocument> activeDocument);
 
 private:
-    class Observer : public ActiveDocumentObserver
+    class WorkspaceObserver : public ActiveWorkspaceObserver
     {
     public:
-        Observer(MenuBar& menuBar);
+        WorkspaceObserver(MenuBar& menuBar);
+
+        void onChange(std::shared_ptr<const Workspace> workspace) override;
+
+    private:
+        MenuBar& m_menuBar;
+    };
+
+    class DocumentObserver : public ActiveDocumentObserver
+    {
+    public:
+        DocumentObserver(MenuBar& menuBar);
 
         void onChange(std::shared_ptr<const Document> document) override;
 
@@ -52,13 +67,15 @@ private:
     };
 
 private:
-    std::shared_ptr<Observer> m_activeDocumentObserver;
+    std::shared_ptr<WorkspaceObserver> m_activeWorkspaceObserver;
+    std::shared_ptr<DocumentObserver> m_activeDocumentObserver;
     wxMenuItem* m_saveMenuItem;
     wxMenuItem* m_saveAsMenuItem;
     wxMenuItem* m_closeMenuItem;
     wxMenuItem* m_cutMenuItem;
     wxMenuItem* m_copyMenuItem;
     wxMenuItem* m_pasteMenuItem;
+    wxMenu* m_menuWorkspace;
 };
 
 }

@@ -28,7 +28,8 @@ namespace CodeSmithy
 
 MenuBar::MenuBar(wxFileHistory& fileHistory, 
                  wxFileHistory& workspaceHistory)
-    : m_saveMenuItem(0), m_saveAsMenuItem(0), m_closeMenuItem(0)
+    : m_saveMenuItem(0), m_saveAsMenuItem(0), m_closeMenuItem(0),
+    m_menuWorkspace(0)
 {
     wxMenu* menuFile = new wxMenu;
 
@@ -51,9 +52,10 @@ MenuBar::MenuBar(wxFileHistory& fileHistory,
 
     menuFile->AppendSeparator();
     m_closeMenuItem = menuFile->Append(WorkspaceCloseFileMenuID, "&Close\tCtrl+F4");
-    menuFile->Append(WorkspaceCloseAllMenuID, "Close All Documents");
     m_closeMenuItem->Enable(false);
-
+    menuFile->Append(WorkspaceCloseAllMenuID, "Close All Documents");
+    menuFile->Append(CloseWorkspaceMenuID, "Close Workspace");
+    
     menuFile->AppendSeparator();
     menuFile->Append(wxID_PREFERENCES, "&Preferences...");
 
@@ -85,29 +87,59 @@ MenuBar::MenuBar(wxFileHistory& fileHistory,
     menuView->Append(ShowStartPageMenuID, "Start Page");
     Append(menuView, "&View");
 
+    m_menuWorkspace = new wxMenu;
+    wxMenu* menuWorkspaceAdd = new wxMenu;
+    menuWorkspaceAdd->Append(WorkspaceAddNewProjectMenuID, "&New Project...");
+    menuWorkspaceAdd->Append(WorkspaceAddExistingProjectMenuID, "&Existing Project...");
+    m_menuWorkspace->AppendSubMenu(menuWorkspaceAdd, "A&dd");
+    Append(m_menuWorkspace, "&Workspace");
+
     wxMenu* menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
     Append(menuHelp, "&Help");
 }
 
-void MenuBar::registerObserver(std::shared_ptr<ActiveDocument> activeDocument)
+void MenuBar::registerObservers(std::shared_ptr<ActiveWorkspace> activeWorkspace, 
+                                std::shared_ptr<ActiveDocument> activeDocument)
 {
-    m_activeDocumentObserver = std::make_shared<Observer>(*this);
+    m_activeWorkspaceObserver = std::make_shared<WorkspaceObserver>(*this);
+    activeWorkspace->addObserver(m_activeWorkspaceObserver);
+    m_activeDocumentObserver = std::make_shared<DocumentObserver>(*this);
     activeDocument->addObserver(m_activeDocumentObserver);
 }
 
-void MenuBar::deregisterObserver(std::shared_ptr<ActiveDocument> activeDocument)
+void MenuBar::deregisterObservers(std::shared_ptr<ActiveWorkspace> activeWorkspace, 
+                                  std::shared_ptr<ActiveDocument> activeDocument)
 {
+    activeWorkspace->removeObserver(m_activeWorkspaceObserver);
+    m_activeWorkspaceObserver.reset();
     activeDocument->removeObserver(m_activeDocumentObserver);
     m_activeDocumentObserver.reset();
 }
 
-MenuBar::Observer::Observer(MenuBar& menuBar)
+MenuBar::WorkspaceObserver::WorkspaceObserver(MenuBar& menuBar)
     : m_menuBar(menuBar)
 {
 }
 
-void MenuBar::Observer::onChange(std::shared_ptr<const Document> document)
+void MenuBar::WorkspaceObserver::onChange(std::shared_ptr<const Workspace> workspace)
+{
+    if (workspace)
+    {
+        m_menuBar.EnableTop(m_menuBar.FindMenu("Workspace"), true);
+    }
+    else
+    {
+        m_menuBar.EnableTop(m_menuBar.FindMenu("Workspace"), false);
+    }
+}
+
+MenuBar::DocumentObserver::DocumentObserver(MenuBar& menuBar)
+    : m_menuBar(menuBar)
+{
+}
+
+void MenuBar::DocumentObserver::onChange(std::shared_ptr<const Document> document)
 {
     if (document)
     {

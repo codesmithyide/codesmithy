@@ -54,6 +54,7 @@ Frame::Frame(const wxString& title,
     Center();
 
     m_documents = std::make_shared<Documents>();
+    m_activeWorkspace = std::make_shared<ActiveWorkspace>();
     m_activeDocument = std::make_shared<ActiveDocument>();
 
     m_menuBar = new MenuBar(m_fileHistory, m_workspaceHistory);
@@ -67,16 +68,18 @@ Frame::Frame(const wxString& title,
     {
         m_workspaceHistory.AddFileToHistory(recentWorkspaces[i]);
     }
-    m_menuBar->registerObserver(m_activeDocument);
+    m_menuBar->registerObservers(m_activeWorkspace, m_activeDocument);
     SetMenuBar(m_menuBar);
+    m_menuBar->EnableTop(m_menuBar->FindMenu("Workspace"), false);
 
-    m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeDocument, m_appSettings);
+    m_workspacePanel = new WorkspacePanel(this, m_documents, m_activeWorkspace, m_activeDocument, m_appSettings);
 }
 
 Frame::~Frame()
 {
-    m_menuBar->deregisterObserver(m_activeDocument);
+    m_menuBar->deregisterObservers(m_activeWorkspace, m_activeDocument);
     m_activeDocument->setActiveDocument(std::shared_ptr<Document>());
+    m_activeWorkspace->setActiveWorkspace(std::shared_ptr<Workspace>());
 }
 
 void Frame::OpenWorkspace(const wxString& file)
@@ -301,6 +304,11 @@ void Frame::OnCloseAll(wxCommandEvent& evt)
     m_workspacePanel->closeAllDocuments();
 }
 
+void Frame::OnCloseWorkspace(wxCommandEvent& evt)
+{
+    m_workspacePanel->closeWorkspace();
+}
+
 void Frame::OnPreferences(wxCommandEvent& evt)
 {
     PreferencesDialog preferencesDialog(this, m_appSettings);
@@ -357,6 +365,14 @@ void Frame::OnShowStartPage(wxCommandEvent& evt)
 {
 }
 
+void Frame::OnAddNewProject(wxCommandEvent& evt)
+{
+}
+
+void Frame::OnAddExistingProject(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnAbout(wxCommandEvent& evt)
 {
     AboutDialog aboutDialog(this);
@@ -388,6 +404,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceSaveAllMenuID, Frame::OnSaveAll)
     EVT_MENU(WorkspaceCloseFileMenuID, Frame::OnCloseFile)
     EVT_MENU(WorkspaceCloseAllMenuID, Frame::OnCloseAll)
+    EVT_MENU(CloseWorkspaceMenuID, Frame::OnCloseWorkspace)
     EVT_MENU(wxID_PREFERENCES, Frame::OnPreferences)
     EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, Frame::OnRecentFile)
     EVT_MENU_RANGE(RecentWorkspace1ID, RecentWorkspace9ID, Frame::OnRecentWorkspace)
@@ -397,6 +414,8 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(wxID_PASTE, Frame::OnPaste)
     EVT_MENU(ShowWorkspaceExplorerMenuID, Frame::OnShowWorkspaceExplorer)
     EVT_MENU(ShowStartPageMenuID, Frame::OnShowStartPage)
+    EVT_MENU(WorkspaceAddNewProjectMenuID, Frame::OnAddNewProject)
+    EVT_MENU(WorkspaceAddExistingProjectMenuID, Frame::OnAddExistingProject)
     EVT_MENU(wxID_ABOUT, Frame::OnAbout)
 wxEND_EVENT_TABLE()
 

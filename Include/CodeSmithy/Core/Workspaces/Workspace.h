@@ -23,13 +23,15 @@
 #ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 #define _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 
+#include "../Projects/ProjectTypes.h"
+
 namespace CodeSmithy
 {
 
 class Workspace
 {
 public:
-    Workspace();
+    Workspace(const ProjectTypes& projectTypes);
     virtual ~Workspace();
 };
 

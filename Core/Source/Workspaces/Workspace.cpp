@@ -25,7 +25,7 @@
 namespace CodeSmithy
 {
 
-Workspace::Workspace()
+Workspace::Workspace(const ProjectTypes& projectTypes)
 {
 }
 

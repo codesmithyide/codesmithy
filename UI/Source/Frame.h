@@ -24,6 +24,7 @@
 #define _CODESMITHY_UI_FRAME_H_
 
 #include "CodeSmithy/UIImplementation/MenuBar.h"
+#include "CodeSmithy/UIImplementation/ActiveWorkspace.h"
 #include "CodeSmithy/UIImplementation/ActiveDocument.h"
 #include "CodeSmithy/UIImplementation/Workspace/WorkspacePanel.h"
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
@@ -58,6 +59,7 @@ private:
     void OnSaveAll(wxCommandEvent& evt);
     void OnCloseFile(wxCommandEvent& evt);
     void OnCloseAll(wxCommandEvent& evt);
+    void OnCloseWorkspace(wxCommandEvent& evt);
     void OnPreferences(wxCommandEvent& evt);
     void OnRecentFile(wxCommandEvent& evt);
     void OnRecentWorkspace(wxCommandEvent& evt);
@@ -67,6 +69,8 @@ private:
     void OnPaste(wxCommandEvent& evt);
     void OnShowWorkspaceExplorer(wxCommandEvent& evt);
     void OnShowStartPage(wxCommandEvent& evt);
+    void OnAddNewProject(wxCommandEvent& evt);
+    void OnAddExistingProject(wxCommandEvent& evt);
     void OnAbout(wxCommandEvent& evt);
 
     void AddToRecentFiles(const std::string& file);
@@ -78,6 +82,7 @@ private:
     UILog m_log;
     DocumentIdGenerator m_documentIdGenerator;
     std::shared_ptr<Documents> m_documents;
+    std::shared_ptr<ActiveWorkspace> m_activeWorkspace;
     std::shared_ptr<ActiveDocument> m_activeDocument;
     MenuBar* m_menuBar;
     WorkspacePanel* m_workspacePanel;

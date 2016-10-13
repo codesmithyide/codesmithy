@@ -32,7 +32,7 @@ namespace CodeSmithy
 class GenericWorkspace : public Workspace
 {
 public:
-    GenericWorkspace(const std::string& name);
+    GenericWorkspace(const std::string& name, const ProjectTypes& projectTypes);
     ~GenericWorkspace() override;
 
     const std::string& name() const;

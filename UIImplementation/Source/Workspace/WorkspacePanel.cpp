@@ -22,17 +22,20 @@
 
 #include "Workspace/WorkspacePanel.h"
 #include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
+#include "CodeSmithy/Core/Workspaces/GenericWorkspace.h"
 
 namespace CodeSmithy
 {
 
 WorkspacePanel::WorkspacePanel(wxWindow* parent, 
                                std::shared_ptr<Documents> documents,
+                               std::shared_ptr<ActiveWorkspace> activeWorkspace,
                                std::shared_ptr<ActiveDocument> activeDocument,
                                const AppSettings& appSettings)
-    : wxPanel(parent, wxID_ANY),
-    m_documents(documents), m_activeDocument(activeDocument), 
-    m_startPage(0), m_explorer(0), m_openDocuments(0)
+    : wxPanel(parent, wxID_ANY), m_appSettings(appSettings),
+    m_documents(documents), m_activeWorkspace(activeWorkspace),
+    m_activeDocument(activeDocument), m_startPage(0), m_explorer(0),
+    m_openDocuments(0)
 {
     m_auiManager.SetManagedWindow(this);
 
@@ -71,11 +74,15 @@ void WorkspacePanel::createWorkspace(const std::string& directoryPath,
     boost::filesystem::path fileRepositoryPath = directoryPath;
     fileRepositoryPath /= (workspaceName + ".csmthws");
     m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
+    m_workspace = std::make_shared<GenericWorkspace>(workspaceName, m_appSettings.projectTypes());
+    m_activeWorkspace->setActiveWorkspace(m_workspace);
 }
 
 void WorkspacePanel::openWorkspace(const boost::filesystem::path& fileRepositoryPath)
 {
     m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
+    m_workspace = std::make_shared<GenericWorkspace>("", m_appSettings.projectTypes());
+    m_activeWorkspace->setActiveWorkspace(m_workspace);
 }
 
 void WorkspacePanel::saveDocument(const DocumentId& id)
@@ -108,6 +115,11 @@ void WorkspacePanel::closeAllDocuments()
     {
         m_openDocuments->closeAllDocuments();
     }
+}
+
+void WorkspacePanel::closeWorkspace()
+{
+    m_activeWorkspace->setActiveWorkspace(std::shared_ptr<Workspace>());
 }
 
 void WorkspacePanel::forwardCutEvent(const DocumentId& id)
