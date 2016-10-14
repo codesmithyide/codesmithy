@@ -77,6 +77,9 @@ library CodeSmithyCore : Boost, pugixml
 
         ../../../Include/CodeSmithy/Core/Projects/WiX/WiXProjectType.h
 
+        ../../../Include/CodeSmithy/Core/ProjectTemplates/ProjectTemplate.h
+        ../../../Include/CodeSmithy/Core/ProjectTemplates/ProjectTemplates.h
+
         ../../../Include/CodeSmithy/Core/Workspaces/Workspace.h
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceRepository.h
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
@@ -145,6 +148,9 @@ library CodeSmithyCore : Boost, pugixml
         ../../Source/Projects/CMake/CMakeProjectType.cpp
 
         ../../Source/Projects/WiX/WiXProjectType.cpp
+
+        ../../Source/ProjectTemplates/ProjectTemplate.cpp
+        ../../Source/ProjectTemplates/ProjectTemplates.cpp
 
         ../../Source/Workspaces/Workspace.cpp
         ../../Source/Workspaces/WorkspaceRepository.cpp

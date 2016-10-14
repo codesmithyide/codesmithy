@@ -199,6 +199,8 @@
     <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\CMake\CMakeProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\WiX\WiXProjectType.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTemplates\ProjectTemplate.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTemplates\ProjectTemplates.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\Workspace.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceRepository.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceFileRepository.cpp" />
@@ -256,6 +258,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplate.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplates.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\Workspace.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
