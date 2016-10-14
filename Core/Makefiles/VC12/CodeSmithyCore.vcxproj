@@ -178,6 +178,8 @@
     <ClCompile Include="..\..\Source\Documents\PowerShellFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\TextFile.cpp" />
+    <ClCompile Include="..\..\Source\Documents\TextFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\WiXSourceFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\WiXSourceFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\XMLDocument.cpp" />
@@ -234,6 +236,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFile.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h" />
