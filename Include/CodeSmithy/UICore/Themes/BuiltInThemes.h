@@ -24,6 +24,7 @@
 #define _CODESMITHY_UICORE_THEMES_BUILTINTHEMES_H_
 
 #include "ThemesRepository.h"
+#include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
 {
@@ -31,6 +32,7 @@ namespace CodeSmithy
 class BuiltInThemes
 {
 public:
+    static void createDefaultThemesFileRepository(const boost::filesystem::path& repositoryPath);
     static void addCodeSmithyLightThemeNode(ThemesRepository& repository);
     static void addCodeSmithyDarkThemeNode(ThemesRepository& repository);
 

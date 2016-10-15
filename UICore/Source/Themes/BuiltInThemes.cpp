@@ -21,11 +21,20 @@
 */
 
 #include "CodeSmithy/UICore/Themes/BuiltInThemes.h"
+#include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include "CodeSmithy/UICore/Editors/EditorId.h"
 
 namespace CodeSmithy
 {
-  
+
+void BuiltInThemes::createDefaultThemesFileRepository(const boost::filesystem::path& repositoryPath)
+{
+    CodeSmithy::ThemesFileRepository repository(repositoryPath);
+    addCodeSmithyLightThemeNode(repository);
+    addCodeSmithyDarkThemeNode(repository);
+    repository.save();
+}
+
 void BuiltInThemes::addCodeSmithyLightThemeNode(ThemesRepository& repository)
 {
     std::shared_ptr<ThemesRepositoryNode> node = repository.addThemeNode("CodeSmithy Light Theme");
@@ -37,8 +46,6 @@ void BuiltInThemes::addCodeSmithyLightThemeNode(ThemesRepository& repository)
     addDefaultEditorTheme(EditorId::PowerShellEditorId.string(), *node);
     addDefaultEditorTheme(EditorId::PythonEditorId.string(), *node);
     addDefaultEditorTheme(EditorId::XMLEditorId.string(), *node);
-
-    repository.save();
 }
 
 void BuiltInThemes::addCodeSmithyDarkThemeNode(ThemesRepository& repository)
@@ -52,8 +59,6 @@ void BuiltInThemes::addCodeSmithyDarkThemeNode(ThemesRepository& repository)
     addDefaultEditorTheme(EditorId::PowerShellEditorId.string(), *node);
     addDefaultEditorTheme(EditorId::PythonEditorId.string(), *node);
     addDefaultEditorTheme(EditorId::XMLEditorId.string(), *node);
-
-    repository.save();
 }
 
 void BuiltInThemes::addDefaultEditorTheme(const std::string& editorId,

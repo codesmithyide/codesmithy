@@ -39,7 +39,7 @@ public:
     void getThemeNodes(std::vector<std::shared_ptr<ThemesRepositoryNode> >& themeNodes) override;
     std::shared_ptr<ThemesRepositoryNode> addThemeNode(const std::string& name) override;
 
-    void save() override;
+    void save();
 
 private:
     void initialize(const boost::filesystem::path& repositoryPath);
