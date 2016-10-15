@@ -30,6 +30,8 @@ void AddBuiltInThemesTests(TestSequence& testSequence)
     TestSequence* builtInThemesTestSequence = new TestSequence("BuiltInThemes tests", testSequence);
 
     new FileComparisonTest("addCodeSmithyLightThemeNode test 1", BuiltInThemesAddCodeSmithyLightThemeNodeTest1, *builtInThemesTestSequence);
+    new FileComparisonTest("addCodeSmithyDarkThemeNode test 1", BuiltInThemesAddCodeSmithyDarkThemeNodeTest1, *builtInThemesTestSequence);
+    new FileComparisonTest("createDefaultThemesFileRepository test 1", BuiltInThemesCreateDefaultThemesFileRepositoryTest1, *builtInThemesTestSequence);
 }
 
 TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test)
@@ -40,6 +42,37 @@ TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileCompariso
 
     CodeSmithy::ThemesFileRepository repository(outputPath);
     CodeSmithy::BuiltInThemes::addCodeSmithyLightThemeNode(repository);
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome BuiltInThemesAddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyDarkThemeNodeTest1.csmththemes");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyDarkThemeNodeTest1.csmththemes");
+
+    CodeSmithy::ThemesFileRepository repository(outputPath);
+    CodeSmithy::BuiltInThemes::addCodeSmithyDarkThemeNode(repository);
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome BuiltInThemesCreateDefaultThemesFileRepositoryTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesCreateDefaultThemesFileRepositoryTest1.csmththemes");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ThemesTests/BuiltInThemesCreateDefaultThemesFileRepositoryTest1.csmththemes");
+
+    CodeSmithy::BuiltInThemes::createDefaultThemesFileRepository(outputPath);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
