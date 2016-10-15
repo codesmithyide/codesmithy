@@ -36,6 +36,7 @@ public:
 
     const std::string& editorId() const;
     const FontSettings& mainTextFontSettings() const;
+    FontSettings& mainTextFontSettings();
 
 private:
     std::string m_editorId;

@@ -44,4 +44,9 @@ const FontSettings& EditorTheme::mainTextFontSettings() const
     return m_mainTextFontSettings;
 }
 
+FontSettings& EditorTheme::mainTextFontSettings()
+{
+    return m_mainTextFontSettings;
+}
+
 }

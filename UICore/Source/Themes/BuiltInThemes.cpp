@@ -21,6 +21,7 @@
 */
 
 #include "CodeSmithy/UICore/Themes/BuiltInThemes.h"
+#include "CodeSmithy/UICore/Editors/EditorId.h"
 
 namespace CodeSmithy
 {
@@ -28,7 +29,26 @@ namespace CodeSmithy
 void BuiltInThemes::addCodeSmithyLightThemeNode(ThemesRepository& repository)
 {
     std::shared_ptr<ThemesRepositoryNode> node = repository.addThemeNode("CodeSmithy Light Theme");
+
+    addDefaultEditorTheme("CodeSmithy.Editor.Defaults", *node);
+    addDefaultEditorTheme(EditorId::BakefileEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::CMakeListsEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::CppEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::PowerShellEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::PythonEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::XMLEditorId.string(), *node);
+
     repository.save();
+}
+
+void BuiltInThemes::addDefaultEditorTheme(const std::string& editorId,
+                                          ThemesRepositoryNode& node)
+{
+    
+    EditorTheme defaultEditorTheme(editorId);
+    defaultEditorTheme.mainTextFontSettings().setFaceName("Courier New");
+    defaultEditorTheme.mainTextFontSettings().setPointSize(10);
+    node.setEditorTheme(defaultEditorTheme);
 }
 
 }

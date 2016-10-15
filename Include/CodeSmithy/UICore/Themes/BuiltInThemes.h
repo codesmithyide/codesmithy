@@ -32,6 +32,9 @@ class BuiltInThemes
 {
 public:
     static void addCodeSmithyLightThemeNode(ThemesRepository& repository);
+
+private:
+    static void addDefaultEditorTheme(const std::string& editorId, ThemesRepositoryNode& node);
 };
 
 }
