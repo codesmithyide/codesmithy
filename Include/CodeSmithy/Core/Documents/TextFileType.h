@@ -23,4 +23,23 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_TEXTFILETYPE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_TEXTFILETYPE_H_
 
+#include "DocumentType.h"
+
+namespace CodeSmithy
+{
+
+class TextFileType : public DocumentType
+{
+public:
+    TextFileType();
+    TextFileType(std::shared_ptr<CustomDocumentTypeData> customData);
+
+    std::shared_ptr<Document> createNewDocument(const DocumentId& id,
+        const std::string& name) const override;
+    std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
+        const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif

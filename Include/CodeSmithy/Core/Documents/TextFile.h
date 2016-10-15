@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_TEXTFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_TEXTFILE_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class TextFile : public Document
+{
+public:
+    TextFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    TextFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+    ~TextFile() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif

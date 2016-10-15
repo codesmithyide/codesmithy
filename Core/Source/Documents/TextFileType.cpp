@@ -21,3 +21,32 @@
 */
 
 #include "Documents/TextFileType.h"
+#include "Documents/TextFile.h"
+
+namespace CodeSmithy
+{
+
+TextFileType::TextFileType()
+    : DocumentType("Text File", "txt")
+{
+}
+
+TextFileType::TextFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("Text File", "txt")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> TextFileType::createNewDocument(const DocumentId& id,
+                                                          const std::string& name) const
+{
+    return std::make_shared<TextFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> TextFileType::createDocumentFromFile(const DocumentId& id,
+                                                               const boost::filesystem::path& path) const
+{
+    return std::make_shared<TextFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}
