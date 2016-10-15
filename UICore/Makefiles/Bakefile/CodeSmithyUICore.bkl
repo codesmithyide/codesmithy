@@ -57,6 +57,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Themes/ThemesFileRepository.h
         ../../../Include/CodeSmithy/UICore/Themes/Theme.h
         ../../../Include/CodeSmithy/UICore/Themes/EditorTheme.h
+        ../../../Include/CodeSmithy/UICore/Themes/BuiltInThemes.h
 
         ../../../Include/CodeSmithy/UICore/State/AppState.h
         ../../../Include/CodeSmithy/UICore/State/RecentDocuments.h
@@ -103,6 +104,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Themes/ThemesFileRepositoryNode.cpp
         ../../Source/Themes/Theme.cpp
         ../../Source/Themes/EditorTheme.cpp
+        ../../Source/Themes/BuiltInThemes.cpp
 
         ../../Source/State/AppState.cpp
         ../../Source/State/RecentDocuments.cpp

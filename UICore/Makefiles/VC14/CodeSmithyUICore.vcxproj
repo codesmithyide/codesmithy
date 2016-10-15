@@ -181,6 +181,7 @@
     <ClCompile Include="..\..\Source\Themes\ThemesFileRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Themes\Theme.cpp" />
     <ClCompile Include="..\..\Source\Themes\EditorTheme.cpp" />
+    <ClCompile Include="..\..\Source\Themes\BuiltInThemes.cpp" />
     <ClCompile Include="..\..\Source\State\AppState.cpp" />
     <ClCompile Include="..\..\Source\State\RecentDocuments.cpp" />
     <ClCompile Include="..\..\Source\State\RecentWorkspaces.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\ThemesFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\Theme.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\EditorTheme.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Themes\BuiltInThemes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\AppState.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\RecentDocuments.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\State\RecentWorkspaces.h" />
