@@ -21,3 +21,8 @@
 */
 
 #include "ProjectTemplatesTestSequence.h"
+
+void AddProjectTemplatesTestSequence(TestHarness& theTestHarness)
+{
+    TestSequence& projectTemplatesTestSequence = theTestHarness.appendTestSequence("ProjectTemplates tests");
+}

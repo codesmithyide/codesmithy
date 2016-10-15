@@ -32,6 +32,7 @@ void AddGenericWorkspaceTests(TestSequence& testSequence)
 
 TestResult::EOutcome GenericWorkspaceCreationTest1()
 {
-    CodeSmithy::GenericWorkspace workspace("GenericWorkspaceCreationTest1");
+    CodeSmithy::ProjectTypes types;
+    CodeSmithy::GenericWorkspace workspace("GenericWorkspaceCreationTest1", types);
     return TestResult::ePassed;
 }
