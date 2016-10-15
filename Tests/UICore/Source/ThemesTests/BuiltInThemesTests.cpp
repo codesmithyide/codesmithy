@@ -21,3 +21,8 @@
 */
 
 #include "BuiltInThemesTests.h"
+
+void AddBuiltInThemesTests(TestSequence& testSequence)
+{
+    TestSequence* builtInThemesTestSequence = new TestSequence("BuiltInThemes tests", testSequence);
+}

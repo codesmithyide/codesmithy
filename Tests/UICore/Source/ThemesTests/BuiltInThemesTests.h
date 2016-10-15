@@ -23,4 +23,10 @@
 #ifndef _CODESMITHY_TEST_UICORE_THEMESTESTS_BUILTINTHEMESTESTS_H_
 #define _CODESMITHY_TEST_UICORE_THEMESTESTS_BUILTINTHEMESTESTS_H_
 
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+void AddBuiltInThemesTests(TestSequence& testSequence);
+
 #endif

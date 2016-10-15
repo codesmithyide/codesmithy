@@ -25,6 +25,7 @@
 #include "EditorThemeTests.h"
 #include "ThemesFileRepositoryTests.h"
 #include "ThemesTests.h"
+#include "BuiltInThemesTests.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddThemesTestSequence(TestHarness& theTestHarness)
@@ -38,4 +39,5 @@ void AddThemesTestSequence(TestHarness& theTestHarness)
     AddEditorThemeTests(themesTestSequence);
     AddThemesFileRepositoryTests(themesTestSequence);
     AddThemesTests(themesTestSequence);
+    AddBuiltInThemesTests(themesTestSequence);
 }
