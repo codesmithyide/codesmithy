@@ -21,3 +21,14 @@
 */
 
 #include "CodeSmithy/UICore/Themes/BuiltInThemes.h"
+
+namespace CodeSmithy
+{
+  
+void BuiltInThemes::addCodeSmithyLightThemeNode(ThemesRepository& repository)
+{
+    std::shared_ptr<ThemesRepositoryNode> node = repository.addThemeNode("CodeSmithy Light Theme");
+    repository.save();
+}
+
+}

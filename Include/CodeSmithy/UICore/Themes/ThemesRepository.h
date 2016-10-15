@@ -39,6 +39,8 @@ public:
 
     virtual void getThemeNodes(std::vector<std::shared_ptr<ThemesRepositoryNode> >& themeNodes) = 0;
     virtual std::shared_ptr<ThemesRepositoryNode> addThemeNode(const std::string& name) = 0;
+
+    virtual void save() = 0;
 };
 
 }

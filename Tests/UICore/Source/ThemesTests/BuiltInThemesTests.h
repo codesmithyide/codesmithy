@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddBuiltInThemesTests(TestSequence& testSequence);
 
+TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test);
+
 #endif

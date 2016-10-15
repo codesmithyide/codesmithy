@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UICORE_THEMES_BUILTINTHEMES_H_
 #define _CODESMITHY_UICORE_THEMES_BUILTINTHEMES_H_
 
+#include "ThemesRepository.h"
+
+namespace CodeSmithy
+{
+
+class BuiltInThemes
+{
+public:
+    static void addCodeSmithyLightThemeNode(ThemesRepository& repository);
+};
+
+}
+
 #endif

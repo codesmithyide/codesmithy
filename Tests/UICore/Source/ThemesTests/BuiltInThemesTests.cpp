@@ -21,8 +21,28 @@
 */
 
 #include "BuiltInThemesTests.h"
+#include "CodeSmithy/UICore/Themes/BuiltInThemes.h"
+#include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddBuiltInThemesTests(TestSequence& testSequence)
 {
     TestSequence* builtInThemesTestSequence = new TestSequence("BuiltInThemes tests", testSequence);
+
+    new FileComparisonTest("addCodeSmithyLightThemeNode test 1", BuiltInThemesAddCodeSmithyLightThemeNodeTest1, *builtInThemesTestSequence);
+}
+
+TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyLightThemeNodeTest1.csmththemes");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyLightThemeNodeTest1.csmththemes");
+
+    CodeSmithy::ThemesFileRepository repository(outputPath);
+    CodeSmithy::BuiltInThemes::addCodeSmithyLightThemeNode(repository);
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
 }
