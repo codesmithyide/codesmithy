@@ -41,6 +41,21 @@ void BuiltInThemes::addCodeSmithyLightThemeNode(ThemesRepository& repository)
     repository.save();
 }
 
+void BuiltInThemes::addCodeSmithyDarkThemeNode(ThemesRepository& repository)
+{
+    std::shared_ptr<ThemesRepositoryNode> node = repository.addThemeNode("CodeSmithy Dark Theme");
+
+    addDefaultEditorTheme("CodeSmithy.Editor.Defaults", *node);
+    addDefaultEditorTheme(EditorId::BakefileEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::CMakeListsEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::CppEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::PowerShellEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::PythonEditorId.string(), *node);
+    addDefaultEditorTheme(EditorId::XMLEditorId.string(), *node);
+
+    repository.save();
+}
+
 void BuiltInThemes::addDefaultEditorTheme(const std::string& editorId,
                                           ThemesRepositoryNode& node)
 {
