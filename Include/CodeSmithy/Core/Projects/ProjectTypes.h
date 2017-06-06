@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -29,17 +29,21 @@
 namespace CodeSmithy
 {
 
-// CodeSmithy should support many different types of 
-// specialized project types. Some of those may be plugins.
-// When opening a file the best project type should be select
-// automatically if possible.
-// This class organizes the list of supported projects. There
-// is no automatic discovery. Project types need to be added to
-// this list by the upper layers.
+/**
+    CodeSmithy should support many different types of 
+    specialized project types. Some of those may be plugins.
+    When opening a file the best project type should be 
+    selected automatically if possible.
+    This class organizes the list of supported projects. There
+    is no automatic discovery. Project types need to be added to
+    this list by the upper layers.
+*/
 class ProjectTypes
 {
 public:
+    /** Creates a new ProjectTypes instances. */
     ProjectTypes();
+    /** The destructor. */
     ~ProjectTypes();
 
     size_t size() const;

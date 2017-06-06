@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,11 +26,17 @@
 namespace CodeSmithy
 {
 
+/**
+    This class represents the identifier that uniquely
+    identifies each document in the workspace. Each
+    document receives a unique identifier.
+*/
 class DocumentId
 {
 public:
     DocumentId(unsigned int id);
     DocumentId(const DocumentId& other);
+    /** The destructor. */
     ~DocumentId();
 
     bool operator==(const DocumentId& other) const;

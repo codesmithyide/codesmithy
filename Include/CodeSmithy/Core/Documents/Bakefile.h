@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -29,6 +29,9 @@
 namespace CodeSmithy
 {
 
+/**
+    This document class represents Bakefile project files.
+*/
 class Bakefile : public Document
 {
 public:
@@ -36,6 +39,7 @@ public:
         const std::string& name);
     Bakefile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
         const std::string& name, const boost::filesystem::path& path);
+    /** The destructor. */
     ~Bakefile() override;
 
 private:

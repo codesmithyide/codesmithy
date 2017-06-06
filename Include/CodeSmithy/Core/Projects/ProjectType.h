@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -32,10 +32,18 @@
 namespace CodeSmithy
 {
 
+/**
+    This class represents the type of a project.
+*/
 class ProjectType
 {
 public:
+    /**
+        Creates a new ProjectType instance.
+        @param name The name of the project type.
+    */
     ProjectType(const std::string& name);
+    /** The destructor. */
     virtual ~ProjectType();
 
     const std::string& name() const;
@@ -49,11 +57,13 @@ protected:
 
 private:
     std::string m_name;
-    // The type of documents this project is supposed to handle.
-    // Typically though other types can be loaded into a project
-    // as we don't want to restrict what the user may want to 
-    // have in its project. It just means the project will probably
-    // not know what to do with these and simply ignore them.
+    /**
+        The type of documents this project is supposed to handle.
+        Typically though other types can be loaded into a project
+        as we don't want to restrict what the user may want to 
+        have in its project. It just means the project will probably
+        not know what to do with these and simply ignore them.
+    */
     DocumentTypes m_supportedDocumentTypes;
     std::vector<std::shared_ptr<ProjectTemplate> > m_templates;
 };

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -31,15 +31,18 @@
 namespace CodeSmithy
 {
 
-// The UI will have one or more open documents being viewed 
-// or edited. The UI needs to be informed of certain events
-// related to the documents. The Documents class serves that
-// purpose. It has a list of all the documents that are part
-// of the workspace across all projects.
+/**
+    The UI will have one or more open documents being viewed 
+    or edited. The UI needs to be informed of certain events
+    related to the documents. The Documents class serves that
+    purpose. It has a list of all the documents that are part
+    of the workspace across all projects.
+*/
 class Documents
 {
 public:
     Documents();
+    /** The destructor */
     ~Documents();
 
     size_t size() const;

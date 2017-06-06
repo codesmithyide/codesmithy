@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -28,11 +28,19 @@
 namespace CodeSmithy
 {
 
+/**
+    This class represents the document type for Bakefile documents.
+*/
 class BakefileType : public DocumentType
 {
 public:
+    /**
+       Creates a new BakefileType instance.
+    */
     BakefileType();
     BakefileType(std::shared_ptr<CustomDocumentTypeData> customData);
+    /** The destructor. */
+    ~BakefileType() override;
 
     std::shared_ptr<Document> createNewDocument(const DocumentId& id,
         const std::string& name) const override;

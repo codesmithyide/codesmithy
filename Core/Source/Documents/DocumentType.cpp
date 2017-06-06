@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,6 +35,10 @@ DocumentType::DocumentType(const std::string& name,
     : m_name(name)
 {
     m_extensions.push_back(extension);
+}
+
+DocumentType::~DocumentType()
+{
 }
 
 const std::string& DocumentType::name() const

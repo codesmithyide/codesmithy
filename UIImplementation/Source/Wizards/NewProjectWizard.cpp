@@ -22,6 +22,7 @@
 
 #include "Wizards/NewProjectWizard.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 
 namespace CodeSmithy
 {
@@ -43,8 +44,20 @@ bool NewProjectWizard::RunWizard()
 }
 
 ProjectCreationPage::ProjectCreationPage(wxWizard* parent)
-    : wxWizardPageSimple(parent)
+    : wxWizardPageSimple(parent), m_projectNameCtrl(0),
+    m_projectLocationCtrl(0)
 {
+    wxStaticText* projectNameLabel = new wxStaticText(this, wxID_ANY, "Name:");
+    m_projectNameCtrl = new wxTextCtrl(this, wxID_ANY);
+
+    wxBoxSizer* nameSizer = new wxBoxSizer(wxVERTICAL);
+    nameSizer->Add(projectNameLabel, 0);
+    nameSizer->AddSpacer(4);
+    nameSizer->Add(m_projectNameCtrl, 0, wxEXPAND);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(nameSizer, 0, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 }

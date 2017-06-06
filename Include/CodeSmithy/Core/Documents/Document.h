@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -34,15 +34,29 @@ namespace CodeSmithy
 
 class DocumentType;
 
-// A document is an entity that a user can load, edit 
-// and save. Documents are the basic items that a project
-// manages. A project is essentially a list of related 
-// documents.
-// A document would typically be a file. However documents
-// don't have to reside on the filesystem. They could
-// also be stored in a database for instance.
-// Each document has a unique id to identify it in the
-// workspace
+/**
+    This is the abstract base class for all document 
+    classes.
+
+    A document is an entity that a user can load, edit 
+    and save. Documents are the basic items that a project
+    manages. A project is essentially a list of related 
+    documents.
+
+    A document would typically be a file. However documents
+    don't have to reside on the filesystem. They could
+    also be stored in a database for instance.
+
+    Each document has a type.
+
+    Each document has a unique id to identify it in the
+    workspace.
+
+    Instances of classes derived from Document should not
+    be created directly but via their respective types.
+
+    @see DocumentType
+*/
 class Document
 {
 public:

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -38,6 +38,7 @@ class DocumentType : public std::enable_shared_from_this<DocumentType>
 public:
     DocumentType(const std::string& name);
     DocumentType(const std::string& name, const std::string& extension);
+    virtual ~DocumentType();
 
     const std::string& name() const;
 
