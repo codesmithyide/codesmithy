@@ -23,4 +23,23 @@
 #ifndef _CODESMITHY_CORE_PROJECTTEMPLATES_PROJECTTEMPLATES_H_
 #define _CODESMITHY_CORE_PROJECTTEMPLATES_PROJECTTEMPLATES_H_
 
+#include "ProjectTemplate.h"
+#include <vector>
+#include <memory>
+
+namespace CodeSmithy
+{
+
+class ProjectTemplates
+{
+public:
+    ProjectTemplates();
+    virtual ~ProjectTemplates();
+
+private:
+    std::vector<std::shared_ptr<ProjectTemplate> > m_templates;
+};
+
+}
+
 #endif

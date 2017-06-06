@@ -24,7 +24,9 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECTTYPE_H_
 
 #include "../Documents/DocumentTypes.h"
+#include "../ProjectTemplates/ProjectTemplate.h"
 #include <string>
+#include <vector>
 #include <memory>
 
 namespace CodeSmithy
@@ -53,6 +55,7 @@ private:
     // have in its project. It just means the project will probably
     // not know what to do with these and simply ignore them.
     DocumentTypes m_supportedDocumentTypes;
+    std::vector<std::shared_ptr<ProjectTemplate> > m_templates;
 };
 
 }

@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_CORE_PROJECTTEMPLATES_PROJECTTEMPLATE_H_
 #define _CODESMITHY_CORE_PROJECTTEMPLATES_PROJECTTEMPLATE_H_
 
+namespace CodeSmithy
+{
+
+class ProjectTemplate
+{
+public:
+    ProjectTemplate();
+    virtual ~ProjectTemplate();
+};
+
+}
+
 #endif

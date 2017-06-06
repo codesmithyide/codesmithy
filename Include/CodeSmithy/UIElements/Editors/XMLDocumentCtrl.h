@@ -55,7 +55,6 @@ private:
 private:
     XMLEditorCtrl* m_ctrl;
     std::shared_ptr<XMLDocument> m_document;
-
 };
 
 }

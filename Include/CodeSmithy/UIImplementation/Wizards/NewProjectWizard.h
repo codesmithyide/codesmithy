@@ -24,6 +24,8 @@
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_NEWPROJECTWIZARD_H_
 
 #include <wx/wizard.h>
+#include <wx/textctrl.h>
+#include <wx/filepicker.h>
 
 namespace CodeSmithy
 {
@@ -45,6 +47,10 @@ class ProjectCreationPage : public wxWizardPageSimple
 {
 public:
     ProjectCreationPage(wxWizard* parent);
+
+private:
+    wxTextCtrl* m_projectNameCtrl;
+    wxDirPickerCtrl* m_projectLocationCtrl;
 };
 
 }
