@@ -21,3 +21,16 @@
 */
 
 #include "ProjectTemplates/ProjectTemplates.h"
+
+namespace CodeSmithy
+{
+
+ProjectTemplates::ProjectTemplates()
+{
+}
+
+ProjectTemplates::~ProjectTemplates()
+{
+}
+
+}
