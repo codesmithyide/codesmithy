@@ -4,6 +4,7 @@
 *.suo
 *.vcxproj.user
 *.opendb
+*.vc.db
 *.pdb
 Debug/
 Release/
