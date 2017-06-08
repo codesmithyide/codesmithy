@@ -28,11 +28,13 @@
 namespace CodeSmithy
 {
 
-// Each instance of the Document class needs a unique 
-// identifier. The DocumentIdGenerator class generates
-// these identifiers. A single instance of this class 
-// should be used to generate all the identifiers
-// throughout the application.
+/**
+    Each instance of the Document class needs a unique 
+    identifier. The DocumentIdGenerator class generates
+    these identifiers. A single instance of this class 
+    should be used to generate all the identifiers
+    throughout the application.
+*/
 class DocumentIdGenerator
 {
 public:

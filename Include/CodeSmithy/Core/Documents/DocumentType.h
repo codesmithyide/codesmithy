@@ -33,11 +33,15 @@
 namespace CodeSmithy
 {
 
+/**
+    This class represents the type of a document.
+*/
 class DocumentType : public std::enable_shared_from_this<DocumentType>
 {
 public:
     DocumentType(const std::string& name);
     DocumentType(const std::string& name, const std::string& extension);
+    /** The destructor. */
     virtual ~DocumentType();
 
     const std::string& name() const;

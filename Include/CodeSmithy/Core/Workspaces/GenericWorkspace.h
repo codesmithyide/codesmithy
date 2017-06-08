@@ -29,8 +29,6 @@
 namespace CodeSmithy
 {
 
-/**
-*/
 class GenericWorkspace : public Workspace
 {
 public:
