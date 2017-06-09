@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UICORE_SETTINGS_JAVASCRIPTEDITORSETTINGS_H_
 #define _CODESMITHY_UICORE_SETTINGS_JAVASCRIPTEDITORSETTINGS_H_
 
+#include "EditorSettingsBase.h"
+
+namespace CodeSmithy
+{
+
+class JavaScriptEditorSettings : public EditorSettingsBase
+{
+public:
+    JavaScriptEditorSettings();
+    JavaScriptEditorSettings(const JavaScriptEditorSettings& other);
+    JavaScriptEditorSettings& operator=(const JavaScriptEditorSettings& other);
+    ~JavaScriptEditorSettings() override;
+
+    bool operator==(const JavaScriptEditorSettings& other) const;
+    bool operator!=(const JavaScriptEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
+};
+
+}
+
+#include "../linkoptions.h"
+
 #endif

@@ -21,3 +21,24 @@
 */
 
 #include "Editors/JavaScriptEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+JavaScriptEditorCtrl::JavaScriptEditorCtrl(wxWindow* parent,
+                                           const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+    SetLexer(wxSTC_LEX_CPP);
+    setStyle(appSettings);
+}
+
+void JavaScriptEditorCtrl::setStyle(const AppSettings& appSettings)
+{
+    wxFont font = StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().javascriptFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().javascriptFontSettings().pointSize());
+    StyleSetFont(wxSTC_C_DEFAULT, font);
+}
+
+}

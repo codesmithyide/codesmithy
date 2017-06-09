@@ -28,7 +28,6 @@
 #include "CodeSmithy/UICore/Settings/AppSettings.h"
 #include "CodeSmithy/Core/Documents/CppDocument.h"
 
-
 namespace CodeSmithy
 {
 

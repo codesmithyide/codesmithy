@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_JAVASCRIPTEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_JAVASCRIPTEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+
+class JavaScriptEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    JavaScriptEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+
+private:
+    void setStyle(const AppSettings& appSettings);
+};
+
+}
+
 #endif

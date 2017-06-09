@@ -21,3 +21,71 @@
 */
 
 #include "Editors/JavaScriptFileCtrl.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+wxWindow* JavaScriptFileCtrl::Create(wxWindow *parent,
+                                     std::shared_ptr<Document> document,
+                                     const AppSettings& appSettings)
+{
+    return new JavaScriptFileCtrl(parent, document, appSettings);
+}
+
+JavaScriptFileCtrl::JavaScriptFileCtrl(wxWindow* parent,
+                                       std::shared_ptr<Document> document,
+                                       const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
+{
+    m_ctrl = new JavaScriptEditorCtrl(this, appSettings);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &JavaScriptFileCtrl::onModified, this);
+
+    m_document = std::dynamic_pointer_cast<JavaScriptFile, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
+}
+
+std::shared_ptr<const Document> JavaScriptFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> JavaScriptFileCtrl::document()
+{
+    return m_document;
+}
+
+void JavaScriptFileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void JavaScriptFileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void JavaScriptFileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
+void JavaScriptFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_ctrl->SaveFile(path.string());
+    m_document->setModified(false);
+}
+
+void JavaScriptFileCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
+}
+
+}

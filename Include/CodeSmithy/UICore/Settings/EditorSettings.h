@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -28,6 +28,7 @@
 #include "CMakeListsEditorSettings.h"
 #include "CppEditorSettings.h"
 #include "HTMLEditorSettings.h"
+#include "JavaScriptEditorSettings.h"
 #include "PowerShellEditorSettings.h"
 #include "PythonEditorSettings.h"
 #include "XMLEditorSettings.h"
@@ -36,20 +37,42 @@
 namespace CodeSmithy
 {
 
+/**
+    This class contains all the settings for all the controls
+    that allow users to edit the various document types.
+
+    The settings can be stored to and retrieved from an XML file.
+*/
 class EditorSettings
 {
 public:
     EditorSettings();
+    /** The destructor. */
     ~EditorSettings();
 
-    // Gets the Bakefile editor font settings or the default settings
-    // as appropriate.
+    /**
+        Gets the Bakefile editor font settings or the default settings
+        as appropriate.
+        @return The font settings to use for the bakefile editor.
+    */
     const FontSettings& bakefileFontSettings() const;
-    // Gets the C++ editor font settings or the default settings
-    // as appropriate.
+    /**
+        Gets the C++ editor font settings or the default settings
+        as appropriate.
+        @return The font settings to use for the C++ editor.
+    */
     const FontSettings& cppFontSettings() const;
-    // Gets the XML editor font settings or the default settings
-    // as appropriate.
+    /**
+        Gets the JavaScript editor font settings or the default settings
+        as appropriate.
+        @return The font settings to use for the JavaScript editor.
+    */
+    const FontSettings& javascriptFontSettings() const;
+    /**
+        Gets the XML editor font settings or the default settings
+        as appropriate.
+        @return The font settings to use for the XML editor.
+    */
     const FontSettings& xmlFontSettings() const;
 
     const DefaultEditorSettings& defaultSettings() const;
@@ -62,6 +85,8 @@ public:
     CppEditorSettings& cppSettings();
     const HTMLEditorSettings& htmlSettings() const;
     HTMLEditorSettings& htmlSettings();
+    const JavaScriptEditorSettings& javascriptSettings() const;
+    JavaScriptEditorSettings& javascriptSettings();
     const PowerShellEditorSettings& powershellSettings() const;
     PowerShellEditorSettings& powershellSettings();
     const PythonEditorSettings& pythonSettings() const;
@@ -78,6 +103,7 @@ private:
     CMakeListsEditorSettings m_cmakelistsEditorSettings;
     CppEditorSettings m_cppEditorSettings;
     HTMLEditorSettings m_htmlEditorSettings;
+    JavaScriptEditorSettings m_javascriptEditorSettings;
     PowerShellEditorSettings m_powershellEditorSettings;
     PythonEditorSettings m_pythonEditorSettings;
     XMLEditorSettings m_xmlEditorSettings;

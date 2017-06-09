@@ -23,4 +23,40 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_JAVASCRIPTFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_JAVASCRIPTFILECTRL_H_
 
+#include "DocumentCtrl.h"
+#include "JavaScriptEditorCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/JavaScriptFile.h"
+
+namespace CodeSmithy
+{
+
+class JavaScriptFileCtrl : public DocumentCtrl
+{
+public:
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    JavaScriptFileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void cut() override;
+    void copy() override;
+    void paste() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) override;
+
+    void onModified(wxStyledTextEvent& evt);
+
+private:
+    JavaScriptEditorCtrl* m_ctrl;
+    std::shared_ptr<JavaScriptFile> m_document;
+};
+
+}
+
 #endif

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -31,6 +31,7 @@ static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings
 static const char* cmakelistsEditorSettingsElementName = "cmakelists-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 static const char* htmlEditorSettingsElementName = "html-editor-settings";
+static const char* javascriptEditorSettingsElementName = "javascript-editor-settings";
 static const char* powershellEditorSettingsElementName = "powershell-editor-settings";
 static const char* pythonEditorSettingsElementName = "python-editor-settings";
 static const char* xmlEditorSettingsElementName = "xml-editor-settings";
@@ -64,6 +65,18 @@ const FontSettings& EditorSettings::cppFontSettings() const
     else
     {
         return m_cppEditorSettings.fontSettings();
+    }
+}
+
+const FontSettings& EditorSettings::javascriptFontSettings() const
+{
+    if (m_javascriptEditorSettings.useDefaultSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_javascriptEditorSettings.fontSettings();
     }
 }
 
@@ -129,6 +142,16 @@ HTMLEditorSettings& EditorSettings::htmlSettings()
     return m_htmlEditorSettings;
 }
 
+const JavaScriptEditorSettings& EditorSettings::javascriptSettings() const
+{
+    return m_javascriptEditorSettings;
+}
+
+JavaScriptEditorSettings& EditorSettings::javascriptSettings()
+{
+    return m_javascriptEditorSettings;
+}
+
 const PowerShellEditorSettings& EditorSettings::powershellSettings() const
 {
     return m_powershellEditorSettings;
@@ -169,6 +192,8 @@ void EditorSettings::load(pugi::xml_node node)
     m_cppEditorSettings.load(cppEditorSettingsNode);
     pugi::xml_node htmlEditorSettingsNode = node.child(htmlEditorSettingsElementName);
     m_htmlEditorSettings.load(htmlEditorSettingsNode);
+    pugi::xml_node javascriptEditorSettingsNode = node.child(javascriptEditorSettingsElementName);
+    m_javascriptEditorSettings.load(javascriptEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = node.child(powershellEditorSettingsElementName);
     m_powershellEditorSettings.load(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = node.child(pythonEditorSettingsElementName);
@@ -189,6 +214,8 @@ void EditorSettings::save(pugi::xml_node node) const
     m_cppEditorSettings.save(cppEditorSettingsNode);
     pugi::xml_node htmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, htmlEditorSettingsElementName);
     m_htmlEditorSettings.save(htmlEditorSettingsNode);
+    pugi::xml_node javascriptEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, javascriptEditorSettingsElementName);
+    m_javascriptEditorSettings.save(javascriptEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, powershellEditorSettingsElementName);
     m_powershellEditorSettings.save(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, pythonEditorSettingsElementName);
