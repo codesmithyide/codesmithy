@@ -62,6 +62,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewWorkspaceWizard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\OpenGitRepositoryWizard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\ExplorerCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -170,6 +173,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Wizards\NewWorkspaceWizard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Wizards\OpenGitRepositoryWizard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Workspace\ExplorerCtrl.cpp">

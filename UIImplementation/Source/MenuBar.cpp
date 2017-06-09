@@ -41,6 +41,8 @@ MenuBar::MenuBar(wxFileHistory& fileHistory,
     wxMenu* menuFileOpen = new wxMenu;
     menuFileOpen->Append(WorkspaceOpenWorkspaceMenuID, "&Workspace...");
     menuFileOpen->Append(WorkspaceOpenFileMenuID, "&File...\tCtrl+O");
+    menuFileOpen->AppendSeparator();
+    menuFileOpen->Append(WorkspaceOpenGitRepositoryMenuID, "&Git repository");
     menuFile->AppendSubMenu(menuFileOpen, "&Open");
 
     menuFile->AppendSeparator();

@@ -54,6 +54,7 @@ private:
     void OnNewFile(wxCommandEvent& evt);
     void OnOpenWorkspace(wxCommandEvent& evt);
     void OnOpenFile(wxCommandEvent& evt);
+    void OnOpenGitRepository(wxCommandEvent& evt);
     void OnSaveFile(wxCommandEvent& evt);
     void OnSaveFileAs(wxCommandEvent& evt);
     void OnSaveAll(wxCommandEvent& evt);

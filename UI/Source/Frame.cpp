@@ -254,6 +254,10 @@ void Frame::OnOpenFile(wxCommandEvent& evt)
     fileDialog->Destroy();
 }
 
+void Frame::OnOpenGitRepository(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnSaveFile(wxCommandEvent& evt)
 {
     std::shared_ptr<Document> activeDocument = m_activeDocument->activeDocument();
@@ -406,6 +410,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(WorkspaceNewFileMenuID, Frame::OnNewFile)
     EVT_MENU(WorkspaceOpenWorkspaceMenuID, Frame::OnOpenWorkspace)
     EVT_MENU(WorkspaceOpenFileMenuID, Frame::OnOpenFile)
+    EVT_MENU(WorkspaceOpenGitRepositoryMenuID, Frame::OnOpenGitRepository)
     EVT_MENU(WorkspaceSaveFileMenuID, Frame::OnSaveFile)
     EVT_MENU(WorkspaceSaveFileAsMenuID, Frame::OnSaveFileAs)
     EVT_MENU(WorkspaceSaveAllMenuID, Frame::OnSaveAll)

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,23 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
-#define _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
-
-#include "../Projects/ProjectTypes.h"
-
-namespace CodeSmithy
-{
-
-/** A workspace is the entire state of a CodeSmithy application. */
-class Workspace
-{
-public:
-    Workspace(const ProjectTypes& projectTypes);
-    /** The destructor. */
-    virtual ~Workspace();
-};
-
-}
+#ifndef _CODESMITHY_UIIMPLEMENTATION_WIZARDS_OPENGITREPOSITORYWIZARD_H_
+#define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_OPENGITREPOSITORYWIZARD_H_
 
 #endif
