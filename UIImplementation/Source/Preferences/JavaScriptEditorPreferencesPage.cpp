@@ -34,7 +34,7 @@ namespace CodeSmithy
 JavaScriptEditorPreferencesPage::JavaScriptEditorPreferencesPage(wxWindow *parent,
                                                                  AppSettings& appSettings)
     : EditorPreferencesBase(parent, appSettings, EditorId::JavaScriptEditorId,
-        appSettings.editorSettings().cppSettings()),
+        appSettings.editorSettings().javascriptSettings()),
     m_newSettings(appSettings.editorSettings().javascriptSettings())
 {
     m_formatExample = new JavaScriptEditorCtrl(this, appSettings);
