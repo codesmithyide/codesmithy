@@ -23,4 +23,30 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WIZARDS_OPENGITREPOSITORYWIZARD_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_OPENGITREPOSITORYWIZARD_H_
 
+#include <wx/wizard.h>
+
+namespace CodeSmithy
+{
+
+class GitURLPage;
+
+class OpenGitRepositoryWizard : public wxWizard
+{
+public:
+    OpenGitRepositoryWizard(wxWindow* parent);
+
+    bool RunWizard();
+
+private:
+    GitURLPage* m_firstPage;
+};
+
+class GitURLPage : public wxWizardPageSimple
+{
+public:
+    GitURLPage(wxWizard* parent);
+};
+
+}
+
 #endif

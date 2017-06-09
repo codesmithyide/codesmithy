@@ -28,6 +28,7 @@
 #include "CodeSmithy/UIImplementation/Wizards/NewWorkspaceWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewProjectWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
+#include "CodeSmithy/UIImplementation/Wizards/OpenGitRepositoryWizard.h"
 #include <wx/filedlg.h>
 
 namespace CodeSmithy
@@ -256,6 +257,11 @@ void Frame::OnOpenFile(wxCommandEvent& evt)
 
 void Frame::OnOpenGitRepository(wxCommandEvent& evt)
 {
+    OpenGitRepositoryWizard* openGitRepositoryWizard = new OpenGitRepositoryWizard(this);
+    if (openGitRepositoryWizard->RunWizard())
+    {
+    }
+    openGitRepositoryWizard->Destroy();
 }
 
 void Frame::OnSaveFile(wxCommandEvent& evt)

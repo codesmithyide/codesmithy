@@ -21,3 +21,31 @@
 */
 
 #include "Wizards/OpenGitRepositoryWizard.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+OpenGitRepositoryWizard::OpenGitRepositoryWizard(wxWindow* parent)
+    : wxWizard(parent, wxID_ANY, "Open a Git repository", wxNullBitmap, wxDefaultPosition, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    m_firstPage(0)
+{
+    m_firstPage = new GitURLPage(this);
+
+    // wxWizard has its own sizer to which the pages need
+    // to be added.
+    GetPageAreaSizer()->Add(m_firstPage);
+}
+
+
+bool OpenGitRepositoryWizard::RunWizard()
+{
+    return wxWizard::RunWizard(m_firstPage);
+}
+
+GitURLPage::GitURLPage(wxWizard* parent)
+    : wxWizardPageSimple(parent)
+{
+}
+
+}
