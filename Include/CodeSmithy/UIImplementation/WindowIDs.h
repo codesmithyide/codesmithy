@@ -68,7 +68,9 @@ const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = Preferences
 
 const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
 
-const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesJavaScriptEditorPreferencesApplyButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
+
+const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesJavaScriptEditorPreferencesApplyButtonID + 1;
 
 const wxWindowID PreferencesStartupFixedSizeButtonID = PreferencesXMLEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesStartupPreviousSizeButtonID = PreferencesStartupFixedSizeButtonID + 1;

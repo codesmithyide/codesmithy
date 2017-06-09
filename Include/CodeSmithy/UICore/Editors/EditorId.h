@@ -35,6 +35,7 @@ public:
     static EditorId CMakeListsEditorId;
     static EditorId CppEditorId;
     static EditorId HTMLEditorId;
+    static EditorId JavaScriptEditorId;
     static EditorId PowerShellEditorId;
     static EditorId PythonEditorId;
     static EditorId XMLEditorId;

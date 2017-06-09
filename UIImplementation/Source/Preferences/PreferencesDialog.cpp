@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,6 +26,7 @@
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/HTMLEditorPreferencesPage.h"
+#include "Preferences/JavaScriptEditorPreferencesPage.h"
 #include "Preferences/PowerShellEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
@@ -84,6 +85,8 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(cppPage, "C/C++");
     HTMLEditorPreferencesPage* htmlPage = new HTMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(htmlPage, "HTML");
+    JavaScriptEditorPreferencesPage* javascriptPage = new JavaScriptEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(javascriptPage, "JavaScript");
     PowerShellEditorPreferencesPage* powershellPage = new PowerShellEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(powershellPage, "PowerShell");
     PythonEditorPreferencesPage* pythonPage = new PythonEditorPreferencesPage(treebook, settings);
