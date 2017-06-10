@@ -21,3 +21,27 @@
 */
 
 #include "VersionControl/GitRepository.h"
+
+namespace CodeSmithy
+{
+
+GitRepository::GitRepository()
+    : m_repository(0)
+{
+    git_libgit2_init();
+}
+
+GitRepository::~GitRepository()
+{
+    git_repository_free(m_repository);
+
+    git_libgit2_shutdown();
+}
+
+void GitRepository::clone(const std::string& url,
+                          const std::string& clonePath)
+{
+    git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
+}
+
+}

@@ -1,6 +1,7 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 
 setting CODESMITHY_ROOT
 {
@@ -8,7 +9,7 @@ setting CODESMITHY_ROOT
     default = '$(CODESMITHY)';
 }
 
-template CodeSmithyCore : Boost, pugixml
+template CodeSmithyCore : Boost, pugixml, libgit2
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
     libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);

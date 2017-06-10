@@ -38,10 +38,19 @@ OpenGitRepositoryWizard::OpenGitRepositoryWizard(wxWindow* parent)
     GetPageAreaSizer()->Add(m_firstPage);
 }
 
-
 bool OpenGitRepositoryWizard::RunWizard()
 {
     return wxWizard::RunWizard(m_firstPage);
+}
+
+wxString OpenGitRepositoryWizard::repositoryURL() const
+{
+    return m_firstPage->repositoryURL();
+}
+
+wxFileName OpenGitRepositoryWizard::cloneLocation() const
+{
+    return m_firstPage->cloneLocation();
 }
 
 GitURLPage::GitURLPage(wxWizard* parent)
@@ -70,6 +79,16 @@ GitURLPage::GitURLPage(wxWizard* parent)
     topSizer->AddSpacer(15);
     topSizer->Add(locationSizer, 0, wxEXPAND);
     SetSizer(topSizer);
+}
+
+wxString GitURLPage::repositoryURL() const
+{
+    return m_urlCtrl->GetValue();
+}
+
+wxFileName GitURLPage::cloneLocation() const
+{
+    return m_cloneLocationCtrl->GetDirName();
 }
 
 }

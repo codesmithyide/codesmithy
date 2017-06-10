@@ -39,6 +39,9 @@ public:
 
     bool RunWizard();
 
+    wxString repositoryURL() const;
+    wxFileName cloneLocation() const;
+
 private:
     GitURLPage* m_firstPage;
 };
@@ -47,6 +50,9 @@ class GitURLPage : public wxWizardPageSimple
 {
 public:
     GitURLPage(wxWizard* parent);
+
+    wxString repositoryURL() const;
+    wxFileName cloneLocation() const;
 
 private:
     wxTextCtrl* m_urlCtrl;

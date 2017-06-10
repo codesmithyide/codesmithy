@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_CORE_VERSIONCONTROL_GITREPOSITORY_H_
 #define _CODESMITHY_CORE_VERSIONCONTROL_GITREPOSITORY_H_
 
+#include <git2.h>
+#include <string>
+
+namespace CodeSmithy
+{
+
+/**
+    This class is a wrapper around libgit2 to interact
+    with Git repositories.
+*/
+class GitRepository
+{
+public:
+    GitRepository();
+    ~GitRepository();
+
+    void clone(const std::string& url, const std::string& clonePath);
+
+private:
+    git_repository* m_repository;
+};
+
+}
+
 #endif
