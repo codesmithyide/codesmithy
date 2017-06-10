@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -74,6 +74,12 @@ void WorkspacePanel::createWorkspace(const std::string& directoryPath,
     boost::filesystem::path fileRepositoryPath = directoryPath;
     fileRepositoryPath /= (workspaceName + ".csmthws");
     m_workspaceRepository = std::make_shared<WorkspaceFileRepository>(fileRepositoryPath);
+    m_workspace = std::make_shared<GenericWorkspace>(workspaceName, m_appSettings.projectTypes());
+    m_activeWorkspace->setActiveWorkspace(m_workspace);
+}
+
+void WorkspacePanel::createWorkspaceFromGitRepository(const std::string& workspaceName)
+{
     m_workspace = std::make_shared<GenericWorkspace>(workspaceName, m_appSettings.projectTypes());
     m_activeWorkspace->setActiveWorkspace(m_workspace);
 }

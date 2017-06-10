@@ -267,7 +267,8 @@ void Frame::OnOpenGitRepository(wxCommandEvent& evt)
         GitCloneDialog cloneDialog(this, repositoryURL, directoryPath);
         cloneDialog.ShowModal();
 
-        //m_workspacePanel->createWorkspace(directoryPath, workspaceName);
+        std::string repositoryName = openGitRepositoryWizard->cloneLocation().GetName();
+        m_workspacePanel->createWorkspaceFromGitRepository(repositoryName);
     }
     openGitRepositoryWizard->Destroy();
 }

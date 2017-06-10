@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -37,6 +37,9 @@
 namespace CodeSmithy
 {
 
+/**
+    The main content pane for the application.
+*/
 class WorkspacePanel : public wxPanel
 {
 public:
@@ -44,9 +47,23 @@ public:
         std::shared_ptr<ActiveWorkspace> activeWorkspace,
         std::shared_ptr<ActiveDocument> activeDocument, 
         const AppSettings& appSettings);
+    /** The destructor. */
     ~WorkspacePanel();
 
+    /**
+       Create a new workspace with the given name and also create a new 
+       workspace repository. This function also updates the active
+       workspace.
+       @param directoryPath The path of the new workspace repository.
+       @param workspaceName The name of the workspace.
+    */
     void createWorkspace(const std::string& directoryPath, const std::string& workspaceName);
+    /**
+       Create a new workspace with the given name. This function also 
+       updates the active workspace.
+       @param workspaceName The name of the workspace.
+    */
+    void createWorkspaceFromGitRepository(const std::string& workspaceName);
     void openWorkspace(const boost::filesystem::path& fileRepositoryPath);
     void saveDocument(const DocumentId& id);
     void closeDocument(const DocumentId& id);
