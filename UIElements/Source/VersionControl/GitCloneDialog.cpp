@@ -21,3 +21,25 @@
 */
 
 #include "VersionControl/GitCloneDialog.h"
+#include "CodeSmithy/Core/VersionControl/GitRepository.h"
+
+namespace CodeSmithy
+{
+
+GitCloneDialog::GitCloneDialog(wxWindow* parent, 
+                               const std::string& repositoryURL,
+                               const std::string& directoryPath)
+    : wxDialog(parent, wxID_ANY, "Git clone"),
+    m_repositoryURL(repositoryURL), m_directoryPath(directoryPath)
+{
+}
+
+int GitCloneDialog::ShowModal()
+{
+    GitRepository repository;
+    repository.clone(m_repositoryURL, m_directoryPath);
+
+    return wxDialog::ShowModal();
+}
+
+}

@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_UIELEMENTS_VERSIONCONTROL_GITCLONEDIALOG_H_
 #define _CODESMITHY_UIELEMENTS_VERSIONCONTROL_GITCLONEDIALOG_H_
 
+#include <wx/dialog.h>
+
+namespace CodeSmithy
+{
+
+class GitCloneDialog : public wxDialog
+{
+public:
+    GitCloneDialog(wxWindow* parent, const std::string& repositoryURL,
+        const std::string& directoryPath);
+
+    int ShowModal() override;
+
+private:
+    std::string m_repositoryURL;
+    std::string m_directoryPath;
+};
+
+}
+
 #endif

@@ -29,7 +29,7 @@
 #include "CodeSmithy/UIImplementation/Wizards/NewProjectWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/OpenGitRepositoryWizard.h"
-#include "CodeSmithy/Core/VersionControl/GitRepository.h"
+#include "CodeSmithy/UIElements/VersionControl/GitCloneDialog.h"
 #include <wx/filedlg.h>
 
 namespace CodeSmithy
@@ -261,11 +261,11 @@ void Frame::OnOpenGitRepository(wxCommandEvent& evt)
     OpenGitRepositoryWizard* openGitRepositoryWizard = new OpenGitRepositoryWizard(this);
     if (openGitRepositoryWizard->RunWizard())
     {
-        std::string directoryPath = openGitRepositoryWizard->cloneLocation().GetFullPath();
         std::string repositoryURL = openGitRepositoryWizard->repositoryURL();
-
-        GitRepository repository;
-        repository.clone(repositoryURL, directoryPath);
+        std::string directoryPath = openGitRepositoryWizard->cloneLocation().GetFullPath();
+        
+        GitCloneDialog cloneDialog(this, repositoryURL, directoryPath);
+        cloneDialog.ShowModal();
 
         //m_workspacePanel->createWorkspace(directoryPath, workspaceName);
     }
