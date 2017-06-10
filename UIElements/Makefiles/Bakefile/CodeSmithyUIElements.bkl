@@ -45,6 +45,8 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/WiXSourceEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/XMLEditorCtrl.h
+
+        ../../../Include/CodeSmithy/UIElements/VersionControl/GitCloneDialog.h
     }
 
     sources
@@ -68,5 +70,7 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/WiXSourceEditorCtrl.cpp
         ../../Source/Editors/XMLDocumentCtrl.cpp
         ../../Source/Editors/XMLEditorCtrl.cpp
+
+        ../../Source/VersionControl/GitCloneDialog.cpp
     }
 }
