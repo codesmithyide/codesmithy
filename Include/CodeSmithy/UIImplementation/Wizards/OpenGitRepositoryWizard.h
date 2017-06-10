@@ -24,6 +24,8 @@
 #define _CODESMITHY_UIIMPLEMENTATION_WIZARDS_OPENGITREPOSITORYWIZARD_H_
 
 #include <wx/wizard.h>
+#include <wx/textctrl.h>
+#include <wx/filepicker.h>
 
 namespace CodeSmithy
 {
@@ -45,6 +47,10 @@ class GitURLPage : public wxWizardPageSimple
 {
 public:
     GitURLPage(wxWizard* parent);
+
+private:
+    wxTextCtrl* m_urlCtrl;
+    wxDirPickerCtrl* m_cloneLocationCtrl;
 };
 
 }

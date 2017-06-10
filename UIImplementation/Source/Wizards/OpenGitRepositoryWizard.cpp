@@ -22,6 +22,7 @@
 
 #include "Wizards/OpenGitRepositoryWizard.h"
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 
 namespace CodeSmithy
 {
@@ -44,8 +45,31 @@ bool OpenGitRepositoryWizard::RunWizard()
 }
 
 GitURLPage::GitURLPage(wxWizard* parent)
-    : wxWizardPageSimple(parent)
+    : wxWizardPageSimple(parent), m_urlCtrl(0),
+    m_cloneLocationCtrl(0)
 {
+    wxStaticText* urlNameLabel = new wxStaticText(this, wxID_ANY, "URL:");
+    m_urlCtrl = new wxTextCtrl(this, wxID_ANY);
+
+    wxBoxSizer* urlSizer = new wxBoxSizer(wxVERTICAL);
+    urlSizer->Add(urlNameLabel, 0);
+    urlSizer->AddSpacer(4);
+    urlSizer->Add(m_urlCtrl, 0, wxEXPAND);
+
+    wxStaticText* locationLabel = new wxStaticText(this, wxID_ANY, "Location:");
+    m_cloneLocationCtrl = new wxDirPickerCtrl(this, wxID_ANY, wxEmptyString,
+        wxDirSelectorPromptStr, wxDefaultPosition, wxSize(400, wxDefaultCoord));
+
+    wxBoxSizer* locationSizer = new wxBoxSizer(wxVERTICAL);
+    locationSizer->Add(locationLabel, 0);
+    locationSizer->AddSpacer(4);
+    locationSizer->Add(m_cloneLocationCtrl, 0, wxEXPAND);
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
+    topSizer->Add(urlSizer, 0, wxEXPAND);
+    topSizer->AddSpacer(15);
+    topSizer->Add(locationSizer, 0, wxEXPAND);
+    SetSizer(topSizer);
 }
 
 }
