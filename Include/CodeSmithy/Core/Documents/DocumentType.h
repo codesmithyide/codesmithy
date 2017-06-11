@@ -33,17 +33,23 @@
 namespace CodeSmithy
 {
 
-/**
-    This class represents the type of a document.
-*/
+/// This abstract class represents the type of a document.
 class DocumentType : public std::enable_shared_from_this<DocumentType>
 {
 public:
+    /// Create a new DocumentType instance with the given type name.
+    /**
+        @param name The name of the type.
+    */
     DocumentType(const std::string& name);
     DocumentType(const std::string& name, const std::string& extension);
-    /** The destructor. */
+    /// The destructor.
     virtual ~DocumentType();
 
+    /// Gets the name of the document type.
+    /**
+        @return The name of the document type.
+    */
     const std::string& name() const;
 
     // Returns the list of extensions typically 

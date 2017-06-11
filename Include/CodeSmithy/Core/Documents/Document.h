@@ -34,10 +34,8 @@ namespace CodeSmithy
 
 class DocumentType;
 
+/// This is the abstract base class for all document classes.
 /**
-    This is the abstract base class for all document 
-    classes.
-
     A document is an entity that a user can load, edit 
     and save. Documents are the basic items that a project
     manages. A project is essentially a list of related 

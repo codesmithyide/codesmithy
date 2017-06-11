@@ -55,7 +55,6 @@ private:
 private:
     HTMLEditorCtrl* m_ctrl;
     std::shared_ptr<HTMLDocument> m_document;
-
 };
 
 }

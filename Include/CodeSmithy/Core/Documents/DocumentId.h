@@ -26,10 +26,9 @@
 namespace CodeSmithy
 {
 
+/// This class represents the identifier that uniquely identifies each document in the workspace.
 /**
-    This class represents the identifier that uniquely
-    identifies each document in the workspace. Each
-    document receives a unique identifier.
+    Each document receives a unique identifier.
 */
 class DocumentId
 {

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,12 +30,12 @@
 namespace CodeSmithy
 {
 
-// Base class for all the controls that can display
-// documents in the OpenDocumentsCtrl
+/// Base class for all the controls that can display documents in the OpenDocumentsCtrl instances.
 class DocumentCtrl : public wxPanel
 {
 public:
     DocumentCtrl(wxWindow* parent);
+    /// The destructor.
     ~DocumentCtrl() override;
 
     virtual std::shared_ptr<const Document> document() const = 0;

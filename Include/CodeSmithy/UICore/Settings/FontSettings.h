@@ -28,9 +28,8 @@
 namespace CodeSmithy
 {
 
+/// This class stores information about a font.
 /**
-    This class stores information about a font.
-
     The information can be stored to and retrieved from an
     XML file.
 */

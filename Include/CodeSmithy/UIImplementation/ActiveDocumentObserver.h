@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -28,6 +28,7 @@
 namespace CodeSmithy
 {
 
+/// The interface that observers of ActiveDocument instances must implement.
 class ActiveDocumentObserver
 {
 public:

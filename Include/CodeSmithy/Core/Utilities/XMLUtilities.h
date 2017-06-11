@@ -28,6 +28,7 @@
 namespace CodeSmithy
 {
 
+/// XML utilities. This class is a wrapper around pugixml.
 /**
     We use pugixml to read and write XML files. However as pugixml is a generic XML library
     we provide a few helper functions in the XMLUtilities class for specific tasks we

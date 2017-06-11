@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,13 +30,21 @@
 namespace CodeSmithy
 {
 
-// This class keeps track of which document is
-// the active one and notifies observers when 
-// another document becomes the active document.
+/// This class keeps track of which document is the active one and notifies observers when another document becomes the active document.
+/**
+    This is to keep track of which document is currently selected and worked on by the user.
+    If you need to be notified of changes to the document itself you need to add an observer that 
+    implements DocumentObserver to the document itself.
+    @see ActiveDocumentObserver
+    @see Document
+    @see DocumentObserver
+*/
 class ActiveDocument
 {
 public:
+    /** Creates a new ActiveDocument instance.*/
     ActiveDocument();
+    /** The destructor. */
     ~ActiveDocument();
 
     std::shared_ptr<Document> activeDocument() const;

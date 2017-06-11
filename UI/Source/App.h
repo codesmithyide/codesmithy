@@ -30,9 +30,8 @@
 namespace CodeSmithy
 {
 
+///  The CodeSmithy application class.
 /**
-    The CodeSmithy application class.
-
     As is typical for a wxWidgets application CodeSmithy defines
     a class derived from wxApp.
 */

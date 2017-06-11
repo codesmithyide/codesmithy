@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -31,6 +31,22 @@
 namespace CodeSmithy
 {
 
+/// The state of the application UI.
+/**
+    This class holds the current state of the user interface
+    such as the documents that are currently open, the list of 
+    recently opened documents and workspaces and other things
+    that are mainly used to allow a user to close and reopen the
+    application in the same state as he left it. All information
+    stored here should be non-essential and only seen as a convenience
+    to the user. Losing the state should only result in mild
+    annoyance to the user.
+
+    The AppSettings class should be used for settings that are
+    supposed to be more persistent.
+
+    @see AppSettings
+*/
 class AppState
 {
 public:
