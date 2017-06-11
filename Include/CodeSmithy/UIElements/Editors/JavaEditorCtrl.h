@@ -23,4 +23,21 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_JAVAEDITORCTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_JAVAEDITORCTRL_H_
 
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
+
+namespace CodeSmithy
+{
+
+class JavaEditorCtrl : public wxStyledTextCtrl
+{
+public:
+    JavaEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
+
+private:
+    void setStyle(const AppSettings& appSettings);
+};
+
+}
+
 #endif

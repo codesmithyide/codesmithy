@@ -23,4 +23,40 @@
 #ifndef _CODESMITHY_UIELEMENTS_EDITORS_TEXTFILECTRL_H_
 #define _CODESMITHY_UIELEMENTS_EDITORS_TEXTFILECTRL_H_
 
+#include "DocumentCtrl.h"
+#include "TextEditorCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/TextFile.h"
+
+namespace CodeSmithy
+{
+
+class TextFileCtrl : public DocumentCtrl
+{
+public:
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    TextFileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void cut() override;
+    void copy() override;
+    void paste() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) override;
+
+    void onModified(wxStyledTextEvent& evt);
+
+private:
+    TextEditorCtrl* m_ctrl;
+    std::shared_ptr<TextFile> m_document;
+};
+
+}
+
 #endif

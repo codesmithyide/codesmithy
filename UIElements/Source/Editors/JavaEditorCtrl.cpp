@@ -21,3 +21,24 @@
 */
 
 #include "Editors/JavaEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+JavaEditorCtrl::JavaEditorCtrl(wxWindow* parent,
+                               const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+    SetLexer(wxSTC_LEX_CPP);
+    setStyle(appSettings);
+}
+
+void JavaEditorCtrl::setStyle(const AppSettings& appSettings)
+{
+    wxFont font = StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().javaFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().javaFontSettings().pointSize());
+    StyleSetFont(wxSTC_C_DEFAULT, font);
+}
+
+}

@@ -21,3 +21,24 @@
 */
 
 #include "Editors/TextEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+TextEditorCtrl::TextEditorCtrl(wxWindow* parent,
+                               const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+    SetLexer(wxSTC_LEX_CPP);
+    setStyle(appSettings);
+}
+
+void TextEditorCtrl::setStyle(const AppSettings& appSettings)
+{
+    wxFont font = StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().textFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().textFontSettings().pointSize());
+    StyleSetFont(wxSTC_C_DEFAULT, font);
+}
+
+}

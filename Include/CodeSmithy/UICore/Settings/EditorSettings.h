@@ -28,50 +28,56 @@
 #include "CMakeListsEditorSettings.h"
 #include "CppEditorSettings.h"
 #include "HTMLEditorSettings.h"
+#include "JavaEditorSettings.h"
 #include "JavaScriptEditorSettings.h"
 #include "PowerShellEditorSettings.h"
 #include "PythonEditorSettings.h"
+#include "TextEditorSettings.h"
 #include "XMLEditorSettings.h"
 #include <pugixml.hpp>
 
 namespace CodeSmithy
 {
 
+/// This class contains all the settings for all the controls that allow users to edit the various document types.
 /**
-    This class contains all the settings for all the controls
-    that allow users to edit the various document types.
-
     The settings can be stored to and retrieved from an XML file.
 */
 class EditorSettings
 {
 public:
     EditorSettings();
-    /** The destructor. */
+    /// The destructor.
     ~EditorSettings();
 
+    /// Gets the Bakefile editor font settings or the default settings as appropriate.
     /**
-        Gets the Bakefile editor font settings or the default settings
-        as appropriate.
         @return The font settings to use for the bakefile editor.
     */
     const FontSettings& bakefileFontSettings() const;
+    /// Gets the C++ editor font settings or the default settings as appropriate. 
     /**
-        Gets the C++ editor font settings or the default settings
-        as appropriate.
         @return The font settings to use for the C++ editor.
     */
     const FontSettings& cppFontSettings() const;
+    /// Gets the Java editor font settings or the default settings as appropriate.
     /**
-        Gets the JavaScript editor font settings or the default settings
-        as appropriate.
+    @return The font settings to use for the Java editor.
+    */
+    const FontSettings& javaFontSettings() const;
+    /// Gets the JavaScript editor font settings or the default settings as appropriate.
+    /**
         @return The font settings to use for the JavaScript editor.
     */
     const FontSettings& javascriptFontSettings() const;
+    /// Gets the text editor font settings or the default settings as appropriate.
     /**
-        Gets the XML editor font settings or the default settings
-        as appropriate.
-        @return The font settings to use for the XML editor.
+        @return The font settings to use for the text editor.
+    */
+    const FontSettings& textFontSettings() const;
+    /// Gets the XML editor font settings or the default settings as appropriate.
+    /**
+    @return The font settings to use for the XML editor.
     */
     const FontSettings& xmlFontSettings() const;
 
@@ -103,9 +109,11 @@ private:
     CMakeListsEditorSettings m_cmakelistsEditorSettings;
     CppEditorSettings m_cppEditorSettings;
     HTMLEditorSettings m_htmlEditorSettings;
+    JavaEditorSettings m_javaEditorSettings;
     JavaScriptEditorSettings m_javascriptEditorSettings;
     PowerShellEditorSettings m_powershellEditorSettings;
     PythonEditorSettings m_pythonEditorSettings;
+    TextEditorSettings m_textEditorSettings;
     XMLEditorSettings m_xmlEditorSettings;
 };
 

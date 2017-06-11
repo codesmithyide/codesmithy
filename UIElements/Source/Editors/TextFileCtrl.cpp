@@ -21,3 +21,71 @@
 */
 
 #include "Editors/TextFileCtrl.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+wxWindow* TextFileCtrl::Create(wxWindow *parent,
+                               std::shared_ptr<Document> document,
+                               const AppSettings& appSettings)
+{
+    return new TextFileCtrl(parent, document, appSettings);
+}
+
+TextFileCtrl::TextFileCtrl(wxWindow* parent,
+                           std::shared_ptr<Document> document,
+                           const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
+{
+    m_ctrl = new TextEditorCtrl(this, appSettings);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &TextFileCtrl::onModified, this);
+
+    m_document = std::dynamic_pointer_cast<TextFile, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
+}
+
+std::shared_ptr<const Document> TextFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> TextFileCtrl::document()
+{
+    return m_document;
+}
+
+void TextFileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void TextFileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void TextFileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
+void TextFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_ctrl->SaveFile(path.string());
+    m_document->setModified(false);
+}
+
+void TextFileCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
+}
+
+}

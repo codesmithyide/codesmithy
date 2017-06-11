@@ -27,9 +27,11 @@
 #include "CodeSmithy/UIElements/Editors/CMakeListsCtrl.h"
 #include "CodeSmithy/UIElements/Editors/CppFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/HTMLDocumentCtrl.h"
+#include "CodeSmithy/UIElements/Editors/JavaFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/JavaScriptFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PythonFileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/TextFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/WiXSourceFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
@@ -63,11 +65,11 @@ App::App()
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<HTMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(HTMLDocumentCtrl::Create)));
-    m_documentTypes->add(std::make_shared<JavaSourceFileType>());
+    m_documentTypes->add(std::make_shared<JavaSourceFileType>(std::make_shared<ControlCreationDocumentTypeData>(JavaFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<JavaScriptFileType>(std::make_shared<ControlCreationDocumentTypeData>(JavaScriptFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PowerShellFileType>(std::make_shared<ControlCreationDocumentTypeData>(PowerShellFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PythonFileType>(std::make_shared<ControlCreationDocumentTypeData>(PythonFileCtrl::Create)));
-    m_documentTypes->add(std::make_shared<TextFileType>());
+    m_documentTypes->add(std::make_shared<TextFileType>(std::make_shared<ControlCreationDocumentTypeData>(TextFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<WiXSourceFileType>(std::make_shared<ControlCreationDocumentTypeData>(WiXSourceFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<XMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(XMLDocumentCtrl::Create)));
 

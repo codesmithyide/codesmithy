@@ -31,9 +31,11 @@ static const char* bakefileEditorSettingsElementName = "bakefile-editor-settings
 static const char* cmakelistsEditorSettingsElementName = "cmakelists-editor-settings";
 static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 static const char* htmlEditorSettingsElementName = "html-editor-settings";
+static const char* javaEditorSettingsElementName = "java-editor-settings";
 static const char* javascriptEditorSettingsElementName = "javascript-editor-settings";
 static const char* powershellEditorSettingsElementName = "powershell-editor-settings";
 static const char* pythonEditorSettingsElementName = "python-editor-settings";
+static const char* textEditorSettingsElementName = "text-editor-settings";
 static const char* xmlEditorSettingsElementName = "xml-editor-settings";
 
 EditorSettings::EditorSettings()
@@ -68,6 +70,18 @@ const FontSettings& EditorSettings::cppFontSettings() const
     }
 }
 
+const FontSettings& EditorSettings::javaFontSettings() const
+{
+    if (m_javaEditorSettings.useDefaultSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_javaEditorSettings.fontSettings();
+    }
+}
+
 const FontSettings& EditorSettings::javascriptFontSettings() const
 {
     if (m_javascriptEditorSettings.useDefaultSettings())
@@ -77,6 +91,18 @@ const FontSettings& EditorSettings::javascriptFontSettings() const
     else
     {
         return m_javascriptEditorSettings.fontSettings();
+    }
+}
+
+const FontSettings& EditorSettings::textFontSettings() const
+{
+    if (m_textEditorSettings.useDefaultSettings())
+    {
+        return m_defaultEditorSettings.fontSettings();
+    }
+    else
+    {
+        return m_textEditorSettings.fontSettings();
     }
 }
 
@@ -192,12 +218,16 @@ void EditorSettings::load(pugi::xml_node node)
     m_cppEditorSettings.load(cppEditorSettingsNode);
     pugi::xml_node htmlEditorSettingsNode = node.child(htmlEditorSettingsElementName);
     m_htmlEditorSettings.load(htmlEditorSettingsNode);
+    pugi::xml_node javaEditorSettingsNode = node.child(javaEditorSettingsElementName);
+    m_javaEditorSettings.load(javaEditorSettingsNode);
     pugi::xml_node javascriptEditorSettingsNode = node.child(javascriptEditorSettingsElementName);
     m_javascriptEditorSettings.load(javascriptEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = node.child(powershellEditorSettingsElementName);
     m_powershellEditorSettings.load(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = node.child(pythonEditorSettingsElementName);
     m_pythonEditorSettings.load(pythonEditorSettingsNode);
+    pugi::xml_node textEditorSettingsNode = node.child(textEditorSettingsElementName);
+    m_textEditorSettings.load(textEditorSettingsNode);
     pugi::xml_node xmlEditorSettingsNode = node.child(xmlEditorSettingsElementName);
     m_xmlEditorSettings.load(xmlEditorSettingsNode);
 }
@@ -214,12 +244,16 @@ void EditorSettings::save(pugi::xml_node node) const
     m_cppEditorSettings.save(cppEditorSettingsNode);
     pugi::xml_node htmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, htmlEditorSettingsElementName);
     m_htmlEditorSettings.save(htmlEditorSettingsNode);
+    pugi::xml_node javaEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, javaEditorSettingsElementName);
+    m_javaEditorSettings.save(javaEditorSettingsNode);
     pugi::xml_node javascriptEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, javascriptEditorSettingsElementName);
     m_javascriptEditorSettings.save(javascriptEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, powershellEditorSettingsElementName);
     m_powershellEditorSettings.save(powershellEditorSettingsNode);
     pugi::xml_node pythonEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, pythonEditorSettingsElementName);
     m_pythonEditorSettings.save(pythonEditorSettingsNode);
+    pugi::xml_node textEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, textEditorSettingsElementName);
+    m_textEditorSettings.save(textEditorSettingsNode);
     pugi::xml_node xmlEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, xmlEditorSettingsElementName);
     m_xmlEditorSettings.save(xmlEditorSettingsNode);
 }
