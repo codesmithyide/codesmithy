@@ -35,12 +35,16 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/CppEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/HTMLDocumentCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/HTMLEditorCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/JavaFileCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/JavaEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/JavaScriptFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/JavaScriptEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PythonFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PythonEditorCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/TextFileCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/TextEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/WiXSourceFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/WiXSourceEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h
@@ -60,12 +64,16 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/CppEditorCtrl.cpp
         ../../Source/Editors/HTMLDocumentCtrl.cpp
         ../../Source/Editors/HTMLEditorCtrl.cpp
+        ../../Source/Editors/JavaFileCtrl.cpp
+        ../../Source/Editors/JavaEditorCtrl.cpp
         ../../Source/Editors/JavaScriptFileCtrl.cpp
         ../../Source/Editors/JavaScriptEditorCtrl.cpp
         ../../Source/Editors/PowerShellFileCtrl.cpp
         ../../Source/Editors/PowerShellEditorCtrl.cpp
         ../../Source/Editors/PythonFileCtrl.cpp
         ../../Source/Editors/PythonEditorCtrl.cpp
+        ../../Source/Editors/TextFileCtrl.cpp
+        ../../Source/Editors/TextEditorCtrl.cpp
         ../../Source/Editors/WiXSourceFileCtrl.cpp
         ../../Source/Editors/WiXSourceEditorCtrl.cpp
         ../../Source/Editors/XMLDocumentCtrl.cpp

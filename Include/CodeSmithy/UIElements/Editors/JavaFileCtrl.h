@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2017 Xavier Leclercq
+    Copyright (c) 2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,22 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UICORE_LOGS_UILOG_H_
-#define _CODESMITHY_UICORE_LOGS_UILOG_H_
-
-#include "../Settings/AdvancedSettings.h"
-
-namespace CodeSmithy
-{
-
-/// A class to log what happens in the UI. This is for debugging.
-class UILog
-{
-public:
-    UILog(AdvancedSettings::EUILogLevel logLevel);
-    ~UILog();
-};
-
-}
+#ifndef _CODESMITHY_UIELEMENTS_EDITORS_JAVAFILECTRL_H_
+#define _CODESMITHY_UIELEMENTS_EDITORS_JAVAFILECTRL_H_
 
 #endif
