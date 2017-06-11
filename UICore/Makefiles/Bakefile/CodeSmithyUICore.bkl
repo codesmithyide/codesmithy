@@ -38,9 +38,11 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/CMakeListsEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/CppEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/HTMLEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/JavaEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/JavaScriptEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/PowerShellEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/PythonEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/TextEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/XMLEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/FontSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/StyleSettings.h
@@ -84,9 +86,11 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/CMakeListsEditorSettings.cpp
         ../../Source/Settings/CppEditorSettings.cpp
         ../../Source/Settings/HTMLEditorSettings.cpp
+        ../../Source/Settings/JavaEditorSettings.cpp
         ../../Source/Settings/JavaScriptEditorSettings.cpp
         ../../Source/Settings/PowerShellEditorSettings.cpp
         ../../Source/Settings/PythonEditorSettings.cpp
+        ../../Source/Settings/TextEditorSettings.cpp
         ../../Source/Settings/XMLEditorSettings.cpp
         ../../Source/Settings/FontSettings.cpp
         ../../Source/Settings/StyleSettings.cpp

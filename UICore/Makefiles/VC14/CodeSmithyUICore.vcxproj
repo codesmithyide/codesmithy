@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UICore</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -161,9 +161,11 @@
     <ClCompile Include="..\..\Source\Settings\CMakeListsEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\CppEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\HTMLEditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\JavaEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\JavaScriptEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\PowerShellEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\PythonEditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\TextEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\XMLEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\FontSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\StyleSettings.cpp" />
@@ -200,9 +202,11 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CMakeListsEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\CppEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\HTMLEditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\JavaEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\JavaScriptEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PowerShellEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PythonEditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\TextEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\XMLEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\FontSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\StyleSettings.h" />
