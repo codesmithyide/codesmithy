@@ -35,6 +35,7 @@
 #include "CodeSmithy/UIElements/Editors/WiXSourceFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
+#include "CodeSmithy/Core/Documents/BinaryFileType.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
@@ -61,6 +62,7 @@ App::App()
     // the CodeSmithy UI.
     m_documentTypes = std::make_shared<DocumentTypes>();
     m_documentTypes->add(std::make_shared<BakefileType>(std::make_shared<ControlCreationDocumentTypeData>(BakefileCtrl::Create)));
+    m_documentTypes->add(std::make_shared<BinaryFileType>(std::make_shared<ControlCreationDocumentTypeData>(BinaryFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<CMakeListsType>(std::make_shared<ControlCreationDocumentTypeData>(CMakeListsCtrl::Create)));
     m_documentTypes->add(std::make_shared<CodeSmithyProjectFileType>());
     m_documentTypes->add(std::make_shared<CppFileType>(std::make_shared<ControlCreationDocumentTypeData>(CppFileCtrl::Create)));

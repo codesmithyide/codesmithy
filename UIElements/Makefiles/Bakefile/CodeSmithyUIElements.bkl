@@ -29,6 +29,7 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/DocumentCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/BakefileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/BakefileEditorCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/BinaryFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/CMakeListsCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/CMakeListsEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/CppFileCtrl.h
@@ -58,6 +59,7 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/DocumentCtrl.cpp
         ../../Source/Editors/BakefileCtrl.cpp
         ../../Source/Editors/BakefileEditorCtrl.cpp
+        ../../Source/Editors/BinaryFileCtrl.cpp
         ../../Source/Editors/CMakeListsCtrl.cpp
         ../../Source/Editors/CMakeListsEditorCtrl.cpp
         ../../Source/Editors/CppFileCtrl.cpp
