@@ -53,6 +53,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Documents/JavaSourceFileType.h
         ../../../Include/CodeSmithy/Core/Documents/PowerShellFile.h
         ../../../Include/CodeSmithy/Core/Documents/PowerShellFileType.h
+        ../../../Include/CodeSmithy/Core/Documents/PugFile.h
+        ../../../Include/CodeSmithy/Core/Documents/PugFileType.h
         ../../../Include/CodeSmithy/Core/Documents/PythonFile.h
         ../../../Include/CodeSmithy/Core/Documents/PythonFileType.h
         ../../../Include/CodeSmithy/Core/Documents/TextFile.h
@@ -128,6 +130,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Documents/JavaSourceFileType.cpp
         ../../Source/Documents/PowerShellFile.cpp
         ../../Source/Documents/PowerShellFileType.cpp
+        ../../Source/Documents/PugFile.cpp
+        ../../Source/Documents/PugFileType.cpp
         ../../Source/Documents/PythonFile.cpp
         ../../Source/Documents/PythonFileType.cpp
         ../../Source/Documents/TextFile.cpp

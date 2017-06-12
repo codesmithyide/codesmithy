@@ -178,6 +178,8 @@
     <ClCompile Include="..\..\Source\Documents\JavaSourceFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PowerShellFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\PowerShellFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PugFile.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PugFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\PythonFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\TextFile.cpp" />
@@ -241,6 +243,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFile.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFile.h" />
