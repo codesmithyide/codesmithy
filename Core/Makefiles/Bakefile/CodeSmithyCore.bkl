@@ -36,6 +36,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Documents/DocumentsObserver.h
         ../../../Include/CodeSmithy/Core/Documents/Bakefile.h
         ../../../Include/CodeSmithy/Core/Documents/BakefileType.h
+        ../../../Include/CodeSmithy/Core/Documents/BinaryFile.h
+        ../../../Include/CodeSmithy/Core/Documents/BinaryFileType.h
         ../../../Include/CodeSmithy/Core/Documents/CMakeLists.h
         ../../../Include/CodeSmithy/Core/Documents/CMakeListsType.h
         ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFile.h
@@ -109,6 +111,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Documents/DocumentsObserver.cpp
         ../../Source/Documents/Bakefile.cpp
         ../../Source/Documents/BakefileType.cpp
+        ../../Source/Documents/BinaryFile.cpp
+        ../../Source/Documents/BinaryFileType.cpp
         ../../Source/Documents/CMakeLists.cpp
         ../../Source/Documents/CMakeListsType.cpp
         ../../Source/Documents/CodeSmithyProjectFile.cpp
