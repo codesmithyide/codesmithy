@@ -21,3 +21,32 @@
 */
 
 #include "Documents/BinaryFileType.h"
+#include "Documents/BinaryFile.h"
+
+namespace CodeSmithy
+{
+
+BinaryFileType::BinaryFileType()
+    : DocumentType("Binary File")
+{
+}
+
+BinaryFileType::BinaryFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("Binary File")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> BinaryFileType::createNewDocument(const DocumentId& id,
+                                                            const std::string& name) const
+{
+    return std::make_shared<BinaryFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> BinaryFileType::createDocumentFromFile(const DocumentId& id,
+                                                                 const boost::filesystem::path& path) const
+{
+    return std::make_shared<BinaryFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}

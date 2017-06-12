@@ -29,9 +29,7 @@
 namespace CodeSmithy
 {
 
-/**
-    This document class represents Bakefile project files.
-*/
+/// This document class represents Bakefile project files.
 class Bakefile : public Document
 {
 public:
@@ -39,7 +37,7 @@ public:
         const std::string& name);
     Bakefile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
         const std::string& name, const boost::filesystem::path& path);
-    /** The destructor. */
+    /// The destructor.
     ~Bakefile() override;
 
 private:

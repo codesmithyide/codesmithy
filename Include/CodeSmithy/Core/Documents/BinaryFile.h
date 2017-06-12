@@ -23,4 +23,27 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_BINARYFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_BINARYFILE_H_
 
+#include "Document.h"
+#include <boost/filesystem/path.hpp>
+
+namespace CodeSmithy
+{
+
+/// This document class is used to display files in their binary form.
+class BinaryFile : public Document
+{
+public:
+    BinaryFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    BinaryFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+    /// The destructor.
+    ~BinaryFile() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif
