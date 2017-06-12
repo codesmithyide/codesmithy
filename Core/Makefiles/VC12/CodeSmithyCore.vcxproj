@@ -176,6 +176,8 @@
     <ClCompile Include="..\..\Source\Documents\JavaScriptFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\JavaSourceFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\JavaSourceFileType.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PackageJSONFile.cpp" />
+    <ClCompile Include="..\..\Source\Documents\PackageJSONFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PowerShellFile.cpp" />
     <ClCompile Include="..\..\Source\Documents\PowerShellFileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\PugFile.cpp" />
@@ -241,6 +243,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaScriptFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFileType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFile.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFile.h" />
