@@ -6,6 +6,7 @@
 *.opendb
 *.vc.db
 *.pdb
+.vs
 Debug/
 Release/
 Bin/

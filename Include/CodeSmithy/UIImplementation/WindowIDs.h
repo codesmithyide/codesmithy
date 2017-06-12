@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -69,9 +69,13 @@ const wxWindowID PreferencesBakefileEditorPreferencesApplyButtonID = Preferences
 
 const wxWindowID PreferencesCppEditorPreferencesApplyButtonID = PreferencesBakefileEditorPreferencesApplyButtonID + 1;
 
-const wxWindowID PreferencesJavaScriptEditorPreferencesApplyButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesJavaEditorPreferencesApplyButtonID = PreferencesCppEditorPreferencesApplyButtonID + 1;
 
-const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesJavaScriptEditorPreferencesApplyButtonID + 1;
+const wxWindowID PreferencesJavaScriptEditorPreferencesApplyButtonID = PreferencesJavaEditorPreferencesApplyButtonID + 1;
+
+const wxWindowID PreferencesTextEditorPreferencesApplyButtonID = PreferencesJavaScriptEditorPreferencesApplyButtonID + 1;
+
+const wxWindowID PreferencesXMLEditorPreferencesApplyButtonID = PreferencesTextEditorPreferencesApplyButtonID + 1;
 
 const wxWindowID PreferencesStartupFixedSizeButtonID = PreferencesXMLEditorPreferencesApplyButtonID + 1;
 const wxWindowID PreferencesStartupPreviousSizeButtonID = PreferencesStartupFixedSizeButtonID + 1;

@@ -91,12 +91,16 @@ public:
     CppEditorSettings& cppSettings();
     const HTMLEditorSettings& htmlSettings() const;
     HTMLEditorSettings& htmlSettings();
+    const JavaEditorSettings& javaSettings() const;
+    JavaEditorSettings& javaSettings();
     const JavaScriptEditorSettings& javascriptSettings() const;
     JavaScriptEditorSettings& javascriptSettings();
     const PowerShellEditorSettings& powershellSettings() const;
     PowerShellEditorSettings& powershellSettings();
     const PythonEditorSettings& pythonSettings() const;
     PythonEditorSettings& pythonSettings();
+    const TextEditorSettings& textSettings() const;
+    TextEditorSettings& textSettings();
     const XMLEditorSettings& xmlSettings() const;
     XMLEditorSettings& xmlSettings();
 

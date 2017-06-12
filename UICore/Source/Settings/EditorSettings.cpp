@@ -168,6 +168,16 @@ HTMLEditorSettings& EditorSettings::htmlSettings()
     return m_htmlEditorSettings;
 }
 
+const JavaEditorSettings& EditorSettings::javaSettings() const
+{
+    return m_javaEditorSettings;
+}
+
+JavaEditorSettings& EditorSettings::javaSettings()
+{
+    return m_javaEditorSettings;
+}
+
 const JavaScriptEditorSettings& EditorSettings::javascriptSettings() const
 {
     return m_javascriptEditorSettings;
@@ -196,6 +206,16 @@ const PythonEditorSettings& EditorSettings::pythonSettings() const
 PythonEditorSettings& EditorSettings::pythonSettings()
 {
     return m_pythonEditorSettings;
+}
+
+const TextEditorSettings& EditorSettings::textSettings() const
+{
+    return m_textEditorSettings;
+}
+
+TextEditorSettings& EditorSettings::textSettings()
+{
+    return m_textEditorSettings;
 }
 
 const XMLEditorSettings& EditorSettings::xmlSettings() const

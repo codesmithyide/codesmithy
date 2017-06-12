@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,9 +35,11 @@ public:
     static EditorId CMakeListsEditorId;
     static EditorId CppEditorId;
     static EditorId HTMLEditorId;
+    static EditorId JavaEditorId;
     static EditorId JavaScriptEditorId;
     static EditorId PowerShellEditorId;
     static EditorId PythonEditorId;
+    static EditorId TextEditorId;
     static EditorId XMLEditorId;
 
 public:

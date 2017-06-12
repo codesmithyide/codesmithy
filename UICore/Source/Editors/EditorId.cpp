@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -29,9 +29,11 @@ EditorId EditorId::BakefileEditorId("CodeSmithy.Editor.Bakefile");
 EditorId EditorId::CMakeListsEditorId("CodeSmithy.Editor.CMakeLists");
 EditorId EditorId::CppEditorId("CodeSmithy.Editor.Cpp");
 EditorId EditorId::HTMLEditorId("CodeSmithy.Editor.HTML");
+EditorId EditorId::JavaEditorId("CodeSmithy.Editor.Java");
 EditorId EditorId::JavaScriptEditorId("CodeSmithy.Editor.JavaScript");
 EditorId EditorId::PowerShellEditorId("CodeSmithy.Editor.PowerShell");
 EditorId EditorId::PythonEditorId("CodeSmithy.Editor.Python");
+EditorId EditorId::TextEditorId("CodeSmithy.Editor.Text");
 EditorId EditorId::XMLEditorId("CodeSmithy.Editor.XML");
 
 EditorId::EditorId(const char* stringForm)

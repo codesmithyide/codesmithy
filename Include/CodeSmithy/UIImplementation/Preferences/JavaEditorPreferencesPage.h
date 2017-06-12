@@ -23,4 +23,34 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_JAVAEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_JAVAEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+#include "CodeSmithy/UIElements/Editors/JavaEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+class JavaEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    JavaEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void onApply(wxCommandEvent& evt);
+
+    void updateExample() override;
+    
+private:
+    JavaEditorSettings m_newSettings;
+    JavaEditorCtrl* m_formatExample;
+
+    wxDECLARE_EVENT_TABLE();
+};
+
+}
+
 #endif

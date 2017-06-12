@@ -23,4 +23,34 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_TEXTEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_TEXTEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+#include "CodeSmithy/UIElements/Editors/TextEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+class TextEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    TextEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void onApply(wxCommandEvent& evt);
+
+    void updateExample() override;
+    
+private:
+    TextEditorSettings m_newSettings;
+    TextEditorCtrl* m_formatExample;
+
+    wxDECLARE_EVENT_TABLE();
+};
+
+}
+
 #endif

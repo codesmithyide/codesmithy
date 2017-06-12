@@ -26,9 +26,11 @@
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/HTMLEditorPreferencesPage.h"
+#include "Preferences/JavaEditorPreferencesPage.h"
 #include "Preferences/JavaScriptEditorPreferencesPage.h"
 #include "Preferences/PowerShellEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
+#include "Preferences/TextEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
 #include "Preferences/BakefileToolPreferencesPage.h"
 #include "Preferences/GitBashToolPreferencesPage.h"
@@ -85,12 +87,16 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(cppPage, "C/C++");
     HTMLEditorPreferencesPage* htmlPage = new HTMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(htmlPage, "HTML");
+    JavaEditorPreferencesPage* javaPage = new JavaEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(javaPage, "Java");
     JavaScriptEditorPreferencesPage* javascriptPage = new JavaScriptEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(javascriptPage, "JavaScript");
     PowerShellEditorPreferencesPage* powershellPage = new PowerShellEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(powershellPage, "PowerShell");
     PythonEditorPreferencesPage* pythonPage = new PythonEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(pythonPage, "Python");
+    TextEditorPreferencesPage* textPage = new TextEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(textPage, "Text");
     XMLEditorPreferencesPage* xmlPage = new XMLEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(xmlPage, "XML");
 }
