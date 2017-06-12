@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;$(CODESMITHY)\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -175,9 +175,11 @@
     <ClCompile Include="..\..\Source\Preferences\CMakeListsEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\CppEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\HTMLEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\JavaEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\JavaScriptEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PowerShellEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PythonEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\TextEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\XMLEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\BakefileToolPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\GitBashToolPreferencesPage.cpp" />
@@ -216,9 +218,11 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CMakeListsEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CppEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\HTMLEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\JavaEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\JavaScriptEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PowerShellEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PythonEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\TextEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\XMLEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileToolPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\GitBashToolPreferencesPage.h" />

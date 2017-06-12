@@ -54,9 +54,11 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/Preferences/CMakeListsEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/CppEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/HTMLEditorPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/JavaEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/JavaScriptEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PowerShellEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/PythonEditorPreferencesPage.h
+        ../../../Include/CodeSmithy/UIImplementation/Preferences/TextEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/XMLEditorPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/BakefileToolPreferencesPage.h
         ../../../Include/CodeSmithy/UIImplementation/Preferences/GitBashToolPreferencesPage.h
@@ -99,9 +101,11 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../Source/Preferences/CMakeListsEditorPreferencesPage.cpp
         ../../Source/Preferences/CppEditorPreferencesPage.cpp
         ../../Source/Preferences/HTMLEditorPreferencesPage.cpp
+        ../../Source/Preferences/JavaEditorPreferencesPage.cpp
         ../../Source/Preferences/JavaScriptEditorPreferencesPage.cpp
         ../../Source/Preferences/PowerShellEditorPreferencesPage.cpp
         ../../Source/Preferences/PythonEditorPreferencesPage.cpp
+        ../../Source/Preferences/TextEditorPreferencesPage.cpp
         ../../Source/Preferences/XMLEditorPreferencesPage.cpp
         ../../Source/Preferences/BakefileToolPreferencesPage.cpp
         ../../Source/Preferences/GitBashToolPreferencesPage.cpp
