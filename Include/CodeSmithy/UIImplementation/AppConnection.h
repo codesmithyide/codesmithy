@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_APPCONNECTION_H_
 #define _CODESMITHY_UIIMPLEMENTATION_APPCONNECTION_H_
 
+#include "AppServer.h"
+#include <wx/ipc.h>
+
+namespace CodeSmithy
+{
+
+class AppConnection : public wxConnection
+{
+public:
+    AppConnection(AppServer& server);
+
+    bool OnExecute(const wxString& topic, const void* data,
+        size_t size, wxIPCFormat format) override;
+
+private:
+    AppServer& m_server;
+};
+
+}
+
 #endif

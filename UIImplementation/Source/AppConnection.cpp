@@ -21,3 +21,22 @@
 */
 
 #include "AppConnection.h"
+
+namespace CodeSmithy
+{
+
+AppConnection::AppConnection(AppServer& server)
+    : m_server(server)
+{
+}
+
+bool AppConnection::OnExecute(const wxString& topic,
+                              const void* data,
+                              size_t size,
+                              wxIPCFormat format)
+{
+
+    return false;
+}
+
+}

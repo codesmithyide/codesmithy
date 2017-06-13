@@ -23,9 +23,11 @@
 #ifndef _CODESMITHY_UI_APP_H_
 #define _CODESMITHY_UI_APP_H_
 
+#include "CodeSmithy/UIImplementation/AppServer.h"
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Projects/ProjectTypes.h"
 #include <wx/app.h>
+#include <wx/snglinst.h>
 
 namespace CodeSmithy
 {
@@ -41,8 +43,11 @@ public:
     App();
 
     bool OnInit() wxOVERRIDE;
+    int OnExit() wxOVERRIDE;
 
 private:
+    wxSingleInstanceChecker* m_singleInstanceChecker;
+    AppServer* m_appServer;
     std::shared_ptr<DocumentTypes> m_documentTypes;
     std::shared_ptr<ProjectTypes> m_projectTypes;
 };

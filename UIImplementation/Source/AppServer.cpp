@@ -21,3 +21,14 @@
 */
 
 #include "AppServer.h"
+#include "AppConnection.h"
+
+namespace CodeSmithy
+{
+
+wxConnectionBase* AppServer::OnAcceptConnection(const wxString& topic)
+{
+    return new AppConnection(*this);
+}
+
+}

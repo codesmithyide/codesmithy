@@ -93,6 +93,32 @@ App::App()
 
 bool App::OnInit()
 {
+#ifdef _WIN32
+    m_singleInstanceChecker = new wxSingleInstanceChecker();
+    if (m_singleInstanceChecker->CreateDefault() && 
+        m_singleInstanceChecker->IsAnotherRunning())
+    {
+        wxClient client;
+        bool success = false;
+        wxConnectionBase *connection = client.MakeConnection("localhost", "4242", "a_topic");
+        if (connection)
+        {
+            bool success = connection->Execute("raise");
+            delete connection;
+        }
+
+        if (success)
+        {
+            delete m_singleInstanceChecker;
+            m_singleInstanceChecker = 0;
+            return false;
+        }
+    }
+
+    m_appServer = new AppServer();
+    m_appServer->Create("4242");
+#endif
+
     Frame* frame = new Frame(L"CodeSmithy", *m_documentTypes, *m_projectTypes);
     frame->Show(true);
 
@@ -102,6 +128,15 @@ bool App::OnInit()
     }
 
     return true;
+}
+
+int App::OnExit()
+{
+    delete m_appServer;
+    m_appServer = 0;
+    delete m_singleInstanceChecker;
+    m_singleInstanceChecker = 0;
+    return wxApp::OnExit();
 }
 
 }

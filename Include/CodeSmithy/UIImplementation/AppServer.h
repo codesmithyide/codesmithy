@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_APPSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_APPSERVER_H_
 
+#include <wx/ipc.h>
+
+namespace CodeSmithy
+{
+
+class AppServer : public wxServer
+{
+public:
+    wxConnectionBase* OnAcceptConnection(const wxString& topic) override;
+};
+
+}
+
 #endif
