@@ -20,24 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
-#define _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
+#ifndef _CODESMITHY_UIELEMENTS_EDITORS_PACKAGEJSONEDITORCTRL_H_
+#define _CODESMITHY_UIELEMENTS_EDITORS_PACKAGEJSONEDITORCTRL_H_
 
-#include "DocumentType.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include <wx/stc/stc.h>
 
 namespace CodeSmithy
 {
 
-class PackageJSONFileType : public DocumentType
+class PackageJSONEditorCtrl : public wxStyledTextCtrl
 {
 public:
-    PackageJSONFileType();
-    PackageJSONFileType(std::shared_ptr<CustomDocumentTypeData> customData);
-
-    std::shared_ptr<Document> createNewDocument(const DocumentId& id,
-        const std::string& name) const override;
-    std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
-        const boost::filesystem::path& path) const override;
+    PackageJSONEditorCtrl(wxWindow* parent, const AppSettings& appSettings);
 };
 
 }

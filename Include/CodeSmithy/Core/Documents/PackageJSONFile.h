@@ -23,4 +23,24 @@
 #ifndef _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILE_H_
 #define _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILE_H_
 
+#include "Document.h"
+
+namespace CodeSmithy
+{
+
+class PackageJSONFile : public Document
+{
+public:
+    PackageJSONFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name);
+    PackageJSONFile(const std::shared_ptr<const DocumentType> type, const DocumentId& id,
+        const std::string& name, const boost::filesystem::path& path);
+    ~PackageJSONFile() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) const override;
+};
+
+}
+
 #endif

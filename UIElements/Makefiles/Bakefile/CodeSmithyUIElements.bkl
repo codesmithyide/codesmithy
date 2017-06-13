@@ -40,6 +40,8 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/JavaEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/JavaScriptFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/JavaScriptEditorCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/PackageJSONFileCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/PackageJSONEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PugFileCtrl.h
@@ -72,6 +74,8 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/JavaEditorCtrl.cpp
         ../../Source/Editors/JavaScriptFileCtrl.cpp
         ../../Source/Editors/JavaScriptEditorCtrl.cpp
+        ../../Source/Editors/PackageJSONFileCtrl.cpp
+        ../../Source/Editors/PackageJSONEditorCtrl.cpp
         ../../Source/Editors/PowerShellFileCtrl.cpp
         ../../Source/Editors/PowerShellEditorCtrl.cpp
         ../../Source/Editors/PugFileCtrl.cpp

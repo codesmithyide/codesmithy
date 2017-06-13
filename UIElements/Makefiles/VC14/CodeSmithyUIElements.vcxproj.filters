@@ -62,6 +62,12 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\JavaScriptEditorCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PackageJSONFileCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PackageJSONEditorCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellFileCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -143,6 +149,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Editors\JavaScriptEditorCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Editors\PackageJSONFileCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Editors\PackageJSONEditorCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Editors\PowerShellFileCtrl.cpp">

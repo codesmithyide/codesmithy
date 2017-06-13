@@ -164,6 +164,8 @@
     <ClCompile Include="..\..\Source\Editors\JavaEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\JavaScriptFileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\JavaScriptEditorCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\PackageJSONFileCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Editors\PackageJSONEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PowerShellFileCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PowerShellEditorCtrl.cpp" />
     <ClCompile Include="..\..\Source\Editors\PugFileCtrl.cpp" />
@@ -194,6 +196,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\JavaEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\JavaScriptFileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\JavaScriptEditorCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PackageJSONFileCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PackageJSONEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellFileCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PowerShellEditorCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIElements\Editors\PugFileCtrl.h" />

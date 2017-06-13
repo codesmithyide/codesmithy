@@ -20,26 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
-#define _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
-
-#include "DocumentType.h"
+#include "Editors/PackageJSONEditorCtrl.h"
 
 namespace CodeSmithy
 {
 
-class PackageJSONFileType : public DocumentType
+PackageJSONEditorCtrl::PackageJSONEditorCtrl(wxWindow* parent,
+                                             const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
 {
-public:
-    PackageJSONFileType();
-    PackageJSONFileType(std::shared_ptr<CustomDocumentTypeData> customData);
-
-    std::shared_ptr<Document> createNewDocument(const DocumentId& id,
-        const std::string& name) const override;
-    std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
-        const boost::filesystem::path& path) const override;
-};
-
 }
 
-#endif
+}

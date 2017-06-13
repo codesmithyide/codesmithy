@@ -20,24 +20,39 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
-#define _CODESMITHY_CORE_DOCUMENTS_PACKAGEJSONFILETYPE_H_
+#ifndef _CODESMITHY_UIELEMENTS_EDITORS_PACKAGEJSONFILECTRL_H_
+#define _CODESMITHY_UIELEMENTS_EDITORS_PACKAGEJSONFILECTRL_H_
 
-#include "DocumentType.h"
+#include "DocumentCtrl.h"
+#include "PackageJSONEditorCtrl.h"
+#include "CodeSmithy/UICore/Settings/AppSettings.h"
+#include "CodeSmithy/Core/Documents/PackageJSONFile.h"
 
 namespace CodeSmithy
 {
 
-class PackageJSONFileType : public DocumentType
+class PackageJSONFileCtrl : public DocumentCtrl
 {
 public:
-    PackageJSONFileType();
-    PackageJSONFileType(std::shared_ptr<CustomDocumentTypeData> customData);
+    static wxWindow* Create(wxWindow *parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
 
-    std::shared_ptr<Document> createNewDocument(const DocumentId& id,
-        const std::string& name) const override;
-    std::shared_ptr<Document> createDocumentFromFile(const DocumentId& id,
-        const boost::filesystem::path& path) const override;
+    PackageJSONFileCtrl(wxWindow* parent, std::shared_ptr<Document> document,
+        const AppSettings& appSettings);
+
+    std::shared_ptr<const Document> document() const override;
+    std::shared_ptr<Document> document() override;
+
+    void cut() override;
+    void copy() override;
+    void paste() override;
+
+private:
+    void doSave(const boost::filesystem::path& path) override;
+
+private:
+    PackageJSONEditorCtrl* m_ctrl;
+    std::shared_ptr<PackageJSONFile> m_document;
 };
 
 }

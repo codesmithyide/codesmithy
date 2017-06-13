@@ -30,6 +30,7 @@
 #include "CodeSmithy/UIElements/Editors/HTMLDocumentCtrl.h"
 #include "CodeSmithy/UIElements/Editors/JavaFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/JavaScriptFileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/PackageJSONFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PythonFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PugFileCtrl.h"
@@ -44,6 +45,7 @@
 #include "CodeSmithy/Core/Documents/HTMLDocumentType.h"
 #include "CodeSmithy/Core/Documents/JavaScriptFileType.h"
 #include "CodeSmithy/Core/Documents/JavaSourceFileType.h"
+#include "CodeSmithy/Core/Documents/PackageJSONFileType.h"
 #include "CodeSmithy/Core/Documents/PowerShellFileType.h"
 #include "CodeSmithy/Core/Documents/PugFileType.h"
 #include "CodeSmithy/Core/Documents/PythonFileType.h"
@@ -72,6 +74,7 @@ App::App()
     m_documentTypes->add(std::make_shared<HTMLDocumentType>(std::make_shared<ControlCreationDocumentTypeData>(HTMLDocumentCtrl::Create)));
     m_documentTypes->add(std::make_shared<JavaSourceFileType>(std::make_shared<ControlCreationDocumentTypeData>(JavaFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<JavaScriptFileType>(std::make_shared<ControlCreationDocumentTypeData>(JavaScriptFileCtrl::Create)));
+    m_documentTypes->add(std::make_shared<PackageJSONFileType>(std::make_shared<ControlCreationDocumentTypeData>(PackageJSONFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PowerShellFileType>(std::make_shared<ControlCreationDocumentTypeData>(PowerShellFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PugFileType>(std::make_shared<ControlCreationDocumentTypeData>(PugFileCtrl::Create)));
     m_documentTypes->add(std::make_shared<PythonFileType>(std::make_shared<ControlCreationDocumentTypeData>(PythonFileCtrl::Create)));

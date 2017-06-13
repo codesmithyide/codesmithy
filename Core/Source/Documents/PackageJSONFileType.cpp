@@ -21,3 +21,32 @@
 */
 
 #include "Documents/PackageJSONFileType.h"
+#include "Documents/PackageJSONFile.h"
+
+namespace CodeSmithy
+{
+
+PackageJSONFileType::PackageJSONFileType()
+    : DocumentType("package.json", ".json")
+{
+}
+
+PackageJSONFileType::PackageJSONFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("package.json", ".json")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> PackageJSONFileType::createNewDocument(const DocumentId& id,
+                                                                 const std::string& name) const
+{
+    return std::make_shared<PackageJSONFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> PackageJSONFileType::createDocumentFromFile(const DocumentId& id,
+                                                                      const boost::filesystem::path& path) const
+{
+    return std::make_shared<PackageJSONFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}

@@ -20,32 +20,56 @@
     IN THE SOFTWARE.
 */
 
-#include "Documents/PackageJSONFile.h"
+#include "Editors/PackageJSONFileCtrl.h"
 
 namespace CodeSmithy
 {
 
-PackageJSONFile::PackageJSONFile(const std::shared_ptr<const DocumentType> type,
-                                 const DocumentId& id,
-                                 const std::string& name)
-    : Document(type, id, name)
+wxWindow* PackageJSONFileCtrl::Create(wxWindow *parent,
+                                      std::shared_ptr<Document> document,
+                                      const AppSettings& appSettings)
 {
+    return new PackageJSONFileCtrl(parent, document, appSettings);
 }
 
-PackageJSONFile::PackageJSONFile(const std::shared_ptr<const DocumentType> type,
-                                 const DocumentId& id,
-                                 const std::string& name,
-                                 const boost::filesystem::path& path)
-    : Document(type, id, name, path)
+PackageJSONFileCtrl::PackageJSONFileCtrl(wxWindow* parent,
+                                         std::shared_ptr<Document> document,
+                                         const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
 {
+    m_ctrl = new PackageJSONEditorCtrl(this, appSettings);
+
+    m_document = std::dynamic_pointer_cast<PackageJSONFile, Document>(document);
 }
 
-PackageJSONFile::~PackageJSONFile()
+std::shared_ptr<const Document> PackageJSONFileCtrl::document() const
 {
+    return m_document;
 }
 
-void PackageJSONFile::doSave(const boost::filesystem::path& path) const
+std::shared_ptr<Document> PackageJSONFileCtrl::document()
 {
+    return m_document;
+}
+
+void PackageJSONFileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void PackageJSONFileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void PackageJSONFileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
+void PackageJSONFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
 }
 
 }
