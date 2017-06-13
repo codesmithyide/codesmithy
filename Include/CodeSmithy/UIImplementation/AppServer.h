@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_APPSERVER_H_
 #define _CODESMITHY_UIIMPLEMENTATION_APPSERVER_H_
 
+#include "Frame.h"
 #include <wx/ipc.h>
 
 namespace CodeSmithy
@@ -31,7 +32,15 @@ namespace CodeSmithy
 class AppServer : public wxServer
 {
 public:
+    AppServer();
+
     wxConnectionBase* OnAcceptConnection(const wxString& topic) override;
+
+    Frame* frame();
+    void setFrame(Frame* frame);
+
+private:
+    Frame* m_frame;
 };
 
 }

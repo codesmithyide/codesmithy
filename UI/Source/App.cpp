@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,7 +21,7 @@
 */
 
 #include "App.h"
-#include "Frame.h"
+#include "CodeSmithy/UIImplementation/Frame.h"
 #include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/UIElements/Editors/BakefileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/BinaryFileCtrl.h"
@@ -98,20 +98,23 @@ bool App::OnInit()
     if (m_singleInstanceChecker->CreateDefault() && 
         m_singleInstanceChecker->IsAnotherRunning())
     {
-        wxClient client;
-        bool success = false;
-        wxConnectionBase *connection = client.MakeConnection("localhost", "4242", "a_topic");
-        if (connection)
+        if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
         {
-            bool success = connection->Execute("raise");
-            delete connection;
-        }
+            wxClient client;
+            bool success = false;
+            wxConnectionBase *connection = client.MakeConnection("localhost", "4242", "a_topic");
+            if (connection)
+            {
+                success = connection->Execute(argv[1]);
+                delete connection;
+            }
 
-        if (success)
-        {
-            delete m_singleInstanceChecker;
-            m_singleInstanceChecker = 0;
-            return false;
+            if (success)
+            {
+                delete m_singleInstanceChecker;
+                m_singleInstanceChecker = 0;
+                return false;
+            }
         }
     }
 
@@ -121,6 +124,10 @@ bool App::OnInit()
 
     Frame* frame = new Frame(L"CodeSmithy", *m_documentTypes, *m_projectTypes);
     frame->Show(true);
+    if (m_appServer)
+    {
+        m_appServer->setFrame(frame);
+    }
 
     if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
     {

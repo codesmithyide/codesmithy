@@ -20,8 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UI_FRAME_H_
-#define _CODESMITHY_UI_FRAME_H_
+#ifndef _CODESMITHY_UIIMPLEMENTATION_FRAME_H_
+#define _CODESMITHY_UIIMPLEMENTATION_FRAME_H_
 
 #include "CodeSmithy/UIImplementation/MenuBar.h"
 #include "CodeSmithy/UIImplementation/ActiveWorkspace.h"

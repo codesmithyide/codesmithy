@@ -26,9 +26,23 @@
 namespace CodeSmithy
 {
 
+AppServer::AppServer()
+{
+}
+
 wxConnectionBase* AppServer::OnAcceptConnection(const wxString& topic)
 {
     return new AppConnection(*this);
+}
+
+Frame* AppServer::frame()
+{
+    return m_frame;
+}
+
+void AppServer::setFrame(Frame* frame)
+{
+    m_frame = frame;
 }
 
 }

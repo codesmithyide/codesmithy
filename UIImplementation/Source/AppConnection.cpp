@@ -35,8 +35,14 @@ bool AppConnection::OnExecute(const wxString& topic,
                               size_t size,
                               wxIPCFormat format)
 {
-
-    return false;
+    Frame* frame = m_server.frame();
+    if (frame)
+    {
+        frame->Raise();
+        wxString filename((const wchar_t*)data);
+        frame->OpenFile(filename);
+    }
+    return true;
 }
 
 }
