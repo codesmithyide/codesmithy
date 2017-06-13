@@ -13,12 +13,10 @@ program CodeSmithy : CodeSmithyUIImplementation
     headers
     {
         ../../Source/App.h
-        ../../Source/Frame.h
     }
 
     sources
     {
         ../../Source/App.cpp
-        ../../Source/Frame.cpp
     }
 }

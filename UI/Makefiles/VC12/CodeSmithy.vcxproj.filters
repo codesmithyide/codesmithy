@@ -20,15 +20,9 @@
     <ClInclude Include="..\..\Source\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Frame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Frame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

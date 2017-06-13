@@ -87,11 +87,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\App.cpp" />
-    <ClCompile Include="..\..\Source\Frame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\App.h" />
-    <ClInclude Include="..\..\Source\Frame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
