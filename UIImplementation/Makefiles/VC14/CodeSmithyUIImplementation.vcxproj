@@ -178,6 +178,7 @@
     <ClCompile Include="..\..\Source\Preferences\HTMLEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\JavaEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\JavaScriptEditorPreferencesPage.cpp" />
+    <ClCompile Include="..\..\Source\Preferences\PackageJSONEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PowerShellEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PugEditorPreferencesPage.cpp" />
     <ClCompile Include="..\..\Source\Preferences\PythonEditorPreferencesPage.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\HTMLEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\JavaEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\JavaScriptEditorPreferencesPage.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PackageJSONEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PowerShellEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PugEditorPreferencesPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PythonEditorPreferencesPage.h" />

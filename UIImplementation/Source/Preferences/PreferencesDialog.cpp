@@ -29,6 +29,7 @@
 #include "Preferences/HTMLEditorPreferencesPage.h"
 #include "Preferences/JavaEditorPreferencesPage.h"
 #include "Preferences/JavaScriptEditorPreferencesPage.h"
+#include "Preferences/PackageJSONEditorPreferencesPage.h"
 #include "Preferences/PowerShellEditorPreferencesPage.h"
 #include "Preferences/PugEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
@@ -95,6 +96,8 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(javaPage, "Java");
     JavaScriptEditorPreferencesPage* javascriptPage = new JavaScriptEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(javascriptPage, "JavaScript");
+    PackageJSONEditorPreferencesPage* packageJSONPage = new PackageJSONEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(packageJSONPage, "package.json");
     PowerShellEditorPreferencesPage* powershellPage = new PowerShellEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(powershellPage, "PowerShell");
     PugEditorPreferencesPage* pugPage = new PugEditorPreferencesPage(treebook, settings);

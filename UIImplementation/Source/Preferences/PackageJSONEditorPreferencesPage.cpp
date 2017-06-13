@@ -20,18 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#include "Preferences/PugEditorPreferencesPage.h"
+#include "Preferences/PackageJSONEditorPreferencesPage.h"
 #include "PreferencesDialogUtilities.h"
 #include <wx/sizer.h>
 
 namespace CodeSmithy
 {
     
-PugEditorPreferencesPage::PugEditorPreferencesPage(wxWindow *parent,
-                                                   AppSettings& appSettings)
-    : EditorPreferencesBase(parent, appSettings, EditorId::PugEditorId,
-        appSettings.editorSettings().pugSettings()),
-    m_newSettings(appSettings.editorSettings().pugSettings())
+PackageJSONEditorPreferencesPage::PackageJSONEditorPreferencesPage(wxWindow *parent,
+                                                                   AppSettings& appSettings)
+    : EditorPreferencesBase(parent, appSettings, EditorId::PackageJSONEditorId,
+        appSettings.editorSettings().packageJSONSettings()),
+    m_newSettings(appSettings.editorSettings().packageJSONSettings())
 {
     wxSizer* fontInfoSizer = PreferencesDialogUtilities::createFontSettingsSizer(m_overrideThemeCheckBox,
         m_fontFaceName, m_fontSize, m_fontButton);
@@ -40,22 +40,22 @@ PugEditorPreferencesPage::PugEditorPreferencesPage(wxWindow *parent,
     topSizer->Add(fontInfoSizer, 0, wxEXPAND | wxALL, 10);
 }
 
-void PugEditorPreferencesPage::handleFontChanged(const std::string& faceName,
-                                                 unsigned pointSize)
+void PackageJSONEditorPreferencesPage::handleFontChanged(const std::string& faceName,
+                                                         unsigned pointSize)
 {
 }
 
-EditorSettingsBase& PugEditorPreferencesPage::newSettings()
+EditorSettingsBase& PackageJSONEditorPreferencesPage::newSettings()
 {
     return m_newSettings;
 }
 
-bool PugEditorPreferencesPage::hasChanges() const
+bool PackageJSONEditorPreferencesPage::hasChanges() const
 {
-    return (m_appSettings.editorSettings().pugSettings() != m_newSettings);
+    return (m_appSettings.editorSettings().packageJSONSettings() != m_newSettings);
 }
 
-void PugEditorPreferencesPage::updateExample()
+void PackageJSONEditorPreferencesPage::updateExample()
 {
 }
 

@@ -33,6 +33,7 @@ static const char* cppEditorSettingsElementName = "cpp-editor-settings";
 static const char* htmlEditorSettingsElementName = "html-editor-settings";
 static const char* javaEditorSettingsElementName = "java-editor-settings";
 static const char* javascriptEditorSettingsElementName = "javascript-editor-settings";
+static const char* packagejsonEditorSettingsElementName = "packagejson-editor-settings";
 static const char* powershellEditorSettingsElementName = "powershell-editor-settings";
 static const char* pugEditorSettingsElementName = "pug-editor-settings";
 static const char* pythonEditorSettingsElementName = "python-editor-settings";
@@ -189,6 +190,16 @@ JavaScriptEditorSettings& EditorSettings::javascriptSettings()
     return m_javascriptEditorSettings;
 }
 
+const PackageJSONEditorSettings& EditorSettings::packageJSONSettings() const
+{
+    return m_packageJSONEditorSettings;
+}
+
+PackageJSONEditorSettings& EditorSettings::packageJSONSettings()
+{
+    return m_packageJSONEditorSettings;
+}
+
 const PowerShellEditorSettings& EditorSettings::powershellSettings() const
 {
     return m_powershellEditorSettings;
@@ -253,6 +264,8 @@ void EditorSettings::load(pugi::xml_node node)
     m_javaEditorSettings.load(javaEditorSettingsNode);
     pugi::xml_node javascriptEditorSettingsNode = node.child(javascriptEditorSettingsElementName);
     m_javascriptEditorSettings.load(javascriptEditorSettingsNode);
+    pugi::xml_node packageJSONEditorSettingsNode = node.child(packagejsonEditorSettingsElementName);
+    m_packageJSONEditorSettings.load(packageJSONEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = node.child(powershellEditorSettingsElementName);
     m_powershellEditorSettings.load(powershellEditorSettingsNode);
     pugi::xml_node pugEditorSettingsNode = node.child(pugEditorSettingsElementName);
@@ -281,6 +294,8 @@ void EditorSettings::save(pugi::xml_node node) const
     m_javaEditorSettings.save(javaEditorSettingsNode);
     pugi::xml_node javascriptEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, javascriptEditorSettingsElementName);
     m_javascriptEditorSettings.save(javascriptEditorSettingsNode);
+    pugi::xml_node packageJSONEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, packagejsonEditorSettingsElementName);
+    m_packageJSONEditorSettings.save(packageJSONEditorSettingsNode);
     pugi::xml_node powershellEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, powershellEditorSettingsElementName);
     m_powershellEditorSettings.save(powershellEditorSettingsNode);
     pugi::xml_node pugEditorSettingsNode = XMLUtilities::getOrAppendChildNode(node, pugEditorSettingsElementName);

@@ -37,7 +37,9 @@ public:
     static EditorId HTMLEditorId;
     static EditorId JavaEditorId;
     static EditorId JavaScriptEditorId;
+    static EditorId PackageJSONEditorId;
     static EditorId PowerShellEditorId;
+    static EditorId PugEditorId;
     static EditorId PythonEditorId;
     static EditorId TextEditorId;
     static EditorId XMLEditorId;
