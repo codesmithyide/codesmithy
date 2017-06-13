@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Frame.cpp" />
     <ClCompile Include="..\..\Source\MenuBar.cpp" />
     <ClCompile Include="..\..\Source\AppConnection.cpp" />
     <ClCompile Include="..\..\Source\AppServer.cpp" />
@@ -198,6 +199,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Frame.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\MenuBar.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AppConnection.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AppServer.h" />
