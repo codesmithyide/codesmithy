@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\MenuBar.cpp" />
+    <ClCompile Include="..\..\Source\AppConnection.cpp" />
     <ClCompile Include="..\..\Source\AppServer.cpp" />
     <ClCompile Include="..\..\Source\ActiveDocument.cpp" />
     <ClCompile Include="..\..\Source\ActiveDocumentObserver.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\WindowIDs.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\MenuBar.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AppConnection.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\AppServer.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocument.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\ActiveDocumentObserver.h" />

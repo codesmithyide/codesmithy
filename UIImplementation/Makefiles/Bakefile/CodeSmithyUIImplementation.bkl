@@ -27,6 +27,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
         ../../../Include/CodeSmithy/UIImplementation/linkoptions.h
         ../../../Include/CodeSmithy/UIImplementation/WindowIDs.h
         ../../../Include/CodeSmithy/UIImplementation/MenuBar.h
+        ../../../Include/CodeSmithy/UIImplementation/AppConnection.h
         ../../../Include/CodeSmithy/UIImplementation/AppServer.h
         ../../../Include/CodeSmithy/UIImplementation/ActiveDocument.h
         ../../../Include/CodeSmithy/UIImplementation/ActiveDocumentObserver.h
@@ -78,6 +79,7 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
     sources
     {
         ../../Source/MenuBar.cpp
+        ../../Source/AppConnection.cpp
         ../../Source/AppServer.cpp
         ../../Source/ActiveDocument.cpp
         ../../Source/ActiveDocumentObserver.cpp
