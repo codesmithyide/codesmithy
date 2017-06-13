@@ -42,6 +42,8 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../../Include/CodeSmithy/UIElements/Editors/JavaScriptEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PowerShellEditorCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/PugFileCtrl.h
+        ../../../Include/CodeSmithy/UIElements/Editors/PugEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PythonFileCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/PythonEditorCtrl.h
         ../../../Include/CodeSmithy/UIElements/Editors/TextFileCtrl.h
@@ -72,6 +74,8 @@ library CodeSmithyUIElements : wxWidgets, CodeSmithyCore, CodeSmithyUICore
         ../../Source/Editors/JavaScriptEditorCtrl.cpp
         ../../Source/Editors/PowerShellFileCtrl.cpp
         ../../Source/Editors/PowerShellEditorCtrl.cpp
+        ../../Source/Editors/PugFileCtrl.cpp
+        ../../Source/Editors/PugEditorCtrl.cpp
         ../../Source/Editors/PythonFileCtrl.cpp
         ../../Source/Editors/PythonEditorCtrl.cpp
         ../../Source/Editors/TextFileCtrl.cpp
