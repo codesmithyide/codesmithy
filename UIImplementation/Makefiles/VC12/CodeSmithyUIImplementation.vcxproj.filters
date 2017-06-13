@@ -89,6 +89,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BakefileEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\BinaryEditorPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\CMakeListsEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PowerShellEditorPreferencesPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PugEditorPreferencesPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Preferences\PythonEditorPreferencesPage.h">
@@ -208,6 +214,9 @@
     <ClCompile Include="..\..\Source\Preferences\BakefileEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\BinaryEditorPreferencesPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\CMakeListsEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -224,6 +233,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\PowerShellEditorPreferencesPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Preferences\PugEditorPreferencesPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Preferences\PythonEditorPreferencesPage.cpp">
