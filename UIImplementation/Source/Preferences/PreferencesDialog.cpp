@@ -23,12 +23,14 @@
 #include "Preferences/PreferencesDialog.h"
 #include "Preferences/DefaultEditorPreferencesPage.h"
 #include "Preferences/BakefileEditorPreferencesPage.h"
+#include "Preferences/BinaryEditorPreferencesPage.h"
 #include "Preferences/CMakeListsEditorPreferencesPage.h"
 #include "Preferences/CppEditorPreferencesPage.h"
 #include "Preferences/HTMLEditorPreferencesPage.h"
 #include "Preferences/JavaEditorPreferencesPage.h"
 #include "Preferences/JavaScriptEditorPreferencesPage.h"
 #include "Preferences/PowerShellEditorPreferencesPage.h"
+#include "Preferences/PugEditorPreferencesPage.h"
 #include "Preferences/PythonEditorPreferencesPage.h"
 #include "Preferences/TextEditorPreferencesPage.h"
 #include "Preferences/XMLEditorPreferencesPage.h"
@@ -81,6 +83,8 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(defaultPage, "Defaults", true);
     BakefileEditorPreferencesPage* bakefilePage = new BakefileEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(bakefilePage, "Bakefile");
+    BinaryEditorPreferencesPage* binaryPage = new BinaryEditorPreferencesPage(treebook);
+    treebook->AddSubPage(binaryPage, "Binary");
     CMakeListsEditorPreferencesPage* cmakelistsPage = new CMakeListsEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(cmakelistsPage, "CMakeLists");
     CppEditorPreferencesPage* cppPage = new CppEditorPreferencesPage(treebook, settings);
@@ -93,6 +97,8 @@ void PreferencesDialog::CreateEditorPreferences(wxTreebook* treebook,
     treebook->AddSubPage(javascriptPage, "JavaScript");
     PowerShellEditorPreferencesPage* powershellPage = new PowerShellEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(powershellPage, "PowerShell");
+    PugEditorPreferencesPage* pugPage = new PugEditorPreferencesPage(treebook, settings);
+    treebook->AddSubPage(pugPage, "Pug");
     PythonEditorPreferencesPage* pythonPage = new PythonEditorPreferencesPage(treebook, settings);
     treebook->AddSubPage(pythonPage, "Python");
     TextEditorPreferencesPage* textPage = new TextEditorPreferencesPage(treebook, settings);

@@ -164,6 +164,7 @@
     <ClCompile Include="..\..\Source\Settings\JavaEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\JavaScriptEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\PowerShellEditorSettings.cpp" />
+    <ClCompile Include="..\..\Source\Settings\PugEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\PythonEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\TextEditorSettings.cpp" />
     <ClCompile Include="..\..\Source\Settings\XMLEditorSettings.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\JavaEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\JavaScriptEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PowerShellEditorSettings.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PugEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PythonEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\TextEditorSettings.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\XMLEditorSettings.h" />

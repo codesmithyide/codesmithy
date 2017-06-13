@@ -31,6 +31,7 @@
 #include "JavaEditorSettings.h"
 #include "JavaScriptEditorSettings.h"
 #include "PowerShellEditorSettings.h"
+#include "PugEditorSettings.h"
 #include "PythonEditorSettings.h"
 #include "TextEditorSettings.h"
 #include "XMLEditorSettings.h"
@@ -97,6 +98,8 @@ public:
     JavaScriptEditorSettings& javascriptSettings();
     const PowerShellEditorSettings& powershellSettings() const;
     PowerShellEditorSettings& powershellSettings();
+    const PugEditorSettings& pugSettings() const;
+    PugEditorSettings& pugSettings();
     const PythonEditorSettings& pythonSettings() const;
     PythonEditorSettings& pythonSettings();
     const TextEditorSettings& textSettings() const;
@@ -116,6 +119,7 @@ private:
     JavaEditorSettings m_javaEditorSettings;
     JavaScriptEditorSettings m_javascriptEditorSettings;
     PowerShellEditorSettings m_powershellEditorSettings;
+    PugEditorSettings m_pugEditorSettings;
     PythonEditorSettings m_pythonEditorSettings;
     TextEditorSettings m_textEditorSettings;
     XMLEditorSettings m_xmlEditorSettings;

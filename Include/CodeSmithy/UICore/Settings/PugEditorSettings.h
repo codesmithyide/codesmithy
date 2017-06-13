@@ -20,20 +20,31 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BINARYEDITORPREFERENCESPAGE_H_
-#define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_BINARYEDITORPREFERENCESPAGE_H_
+#ifndef _CODESMITHY_UICORE_SETTINGS_PUGEDITORSETTINGS_H_
+#define _CODESMITHY_UICORE_SETTINGS_PUGEDITORSETTINGS_H_
 
-#include <wx/panel.h>
+#include "EditorSettingsBase.h"
 
 namespace CodeSmithy
 {
 
-class BinaryEditorPreferencesPage : public wxPanel
+class PugEditorSettings : public EditorSettingsBase
 {
 public:
-    BinaryEditorPreferencesPage(wxWindow* parent);
+    PugEditorSettings();
+    PugEditorSettings(const PugEditorSettings& other);
+    PugEditorSettings& operator=(const PugEditorSettings& other);
+    ~PugEditorSettings() override;
+
+    bool operator==(const PugEditorSettings& other) const;
+    bool operator!=(const PugEditorSettings& other) const;
+
+    void load(pugi::xml_node node);
+    void save(pugi::xml_node node) const;
 };
 
 }
+
+#include "../linkoptions.h"
 
 #endif

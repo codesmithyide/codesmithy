@@ -23,4 +23,28 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_PUGEDITORPREFERENCESPAGE_H_
 #define _CODESMITHY_UIIMPLEMENTATION_PREFERENCES_PUGEDITORPREFERENCESPAGE_H_
 
+#include "EditorPreferencesBase.h"
+
+namespace CodeSmithy
+{
+
+class PugEditorPreferencesPage : public EditorPreferencesBase
+{
+public:
+    PugEditorPreferencesPage(wxWindow *parent, AppSettings& appSettings);
+
+private:
+    void handleFontChanged(const std::string& faceName, unsigned pointSize) override;
+
+    EditorSettingsBase& newSettings() override;
+    bool hasChanges() const override;
+
+    void updateExample() override;
+
+private:
+    PugEditorSettings m_newSettings;
+};
+
+}
+
 #endif

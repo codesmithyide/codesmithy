@@ -62,6 +62,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PowerShellEditorSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PugEditorSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\UICore\Settings\PythonEditorSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -176,6 +179,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\PowerShellEditorSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Settings\PugEditorSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Settings\PythonEditorSettings.cpp">

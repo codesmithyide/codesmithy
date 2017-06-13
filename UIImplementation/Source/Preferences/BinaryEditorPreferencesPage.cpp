@@ -21,3 +21,13 @@
 */
 
 #include "Preferences/BinaryEditorPreferencesPage.h"
+
+namespace CodeSmithy
+{
+
+BinaryEditorPreferencesPage::BinaryEditorPreferencesPage(wxWindow* parent)
+    : wxPanel(parent, wxID_ANY)
+{
+}
+
+}

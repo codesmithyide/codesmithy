@@ -41,6 +41,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../../Include/CodeSmithy/UICore/Settings/JavaEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/JavaScriptEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/PowerShellEditorSettings.h
+        ../../../Include/CodeSmithy/UICore/Settings/PugEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/PythonEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/TextEditorSettings.h
         ../../../Include/CodeSmithy/UICore/Settings/XMLEditorSettings.h
@@ -89,6 +90,7 @@ library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
         ../../Source/Settings/JavaEditorSettings.cpp
         ../../Source/Settings/JavaScriptEditorSettings.cpp
         ../../Source/Settings/PowerShellEditorSettings.cpp
+        ../../Source/Settings/PugEditorSettings.cpp
         ../../Source/Settings/PythonEditorSettings.cpp
         ../../Source/Settings/TextEditorSettings.cpp
         ../../Source/Settings/XMLEditorSettings.cpp
