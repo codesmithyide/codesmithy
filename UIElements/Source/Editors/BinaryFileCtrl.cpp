@@ -21,3 +21,50 @@
 */
 
 #include "Editors/BinaryFileCtrl.h"
+
+namespace CodeSmithy
+{
+
+wxWindow* BinaryFileCtrl::Create(wxWindow *parent,
+                                 std::shared_ptr<Document> document,
+                                 const AppSettings& appSettings)
+{
+    return new BinaryFileCtrl(parent, document, appSettings);
+}
+
+BinaryFileCtrl::BinaryFileCtrl(wxWindow* parent,
+                               std::shared_ptr<Document> document,
+                               const AppSettings& appSettings)
+    : DocumentCtrl(parent)
+{
+    m_document = std::dynamic_pointer_cast<BinaryFile, Document>(document);
+}
+
+std::shared_ptr<const Document> BinaryFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> BinaryFileCtrl::document()
+{
+    return m_document;
+}
+
+void BinaryFileCtrl::cut()
+{
+}
+
+void BinaryFileCtrl::copy()
+{
+}
+
+void BinaryFileCtrl::paste()
+{
+}
+
+void BinaryFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_document->setModified(false);
+}
+
+}

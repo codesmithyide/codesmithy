@@ -24,6 +24,7 @@
 #include "Frame.h"
 #include "CodeSmithy/UIImplementation/ControlCreationDocumentTypeData.h"
 #include "CodeSmithy/UIElements/Editors/BakefileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/BinaryFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/CMakeListsCtrl.h"
 #include "CodeSmithy/UIElements/Editors/CppFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/HTMLDocumentCtrl.h"
