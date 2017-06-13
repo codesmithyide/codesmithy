@@ -32,6 +32,7 @@
 #include "CodeSmithy/UIElements/Editors/JavaScriptFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PowerShellFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/PythonFileCtrl.h"
+#include "CodeSmithy/UIElements/Editors/PugFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/TextFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/WiXSourceFileCtrl.h"
 #include "CodeSmithy/UIElements/Editors/XMLDocumentCtrl.h"

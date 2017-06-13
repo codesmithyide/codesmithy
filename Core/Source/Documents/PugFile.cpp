@@ -21,3 +21,31 @@
 */
 
 #include "Documents/PugFile.h"
+
+namespace CodeSmithy
+{
+
+PugFile::PugFile(const std::shared_ptr<const DocumentType> type,
+                 const DocumentId& id,
+                 const std::string& name)
+    : Document(type, id, name)
+{
+}
+
+PugFile::PugFile(const std::shared_ptr<const DocumentType> type,
+                 const DocumentId& id,
+                 const std::string& name,
+                 const boost::filesystem::path& path)
+    : Document(type, id, name, path)
+{
+}
+
+PugFile::~PugFile()
+{
+}
+
+void PugFile::doSave(const boost::filesystem::path& path) const
+{
+}
+
+}

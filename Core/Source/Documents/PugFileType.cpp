@@ -21,3 +21,32 @@
 */
 
 #include "Documents/PugFileType.h"
+#include "Documents/PugFile.h"
+
+namespace CodeSmithy
+{
+
+PugFileType::PugFileType()
+    : DocumentType("Pug", "pug")
+{
+}
+
+PugFileType::PugFileType(std::shared_ptr<CustomDocumentTypeData> customData)
+    : DocumentType("Pug", "pug")
+{
+    setCustomData(customData);
+}
+
+std::shared_ptr<Document> PugFileType::createNewDocument(const DocumentId& id,
+                                                         const std::string& name) const
+{
+    return std::make_shared<PugFile>(shared_from_this(), id, name);
+}
+
+std::shared_ptr<Document> PugFileType::createDocumentFromFile(const DocumentId& id,
+                                                              const boost::filesystem::path& path) const
+{
+    return std::make_shared<PugFile>(shared_from_this(), id, path.filename().generic_string(), path);
+}
+
+}

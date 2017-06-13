@@ -21,3 +21,24 @@
 */
 
 #include "Editors/PugEditorCtrl.h"
+
+namespace CodeSmithy
+{
+
+PugEditorCtrl::PugEditorCtrl(wxWindow* parent,
+                             const AppSettings& appSettings)
+    : wxStyledTextCtrl(parent)
+{
+    SetLexer(wxSTC_LEX_CPP);
+    setStyle(appSettings);
+}
+
+void PugEditorCtrl::setStyle(const AppSettings& appSettings)
+{
+    wxFont font = StyleGetFont(wxSTC_C_DEFAULT);
+    font.SetFaceName(appSettings.editorSettings().javaFontSettings().faceName());
+    font.SetPointSize(appSettings.editorSettings().javaFontSettings().pointSize());
+    StyleSetFont(wxSTC_C_DEFAULT, font);
+}
+
+}

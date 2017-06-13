@@ -21,3 +21,71 @@
 */
 
 #include "Editors/PugFileCtrl.h"
+#include <wx/sizer.h>
+
+namespace CodeSmithy
+{
+
+wxWindow* PugFileCtrl::Create(wxWindow *parent,
+                              std::shared_ptr<Document> document,
+                              const AppSettings& appSettings)
+{
+    return new PugFileCtrl(parent, document, appSettings);
+}
+
+PugFileCtrl::PugFileCtrl(wxWindow* parent,
+                         std::shared_ptr<Document> document,
+                         const AppSettings& appSettings)
+    : DocumentCtrl(parent), m_ctrl(0)
+{
+    m_ctrl = new PugEditorCtrl(this, appSettings);
+    m_ctrl->Bind(wxEVT_STC_MODIFIED, &PugFileCtrl::onModified, this);
+
+    m_document = std::dynamic_pointer_cast<PugFile, Document>(document);
+    if (!m_document->filePath().empty())
+    {
+        m_ctrl->LoadFile(m_document->filePath().generic_string());
+    }
+
+    wxBoxSizer* topSizer = new wxBoxSizer(wxHORIZONTAL);
+    topSizer->Add(m_ctrl, 1, wxEXPAND);
+    SetSizer(topSizer);
+}
+
+std::shared_ptr<const Document> PugFileCtrl::document() const
+{
+    return m_document;
+}
+
+std::shared_ptr<Document> PugFileCtrl::document()
+{
+    return m_document;
+}
+
+void PugFileCtrl::cut()
+{
+    m_ctrl->Cut();
+}
+
+void PugFileCtrl::copy()
+{
+    m_ctrl->Copy();
+}
+
+void PugFileCtrl::paste()
+{
+    m_ctrl->Paste();
+}
+
+void PugFileCtrl::doSave(const boost::filesystem::path& path)
+{
+    m_ctrl->SaveFile(path.string());
+    m_document->setModified(false);
+}
+
+void PugFileCtrl::onModified(wxStyledTextEvent& evt)
+{
+    m_document->setModified(true);
+}
+
+}
