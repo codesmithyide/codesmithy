@@ -253,6 +253,48 @@ bool AppSettings::isFileTypeAssociationRegistered(const std::string& documentTyp
     return result;
 }
 
+void AppSettings::registerShellNew(const std::string& extension)
+{
+    std::stringstream ext;
+    ext << "." << extension;
+
+    Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+        Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
+    extInfo.addShellNew();
+}
+
+bool AppSettings::isShellNewRegistered(const std::string& documentTypeName,
+                                       std::string& extension) const
+{
+    bool result = false;
+
+    try
+    {
+        std::shared_ptr<const DocumentType> documentType = m_documentTypes.find(documentTypeName);
+        if (documentType)
+        {
+            const std::string& documentExtension = documentType->extensions()[0];
+            std::stringstream ext;
+            ext << "." << documentExtension;
+
+            Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+                Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
+
+            if (extInfo.hasShellNew())
+            {
+                extension = documentExtension;
+                result = true;
+            }
+        }
+    }
+    catch (const std::exception& e)
+    {
+        // Do nothing
+    }
+
+    return result;
+}
+
 std::string AppSettings::createFileTypesFilter() const
 {
     std::string result;

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -117,6 +117,8 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 }
             }
 
+            std::string shellNewRegisteredExtension;
+            bool isShellNewRegistered = m_appSettings.isShellNewRegistered(associations[i]->documentTypeName(), shellNewRegisteredExtension);
             wxArrayString newChoices;
             newChoices.Add("None");
             const std::vector<std::string>& extensions = documentType->extensions();
@@ -126,17 +128,22 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             }
             wxChoice* newChoice = new wxChoice(this, wxID_ANY,
                 wxDefaultPosition, wxSize(100, wxDefaultCoord), newChoices);
-            if (associations[i]->shellNewExtension().empty())
+            if (!isShellNewRegistered)
             {
                 newChoice->SetSelection(0);
             }
             else
             {
-                int n = newChoice->FindString(associations[i]->shellNewExtension());
+                int n = newChoice->FindString(shellNewRegisteredExtension);
                 if (n >= 1)
                 {
                     newChoice->SetSelection(n);
                 }
+            }
+            if (shellNewRegisteredExtension != associations[i]->shellNewExtension())
+            {
+                associations[i]->setShellNewExtension(shellNewRegisteredExtension);
+                discrepancyDetected = true;
             }
 
             actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice, newChoice));
@@ -242,6 +249,13 @@ void FileTypeAssociationsPreferencesPage::onApply(wxCommandEvent& evt)
                 else
                 {
                     m_appSettings.registerFileTypeAssociation(m_updatedFileTypeAssociations[i]->documentTypeName());
+                }
+                if (m_updatedFileTypeAssociations[i]->shellNewExtension().empty())
+                {
+                }
+                else
+                {
+                    m_appSettings.registerShellNew(m_updatedFileTypeAssociations[i]->shellNewExtension());
                 }
                 needsSaving = true;
             }

@@ -76,6 +76,9 @@ public:
     void deregisterFileTypeAssociation(const std::string& documentTypeName);
     bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
         bool& isDefault) const;
+    void registerShellNew(const std::string& extension);
+    bool isShellNewRegistered(const std::string& documentTypeName, 
+        std::string& extension) const;
 
     std::string createFileTypesFilter() const;
 
