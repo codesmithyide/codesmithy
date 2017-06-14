@@ -118,7 +118,15 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
             }
 
             std::string shellNewRegisteredExtension;
-            bool isShellNewRegistered = m_appSettings.isShellNewRegistered(associations[i]->documentTypeName(), shellNewRegisteredExtension);
+            bool isShellNewRegistered = false;
+            if (isRegistered)
+            {
+                // If the file types are not registered we shouldn't set the Shell New either
+                // so skip this check and leave isShellNewRegistered to false.
+                // In theory this check should return false anyway since the type is not registered
+                // but we don't want to assume the registry is a consistent state.
+                isShellNewRegistered = m_appSettings.isShellNewRegistered(associations[i]->documentTypeName(), shellNewRegisteredExtension);
+            }
             wxArrayString newChoices;
             newChoices.Add("None");
             const std::vector<std::string>& extensions = documentType->extensions();
@@ -139,6 +147,12 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 {
                     newChoice->SetSelection(n);
                 }
+            }
+            if (!isRegistered)
+            {
+                // If the file types are not registered then it should not be 
+                // possible for the user to enable the Shell New menu.
+                newChoice->Disable();
             }
             if (shellNewRegisteredExtension != associations[i]->shellNewExtension())
             {
