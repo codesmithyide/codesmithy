@@ -51,17 +51,19 @@ private:
     {
     public:
         CustomEventHandlerData(const std::string& documentTypeName, wxChoice* associationChoice,
-            wxChoice* actionChoice);
+            wxChoice* actionChoice, wxChoice* newChoice);
 
         const std::string& documentTypeName() const;
         FileTypeAssociation::EAssociation association() const;
         FileTypeAssociation::EActionType actionType() const;
         std::string projectName() const;
+        std::string shellNewExtension() const;
 
     private:
         std::string m_documentTypeName;
         wxChoice* m_associationChoice;
         wxChoice* m_actionChoice;
+        wxChoice* m_newChoice;
     };
 
 private:

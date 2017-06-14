@@ -35,7 +35,7 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
 
     wxStaticText* description = CreateDescription(this);
 
-    wxFlexGridSizer* fileTypeAssociationsSizer = new wxFlexGridSizer(3, 5, 10);
+    wxFlexGridSizer* fileTypeAssociationsSizer = new wxFlexGridSizer(4, 5, 10);
 
     FileTypeAssociations& associations = m_appSettings.fileTypeAssociations();
 
@@ -117,12 +117,36 @@ FileTypeAssociationsPreferencesPage::FileTypeAssociationsPreferencesPage(wxWindo
                 }
             }
 
-            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
-            projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice));
+            wxArrayString newChoices;
+            newChoices.Add("None");
+            const std::vector<std::string>& extensions = documentType->extensions();
+            for (size_t i = 0; i < extensions.size(); ++i)
+            {
+                newChoices.Add(extensions[i]);
+            }
+            wxChoice* newChoice = new wxChoice(this, wxID_ANY,
+                wxDefaultPosition, wxSize(100, wxDefaultCoord), newChoices);
+            if (associations[i]->shellNewExtension().empty())
+            {
+                newChoice->SetSelection(0);
+            }
+            else
+            {
+                int n = newChoice->FindString(associations[i]->shellNewExtension());
+                if (n >= 1)
+                {
+                    newChoice->SetSelection(n);
+                }
+            }
+
+            actionChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice, newChoice));
+            projectChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice, newChoice));
+            newChoice->Bind(wxEVT_CHOICE, &FileTypeAssociationsPreferencesPage::onAssociationChanged, this, -1, -1, new CustomEventHandlerData(associations[i]->documentTypeName(), actionChoice, projectChoice, newChoice));
 
             fileTypeAssociationsSizer->Add(fileTypeName, 0, wxEXPAND);
             fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
             fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
+            fileTypeAssociationsSizer->Add(newChoice, 0, wxEXPAND);
         }
     }
     if (discrepancyDetected)
@@ -157,6 +181,8 @@ void FileTypeAssociationsPreferencesPage::addTitleRow(wxWindow *parent,
     fileTypeAssociationsSizer->Add(actionChoice, 0, wxEXPAND);
     wxStaticText* projectChoice = new wxStaticText(parent, wxID_ANY, "Associated Project Type");
     fileTypeAssociationsSizer->Add(projectChoice, 0, wxEXPAND);
+    wxStaticText* newChoice = new wxStaticText(parent, wxID_ANY, "New Context Menu");
+    fileTypeAssociationsSizer->Add(newChoice, 0, wxEXPAND);
 }
 
 std::string FileTypeAssociationsPreferencesPage::getFileTypeAndExtensions(const DocumentType& type)
@@ -185,6 +211,7 @@ void FileTypeAssociationsPreferencesPage::onAssociationChanged(wxCommandEvent& e
         std::shared_ptr<FileTypeAssociation> association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
         association->setAssociation(data->association());
         association->setAction(data->actionType(), data->projectName());
+        association->setShellNewExtension(data->shellNewExtension());
         m_updatedFileTypeAssociations.set(association);
     }
     if (m_updatedFileTypeAssociations.size() != 0)
@@ -230,8 +257,10 @@ void FileTypeAssociationsPreferencesPage::onApply(wxCommandEvent& evt)
 
 FileTypeAssociationsPreferencesPage::CustomEventHandlerData::CustomEventHandlerData(const std::string& documentTypeName, 
                                                                                     wxChoice* associationChoice,
-                                                                                    wxChoice* actionChoice)
-    : m_documentTypeName(documentTypeName), m_associationChoice(associationChoice), m_actionChoice(actionChoice)
+                                                                                    wxChoice* actionChoice, 
+                                                                                    wxChoice* newChoice)
+    : m_documentTypeName(documentTypeName), m_associationChoice(associationChoice), m_actionChoice(actionChoice),
+    m_newChoice(newChoice)
 {
 }
 
@@ -278,6 +307,18 @@ std::string FileTypeAssociationsPreferencesPage::CustomEventHandlerData::project
     if (m_actionChoice->GetSelection() >= 2)
     {
         return m_actionChoice->GetStringSelection();
+    }
+    else
+    {
+        return "";
+    }
+}
+
+std::string FileTypeAssociationsPreferencesPage::CustomEventHandlerData::shellNewExtension() const
+{
+    if (m_newChoice->GetSelection() >= 1)
+    {
+        return m_newChoice->GetStringSelection();
     }
     else
     {

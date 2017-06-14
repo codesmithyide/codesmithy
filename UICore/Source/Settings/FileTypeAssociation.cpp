@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,6 +21,7 @@
 */
 
 #include "Settings/FileTypeAssociation.h"
+#include "CodeSmithy/Core/Utilities/XMLUtilities.h"
 
 namespace CodeSmithy
 {
@@ -29,6 +30,7 @@ static const char* documentTypeNameElementName = "document-type-name";
 static const char* associationElementName = "association";
 static const char* actionTypeElementName = "action-type";
 static const char* associatedProjectTypeNameElementName = "associated-project-type-name";
+static const char* shellNewExtensionElementName = "shell-new-extension";
 
 FileTypeAssociation::FileTypeAssociation()
     : m_association(eDisabled), m_actionType(eAskAtStartup)
@@ -90,6 +92,16 @@ void FileTypeAssociation::setAction(EActionType actionType,
     }
 }
 
+const std::string& FileTypeAssociation::shellNewExtension() const
+{
+    return m_shellNewExtension;
+}
+
+void FileTypeAssociation::setShellNewExtension(const std::string& extension)
+{
+    m_shellNewExtension = extension;
+}
+
 FileTypeAssociation& FileTypeAssociation::operator=(const FileTypeAssociation& other)
 {
     if (this == &other)
@@ -101,6 +113,7 @@ FileTypeAssociation& FileTypeAssociation::operator=(const FileTypeAssociation& o
     m_association = other.m_association;
     m_actionType = other.m_actionType;
     m_associatedProjectTypeName = other.m_associatedProjectTypeName;
+    m_shellNewExtension = other.m_shellNewExtension;
 
     return *this;
 }
@@ -110,7 +123,8 @@ bool FileTypeAssociation::operator==(const FileTypeAssociation& other) const
     return ((m_documentTypeName == other.m_documentTypeName) &&
         (m_association == other.m_association) &&
         (m_actionType == other.m_actionType) &&
-        (m_associatedProjectTypeName == other.m_associatedProjectTypeName));
+        (m_associatedProjectTypeName == other.m_associatedProjectTypeName) &&
+        (m_shellNewExtension == other.m_shellNewExtension));
 }
 
 bool FileTypeAssociation::operator!=(const FileTypeAssociation& other) const
@@ -120,14 +134,11 @@ bool FileTypeAssociation::operator!=(const FileTypeAssociation& other) const
 
 void FileTypeAssociation::load(pugi::xml_node node)
 {
-    pugi::xml_node documentTypeNameNode = node.child(documentTypeNameElementName);
-    m_documentTypeName = documentTypeNameNode.child_value();
-    pugi::xml_node associationNode = node.child(associationElementName);
-    m_association = stringToAssociation(associationNode.child_value());
-    pugi::xml_node actionTypeNode = node.child(actionTypeElementName);
-    m_actionType = stringToActionType(actionTypeNode.child_value());
-    pugi::xml_node associatedProjectTypeNameNode = node.child(associatedProjectTypeNameElementName);
-    m_associatedProjectTypeName = associatedProjectTypeNameNode.child_value();
+    m_documentTypeName = XMLUtilities::getChildValueAsString(node, documentTypeNameElementName, "");
+    m_association = stringToAssociation(XMLUtilities::getChildValueAsString(node, associationElementName, ""));
+    m_actionType = stringToActionType(XMLUtilities::getChildValueAsString(node, actionTypeElementName, "")); 
+    m_associatedProjectTypeName = XMLUtilities::getChildValueAsString(node, associatedProjectTypeNameElementName, "");
+    m_shellNewExtension = XMLUtilities::getChildValueAsString(node, shellNewExtensionElementName, "");
 }
 
 void FileTypeAssociation::save(pugi::xml_node node) const
@@ -140,6 +151,8 @@ void FileTypeAssociation::save(pugi::xml_node node) const
     actionTypeNode.append_child(pugi::node_pcdata).set_value(actionTypeToString(m_actionType).c_str());
     pugi::xml_node associatedProjectTypeNameNode = node.append_child(associatedProjectTypeNameElementName);
     associatedProjectTypeNameNode.append_child(pugi::node_pcdata).set_value(m_associatedProjectTypeName.c_str());
+    pugi::xml_node shellNewExtensionNode = node.append_child(shellNewExtensionElementName);
+    shellNewExtensionNode.append_child(pugi::node_pcdata).set_value(m_shellNewExtension.c_str());
 }
 
 std::string FileTypeAssociation::associationToString(EAssociation association)

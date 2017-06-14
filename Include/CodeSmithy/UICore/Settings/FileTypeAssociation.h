@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2017 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -59,6 +59,8 @@ public:
     EActionType actionType() const;
     const std::string& associatedProjectTypeName() const;
     void setAction(EActionType actionType, const std::string& associatedProjectTypeName);
+    const std::string& shellNewExtension() const;
+    void setShellNewExtension(const std::string& extension);
 
     FileTypeAssociation& operator=(const FileTypeAssociation& other);
     bool operator==(const FileTypeAssociation& other) const;
@@ -78,6 +80,12 @@ private:
     EAssociation m_association;
     EActionType m_actionType;
     std::string m_associatedProjectTypeName;
+    /**
+        If this string is not empty, this file type can be created from the New 
+        menu in the shell and this string contains the extension that will be
+        given to the file.
+    */
+    std::string m_shellNewExtension;
 };
 
 }

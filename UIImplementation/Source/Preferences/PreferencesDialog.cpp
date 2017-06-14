@@ -55,8 +55,8 @@ PreferencesDialog::PreferencesDialog(wxWindow* parent,
     m_appSettings(settings)
 {
 	// Create a wxTreebook control
-	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(600, 350));
-	treebook->GetTreeCtrl()->SetMinSize(wxSize(100, 100));
+	wxTreebook* treebook = new wxTreebook(this, wxID_ANY, wxDefaultPosition, wxSize(850, 350));
+	treebook->GetTreeCtrl()->SetMinSize(wxSize(200, 100));
     CreateEditorPreferences(treebook, settings);
     CreateToolsPreferences(treebook, settings);
     CreateStartupPreferences(treebook, settings);
