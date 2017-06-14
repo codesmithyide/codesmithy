@@ -77,6 +77,7 @@ public:
     bool isFileTypeAssociationRegistered(const std::string& documentTypeName,
         bool& isDefault) const;
     void registerShellNew(const std::string& extension);
+    void deregisterShellNew(const std::string& extension);
     bool isShellNewRegistered(const std::string& documentTypeName, 
         std::string& extension) const;
 

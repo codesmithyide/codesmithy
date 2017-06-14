@@ -241,6 +241,7 @@ void FileTypeAssociationsPreferencesPage::onApply(wxCommandEvent& evt)
         {
             if (*existingAssociation != *m_updatedFileTypeAssociations[i])
             {
+                std::string shellNewRegisteredExtension = existingAssociation->shellNewExtension();
                 *existingAssociation = *m_updatedFileTypeAssociations[i];
                 if (m_updatedFileTypeAssociations[i]->association() == FileTypeAssociation::eDisabled)
                 {
@@ -252,6 +253,7 @@ void FileTypeAssociationsPreferencesPage::onApply(wxCommandEvent& evt)
                 }
                 if (m_updatedFileTypeAssociations[i]->shellNewExtension().empty())
                 {
+                    m_appSettings.deregisterShellNew(shellNewRegisteredExtension);
                 }
                 else
                 {

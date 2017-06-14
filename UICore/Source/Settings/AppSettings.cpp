@@ -263,6 +263,16 @@ void AppSettings::registerShellNew(const std::string& extension)
     extInfo.addShellNew();
 }
 
+void AppSettings::deregisterShellNew(const std::string& extension)
+{
+    std::stringstream ext;
+    ext << "." << extension;
+
+    Ishiko::FileTypes::ExtensionRegistryInfo extInfo =
+        Ishiko::FileTypes::FileTypeAssociations::openExtensionRegistryInfo(ext.str());
+    extInfo.removeShellNew();
+}
+
 bool AppSettings::isShellNewRegistered(const std::string& documentTypeName,
                                        std::string& extension) const
 {
