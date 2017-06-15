@@ -59,6 +59,8 @@ private:
         std::string projectName() const;
         std::string shellNewExtension() const;
 
+        wxChoice* newChoice();
+
     private:
         std::string m_documentTypeName;
         wxChoice* m_associationChoice;

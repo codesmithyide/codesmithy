@@ -226,14 +226,31 @@ std::string FileTypeAssociationsPreferencesPage::getFileTypeAndExtensions(const 
 
 void FileTypeAssociationsPreferencesPage::onAssociationChanged(wxCommandEvent& evt)
 {
-    const CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
+    CustomEventHandlerData* data = dynamic_cast<CustomEventHandlerData*>(evt.GetEventUserData());
     if (data)
     {
         std::shared_ptr<FileTypeAssociation> association = std::make_shared<FileTypeAssociation>(data->documentTypeName());
         association->setAssociation(data->association());
         association->setAction(data->actionType(), data->projectName());
-        association->setShellNewExtension(data->shellNewExtension());
+        if (data->association() == FileTypeAssociation::eDisabled)
+        {
+            association->setShellNewExtension("");
+        }
+        else
+        {
+            association->setShellNewExtension(data->shellNewExtension());
+        }
         m_updatedFileTypeAssociations.set(association);
+
+        if (data->association() == FileTypeAssociation::eDisabled)
+        {
+            data->newChoice()->SetSelection(0);
+            data->newChoice()->Disable();
+        }
+        else
+        {
+            data->newChoice()->Enable();
+        }
     }
     if (m_updatedFileTypeAssociations.size() != 0)
     {
@@ -354,6 +371,11 @@ std::string FileTypeAssociationsPreferencesPage::CustomEventHandlerData::shellNe
     {
         return "";
     }
+}
+
+wxChoice* FileTypeAssociationsPreferencesPage::CustomEventHandlerData::newChoice()
+{
+    return m_newChoice;
 }
 
 wxBEGIN_EVENT_TABLE(FileTypeAssociationsPreferencesPage, wxPanel)
