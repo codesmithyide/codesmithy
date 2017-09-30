@@ -3,8 +3,9 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2015 vs2013;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/CodeSmithyCore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
 
@@ -14,7 +15,16 @@ library CodeSmithyCore : Boost, pugixml, libgit2
 
     includedirs += ../../../Include/CodeSmithy/Core;
 
-    outputdir = ../../../Lib/$(arch);
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        outputdir = ../../../Lib/$(arch);
+    }
 
     if ($(config) == Debug)
     {
