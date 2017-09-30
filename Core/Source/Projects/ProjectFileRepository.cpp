@@ -114,7 +114,7 @@ std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProjectNode(con
 
 void ProjectFileRepository::save()
 {
-    std::ofstream file(m_path.wstring());
+    std::ofstream file(m_path.string());
     m_document.save(file);
 }
 
