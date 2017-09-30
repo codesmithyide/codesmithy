@@ -3,14 +3,23 @@ import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCor
 codesmithypath = envvar("CODESMITHY");
 import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2015 vs2013;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
 program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
 {
-    archs = x86 x86_64;
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
 
     headers
     {

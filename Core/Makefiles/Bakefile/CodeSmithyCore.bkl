@@ -11,8 +11,6 @@ vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
 
 library CodeSmithyCore : Boost, pugixml, libgit2
 {
-    archs = x86 x86_64;
-
     includedirs += ../../../Include/CodeSmithy/Core;
 
     if ($(toolset) == gnu)
@@ -23,6 +21,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
 
     if ($(toolset) != gnu)
     {
+        archs = x86 x86_64;
         outputdir = ../../../Lib/$(arch);
     }
 

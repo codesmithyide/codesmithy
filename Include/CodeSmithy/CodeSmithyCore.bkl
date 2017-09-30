@@ -12,5 +12,14 @@ setting CODESMITHY_ROOT
 template CodeSmithyCore : Boost, pugixml, libgit2
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
-    libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);
+    }
 }
