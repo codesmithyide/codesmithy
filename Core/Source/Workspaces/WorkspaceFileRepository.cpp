@@ -54,7 +54,7 @@ WorkspaceFileRepository::~WorkspaceFileRepository()
 
 void WorkspaceFileRepository::save()
 {
-    std::ofstream file(m_path.wstring());
+    std::ofstream file(m_path.string());
     m_document.save(file);
 }
 
