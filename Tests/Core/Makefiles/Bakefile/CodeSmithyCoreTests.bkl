@@ -14,6 +14,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
+        libs += CodeSmithyCore IshikoTestFrameworkCore IshikoProcess boost_filesystem boost_system;
     }
 
     if ($(toolset) != gnu)
