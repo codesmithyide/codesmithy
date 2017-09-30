@@ -13,7 +13,7 @@ template CodeSmithyCore : Boost, pugixml, libgit2
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
 
-    if ($(toolset) != gnu)
+    if ($(toolset) == gnu)
     {
         libdirs += $(CODESMITHY_ROOT)/Lib;
     }
