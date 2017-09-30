@@ -3,18 +3,27 @@ import $(ishikopath)/FileTypes/Include/Ishiko/FileTypes.bkl;
 codesmithypath = envvar("CODESMITHY");
 import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2015 vs2013;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2015.solutionfile = ../VC14/CodeSmithyUICore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyUICore.sln;
 
 library CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
 {
-    archs = x86 x86_64;
-
     includedirs += ../../../Include/CodeSmithy/UICore;
 
-    outputdir = ../../../Lib/$(arch);
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../Lib/$(arch);
+    }
 
     if ($(config) == Debug)
     {
