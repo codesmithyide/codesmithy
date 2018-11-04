@@ -6,7 +6,7 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 setting CODESMITHY_ROOT
 {
     help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHY)';
+    default = '$(CODESMITHY)/CodeSmithy';
 }
 
 template CodeSmithyCore : Boost, pugixml, libgit2
