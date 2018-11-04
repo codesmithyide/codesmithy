@@ -1,10 +1,11 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
 codesmithypath = envvar("CODESMITHY");
-import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
+import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = vs2015 vs2013;
+toolsets = vs2017 vs2015 vs2013;
 
+vs2017.solutionfile = ../VC15/CodeSmithyMake.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyMake.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyMake.sln;
 
