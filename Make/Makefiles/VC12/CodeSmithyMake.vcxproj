@@ -96,7 +96,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Platform);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Configuration);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -113,7 +113,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Platform);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Configuration);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -134,7 +134,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Platform);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Configuration);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -155,7 +155,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Platform);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(BOOST)\stage\lib\$(Platform);$(LIBGIT2)\$(Configuration);$(CODESMITHY)/CodeSmithy\Lib\$(Platform);$(ISHIKO)/Process\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
