@@ -33,7 +33,9 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe ";
+    // TODO
+    //std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe ";
+    std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/devenv.exe";
     commandLine.append(argv[1]);
     commandLine.append(" /build Debug");
 
