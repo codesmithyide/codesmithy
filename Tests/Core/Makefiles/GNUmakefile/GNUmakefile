@@ -74,7 +74,7 @@ PUGIXML_ROOT ?= $(PUGIXML)
 # Path to the libgit2 installation
 LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the CodeSmithy installation
-CODESMITHY_ROOT ?= $(CODESMITHY)
+CODESMITHY_ROOT ?= $(CODESMITHY)/CodeSmithy
 
 # ------------
 

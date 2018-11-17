@@ -1,11 +1,12 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 codesmithypath = envvar("CODESMITHY");
-import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
+import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = gnu vs2015 vs2013;
+toolsets = gnu vs2017 vs2015 vs2013;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyCoreTests.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
