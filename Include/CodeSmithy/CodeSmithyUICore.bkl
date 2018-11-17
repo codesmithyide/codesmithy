@@ -1,7 +1,7 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/FileTypes/Include/Ishiko/FileTypes.bkl;
 codesmithypath = envvar("CODESMITHY");
-import $(codesmithypath)/Include/CodeSmithy/CodeSmithyCore.bkl;
+import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyCore.bkl;
 
 template CodeSmithyUICore : IshikoFileTypes, CodeSmithyCore
 {
