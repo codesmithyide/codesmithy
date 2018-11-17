@@ -1,8 +1,8 @@
 ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/wxWidgets.bkl;
 codesmithypath = envvar("CODESMITHY");
-import $(codesmithypath)/Include/CodeSmithy/CodeSmithyUICore.bkl;
-import $(codesmithypath)/Include/CodeSmithy/CodeSmithyUIElements.bkl;
+import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyUICore.bkl;
+import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyUIElements.bkl;
 
 template CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIElements
 {
