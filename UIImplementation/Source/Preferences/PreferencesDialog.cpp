@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -43,6 +43,7 @@
 #include "Preferences/AdvancedPreferencesPage.h"
 #include "WindowIDs.h"
 #include <wx/sizer.h>
+#include <wx/treectrl.h>
 #include <wx/button.h>
 #include <wx/statline.h>
 
