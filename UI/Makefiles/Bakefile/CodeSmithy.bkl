@@ -11,6 +11,8 @@ program CodeSmithy : CodeSmithyUIImplementation
 {
     win32-subsystem = windows;
 
+    archs = x86 x86_64;
+
     headers
     {
         ../../Source/App.h
