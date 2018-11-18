@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,6 +22,7 @@
 
 #include "CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h"
 #include "Ishiko/Process/ProcessCreator.h"
+#include <boost/program_options.hpp>
 #include <string>
 
 using namespace CodeSmithy;
@@ -33,11 +34,34 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    // TODO : use boost options but for now it's too complicated and I can't debug it
+    std::string projectName;
+    std::string configuration;
+    if (argc == 2)
+    {
+        projectName = argv[1];
+        configuration = "Debug|Win32";
+    }
+    else if (argc == 4)
+    {
+        projectName = argv[3];
+        std::string argv2 = argv[2];
+        if (argv2 == "Microsoft Windows x86")
+        {
+            configuration = "Debug|Win32";
+        }
+        else if (argv2 == "Microsoft Windows x86_64")
+        {
+            configuration = "Debug|x64";
+        }
+    }
+
     // TODO
     //std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe ";
     std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/devenv.exe ";
-    commandLine.append(argv[1]);
-    commandLine.append(" /build Debug");
+    commandLine.append(projectName);
+    commandLine.append(" /build ");
+    commandLine.append(configuration);
 
     Ishiko::Process::ProcessHandle processHandle;
     int err = Ishiko::Process::ProcessCreator::StartProcess(commandLine, processHandle);
