@@ -13,6 +13,8 @@ program CodeSmithy : CodeSmithyUIImplementation
 
     archs = x86 x86_64;
 
+    outputdir = ../../../Bin/$(arch);
+
     headers
     {
         ../../Source/App.h
