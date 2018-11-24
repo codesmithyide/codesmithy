@@ -129,11 +129,11 @@ bool App::OnInit()
         m_appServer->setFrame(frame);
     }
 
-    if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
+    if ((argc == 2) && (strcmp(argv[1], "/restart") != 0) && (strcmp(argv[1], "--bootstrap") != 0))
     {
         frame->OpenFile(argv[1]);
     }
-    else if ((argc == 2) && (strcmp(argv[1], "--bootstrap") != 0))
+    else if ((argc == 2) && (strcmp(argv[1], "--bootstrap") == 0))
     {
         frame->Bootstrap();
     }

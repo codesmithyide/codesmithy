@@ -188,8 +188,11 @@ void Frame::Bootstrap()
 {
     // TODO : first, what to display on the screen
     // TODO: from CodeSmithyIDE clone Project repo
-    GitCloneDialog cloneDialog(this, "https://github.com/CodeSmithyIDE/Project.git", ".");
+    GitCloneDialog cloneDialog(this, "https://github.com/CodeSmithyIDE/Project", "Project");
     cloneDialog.ShowModal();
+
+    // TODO: Need a bootstrap workspace to contain the CodeSmithy project
+    m_workspacePanel->createWorkspaceFromGitRepository("CodeSmithy Bootstrap");
     
     // in the cloned project repo find project makefile, that file should list all other git repos to clone, and then build everything
     // So first of need to clone
