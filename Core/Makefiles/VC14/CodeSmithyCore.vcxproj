@@ -214,6 +214,7 @@
     <ClCompile Include="..\..\Source\VersionControl\GitRepository.cpp" />
     <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp" />
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp" />
+    <ClCompile Include="..\..\Source\Bootstrap\Bootstrap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
@@ -281,6 +282,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Bootstrap\Bootstrap.h" />
     <ClInclude Include="..\..\Source\Projects\ProjectFileRepositoryNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

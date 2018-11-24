@@ -109,6 +109,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
 
         ../../../Include/CodeSmithy/Core/Utilities/XMLUtilities.h
 
+        ../../../Include/CodeSmithy/Core/Bootstrap/Bootstrap.h
+
         ../../Source/Projects/ProjectFileRepositoryNode.h
     }
 
@@ -187,5 +189,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 
         ../../Source/Utilities/XMLUtilities.cpp
+
+        ../../Source/Bootstrap/Bootstrap.cpp
     }
 }
