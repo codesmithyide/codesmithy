@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,8 +21,17 @@
 */
 
 #include "ProjectTemplatesTestSequence.h"
+#include "CodeSmithy/Core/ProjectTemplates//ProjectTemplates.h"
 
 void AddProjectTemplatesTestSequence(TestHarness& theTestHarness)
 {
     TestSequence& projectTemplatesTestSequence = theTestHarness.appendTestSequence("ProjectTemplates tests");
+
+    new HeapAllocationErrorsTest("Creation test 1", ProjectTemplatesCreationTest1, projectTemplatesTestSequence);
+}
+
+TestResult::EOutcome ProjectTemplatesCreationTest1()
+{
+    CodeSmithy::ProjectTemplates projectTemplates;
+    return TestResult::ePassed;
 }
