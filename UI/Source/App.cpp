@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -98,7 +98,7 @@ bool App::OnInit()
     if (m_singleInstanceChecker->CreateDefault() && 
         m_singleInstanceChecker->IsAnotherRunning())
     {
-        if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
+        if ((argc == 2) && (strcmp(argv[1], "/restart") != 0) && (strcmp(argv[1], "--bootstrap") != 0))
         {
             wxClient client;
             bool success = false;
@@ -132,6 +132,10 @@ bool App::OnInit()
     if ((argc == 2) && (strcmp(argv[1], "/restart") != 0))
     {
         frame->OpenFile(argv[1]);
+    }
+    else if ((argc == 2) && (strcmp(argv[1], "--bootstrap") != 0))
+    {
+        frame->Bootstrap();
     }
 
     return true;

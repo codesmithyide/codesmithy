@@ -20,16 +20,8 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_BOOTSTRAP_BOOTSTRAP_H_
-#define _CODESMITHY_CORE_BOOTSTRAP_BOOTSTRAP_H_
+#include "Bootstrap/Bootstrap.h"
 
 namespace CodeSmithy
 {
-
-class Bootstrap
-{
-};
-
 }
-
-#endif

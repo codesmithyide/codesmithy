@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -182,6 +182,18 @@ void Frame::OpenFile(const wxString& file)
             AddToRecentFiles(selectedPath.string());
         }
     }
+}
+
+void Frame::Bootstrap()
+{
+    // TODO : first, what to display on the screen
+    // TODO: from CodeSmithyIDE clone Project repo
+    GitCloneDialog cloneDialog(this, "https://github.com/CodeSmithyIDE/Project.git", ".");
+    cloneDialog.ShowModal();
+    
+    // in the cloned project repo find project makefile, that file should list all other git repos to clone, and then build everything
+    // So first of need to clone
+    // TODO : where should bootstrap implementation live? In core/bootstrap I guess. So I can test it.
 }
 
 void Frame::OnWindowClose(wxCloseEvent& evt)
