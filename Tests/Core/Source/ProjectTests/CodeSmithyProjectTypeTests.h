@@ -20,18 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECTTYPE_H_
-#define _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECTTYPE_H_
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_CODESMITHYPROJECTTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_CODESMITHYPROJECTTYPETESTS_H_
 
-#include "../ProjectType.h"
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-namespace CodeSmithy
-{
+using namespace Ishiko::TestFramework;
 
-class CodeSmithyProjectType : public ProjectType
-{
-};
-
-}
+void AddCodeSmithyProjectTypeTests(TestSequence& testSequence);
 
 #endif

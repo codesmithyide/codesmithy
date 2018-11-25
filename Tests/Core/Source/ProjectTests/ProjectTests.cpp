@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,11 +22,13 @@
 
 #include "ProjectTests.h"
 #include "ParentProjectTypeTests.h"
+#include "CodeSmithyProjectTypeTests.h"
 #include "BakefileProjectTypeTests.h"
 #include "CMakeProjectTypeTests.h"
 #include "ProjectTypesTests.h"
 #include "ProjectFileRepositoryTests.h"
 #include "ParentProjectTests.h"
+#include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -38,10 +40,12 @@ void AddProjectTests(TestHarness& theTestHarness)
 	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 
     AddParentProjectTypeTests(projectTestSequence);
+    AddCodeSmithyProjectTypeTests(projectTestSequence);
     AddBakefileProjectTypeTests(projectTestSequence);
     AddCMakeProjectTypeTests(projectTestSequence);
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
     AddParentProjectTests(projectTestSequence);
+    AddCodeSmithyProjectTests(projectTestSequence);
 	AddBakefileProjectTests(projectTestSequence);
 }

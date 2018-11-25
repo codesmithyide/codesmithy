@@ -23,4 +23,16 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
 
+#include "Projects/Project.h"
+
+namespace CodeSmithy
+{
+
+/// A native CodeSmithy project.
+class CodeSmithyProject : public Project
+{
+};
+
+}
+
 #endif

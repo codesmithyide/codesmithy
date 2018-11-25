@@ -20,18 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECTTYPE_H_
-#define _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECTTYPE_H_
+#include "CodeSmithyProjectTests.h"
 
-#include "../ProjectType.h"
-
-namespace CodeSmithy
+void AddCodeSmithyProjectTests(TestSequence& testSequence)
 {
-
-class CodeSmithyProjectType : public ProjectType
-{
-};
-
+	TestSequence* codeSmithyProjectTestSequence = new TestSequence("CodeSmithyProject tests", testSequence);
 }
-
-#endif
