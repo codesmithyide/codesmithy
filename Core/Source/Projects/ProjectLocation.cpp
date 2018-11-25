@@ -20,8 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#include "Bootstrap/Bootstrap.h"
-
-namespace CodeSmithy
-{
-}
+#include "Projects/ProjectLocation.h"

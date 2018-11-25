@@ -77,6 +77,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
         ../../../Include/CodeSmithy/Core/Projects/Project.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectLocation.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectType.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectTypes.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectObserver.h
@@ -108,8 +109,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
 
         ../../../Include/CodeSmithy/Core/Utilities/XMLUtilities.h
-
-        ../../../Include/CodeSmithy/Core/Bootstrap/Bootstrap.h
 
         ../../Source/Projects/ProjectFileRepositoryNode.h
     }
@@ -158,6 +157,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Documents/XMLDocumentType.cpp
 
         ../../Source/Projects/Project.cpp
+        ../../Source/Projects/ProjectLocation.cpp
         ../../Source/Projects/ProjectType.cpp
         ../../Source/Projects/ProjectTypes.cpp
         ../../Source/Projects/ProjectObserver.cpp
@@ -189,7 +189,5 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 
         ../../Source/Utilities/XMLUtilities.cpp
-
-        ../../Source/Bootstrap/Bootstrap.cpp
     }
 }

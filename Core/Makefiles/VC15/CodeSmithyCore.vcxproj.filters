@@ -143,6 +143,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -210,9 +213,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Bootstrap\Bootstrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Projects\ProjectFileRepositoryNode.h">
@@ -343,6 +343,9 @@
     <ClCompile Include="..\..\Source\Projects\Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Projects\ProjectLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -410,9 +413,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Bootstrap\Bootstrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
