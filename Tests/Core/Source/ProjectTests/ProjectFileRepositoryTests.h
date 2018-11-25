@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,5 +35,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test);
 TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryAddProjectNodeTest1(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryGetProjectNodeTest1(Test& test);
+TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest2(Test& test);
 
 #endif
