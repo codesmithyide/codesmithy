@@ -20,31 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
-#define _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
-
-#include <string>
-
-namespace CodeSmithy
-{
-
-/// Holds the details of where the files for this project are kept.
-
-/// At the moment we only support GitHub repositories.
-class ProjectLocation
-{
-public:
-    /// Constructs a ProjectLocation that doesn't point at anything.
-    ProjectLocation();
-    /// Constructs a ProjectLocation pointing at a GitHub repository.
-    /// @param url The URL of the GitHub repository. This should be the URL as typed in the browser, not the one with
-    /// the ".git" extension.
-    ProjectLocation(const std::string& url);
-
-private:
-    std::string m_url;
-};
-
-}
+#ifndef _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
+#define _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
 
 #endif

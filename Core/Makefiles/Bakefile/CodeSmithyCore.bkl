@@ -88,6 +88,9 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Projects/ParentProjectType.h
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
+        ../../../Include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h
+        ../../../Include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h
+
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
         ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h
 
@@ -168,6 +171,9 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Projects/ParentProject.cpp
         ../../Source/Projects/ParentProjectType.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp
+
+        ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp
+        ../../Source/Projects/CodeSmithy/CodeSmithyProjectType.cpp
 
         ../../Source/Projects/Bakefile/BakefileProject.cpp
         ../../Source/Projects/Bakefile/BakefileProjectType.cpp

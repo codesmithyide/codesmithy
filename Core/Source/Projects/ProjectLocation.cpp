@@ -21,3 +21,17 @@
 */
 
 #include "Projects/ProjectLocation.h"
+
+namespace CodeSmithy
+{
+
+ProjectLocation::ProjectLocation()
+{
+}
+
+ProjectLocation::ProjectLocation(const std::string& url)
+    : m_url(url)
+{
+}
+
+}

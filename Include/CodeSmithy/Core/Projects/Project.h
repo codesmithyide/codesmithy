@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
 #include "ProjectType.h"
+#include "ProjectLocation.h"
 #include "ProjectRepositoryNode.h"
 #include <string>
 
@@ -44,6 +45,7 @@ public:
 
 private:
     std::string m_name;
+    ProjectLocation m_location;
 };
 
 }
