@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddCodeSmithyProjectTests(TestSequence& testSequence);
 
 TestResult::EOutcome CodeSmithyProjectCreationTest1();
+TestResult::EOutcome CodeSmithyProjectSaveTest1(FileComparisonTest& test);
 
 #endif

@@ -34,6 +34,7 @@ class CodeSmithyProject : public Project
 {
 public:
     CodeSmithyProject(const CodeSmithyProjectType& type, const std::string& name);
+    CodeSmithyProject(const CodeSmithyProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
     ~CodeSmithyProject() override;
 
     const ProjectType& type() const override;
@@ -42,6 +43,7 @@ public:
 
 private:
     const CodeSmithyProjectType& m_type;
+    std::shared_ptr<ProjectRepositoryNode> m_node;
 };
 
 }
