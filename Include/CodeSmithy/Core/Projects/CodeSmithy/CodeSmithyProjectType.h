@@ -30,6 +30,9 @@ namespace CodeSmithy
 
 class CodeSmithyProjectType : public ProjectType
 {
+public:
+    CodeSmithyProjectType();
+    ~CodeSmithyProjectType() override;
 };
 
 }

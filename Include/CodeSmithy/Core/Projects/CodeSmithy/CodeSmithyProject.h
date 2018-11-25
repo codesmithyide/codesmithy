@@ -23,7 +23,8 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_CODESMITHY_CODESMITHYPROJECT_H_
 
-#include "Projects/Project.h"
+#include "../Project.h"
+#include "CodeSmithyProjectType.h"
 
 namespace CodeSmithy
 {
@@ -31,6 +32,16 @@ namespace CodeSmithy
 /// A native CodeSmithy project.
 class CodeSmithyProject : public Project
 {
+public:
+    CodeSmithyProject(const CodeSmithyProjectType& type, const std::string& name);
+    ~CodeSmithyProject() override;
+
+    const ProjectType& type() const override;
+
+    void save() override;
+
+private:
+    const CodeSmithyProjectType& m_type;
 };
 
 }

@@ -29,4 +29,6 @@ using namespace Ishiko::TestFramework;
 
 void AddCodeSmithyProjectTests(TestSequence& testSequence);
 
+TestResult::EOutcome CodeSmithyProjectCreationTest1();
+
 #endif

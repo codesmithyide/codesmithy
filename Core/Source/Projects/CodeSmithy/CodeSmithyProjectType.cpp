@@ -21,3 +21,17 @@
 */
 
 #include "Projects/CodeSmithy/CodeSmithyProjectType.h"
+
+namespace CodeSmithy
+{
+
+CodeSmithyProjectType::CodeSmithyProjectType()
+    : ProjectType("CodeSmithy.CodeSmithy")
+{
+}
+
+CodeSmithyProjectType::~CodeSmithyProjectType()
+{
+}
+
+}

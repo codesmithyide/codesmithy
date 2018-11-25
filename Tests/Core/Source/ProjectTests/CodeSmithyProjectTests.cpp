@@ -21,8 +21,18 @@
 */
 
 #include "CodeSmithyProjectTests.h"
+#include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h"
 
 void AddCodeSmithyProjectTests(TestSequence& testSequence)
 {
 	TestSequence* codeSmithyProjectTestSequence = new TestSequence("CodeSmithyProject tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CodeSmithyProjectCreationTest1, *codeSmithyProjectTestSequence);
+}
+
+TestResult::EOutcome CodeSmithyProjectCreationTest1()
+{
+    CodeSmithy::CodeSmithyProjectType type;
+    CodeSmithy::CodeSmithyProject project(type, "CodeSmithyProjectCreationTest1");
+    return TestResult::ePassed;
 }

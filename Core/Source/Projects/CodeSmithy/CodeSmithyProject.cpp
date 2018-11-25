@@ -21,3 +21,28 @@
 */
 
 #include "Projects/CodeSmithy/CodeSmithyProject.h"
+
+namespace CodeSmithy
+{
+
+CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type,
+                                     const std::string& name)
+    : Project(name), m_type(type)
+{
+}
+
+CodeSmithyProject::~CodeSmithyProject()
+{
+}
+
+const ProjectType& CodeSmithyProject::type() const
+{
+    return m_type;
+}
+
+void CodeSmithyProject::save()
+{
+    // TODO
+}
+
+}
