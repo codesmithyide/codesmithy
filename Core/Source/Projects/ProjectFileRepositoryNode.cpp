@@ -53,9 +53,10 @@ void ProjectFileRepositoryNode::set(const std::string& key, const std::string& v
     }
 }
 
-void ProjectFileRepositoryNode::append(const std::string& key)
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::append(const std::string& key)
 {
     pugi::xml_node newNode = m_node.append_child(key.c_str());
+    return std::make_shared<ProjectFileRepositoryNode>(newNode);
 }
 
 }
