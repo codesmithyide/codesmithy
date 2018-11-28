@@ -30,5 +30,6 @@ using namespace Ishiko::TestFramework;
 void AddProjectFileRepositoryNodeTests(TestSequence& testSequence);
 
 TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeAppendTest1(FileComparisonTest& test);
 
 #endif

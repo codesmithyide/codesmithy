@@ -49,7 +49,7 @@ TestResult::EOutcome CodeSmithyProjectSaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("BakefileProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("CodeSmithyProject");
     if (projectNode)
     {
         CodeSmithy::CodeSmithyProjectType type;

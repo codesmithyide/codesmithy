@@ -38,7 +38,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
     boost::filesystem::create_directories(outputPath);
 
-	TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
+    TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 
     AddParentProjectTypeTests(projectTestSequence);
     AddCodeSmithyProjectTypeTests(projectTestSequence);
@@ -49,5 +49,5 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddProjectFileRepositoryNodeTests(projectTestSequence);
     AddParentProjectTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
-	AddBakefileProjectTests(projectTestSequence);
+    AddBakefileProjectTests(projectTestSequence);
 }

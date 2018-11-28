@@ -28,7 +28,9 @@ void AddProjectFileRepositoryNodeTests(TestSequence& testSequence)
 {
     TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepositoryNode tests", testSequence);
 
-    new FileComparisonTest("Creation test 1", ProjectFileRepositoryNodeSetTest1, *repositoryTestSequence);
+    new FileComparisonTest("set test 1", ProjectFileRepositoryNodeSetTest1, *repositoryTestSequence);
+
+    new FileComparisonTest("append test 1", ProjectFileRepositoryNodeAppendTest1, *repositoryTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
@@ -42,6 +44,26 @@ TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
     std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project1 = repository.addProjectNode("Project1");
 
     project1->set("key1", "value1");
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectFileRepositoryNodeAppendTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositoryNodeAppendTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryNodeAppendTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+    repository.setName("ProjectFileRepositoryNodeAppendTest1");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project1 = repository.addProjectNode("Project1");
+
+    project1->append("key1");
 
     repository.save();
 

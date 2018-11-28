@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORYNODE_H_
 
 #include <string>
+#include <memory>
 
 namespace CodeSmithy
 {
@@ -36,6 +37,8 @@ public:
 
     virtual std::string get(const std::string& key) const = 0;
     virtual void set(const std::string& key, const std::string& value) = 0;
+
+    virtual void append(const std::string& key) = 0;
 };
 
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -51,6 +51,11 @@ void ProjectFileRepositoryNode::set(const std::string& key, const std::string& v
         pugi::xml_node newNode = m_node.append_child(key.c_str());
         newNode.append_child(pugi::node_pcdata).set_value(value.c_str());
     }
+}
+
+void ProjectFileRepositoryNode::append(const std::string& key)
+{
+    pugi::xml_node newNode = m_node.append_child(key.c_str());
 }
 
 }
