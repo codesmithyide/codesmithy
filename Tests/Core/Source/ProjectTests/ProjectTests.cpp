@@ -27,6 +27,7 @@
 #include "CMakeProjectTypeTests.h"
 #include "ProjectTypesTests.h"
 #include "ProjectFileRepositoryTests.h"
+#include "ProjectFileRepositoryNodeTests.h"
 #include "ParentProjectTests.h"
 #include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
@@ -45,6 +46,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddCMakeProjectTypeTests(projectTestSequence);
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
+    AddProjectFileRepositoryNodeTests(projectTestSequence);
     AddParentProjectTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
 	AddBakefileProjectTests(projectTestSequence);
