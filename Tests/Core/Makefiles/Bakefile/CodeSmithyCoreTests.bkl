@@ -57,6 +57,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspacesTestSequence.h
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.h
         ../../Source/WorkspacesTests/GenericWorkspaceTests.h
+
+        ../../Source/BootstrapTests/BootstrapTests.h
     }
 
     sources
@@ -95,5 +97,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspacesTestSequence.cpp
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.cpp
         ../../Source/WorkspacesTests/GenericWorkspaceTests.cpp
+
+        ../../Source/BootstrapTests/BootstrapTests.cpp
     }
 }

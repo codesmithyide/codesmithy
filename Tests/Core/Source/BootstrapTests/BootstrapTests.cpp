@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,28 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "DocumentsTests/DocumentsTestSequence.h"
-#include "ProjectTests/ProjectTests.h"
-#include "ProjectTemplatesTests/ProjectTemplatesTestSequence.h"
-#include "WorkspacesTests/WorkspacesTestSequence.h"
-#include "BootstrapTests/BootstrapTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include <boost/filesystem/operations.hpp>
+#include "BootstrapTests.h"
 
-int main(int argc, char* argv[])
+void AddBootstrapTests(TestHarness& theTestHarness)
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
-
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
-    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
-    boost::filesystem::create_directories("../../TestOutput");
-    theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
-
-    AddDocumentsTestSequence(theTestHarness);
-    AddProjectTests(theTestHarness);
-    AddProjectTemplatesTestSequence(theTestHarness);
-    AddWorkspacesTestSequence(theTestHarness);
-    AddBootstrapTests(theTestHarness);
-
-    return theTestHarness.run();
+    TestSequence& bootstrapTestSequence = theTestHarness.appendTestSequence("Bootstrap tests");
 }

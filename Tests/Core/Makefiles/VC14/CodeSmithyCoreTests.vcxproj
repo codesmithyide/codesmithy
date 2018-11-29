@@ -186,6 +186,7 @@
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
+    <ClCompile Include="..\..\Source\BootstrapTests\BootstrapTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\DocumentsTests\DocumentsTestSequence.h" />
@@ -217,6 +218,7 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
+    <ClInclude Include="..\..\Source\BootstrapTests\BootstrapTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
