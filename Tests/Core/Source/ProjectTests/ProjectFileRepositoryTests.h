@@ -35,7 +35,5 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test);
 TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryAddProjectNodeTest1(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryGetProjectNodeTest1(Test& test);
-TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest2(Test& test);
 
 #endif

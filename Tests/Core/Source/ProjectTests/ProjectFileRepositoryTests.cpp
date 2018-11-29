@@ -37,9 +37,6 @@ void AddProjectFileRepositoryTests(TestSequence& testSequence)
     new FileComparisonTest("addProjectNode test 1", ProjectFileRepositoryAddProjectNodeTest1, *repositoryTestSequence);
 
     new HeapAllocationErrorsTest("getProjectNode test 1", ProjectFileRepositoryGetProjectNodeTest1, *repositoryTestSequence);
-
-    new FileComparisonTest("Bootstrap creation test 1", ProjectFileRepositoryBootstrapCreationTest1, *repositoryTestSequence);
-    new HeapAllocationErrorsTest("Bootstap creation test 2", ProjectFileRepositoryBootstrapCreationTest2, *repositoryTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
@@ -146,47 +143,6 @@ TestResult::EOutcome ProjectFileRepositoryGetProjectNodeTest1(Test& test)
         {
             result = TestResult::ePassed;
         }
-    }
-
-    return result;
-}
-
-// This tests that we are able to generate the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
-// It's also a convenient way to generate it.
-TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest1(FileComparisonTest& test)
-{
-    TestResult::EOutcome result = TestResult::eFailed;
-
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectFileRepositoryBootstrapCreationTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryBootstrapCreationTest1.csmthprj");
-
-    CodeSmithy::ProjectFileRepository repository(outputPath);
-    repository.setName("CodeSmithy");
-    repository.save();
-
-    if (repository.name() == "CodeSmithy")
-    {
-        result = TestResult::ePassed;
-    }
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
-    return result;
-}
-
-// This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
-TestResult::EOutcome ProjectFileRepositoryBootstrapCreationTest2(Test& test)
-{
-    TestResult::EOutcome result = TestResult::eFailed;
-
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryBootstrapCreationTest2.csmthprj");
-
-    CodeSmithy::ProjectFileRepository repository(inputPath);
-    if (repository.name() == "CodeSmithy")
-    {
-        result = TestResult::ePassed;
     }
 
     return result;

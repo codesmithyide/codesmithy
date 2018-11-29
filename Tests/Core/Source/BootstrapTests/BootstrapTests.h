@@ -29,4 +29,7 @@ using namespace Ishiko::TestFramework;
 
 void AddBootstrapTests(TestHarness& theTestHarness);
 
+TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonTest& test);
+TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test);
+
 #endif
