@@ -35,6 +35,9 @@ void AddProjectFileRepositoryNodeTests(TestSequence& testSequence)
     new FileComparisonTest("append test 1", ProjectFileRepositoryNodeAppendTest1, *repositoryNodeTestSequence);
     new FileComparisonTest("append test 2", ProjectFileRepositoryNodeAppendTest2, *repositoryNodeTestSequence);
     new FileComparisonTest("append test 3", ProjectFileRepositoryNodeAppendTest3, *repositoryNodeTestSequence);
+
+    new HeapAllocationErrorsTest("firstChild test 1", ProjectFileRepositoryNodeFirstChildTest1, *repositoryNodeTestSequence);
+    new HeapAllocationErrorsTest("firstChild test 2", ProjectFileRepositoryNodeFirstChildTest2, *repositoryNodeTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
@@ -140,4 +143,64 @@ TestResult::EOutcome ProjectFileRepositoryNodeAppendTest3(FileComparisonTest& te
     test.setReferenceFilePath(referencePath);
 
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest1(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryNodeFirstChildTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.name() == "ProjectFileRepositoryNodeFirstChildTest1")
+    {
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project = repository.getProjectNode("Project1");
+        if (project)
+        {
+            std::shared_ptr<CodeSmithy::ProjectRepositoryNode> key1Node = project->firstChild("key1");
+            if (key1Node)
+            {
+                if (!key1Node->nextSibling())
+                {
+                    result = TestResult::ePassed;
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest2(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryNodeFirstChildTest2.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.name() == "ProjectFileRepositoryNodeFirstChildTest2")
+    {
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project = repository.getProjectNode("Project1");
+        if (project)
+        {
+            std::shared_ptr<CodeSmithy::ProjectRepositoryNode> key1Node = project->firstChild("key1");
+            if (key1Node)
+            {
+                std::shared_ptr<CodeSmithy::ProjectRepositoryNode> key2Node = key1Node->nextSibling();
+                if (key2Node)
+                {
+                    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> key3Node = key2Node->nextSibling();
+                    if (key3Node)
+                    {
+                        if (!key3Node->nextSibling())
+                        {
+                            result = TestResult::ePassed;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
 }

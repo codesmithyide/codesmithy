@@ -38,6 +38,8 @@ public:
     virtual std::string get(const std::string& key) const = 0;
     virtual void set(const std::string& key, const std::string& value) = 0;
 
+    virtual std::shared_ptr<ProjectRepositoryNode> firstChild(const std::string& key) = 0;
+    virtual std::shared_ptr<ProjectRepositoryNode> nextSibling() = 0;
     virtual std::shared_ptr<ProjectRepositoryNode> append(const std::string& key) = 0;
 };
 

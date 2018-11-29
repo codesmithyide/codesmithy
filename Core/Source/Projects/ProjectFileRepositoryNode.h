@@ -38,6 +38,8 @@ public:
     std::string get(const std::string& key) const override;
     void set(const std::string& key, const std::string& value) override;
 
+    std::shared_ptr<ProjectRepositoryNode> firstChild(const std::string& key) override;
+    std::shared_ptr<ProjectRepositoryNode> nextSibling() override;
     std::shared_ptr<ProjectRepositoryNode> append(const std::string& key) override;
 
 private:

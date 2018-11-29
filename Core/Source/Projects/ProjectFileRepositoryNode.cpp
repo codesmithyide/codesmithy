@@ -53,6 +53,23 @@ void ProjectFileRepositoryNode::set(const std::string& key, const std::string& v
     }
 }
 
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::firstChild(const std::string& key)
+{
+    // TODO : cope with node not found
+    return std::make_shared<ProjectFileRepositoryNode>(m_node.child(key.c_str()));
+}
+
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::nextSibling()
+{
+    std::shared_ptr<ProjectRepositoryNode> result;
+    pugi::xml_node sibling = m_node.next_sibling();
+    if (sibling)
+    {
+        result = std::make_shared<ProjectFileRepositoryNode>(sibling);
+    }
+    return result;
+}
+
 std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::append(const std::string& key)
 {
     pugi::xml_node newNode = m_node.append_child(key.c_str());
