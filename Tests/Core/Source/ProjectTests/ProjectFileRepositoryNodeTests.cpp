@@ -26,13 +26,15 @@
 
 void AddProjectFileRepositoryNodeTests(TestSequence& testSequence)
 {
-    TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepositoryNode tests", testSequence);
+    TestSequence* repositoryNodeTestSequence = new TestSequence("ProjectFileRepositoryNode tests", testSequence);
 
-    new FileComparisonTest("set test 1", ProjectFileRepositoryNodeSetTest1, *repositoryTestSequence);
+    new FileComparisonTest("set test 1", ProjectFileRepositoryNodeSetTest1, *repositoryNodeTestSequence);
 
-    new FileComparisonTest("append test 1", ProjectFileRepositoryNodeAppendTest1, *repositoryTestSequence);
-    new FileComparisonTest("append test 2", ProjectFileRepositoryNodeAppendTest2, *repositoryTestSequence);
-    new FileComparisonTest("append test 3", ProjectFileRepositoryNodeAppendTest3, *repositoryTestSequence);
+    new HeapAllocationErrorsTest("get test 1", ProjectFileRepositoryNodeGetTest1, *repositoryNodeTestSequence);
+
+    new FileComparisonTest("append test 1", ProjectFileRepositoryNodeAppendTest1, *repositoryNodeTestSequence);
+    new FileComparisonTest("append test 2", ProjectFileRepositoryNodeAppendTest2, *repositoryNodeTestSequence);
+    new FileComparisonTest("append test 3", ProjectFileRepositoryNodeAppendTest3, *repositoryNodeTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
@@ -53,6 +55,28 @@ TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
     test.setReferenceFilePath(referencePath);
 
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectFileRepositoryNodeGetTest1(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryNodeGetTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.name() == "ProjectFileRepositoryNodeGetTest1")
+    {
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project = repository.getProjectNode("Project1");
+        if (project)
+        {
+            if (project->get("key1") == "value1")
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+
+    return result;
 }
 
 TestResult::EOutcome ProjectFileRepositoryNodeAppendTest1(FileComparisonTest& test)
