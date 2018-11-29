@@ -36,5 +36,6 @@ TestResult::EOutcome ProjectFileRepositoryNodeAppendTest2(FileComparisonTest& te
 TestResult::EOutcome ProjectFileRepositoryNodeAppendTest3(FileComparisonTest& test);
 TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest1(Test& test);
 TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest2(Test& test);
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest3(Test& test);
 
 #endif

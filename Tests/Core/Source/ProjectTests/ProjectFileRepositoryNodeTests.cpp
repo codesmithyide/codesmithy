@@ -38,6 +38,7 @@ void AddProjectFileRepositoryNodeTests(TestSequence& testSequence)
 
     new HeapAllocationErrorsTest("firstChild test 1", ProjectFileRepositoryNodeFirstChildTest1, *repositoryNodeTestSequence);
     new HeapAllocationErrorsTest("firstChild test 2", ProjectFileRepositoryNodeFirstChildTest2, *repositoryNodeTestSequence);
+    new HeapAllocationErrorsTest("firstChild test 3", ProjectFileRepositoryNodeFirstChildTest3, *repositoryNodeTestSequence);
 }
 
 TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test)
@@ -196,6 +197,35 @@ TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest2(Test& test)
                         {
                             result = TestResult::ePassed;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest3(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryNodeFirstChildTest3.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    if (repository.name() == "ProjectFileRepositoryNodeFirstChildTest3")
+    {
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project = repository.getProjectNode("Project1");
+        if (project)
+        {
+            std::shared_ptr<CodeSmithy::ProjectRepositoryNode> key1Node = project->firstChild("key1");
+            if (key1Node)
+            {
+                if (!key1Node->nextSibling())
+                {
+                    if (key1Node->get("subkey1") == "subvalue1")
+                    {
+                        result = TestResult::ePassed;
                     }
                 }
             }
