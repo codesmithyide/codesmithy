@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <codesmithy-project-repository>
 	<file-format-version>0.1.0</file-format-version>
-	<name>ProjectFileRepositoryNodeGetTest1</name>
+	<name>ProjectFileRepositoryNodeGetChildNodeValueTest1</name>
 	<projects>
 		<codesmithy-project>
 			<name>Project1</name>
