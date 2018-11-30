@@ -29,4 +29,7 @@ using namespace Ishiko::TestFramework;
 
 void AddProjectLocationTests(TestSequence& testSequence);
 
+TestResult::EOutcome ProjectLocationCreationTest1();
+TestResult::EOutcome ProjectLocationCreationTest2();
+
 #endif

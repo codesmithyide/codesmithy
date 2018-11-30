@@ -21,8 +21,24 @@
 */
 
 #include "ProjectLocationTests.h"
+#include "CodeSmithy/Core/Projects/ProjectLocation.h"
 
 void AddProjectLocationTests(TestSequence& testSequence)
 {
-    TestSequence* typesTestSequence = new TestSequence("ProjectLocation tests", testSequence);
+    TestSequence* locationTestSequence = new TestSequence("ProjectLocation tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", ProjectLocationCreationTest1, *locationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", ProjectLocationCreationTest2, *locationTestSequence);
+}
+
+TestResult::EOutcome ProjectLocationCreationTest1()
+{
+    CodeSmithy::ProjectLocation location;
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectLocationCreationTest2()
+{
+    CodeSmithy::ProjectLocation location("location1");
+    return TestResult::ePassed;
 }
