@@ -33,7 +33,7 @@ CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type,
 
 CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type,
                                      std::shared_ptr<ProjectRepositoryNode> node)
-    : Project(node->get("name")), m_type(type),
+    : Project(node->getChildNodeValue("name")), m_type(type),
     m_node(node)
 {
 }

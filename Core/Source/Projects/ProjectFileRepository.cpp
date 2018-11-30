@@ -114,6 +114,7 @@ std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProjectNode(con
 
 void ProjectFileRepository::save()
 {
+    // TODO : needs to be more robust
     std::ofstream file(m_path.string());
     m_document.save(file);
 }

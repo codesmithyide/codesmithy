@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -33,7 +33,7 @@ BakefileProject::BakefileProject(const BakefileProjectType& type,
 
 BakefileProject::BakefileProject(const BakefileProjectType& type,
                                  std::shared_ptr<ProjectRepositoryNode> node)
-    : MetaBuildSystemProject(node->get("name")), m_type(type), 
+    : MetaBuildSystemProject(node->getChildNodeValue("name")), m_type(type),
     m_node(node)
 {
 }
@@ -49,8 +49,8 @@ const ProjectType& BakefileProject::type() const
 
 void BakefileProject::save()
 {
-    m_node->set("name", name());
-    m_node->set("type", type().name());
+    m_node->setChildNodeValue("name", name());
+    m_node->setChildNodeValue("type", type().name());
 }
 
 }
