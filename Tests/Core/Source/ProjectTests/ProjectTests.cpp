@@ -28,6 +28,7 @@
 #include "ProjectTypesTests.h"
 #include "ProjectFileRepositoryTests.h"
 #include "ProjectFileRepositoryNodeTests.h"
+#include "ProjectLocationTests.h"
 #include "ParentProjectTests.h"
 #include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
@@ -47,6 +48,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
     AddProjectFileRepositoryNodeTests(projectTestSequence);
+    AddProjectLocationTests(projectTestSequence);
     AddParentProjectTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
     AddBakefileProjectTests(projectTestSequence);
