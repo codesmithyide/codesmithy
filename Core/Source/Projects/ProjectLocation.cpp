@@ -36,7 +36,7 @@ ProjectLocation::ProjectLocation(const std::string& url)
 
 void ProjectLocation::save(ProjectRepositoryNode& node) const
 {
-    node.set("location", m_url);
+    node.setChildNodeValue("location", m_url);
 }
 
 }

@@ -41,8 +41,11 @@ public:
 
     void save() override;
 
+    void addProject(const ProjectLocation& projectLocation);
+
 private:
     const ParentProjectType& m_type;
+    std::vector<ProjectLocation> m_childProjects;
     std::shared_ptr<ProjectRepositoryNode> m_node;
 };
 
