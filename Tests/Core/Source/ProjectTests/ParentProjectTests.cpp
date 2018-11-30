@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -33,6 +33,8 @@ void AddParentProjectTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 2", ParentProjectCreationTest2, *parentProjectTestSequence);
 
     new FileComparisonTest("save test 1", ParentProjectSaveTest1, *parentProjectTestSequence);
+
+    new FileComparisonTest("addProject test 1", ParentProjectAddProjectTest1, *parentProjectTestSequence);
 }
 
 TestResult::EOutcome ParentProjectCreationTest1()
@@ -77,6 +79,33 @@ TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test)
     {
         CodeSmithy::ParentProjectType type;
         CodeSmithy::ParentProject project(type, projectNode);
+        project.save();
+    }
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ParentProjectAddProjectTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ParentProjectAddProjectTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ParentProjectAddProjectTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
+    if (projectNode)
+    {
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
+
+        project.addProject(CodeSmithy::ProjectLocation("location1"));
+
         project.save();
     }
 

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -32,5 +32,6 @@ void AddParentProjectTests(TestSequence& testSequence);
 TestResult::EOutcome ParentProjectCreationTest1();
 TestResult::EOutcome ParentProjectCreationTest2(Test& test);
 TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test);
+TestResult::EOutcome ParentProjectAddProjectTest1(FileComparisonTest& test);
 
 #endif
