@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<codesmithy-project-repository>
+	<file-format-version>0.1.0</file-format-version>
+	<name>ProjectLocationSaveTest1</name>
+	<projects>
+		<codesmithy-project>
+			<name>Project1</name>
+			<location>location1</location>
+		</codesmithy-project>
+	</projects>
+</codesmithy-project-repository>

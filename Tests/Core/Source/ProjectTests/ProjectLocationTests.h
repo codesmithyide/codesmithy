@@ -31,5 +31,6 @@ void AddProjectLocationTests(TestSequence& testSequence);
 
 TestResult::EOutcome ProjectLocationCreationTest1();
 TestResult::EOutcome ProjectLocationCreationTest2();
+TestResult::EOutcome ProjectLocationSaveTest1(FileComparisonTest& test);
 
 #endif

@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 
+#include "ProjectRepositoryNode.h"
 #include <string>
 
 namespace CodeSmithy
@@ -40,6 +41,8 @@ public:
     /// @param url The URL of the GitHub repository. This should be the URL as typed in the browser, not the one with
     /// the ".git" extension.
     ProjectLocation(const std::string& url);
+
+    void save(ProjectRepositoryNode& node) const;
 
 private:
     std::string m_url;
