@@ -10,6 +10,12 @@
 				<project>
 					<location>location1</location>
 				</project>
+				<project>
+					<location>location2</location>
+				</project>
+				<project>
+					<location>location3</location>
+				</project>
 			</projects>
 		</codesmithy-project>
 	</projects>
