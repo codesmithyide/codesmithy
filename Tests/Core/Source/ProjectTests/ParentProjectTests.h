@@ -35,5 +35,6 @@ TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test);
 TestResult::EOutcome ParentProjectSaveTest2(FileComparisonTest& test);
 TestResult::EOutcome ParentProjectAddProjectTest1(FileComparisonTest& test);
 TestResult::EOutcome ParentProjectAddProjectTest2(FileComparisonTest& test);
+TestResult::EOutcome ParentProjectSaveTest3(FileComparisonTest& test);
 
 #endif

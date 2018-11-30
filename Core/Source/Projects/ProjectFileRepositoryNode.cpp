@@ -86,4 +86,15 @@ std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::appendChildNod
     return std::make_shared<ProjectFileRepositoryNode>(newNode);
 }
 
+void ProjectFileRepositoryNode::clear()
+{
+    pugi::xml_node node = m_node.last_child();
+    while (node)
+    {
+        pugi::xml_node previousNode = node.previous_sibling();
+        m_node.remove_child(node);
+        node = previousNode;
+    }
+}
+
 }

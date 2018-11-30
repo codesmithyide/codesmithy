@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,6 +25,11 @@
 namespace CodeSmithy
 {
 
+static const char* projectNameElementName = "name";
+static const char* projectTypeElementName = "type";
+static const char* childProjectsElementName = "projects";
+static const char* childProjectElementName = "project";
+
 ParentProject::ParentProject(const ParentProjectType& type,
                              const std::string& name)
     : Project(name), m_type(type)
@@ -33,7 +38,7 @@ ParentProject::ParentProject(const ParentProjectType& type,
 
 ParentProject::ParentProject(const ParentProjectType& type, 
                              std::shared_ptr<ProjectRepositoryNode> node)
-    : Project(node->get("name")), m_type(type),
+    : Project(node->getChildNodeValue(projectNameElementName)), m_type(type),
     m_node(node)
 {
 }
@@ -49,8 +54,22 @@ const ProjectType& ParentProject::type() const
 
 void ParentProject::save()
 {
-    m_node->set("name", name());
-    m_node->set("type", type().name());
+    // TODO : should be more robust, but the robustness should probably be implemented
+    // at a higher level so here we just don't try to recover
+    m_node->setChildNodeValue(projectNameElementName, name());
+    m_node->setChildNodeValue(projectTypeElementName, type().name());
+    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
+    childProjectsNode->clear();
+    for (const ProjectLocation& location : m_childProjects)
+    {
+        std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(childProjectElementName);
+        location.save(*childProjectNode);
+    }
+}
+
+void ParentProject::addProject(const ProjectLocation& projectLocation)
+{
+    m_childProjects.push_back(projectLocation);
 }
 
 }

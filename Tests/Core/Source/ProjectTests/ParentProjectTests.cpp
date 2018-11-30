@@ -37,6 +37,7 @@ void AddParentProjectTests(TestSequence& testSequence)
 
     new FileComparisonTest("addProject test 1", ParentProjectAddProjectTest1, *parentProjectTestSequence);
     new FileComparisonTest("addProject test 2", ParentProjectAddProjectTest2, *parentProjectTestSequence);
+    new FileComparisonTest("save test 3", ParentProjectSaveTest3, *parentProjectTestSequence);
 }
 
 TestResult::EOutcome ParentProjectCreationTest1()
@@ -165,6 +166,38 @@ TestResult::EOutcome ParentProjectAddProjectTest2(FileComparisonTest& test)
         project.addProject(CodeSmithy::ProjectLocation("location2"));
         project.addProject(CodeSmithy::ProjectLocation("location3"));
 
+        project.save();
+    }
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+// Checks that calling save() twice works correctly
+TestResult::EOutcome ParentProjectSaveTest3(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ParentProjectSaveTest3.csmthprj");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ParentProjectSaveTest3.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
+    if (projectNode)
+    {
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
+
+        project.addProject(CodeSmithy::ProjectLocation("location1"));
+        project.addProject(CodeSmithy::ProjectLocation("location2"));
+        project.addProject(CodeSmithy::ProjectLocation("location3"));
+
+        // We call save() twice on purpose
+        project.save();
         project.save();
     }
 

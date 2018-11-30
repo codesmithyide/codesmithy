@@ -43,6 +43,8 @@ public:
     std::shared_ptr<ProjectRepositoryNode> setChildNode(const std::string& key) override;
     std::shared_ptr<ProjectRepositoryNode> appendChildNode(const std::string& key) override;
 
+    void clear() override;
+
 private:
     pugi::xml_node m_node;
 };

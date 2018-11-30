@@ -42,6 +42,8 @@ public:
     virtual std::shared_ptr<ProjectRepositoryNode> nextSibling() = 0;
     virtual std::shared_ptr<ProjectRepositoryNode> setChildNode(const std::string& key) = 0;
     virtual std::shared_ptr<ProjectRepositoryNode> appendChildNode(const std::string& key) = 0;
+
+    virtual void clear() = 0;
 };
 
 }
