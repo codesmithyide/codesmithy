@@ -29,13 +29,14 @@ using namespace Ishiko::TestFramework;
 
 void AddProjectFileRepositoryNodeTests(TestSequence& testSequence);
 
-TestResult::EOutcome ProjectFileRepositoryNodeSetTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeGetTest1(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendTest2(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendTest3(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest1(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest2(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildTest3(Test& test);
+TestResult::EOutcome ProjectFileRepositoryNodeSetChildNodeValueTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeGetChildNodeValueTest1(Test& test);
+TestResult::EOutcome ProjectFileRepositoryNodeSetChildNodeTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest1(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest2(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest3(FileComparisonTest& test);
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest1(Test& test);
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest2(Test& test);
+TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest3(Test& test);
 
 #endif
