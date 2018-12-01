@@ -41,6 +41,7 @@ ParentProject::ParentProject(const ParentProjectType& type,
     : Project(node->getChildNodeValue(projectNameElementName)), m_type(type),
     m_node(node)
 {
+    // TODO: need to load the projects
 }
 
 ParentProject::~ParentProject()
@@ -65,6 +66,11 @@ void ParentProject::save()
         std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(childProjectElementName);
         location.save(*childProjectNode);
     }
+}
+
+std::vector<ProjectLocation> ParentProject::projects()
+{
+    return m_childProjects;
 }
 
 void ParentProject::addProject(const ProjectLocation& projectLocation)

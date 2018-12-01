@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <codesmithy-project-repository>
 	<file-format-version>0.1.0</file-format-version>
-	<name>CodeSmithy</name>
-	<projects />
+	<name>CodeSmithyIDE</name>
+	<projects>
+		<codesmithy-project>
+			<name>CodeSmithy</name>
+			<type>CodeSmithy.Parent</type>
+			<projects>
+				<project>
+					<location>https://github.com/CodeSmithyIDE/CodeSmithy</location>
+				</project>
+			</projects>
+		</codesmithy-project>
+	</projects>
 </codesmithy-project-repository>

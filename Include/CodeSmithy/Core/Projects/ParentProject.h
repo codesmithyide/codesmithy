@@ -41,6 +41,7 @@ public:
 
     void save() override;
 
+    std::vector<ProjectLocation> projects();
     void addProject(const ProjectLocation& projectLocation);
 
 private:

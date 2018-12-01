@@ -22,6 +22,7 @@
 
 #include "BootstrapTests.h"
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ParentProject.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddBootstrapTests(TestHarness& theTestHarness)
@@ -46,10 +47,22 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonT
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/BootstrapProjectFileRepositoryCreationTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
-    repository.setName("CodeSmithy");
+    repository.setName("CodeSmithyIDE");
+ 
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("CodeSmithy");
+    if (projectNode)
+    {
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
+
+        project.addProject(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+
+        project.save();
+    }
+
     repository.save();
 
-    if (repository.name() == "CodeSmithy")
+    if (repository.name() == "CodeSmithyIDE")
     {
         result = TestResult::ePassed;
     }
@@ -68,9 +81,18 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/BootstrapProjectFileRepositoryCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    if (repository.name() == "CodeSmithy")
+    if (repository.name() == "CodeSmithyIDE")
     {
-        result = TestResult::ePassed;
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
+        if (projectNode)
+        {
+            CodeSmithy::ParentProjectType type;
+            CodeSmithy::ParentProject project(type, projectNode);
+            if (project.name() == "CodeSmithy")
+            {
+                result = TestResult::ePassed;
+            }
+        }
     }
 
     return result;
