@@ -34,9 +34,24 @@ ProjectLocation::ProjectLocation(const std::string& url)
 {
 }
 
+ProjectLocation::ProjectLocation(const ProjectRepositoryNode& node)
+    : m_url(node.getChildNodeValue("location"))
+{
+}
+
 void ProjectLocation::save(ProjectRepositoryNode& node) const
 {
     node.setChildNodeValue("location", m_url);
+}
+
+bool ProjectLocation::operator ==(const ProjectLocation& other) const
+{
+    return (m_url == other.m_url);
+}
+
+bool ProjectLocation::operator !=(const ProjectLocation& other) const
+{
+    return (m_url != other.m_url);
 }
 
 }

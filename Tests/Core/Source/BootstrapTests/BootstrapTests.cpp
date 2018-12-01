@@ -90,7 +90,11 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
             CodeSmithy::ParentProject project(type, projectNode);
             if (project.name() == "CodeSmithy")
             {
-                result = TestResult::ePassed;
+                if ((project.projects().size() == 1) &&
+                    (project.projects()[0] == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
+                {
+                    result = TestResult::ePassed;
+                }
             }
         }
     }

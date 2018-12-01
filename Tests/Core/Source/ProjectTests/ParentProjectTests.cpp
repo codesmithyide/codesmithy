@@ -31,6 +31,8 @@ void AddParentProjectTests(TestSequence& testSequence)
 
 	new HeapAllocationErrorsTest("Creation test 1", ParentProjectCreationTest1, *parentProjectTestSequence);
     new HeapAllocationErrorsTest("Creation test 2", ParentProjectCreationTest2, *parentProjectTestSequence);
+    new HeapAllocationErrorsTest("Creation test 3", ParentProjectCreationTest3, *parentProjectTestSequence);
+    new HeapAllocationErrorsTest("Creation test 4", ParentProjectCreationTest4, *parentProjectTestSequence);
 
     new FileComparisonTest("save test 1", ParentProjectSaveTest1, *parentProjectTestSequence);
     new FileComparisonTest("save test 2", ParentProjectSaveTest2, *parentProjectTestSequence);
@@ -62,7 +64,63 @@ TestResult::EOutcome ParentProjectCreationTest2(Test& test)
         CodeSmithy::ParentProject project(type, projectNode);
         if (project.name() == "ParentProject")
         {
-            result = TestResult::ePassed;
+            if (project.projects().size() == 0)
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ParentProjectCreationTest3(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest3.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("ParentProject");
+
+    if (projectNode)
+    {
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
+        if (project.name() == "ParentProject")
+        {
+            if ((project.projects().size() == 1) &&
+                (project.projects()[0] == CodeSmithy::ProjectLocation("location1")))
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ParentProjectCreationTest4(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest4.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("ParentProject");
+
+    if (projectNode)
+    {
+        CodeSmithy::ParentProjectType type;
+        CodeSmithy::ParentProject project(type, projectNode);
+        if (project.name() == "ParentProject")
+        {
+            if ((project.projects().size() == 2) &&
+                (project.projects()[0] == CodeSmithy::ProjectLocation("location1")) &&
+                (project.projects()[1] == CodeSmithy::ProjectLocation("location2")))
+            {
+                result = TestResult::ePassed;
+            }
         }
     }
 

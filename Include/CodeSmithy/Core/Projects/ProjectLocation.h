@@ -41,8 +41,12 @@ public:
     /// @param url The URL of the GitHub repository. This should be the URL as typed in the browser, not the one with
     /// the ".git" extension.
     ProjectLocation(const std::string& url);
+    ProjectLocation(const ProjectRepositoryNode& node);
 
     void save(ProjectRepositoryNode& node) const;
+
+    bool operator ==(const ProjectLocation& other) const;
+    bool operator !=(const ProjectLocation& other) const;
 
 private:
     std::string m_url;

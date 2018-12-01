@@ -36,12 +36,24 @@ ParentProject::ParentProject(const ParentProjectType& type,
 {
 }
 
+// TODO : this needs to be redone. It is used both for initialization of a new project
+// and to read an existing one from disk. That doesn't work well as I want to do either
+// initialization of validation of the data
 ParentProject::ParentProject(const ParentProjectType& type, 
                              std::shared_ptr<ProjectRepositoryNode> node)
     : Project(node->getChildNodeValue(projectNameElementName)), m_type(type),
     m_node(node)
 {
-    // TODO: need to load the projects
+    // TODO : this is particularly bad, this should not be set when we are reading an
+    // existing file
+    m_node->setChildNodeValue(projectTypeElementName, m_type.name());
+    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
+    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode(childProjectElementName);
+         childProjectNode;
+         childProjectNode = childProjectNode->nextSibling())
+    {
+        m_childProjects.push_back(ProjectLocation(*childProjectNode));
+    }
 }
 
 ParentProject::~ParentProject()

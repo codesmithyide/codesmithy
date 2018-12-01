@@ -31,6 +31,8 @@ void AddParentProjectTests(TestSequence& testSequence);
 
 TestResult::EOutcome ParentProjectCreationTest1();
 TestResult::EOutcome ParentProjectCreationTest2(Test& test);
+TestResult::EOutcome ParentProjectCreationTest3(Test& test);
+TestResult::EOutcome ParentProjectCreationTest4(Test& test);
 TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test);
 TestResult::EOutcome ParentProjectSaveTest2(FileComparisonTest& test);
 TestResult::EOutcome ParentProjectAddProjectTest1(FileComparisonTest& test);
