@@ -84,8 +84,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Projects/ProjectRepository.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectRepositoryNode.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectFileRepository.h
-        ../../../Include/CodeSmithy/Core/Projects/ParentProject.h
-        ../../../Include/CodeSmithy/Core/Projects/ParentProjectType.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectGroup.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectGroupType.h
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
         ../../../Include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h
@@ -168,8 +168,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Projects/ProjectRepositoryNode.cpp
         ../../Source/Projects/ProjectFileRepository.cpp
         ../../Source/Projects/ProjectFileRepositoryNode.cpp
-        ../../Source/Projects/ParentProject.cpp
-        ../../Source/Projects/ParentProjectType.cpp
+        ../../Source/Projects/ProjectGroup.cpp
+        ../../Source/Projects/ProjectGroupType.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp
 
         ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp

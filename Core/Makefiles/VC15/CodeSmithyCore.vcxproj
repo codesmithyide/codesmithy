@@ -199,8 +199,8 @@
     <ClCompile Include="..\..\Source\Projects\ProjectRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectFileRepositoryNode.cpp" />
-    <ClCompile Include="..\..\Source\Projects\ParentProject.cpp" />
-    <ClCompile Include="..\..\Source\Projects\ParentProjectType.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectGroup.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectGroupType.cpp" />
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\CodeSmithy\CodeSmithyProject.cpp" />
     <ClCompile Include="..\..\Source\Projects\CodeSmithy\CodeSmithyProjectType.cpp" />
@@ -268,8 +268,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepositoryNode.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectFileRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ParentProject.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ParentProjectType.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProject.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProjectType.h" />
