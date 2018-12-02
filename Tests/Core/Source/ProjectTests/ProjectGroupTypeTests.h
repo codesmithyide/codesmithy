@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,15 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PARENTPROJECTTYPETESTS_H_
-#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PARENTPROJECTTYPETESTS_H_
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTGROUPTYPETESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTGROUPTYPETESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::TestFramework;
 
-void AddParentProjectTypeTests(TestSequence& testSequence);
+void AddProjectGroupTypeTests(TestSequence& testSequence);
 
-TestResult::EOutcome ParentProjectTypeCreationTest1();
+TestResult::EOutcome ProjectGroupTypeCreationTest1();
 
 #endif

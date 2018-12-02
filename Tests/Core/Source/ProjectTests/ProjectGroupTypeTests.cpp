@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,21 +20,21 @@
     IN THE SOFTWARE.
 */
 
-#include "ParentProjectTypeTests.h"
-#include "CodeSmithy/Core/Projects/ParentProjectType.h"
+#include "ProjectGroupTypeTests.h"
+#include "CodeSmithy/Core/Projects/ProjectGroupType.h"
 
-void AddParentProjectTypeTests(TestSequence& testSequence)
+void AddProjectGroupTypeTests(TestSequence& testSequence)
 {
-	TestSequence* typeTestSequence = new TestSequence("ParentProjectType tests", testSequence);
+	TestSequence* typeTestSequence = new TestSequence("ProjectGroupType tests", testSequence);
 
-    new HeapAllocationErrorsTest("Creation test 1", ParentProjectTypeCreationTest1, *typeTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", ProjectGroupTypeCreationTest1, *typeTestSequence);
 }
 
-TestResult::EOutcome ParentProjectTypeCreationTest1()
+TestResult::EOutcome ProjectGroupTypeCreationTest1()
 {
-    CodeSmithy::ParentProjectType type;
+    CodeSmithy::ProjectGroupType type;
 
-    if (type.name() == "CodeSmithy.Parent")
+    if (type.name() == "CodeSmithy.Group")
     {
         return TestResult::ePassed;
     }
