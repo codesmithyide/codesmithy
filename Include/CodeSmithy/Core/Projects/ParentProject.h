@@ -36,6 +36,7 @@ public:
     class ProjectOrLink
     {
     public:
+        ProjectOrLink(std::shared_ptr<Project> project);
         ProjectOrLink(const ProjectLocation& location);
 
         bool isProject() const;
@@ -58,6 +59,7 @@ public:
     void save() override;
 
     std::vector<ProjectOrLink> children();
+    void addProject(std::shared_ptr<Project> project);
     void addProject(const ProjectLocation& projectLocation);
 
 private:

@@ -25,6 +25,11 @@
 namespace CodeSmithy
 {
 
+ParentProject::ProjectOrLink::ProjectOrLink(std::shared_ptr<Project> project)
+    : m_project(project)
+{
+}
+
 ParentProject::ProjectOrLink::ProjectOrLink(const ProjectLocation& location)
     : m_location(location)
 {
@@ -108,9 +113,14 @@ std::vector<ParentProject::ProjectOrLink> ParentProject::children()
     return m_childProjects;
 }
 
+void ParentProject::addProject(std::shared_ptr<Project> project)
+{
+    m_childProjects.push_back(ProjectOrLink(project));
+}
+
 void ParentProject::addProject(const ProjectLocation& projectLocation)
 {
-    m_childProjects.push_back(projectLocation);
+    m_childProjects.push_back(ProjectOrLink(projectLocation));
 }
 
 }
