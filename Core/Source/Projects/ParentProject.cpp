@@ -28,7 +28,7 @@ namespace CodeSmithy
 static const char* projectNameElementName = "name";
 static const char* projectTypeElementName = "type";
 static const char* childProjectsElementName = "projects";
-static const char* childProjectElementName = "project";
+static const char* externalProjectLinkElementName = "external-project-link";
 
 ParentProject::ParentProject(const ParentProjectType& type,
                              const std::string& name)
@@ -48,7 +48,7 @@ ParentProject::ParentProject(const ParentProjectType& type,
     // existing file
     m_node->setChildNodeValue(projectTypeElementName, m_type.name());
     std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
-    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode(childProjectElementName);
+    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode(externalProjectLinkElementName);
          childProjectNode;
          childProjectNode = childProjectNode->nextSibling())
     {
@@ -75,7 +75,7 @@ void ParentProject::save()
     childProjectsNode->clear();
     for (const ProjectLocation& location : m_childProjects)
     {
-        std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(childProjectElementName);
+        std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(externalProjectLinkElementName);
         location.save(*childProjectNode);
     }
 }

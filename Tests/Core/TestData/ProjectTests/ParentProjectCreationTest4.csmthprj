@@ -7,12 +7,12 @@
 			<name>ParentProject</name>
 			<type>CodeSmithy.Parent</type>
 			<projects>
-				<project>
+				<external-project-link>
 					<location>location1</location>
-				</project>
-				<project>
+				</external-project-link>
+				<external-project-link>
 					<location>location2</location>
-				</project>
+				</external-project-link>
 			</projects>
 		</codesmithy-project>
 	</projects>
