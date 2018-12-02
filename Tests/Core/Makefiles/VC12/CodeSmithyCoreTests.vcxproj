@@ -172,7 +172,7 @@
     <ClCompile Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.cpp" />
     <ClCompile Include="..\..\Source\DocumentsTests\XMLDocumentTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTests.cpp" />
-    <ClCompile Include="..\..\Source\ProjectTests\ParentProjectTypeTests.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectGroupTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\CodeSmithyProjectTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\CMakeProjectTypeTests.cpp" />
@@ -180,7 +180,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectLocationTests.cpp" />
-    <ClCompile Include="..\..\Source\ProjectTests\ParentProjectTests.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectGroupTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.cpp" />
@@ -205,7 +205,7 @@
     <ClInclude Include="..\..\Source\DocumentsTests\XMLDocumentTypeTests.h" />
     <ClInclude Include="..\..\Source\DocumentsTests\XMLDocumentTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTests.h" />
-    <ClInclude Include="..\..\Source\ProjectTests\ParentProjectTypeTests.h" />
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectGroupTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\CodeSmithyProjectTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTypeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\CMakeProjectTypeTests.h" />
@@ -213,7 +213,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectLocationTests.h" />
-    <ClInclude Include="..\..\Source\ProjectTests\ParentProjectTests.h" />
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectGroupTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h" />
     <ClInclude Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.h" />
