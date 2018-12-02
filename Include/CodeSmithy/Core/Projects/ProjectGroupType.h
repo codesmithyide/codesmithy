@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,18 +20,18 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_PARENTPROJECTTYPE_H_
-#define _CODESMITHY_CORE_PROJECTS_PARENTPROJECTTYPE_H_
+#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTGROUPTYPE_H_
+#define _CODESMITHY_CORE_PROJECTS_PROJECTGROUPTYPE_H_
 
 #include "ProjectType.h"
 
 namespace CodeSmithy
 {
 
-class ParentProjectType : public ProjectType
+class ProjectGroupType : public ProjectType
 {
 public:
-    ParentProjectType();
+    ProjectGroupType();
 };
 
 }

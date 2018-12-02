@@ -20,17 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_PARENTPROJECT_H_
-#define _CODESMITHY_CORE_PROJECTS_PARENTPROJECT_H_
+#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTGROUP_H_
+#define _CODESMITHY_CORE_PROJECTS_PROJECTGROUP_H_
 
 #include "Project.h"
-#include "ParentProjectType.h"
+#include "ProjectGroupType.h"
 
 namespace CodeSmithy
 {
 
 /// A project that is a collection of other projects.
-class ParentProject : public Project
+class ProjectGroup : public Project
 {
 public:
     class ProjectOrLink
@@ -50,9 +50,9 @@ public:
     };
 
 public:
-    ParentProject(const ParentProjectType& type, const std::string& name);
-    ParentProject(const ParentProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
-    ~ParentProject() override;
+    ProjectGroup(const ProjectGroupType& type, const std::string& name);
+    ProjectGroup(const ProjectGroupType& type, std::shared_ptr<ProjectRepositoryNode> node);
+    ~ProjectGroup() override;
 
     const ProjectType& type() const override;
 
@@ -60,10 +60,10 @@ public:
 
     std::vector<ProjectOrLink> children();
     void addProject(std::shared_ptr<Project> project);
-    void addProject(const ProjectLocation& projectLocation);
+    void addExternalProjectLink(const ProjectLocation& projectLocation);
 
 private:
-    const ParentProjectType& m_type;
+    const ProjectGroupType& m_type;
     std::vector<ProjectOrLink> m_childProjects;
     std::shared_ptr<ProjectRepositoryNode> m_node;
 };

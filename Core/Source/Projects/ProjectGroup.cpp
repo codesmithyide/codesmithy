@@ -20,32 +20,32 @@
     IN THE SOFTWARE.
 */
 
-#include "Projects/ParentProject.h"
+#include "Projects/ProjectGroup.h"
 
 namespace CodeSmithy
 {
 
-ParentProject::ProjectOrLink::ProjectOrLink(std::shared_ptr<Project> project)
+ProjectGroup::ProjectOrLink::ProjectOrLink(std::shared_ptr<Project> project)
     : m_project(project)
 {
 }
 
-ParentProject::ProjectOrLink::ProjectOrLink(const ProjectLocation& location)
+ProjectGroup::ProjectOrLink::ProjectOrLink(const ProjectLocation& location)
     : m_location(location)
 {
 }
 
-bool ParentProject::ProjectOrLink::isProject() const
+bool ProjectGroup::ProjectOrLink::isProject() const
 {
     return (m_project && (m_location == ProjectLocation("")));
 }
 
-bool ParentProject::ProjectOrLink::isLink() const
+bool ProjectGroup::ProjectOrLink::isLink() const
 {
     return (!m_project && (m_location != ProjectLocation("")));
 }
 
-const ProjectLocation& ParentProject::ProjectOrLink::location() const
+const ProjectLocation& ProjectGroup::ProjectOrLink::location() const
 {
     return m_location;
 }
@@ -55,8 +55,8 @@ static const char* projectTypeElementName = "type";
 static const char* childProjectsElementName = "projects";
 static const char* externalProjectLinkElementName = "external-project-link";
 
-ParentProject::ParentProject(const ParentProjectType& type,
-                             const std::string& name)
+ProjectGroup::ProjectGroup(const ProjectGroupType& type,
+                           const std::string& name)
     : Project(name), m_type(type)
 {
 }
@@ -64,8 +64,8 @@ ParentProject::ParentProject(const ParentProjectType& type,
 // TODO : this needs to be redone. It is used both for initialization of a new project
 // and to read an existing one from disk. That doesn't work well as I want to do either
 // initialization of validation of the data
-ParentProject::ParentProject(const ParentProjectType& type, 
-                             std::shared_ptr<ProjectRepositoryNode> node)
+ProjectGroup::ProjectGroup(const ProjectGroupType& type,
+                           std::shared_ptr<ProjectRepositoryNode> node)
     : Project(node->getChildNodeValue(projectNameElementName)), m_type(type),
     m_node(node)
 {
@@ -81,16 +81,16 @@ ParentProject::ParentProject(const ParentProjectType& type,
     }
 }
 
-ParentProject::~ParentProject()
+ProjectGroup::~ProjectGroup()
 {
 }
 
-const ProjectType& ParentProject::type() const
+const ProjectType& ProjectGroup::type() const
 {
     return m_type;
 }
 
-void ParentProject::save()
+void ProjectGroup::save()
 {
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
@@ -108,17 +108,17 @@ void ParentProject::save()
     }
 }
 
-std::vector<ParentProject::ProjectOrLink> ParentProject::children()
+std::vector<ProjectGroup::ProjectOrLink> ProjectGroup::children()
 {
     return m_childProjects;
 }
 
-void ParentProject::addProject(std::shared_ptr<Project> project)
+void ProjectGroup::addProject(std::shared_ptr<Project> project)
 {
     m_childProjects.push_back(ProjectOrLink(project));
 }
 
-void ParentProject::addProject(const ProjectLocation& projectLocation)
+void ProjectGroup::addExternalProjectLink(const ProjectLocation& projectLocation)
 {
     m_childProjects.push_back(ProjectOrLink(projectLocation));
 }
