@@ -25,6 +25,26 @@
 namespace CodeSmithy
 {
 
+ParentProject::ProjectOrLink::ProjectOrLink(const ProjectLocation& location)
+    : m_location(location)
+{
+}
+
+bool ParentProject::ProjectOrLink::isProject() const
+{
+    return (m_project && (m_location == ProjectLocation("")));
+}
+
+bool ParentProject::ProjectOrLink::isLink() const
+{
+    return (!m_project && (m_location != ProjectLocation("")));
+}
+
+const ProjectLocation& ParentProject::ProjectOrLink::location() const
+{
+    return m_location;
+}
+
 static const char* projectNameElementName = "name";
 static const char* projectTypeElementName = "type";
 static const char* childProjectsElementName = "projects";
@@ -73,14 +93,17 @@ void ParentProject::save()
     m_node->setChildNodeValue(projectTypeElementName, type().name());
     std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
     childProjectsNode->clear();
-    for (const ProjectLocation& location : m_childProjects)
+    for (const ProjectOrLink& item : m_childProjects)
     {
-        std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(externalProjectLinkElementName);
-        location.save(*childProjectNode);
+        if (item.isLink())
+        {
+            std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(externalProjectLinkElementName);
+            item.location().save(*childProjectNode);
+        }
     }
 }
 
-std::vector<ProjectLocation> ParentProject::projects()
+std::vector<ParentProject::ProjectOrLink> ParentProject::children()
 {
     return m_childProjects;
 }

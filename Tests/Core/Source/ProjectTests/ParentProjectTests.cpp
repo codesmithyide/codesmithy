@@ -64,7 +64,7 @@ TestResult::EOutcome ParentProjectCreationTest2(Test& test)
         CodeSmithy::ParentProject project(type, projectNode);
         if (project.name() == "ParentProject")
         {
-            if (project.projects().size() == 0)
+            if (project.children().size() == 0)
             {
                 result = TestResult::ePassed;
             }
@@ -89,8 +89,9 @@ TestResult::EOutcome ParentProjectCreationTest3(Test& test)
         CodeSmithy::ParentProject project(type, projectNode);
         if (project.name() == "ParentProject")
         {
-            if ((project.projects().size() == 1) &&
-                (project.projects()[0] == CodeSmithy::ProjectLocation("location1")))
+            if ((project.children().size() == 1) &&
+                project.children()[0].isLink() &&
+                (project.children()[0].location() == CodeSmithy::ProjectLocation("location1")))
             {
                 result = TestResult::ePassed;
             }
@@ -115,9 +116,11 @@ TestResult::EOutcome ParentProjectCreationTest4(Test& test)
         CodeSmithy::ParentProject project(type, projectNode);
         if (project.name() == "ParentProject")
         {
-            if ((project.projects().size() == 2) &&
-                (project.projects()[0] == CodeSmithy::ProjectLocation("location1")) &&
-                (project.projects()[1] == CodeSmithy::ProjectLocation("location2")))
+            if ((project.children().size() == 2) &&
+                project.children()[0].isLink() &&
+                (project.children()[0].location() == CodeSmithy::ProjectLocation("location1")) &&
+                project.children()[1].isLink() &&
+                (project.children()[1].location() == CodeSmithy::ProjectLocation("location2")))
             {
                 result = TestResult::ePassed;
             }

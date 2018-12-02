@@ -33,6 +33,22 @@ namespace CodeSmithy
 class ParentProject : public Project
 {
 public:
+    class ProjectOrLink
+    {
+    public:
+        ProjectOrLink(const ProjectLocation& location);
+
+        bool isProject() const;
+        bool isLink() const;
+
+        const ProjectLocation& location() const;
+
+    private:
+        std::shared_ptr<Project> m_project;
+        ProjectLocation m_location;
+    };
+
+public:
     ParentProject(const ParentProjectType& type, const std::string& name);
     ParentProject(const ParentProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
     ~ParentProject() override;
@@ -41,12 +57,12 @@ public:
 
     void save() override;
 
-    std::vector<ProjectLocation> projects();
+    std::vector<ProjectOrLink> children();
     void addProject(const ProjectLocation& projectLocation);
 
 private:
     const ParentProjectType& m_type;
-    std::vector<ProjectLocation> m_childProjects;
+    std::vector<ProjectOrLink> m_childProjects;
     std::shared_ptr<ProjectRepositoryNode> m_node;
 };
 
