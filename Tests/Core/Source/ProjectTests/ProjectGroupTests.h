@@ -20,23 +20,28 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PARENTPROJECTTESTS_H_
-#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PARENTPROJECTTESTS_H_
+#ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTGROUPTESTS_H_
+#define _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTGROUPTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::TestFramework;
 
-void AddParentProjectTests(TestSequence& testSequence);
+class ProjectGroupTests
+{
+public:
+    static void AddTests(TestSequence& testSequence);
 
-TestResult::EOutcome ParentProjectCreationTest1();
-TestResult::EOutcome ParentProjectCreationTest2(Test& test);
-TestResult::EOutcome ParentProjectCreationTest3(Test& test);
-TestResult::EOutcome ParentProjectCreationTest4(Test& test);
-TestResult::EOutcome ParentProjectSaveTest1(FileComparisonTest& test);
-TestResult::EOutcome ParentProjectSaveTest2(FileComparisonTest& test);
-TestResult::EOutcome ParentProjectAddProjectTest1(FileComparisonTest& test);
-TestResult::EOutcome ParentProjectAddProjectTest2(FileComparisonTest& test);
-TestResult::EOutcome ParentProjectSaveTest3(FileComparisonTest& test);
+private:
+    static TestResult::EOutcome CreationTest1();
+    static TestResult::EOutcome CreationTest2(Test& test);
+    static TestResult::EOutcome CreationTest3(Test& test);
+    static TestResult::EOutcome CreationTest4(Test& test);
+    static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
+    static TestResult::EOutcome SaveTest2(FileComparisonTest& test);
+    static TestResult::EOutcome AddExternalProjectLinkTest1(FileComparisonTest& test);
+    static TestResult::EOutcome AddExternalProjectLinkTest2(FileComparisonTest& test);
+    static TestResult::EOutcome SaveTest3(FileComparisonTest& test);
+};
 
 #endif
