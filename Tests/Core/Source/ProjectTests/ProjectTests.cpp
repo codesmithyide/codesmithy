@@ -21,7 +21,7 @@
 */
 
 #include "ProjectTests.h"
-#include "ParentProjectTypeTests.h"
+#include "ProjectGroupTypeTests.h"
 #include "CodeSmithyProjectTypeTests.h"
 #include "BakefileProjectTypeTests.h"
 #include "CMakeProjectTypeTests.h"
@@ -29,7 +29,7 @@
 #include "ProjectFileRepositoryTests.h"
 #include "ProjectFileRepositoryNodeTests.h"
 #include "ProjectLocationTests.h"
-#include "ParentProjectTests.h"
+#include "ProjectGroupTests.h"
 #include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
 #include <boost/filesystem/operations.hpp>
@@ -41,7 +41,7 @@ void AddProjectTests(TestHarness& theTestHarness)
 
     TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
 
-    AddParentProjectTypeTests(projectTestSequence);
+    AddProjectGroupTypeTests(projectTestSequence);
     AddCodeSmithyProjectTypeTests(projectTestSequence);
     AddBakefileProjectTypeTests(projectTestSequence);
     AddCMakeProjectTypeTests(projectTestSequence);
@@ -49,7 +49,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddProjectFileRepositoryTests(projectTestSequence);
     AddProjectFileRepositoryNodeTests(projectTestSequence);
     AddProjectLocationTests(projectTestSequence);
-    AddParentProjectTests(projectTestSequence);
+    ProjectGroupTests::AddTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
     AddBakefileProjectTests(projectTestSequence);
 }

@@ -4,8 +4,8 @@
 	<name>ParentProjectCreationTest2</name>
 	<projects>
 		<codesmithy-project>
-			<name>ParentProject</name>
-			<type>CodeSmithy.Parent</type>
+			<name>MyProjectGroup</name>
+			<type>CodeSmithy.Group</type>
 			<projects />
 		</codesmithy-project>
 	</projects>

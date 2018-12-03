@@ -184,19 +184,19 @@ TestResult::EOutcome ProjectGroupTests::SaveTest2(FileComparisonTest& test)
 
 TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ParentProjectAddProjectTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ParentProjectAddProjectTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
-        CodeSmithy::ParentProjectType type;
-        CodeSmithy::ParentProject project(type, projectNode);
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
 
-        project.addProject(CodeSmithy::ProjectLocation("location1"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
 
         project.save();
     }
@@ -211,21 +211,21 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest1(FileComparis
 
 TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ParentProjectAddProjectTest2.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ParentProjectAddProjectTest2.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
-        CodeSmithy::ParentProjectType type;
-        CodeSmithy::ParentProject project(type, projectNode);
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
 
-        project.addProject(CodeSmithy::ProjectLocation("location1"));
-        project.addProject(CodeSmithy::ProjectLocation("location2"));
-        project.addProject(CodeSmithy::ProjectLocation("location3"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
 
         project.save();
     }
@@ -241,21 +241,21 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest2(FileComparis
 // Checks that calling save() twice works correctly
 TestResult::EOutcome ProjectGroupTests::SaveTest3(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ParentProjectSaveTest3.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectGroupTests_SaveTest3.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ParentProjectSaveTest3.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest3.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
-        CodeSmithy::ParentProjectType type;
-        CodeSmithy::ParentProject project(type, projectNode);
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
 
-        project.addProject(CodeSmithy::ProjectLocation("location1"));
-        project.addProject(CodeSmithy::ProjectLocation("location2"));
-        project.addProject(CodeSmithy::ProjectLocation("location3"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
 
         // We call save() twice on purpose
         project.save();
