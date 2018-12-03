@@ -78,16 +78,16 @@ TestResult::EOutcome ProjectGroupTests::CreationTest3(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ParentProjectCreationTest3.csmthprj");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest3.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("ParentProject");
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
-        CodeSmithy::ParentProjectType type;
-        CodeSmithy::ParentProject project(type, projectNode);
-        if (project.name() == "ParentProject")
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
+        if (project.name() == "MyProjectGroup")
         {
             if ((project.children().size() == 1) &&
                 project.children()[0].isLink() &&
