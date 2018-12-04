@@ -42,6 +42,7 @@ private:
     static TestResult::EOutcome AddExternalProjectLinkTest1(FileComparisonTest& test);
     static TestResult::EOutcome AddExternalProjectLinkTest2(FileComparisonTest& test);
     static TestResult::EOutcome SaveTest3(FileComparisonTest& test);
+    static TestResult::EOutcome AddProjectTest1(FileComparisonTest& test);
 };
 
 #endif

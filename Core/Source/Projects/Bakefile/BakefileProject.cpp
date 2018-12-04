@@ -53,4 +53,9 @@ void BakefileProject::save()
     m_node->setChildNodeValue("type", type().name());
 }
 
+void BakefileProject::save(ProjectRepositoryNode& node) const
+{
+    // TODO
+}
+
 }

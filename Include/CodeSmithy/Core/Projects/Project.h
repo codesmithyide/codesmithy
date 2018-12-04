@@ -41,7 +41,9 @@ public:
     virtual const ProjectType& type() const = 0;
     const std::string& name() const;
 
+    // TODO : I may want to get rid of save()
 	virtual void save() = 0;
+    virtual void save(ProjectRepositoryNode& node) const = 0;
 
 private:
     std::string m_name;

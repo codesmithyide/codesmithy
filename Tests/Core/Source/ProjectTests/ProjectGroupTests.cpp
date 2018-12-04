@@ -40,6 +40,8 @@ void ProjectGroupTests::AddTests(TestSequence& testSequence)
     new FileComparisonTest("addExternalProjectLink test 1", AddExternalProjectLinkTest1, *projectGroupTestSequence);
     new FileComparisonTest("addExternalProjectLink test 2", AddExternalProjectLinkTest2, *projectGroupTestSequence);
     new FileComparisonTest("save test 3", SaveTest3, *projectGroupTestSequence);
+
+    new FileComparisonTest("addProject test 1", AddProjectTest1, *projectGroupTestSequence);
 }
 
 TestResult::EOutcome ProjectGroupTests::CreationTest1()
@@ -259,6 +261,35 @@ TestResult::EOutcome ProjectGroupTests::SaveTest3(FileComparisonTest& test)
 
         // We call save() twice on purpose
         project.save();
+        project.save();
+    }
+
+    repository.save();
+
+    test.setOutputFilePath(outputPath);
+    test.setReferenceFilePath(referencePath);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectGroupTests_AddProjectTest1.csmthprj");
+    boost::filesystem::remove(outputPath);
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddProjectTest1.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(outputPath);
+
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    if (projectNode)
+    {
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
+
+        std::shared_ptr<CodeSmithy::ProjectGroup> childProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "MyChildProject");
+
+        project.addProject(childProject);
+
         project.save();
     }
 

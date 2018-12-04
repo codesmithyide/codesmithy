@@ -45,6 +45,11 @@ bool ProjectGroup::ProjectOrLink::isLink() const
     return (!m_project && (m_location != ProjectLocation("")));
 }
 
+const Project& ProjectGroup::ProjectOrLink::project() const
+{
+    return *m_project;
+}
+
 const ProjectLocation& ProjectGroup::ProjectOrLink::location() const
 {
     return m_location;
@@ -54,6 +59,7 @@ static const char* projectNameElementName = "name";
 static const char* projectTypeElementName = "type";
 static const char* childProjectsElementName = "projects";
 static const char* externalProjectLinkElementName = "external-project-link";
+static const char* childProjectElementName = "codesmithy-project";
 
 ProjectGroup::ProjectGroup(const ProjectGroupType& type,
                            const std::string& name)
@@ -92,11 +98,16 @@ const ProjectType& ProjectGroup::type() const
 
 void ProjectGroup::save()
 {
+    save(*m_node);
+}
+
+void ProjectGroup::save(ProjectRepositoryNode& node) const
+{
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
-    m_node->setChildNodeValue(projectNameElementName, name());
-    m_node->setChildNodeValue(projectTypeElementName, type().name());
-    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
+    node.setChildNodeValue(projectNameElementName, name());
+    node.setChildNodeValue(projectTypeElementName, type().name());
+    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = node.setChildNode(childProjectsElementName);
     childProjectsNode->clear();
     for (const ProjectOrLink& item : m_childProjects)
     {
@@ -104,6 +115,11 @@ void ProjectGroup::save()
         {
             std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(externalProjectLinkElementName);
             item.location().save(*childProjectNode);
+        }
+        else if (item.isProject())
+        {
+            std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(childProjectElementName);
+            item.project().save(*childProjectNode);
         }
     }
 }

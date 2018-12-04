@@ -52,4 +52,9 @@ void CodeSmithyProject::save()
     // TODO
 }
 
+void CodeSmithyProject::save(ProjectRepositoryNode& node) const
+{
+    // TODO
+}
+
 }

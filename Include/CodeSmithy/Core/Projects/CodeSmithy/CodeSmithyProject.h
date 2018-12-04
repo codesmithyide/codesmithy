@@ -40,6 +40,7 @@ public:
     const ProjectType& type() const override;
 
     void save() override;
+    void save(ProjectRepositoryNode& node) const override;
 
 private:
     const CodeSmithyProjectType& m_type;

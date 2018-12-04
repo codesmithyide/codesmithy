@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -39,6 +39,7 @@ public:
     const ProjectType& type() const override;
 
     void save() override;
+    void save(ProjectRepositoryNode& node) const override;
 
 private:
     const BakefileProjectType& m_type;

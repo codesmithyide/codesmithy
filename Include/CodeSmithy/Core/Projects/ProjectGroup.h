@@ -42,6 +42,7 @@ public:
         bool isProject() const;
         bool isLink() const;
 
+        const Project& project() const;
         const ProjectLocation& location() const;
 
     private:
@@ -57,6 +58,7 @@ public:
     const ProjectType& type() const override;
 
     void save() override;
+    void save(ProjectRepositoryNode& node) const override;
 
     std::vector<ProjectOrLink> children();
     void addProject(std::shared_ptr<Project> project);
