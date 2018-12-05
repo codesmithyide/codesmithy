@@ -34,6 +34,11 @@ ProjectFileRepositoryNode::~ProjectFileRepositoryNode()
 {
 }
 
+std::string ProjectFileRepositoryNode::name() const
+{
+    return m_node.name();
+}
+
 std::string ProjectFileRepositoryNode::getChildNodeValue(const std::string& key) const
 {
     return m_node.child(key.c_str()).child_value();
@@ -51,6 +56,17 @@ void ProjectFileRepositoryNode::setChildNodeValue(const std::string& key, const 
         pugi::xml_node newNode = m_node.append_child(key.c_str());
         newNode.append_child(pugi::node_pcdata).set_value(value.c_str());
     }
+}
+
+std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::firstChildNode()
+{
+    std::shared_ptr<ProjectRepositoryNode> result;
+    pugi::xml_node node = m_node.first_child();
+    if (node)
+    {
+        result = std::make_shared<ProjectFileRepositoryNode>(node);
+    }
+    return result;
 }
 
 std::shared_ptr<ProjectRepositoryNode> ProjectFileRepositoryNode::firstChildNode(const std::string& key)

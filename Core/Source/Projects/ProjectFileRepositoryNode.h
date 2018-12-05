@@ -35,9 +35,12 @@ public:
     ProjectFileRepositoryNode(pugi::xml_node node);
     ~ProjectFileRepositoryNode() override;
 
+    std::string name() const override;
+
     std::string getChildNodeValue(const std::string& key) const override;
     void setChildNodeValue(const std::string& key, const std::string& value) override;
 
+    std::shared_ptr<ProjectRepositoryNode> firstChildNode() override;
     std::shared_ptr<ProjectRepositoryNode> firstChildNode(const std::string& key) override;
     std::shared_ptr<ProjectRepositoryNode> nextSibling() override;
     std::shared_ptr<ProjectRepositoryNode> setChildNode(const std::string& key) override;
