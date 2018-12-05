@@ -77,6 +77,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
         ../../../Include/CodeSmithy/Core/Projects/Project.h
+        ../../../Include/CodeSmithy/Core/Projects/ProjectDescription.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectLocation.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectType.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectTypes.h
@@ -160,6 +161,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Documents/XMLDocumentType.cpp
 
         ../../Source/Projects/Project.cpp
+        ../../Source/Projects/ProjectDescription.cpp
         ../../Source/Projects/ProjectLocation.cpp
         ../../Source/Projects/ProjectType.cpp
         ../../Source/Projects/ProjectTypes.cpp

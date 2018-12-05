@@ -191,6 +191,7 @@
     <ClCompile Include="..\..\Source\Documents\XMLDocument.cpp" />
     <ClCompile Include="..\..\Source\Documents\XMLDocumentType.cpp" />
     <ClCompile Include="..\..\Source\Projects\Project.cpp" />
+    <ClCompile Include="..\..\Source\Projects\ProjectDescription.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectLocation.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectTypes.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectDescription.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectLocation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h" />
