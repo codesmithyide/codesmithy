@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<codesmithy-project-repository>
+	<file-format-version>0.1.0</file-format-version>
+	<name />
+	<projects>
+		<codesmithy-project>
+			<name>MyProjectGroup</name>
+			<type>CodeSmithy.Group</type>
+			<projects>
+				<codesmithy-project>
+					<name>MyChildProject</name>
+					<type>CodeSmithy.Group</type>
+					<projects />
+				</codesmithy-project>
+			</projects>
+		</codesmithy-project>
+	</projects>
+</codesmithy-project-repository>
