@@ -79,11 +79,20 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type,
     // existing file
     m_node->setChildNodeValue(projectTypeElementName, m_type.name());
     std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
-    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode(externalProjectLinkElementName);
+    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode();
          childProjectNode;
          childProjectNode = childProjectNode->nextSibling())
     {
-        m_childProjects.push_back(ProjectLocation(*childProjectNode));
+        if (childProjectNode->name() == externalProjectLinkElementName)
+        {
+            m_childProjects.push_back(ProjectOrLink(ProjectLocation(*childProjectNode)));
+        }
+        else if (childProjectNode->name() == childProjectElementName)
+        {
+            // TODO : this assumes the project is always a ProjectGroup
+            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, childProjectNode);
+            m_childProjects.push_back(ProjectOrLink(childProject));
+        }
     }
 }
 

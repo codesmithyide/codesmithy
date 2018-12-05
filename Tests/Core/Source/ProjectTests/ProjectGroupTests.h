@@ -37,6 +37,8 @@ private:
     static TestResult::EOutcome CreationTest2(Test& test);
     static TestResult::EOutcome CreationTest3(Test& test);
     static TestResult::EOutcome CreationTest4(Test& test);
+    static TestResult::EOutcome CreationTest5(Test& test);
+    static TestResult::EOutcome CreationTest6(Test& test);
     static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
     static TestResult::EOutcome SaveTest2(FileComparisonTest& test);
     static TestResult::EOutcome AddExternalProjectLinkTest1(FileComparisonTest& test);
