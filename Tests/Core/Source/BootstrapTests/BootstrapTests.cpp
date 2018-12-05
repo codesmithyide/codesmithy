@@ -22,7 +22,7 @@
 
 #include "BootstrapTests.h"
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
-#include "CodeSmithy/Core/Projects/ParentProject.h"
+#include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddBootstrapTests(TestHarness& theTestHarness)
@@ -42,20 +42,42 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonT
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "BootstrapTests/BootstrapProjectFileRepositoryCreationTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/BootstrapProjectFileRepositoryCreationTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
     repository.setName("CodeSmithyIDE");
- 
+
     std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("CodeSmithy");
     if (projectNode)
     {
-        CodeSmithy::ParentProjectType type;
-        CodeSmithy::ParentProject project(type, projectNode);
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
 
-        project.addProject(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+        std::shared_ptr<CodeSmithy::ProjectGroup> libgit2Project = std::make_shared<CodeSmithy::ProjectGroup>(type, "libgit2");
+        libgit2Project->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libgit2"));
+        project.addProject(libgit2Project);
+
+        std::shared_ptr<CodeSmithy::ProjectGroup> ishikoDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "Ishiko Dependencies");
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Errors"));
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/pugixml"));
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Process"));
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/FileTypes"));
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/WindowsRegistry"));
+        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/TestFramework"));
+        project.addProject(ishikoDependenciesProject);
+        
+        std::shared_ptr<CodeSmithy::ProjectGroup> wxWidgetsDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "wxWidgets Dependencies");
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/zlib"));
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libpng"));
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libexpat"));
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libjpeg-turbo"));
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libtiff"));
+        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/wxWidgets"));
+        project.addProject(wxWidgetsDependenciesProject);
+
+        project.addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
 
         project.save();
     }
@@ -78,7 +100,7 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/BootstrapProjectFileRepositoryCreationTest2.csmthprj");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
     if (repository.name() == "CodeSmithyIDE")
@@ -86,12 +108,13 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
         std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
         if (projectNode)
         {
-            CodeSmithy::ParentProjectType type;
-            CodeSmithy::ParentProject project(type, projectNode);
+            CodeSmithy::ProjectGroupType type;
+            CodeSmithy::ProjectGroup project(type, projectNode);
             if (project.name() == "CodeSmithy")
             {
-                if ((project.projects().size() == 1) &&
-                    (project.projects()[0] == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
+                if ((project.children().size() == 1) &&
+                    project.children()[0].isLink() &&
+                    (project.children()[0].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
                 {
                     result = TestResult::ePassed;
                 }
