@@ -112,9 +112,15 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
             CodeSmithy::ProjectGroup project(type, projectNode);
             if (project.name() == "CodeSmithy")
             {
-                if ((project.children().size() == 1) &&
-                    project.children()[0].isLink() &&
-                    (project.children()[0].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
+                if ((project.children().size() == 4) &&
+                    project.children()[0].isProject() &&
+                    (project.children()[0].project().name() == "libgit2") &&
+                    project.children()[1].isProject() &&
+                    (project.children()[1].project().name() == "Ishiko Dependencies") &&
+                    project.children()[2].isProject() &&
+                    (project.children()[2].project().name() == "wxWidgets Dependencies") &&
+                    project.children()[3].isLink() &&
+                    (project.children()[3].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
                 {
                     result = TestResult::ePassed;
                 }

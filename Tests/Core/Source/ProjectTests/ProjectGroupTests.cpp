@@ -33,6 +33,8 @@ void ProjectGroupTests::AddTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *projectGroupTestSequence);
     new HeapAllocationErrorsTest("Creation test 3", CreationTest3, *projectGroupTestSequence);
     new HeapAllocationErrorsTest("Creation test 4", CreationTest4, *projectGroupTestSequence);
+    new HeapAllocationErrorsTest("Creation test 5", CreationTest5, *projectGroupTestSequence);
+    new HeapAllocationErrorsTest("Creation test 6", CreationTest6, *projectGroupTestSequence);
 
     new FileComparisonTest("save test 1", SaveTest1, *projectGroupTestSequence);
     new FileComparisonTest("save test 2", SaveTest2, *projectGroupTestSequence);
@@ -123,6 +125,62 @@ TestResult::EOutcome ProjectGroupTests::CreationTest4(Test& test)
                 (project.children()[0].location() == CodeSmithy::ProjectLocation("location1")) &&
                 project.children()[1].isLink() &&
                 (project.children()[1].location() == CodeSmithy::ProjectLocation("location2")))
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ProjectGroupTests::CreationTest5(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest5.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+
+    if (projectNode)
+    {
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
+        if (project.name() == "MyProjectGroup")
+        {
+            if ((project.children().size() == 1) &&
+                project.children()[0].isProject() &&
+                (project.children()[0].project().name() == "MyChildProject"))
+            {
+                result = TestResult::ePassed;
+            }
+        }
+    }
+
+    return result;
+}
+
+TestResult::EOutcome ProjectGroupTests::CreationTest6(Test& test)
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest6.csmthprj");
+
+    CodeSmithy::ProjectFileRepository repository(inputPath);
+    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+
+    if (projectNode)
+    {
+        CodeSmithy::ProjectGroupType type;
+        CodeSmithy::ProjectGroup project(type, projectNode);
+        if (project.name() == "MyProjectGroup")
+        {
+            if ((project.children().size() == 2) &&
+                project.children()[0].isProject() &&
+                (project.children()[0].project().name() == "MyChildProject1") &&
+                project.children()[1].isProject() &&
+                (project.children()[1].project().name() == "MyChildProject2"))
             {
                 result = TestResult::ePassed;
             }
