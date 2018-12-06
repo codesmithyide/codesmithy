@@ -21,8 +21,17 @@
 */
 
 #include "ProjectDescriptionTests.h"
+#include "CodeSmithy/Core/Projects/ProjectDescription.h"
 
 void ProjectDescriptionTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* descriptionTestSequence = new TestSequence("ProjectDescription tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *descriptionTestSequence);
+}
+
+TestResult::EOutcome ProjectDescriptionTests::CreationTest1()
+{
+    CodeSmithy::ProjectDescription description;
+    return TestResult::ePassed;
 }

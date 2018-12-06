@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 
+namespace CodeSmithy
+{
+
+class ProjectDescription
+{
+};
+
+}
+
 #endif

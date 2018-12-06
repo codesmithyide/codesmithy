@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
 #include "ProjectType.h"
+#include "ProjectDescription.h"
 #include "ProjectLocation.h"
 #include "ProjectRepositoryNode.h"
 #include <string>
