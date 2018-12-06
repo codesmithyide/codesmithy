@@ -23,11 +23,21 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 
+#include "ProjectRepositoryNode.h"
+#include <string>
+
 namespace CodeSmithy
 {
 
 class ProjectDescription
 {
+public:
+    ProjectDescription(const std::string& plainTextDescription);
+
+    void save(ProjectRepositoryNode& node) const;
+
+private:
+    std::string m_plainTestDescription;
 };
 
 }

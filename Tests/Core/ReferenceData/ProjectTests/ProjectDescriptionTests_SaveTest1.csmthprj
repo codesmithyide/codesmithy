@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <codesmithy-project-repository>
 	<file-format-version>0.1.0</file-format-version>
-	<name>ProjectLocationTests_SaveTest1</name>
+	<name>ProjectDescriptionTests_SaveTest1</name>
 	<projects>
 		<codesmithy-project>
 			<name>Project1</name>
-			<location>location1</location>
+			<description>
+				<text>My description</text>
+			</description>
 		</codesmithy-project>
 	</projects>
 </codesmithy-project-repository>

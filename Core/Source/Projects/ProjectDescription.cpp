@@ -21,3 +21,19 @@
 */
 
 #include "Projects/ProjectDescription.h"
+
+namespace CodeSmithy
+{
+
+ProjectDescription::ProjectDescription(const std::string& plainTextDescription)
+    : m_plainTestDescription(plainTextDescription)
+{
+}
+
+void ProjectDescription::save(ProjectRepositoryNode& node) const
+{
+    std::shared_ptr<ProjectRepositoryNode> plainTextNode = node.setChildNode("description");
+    plainTextNode->setChildNodeValue("text", m_plainTestDescription);
+}
+
+}

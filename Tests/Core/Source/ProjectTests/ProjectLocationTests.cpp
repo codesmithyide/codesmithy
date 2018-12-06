@@ -54,7 +54,7 @@ TestResult::EOutcome ProjectLocationTests::SaveTest1(FileComparisonTest& test)
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
-    repository.setName("ProjectLocationSaveTest1");
+    repository.setName("ProjectLocationTests_SaveTest1");
     std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project1 = repository.addProjectNode("Project1");
 
     CodeSmithy::ProjectLocation location("location1");
