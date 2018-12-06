@@ -32,8 +32,11 @@ ProjectDescription::ProjectDescription(const std::string& plainTextDescription)
 
 void ProjectDescription::save(ProjectRepositoryNode& node) const
 {
-    std::shared_ptr<ProjectRepositoryNode> plainTextNode = node.setChildNode("description");
-    plainTextNode->setChildNodeValue("text", m_plainTestDescription);
+    if (m_plainTestDescription.size() > 0)
+    {
+        std::shared_ptr<ProjectRepositoryNode> plainTextNode = node.setChildNode("description");
+        plainTextNode->setChildNodeValue("text", m_plainTestDescription);
+    }
 }
 
 }

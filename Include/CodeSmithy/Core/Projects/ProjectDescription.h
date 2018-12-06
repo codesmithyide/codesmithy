@@ -32,6 +32,7 @@ namespace CodeSmithy
 class ProjectDescription
 {
 public:
+    ProjectDescription() = default;
     ProjectDescription(const std::string& plainTextDescription);
 
     void save(ProjectRepositoryNode& node) const;

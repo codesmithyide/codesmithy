@@ -41,7 +41,10 @@ ProjectLocation::ProjectLocation(const ProjectRepositoryNode& node)
 
 void ProjectLocation::save(ProjectRepositoryNode& node) const
 {
-    node.setChildNodeValue("location", m_url);
+    if (m_url.size() > 0)
+    {
+        node.setChildNodeValue("location", m_url);
+    }
 }
 
 bool ProjectLocation::operator ==(const ProjectLocation& other) const

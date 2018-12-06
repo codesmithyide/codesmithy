@@ -34,6 +34,7 @@ public:
 
 private:
     static TestResult::EOutcome CreationTest1();
+    static TestResult::EOutcome CreationTest2();
     static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
 };
 

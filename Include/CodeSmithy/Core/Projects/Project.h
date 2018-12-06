@@ -46,8 +46,12 @@ public:
 	virtual void save() = 0;
     virtual void save(ProjectRepositoryNode& node) const = 0;
 
+protected:
+    void saveBaseMembers(ProjectRepositoryNode& node) const;
+
 private:
     std::string m_name;
+    ProjectDescription m_description;
     ProjectLocation m_location;
 };
 

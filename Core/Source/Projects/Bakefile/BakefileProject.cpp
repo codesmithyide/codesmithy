@@ -49,8 +49,7 @@ const ProjectType& BakefileProject::type() const
 
 void BakefileProject::save()
 {
-    m_node->setChildNodeValue("name", name());
-    m_node->setChildNodeValue("type", type().name());
+    saveBaseMembers(*m_node);
 }
 
 void BakefileProject::save(ProjectRepositoryNode& node) const

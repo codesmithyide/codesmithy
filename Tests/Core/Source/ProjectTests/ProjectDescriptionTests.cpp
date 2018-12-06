@@ -30,11 +30,18 @@ void ProjectDescriptionTests::AddTests(TestSequence& testSequence)
     TestSequence* descriptionTestSequence = new TestSequence("ProjectDescription tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *descriptionTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *descriptionTestSequence);
 
     new FileComparisonTest("save test 1", SaveTest1, *descriptionTestSequence);
 }
 
 TestResult::EOutcome ProjectDescriptionTests::CreationTest1()
+{
+    CodeSmithy::ProjectDescription description;
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome ProjectDescriptionTests::CreationTest2()
 {
     CodeSmithy::ProjectDescription description("My description");
     return TestResult::ePassed;

@@ -39,4 +39,12 @@ const std::string& Project::name() const
     return m_name;
 }
 
+void Project::saveBaseMembers(ProjectRepositoryNode& node) const
+{
+    node.setChildNodeValue("name", name());
+    node.setChildNodeValue("type", type().name());
+    m_description.save(node);
+    m_location.save(node);
+}
+
 }
