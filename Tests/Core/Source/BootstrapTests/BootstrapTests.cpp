@@ -25,20 +25,20 @@
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddBootstrapTests(TestHarness& theTestHarness)
+void BootstrapTests::AddTests(TestHarness& theTestHarness)
 {
     boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "BootstrapTests");
     boost::filesystem::create_directories(outputPath);
 
     TestSequence& bootstrapTestSequence = theTestHarness.appendTestSequence("Bootstrap tests");
 
-    new FileComparisonTest("Bootstrap ProjectFileRepository creation test 1", BootstrapProjectFileRepositoryCreationTest1, bootstrapTestSequence);
-    new HeapAllocationErrorsTest("Bootstap ProjectFileRepository test 2", BootstrapProjectFileRepositoryCreationTest2, bootstrapTestSequence);
+    new FileComparisonTest("Bootstrap ProjectFileRepository creation test 1", ProjectFileRepositoryCreationTest1, bootstrapTestSequence);
+    new HeapAllocationErrorsTest("Bootstap ProjectFileRepository test 2", ProjectFileRepositoryCreationTest2, bootstrapTestSequence);
 }
 
 // This tests that we are able to generate the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 // It's also a convenient way to generate it.
-TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonTest& test)
+TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -96,7 +96,7 @@ TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonT
 }
 
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
-TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test)
+TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 

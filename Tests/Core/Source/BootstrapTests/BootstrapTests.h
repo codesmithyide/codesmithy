@@ -27,9 +27,14 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddBootstrapTests(TestHarness& theTestHarness);
+class BootstrapTests
+{
+public:
+    static void AddTests(TestHarness& theTestHarness);
 
-TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest1(FileComparisonTest& test);
-TestResult::EOutcome BootstrapProjectFileRepositoryCreationTest2(Test& test);
+private:
+    static TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test);
+    static TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test);
+};
 
 #endif

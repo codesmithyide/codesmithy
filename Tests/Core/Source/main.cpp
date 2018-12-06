@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
     AddProjectTests(theTestHarness);
     AddProjectTemplatesTestSequence(theTestHarness);
     AddWorkspacesTestSequence(theTestHarness);
-    AddBootstrapTests(theTestHarness);
+    BootstrapTests::AddTests(theTestHarness);
 
     return theTestHarness.run();
 }
