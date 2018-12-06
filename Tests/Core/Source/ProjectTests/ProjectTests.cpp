@@ -48,7 +48,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
     AddProjectFileRepositoryNodeTests(projectTestSequence);
-    AddProjectLocationTests(projectTestSequence);
+    ProjectLocationTests::AddTests(projectTestSequence);
     ProjectGroupTests::AddTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
     AddBakefileProjectTests(projectTestSequence);

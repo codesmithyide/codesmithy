@@ -27,10 +27,15 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddProjectLocationTests(TestSequence& testSequence);
+class ProjectLocationTests
+{
+public:
+    static void AddTests(TestSequence& testSequence);
 
-TestResult::EOutcome ProjectLocationCreationTest1();
-TestResult::EOutcome ProjectLocationCreationTest2();
-TestResult::EOutcome ProjectLocationSaveTest1(FileComparisonTest& test);
+private:
+    static TestResult::EOutcome CreationTest1();
+    static TestResult::EOutcome CreationTest2();
+    static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
+};
 
 #endif

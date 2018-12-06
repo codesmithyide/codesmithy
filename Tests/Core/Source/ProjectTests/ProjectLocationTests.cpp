@@ -25,33 +25,33 @@
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddProjectLocationTests(TestSequence& testSequence)
+void ProjectLocationTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* locationTestSequence = new TestSequence("ProjectLocation tests", testSequence);
 
-    new HeapAllocationErrorsTest("Creation test 1", ProjectLocationCreationTest1, *locationTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", ProjectLocationCreationTest2, *locationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *locationTestSequence);
+    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *locationTestSequence);
 
-    new FileComparisonTest("save test 1", ProjectLocationSaveTest1, *locationTestSequence);
+    new FileComparisonTest("save test 1", SaveTest1, *locationTestSequence);
 }
 
-TestResult::EOutcome ProjectLocationCreationTest1()
+TestResult::EOutcome ProjectLocationTests::CreationTest1()
 {
     CodeSmithy::ProjectLocation location;
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ProjectLocationCreationTest2()
+TestResult::EOutcome ProjectLocationTests::CreationTest2()
 {
     CodeSmithy::ProjectLocation location("location1");
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ProjectLocationSaveTest1(FileComparisonTest& test)
+TestResult::EOutcome ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectLocationSaveTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectLocationSaveTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
     repository.setName("ProjectLocationSaveTest1");
