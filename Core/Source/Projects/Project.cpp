@@ -39,6 +39,11 @@ const std::string& Project::name() const
     return m_name;
 }
 
+void Project::setDescription(const ProjectDescription& description)
+{
+    m_description = description;
+}
+
 void Project::saveBaseMembers(ProjectRepositoryNode& node) const
 {
     node.setChildNodeValue("name", name());

@@ -6,10 +6,16 @@
 		<codesmithy-project>
 			<name>CodeSmithy</name>
 			<type>CodeSmithy.Group</type>
+			<description>
+				<text>The CodeSmithy code and all its dependencies.</text>
+			</description>
 			<projects>
 				<codesmithy-project>
 					<name>libgit2</name>
 					<type>CodeSmithy.Group</type>
+					<description>
+						<text>A local fork of the libgit2 project. This is a client library to work with git repositories.</text>
+					</description>
 					<projects>
 						<external-project-link>
 							<location>https://github.com/CodeSmithyIDE/libgit2</location>
@@ -19,6 +25,9 @@
 				<codesmithy-project>
 					<name>Ishiko Dependencies</name>
 					<type>CodeSmithy.Group</type>
+					<description>
+						<text>The Ishiko-Cpp projects that CodeSmithy depends on. Each project in this group is a local fork of the official Ishiko-Cpp project.</text>
+					</description>
 					<projects>
 						<external-project-link>
 							<location>https://github.com/CodeSmithyIDE/Errors</location>
@@ -43,6 +52,9 @@
 				<codesmithy-project>
 					<name>wxWidgets Dependencies</name>
 					<type>CodeSmithy.Group</type>
+					<description>
+						<text>The wxWidgets code and its dependencies. These are local forks of the official wxWidgets projects.</text>
+					</description>
 					<projects>
 						<external-project-link>
 							<location>https://github.com/CodeSmithyIDE/zlib</location>

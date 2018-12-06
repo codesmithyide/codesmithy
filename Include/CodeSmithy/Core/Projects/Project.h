@@ -41,6 +41,7 @@ public:
 
     virtual const ProjectType& type() const = 0;
     const std::string& name() const;
+    void setDescription(const ProjectDescription& description);
 
     // TODO : I may want to get rid of save()
 	virtual void save() = 0;

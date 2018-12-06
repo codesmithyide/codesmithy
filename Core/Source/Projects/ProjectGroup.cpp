@@ -112,12 +112,12 @@ void ProjectGroup::save()
 
 void ProjectGroup::save(ProjectRepositoryNode& node) const
 {
+    node.clear();
+
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
-    node.setChildNodeValue(projectNameElementName, name());
-    node.setChildNodeValue(projectTypeElementName, type().name());
+    saveBaseMembers(node);
     std::shared_ptr<ProjectRepositoryNode> childProjectsNode = node.setChildNode(childProjectsElementName);
-    childProjectsNode->clear();
     for (const ProjectOrLink& item : m_childProjects)
     {
         if (item.isLink())
