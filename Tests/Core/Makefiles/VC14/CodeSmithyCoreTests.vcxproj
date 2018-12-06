@@ -179,6 +179,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\ProjectTypesTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectDescriptionTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectLocationTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\ProjectGroupTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectTypesTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.h" />
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectDescriptionTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectLocationTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\ProjectGroupTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.h" />

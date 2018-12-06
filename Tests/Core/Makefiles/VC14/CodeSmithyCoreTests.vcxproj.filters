@@ -83,6 +83,9 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjectTests\ProjectDescriptionTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ProjectTests\ProjectLocationTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -179,6 +182,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectFileRepositoryNodeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjectTests\ProjectDescriptionTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjectTests\ProjectLocationTests.cpp">
