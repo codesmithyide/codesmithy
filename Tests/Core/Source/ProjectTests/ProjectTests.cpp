@@ -28,6 +28,7 @@
 #include "ProjectTypesTests.h"
 #include "ProjectFileRepositoryTests.h"
 #include "ProjectFileRepositoryNodeTests.h"
+#include "ProjectDescriptionTests.h"
 #include "ProjectLocationTests.h"
 #include "ProjectGroupTests.h"
 #include "CodeSmithyProjectTests.h"
@@ -48,6 +49,7 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddProjectTypesTests(projectTestSequence);
     AddProjectFileRepositoryTests(projectTestSequence);
     AddProjectFileRepositoryNodeTests(projectTestSequence);
+    ProjectDescriptionTests::AddTests(projectTestSequence);
     ProjectLocationTests::AddTests(projectTestSequence);
     ProjectGroupTests::AddTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);
