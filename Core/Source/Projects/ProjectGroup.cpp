@@ -50,6 +50,11 @@ const Project& ProjectGroup::ProjectOrLink::project() const
     return *m_project;
 }
 
+Project& ProjectGroup::ProjectOrLink::project()
+{
+    return *m_project;
+}
+
 const ProjectLocation& ProjectGroup::ProjectOrLink::location() const
 {
     return m_location;

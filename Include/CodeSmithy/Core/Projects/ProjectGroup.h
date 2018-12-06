@@ -43,6 +43,7 @@ public:
         bool isLink() const;
 
         const Project& project() const;
+        Project& project();
         const ProjectLocation& location() const;
 
     private:

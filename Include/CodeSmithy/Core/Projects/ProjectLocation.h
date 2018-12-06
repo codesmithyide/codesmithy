@@ -43,6 +43,8 @@ public:
     ProjectLocation(const std::string& url);
     ProjectLocation(const ProjectRepositoryNode& node);
 
+    const std::string& url() const;
+
     void save(ProjectRepositoryNode& node) const;
 
     bool operator ==(const ProjectLocation& other) const;

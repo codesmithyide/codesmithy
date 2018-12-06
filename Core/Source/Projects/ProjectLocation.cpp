@@ -39,6 +39,11 @@ ProjectLocation::ProjectLocation(const ProjectRepositoryNode& node)
 {
 }
 
+const std::string& ProjectLocation::url() const
+{
+    return m_url;
+}
+
 void ProjectLocation::save(ProjectRepositoryNode& node) const
 {
     if (m_url.size() > 0)

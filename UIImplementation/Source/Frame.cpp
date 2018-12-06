@@ -30,6 +30,8 @@
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/OpenGitRepositoryWizard.h"
 #include "CodeSmithy/UIElements/VersionControl/GitCloneDialog.h"
+#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <wx/filedlg.h>
 
 namespace CodeSmithy
@@ -194,7 +196,57 @@ void Frame::Bootstrap()
     // TODO: Need a bootstrap workspace to contain the CodeSmithy project
     m_workspacePanel->createWorkspaceFromGitRepository("CodeSmithy Bootstrap");
     
-    // in the cloned project repo find project makefile, that file should list all other git repos to clone, and then build everything
+    // TODO: in the cloned project repo find project makefile
+    // TODO : this is bad because we are not discovering the projects, but just checking that the 
+    // file contains what we expect, but I guess this might do for now
+    ProjectFileRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj");
+    if (repository.name() == "CodeSmithyIDE")
+    {
+        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
+        if (projectNode)
+        {
+            ProjectGroupType type;
+            ProjectGroup project(type, projectNode);
+            if (project.name() == "CodeSmithy")
+            {
+                if (project.children().size() == 4)
+                {
+                    if (project.children()[0].isProject())
+                    {
+                        // TODO : this only works because I know the project is libgit2
+                        std::string url = static_cast<ProjectGroup&>(project.children()[0].project()).children()[0].location().url();
+
+                        // TODO : use project name as dir name
+                        GitCloneDialog cloneDialog(this, url, "libgit2");
+                        cloneDialog.ShowModal();
+                    }
+                    else
+                    {
+                        // TODO : error
+                    }
+                }
+                else
+                {
+                    // TODO : error
+                }
+            }
+            else
+            {
+                // TODO : error
+            }
+        }
+        else
+        {
+            // TODO : error
+        }
+    }
+    else
+    {
+        // TODO: error
+    }
+    
+    
+    // TODO: that file should list all other git repos to clone, and then build everything
     // So first of need to clone
     // TODO : where should bootstrap implementation live? In core/bootstrap I guess. So I can test it.
 }
