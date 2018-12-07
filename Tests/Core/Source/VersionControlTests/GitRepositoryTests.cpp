@@ -22,16 +22,31 @@
 
 #include "GitRepositoryTests.h"
 #include "CodeSmithy/Core/VersionControl/GitRepository.h"
+#include <boost/filesystem/operations.hpp>
 
 void GitRepositoryTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* gitRepositoryTestSequence = new TestSequence("GitRepository tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *gitRepositoryTestSequence);
+
+    new HeapAllocationErrorsTest("init test 1", InitTest1, *gitRepositoryTestSequence);
 }
 
 TestResult::EOutcome GitRepositoryTests::CreationTest1()
 {
     CodeSmithy::GitRepository repository;
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome GitRepositoryTests::InitTest1(Test& test)
+{
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
+    boost::filesystem::remove(outputPath);
+
+    CodeSmithy::GitRepository repository;
+    repository.init(outputPath.string());
+
+    // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
 }

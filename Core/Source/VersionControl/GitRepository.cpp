@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017 Xavier Leclercq
+    Copyright (c) 2017-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -36,6 +36,12 @@ GitRepository::~GitRepository()
     git_repository_free(m_repository);
 
     git_libgit2_shutdown();
+}
+
+void GitRepository::init(const std::string& path)
+{
+    // TODO: error handling
+    int err = git_repository_init(&m_repository, path.c_str(), 0);
 }
 
 void GitRepository::clone(const std::string& url,

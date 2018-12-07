@@ -34,6 +34,7 @@ public:
 
 private:
     static TestResult::EOutcome CreationTest1();
+    static TestResult::EOutcome InitTest1(Test& test);
 };
 
 #endif

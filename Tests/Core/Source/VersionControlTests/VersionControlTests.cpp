@@ -22,9 +22,13 @@
 
 #include "VersionControlTests.h"
 #include "GitRepositoryTests.h"
+#include <boost/filesystem/operations.hpp>
 
 void AddVersionControlTests(TestHarness& theTestHarness)
 {
+    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "VersionControlTests");
+    boost::filesystem::create_directories(outputPath);
+
     TestSequence& versionControlTestSequence = theTestHarness.appendTestSequence("VersionControl tests");
 
     GitRepositoryTests::AddTests(versionControlTestSequence);
