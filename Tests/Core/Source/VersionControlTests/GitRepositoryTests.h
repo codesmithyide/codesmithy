@@ -36,6 +36,7 @@ private:
     static TestResult::EOutcome CreationTest1();
     static TestResult::EOutcome InitTest1(Test& test);
     static TestResult::EOutcome CloneTest1(Test& test);
+    static TestResult::EOutcome OpenTest1(Test& test);
 };
 
 #endif

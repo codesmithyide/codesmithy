@@ -43,6 +43,7 @@ public:
     // TODO url can actually be a file path, but in that case the clone may have 
     // hard links to the cloned repo, that may be some behavior I want to change
     void clone(const std::string& url, const std::string& clonePath);
+    void open(const std::string& path);
 
 private:
     git_repository* m_repository;

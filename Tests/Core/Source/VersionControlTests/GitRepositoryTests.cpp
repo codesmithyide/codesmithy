@@ -33,6 +33,8 @@ void GitRepositoryTests::AddTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("init test 1", InitTest1, *gitRepositoryTestSequence);
 
     new HeapAllocationErrorsTest("clone test 1", CloneTest1, *gitRepositoryTestSequence);
+
+    new HeapAllocationErrorsTest("open test 1", OpenTest1, *gitRepositoryTestSequence);
 }
 
 TestResult::EOutcome GitRepositoryTests::CreationTest1()
@@ -61,6 +63,17 @@ TestResult::EOutcome GitRepositoryTests::CloneTest1(Test& test)
 
     CodeSmithy::GitRepository repository;
     repository.clone(inputPath.string(), outputPath.string());
+
+    // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
+
+    CodeSmithy::GitRepository repository;
+    repository.open(inputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;

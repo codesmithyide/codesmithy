@@ -61,7 +61,12 @@ void GitRepository::clone(const std::string& url,
             ++i;
         }
     }
+}
 
+void GitRepository::open(const std::string& path)
+{
+    // TODO: error handling
+    int err = git_repository_open(&m_repository, path.c_str());
 }
 
 }
