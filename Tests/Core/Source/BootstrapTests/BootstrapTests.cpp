@@ -56,6 +56,11 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComp
         CodeSmithy::ProjectGroup project(type, projectNode);
         project.setDescription(CodeSmithy::ProjectDescription("The CodeSmithy code and all its dependencies."));
 
+        std::shared_ptr<CodeSmithy::ProjectGroup> pugixmlProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "pugixml");
+        pugixmlProject->setDescription(CodeSmithy::ProjectDescription("A local fork of the pugixml project. This is a library to read XML files."));
+        pugixmlProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/pugixml"));
+        project.addProject(pugixmlProject);
+
         std::shared_ptr<CodeSmithy::ProjectGroup> libgit2Project = std::make_shared<CodeSmithy::ProjectGroup>(type, "libgit2");
         libgit2Project->setDescription(CodeSmithy::ProjectDescription("A local fork of the libgit2 project. This is a client library to work with git repositories."));
         libgit2Project->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libgit2"));
@@ -65,7 +70,6 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComp
         ishikoDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The Ishiko-Cpp projects that CodeSmithy depends on. Each project in this group is a "
             "local fork of the official Ishiko-Cpp project."));
         ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Errors"));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/pugixml"));
         ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Process"));
         ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/FileTypes"));
         ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/WindowsRegistry"));
@@ -117,15 +121,17 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest2(Test& te
             CodeSmithy::ProjectGroup project(type, projectNode);
             if (project.name() == "CodeSmithy")
             {
-                if ((project.children().size() == 4) &&
+                if ((project.children().size() == 5) &&
                     project.children()[0].isProject() &&
-                    (project.children()[0].project().name() == "libgit2") &&
+                    (project.children()[0].project().name() == "pugixml") &&
                     project.children()[1].isProject() &&
-                    (project.children()[1].project().name() == "Ishiko Dependencies") &&
+                    (project.children()[1].project().name() == "libgit2") &&
                     project.children()[2].isProject() &&
-                    (project.children()[2].project().name() == "wxWidgets Dependencies") &&
-                    project.children()[3].isLink() &&
-                    (project.children()[3].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
+                    (project.children()[2].project().name() == "Ishiko Dependencies") &&
+                    project.children()[3].isProject() &&
+                    (project.children()[3].project().name() == "wxWidgets Dependencies") &&
+                    project.children()[4].isLink() &&
+                    (project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
                 {
                     result = TestResult::ePassed;
                 }

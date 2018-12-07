@@ -11,6 +11,18 @@
 			</description>
 			<projects>
 				<codesmithy-project>
+					<name>pugixml</name>
+					<type>CodeSmithy.Group</type>
+					<description>
+						<text>A local fork of the pugixml project. This is a library to read XML files.</text>
+					</description>
+					<projects>
+						<external-project-link>
+							<location>https://github.com/CodeSmithyIDE/pugixml</location>
+						</external-project-link>
+					</projects>
+				</codesmithy-project>
+				<codesmithy-project>
 					<name>libgit2</name>
 					<type>CodeSmithy.Group</type>
 					<description>
@@ -31,9 +43,6 @@
 					<projects>
 						<external-project-link>
 							<location>https://github.com/CodeSmithyIDE/Errors</location>
-						</external-project-link>
-						<external-project-link>
-							<location>https://github.com/CodeSmithyIDE/pugixml</location>
 						</external-project-link>
 						<external-project-link>
 							<location>https://github.com/CodeSmithyIDE/Process</location>
