@@ -61,7 +61,7 @@ public:
     void save() override;
     void save(ProjectRepositoryNode& node) const override;
 
-    std::vector<ProjectOrLink> children();
+    std::vector<ProjectOrLink>& children();
     void addProject(std::shared_ptr<Project> project);
     void addExternalProjectLink(const ProjectLocation& projectLocation);
 

@@ -138,7 +138,7 @@ void ProjectGroup::save(ProjectRepositoryNode& node) const
     }
 }
 
-std::vector<ProjectGroup::ProjectOrLink> ProjectGroup::children()
+std::vector<ProjectGroup::ProjectOrLink>& ProjectGroup::children()
 {
     return m_childProjects;
 }
