@@ -31,6 +31,9 @@ class GitRepositoryTests
 {
 public:
     static void AddTests(TestSequence& testSequence);
+
+private:
+    static TestResult::EOutcome CreationTest1();
 };
 
 #endif

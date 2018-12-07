@@ -21,8 +21,17 @@
 */
 
 #include "GitRepositoryTests.h"
+#include "CodeSmithy/Core/VersionControl/GitRepository.h"
 
 void GitRepositoryTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* gitRepositoryTestSequence = new TestSequence("GitRepository tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *gitRepositoryTestSequence);
+}
+
+TestResult::EOutcome GitRepositoryTests::CreationTest1()
+{
+    CodeSmithy::GitRepository repository;
+    return TestResult::ePassed;
 }
