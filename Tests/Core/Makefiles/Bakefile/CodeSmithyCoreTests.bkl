@@ -60,6 +60,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.h
         ../../Source/WorkspacesTests/GenericWorkspaceTests.h
 
+        ../../Source/VersionControlTests/VersionControlTests.h
+
         ../../Source/BootstrapTests/BootstrapTests.h
     }
 
@@ -101,6 +103,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspacesTestSequence.cpp
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.cpp
         ../../Source/WorkspacesTests/GenericWorkspaceTests.cpp
+
+        ../../Source/VersionControlTests/VersionControlTests.cpp
 
         ../../Source/BootstrapTests/BootstrapTests.cpp
     }

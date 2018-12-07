@@ -110,6 +110,9 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\BootstrapTests\BootstrapTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -209,6 +212,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BootstrapTests\BootstrapTests.cpp">
