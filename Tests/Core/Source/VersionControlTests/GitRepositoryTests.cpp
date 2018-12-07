@@ -20,12 +20,9 @@
     IN THE SOFTWARE.
 */
 
-#include "VersionControlTests.h"
 #include "GitRepositoryTests.h"
 
-void AddVersionControlTests(TestHarness& theTestHarness)
+void GitRepositoryTests::AddTests(TestSequence& testSequence)
 {
-    TestSequence& versionControlTestSequence = theTestHarness.appendTestSequence("VersionControl tests");
-
-    GitRepositoryTests::AddTests(versionControlTestSequence);
+    TestSequence* gitRepositoryTestSequence = new TestSequence("GitRepository tests", testSequence);
 }

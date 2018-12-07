@@ -20,12 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "VersionControlTests.h"
-#include "GitRepositoryTests.h"
+#ifndef _CODESMITHY_TEST_CORE_VERSIONCONTROLTESTS_GITREPOSITORYTESTS_H_
+#define _CODESMITHY_TEST_CORE_VERSIONCONTROLTESTS_GITREPOSITORYTESTS_H_
 
-void AddVersionControlTests(TestHarness& theTestHarness)
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+using namespace Ishiko::TestFramework;
+
+class GitRepositoryTests
 {
-    TestSequence& versionControlTestSequence = theTestHarness.appendTestSequence("VersionControl tests");
+public:
+    static void AddTests(TestSequence& testSequence);
+};
 
-    GitRepositoryTests::AddTests(versionControlTestSequence);
-}
+#endif
