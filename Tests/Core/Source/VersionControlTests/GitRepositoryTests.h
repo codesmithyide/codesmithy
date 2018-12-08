@@ -37,6 +37,8 @@ private:
     static TestResult::EOutcome InitTest1(Test& test);
     static TestResult::EOutcome CloneTest1(Test& test);
     static TestResult::EOutcome OpenTest1(Test& test);
+    static TestResult::EOutcome CheckIfRepositoryTest1(Test& test);
+    static TestResult::EOutcome CheckIfRepositoryTest2(Test& test);
 };
 
 #endif

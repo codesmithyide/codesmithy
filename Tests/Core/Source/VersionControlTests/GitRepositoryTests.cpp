@@ -35,6 +35,9 @@ void GitRepositoryTests::AddTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("clone test 1", CloneTest1, *gitRepositoryTestSequence);
 
     new HeapAllocationErrorsTest("open test 1", OpenTest1, *gitRepositoryTestSequence);
+    
+    new HeapAllocationErrorsTest("checkIfRepository test 1", CheckIfRepositoryTest1, *gitRepositoryTestSequence);
+    new HeapAllocationErrorsTest("checkIfRepository test 2", CheckIfRepositoryTest2, *gitRepositoryTestSequence);
 }
 
 TestResult::EOutcome GitRepositoryTests::CreationTest1()
@@ -77,4 +80,34 @@ TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
+
+    CodeSmithy::GitRepository repository;
+    if (repository.checkIfRepository(inputPath.string()))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome GitRepositoryTests::CheckIfRepositoryTest2(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests");
+
+    CodeSmithy::GitRepository repository;
+    if (!repository.checkIfRepository(inputPath.string()))
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

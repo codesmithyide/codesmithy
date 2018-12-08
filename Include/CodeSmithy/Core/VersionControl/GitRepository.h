@@ -45,6 +45,8 @@ public:
     void clone(const std::string& url, const std::string& clonePath);
     void open(const std::string& path);
 
+    bool checkIfRepository(const std::string& path) const;
+
 private:
     git_repository* m_repository;
 };
