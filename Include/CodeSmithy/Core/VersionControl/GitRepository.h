@@ -45,6 +45,13 @@ public:
     void clone(const std::string& url, const std::string& clonePath);
     void open(const std::string& path);
 
+    void checkout();
+    void branch();
+
+    void fetch();
+    void merge();
+    void pull();
+
     bool checkIfRepository(const std::string& path) const;
 
 private:

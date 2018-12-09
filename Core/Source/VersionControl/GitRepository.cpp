@@ -69,6 +69,31 @@ void GitRepository::open(const std::string& path)
     int err = git_repository_open(&m_repository, path.c_str());
 }
 
+void GitRepository::checkout()
+{
+    // TODO
+}
+
+void GitRepository::branch()
+{
+    // TODO
+}
+
+void GitRepository::fetch()
+{
+    // TODO
+}
+
+void GitRepository::merge()
+{
+    // TODO
+}
+
+void GitRepository::pull()
+{
+    // TODO
+}
+
 bool GitRepository::checkIfRepository(const std::string& path) const
 {
     return (git_repository_open_ext(NULL, path.c_str(), GIT_REPOSITORY_OPEN_NO_SEARCH, NULL) == 0);
