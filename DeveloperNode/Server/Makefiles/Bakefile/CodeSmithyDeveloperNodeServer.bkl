@@ -8,7 +8,7 @@ program CodeSmithyDeveloperNodeServer
 {
     archs = x86 x86_64;
 
-    outputdir = ../../../Bin/$(arch);
+    outputdir = ../../../../Bin/$(arch);
     basename = CodeSmithyDeveloperNode;
 
     sources
