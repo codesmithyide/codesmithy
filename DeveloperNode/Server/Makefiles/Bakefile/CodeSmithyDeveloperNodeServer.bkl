@@ -1,0 +1,17 @@
+toolsets = vs2017 vs2015 vs2013;
+
+vs2017.solutionfile = ../VC15/CodeSmithyDeveloperNodeServer.sln;
+vs2015.solutionfile = ../VC14/CodeSmithyDeveloperNodeServer.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyDeveloperNodeServer.sln;
+
+program CodeSmithyDeveloperNode
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../../Bin/$(arch);
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
