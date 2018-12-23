@@ -209,22 +209,35 @@ void Frame::Bootstrap()
             ProjectGroup project(type, projectNode);
             if (project.name() == "CodeSmithy")
             {
-                if (project.children().size() == 4)
+                if (project.children().size() == 5)
                 {
                     if (project.children()[0].isProject())
                     {
-                        // TODO : this only works because I know the project is libgit2
-                        std::string url = static_cast<ProjectGroup&>(project.children()[0].project()).children()[0].location().url();
-
-                        // TODO : better way to do this
-                        size_t i = url.find_last_of('/');
-                        std::string dir = url.substr(i + 1);
-                        GitCloneDialog cloneDialog(this, url, dir);
-                        cloneDialog.ShowModal();
-
-                        if (project.children()[1].isProject())
+                        // TODO : this only works because I know the project is pugixml
                         {
-                            std::vector<ProjectGroup::ProjectOrLink>& children = static_cast<ProjectGroup&>(project.children()[1].project()).children();
+                            std::string url = static_cast<ProjectGroup&>(project.children()[0].project()).children()[0].location().url();
+
+                            // TODO : better way to do this
+                            size_t i = url.find_last_of('/');
+                            std::string dir = url.substr(i + 1);
+                            GitCloneDialog cloneDialog(this, url, dir);
+                            cloneDialog.ShowModal();
+                        }
+
+                        // TODO : this only works because I know the project is libgit2
+                        {
+                            std::string url = static_cast<ProjectGroup&>(project.children()[1].project()).children()[0].location().url();
+
+                            // TODO : better way to do this
+                            size_t i = url.find_last_of('/');
+                            std::string dir = url.substr(i + 1);
+                            GitCloneDialog cloneDialog(this, url, dir);
+                            cloneDialog.ShowModal();
+                        }
+
+                        if (project.children()[2].isProject())
+                        {
+                            std::vector<ProjectGroup::ProjectOrLink>& children = static_cast<ProjectGroup&>(project.children()[2].project()).children();
                             for (const ProjectGroup::ProjectOrLink& link : children)
                             {
                                 std::string url = link.location().url();
