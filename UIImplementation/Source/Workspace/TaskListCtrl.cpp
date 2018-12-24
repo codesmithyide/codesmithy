@@ -21,3 +21,13 @@
 */
 
 #include "Workspace/TaskListCtrl.h"
+
+namespace CodeSmithy
+{
+
+TaskListCtrl::TaskListCtrl(wxWindow* parent)
+    : wxPanel(parent, wxID_ANY)
+{
+}
+
+}

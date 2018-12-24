@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OUTPUTCTRL_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_OUTPUTCTRL_H_
 
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class OutputCtrl : public wxPanel
+{
+public:
+    OutputCtrl(wxWindow* parent);
+};
+
+}
+
 #endif

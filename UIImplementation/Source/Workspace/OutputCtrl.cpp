@@ -21,3 +21,13 @@
 */
 
 #include "Workspace/OutputCtrl.h"
+
+namespace CodeSmithy
+{
+
+OutputCtrl::OutputCtrl(wxWindow* parent)
+    : wxPanel(parent, wxID_ANY)
+{
+}
+
+}

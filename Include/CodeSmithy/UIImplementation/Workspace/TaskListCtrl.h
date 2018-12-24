@@ -23,4 +23,17 @@
 #ifndef _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_TASKLISTCTRL_H_
 #define _CODESMITHY_UIIMPLEMENTATION_WORKSPACE_TASKLISTCTRL_H_
 
+#include <wx/panel.h>
+
+namespace CodeSmithy
+{
+
+class TaskListCtrl : public wxPanel
+{
+public:
+    TaskListCtrl(wxWindow* parent);
+};
+
+}
+
 #endif
