@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -46,7 +46,9 @@ const wxWindowID RecentWorkspace9ID = RecentWorkspace1ID + 8;
 
 // View menu IDs
 const wxWindowID ShowWorkspaceExplorerMenuID = RecentWorkspace9ID + 1;
-const wxWindowID ShowStartPageMenuID = ShowWorkspaceExplorerMenuID + 1;
+const wxWindowID ShowOutputWindowMenuID = ShowWorkspaceExplorerMenuID + 1;
+const wxWindowID ShowTaskListWindowMenuID = ShowOutputWindowMenuID + 1;
+const wxWindowID ShowStartPageMenuID = ShowTaskListWindowMenuID + 1;
 
 
 // Workspace menu IDs

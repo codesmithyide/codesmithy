@@ -72,6 +72,8 @@ private:
     void OnCopy(wxCommandEvent& evt);
     void OnPaste(wxCommandEvent& evt);
     void OnShowWorkspaceExplorer(wxCommandEvent& evt);
+    void OnShowOutputWindow(wxCommandEvent& evt);
+    void OnShowTaskListWindow(wxCommandEvent& evt);
     void OnShowStartPage(wxCommandEvent& evt);
     void OnAddNewProject(wxCommandEvent& evt);
     void OnAddExistingProject(wxCommandEvent& evt);

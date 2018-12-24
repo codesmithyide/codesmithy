@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)\include;$(WXWIN)\include\msvc;$(ISHIKO)/Errors\Include;$(ISHIKO)/WindowsRegistry\Include;$(ISHIKO)/FileTypes\Include;$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;$(CODESMITHY)/CodeSmithy\Include;..\..\..\Include\CodeSmithy\UIImplementation</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -168,7 +168,9 @@
     <ClCompile Include="..\..\Source\Wizards\NewWorkspaceWizard.cpp" />
     <ClCompile Include="..\..\Source\Wizards\OpenGitRepositoryWizard.cpp" />
     <ClCompile Include="..\..\Source\Workspace\ExplorerCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\OutputCtrl.cpp" />
     <ClCompile Include="..\..\Source\Workspace\OpenDocumentsCtrl.cpp" />
+    <ClCompile Include="..\..\Source\Workspace\TaskListCtrl.cpp" />
     <ClCompile Include="..\..\Source\Workspace\StartPage.cpp" />
     <ClCompile Include="..\..\Source\Workspace\WorkspacePanel.cpp" />
     <ClCompile Include="..\..\Source\Workspace\ClosingModifiedDocumentDialog.cpp" />
@@ -217,7 +219,9 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\NewWorkspaceWizard.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Wizards\OpenGitRepositoryWizard.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\ExplorerCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OutputCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\OpenDocumentsCtrl.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\TaskListCtrl.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\StartPage.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\WorkspacePanel.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\UIImplementation\Workspace\ClosingModifiedDocumentDialog.h" />

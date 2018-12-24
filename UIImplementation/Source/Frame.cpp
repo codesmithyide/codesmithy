@@ -425,6 +425,14 @@ void Frame::OnShowWorkspaceExplorer(wxCommandEvent& evt)
     m_workspacePanel->showWorkspaceExplorer();
 }
 
+void Frame::OnShowOutputWindow(wxCommandEvent& evt)
+{
+}
+
+void Frame::OnShowTaskListWindow(wxCommandEvent& evt)
+{
+}
+
 void Frame::OnShowStartPage(wxCommandEvent& evt)
 {
 }
@@ -507,6 +515,8 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(wxID_COPY, Frame::OnCopy)
     EVT_MENU(wxID_PASTE, Frame::OnPaste)
     EVT_MENU(ShowWorkspaceExplorerMenuID, Frame::OnShowWorkspaceExplorer)
+    EVT_MENU(ShowOutputWindowMenuID, Frame::OnShowOutputWindow)
+    EVT_MENU(ShowTaskListWindowMenuID, Frame::OnShowTaskListWindow)
     EVT_MENU(ShowStartPageMenuID, Frame::OnShowStartPage)
     EVT_MENU(WorkspaceAddNewProjectMenuID, Frame::OnAddNewProject)
     EVT_MENU(WorkspaceAddExistingProjectMenuID, Frame::OnAddExistingProject)
