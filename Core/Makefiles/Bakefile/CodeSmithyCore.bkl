@@ -108,6 +108,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
         ../../../Include/CodeSmithy/Core/Tasks/Task.h
+        ../../../Include/CodeSmithy/Core/Tasks/TaskObserver.h
 
         ../../../Include/CodeSmithy/Core/VersionControl/GitRepository.h
 
@@ -195,6 +196,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Workspaces/GenericWorkspace.cpp
 
         ../../Source/Tasks/Task.cpp
+        ../../Source/Tasks/TaskObserver.cpp
 
         ../../Source/VersionControl/GitRepository.cpp
 

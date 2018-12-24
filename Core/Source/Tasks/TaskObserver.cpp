@@ -20,16 +20,4 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_TASKS_TASK_H_
-#define _CODESMITHY_CORE_TASKS_TASK_H_
-
-namespace CodeSmithy
-{
-
-class Task
-{
-};
-
-}
-
-#endif
+#include "Tasks/TaskObserver.h"

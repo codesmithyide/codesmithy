@@ -216,6 +216,7 @@
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\GenericWorkspace.cpp" />
     <ClCompile Include="..\..\Source\Tasks\Task.cpp" />
+    <ClCompile Include="..\..\Source\Tasks\TaskObserver.cpp" />
     <ClCompile Include="..\..\Source\VersionControl\GitRepository.cpp" />
     <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp" />
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp" />
@@ -287,6 +288,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Task.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TaskObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\VersionControl\GitRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />

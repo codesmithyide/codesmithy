@@ -20,13 +20,13 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_TASKS_TASK_H_
-#define _CODESMITHY_CORE_TASKS_TASK_H_
+#ifndef _CODESMITHY_CORE_TASKS_TASKOBSERVER_H_
+#define _CODESMITHY_CORE_TASKS_TASKOBSERVER_H_
 
 namespace CodeSmithy
 {
 
-class Task
+class TaskObserver
 {
 };
 
