@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2017 Xavier Leclercq
+    Copyright (c) 2016-2018 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -53,11 +53,23 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
     explorerPaneInfo.Hide();
     m_auiManager.AddPane(m_explorer, explorerPaneInfo);
 
+    m_output = new OutputCtrl(this);
+    wxAuiPaneInfo outputPaneInfo;
+    outputPaneInfo.Bottom().Floatable(false).Caption("Output");
+    outputPaneInfo.Hide();
+    m_auiManager.AddPane(m_output, outputPaneInfo);
+
     m_openDocuments = new OpenDocumentsCtrl(this, m_activeDocument, appSettings);
     wxAuiPaneInfo openDocumentsPaneInfo;
     openDocumentsPaneInfo.Center().Floatable(false).CaptionVisible(false);
     openDocumentsPaneInfo.Hide();
     m_auiManager.AddPane(m_openDocuments, openDocumentsPaneInfo);
+
+    m_taskList = new TaskListCtrl(this);
+    wxAuiPaneInfo taskListPaneInfo;
+    taskListPaneInfo.Right().Floatable(false).Caption("Tasks");
+    taskListPaneInfo.Hide();
+    m_auiManager.AddPane(m_taskList, taskListPaneInfo);
 
     m_auiManager.Update();
 }
@@ -146,6 +158,18 @@ void WorkspacePanel::forwardPasteEvent(const DocumentId& id)
 void WorkspacePanel::showWorkspaceExplorer()
 {
     m_auiManager.GetPane(m_explorer).Show();
+    m_auiManager.Update();
+}
+
+void WorkspacePanel::showOutput()
+{
+    m_auiManager.GetPane(m_output).Show();
+    m_auiManager.Update();
+}
+
+void WorkspacePanel::showTaskList()
+{
+    m_auiManager.GetPane(m_taskList).Show();
     m_auiManager.Update();
 }
 

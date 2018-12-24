@@ -427,10 +427,12 @@ void Frame::OnShowWorkspaceExplorer(wxCommandEvent& evt)
 
 void Frame::OnShowOutputWindow(wxCommandEvent& evt)
 {
+    m_workspacePanel->showOutput();
 }
 
 void Frame::OnShowTaskListWindow(wxCommandEvent& evt)
 {
+    m_workspacePanel->showTaskList();
 }
 
 void Frame::OnShowStartPage(wxCommandEvent& evt)

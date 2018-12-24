@@ -85,6 +85,8 @@ MenuBar::MenuBar(wxFileHistory& fileHistory,
 
     wxMenu* menuView = new wxMenu;
     menuView->Append(ShowWorkspaceExplorerMenuID, "Workspace Explorer");
+    menuView->Append(ShowOutputWindowMenuID, "Output");
+    menuView->Append(ShowTaskListWindowMenuID, "Tasks");
     menuView->AppendSeparator();
     menuView->Append(ShowStartPageMenuID, "Start Page");
     Append(menuView, "&View");
