@@ -31,7 +31,6 @@
 #include "CodeSmithy/UIImplementation/Wizards/OpenGitRepositoryWizard.h"
 #include "CodeSmithy/UIElements/VersionControl/GitCloneDialog.h"
 #include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
-#include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <wx/filedlg.h>
 
 namespace CodeSmithy
@@ -202,69 +201,15 @@ void Frame::Bootstrap()
     ProjectFileRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj");
     if (repository.name() == "CodeSmithyIDE")
     {
-        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
+        std::shared_ptr<ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
         if (projectNode)
         {
-            ProjectGroupType type;
-            ProjectGroup project(type, projectNode);
-            if (project.name() == "CodeSmithy")
+            std::string type = projectNode->getChildNodeValue("type");
+            if (type == "CodeSmithy.Group")
             {
-                if (project.children().size() == 5)
-                {
-                    if (project.children()[0].isProject())
-                    {
-                        // TODO : this only works because I know the project is pugixml
-                        {
-                            std::string url = static_cast<ProjectGroup&>(project.children()[0].project()).children()[0].location().url();
-
-                            // TODO : better way to do this
-                            size_t i = url.find_last_of('/');
-                            std::string dir = url.substr(i + 1);
-                            GitCloneDialog cloneDialog(this, url, dir);
-                            cloneDialog.ShowModal();
-                        }
-
-                        // TODO : this only works because I know the project is libgit2
-                        {
-                            std::string url = static_cast<ProjectGroup&>(project.children()[1].project()).children()[0].location().url();
-
-                            // TODO : better way to do this
-                            size_t i = url.find_last_of('/');
-                            std::string dir = url.substr(i + 1);
-                            GitCloneDialog cloneDialog(this, url, dir);
-                            cloneDialog.ShowModal();
-                        }
-
-                        if (project.children()[2].isProject())
-                        {
-                            std::vector<ProjectGroup::ProjectOrLink>& children = static_cast<ProjectGroup&>(project.children()[2].project()).children();
-                            for (const ProjectGroup::ProjectOrLink& link : children)
-                            {
-                                std::string url = link.location().url();
-                                size_t i = url.find_last_of('/');
-                                std::string dir = url.substr(i + 1);
-                                GitCloneDialog cloneDialog(this, url, dir);
-                                cloneDialog.ShowModal();
-                            }
-                        }
-                        else
-                        {
-                            // TODO : error
-                        }
-                    }
-                    else
-                    {
-                        // TODO : error
-                    }
-                }
-                else
-                {
-                    // TODO : error
-                }
-            }
-            else
-            {
-                // TODO : error
+                ProjectGroupType type;
+                ProjectGroup project(type, projectNode);
+                cloneBootstrapRepositories(project);
             }
         }
         else
@@ -516,6 +461,29 @@ void Frame::AddToRecentWorkspaces(const std::string& file)
     m_workspaceHistory.AddFileToHistory(file);
     m_appState.recentWorkspaces().set(file);
     m_appState.save();
+}
+
+void Frame::cloneBootstrapRepositories(ProjectGroup& group)
+{
+    std::vector<ProjectGroup::ProjectOrLink> children = group.children();
+    for (size_t i = 0; i < children.size(); ++i)
+    {
+        ProjectGroup::ProjectOrLink child = children[i];
+        if (child.isLink())
+        {
+            std::string url = child.location().url();
+
+            // TODO : better way to do this
+            size_t i = url.find_last_of('/');
+            std::string dir = url.substr(i + 1);
+            GitCloneDialog cloneDialog(this, url, dir);
+            cloneDialog.ShowModal();
+        }
+        else if (child.isProject())
+        {
+            cloneBootstrapRepositories(static_cast<ProjectGroup&>(child.project()));
+        }
+    }
 }
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)

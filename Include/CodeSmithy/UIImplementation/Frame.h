@@ -32,6 +32,7 @@
 #include "CodeSmithy/UICore/Logs/UILog.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include "CodeSmithy/Core/Documents/DocumentIdGenerator.h"
+#include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <wx/frame.h>
 #include <wx/filehistory.h>
 
@@ -78,6 +79,8 @@ private:
 
     void AddToRecentFiles(const std::string& file);
     void AddToRecentWorkspaces(const std::string& file);
+
+    void cloneBootstrapRepositories(ProjectGroup& group);
 
 private:
     AppSettings m_appSettings;
