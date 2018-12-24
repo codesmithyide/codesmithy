@@ -107,6 +107,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
+        ../../../Include/CodeSmithy/Core/Tasks/Task.h
+
         ../../../Include/CodeSmithy/Core/VersionControl/GitRepository.h
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
@@ -191,6 +193,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Workspaces/WorkspaceRepository.cpp
         ../../Source/Workspaces/WorkspaceFileRepository.cpp
         ../../Source/Workspaces/GenericWorkspace.cpp
+
+        ../../Source/Tasks/Task.cpp
 
         ../../Source/VersionControl/GitRepository.cpp
 
