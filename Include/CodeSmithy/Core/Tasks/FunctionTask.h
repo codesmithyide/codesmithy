@@ -20,13 +20,20 @@
     IN THE SOFTWARE.
 */
 
-#include "Tasks/Task.h"
+#ifndef _CODESMITHY_CORE_TASKS_FUNCTIONTASK_H_
+#define _CODESMITHY_CORE_TASKS_FUNCTIONTASK_H_
+
+#include "Task.h"
 
 namespace CodeSmithy
 {
 
-void Task::run()
+class FunctionTask : public Task
 {
-}
+public:
+    void run() override;
+};
 
 }
+
+#endif

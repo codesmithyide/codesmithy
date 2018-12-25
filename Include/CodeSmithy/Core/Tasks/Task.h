@@ -28,6 +28,8 @@ namespace CodeSmithy
 
 class Task
 {
+public:
+    virtual void run();
 };
 
 }

@@ -20,12 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#include "Tasks/Task.h"
+#include "Tasks/FunctionTask.h"
 
 namespace CodeSmithy
 {
 
-void Task::run()
+void FunctionTask::run()
 {
 }
 
