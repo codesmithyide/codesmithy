@@ -218,6 +218,12 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TaskObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Tasks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TasksObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\VersionControl\GitRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -434,6 +440,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Tasks\TaskObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Tasks\Tasks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Tasks\TasksObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\VersionControl\GitRepository.cpp">
