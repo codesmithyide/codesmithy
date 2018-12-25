@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Engine.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
@@ -224,6 +225,7 @@
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Engine.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />

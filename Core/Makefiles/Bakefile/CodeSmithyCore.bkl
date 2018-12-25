@@ -33,6 +33,7 @@ library CodeSmithyCore : Boost, pugixml, libgit2
 
     headers
     {
+        ../../../Include/CodeSmithy/Core/Engine.h
         ../../../Include/CodeSmithy/Core/linkoptions.h
 
         ../../../Include/CodeSmithy/Core/Documents/DocumentType.h
@@ -124,6 +125,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
 
     sources
     {
+        ../../Source/Engine.cpp
+
         ../../Source/Documents/DocumentType.cpp
         ../../Source/Documents/CustomDocumentTypeData.cpp
         ../../Source/Documents/DocumentTypes.cpp
