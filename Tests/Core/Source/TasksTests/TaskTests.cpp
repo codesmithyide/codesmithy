@@ -21,10 +21,34 @@
 */
 
 #include "TaskTests.h"
+#include "CodeSmithy/Core/Tasks/Task.h"
 
 using namespace Ishiko::TestFramework;
 
 void TaskTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* taskTestSequence = new TestSequence("Task tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *taskTestSequence);
+    new HeapAllocationErrorsTest("run test 1", RunTest1, *taskTestSequence);
+}
+
+TestResult::EOutcome TaskTests::CreationTest1()
+{
+    CodeSmithy::Task task;
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome TaskTests::RunTest1()
+{
+    CodeSmithy::Task task;
+    boost::unique_future<void> result = task.run();
+    if (result.is_ready() && result.has_value())
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }
