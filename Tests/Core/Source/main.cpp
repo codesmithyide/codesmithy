@@ -26,6 +26,7 @@
 #include "WorkspacesTests/WorkspacesTestSequence.h"
 #include "TasksTests/TasksTestSequence.h"
 #include "VersionControlTests/VersionControlTests.h"
+#include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
@@ -45,6 +46,7 @@ int main(int argc, char* argv[])
     AddWorkspacesTestSequence(theTestHarness);
     AddTasksTestSequence(theTestHarness);
     AddVersionControlTests(theTestHarness);
+    EngineTests::AddTests(theTestHarness);
     BootstrapTests::AddTests(theTestHarness);
 
     return theTestHarness.run();

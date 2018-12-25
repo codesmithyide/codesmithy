@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\Source\TasksTests\TasksTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\GitRepositoryTests.cpp" />
+    <ClCompile Include="..\..\Source\EngineTests\EngineTests.cpp" />
     <ClCompile Include="..\..\Source\BootstrapTests\BootstrapTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +231,7 @@
     <ClInclude Include="..\..\Source\TasksTests\TasksTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\GitRepositoryTests.h" />
+    <ClInclude Include="..\..\Source\EngineTests\EngineTests.h" />
     <ClInclude Include="..\..\Source\BootstrapTests\BootstrapTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

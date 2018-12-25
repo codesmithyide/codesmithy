@@ -66,6 +66,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/VersionControlTests/VersionControlTests.h
         ../../Source/VersionControlTests/GitRepositoryTests.h
 
+        ../../Source/EngineTests/EngineTests.h
+
         ../../Source/BootstrapTests/BootstrapTests.h
     }
 
@@ -113,6 +115,8 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
 
         ../../Source/VersionControlTests/VersionControlTests.cpp
         ../../Source/VersionControlTests/GitRepositoryTests.cpp
+
+        ../../Source/EngineTests/EngineTests.cpp
 
         ../../Source/BootstrapTests/BootstrapTests.cpp
     }
