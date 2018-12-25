@@ -218,7 +218,10 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Task.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\FunctionTask.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\SyncFunctionTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\AsyncFunctionTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TaskObserver.h">
@@ -448,7 +451,10 @@
     <ClCompile Include="..\..\Source\Tasks\Task.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Tasks\FunctionTask.cpp">
+    <ClCompile Include="..\..\Source\Tasks\SyncFunctionTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Tasks\AsyncFunctionTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Tasks\TaskObserver.cpp">

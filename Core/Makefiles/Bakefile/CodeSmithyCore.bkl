@@ -109,7 +109,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
         ../../../Include/CodeSmithy/Core/Tasks/Task.h
-        ../../../Include/CodeSmithy/Core/Tasks/FunctionTask.h
+        ../../../Include/CodeSmithy/Core/Tasks/SyncFunctionTask.h
+        ../../../Include/CodeSmithy/Core/Tasks/AsyncFunctionTask.h
         ../../../Include/CodeSmithy/Core/Tasks/TaskObserver.h
         ../../../Include/CodeSmithy/Core/Tasks/Tasks.h
         ../../../Include/CodeSmithy/Core/Tasks/TasksObserver.h
@@ -202,7 +203,8 @@ library CodeSmithyCore : Boost, pugixml, libgit2
         ../../Source/Workspaces/GenericWorkspace.cpp
 
         ../../Source/Tasks/Task.cpp
-        ../../Source/Tasks/FunctionTask.cpp
+        ../../Source/Tasks/SyncFunctionTask.cpp
+        ../../Source/Tasks/AsyncFunctionTask.cpp
         ../../Source/Tasks/TaskObserver.cpp
         ../../Source/Tasks/Tasks.cpp
         ../../Source/Tasks/TasksObserver.cpp

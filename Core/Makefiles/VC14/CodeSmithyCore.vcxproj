@@ -217,7 +217,8 @@
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\GenericWorkspace.cpp" />
     <ClCompile Include="..\..\Source\Tasks\Task.cpp" />
-    <ClCompile Include="..\..\Source\Tasks\FunctionTask.cpp" />
+    <ClCompile Include="..\..\Source\Tasks\SyncFunctionTask.cpp" />
+    <ClCompile Include="..\..\Source\Tasks\AsyncFunctionTask.cpp" />
     <ClCompile Include="..\..\Source\Tasks\TaskObserver.cpp" />
     <ClCompile Include="..\..\Source\Tasks\Tasks.cpp" />
     <ClCompile Include="..\..\Source\Tasks\TasksObserver.cpp" />
@@ -293,7 +294,8 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Task.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\FunctionTask.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\SyncFunctionTask.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\AsyncFunctionTask.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TaskObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Tasks.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TasksObserver.h" />
