@@ -25,8 +25,11 @@
 namespace CodeSmithy
 {
 
-void Task::run()
+boost::unique_future<void> Task::run()
 {
+    boost::packaged_task<void> task([]() -> void {});
+    task();
+    return task.get_future();
 }
 
 }

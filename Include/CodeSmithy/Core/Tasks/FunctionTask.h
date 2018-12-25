@@ -34,10 +34,10 @@ class FunctionTask : public Task
 public:
     FunctionTask(std::function<void()> fct);
 
-    void run() override;
+    boost::unique_future<void> run() override;
 
 private:
-    std::function<void()> m_fct;
+    boost::packaged_task<void> m_task;
 };
 
 }

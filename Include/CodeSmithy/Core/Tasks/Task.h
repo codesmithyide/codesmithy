@@ -23,13 +23,15 @@
 #ifndef _CODESMITHY_CORE_TASKS_TASK_H_
 #define _CODESMITHY_CORE_TASKS_TASK_H_
 
+#include <boost/thread/future.hpp>
+
 namespace CodeSmithy
 {
 
 class Task
 {
 public:
-    virtual void run();
+    virtual boost::unique_future<void> run();
 };
 
 }

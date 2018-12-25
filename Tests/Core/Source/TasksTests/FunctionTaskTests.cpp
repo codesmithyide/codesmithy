@@ -35,13 +35,20 @@ void FunctionTaskTests::AddTests(TestSequence& testSequence)
 
 TestResult::EOutcome FunctionTaskTests::CreationTest1()
 {
-    CodeSmithy::FunctionTask task([]() -> void { });
+    CodeSmithy::FunctionTask task([]() -> void {});
     return TestResult::ePassed;
 }
 
 TestResult::EOutcome FunctionTaskTests::RunTest1()
 {
     CodeSmithy::FunctionTask task([]() -> void {});
-    task.run();
-    return TestResult::ePassed;
+    boost::unique_future<void> result = task.run();
+    if (result.is_ready() && result.has_value())
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

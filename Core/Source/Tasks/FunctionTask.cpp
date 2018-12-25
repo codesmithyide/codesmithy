@@ -26,13 +26,14 @@ namespace CodeSmithy
 {
 
 FunctionTask::FunctionTask(std::function<void()> fct)
-    : m_fct(fct)
+    : m_task(fct)
 {
 }
 
-void FunctionTask::run()
+boost::unique_future<void> FunctionTask::run()
 {
-    m_fct();
+    m_task();
+    return m_task.get_future();
 }
 
 }
