@@ -61,6 +61,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/GenericWorkspaceTests.h
 
         ../../Source/TasksTests/TasksTestSequence.h
+        ../../Source/TasksTests/TaskTests.h
         ../../Source/TasksTests/FunctionTaskTests.h
         ../../Source/TasksTests/TasksTests.h
 
@@ -112,6 +113,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/GenericWorkspaceTests.cpp
 
         ../../Source/TasksTests/TasksTestSequence.cpp
+        ../../Source/TasksTests/TaskTests.cpp
         ../../Source/TasksTests/FunctionTaskTests.cpp
         ../../Source/TasksTests/TasksTests.cpp
 
