@@ -21,10 +21,46 @@
 */
 
 #include "AsyncFunctionTaskTests.h"
+#include "CodeSmithy/Core/Tasks/AsyncFunctionTask.h"
 
 using namespace Ishiko::TestFramework;
 
 void AsyncFunctionTaskTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* functionTaskTestSequence = new TestSequence("AsyncFunctionTask tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
+    new HeapAllocationErrorsTest("run test 1", RunTest1, *functionTaskTestSequence);
+}
+
+TestResult::EOutcome AsyncFunctionTaskTests::CreationTest1()
+{
+    CodeSmithy::AsyncFunctionTask task(
+        []() -> boost::unique_future<void>
+        {
+            return boost::unique_future<void>();
+        }
+    );
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome AsyncFunctionTaskTests::RunTest1()
+{
+    CodeSmithy::AsyncFunctionTask task(
+        []() -> boost::unique_future<void>
+        {
+            boost::packaged_task<void> task([]() -> void {});
+            task();
+            return task.get_future();
+        }
+    );
+    boost::unique_future<void> result = task.run();
+    if (result.is_ready() && result.has_value())
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

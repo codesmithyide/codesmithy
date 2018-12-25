@@ -23,4 +23,23 @@
 #ifndef _CODESMITHY_CORE_TASKS_ASYNCFUNCTIONTASK_H_
 #define _CODESMITHY_CORE_TASKS_ASYNCFUNCTIONTASK_H_
 
+#include "Task.h"
+#include <functional>
+
+namespace CodeSmithy
+{
+
+class AsyncFunctionTask : public Task
+{
+public:
+    AsyncFunctionTask(std::function<boost::unique_future<void>()> fct);
+
+    boost::unique_future<void> run() override;
+
+private:
+    std::function<boost::unique_future<void>()> m_fct;
+};
+
+}
+
 #endif

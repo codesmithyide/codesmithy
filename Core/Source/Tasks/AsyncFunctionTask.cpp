@@ -21,3 +21,18 @@
 */
 
 #include "Tasks/AsyncFunctionTask.h"
+
+namespace CodeSmithy
+{
+
+AsyncFunctionTask::AsyncFunctionTask(std::function<boost::unique_future<void>()> fct)
+    : m_fct(fct)
+{
+}
+
+boost::unique_future<void> AsyncFunctionTask::run()
+{
+    return m_fct();
+}
+
+}
