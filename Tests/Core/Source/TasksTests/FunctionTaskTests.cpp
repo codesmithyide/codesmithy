@@ -21,10 +21,19 @@
 */
 
 #include "FunctionTaskTests.h"
+#include "CodeSmithy/Core/Tasks/FunctionTask.h"
 
 using namespace Ishiko::TestFramework;
 
 void FunctionTaskTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* functionTaskTestSequence = new TestSequence("FunctionTask tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
+}
+
+TestResult::EOutcome FunctionTaskTests::CreationTest1()
+{
+    CodeSmithy::FunctionTask task;
+    return TestResult::ePassed;
 }

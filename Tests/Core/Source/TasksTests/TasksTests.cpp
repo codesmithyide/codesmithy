@@ -29,10 +29,10 @@ void TasksTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* tasksTestSequence = new TestSequence("Tasks tests", testSequence);
 
-    new HeapAllocationErrorsTest("Creation test 1", TasksCreationTest1, *tasksTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *tasksTestSequence);
 }
 
-TestResult::EOutcome TasksTests::TasksCreationTest1()
+TestResult::EOutcome TasksTests::CreationTest1()
 {
     CodeSmithy::Tasks tasks;
     if (tasks.size() == 0)
