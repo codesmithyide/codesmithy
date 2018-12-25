@@ -190,7 +190,8 @@
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
     <ClCompile Include="..\..\Source\TasksTests\TasksTestSequence.cpp" />
     <ClCompile Include="..\..\Source\TasksTests\TaskTests.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\FunctionTaskTests.cpp" />
+    <ClCompile Include="..\..\Source\TasksTests\SyncFunctionTaskTests.cpp" />
+    <ClCompile Include="..\..\Source\TasksTests\AsyncFunctionTaskTests.cpp" />
     <ClCompile Include="..\..\Source\TasksTests\TasksTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\GitRepositoryTests.cpp" />
@@ -231,7 +232,8 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
     <ClInclude Include="..\..\Source\TasksTests\TasksTestSequence.h" />
     <ClInclude Include="..\..\Source\TasksTests\TaskTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\FunctionTaskTests.h" />
+    <ClInclude Include="..\..\Source\TasksTests\SyncFunctionTaskTests.h" />
+    <ClInclude Include="..\..\Source\TasksTests\AsyncFunctionTaskTests.h" />
     <ClInclude Include="..\..\Source\TasksTests\TasksTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\GitRepositoryTests.h" />
