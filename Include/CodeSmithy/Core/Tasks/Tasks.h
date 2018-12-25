@@ -23,11 +23,20 @@
 #ifndef _CODESMITHY_CORE_TASKS_TASKS_H_
 #define _CODESMITHY_CORE_TASKS_TASKS_H_
 
+#include "Task.h"
+#include <vector>
+#include <memory>
+
 namespace CodeSmithy
 {
 
 class Tasks
 {
+public:
+    size_t size() const;
+
+private:
+    std::vector<std::shared_ptr<Task> > m_tasks;
 };
 
 }

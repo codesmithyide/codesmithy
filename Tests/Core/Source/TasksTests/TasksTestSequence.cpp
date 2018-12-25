@@ -21,8 +21,11 @@
 */
 
 #include "TasksTestSequence.h"
+#include "TasksTests.h"
 
 void AddTasksTestSequence(TestHarness& theTestHarness)
 {
     TestSequence& tasksTestSequence = theTestHarness.appendTestSequence("Tasks tests");
+
+    AddTasksTests(tasksTestSequence);
 }

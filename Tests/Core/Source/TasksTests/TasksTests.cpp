@@ -20,14 +20,25 @@
     IN THE SOFTWARE.
 */
 
-#include "Tasks/Tasks.h"
+#include "TasksTests.h"
+#include "CodeSmithy/Core/Tasks/Tasks.h"
 
-namespace CodeSmithy
+void AddTasksTests(TestSequence& testSequence)
 {
+    TestSequence* tasksTestSequence = new TestSequence("Tasks tests", testSequence);
 
-size_t Tasks::size() const
-{
-    return m_tasks.size();
+    new HeapAllocationErrorsTest("Creation test 1", TasksCreationTest1, *tasksTestSequence);
 }
 
+TestResult::EOutcome TasksCreationTest1()
+{
+    CodeSmithy::Tasks tasks;
+    if (tasks.size() == 0)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

@@ -20,14 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "Tasks/Tasks.h"
+#ifndef _CODESMITHY_TEST_CORE_TASKSTESTS_TASKSTESTS_H_
+#define _CODESMITHY_TEST_CORE_TASKSTESTS_TASKSTESTS_H_
 
-namespace CodeSmithy
-{
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-size_t Tasks::size() const
-{
-    return m_tasks.size();
-}
+using namespace Ishiko::TestFramework;
 
-}
+void AddTasksTests(TestSequence& testSequence);
+
+TestResult::EOutcome TasksCreationTest1();
+
+#endif
