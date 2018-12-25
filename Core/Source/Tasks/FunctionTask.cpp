@@ -25,8 +25,14 @@
 namespace CodeSmithy
 {
 
+FunctionTask::FunctionTask(std::function<void()> fct)
+    : m_fct(fct)
+{
+}
+
 void FunctionTask::run()
 {
+    m_fct();
 }
 
 }

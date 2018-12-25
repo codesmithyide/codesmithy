@@ -30,10 +30,18 @@ void FunctionTaskTests::AddTests(TestSequence& testSequence)
     TestSequence* functionTaskTestSequence = new TestSequence("FunctionTask tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
+    new HeapAllocationErrorsTest("run test 1", RunTest1, *functionTaskTestSequence);
 }
 
 TestResult::EOutcome FunctionTaskTests::CreationTest1()
 {
-    CodeSmithy::FunctionTask task;
+    CodeSmithy::FunctionTask task([]() -> void { });
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome FunctionTaskTests::RunTest1()
+{
+    CodeSmithy::FunctionTask task([]() -> void {});
+    task.run();
     return TestResult::ePassed;
 }

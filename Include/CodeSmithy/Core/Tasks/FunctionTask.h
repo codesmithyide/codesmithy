@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_TASKS_FUNCTIONTASK_H_
 
 #include "Task.h"
+#include <functional>
 
 namespace CodeSmithy
 {
@@ -31,7 +32,12 @@ namespace CodeSmithy
 class FunctionTask : public Task
 {
 public:
+    FunctionTask(std::function<void()> fct);
+
     void run() override;
+
+private:
+    std::function<void()> m_fct;
 };
 
 }
