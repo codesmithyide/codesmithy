@@ -23,14 +23,16 @@
 #include "TasksTests.h"
 #include "CodeSmithy/Core/Tasks/Tasks.h"
 
-void AddTasksTests(TestSequence& testSequence)
+using namespace Ishiko::TestFramework;
+
+void TasksTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* tasksTestSequence = new TestSequence("Tasks tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", TasksCreationTest1, *tasksTestSequence);
 }
 
-TestResult::EOutcome TasksCreationTest1()
+TestResult::EOutcome TasksTests::TasksCreationTest1()
 {
     CodeSmithy::Tasks tasks;
     if (tasks.size() == 0)

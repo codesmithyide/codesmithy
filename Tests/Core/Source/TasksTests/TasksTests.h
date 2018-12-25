@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class TasksTests
+{
+public:
+    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
 
-void AddTasksTests(TestSequence& testSequence);
-
-TestResult::EOutcome TasksCreationTest1();
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome TasksCreationTest1();
+};
 
 #endif

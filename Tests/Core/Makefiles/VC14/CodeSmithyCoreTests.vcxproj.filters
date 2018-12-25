@@ -113,6 +113,9 @@
     <ClInclude Include="..\..\Source\TasksTests\TasksTestSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TasksTests\FunctionTaskTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\TasksTests\TasksTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -227,6 +230,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TasksTests\TasksTestSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TasksTests\FunctionTaskTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TasksTests\TasksTests.cpp">
