@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_CORE_ENGINE_H_
 #define _CODESMITHY_CORE_ENGINE_H_
 
+namespace CodeSmithy
+{
+
+class Engine
+{
+};
+
+}
+
 #endif

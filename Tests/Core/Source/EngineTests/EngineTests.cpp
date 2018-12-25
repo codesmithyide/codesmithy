@@ -21,10 +21,19 @@
 */
 
 #include "EngineTests.h"
+#include "CodeSmithy/Core/Engine.h"
 
 using namespace Ishiko::TestFramework;
 
 void EngineTests::AddTests(TestHarness& theTestHarness)
 {
     TestSequence& engineTestSequence = theTestHarness.appendTestSequence("Engine tests");
+
+    new HeapAllocationErrorsTest("Engine test 1", EngineCreationTest1, engineTestSequence);
+}
+
+TestResult::EOutcome EngineTests::EngineCreationTest1()
+{
+    CodeSmithy::Engine engine;
+    return TestResult::ePassed;
 }

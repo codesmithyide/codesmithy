@@ -29,6 +29,9 @@ class EngineTests
 {
 public:
     static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome EngineCreationTest1();
 };
 
 #endif
