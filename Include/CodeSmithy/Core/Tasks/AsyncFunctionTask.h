@@ -20,26 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_TASKS_SYNCFUNCTIONTASK_H_
-#define _CODESMITHY_CORE_TASKS_SYNCFUNCTIONTASK_H_
-
-#include "Task.h"
-#include <functional>
-
-namespace CodeSmithy
-{
-
-class SyncFunctionTask : public Task
-{
-public:
-    SyncFunctionTask(std::function<void()> fct);
-
-    boost::unique_future<void> run() override;
-
-private:
-    boost::packaged_task<void> m_task;
-};
-
-}
+#ifndef _CODESMITHY_CORE_TASKS_ASYNCFUNCTIONTASK_H_
+#define _CODESMITHY_CORE_TASKS_ASYNCFUNCTIONTASK_H_
 
 #endif

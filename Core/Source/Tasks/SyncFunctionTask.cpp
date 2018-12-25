@@ -20,17 +20,17 @@
     IN THE SOFTWARE.
 */
 
-#include "Tasks/FunctionTask.h"
+#include "Tasks/SyncFunctionTask.h"
 
 namespace CodeSmithy
 {
 
-FunctionTask::FunctionTask(std::function<void()> fct)
+SyncFunctionTask::SyncFunctionTask(std::function<void()> fct)
     : m_task(fct)
 {
 }
 
-boost::unique_future<void> FunctionTask::run()
+boost::unique_future<void> SyncFunctionTask::run()
 {
     m_task();
     return m_task.get_future();
