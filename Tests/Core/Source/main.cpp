@@ -24,6 +24,7 @@
 #include "ProjectTests/ProjectTests.h"
 #include "ProjectTemplatesTests/ProjectTemplatesTestSequence.h"
 #include "WorkspacesTests/WorkspacesTestSequence.h"
+#include "TasksTests/TasksTestSequence.h"
 #include "VersionControlTests/VersionControlTests.h"
 #include "BootstrapTests/BootstrapTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
@@ -42,6 +43,7 @@ int main(int argc, char* argv[])
     AddProjectTests(theTestHarness);
     AddProjectTemplatesTestSequence(theTestHarness);
     AddWorkspacesTestSequence(theTestHarness);
+    AddTasksTestSequence(theTestHarness);
     AddVersionControlTests(theTestHarness);
     BootstrapTests::AddTests(theTestHarness);
 
