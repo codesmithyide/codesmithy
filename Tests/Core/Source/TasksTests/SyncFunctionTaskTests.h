@@ -20,12 +20,12 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_TEST_CORE_TASKSTESTS_FUNCTIONTASKTESTS_H_
-#define _CODESMITHY_TEST_CORE_TASKSTESTS_FUNCTIONTASKTESTS_H_
+#ifndef _CODESMITHY_TEST_CORE_TASKSTESTS_SYNCFUNCTIONTASKTESTS_H_
+#define _CODESMITHY_TEST_CORE_TASKSTESTS_SYNCFUNCTIONTASKTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class FunctionTaskTests
+class SyncFunctionTaskTests
 {
 public:
     static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);

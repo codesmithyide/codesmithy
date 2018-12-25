@@ -20,35 +20,11 @@
     IN THE SOFTWARE.
 */
 
-#include "SyncFunctionTaskTests.h"
-#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
+#include "AsyncFunctionTaskTests.h"
 
 using namespace Ishiko::TestFramework;
 
-void SyncFunctionTaskTests::AddTests(TestSequence& testSequence)
+void AsyncFunctionTaskTests::AddTests(TestSequence& testSequence)
 {
-    TestSequence* functionTaskTestSequence = new TestSequence("SyncFunctionTask tests", testSequence);
-
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
-    new HeapAllocationErrorsTest("run test 1", RunTest1, *functionTaskTestSequence);
-}
-
-TestResult::EOutcome SyncFunctionTaskTests::CreationTest1()
-{
-    CodeSmithy::SyncFunctionTask task([]() -> void {});
-    return TestResult::ePassed;
-}
-
-TestResult::EOutcome SyncFunctionTaskTests::RunTest1()
-{
-    CodeSmithy::SyncFunctionTask task([]() -> void {});
-    boost::unique_future<void> result = task.run();
-    if (result.is_ready() && result.has_value())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    TestSequence* functionTaskTestSequence = new TestSequence("AsyncFunctionTask tests", testSequence);
 }

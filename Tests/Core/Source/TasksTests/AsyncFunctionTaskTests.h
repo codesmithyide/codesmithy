@@ -20,35 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "SyncFunctionTaskTests.h"
-#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
+#ifndef _CODESMITHY_TEST_CORE_TASKSTESTS_ASYNCFUNCTIONTASKTESTS_H_
+#define _CODESMITHY_TEST_CORE_TASKSTESTS_ASYNCFUNCTIONTASKTESTS_H_
 
-using namespace Ishiko::TestFramework;
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void SyncFunctionTaskTests::AddTests(TestSequence& testSequence)
+class AsyncFunctionTaskTests
 {
-    TestSequence* functionTaskTestSequence = new TestSequence("SyncFunctionTask tests", testSequence);
+public:
+    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+};
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
-    new HeapAllocationErrorsTest("run test 1", RunTest1, *functionTaskTestSequence);
-}
-
-TestResult::EOutcome SyncFunctionTaskTests::CreationTest1()
-{
-    CodeSmithy::SyncFunctionTask task([]() -> void {});
-    return TestResult::ePassed;
-}
-
-TestResult::EOutcome SyncFunctionTaskTests::RunTest1()
-{
-    CodeSmithy::SyncFunctionTask task([]() -> void {});
-    boost::unique_future<void> result = task.run();
-    if (result.is_ready() && result.has_value())
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
-}
+#endif

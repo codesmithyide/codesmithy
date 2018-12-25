@@ -22,7 +22,8 @@
 
 #include "TasksTestSequence.h"
 #include "TaskTests.h"
-#include "FunctionTaskTests.h"
+#include "SyncFunctionTaskTests.h"
+#include "AsyncFunctionTaskTests.h"
 #include "TasksTests.h"
 
 void AddTasksTestSequence(TestHarness& theTestHarness)
@@ -30,6 +31,7 @@ void AddTasksTestSequence(TestHarness& theTestHarness)
     TestSequence& tasksTestSequence = theTestHarness.appendTestSequence("Tasks tests");
 
     TaskTests::AddTests(tasksTestSequence);
-    FunctionTaskTests::AddTests(tasksTestSequence);
+    SyncFunctionTaskTests::AddTests(tasksTestSequence);
+    AsyncFunctionTaskTests::AddTests(tasksTestSequence);
     TasksTests::AddTests(tasksTestSequence);
 }
