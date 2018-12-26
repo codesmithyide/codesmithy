@@ -52,7 +52,7 @@ TestResult::EOutcome GitRepositoryTests::InitTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.init(outputPath.string());
+    repository.init(outputPath.string())->run().wait();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
@@ -65,7 +65,7 @@ TestResult::EOutcome GitRepositoryTests::CloneTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.clone(inputPath.string(), outputPath.string());
+    repository.clone(inputPath.string(), outputPath.string())->run().wait();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
@@ -76,7 +76,7 @@ TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
-    repository.open(inputPath.string());
+    repository.open(inputPath.string())->run().wait();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;

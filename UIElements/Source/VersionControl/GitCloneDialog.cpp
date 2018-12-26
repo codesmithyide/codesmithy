@@ -37,7 +37,7 @@ GitCloneDialog::GitCloneDialog(wxWindow* parent,
 int GitCloneDialog::ShowModal()
 {
     GitRepository repository;
-    repository.clone(m_repositoryURL, m_directoryPath);
+    repository.clone(m_repositoryURL, m_directoryPath)->run().wait();
 
     return wxDialog::ShowModal();
 }
