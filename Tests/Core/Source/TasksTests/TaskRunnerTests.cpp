@@ -21,10 +21,19 @@
 */
 
 #include "TaskRunnerTests.h"
+#include "CodeSmithy/Core/Tasks/TaskRunner.h"
 
 using namespace Ishiko::TestFramework;
 
 void TaskRunnerTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* taskRunnerTestSequence = new TestSequence("TaskRunner tests", testSequence);
+
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *taskRunnerTestSequence);
+}
+
+TestResult::EOutcome TaskRunnerTests::CreationTest1()
+{
+    CodeSmithy::TaskRunner taskRunner;
+    return TestResult::ePassed;
 }

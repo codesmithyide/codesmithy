@@ -23,4 +23,13 @@
 #ifndef _CODESMITHY_CORE_TASKS_TASKRUNNER_H_
 #define _CODESMITHY_CORE_TASKS_TASKRUNNER_H_
 
+namespace CodeSmithy
+{
+
+class TaskRunner
+{
+};
+
+}
+
 #endif
