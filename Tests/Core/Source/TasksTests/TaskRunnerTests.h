@@ -20,20 +20,15 @@
     IN THE SOFTWARE.
 */
 
-#include "TasksTestSequence.h"
-#include "TaskTests.h"
-#include "SyncFunctionTaskTests.h"
-#include "AsyncFunctionTaskTests.h"
-#include "TasksTests.h"
-#include "TaskRunnerTests.h"
+#ifndef _CODESMITHY_TEST_CORE_TASKSTESTS_TASKRUNNERTESTS_H_
+#define _CODESMITHY_TEST_CORE_TASKSTESTS_TASKRUNNERTESTS_H_
 
-void AddTasksTestSequence(TestHarness& theTestHarness)
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
+
+class TaskRunnerTests
 {
-    TestSequence& tasksTestSequence = theTestHarness.appendTestSequence("Tasks tests");
+public:
+    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+};
 
-    TaskTests::AddTests(tasksTestSequence);
-    SyncFunctionTaskTests::AddTests(tasksTestSequence);
-    AsyncFunctionTaskTests::AddTests(tasksTestSequence);
-    TasksTests::AddTests(tasksTestSequence);
-    TaskRunnerTests::AddTests(tasksTestSequence);
-}
+#endif
