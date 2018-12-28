@@ -23,11 +23,20 @@
 #ifndef _CODESMITHY_CORE_TASKS_TASKSOBSERVER_H_
 #define _CODESMITHY_CORE_TASKS_TASKSOBSERVER_H_
 
+#include "Task.h"
+#include <memory>
+
 namespace CodeSmithy
 {
 
+class Tasks;
+
 class TasksObserver
 {
+public:
+    virtual ~TasksObserver() = default;
+
+    virtual void onAdd(const Tasks& source, std::shared_ptr<Task> task);
 };
 
 }

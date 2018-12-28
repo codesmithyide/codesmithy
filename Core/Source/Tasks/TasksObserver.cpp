@@ -21,3 +21,12 @@
 */
 
 #include "Tasks/TasksObserver.h"
+
+namespace CodeSmithy
+{
+
+void TasksObserver::onAdd(const Tasks& source, std::shared_ptr<Task> task)
+{
+};
+
+}

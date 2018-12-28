@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_TASKS_TASKS_H_
 
 #include "Task.h"
+#include "TasksObserver.h"
 #include <vector>
 #include <memory>
 
@@ -35,8 +36,17 @@ class Tasks
 public:
     size_t size() const;
 
+    void add(std::shared_ptr<Task> task);
+
+    void addObserver(std::weak_ptr<TasksObserver> observer);
+    void removeObserver(std::weak_ptr<TasksObserver> observer);
+
 private:
-    std::vector<std::shared_ptr<Task> > m_tasks;
+    void notifyAdd(std::shared_ptr<Task> task);
+
+private:
+    std::vector<std::shared_ptr<Task>> m_tasks;
+    std::vector<std::weak_ptr<TasksObserver>> m_observers;
 };
 
 }
