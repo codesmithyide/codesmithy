@@ -63,7 +63,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/TasksTests/TasksTestSequence.h
         ../../Source/TasksTests/TaskTests.h
         ../../Source/TasksTests/SyncFunctionTaskTests.h
-        ../../Source/TasksTests/AsyncFunctionTaskTests.h
         ../../Source/TasksTests/TasksTests.h
         ../../Source/TasksTests/TaskRunnerTests.h
 
@@ -117,7 +116,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/TasksTests/TasksTestSequence.cpp
         ../../Source/TasksTests/TaskTests.cpp
         ../../Source/TasksTests/SyncFunctionTaskTests.cpp
-        ../../Source/TasksTests/AsyncFunctionTaskTests.cpp
         ../../Source/TasksTests/TasksTests.cpp
         ../../Source/TasksTests/TaskRunnerTests.cpp
 
