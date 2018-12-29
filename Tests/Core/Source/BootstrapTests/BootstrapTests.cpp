@@ -25,6 +25,8 @@
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <boost/filesystem/operations.hpp>
 
+using namespace Ishiko::TestFramework;
+
 void BootstrapTests::AddTests(TestHarness& theTestHarness)
 {
     boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "BootstrapTests");

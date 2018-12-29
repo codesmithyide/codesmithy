@@ -25,16 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
 class BootstrapTests
 {
 public:
-    static void AddTests(TestHarness& theTestHarness);
+    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
 
 private:
-    static TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test);
-    static TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test);
+    static Ishiko::TestFramework::TestResult::EOutcome ProjectFileRepositoryCreationTest1(
+        Ishiko::TestFramework::FileComparisonTest& test);
+    static Ishiko::TestFramework::TestResult::EOutcome ProjectFileRepositoryCreationTest2(
+        Ishiko::TestFramework::Test& test);
 };
 
 #endif

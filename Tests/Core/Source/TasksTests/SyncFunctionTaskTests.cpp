@@ -42,8 +42,8 @@ TestResult::EOutcome SyncFunctionTaskTests::CreationTest1()
 TestResult::EOutcome SyncFunctionTaskTests::RunTest1()
 {
     CodeSmithy::SyncFunctionTask task([]() -> void {});
-    boost::unique_future<void> result = task.run();
-    if (result.is_ready() && result.has_value())
+    task.run();
+    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
     {
         return TestResult::ePassed;
     }

@@ -24,7 +24,6 @@
 #define _CODESMITHY_CORE_TASKS_SYNCFUNCTIONTASK_H_
 
 #include "Task.h"
-#include <functional>
 
 namespace CodeSmithy
 {
@@ -34,10 +33,10 @@ class SyncFunctionTask : public Task
 public:
     SyncFunctionTask(std::function<void()> fct);
 
-    boost::unique_future<void> run() override;
+    void run() override;
 
 private:
-    boost::packaged_task<void> m_task;
+    std::function<void()> m_task;
 };
 
 }

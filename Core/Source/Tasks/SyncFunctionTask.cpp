@@ -30,10 +30,9 @@ SyncFunctionTask::SyncFunctionTask(std::function<void()> fct)
 {
 }
 
-boost::unique_future<void> SyncFunctionTask::run()
+void SyncFunctionTask::run()
 {
     m_task();
-    return m_task.get_future();
 }
 
 }
