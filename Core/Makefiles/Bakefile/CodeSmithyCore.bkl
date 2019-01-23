@@ -2,6 +2,9 @@ ishikopath = envvar("ISHIKO");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
+diplodocusdbpath = envvar("DIPLODOCUSDB");
+import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -10,7 +13,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyCore.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyCore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
 
-library CodeSmithyCore : Boost, pugixml, libgit2
+library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusXMLTreeDB
 {
     includedirs += ../../../Include/CodeSmithy/Core;
 

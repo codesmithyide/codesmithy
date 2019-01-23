@@ -37,9 +37,13 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOOST_ROOT    Path to the Boost installation
-#      PUGIXML_ROOT  Path to the pugixml installation
-#      LIBGIT2_ROOT  Path to the libgit2 installation
+#      BOOST_ROOT                Path to the Boost installation
+#      PUGIXML_ROOT              Path to the pugixml installation
+#      LIBGIT2_ROOT              Path to the libgit2 installation
+#      ISHIKO_COLLECTIONS_ROOT   Path to the Ishiko Collections installation
+#      ISHIKO_ERRORS_ROOT        Path to the Ishiko Errors installation
+#      DIPLODOCUSDB_CORE_ROOT    Path to the DiplodocusDB installation
+#      DIPLODOCUSDB_TREEDB_ROOT  Path to the DiplodocusDB installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -72,6 +76,14 @@ BOOST_ROOT ?= $(BOOST)
 PUGIXML_ROOT ?= $(PUGIXML)
 # Path to the libgit2 installation
 LIBGIT2_ROOT ?= $(LIBGIT2)
+# Path to the Ishiko Collections installation
+ISHIKO_COLLECTIONS_ROOT ?= $(ISHIKO)/Collections
+# Path to the Ishiko Errors installation
+ISHIKO_ERRORS_ROOT ?= $(ISHIKO)/Errors
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB)/Core
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_TREEDB_ROOT ?= $(DIPLODOCUSDB)/TreeDB
 
 # ------------
 
@@ -82,229 +94,229 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyC
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyCore_Engine.o: ../../Source/Engine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Engine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Engine.cpp
 
 $(_builddir)CodeSmithyCore_DocumentType.o: ../../Source/Documents/DocumentType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentType.cpp
 
 $(_builddir)CodeSmithyCore_CustomDocumentTypeData.o: ../../Source/Documents/CustomDocumentTypeData.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CustomDocumentTypeData.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CustomDocumentTypeData.cpp
 
 $(_builddir)CodeSmithyCore_DocumentTypes.o: ../../Source/Documents/DocumentTypes.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentTypes.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentTypes.cpp
 
 $(_builddir)CodeSmithyCore_Document.o: ../../Source/Documents/Document.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Document.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Document.cpp
 
 $(_builddir)CodeSmithyCore_DocumentObserver.o: ../../Source/Documents/DocumentObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentObserver.cpp
 
 $(_builddir)CodeSmithyCore_DocumentId.o: ../../Source/Documents/DocumentId.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentId.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentId.cpp
 
 $(_builddir)CodeSmithyCore_DocumentIdGenerator.o: ../../Source/Documents/DocumentIdGenerator.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentIdGenerator.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentIdGenerator.cpp
 
 $(_builddir)CodeSmithyCore_Documents.o: ../../Source/Documents/Documents.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Documents.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Documents.cpp
 
 $(_builddir)CodeSmithyCore_DocumentsObserver.o: ../../Source/Documents/DocumentsObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentsObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/DocumentsObserver.cpp
 
 $(_builddir)CodeSmithyCore_Bakefile.o: ../../Source/Documents/Bakefile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Bakefile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/Bakefile.cpp
 
 $(_builddir)CodeSmithyCore_BakefileType.o: ../../Source/Documents/BakefileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BakefileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BakefileType.cpp
 
 $(_builddir)CodeSmithyCore_BinaryFile.o: ../../Source/Documents/BinaryFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BinaryFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BinaryFile.cpp
 
 $(_builddir)CodeSmithyCore_BinaryFileType.o: ../../Source/Documents/BinaryFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BinaryFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/BinaryFileType.cpp
 
 $(_builddir)CodeSmithyCore_CMakeLists.o: ../../Source/Documents/CMakeLists.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CMakeLists.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CMakeLists.cpp
 
 $(_builddir)CodeSmithyCore_CMakeListsType.o: ../../Source/Documents/CMakeListsType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CMakeListsType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CMakeListsType.cpp
 
 $(_builddir)CodeSmithyCore_CodeSmithyProjectFile.o: ../../Source/Documents/CodeSmithyProjectFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CodeSmithyProjectFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CodeSmithyProjectFile.cpp
 
 $(_builddir)CodeSmithyCore_CodeSmithyProjectFileType.o: ../../Source/Documents/CodeSmithyProjectFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CodeSmithyProjectFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CodeSmithyProjectFileType.cpp
 
 $(_builddir)CodeSmithyCore_CppDocument.o: ../../Source/Documents/CppDocument.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppDocument.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppDocument.cpp
 
 $(_builddir)CodeSmithyCore_CppFile.o: ../../Source/Documents/CppFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppFile.cpp
 
 $(_builddir)CodeSmithyCore_CppFileType.o: ../../Source/Documents/CppFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/CppFileType.cpp
 
 $(_builddir)CodeSmithyCore_HTMLDocument.o: ../../Source/Documents/HTMLDocument.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/HTMLDocument.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/HTMLDocument.cpp
 
 $(_builddir)CodeSmithyCore_HTMLDocumentType.o: ../../Source/Documents/HTMLDocumentType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/HTMLDocumentType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/HTMLDocumentType.cpp
 
 $(_builddir)CodeSmithyCore_JavaScriptFile.o: ../../Source/Documents/JavaScriptFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaScriptFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaScriptFile.cpp
 
 $(_builddir)CodeSmithyCore_JavaScriptFileType.o: ../../Source/Documents/JavaScriptFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaScriptFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaScriptFileType.cpp
 
 $(_builddir)CodeSmithyCore_JavaSourceFile.o: ../../Source/Documents/JavaSourceFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaSourceFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaSourceFile.cpp
 
 $(_builddir)CodeSmithyCore_JavaSourceFileType.o: ../../Source/Documents/JavaSourceFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaSourceFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/JavaSourceFileType.cpp
 
 $(_builddir)CodeSmithyCore_PackageJSONFile.o: ../../Source/Documents/PackageJSONFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PackageJSONFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PackageJSONFile.cpp
 
 $(_builddir)CodeSmithyCore_PackageJSONFileType.o: ../../Source/Documents/PackageJSONFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PackageJSONFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PackageJSONFileType.cpp
 
 $(_builddir)CodeSmithyCore_PowerShellFile.o: ../../Source/Documents/PowerShellFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PowerShellFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PowerShellFile.cpp
 
 $(_builddir)CodeSmithyCore_PowerShellFileType.o: ../../Source/Documents/PowerShellFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PowerShellFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PowerShellFileType.cpp
 
 $(_builddir)CodeSmithyCore_PugFile.o: ../../Source/Documents/PugFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PugFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PugFile.cpp
 
 $(_builddir)CodeSmithyCore_PugFileType.o: ../../Source/Documents/PugFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PugFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PugFileType.cpp
 
 $(_builddir)CodeSmithyCore_PythonFile.o: ../../Source/Documents/PythonFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PythonFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PythonFile.cpp
 
 $(_builddir)CodeSmithyCore_PythonFileType.o: ../../Source/Documents/PythonFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PythonFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/PythonFileType.cpp
 
 $(_builddir)CodeSmithyCore_TextFile.o: ../../Source/Documents/TextFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/TextFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/TextFile.cpp
 
 $(_builddir)CodeSmithyCore_TextFileType.o: ../../Source/Documents/TextFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/TextFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/TextFileType.cpp
 
 $(_builddir)CodeSmithyCore_WiXSourceFile.o: ../../Source/Documents/WiXSourceFile.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/WiXSourceFile.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/WiXSourceFile.cpp
 
 $(_builddir)CodeSmithyCore_WiXSourceFileType.o: ../../Source/Documents/WiXSourceFileType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/WiXSourceFileType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/WiXSourceFileType.cpp
 
 $(_builddir)CodeSmithyCore_XMLDocument.o: ../../Source/Documents/XMLDocument.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/XMLDocument.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/XMLDocument.cpp
 
 $(_builddir)CodeSmithyCore_XMLDocumentType.o: ../../Source/Documents/XMLDocumentType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/XMLDocumentType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Documents/XMLDocumentType.cpp
 
 $(_builddir)CodeSmithyCore_Project.o: ../../Source/Projects/Project.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Project.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Project.cpp
 
 $(_builddir)CodeSmithyCore_ProjectDescription.o: ../../Source/Projects/ProjectDescription.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectDescription.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectDescription.cpp
 
 $(_builddir)CodeSmithyCore_ProjectLocation.o: ../../Source/Projects/ProjectLocation.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectLocation.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectLocation.cpp
 
 $(_builddir)CodeSmithyCore_ProjectType.o: ../../Source/Projects/ProjectType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectType.cpp
 
 $(_builddir)CodeSmithyCore_ProjectTypes.o: ../../Source/Projects/ProjectTypes.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectTypes.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectTypes.cpp
 
 $(_builddir)CodeSmithyCore_ProjectObserver.o: ../../Source/Projects/ProjectObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectObserver.cpp
 
 $(_builddir)CodeSmithyCore_ProjectRepository.o: ../../Source/Projects/ProjectRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectRepository.cpp
 
 $(_builddir)CodeSmithyCore_ProjectRepositoryNode.o: ../../Source/Projects/ProjectRepositoryNode.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectRepositoryNode.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectRepositoryNode.cpp
 
 $(_builddir)CodeSmithyCore_ProjectFileRepository.o: ../../Source/Projects/ProjectFileRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectFileRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectFileRepository.cpp
 
 $(_builddir)CodeSmithyCore_ProjectFileRepositoryNode.o: ../../Source/Projects/ProjectFileRepositoryNode.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectFileRepositoryNode.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectFileRepositoryNode.cpp
 
 $(_builddir)CodeSmithyCore_ProjectGroup.o: ../../Source/Projects/ProjectGroup.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectGroup.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectGroup.cpp
 
 $(_builddir)CodeSmithyCore_ProjectGroupType.o: ../../Source/Projects/ProjectGroupType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectGroupType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/ProjectGroupType.cpp
 
 $(_builddir)CodeSmithyCore_MetaBuildSystemProject.o: ../../Source/Projects/MetaBuildSystemProject.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/MetaBuildSystemProject.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/MetaBuildSystemProject.cpp
 
 $(_builddir)CodeSmithyCore_CodeSmithyProject.o: ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp
 
 $(_builddir)CodeSmithyCore_CodeSmithyProjectType.o: ../../Source/Projects/CodeSmithy/CodeSmithyProjectType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CodeSmithy/CodeSmithyProjectType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CodeSmithy/CodeSmithyProjectType.cpp
 
 $(_builddir)CodeSmithyCore_BakefileProject.o: ../../Source/Projects/Bakefile/BakefileProject.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Bakefile/BakefileProject.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Bakefile/BakefileProject.cpp
 
 $(_builddir)CodeSmithyCore_BakefileProjectType.o: ../../Source/Projects/Bakefile/BakefileProjectType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Bakefile/BakefileProjectType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/Bakefile/BakefileProjectType.cpp
 
 $(_builddir)CodeSmithyCore_CMakeProjectType.o: ../../Source/Projects/CMake/CMakeProjectType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CMake/CMakeProjectType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/CMake/CMakeProjectType.cpp
 
 $(_builddir)CodeSmithyCore_WiXProjectType.o: ../../Source/Projects/WiX/WiXProjectType.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/WiX/WiXProjectType.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Projects/WiX/WiXProjectType.cpp
 
 $(_builddir)CodeSmithyCore_ProjectTemplate.o: ../../Source/ProjectTemplates/ProjectTemplate.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/ProjectTemplates/ProjectTemplate.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/ProjectTemplates/ProjectTemplate.cpp
 
 $(_builddir)CodeSmithyCore_ProjectTemplates.o: ../../Source/ProjectTemplates/ProjectTemplates.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/ProjectTemplates/ProjectTemplates.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/ProjectTemplates/ProjectTemplates.cpp
 
 $(_builddir)CodeSmithyCore_Workspace.o: ../../Source/Workspaces/Workspace.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/Workspace.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/Workspace.cpp
 
 $(_builddir)CodeSmithyCore_WorkspaceRepository.o: ../../Source/Workspaces/WorkspaceRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/WorkspaceRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/WorkspaceRepository.cpp
 
 $(_builddir)CodeSmithyCore_WorkspaceFileRepository.o: ../../Source/Workspaces/WorkspaceFileRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/WorkspaceFileRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/WorkspaceFileRepository.cpp
 
 $(_builddir)CodeSmithyCore_GenericWorkspace.o: ../../Source/Workspaces/GenericWorkspace.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/GenericWorkspace.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Workspaces/GenericWorkspace.cpp
 
 $(_builddir)CodeSmithyCore_Task.o: ../../Source/Tasks/Task.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/Task.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/Task.cpp
 
 $(_builddir)CodeSmithyCore_SyncFunctionTask.o: ../../Source/Tasks/SyncFunctionTask.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/SyncFunctionTask.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/SyncFunctionTask.cpp
 
 $(_builddir)CodeSmithyCore_TaskObserver.o: ../../Source/Tasks/TaskObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TaskObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TaskObserver.cpp
 
 $(_builddir)CodeSmithyCore_Tasks.o: ../../Source/Tasks/Tasks.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/Tasks.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/Tasks.cpp
 
 $(_builddir)CodeSmithyCore_TasksObserver.o: ../../Source/Tasks/TasksObserver.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TasksObserver.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TasksObserver.cpp
 
 $(_builddir)CodeSmithyCore_TaskRunner.o: ../../Source/Tasks/TaskRunner.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TaskRunner.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Tasks/TaskRunner.cpp
 
 $(_builddir)CodeSmithyCore_GitRepository.o: ../../Source/VersionControl/GitRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/VersionControl/GitRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/VersionControl/GitRepository.cpp
 
 $(_builddir)CodeSmithyCore_CodeSmithyMakeEngine.o: ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 
 $(_builddir)CodeSmithyCore_XMLUtilities.o: ../../Source/Utilities/XMLUtilities.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Utilities/XMLUtilities.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(BOOST_ROOT) -I$(PUGIXML_ROOT)/src -I$(LIBGIT2_ROOT)/include -I$(ISHIKO_COLLECTIONS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I$(DIPLODOCUSDB_CORE_ROOT)/Include -I$(ISHIKO_ERRORS_ROOT)/Include -I$(DIPLODOCUSDB_TREEDB_ROOT)/Include -I../../../Include/CodeSmithy/Core -std=c++11 ../../Source/Utilities/XMLUtilities.cpp
 
 clean:
 	rm -f $(_builddir)*.o
