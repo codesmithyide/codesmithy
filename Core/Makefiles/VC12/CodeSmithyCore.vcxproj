@@ -198,9 +198,7 @@
     <ClCompile Include="..\..\Source\Projects\ProjectTypes.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectObserver.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectRepository.cpp" />
-    <ClCompile Include="..\..\Source\Projects\ProjectRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectFileRepository.cpp" />
-    <ClCompile Include="..\..\Source\Projects\ProjectFileRepositoryNode.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectGroup.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectGroupType.cpp" />
     <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp" />
@@ -276,7 +274,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepositoryNode.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
@@ -303,7 +300,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
-    <ClInclude Include="..\..\Source\Projects\ProjectFileRepositoryNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
