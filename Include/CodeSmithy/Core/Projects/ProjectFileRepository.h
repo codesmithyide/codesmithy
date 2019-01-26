@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,7 @@
 #define _CODESMITHY_CORE_PROJECTS_PROJECTFILEREPOSITORY_H_
 
 #include "ProjectRepository.h"
-#include <pugixml.hpp>
+#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
 #include <boost/filesystem/path.hpp>
 
 namespace CodeSmithy
@@ -40,16 +40,15 @@ public:
     std::string name() const override;
     void setName(const std::string& name) override;
     
-    std::shared_ptr<ProjectRepositoryNode> getProjectNode(const std::string& name) override;
-    std::shared_ptr<ProjectRepositoryNode> addProjectNode(const std::string& name) override;
+    DiplodocusDB::TreeDBNode getProjectNode(const std::string& name) override;
+    DiplodocusDB::TreeDBNode addProjectNode(const std::string& name) override;
 
     void save() override;
 
 private:
-    boost::filesystem::path m_path;
-    pugi::xml_document m_document;
-    pugi::xml_node m_nameNode;
-    pugi::xml_node m_projectsNode;
+    DiplodocusDB::XMLTreeDB m_db;
+    DiplodocusDB::TreeDBNode m_nameNode;
+    DiplodocusDB::TreeDBNode m_projectsNode;
 };
 
 }

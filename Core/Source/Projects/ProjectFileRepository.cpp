@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,7 +21,6 @@
 */
 
 #include "Projects/ProjectFileRepository.h"
-#include "ProjectFileRepositoryNode.h"
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
 
@@ -36,23 +35,24 @@ static const char* projectElementName = "codesmithy-project";
 static const char* projectNameElementName = "name";
 
 ProjectFileRepository::ProjectFileRepository(const boost::filesystem::path& path)
-    : m_path(path)
 {
+    Ishiko::Error error;
     if (boost::filesystem::exists(path))
     {
-        m_document.load_file(path.string().c_str());
-        m_nameNode = m_document.child(rootElementName).child(repositoryNameElementName);
-        m_projectsNode = m_document.child(rootElementName).child(repositoryProjectsElementName);
+        m_db.open(path, error);
+        m_nameNode = m_db.root().child(rootElementName, error).child(repositoryNameElementName, error);
+        m_projectsNode = m_db.root().child(rootElementName, error).child(repositoryProjectsElementName, error);
     }
     else
-    {
-        pugi::xml_node rootNode = m_document.append_child(rootElementName);
+    {   
+        m_db.create(path, error);
+        DiplodocusDB::TreeDBNode rootNode = m_db.root().append(rootElementName);
         if (rootNode)
         {
-            pugi::xml_node versionNode = rootNode.append_child(versionElementName);
-            versionNode.append_child(pugi::node_pcdata).set_value("0.1.0");
-            m_nameNode = rootNode.append_child(repositoryNameElementName);
-            m_projectsNode = rootNode.append_child(repositoryProjectsElementName);
+            DiplodocusDB::TreeDBNode versionNode = rootNode.append(versionElementName);
+            versionNode.value().setString("0.1.0");
+            m_nameNode = rootNode.append(repositoryNameElementName);
+            m_projectsNode = rootNode.append(repositoryProjectsElementName);
             if (m_nameNode && m_projectsNode)
             {
                 save();
@@ -70,53 +70,53 @@ std::string ProjectFileRepository::name() const
     std::string result;
     if (m_nameNode)
     {
-        result = m_nameNode.child_value();
+        result = m_nameNode.value().asString();
     }
     return result;
 }
 
 void ProjectFileRepository::setName(const std::string& name)
 {
-    m_nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
+    m_nameNode.value().setString(name);
 }
 
-std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::getProjectNode(const std::string& name)
+DiplodocusDB::TreeDBNode ProjectFileRepository::getProjectNode(const std::string& name)
 {
-    std::shared_ptr<ProjectRepositoryNode> result;
-    for (pugi::xml_node projectNode = m_projectsNode.child(projectElementName); 
-         projectNode != 0; 
-         projectNode = projectNode.next_sibling(projectElementName))
+    DiplodocusDB::TreeDBNode result;
+    Ishiko::Error error;
+    for (DiplodocusDB::TreeDBNode projectNode = m_projectsNode.child(projectElementName, error); 
+         projectNode; 
+         projectNode = projectNode.nextSibling(projectElementName))
     {
-        pugi::xml_node nameNode = projectNode.child(projectNameElementName);
-        if (nameNode.child_value() == name)
+        DiplodocusDB::TreeDBNode nameNode = projectNode.child(projectNameElementName, error);
+        if (nameNode.value().asString() == name)
         {
-            result = std::make_shared<ProjectFileRepositoryNode>(projectNode);
+            result = projectNode;
             break;
         }
     }
     return result;
 }
 
-std::shared_ptr<ProjectRepositoryNode> ProjectFileRepository::addProjectNode(const std::string& name)
+DiplodocusDB::TreeDBNode ProjectFileRepository::addProjectNode(const std::string& name)
 {
     if (m_projectsNode)
     {
-        pugi::xml_node projectNode = m_projectsNode.append_child(projectElementName);
-        pugi::xml_node nameNode = projectNode.append_child(projectNameElementName);
-        nameNode.append_child(pugi::node_pcdata).set_value(name.c_str());
-        return std::make_shared<ProjectFileRepositoryNode>(projectNode);
+        DiplodocusDB::TreeDBNode projectNode = m_projectsNode.append(projectElementName);
+        DiplodocusDB::TreeDBNode nameNode = projectNode.append(projectNameElementName);
+        nameNode.value().setString(name);
+        return DiplodocusDB::TreeDBNode(projectNode);
     }
     else
     {
-        return std::shared_ptr<ProjectRepositoryNode>();
+        return DiplodocusDB::TreeDBNode();
     }
 }
 
 void ProjectFileRepository::save()
 {
-    // TODO : needs to be more robust
-    std::ofstream file(m_path.string());
-    m_document.save(file);
+    Ishiko::Error error;
+    m_db.root().commit(error);
 }
 
 }

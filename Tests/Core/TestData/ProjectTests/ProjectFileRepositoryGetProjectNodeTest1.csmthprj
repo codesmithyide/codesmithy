@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
-<codesmithy-project-repository>
-	<name>ProjectFileRepositoryGetProjectTest1</name>
-	<projects>
-		<codesmithy-project>
-			<name>Project1</name>
-		</codesmithy-project>
-	</projects>
+<diplodocusdb-xmltreedb data-type="null">
+<codesmithy-project-repository data-type="null">
+  <name data-type="utf8string">ProjectFileRepositoryGetProjectTest1</name>
+  <projects data-type="null">
+    <codesmithy-project data-type="null">
+      <name data-type="utf8string">Project1</name>
+    </codesmithy-project>
+  </projects>
 </codesmithy-project-repository>
+</diplodocusdb-xmltreedb>
