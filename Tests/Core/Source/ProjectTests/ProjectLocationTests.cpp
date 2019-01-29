@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -55,10 +55,10 @@ TestResult::EOutcome ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
     repository.setName("ProjectLocationTests_SaveTest1");
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project1 = repository.addProjectNode("Project1");
+    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
 
     CodeSmithy::ProjectLocation location("location1");
-    location.save(*project1);
+    location.save(project1);
 
     repository.save();
 
