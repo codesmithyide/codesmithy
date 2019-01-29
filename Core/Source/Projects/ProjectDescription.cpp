@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,12 +30,13 @@ ProjectDescription::ProjectDescription(const std::string& plainTextDescription)
 {
 }
 
-void ProjectDescription::save(ProjectRepositoryNode& node) const
+void ProjectDescription::save(DiplodocusDB::TreeDBNode& node) const
 {
     if (m_plainTestDescription.size() > 0)
     {
-        std::shared_ptr<ProjectRepositoryNode> plainTextNode = node.setChildNode("description");
-        plainTextNode->setChildNodeValue("text", m_plainTestDescription);
+        DiplodocusDB::TreeDBNode descriptionNode = node.set("description");
+        DiplodocusDB::TreeDBNode plainTextNode = descriptionNode.set("text");
+        plainTextNode.value().setString(m_plainTestDescription);
     }
 }
 
