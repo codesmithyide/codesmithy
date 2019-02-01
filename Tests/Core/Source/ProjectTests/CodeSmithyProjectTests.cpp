@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -49,11 +49,12 @@ TestResult::EOutcome CodeSmithyProjectSaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("CodeSmithyProject");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::CodeSmithyProjectType type;
-        CodeSmithy::CodeSmithyProject project(type, projectNode);
+        CodeSmithy::CodeSmithyProject project(type, projectNode, error);
         project.save();
     }
 
