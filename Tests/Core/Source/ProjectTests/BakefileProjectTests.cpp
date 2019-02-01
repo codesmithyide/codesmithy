@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -50,13 +50,14 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("BakefileProject");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("BakefileProject");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::DocumentTypes documentTypes;
         CodeSmithy::BakefileProjectType type(documentTypes);
-        CodeSmithy::BakefileProject project(type, projectNode);
+        CodeSmithy::BakefileProject project(type, projectNode, error);
         if (project.name() == "BakefileProject")
         {
             result = TestResult::ePassed;
@@ -74,12 +75,13 @@ TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("BakefileProject");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("BakefileProject");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::DocumentTypes documentTypes;
         CodeSmithy::BakefileProjectType type(documentTypes);
-        CodeSmithy::BakefileProject project(type, projectNode);
+        CodeSmithy::BakefileProject project(type, projectNode, error);
         project.save();
     }
 
