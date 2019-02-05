@@ -27,7 +27,6 @@
 #include "CMakeProjectTypeTests.h"
 #include "ProjectTypesTests.h"
 #include "ProjectRepositoryTests.h"
-#include "ProjectFileRepositoryNodeTests.h"
 #include "ProjectDescriptionTests.h"
 #include "ProjectLocationTests.h"
 #include "ProjectGroupTests.h"
@@ -48,7 +47,6 @@ void AddProjectTests(TestHarness& theTestHarness)
     AddCMakeProjectTypeTests(projectTestSequence);
     AddProjectTypesTests(projectTestSequence);
     ProjectRepositoryTests::AddTests(projectTestSequence);
-    AddProjectFileRepositoryNodeTests(projectTestSequence);
     ProjectDescriptionTests::AddTests(projectTestSequence);
     ProjectLocationTests::AddTests(projectTestSequence);
     ProjectGroupTests::AddTests(projectTestSequence);
