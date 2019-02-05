@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -60,13 +60,14 @@ TestResult::EOutcome ProjectGroupTests::CreationTest2(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest2.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
-        if (project.name() == "MyProjectGroup")
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
+        if (!error && (project.name() == "MyProjectGroup"))
         {
             if (project.children().size() == 0)
             {
@@ -85,13 +86,14 @@ TestResult::EOutcome ProjectGroupTests::CreationTest3(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest3.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
-        if (project.name() == "MyProjectGroup")
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
+        if (!error && (project.name() == "MyProjectGroup"))
         {
             if ((project.children().size() == 1) &&
                 project.children()[0].isLink() &&
@@ -112,12 +114,13 @@ TestResult::EOutcome ProjectGroupTests::CreationTest4(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest4.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
         if (project.name() == "MyProjectGroup")
         {
             if ((project.children().size() == 2) &&
@@ -141,12 +144,13 @@ TestResult::EOutcome ProjectGroupTests::CreationTest5(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest5.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
         if (project.name() == "MyProjectGroup")
         {
             if ((project.children().size() == 1) &&
@@ -168,12 +172,13 @@ TestResult::EOutcome ProjectGroupTests::CreationTest6(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest6.csmthprj");
 
     CodeSmithy::ProjectFileRepository repository(inputPath);
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
         if (project.name() == "MyProjectGroup")
         {
             if ((project.children().size() == 2) &&
@@ -198,11 +203,12 @@ TestResult::EOutcome ProjectGroupTests::SaveTest1(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
         project.save();
     }
 
@@ -223,11 +229,12 @@ TestResult::EOutcome ProjectGroupTests::SaveTest2(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
 
         // We call save() twice on purpose
         project.save();
@@ -250,11 +257,12 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest1(FileComparis
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
 
         project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
 
@@ -277,11 +285,12 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest2(FileComparis
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
 
         project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
         project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
@@ -307,11 +316,12 @@ TestResult::EOutcome ProjectGroupTests::SaveTest3(FileComparisonTest& test)
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
 
         project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
         project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
@@ -338,11 +348,12 @@ TestResult::EOutcome ProjectGroupTests::AddProjectTest1(FileComparisonTest& test
 
     CodeSmithy::ProjectFileRepository repository(outputPath);
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("MyProjectGroup");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
 
         std::shared_ptr<CodeSmithy::ProjectGroup> childProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "MyChildProject");
 
