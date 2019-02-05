@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectFileRepositoryTests.h"
+#include "ProjectRepositoryTests.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
