@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -38,7 +38,7 @@ TestResult::EOutcome DocumentsObserverOnAddTest1()
 
     CodeSmithy::Documents documents;
     std::shared_ptr<TestDocumentsObserver> observer = std::make_shared<TestDocumentsObserver>();
-    documents.addObserver(observer);
+    documents.observers().add(observer);
 
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsObserverOnAddTest1"));

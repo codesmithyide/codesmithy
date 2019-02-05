@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,52 +35,22 @@ Documents::~Documents()
 
 size_t Documents::size() const
 {
-    return m_documents.size();
+    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::size();
 }
 
 std::shared_ptr<const Document> Documents::operator[](size_t index) const
 {
-    return m_documents[index];
+    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::operator[](index);
 }
 
 void Documents::add(std::shared_ptr<Document> document)
 {
-    m_documents.push_back(document);
-    notifyAdd(document);
+    Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::pushBack(document);
 }
 
-void Documents::addObserver(std::weak_ptr<DocumentsObserver> observer)
+Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& Documents::observers()
 {
-    m_observers.push_back(observer);
-}
-
-void Documents::removeObserver(std::weak_ptr<DocumentsObserver> observer)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        if (m_observers[i].lock().get() == observer.lock().get())
-        {
-            m_observers.erase(m_observers.begin() + i);
-            break;
-        }
-    }
-}
-
-const std::vector<std::weak_ptr<DocumentsObserver> >& Documents::observers() const
-{
-    return m_observers;
-}
-
-void Documents::notifyAdd(std::shared_ptr<Document> document)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        std::shared_ptr<DocumentsObserver> observer = m_observers[i].lock();
-        if (observer)
-        {
-            observer->onAdd(*this, document);
-        }
-    }
+    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::observers();
 }
 
 }

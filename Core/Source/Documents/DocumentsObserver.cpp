@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,6 +21,7 @@
 */
 
 #include "Documents/DocumentsObserver.h"
+#include "Documents/Documents.h"
 
 namespace CodeSmithy
 {
@@ -31,6 +32,11 @@ DocumentsObserver::DocumentsObserver()
 
 DocumentsObserver::~DocumentsObserver()
 {
+}
+
+void DocumentsObserver::onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& value)
+{
+    onAdd(source, value);
 }
 
 void DocumentsObserver::onAdd(const Documents& source, 

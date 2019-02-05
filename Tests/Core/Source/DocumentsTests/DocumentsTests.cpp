@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -34,10 +34,8 @@ void AddDocumentsTests(TestSequence& testSequence)
     new HeapAllocationErrorsTest("add test 1", DocumentsAddTest1, *documentsTestSequence);
 
     new HeapAllocationErrorsTest("addObserver test 1", DocumentsAddObserverTest1, *documentsTestSequence);
-    new HeapAllocationErrorsTest("addObserver test 2", DocumentsAddObserverTest2, *documentsTestSequence);
 
     new HeapAllocationErrorsTest("removeObserver test 1", DocumentsRemoveObserverTest1, *documentsTestSequence);
-    new HeapAllocationErrorsTest("removeObserver test 2", DocumentsRemoveObserverTest2, *documentsTestSequence);
 }
 
 TestResult::EOutcome DocumentsCreationTest1()
@@ -70,83 +68,19 @@ TestResult::EOutcome DocumentsAddTest1()
 
 TestResult::EOutcome DocumentsAddObserverTest1()
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer);
+    documents.observers().add(observer);
 
-    if ((documents.observers().size() == 1) &&
-        (documents.observers()[0].lock().get() == observer.get()))
-    {
-        result = TestResult::ePassed;
-    }
-
-    return result;
-}
-
-TestResult::EOutcome DocumentsAddObserverTest2()
-{
-    TestResult::EOutcome result = TestResult::eFailed;
-
-    CodeSmithy::Documents documents;
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer1 = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer1);
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer2 = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer2);
-
-    if ((documents.observers().size() == 2) &&
-        (documents.observers()[0].lock().get() == observer1.get()) &&
-        (documents.observers()[1].lock().get() == observer2.get()))
-    {
-        result = TestResult::ePassed;
-    }
-
-    return result;
+    return TestResult::ePassed;
 }
 
 TestResult::EOutcome DocumentsRemoveObserverTest1()
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer);
+    documents.observers().add(observer);
+    documents.observers().remove(observer);
 
-    if ((documents.observers().size() == 1) &&
-        (documents.observers()[0].lock().get() == observer.get()))
-    {
-        documents.removeObserver(observer);
-        if (documents.observers().size() == 0)
-        {
-            result = TestResult::ePassed;
-        }
-    }
-
-    return result;
-}
-
-TestResult::EOutcome DocumentsRemoveObserverTest2()
-{
-    TestResult::EOutcome result = TestResult::eFailed;
-
-    CodeSmithy::Documents documents;
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer1 = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer1);
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer2 = std::make_shared<CodeSmithy::DocumentsObserver>();
-    documents.addObserver(observer2);
-
-    if ((documents.observers().size() == 2) &&
-        (documents.observers()[0].lock().get() == observer1.get()) &&
-        (documents.observers()[1].lock().get() == observer2.get()))
-    {
-        documents.removeObserver(observer2);
-        if ((documents.observers().size() == 1) &&
-            (documents.observers()[0].lock().get() == observer1.get()))
-        {
-            result = TestResult::ePassed;
-        }
-    }
-
-    return result;
+    return TestResult::ePassed;
 }

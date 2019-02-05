@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTSOBSERVER_H_
 
 #include "Document.h"
+#include "Ishiko/Collections/ObservableVector.h"
 #include <memory>
 
 namespace CodeSmithy
@@ -31,11 +32,13 @@ namespace CodeSmithy
 
 class Documents;
 
-class DocumentsObserver
+class DocumentsObserver : public Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observer
 {
 public:
     DocumentsObserver();
     virtual ~DocumentsObserver();
+
+    void onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& value) override;
 
     virtual void onAdd(const Documents& source, std::shared_ptr<Document> document);
 };

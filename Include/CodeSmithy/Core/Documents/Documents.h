@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,6 +25,7 @@
 
 #include "Document.h"
 #include "DocumentsObserver.h"
+#include "Ishiko/Collections/ObservableVector.h"
 #include <vector>
 #include <memory>
 
@@ -38,7 +39,7 @@ namespace CodeSmithy
     purpose. It has a list of all the documents that are part
     of the workspace across all projects.
 */
-class Documents
+class Documents : private Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>
 {
 public:
     Documents();
@@ -50,18 +51,7 @@ public:
 
     void add(std::shared_ptr<Document> document);
 
-    void addObserver(std::weak_ptr<DocumentsObserver> observer);
-    void removeObserver(std::weak_ptr<DocumentsObserver> observer);
-    // There should be no need to query the list of observers, this method
-    // is supposed to be used for testing only
-    const std::vector<std::weak_ptr<DocumentsObserver> >& observers() const;
-
-private:
-    void notifyAdd(std::shared_ptr<Document> document);
-
-private:
-    std::vector<std::shared_ptr<Document> > m_documents;
-    std::vector<std::weak_ptr<DocumentsObserver> > m_observers;
+    Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& observers();
 };
 
 }
