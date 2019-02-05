@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -51,11 +51,12 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComp
     CodeSmithy::ProjectFileRepository repository(outputPath);
     repository.setName("CodeSmithyIDE");
 
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.addProjectNode("CodeSmithy");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy");
     if (projectNode)
     {
+        Ishiko::Error error;
         CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode);
+        CodeSmithy::ProjectGroup project(type, projectNode, error);
         project.setDescription(CodeSmithy::ProjectDescription("The CodeSmithy code and all its dependencies."));
 
         std::shared_ptr<CodeSmithy::ProjectGroup> pugixmlProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "pugixml");
@@ -116,11 +117,12 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest2(Test& te
     CodeSmithy::ProjectFileRepository repository(inputPath);
     if (repository.name() == "CodeSmithyIDE")
     {
-        std::shared_ptr<CodeSmithy::ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
+        DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
         if (projectNode)
         {
+            Ishiko::Error error;
             CodeSmithy::ProjectGroupType type;
-            CodeSmithy::ProjectGroup project(type, projectNode);
+            CodeSmithy::ProjectGroup project(type, projectNode, error);
             if (project.name() == "CodeSmithy")
             {
                 if ((project.children().size() == 5) &&
