@@ -23,7 +23,6 @@
 #include "TasksTestSequence.h"
 #include "TaskTests.h"
 #include "SyncFunctionTaskTests.h"
-#include "AsyncFunctionTaskTests.h"
 #include "TasksTests.h"
 #include "TaskRunnerTests.h"
 
@@ -33,7 +32,6 @@ void AddTasksTestSequence(TestHarness& theTestHarness)
 
     TaskTests::AddTests(tasksTestSequence);
     SyncFunctionTaskTests::AddTests(tasksTestSequence);
-    AsyncFunctionTaskTests::AddTests(tasksTestSequence);
     TasksTests::AddTests(tasksTestSequence);
     TaskRunnerTests::AddTests(tasksTestSequence);
 }
