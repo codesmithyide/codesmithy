@@ -25,20 +25,22 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentsTests(TestSequence& testSequence)
+using namespace Ishiko::TestFramework;
+
+void DocumentsTests::AddTests(TestSequence& testSequence)
 {
     TestSequence* documentsTestSequence = new TestSequence("Documents tests", testSequence);
 
-    new HeapAllocationErrorsTest("Creation test 1", DocumentsCreationTest1, *documentsTestSequence);
+    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *documentsTestSequence);
 
-    new HeapAllocationErrorsTest("add test 1", DocumentsAddTest1, *documentsTestSequence);
+    new HeapAllocationErrorsTest("add test 1", AddTest1, *documentsTestSequence);
 
-    new HeapAllocationErrorsTest("addObserver test 1", DocumentsAddObserverTest1, *documentsTestSequence);
+    new HeapAllocationErrorsTest("addObserver test 1", AddObserverTest1, *documentsTestSequence);
 
-    new HeapAllocationErrorsTest("removeObserver test 1", DocumentsRemoveObserverTest1, *documentsTestSequence);
+    new HeapAllocationErrorsTest("removeObserver test 1", RemoveObserverTest1, *documentsTestSequence);
 }
 
-TestResult::EOutcome DocumentsCreationTest1()
+TestResult::EOutcome DocumentsTests::CreationTest1()
 {
     CodeSmithy::Documents documents;
     if (documents.size() == 0)
@@ -51,7 +53,7 @@ TestResult::EOutcome DocumentsCreationTest1()
     }
 }
 
-TestResult::EOutcome DocumentsAddTest1()
+TestResult::EOutcome DocumentsTests::AddTest1()
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
@@ -66,7 +68,7 @@ TestResult::EOutcome DocumentsAddTest1()
     }
 }
 
-TestResult::EOutcome DocumentsAddObserverTest1()
+TestResult::EOutcome DocumentsTests::AddObserverTest1()
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
@@ -75,7 +77,7 @@ TestResult::EOutcome DocumentsAddObserverTest1()
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome DocumentsRemoveObserverTest1()
+TestResult::EOutcome DocumentsTests::RemoveObserverTest1()
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
