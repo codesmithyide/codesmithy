@@ -29,14 +29,4 @@ using namespace Ishiko::TestFramework;
 
 void AddProjectFileRepositoryNodeTests(TestSequence& testSequence);
 
-TestResult::EOutcome ProjectFileRepositoryNodeSetChildNodeValueTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeGetChildNodeValueTest1(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeSetChildNodeTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest2(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeAppendChildNodeTest3(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest1(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest2(Test& test);
-TestResult::EOutcome ProjectFileRepositoryNodeFirstChildNodeTest3(Test& test);
-
 #endif
