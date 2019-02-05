@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,15 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class ProjectRepositoryTests
+{
+public:
+    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
 
-void AddProjectFileRepositoryTests(TestSequence& testSequence);
-
-TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test);
-TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test);
-TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryAddProjectNodeTest1(FileComparisonTest& test);
-TestResult::EOutcome ProjectFileRepositoryGetProjectNodeTest1(Test& test);
+private:
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1(Ishiko::TestFramework::FileComparisonTest& test);
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest2(Ishiko::TestFramework::Test& test);
+    static Ishiko::TestFramework::TestResult::EOutcome CreationTest3(Ishiko::TestFramework::Test& test);
+    static Ishiko::TestFramework::TestResult::EOutcome SetNameTest1(Ishiko::TestFramework::FileComparisonTest& test);
+    static Ishiko::TestFramework::TestResult::EOutcome AddProjectNodeTest1(Ishiko::TestFramework::FileComparisonTest& test);
+    static Ishiko::TestFramework::TestResult::EOutcome GetProjectNodeTest1(Ishiko::TestFramework::Test& test);
+};
 
 #endif

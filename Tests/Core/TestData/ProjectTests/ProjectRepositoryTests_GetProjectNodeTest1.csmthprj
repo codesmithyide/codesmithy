@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb data-type="null">
 <codesmithy-project-repository data-type="null">
-  <name data-type="utf8string">ProjectFileRepositoryGetProjectTest1</name>
+  <name data-type="utf8string">ProjectRepositoryTests_GetProjectNodeTest1</name>
   <projects data-type="null">
     <codesmithy-project data-type="null">
       <name data-type="utf8string">Project1</name>
