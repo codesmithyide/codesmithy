@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -75,27 +75,26 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type,
 // TODO : this needs to be redone. It is used both for initialization of a new project
 // and to read an existing one from disk. That doesn't work well as I want to do either
 // initialization of validation of the data
-ProjectGroup::ProjectGroup(const ProjectGroupType& type,
-                           std::shared_ptr<ProjectRepositoryNode> node)
-    : Project(node->getChildNodeValue(projectNameElementName)), m_type(type),
+ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
+    : Project(node.child(projectNameElementName, error).value().asString()), m_type(type),
     m_node(node)
 {
     // TODO : this is particularly bad, this should not be set when we are reading an
     // existing file
-    m_node->setChildNodeValue(projectTypeElementName, m_type.name());
-    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = m_node->setChildNode(childProjectsElementName);
-    for (std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->firstChildNode();
-         childProjectNode;
-         childProjectNode = childProjectNode->nextSibling())
+    m_node.set(projectTypeElementName, error).value().setString(m_type.name());
+    DiplodocusDB::TreeDBNode childProjectsNode = m_node.set(childProjectsElementName, error);
+    std::vector<DiplodocusDB::TreeDBNode> children;
+    childProjectsNode.children(children, error);
+    for (DiplodocusDB::TreeDBNode& childProjectNode : children)
     {
-        if (childProjectNode->name() == externalProjectLinkElementName)
+        if (childProjectNode.key() == externalProjectLinkElementName)
         {
-            m_childProjects.push_back(ProjectOrLink(ProjectLocation(*childProjectNode)));
+            m_childProjects.push_back(ProjectOrLink(ProjectLocation(childProjectNode, error)));
         }
-        else if (childProjectNode->name() == childProjectElementName)
+        else if (childProjectNode.key() == childProjectElementName)
         {
             // TODO : this assumes the project is always a ProjectGroup
-            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, childProjectNode);
+            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, childProjectNode, error);
             m_childProjects.push_back(ProjectOrLink(childProject));
         }
     }
@@ -112,28 +111,29 @@ const ProjectType& ProjectGroup::type() const
 
 void ProjectGroup::save()
 {
-    save(*m_node);
+    save(m_node);
 }
 
-void ProjectGroup::save(ProjectRepositoryNode& node) const
+void ProjectGroup::save(DiplodocusDB::TreeDBNode& node) const
 {
-    node.clear();
+    Ishiko::Error error;
+    node.removeAll(error);
 
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
     saveBaseMembers(node);
-    std::shared_ptr<ProjectRepositoryNode> childProjectsNode = node.setChildNode(childProjectsElementName);
+    DiplodocusDB::TreeDBNode childProjectsNode = node.set(childProjectsElementName, error);
     for (const ProjectOrLink& item : m_childProjects)
     {
         if (item.isLink())
         {
-            std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(externalProjectLinkElementName);
-            item.location().save(*childProjectNode);
+            DiplodocusDB::TreeDBNode childProjectNode = childProjectsNode.append(externalProjectLinkElementName);
+            item.location().save(childProjectNode);
         }
         else if (item.isProject())
         {
-            std::shared_ptr<ProjectRepositoryNode> childProjectNode = childProjectsNode->appendChildNode(childProjectElementName);
-            item.project().save(*childProjectNode);
+            DiplodocusDB::TreeDBNode childProjectNode = childProjectsNode.append(childProjectElementName);
+            item.project().save(childProjectNode);
         }
     }
 }

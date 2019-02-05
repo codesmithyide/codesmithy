@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,16 +25,13 @@
 namespace CodeSmithy
 {
 
-BakefileProject::BakefileProject(const BakefileProjectType& type,
-                                 const std::string& name)
+BakefileProject::BakefileProject(const BakefileProjectType& type, const std::string& name)
     : MetaBuildSystemProject(name), m_type(type)
 {
 }
 
-BakefileProject::BakefileProject(const BakefileProjectType& type,
-                                 std::shared_ptr<ProjectRepositoryNode> node)
-    : MetaBuildSystemProject(node->getChildNodeValue("name")), m_type(type),
-    m_node(node)
+BakefileProject::BakefileProject(const BakefileProjectType& type, DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
+    : MetaBuildSystemProject(node.child("name", error).value().asString()), m_type(type), m_node(node)
 {
 }
 
@@ -49,10 +46,10 @@ const ProjectType& BakefileProject::type() const
 
 void BakefileProject::save()
 {
-    saveBaseMembers(*m_node);
+    saveBaseMembers(m_node);
 }
 
-void BakefileProject::save(ProjectRepositoryNode& node) const
+void BakefileProject::save(DiplodocusDB::TreeDBNode& node) const
 {
     // TODO
 }

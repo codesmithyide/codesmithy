@@ -34,8 +34,9 @@ void ProjectDescription::save(DiplodocusDB::TreeDBNode& node) const
 {
     if (m_plainTestDescription.size() > 0)
     {
-        DiplodocusDB::TreeDBNode descriptionNode = node.set("description");
-        DiplodocusDB::TreeDBNode plainTextNode = descriptionNode.set("text");
+        Ishiko::Error error;
+        DiplodocusDB::TreeDBNode descriptionNode = node.set("description", error);
+        DiplodocusDB::TreeDBNode plainTextNode = descriptionNode.set("text", error);
         plainTextNode.value().setString(m_plainTestDescription);
     }
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,16 +25,14 @@
 namespace CodeSmithy
 {
 
-CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type,
-                                     const std::string& name)
+CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, const std::string& name)
     : Project(name), m_type(type)
 {
 }
 
-CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type,
-                                     std::shared_ptr<ProjectRepositoryNode> node)
-    : Project(node->getChildNodeValue("name")), m_type(type),
-    m_node(node)
+CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDBNode node,
+    Ishiko::Error& error)
+    : Project(node.child("name", error).value().asString()), m_type(type), m_node(node)
 {
 }
 
@@ -52,7 +50,7 @@ void CodeSmithyProject::save()
     // TODO
 }
 
-void CodeSmithyProject::save(ProjectRepositoryNode& node) const
+void CodeSmithyProject::save(DiplodocusDB::TreeDBNode& node) const
 {
     // TODO
 }

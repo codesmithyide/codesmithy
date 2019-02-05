@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -34,8 +34,9 @@ ProjectLocation::ProjectLocation(const std::string& url)
 {
 }
 
-ProjectLocation::ProjectLocation(const ProjectRepositoryNode& node)
-    : m_url(node.getChildNodeValue("location"))
+ProjectLocation::ProjectLocation(DiplodocusDB::TreeDBNode& node,
+    Ishiko::Error& error)
+    : m_url(node.child("location", error).value().asString())
 {
 }
 
@@ -44,11 +45,13 @@ const std::string& ProjectLocation::url() const
     return m_url;
 }
 
-void ProjectLocation::save(ProjectRepositoryNode& node) const
+void ProjectLocation::save(DiplodocusDB::TreeDBNode& node) const
 {
     if (m_url.size() > 0)
     {
-        node.setChildNodeValue("location", m_url);
+        Ishiko::Error error;
+        DiplodocusDB::TreeDBNode locationNode = node.set("location", error);
+        locationNode.value().setString(m_url);
     }
 }
 
