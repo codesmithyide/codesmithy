@@ -87,7 +87,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../../Include/CodeSmithy/Core/Projects/ProjectTypes.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectObserver.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectRepository.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectFileRepository.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectGroup.h
         ../../../Include/CodeSmithy/Core/Projects/ProjectGroupType.h
         ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
@@ -177,7 +176,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../Source/Projects/ProjectTypes.cpp
         ../../Source/Projects/ProjectObserver.cpp
         ../../Source/Projects/ProjectRepository.cpp
-        ../../Source/Projects/ProjectFileRepository.cpp
         ../../Source/Projects/ProjectGroup.cpp
         ../../Source/Projects/ProjectGroupType.cpp
         ../../Source/Projects/MetaBuildSystemProject.cpp

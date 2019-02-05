@@ -164,9 +164,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectFileRepository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -386,9 +383,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Projects\ProjectRepository.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectFileRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Projects\ProjectGroup.cpp">
