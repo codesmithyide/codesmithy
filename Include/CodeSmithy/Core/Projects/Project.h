@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,7 +26,7 @@
 #include "ProjectType.h"
 #include "ProjectDescription.h"
 #include "ProjectLocation.h"
-#include "ProjectRepositoryNode.h"
+#include "DiplodocusDB/TreeDB/Core/TreeDBNode.h"
 #include <string>
 
 namespace CodeSmithy
@@ -45,10 +45,10 @@ public:
 
     // TODO : I may want to get rid of save()
 	virtual void save() = 0;
-    virtual void save(ProjectRepositoryNode& node) const = 0;
+    virtual void save(DiplodocusDB::TreeDBNode& node) const = 0;
 
 protected:
-    void saveBaseMembers(ProjectRepositoryNode& node) const;
+    void saveBaseMembers(DiplodocusDB::TreeDBNode& node) const;
 
 private:
     std::string m_name;

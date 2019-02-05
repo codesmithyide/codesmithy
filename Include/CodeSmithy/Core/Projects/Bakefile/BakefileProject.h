@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -33,17 +33,17 @@ class BakefileProject : public MetaBuildSystemProject
 {
 public:
     BakefileProject(const BakefileProjectType& type, const std::string& name);
-    BakefileProject(const BakefileProjectType& type, std::shared_ptr<ProjectRepositoryNode> node);
+    BakefileProject(const BakefileProjectType& type, DiplodocusDB::TreeDBNode node, Ishiko::Error& error);
     ~BakefileProject() override;
 
     const ProjectType& type() const override;
 
     void save() override;
-    void save(ProjectRepositoryNode& node) const override;
+    void save(DiplodocusDB::TreeDBNode& node) const override;
 
 private:
     const BakefileProjectType& m_type;
-    std::shared_ptr<ProjectRepositoryNode> m_node;
+    DiplodocusDB::TreeDBNode m_node;
 };
 
 }
