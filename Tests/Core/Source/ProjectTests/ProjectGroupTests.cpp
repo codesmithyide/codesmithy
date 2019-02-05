@@ -22,7 +22,7 @@
 
 #include "ProjectGroupTests.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
 void ProjectGroupTests::AddTests(TestSequence& testSequence)
@@ -59,7 +59,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest2(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
@@ -85,7 +85,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest3(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest3.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
@@ -113,7 +113,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest4(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest4.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
@@ -143,7 +143,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest5(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest5.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
@@ -171,7 +171,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest6(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest6.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
 
     if (projectNode)
@@ -201,7 +201,7 @@ TestResult::EOutcome ProjectGroupTests::SaveTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
@@ -227,7 +227,7 @@ TestResult::EOutcome ProjectGroupTests::SaveTest2(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
@@ -255,7 +255,7 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest1(FileComparis
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
@@ -283,7 +283,7 @@ TestResult::EOutcome ProjectGroupTests::AddExternalProjectLinkTest2(FileComparis
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
@@ -314,7 +314,7 @@ TestResult::EOutcome ProjectGroupTests::SaveTest3(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest3.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)
@@ -346,7 +346,7 @@ TestResult::EOutcome ProjectGroupTests::AddProjectTest1(FileComparisonTest& test
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddProjectTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
     if (projectNode)

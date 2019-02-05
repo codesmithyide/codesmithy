@@ -22,7 +22,7 @@
 
 #include "ProjectDescriptionTests.h"
 #include "CodeSmithy/Core/Projects/ProjectDescription.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
 void ProjectDescriptionTests::AddTests(TestSequence& testSequence)
@@ -53,7 +53,7 @@ TestResult::EOutcome ProjectDescriptionTests::SaveTest1(FileComparisonTest& test
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectDescriptionTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
     repository.setName("ProjectDescriptionTests_SaveTest1");
     DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
 
