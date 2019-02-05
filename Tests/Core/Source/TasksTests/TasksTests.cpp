@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,6 +30,12 @@ void TasksTests::AddTests(TestSequence& testSequence)
     TestSequence* tasksTestSequence = new TestSequence("Tasks tests", testSequence);
 
     new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *tasksTestSequence);
+
+    new HeapAllocationErrorsTest("add test 1", AddTest1, *tasksTestSequence);
+
+    new HeapAllocationErrorsTest("addObserver test 1", AddObserverTest1, *tasksTestSequence);
+
+    new HeapAllocationErrorsTest("removeObserver test 1", RemoveObserverTest1, *tasksTestSequence);
 }
 
 TestResult::EOutcome TasksTests::CreationTest1()
@@ -43,4 +49,37 @@ TestResult::EOutcome TasksTests::CreationTest1()
     {
         return TestResult::eFailed;
     }
+}
+
+TestResult::EOutcome TasksTests::AddTest1()
+{
+    CodeSmithy::Tasks tasks;
+    tasks.add(std::make_shared<CodeSmithy::Task>());
+    if (tasks.size() == 1)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome TasksTests::AddObserverTest1()
+{
+    CodeSmithy::Tasks tasks;
+    std::shared_ptr<CodeSmithy::TasksObserver> observer = std::make_shared<CodeSmithy::TasksObserver>();
+    tasks.observers().add(observer);
+
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome TasksTests::RemoveObserverTest1()
+{
+    CodeSmithy::Tasks tasks;
+    std::shared_ptr<CodeSmithy::TasksObserver> observer = std::make_shared<CodeSmithy::TasksObserver>();
+    tasks.observers().add(observer);
+    tasks.observers().remove(observer);
+
+    return TestResult::ePassed;
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,7 @@
 #define _CODESMITHY_CORE_TASKS_TASKSOBSERVER_H_
 
 #include "Task.h"
+#include "Ishiko/Collections/ObservableVector.h"
 #include <memory>
 
 namespace CodeSmithy
@@ -31,10 +32,12 @@ namespace CodeSmithy
 
 class Tasks;
 
-class TasksObserver
+class TasksObserver : public Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::Observer
 {
 public:
     virtual ~TasksObserver() = default;
+
+    void onElementAdded(const Tasks& source, size_t pos, const std::shared_ptr<Task>& value) override;
 
     virtual void onAdd(const Tasks& source, std::shared_ptr<Task> task);
 };

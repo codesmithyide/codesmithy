@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,11 @@
 
 namespace CodeSmithy
 {
+
+void TasksObserver::onElementAdded(const Tasks& source, size_t pos, const std::shared_ptr<Task>& value)
+{
+    onAdd(source, value);
+}
 
 void TasksObserver::onAdd(const Tasks& source, std::shared_ptr<Task> task)
 {

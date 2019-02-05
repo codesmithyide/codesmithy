@@ -35,8 +35,7 @@ class Documents;
 class DocumentsObserver : public Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observer
 {
 public:
-    DocumentsObserver();
-    virtual ~DocumentsObserver();
+    virtual ~DocumentsObserver() = default;
 
     void onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& value) override;
 

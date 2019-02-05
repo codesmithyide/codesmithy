@@ -37,6 +37,8 @@ public:
     size_t size() const;
 
     void add(std::shared_ptr<Task> task);
+
+    Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::Observers& observers();
 };
 
 }

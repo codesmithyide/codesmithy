@@ -35,4 +35,9 @@ void Tasks::add(std::shared_ptr<Task> task)
     Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::pushBack(task);
 }
 
+Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::Observers& Tasks::observers()
+{
+    return Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::observers();
+}
+
 }

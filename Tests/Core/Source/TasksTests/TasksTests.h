@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -32,6 +32,9 @@ public:
 
 private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome AddTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome AddObserverTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome RemoveObserverTest1();
 };
 
 #endif
