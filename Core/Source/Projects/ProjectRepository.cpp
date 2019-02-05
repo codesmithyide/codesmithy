@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,16 +21,102 @@
 */
 
 #include "Projects/ProjectRepository.h"
+#include <boost/filesystem/operations.hpp>
+#include <fstream>
 
 namespace CodeSmithy
 {
 
-ProjectRepository::ProjectRepository()
+static const char* rootElementName = "codesmithy-project-repository";
+static const char* versionElementName = "file-format-version";
+static const char* repositoryNameElementName = "name";
+static const char* repositoryProjectsElementName = "projects";
+static const char* projectElementName = "codesmithy-project";
+static const char* projectNameElementName = "name";
+
+ProjectRepository::ProjectRepository(const boost::filesystem::path& path)
 {
+    Ishiko::Error error;
+    if (boost::filesystem::exists(path))
+    {
+        m_db.open(path, error);
+        m_nameNode = m_db.root().child(rootElementName, error).child(repositoryNameElementName, error);
+        m_projectsNode = m_db.root().child(rootElementName, error).child(repositoryProjectsElementName, error);
+    }
+    else
+    {   
+        m_db.create(path, error);
+        DiplodocusDB::TreeDBNode rootNode = m_db.root().append(rootElementName);
+        if (rootNode)
+        {
+            DiplodocusDB::TreeDBNode versionNode = rootNode.append(versionElementName);
+            versionNode.value().setString("0.1.0");
+            m_nameNode = rootNode.append(repositoryNameElementName);
+            m_projectsNode = rootNode.append(repositoryProjectsElementName);
+            if (m_nameNode && m_projectsNode)
+            {
+                save();
+            }
+        }
+    }
 }
 
 ProjectRepository::~ProjectRepository()
 {
+}
+
+std::string ProjectRepository::name() const
+{
+    std::string result;
+    if (m_nameNode)
+    {
+        result = m_nameNode.value().asString();
+    }
+    return result;
+}
+
+void ProjectRepository::setName(const std::string& name)
+{
+    m_nameNode.value().setString(name);
+}
+
+DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& name)
+{
+    DiplodocusDB::TreeDBNode result;
+    Ishiko::Error error;
+    for (DiplodocusDB::TreeDBNode projectNode = m_projectsNode.child(projectElementName, error); 
+         projectNode; 
+         projectNode = projectNode.nextSibling(projectElementName, error))
+    {
+        DiplodocusDB::TreeDBNode nameNode = projectNode.child(projectNameElementName, error);
+        if (nameNode.value().asString() == name)
+        {
+            result = projectNode;
+            break;
+        }
+    }
+    return result;
+}
+
+DiplodocusDB::TreeDBNode ProjectRepository::addProjectNode(const std::string& name)
+{
+    if (m_projectsNode)
+    {
+        DiplodocusDB::TreeDBNode projectNode = m_projectsNode.append(projectElementName);
+        DiplodocusDB::TreeDBNode nameNode = projectNode.append(projectNameElementName);
+        nameNode.value().setString(name);
+        return DiplodocusDB::TreeDBNode(projectNode);
+    }
+    else
+    {
+        return DiplodocusDB::TreeDBNode();
+    }
+}
+
+void ProjectRepository::save()
+{
+    Ishiko::Error error;
+    m_db.root().commit(error);
 }
 
 }

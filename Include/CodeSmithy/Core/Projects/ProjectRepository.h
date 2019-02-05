@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,32 +23,32 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 
-#include "ProjectRepositoryNode.h"
+#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
+#include <boost/filesystem/path.hpp>
 #include <string>
-#include <memory>
 
 namespace CodeSmithy
 {
 
-// A project repository stores one or more projects.
-// This is an abstract interface to allow various
-// storage options.
-//
-// The ProjectRepositoryNode interface allows access
-// to individual project in the repository.
+// This class allows to store one or more projects in a file.
 class ProjectRepository
 {
 public:
-    ProjectRepository();
-    virtual ~ProjectRepository();
+    ProjectRepository(const boost::filesystem::path& path);
+    ~ProjectRepository();
 
-    virtual std::string name() const = 0;
-    virtual void setName(const std::string& name) = 0;
+    std::string name() const;
+    void setName(const std::string& name);
+    
+    DiplodocusDB::TreeDBNode getProjectNode(const std::string& name);
+    DiplodocusDB::TreeDBNode addProjectNode(const std::string& name);
 
-    virtual std::shared_ptr<ProjectRepositoryNode> getProjectNode(const std::string& name) = 0;
-    virtual std::shared_ptr<ProjectRepositoryNode> addProjectNode(const std::string& name) = 0;
+    void save();
 
-    virtual void save() = 0;
+private:
+    DiplodocusDB::XMLTreeDB m_db;
+    DiplodocusDB::TreeDBNode m_nameNode;
+    DiplodocusDB::TreeDBNode m_projectsNode;
 };
 
 }
