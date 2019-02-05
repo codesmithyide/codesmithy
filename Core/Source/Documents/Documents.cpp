@@ -25,14 +25,6 @@
 namespace CodeSmithy
 {
 
-Documents::Documents()
-{
-}
-
-Documents::~Documents()
-{
-}
-
 size_t Documents::size() const
 {
     return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::size();

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,28 +25,18 @@
 
 #include "Task.h"
 #include "TasksObserver.h"
-#include <vector>
+#include "Ishiko/Collections/ObservableVector.h"
 #include <memory>
 
 namespace CodeSmithy
 {
 
-class Tasks
+class Tasks : private Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>
 {
 public:
     size_t size() const;
 
     void add(std::shared_ptr<Task> task);
-
-    void addObserver(std::weak_ptr<TasksObserver> observer);
-    void removeObserver(std::weak_ptr<TasksObserver> observer);
-
-private:
-    void notifyAdd(std::shared_ptr<Task> task);
-
-private:
-    std::vector<std::shared_ptr<Task>> m_tasks;
-    std::vector<std::weak_ptr<TasksObserver>> m_observers;
 };
 
 }

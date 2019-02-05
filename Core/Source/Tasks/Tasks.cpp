@@ -27,42 +27,12 @@ namespace CodeSmithy
 
 size_t Tasks::size() const
 {
-    return m_tasks.size();
+    return Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::size();
 }
 
 void Tasks::add(std::shared_ptr<Task> task)
 {
-    m_tasks.push_back(task);
-    notifyAdd(task);
-}
-
-void Tasks::addObserver(std::weak_ptr<TasksObserver> observer)
-{
-    m_observers.push_back(observer);
-}
-
-void Tasks::removeObserver(std::weak_ptr<TasksObserver> observer)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        if (m_observers[i].lock().get() == observer.lock().get())
-        {
-            m_observers.erase(m_observers.begin() + i);
-            break;
-        }
-    }
-}
-
-void Tasks::notifyAdd(std::shared_ptr<Task> task)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        std::shared_ptr<TasksObserver> observer = m_observers[i].lock();
-        if (observer)
-        {
-            observer->onAdd(*this, task);
-        }
-    }
+    Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::pushBack(task);
 }
 
 }

@@ -26,7 +26,6 @@
 #include "Document.h"
 #include "DocumentsObserver.h"
 #include "Ishiko/Collections/ObservableVector.h"
-#include <vector>
 #include <memory>
 
 namespace CodeSmithy
@@ -42,10 +41,6 @@ namespace CodeSmithy
 class Documents : private Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>
 {
 public:
-    Documents();
-    /** The destructor */
-    ~Documents();
-
     size_t size() const;
     std::shared_ptr<const Document> operator[](size_t index) const;
 
