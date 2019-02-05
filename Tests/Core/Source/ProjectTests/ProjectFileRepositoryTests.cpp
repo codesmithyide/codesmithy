@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,7 +21,7 @@
 */
 
 #include "ProjectFileRepositoryTests.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddProjectFileRepositoryTests(TestSequence& testSequence)
@@ -47,7 +47,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
     if (repository.name() == "")
     {
         result = TestResult::ePassed;
@@ -65,7 +65,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest2(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     if (repository.name() == "")
     {
         result = TestResult::ePassed;
@@ -80,7 +80,7 @@ TestResult::EOutcome ProjectFileRepositoryCreationTest3(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryCreationTest3.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     if (repository.name() == "ProjectFileRepositoryCreationTest3")
     {
         result = TestResult::ePassed;
@@ -97,7 +97,7 @@ TestResult::EOutcome ProjectFileRepositorySetNameTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositorySetNameTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
     repository.setName("ProjectFileRepositorySetNameTest1");
     repository.save();
 
@@ -118,9 +118,9 @@ TestResult::EOutcome ProjectFileRepositoryAddProjectNodeTest1(FileComparisonTest
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectFileRepositoryAddProjectNodeTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
     repository.setName("ProjectFileRepositoryAddProjectTest1");
-    std::shared_ptr<CodeSmithy::ProjectRepositoryNode> project1 = repository.addProjectNode("Project1");
+    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
 
     repository.save();
 
@@ -136,7 +136,7 @@ TestResult::EOutcome ProjectFileRepositoryGetProjectNodeTest1(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectFileRepositoryGetProjectNodeTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     if (repository.name() == "ProjectFileRepositoryGetProjectTest1")
     {
         if (repository.getProjectNode("Project1"))

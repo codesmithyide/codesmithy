@@ -21,7 +21,7 @@
 */
 
 #include "BootstrapTests.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <boost/filesystem/operations.hpp>
 
@@ -48,7 +48,7 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComp
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
     repository.setName("CodeSmithyIDE");
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy");
@@ -114,7 +114,7 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest2(Test& te
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     if (repository.name() == "CodeSmithyIDE")
     {
         DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");

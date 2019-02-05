@@ -22,7 +22,7 @@
 
 #include "BakefileProjectTests.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
 void AddBakefileProjectTests(TestSequence& testSequence)
@@ -49,7 +49,7 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
 
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(inputPath);
+    CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("BakefileProject");
 
     if (projectNode)
@@ -73,7 +73,7 @@ TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
 
-    CodeSmithy::ProjectFileRepository repository(outputPath);
+    CodeSmithy::ProjectRepository repository(outputPath);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("BakefileProject");
     if (projectNode)
