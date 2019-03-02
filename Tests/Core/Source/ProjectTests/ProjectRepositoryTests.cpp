@@ -26,19 +26,16 @@
 
 using namespace Ishiko::TestFramework;
 
-void ProjectRepositoryTests::AddTests(TestSequence& testSequence)
+void ProjectRepositoryTests::AddTests(TestSequence& parentTestSequence)
 {
-	TestSequence* repositoryTestSequence = new TestSequence("ProjectFileRepository tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectFileRepository tests");
 
-    new FileComparisonTest("Creation test 1", CreationTest1, *repositoryTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *repositoryTestSequence);
-    new HeapAllocationErrorsTest("Creation test 3", CreationTest3, *repositoryTestSequence);
-
-    new FileComparisonTest("setName test 1", SetNameTest1, *repositoryTestSequence);
-
-    new FileComparisonTest("addProjectNode test 1", AddProjectNodeTest1, *repositoryTestSequence);
-
-    new HeapAllocationErrorsTest("getProjectNode test 1", GetProjectNodeTest1, *repositoryTestSequence);
+    testSequence.append<FileComparisonTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
+    testSequence.append<FileComparisonTest>("setName test 1", SetNameTest1);
+    testSequence.append<FileComparisonTest>("addProjectNode test 1", AddProjectNodeTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
 }
 
 TestResult::EOutcome ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)

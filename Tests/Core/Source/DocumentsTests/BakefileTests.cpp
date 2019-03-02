@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddBakefileTests(TestSequence& testSequence)
+void AddBakefileTests(TestSequence& parentTestSequence)
 {
-    TestSequence* bakefileTestSequence = new TestSequence("Bakefile tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Bakefile tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", BakefileCreationTest1, *bakefileTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileCreationTest1);
 }
 
 TestResult::EOutcome BakefileCreationTest1()
