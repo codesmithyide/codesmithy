@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,9 +25,9 @@
 
 void AddProjectTemplatesTestSequence(TestHarness& theTestHarness)
 {
-    TestSequence& projectTemplatesTestSequence = theTestHarness.appendTestSequence("ProjectTemplates tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("ProjectTemplates tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", ProjectTemplatesCreationTest1, projectTemplatesTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectTemplatesCreationTest1);
 }
 
 TestResult::EOutcome ProjectTemplatesCreationTest1()

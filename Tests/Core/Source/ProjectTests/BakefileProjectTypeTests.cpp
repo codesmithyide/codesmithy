@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,13 +24,13 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-void AddBakefileProjectTypeTests(TestSequence& testSequence)
+void AddBakefileProjectTypeTests(TestSequence& parentTestSequence)
 {
-	TestSequence* typeTestSequence = new TestSequence("BakefileProjectType tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("BakefileProjectType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", BakefileProjectTypeCreationTest1, *typeTestSequence);
-
-    new HeapAllocationErrorsTest("supportedDocumentTypes test 1", BakefileProjectTypeSupportedDocumentTypesTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileProjectTypeCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1",
+        BakefileProjectTypeSupportedDocumentTypesTest1);
 }
 
 TestResult::EOutcome BakefileProjectTypeCreationTest1()

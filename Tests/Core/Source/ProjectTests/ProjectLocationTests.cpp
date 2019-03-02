@@ -25,14 +25,13 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void ProjectLocationTests::AddTests(TestSequence& testSequence)
+void ProjectLocationTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* locationTestSequence = new TestSequence("ProjectLocation tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectLocation tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *locationTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *locationTestSequence);
-
-    new FileComparisonTest("save test 1", SaveTest1, *locationTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    testSequence.append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
 TestResult::EOutcome ProjectLocationTests::CreationTest1()

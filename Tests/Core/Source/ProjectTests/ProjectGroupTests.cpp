@@ -25,25 +25,22 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void ProjectGroupTests::AddTests(TestSequence& testSequence)
+void ProjectGroupTests::AddTests(TestSequence& parentTestSequence)
 {
-	TestSequence* projectGroupTestSequence = new TestSequence("ProjectGroup tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectGroup tests");
 
-	new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *projectGroupTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", CreationTest2, *projectGroupTestSequence);
-    new HeapAllocationErrorsTest("Creation test 3", CreationTest3, *projectGroupTestSequence);
-    new HeapAllocationErrorsTest("Creation test 4", CreationTest4, *projectGroupTestSequence);
-    new HeapAllocationErrorsTest("Creation test 5", CreationTest5, *projectGroupTestSequence);
-    new HeapAllocationErrorsTest("Creation test 6", CreationTest6, *projectGroupTestSequence);
-
-    new FileComparisonTest("save test 1", SaveTest1, *projectGroupTestSequence);
-    new FileComparisonTest("save test 2", SaveTest2, *projectGroupTestSequence);
-
-    new FileComparisonTest("addExternalProjectLink test 1", AddExternalProjectLinkTest1, *projectGroupTestSequence);
-    new FileComparisonTest("addExternalProjectLink test 2", AddExternalProjectLinkTest2, *projectGroupTestSequence);
-    new FileComparisonTest("save test 3", SaveTest3, *projectGroupTestSequence);
-
-    new FileComparisonTest("addProject test 1", AddProjectTest1, *projectGroupTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 4", CreationTest4);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 5", CreationTest5);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 6", CreationTest6);
+    testSequence.append<FileComparisonTest>("save test 1", SaveTest1);
+    testSequence.append<FileComparisonTest>("save test 2", SaveTest2);
+    testSequence.append<FileComparisonTest>("addExternalProjectLink test 1", AddExternalProjectLinkTest1);
+    testSequence.append<FileComparisonTest>("addExternalProjectLink test 2", AddExternalProjectLinkTest2);
+    testSequence.append<FileComparisonTest>("save test 3", SaveTest3);
+    testSequence.append<FileComparisonTest>("addProject test 1", AddProjectTest1);
 }
 
 TestResult::EOutcome ProjectGroupTests::CreationTest1()

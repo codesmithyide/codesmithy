@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,11 +23,11 @@
 #include "GenericWorkspaceTests.h"
 #include "CodeSmithy/Core/Workspaces/GenericWorkspace.h"
 
-void AddGenericWorkspaceTests(TestSequence& testSequence)
+void AddGenericWorkspaceTests(TestSequence& parentTestSequence)
 {
-    TestSequence* genericWorkspaceTestSequence = new TestSequence("GenericWorkspace tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("GenericWorkspace tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", GenericWorkspaceCreationTest1, *genericWorkspaceTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", GenericWorkspaceCreationTest1);
 }
 
 TestResult::EOutcome GenericWorkspaceCreationTest1()

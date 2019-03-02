@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,7 +30,7 @@ using namespace Ishiko::TestFramework;
 class ProjectGroupTests
 {
 public:
-    static void AddTests(TestSequence& testSequence);
+    static void AddTests(TestSequence& parentTestSequence);
 
 private:
     static TestResult::EOutcome CreationTest1();

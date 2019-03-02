@@ -25,13 +25,12 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddCodeSmithyProjectTests(TestSequence& testSequence)
+void AddCodeSmithyProjectTests(TestSequence& parentTestSequence)
 {
-	TestSequence* codeSmithyProjectTestSequence = new TestSequence("CodeSmithyProject tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProject tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CodeSmithyProjectCreationTest1, *codeSmithyProjectTestSequence);
-
-    new FileComparisonTest("save test 1", CodeSmithyProjectSaveTest1, *codeSmithyProjectTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectCreationTest1);
+    testSequence.append<FileComparisonTest>("save test 1", CodeSmithyProjectSaveTest1);
 }
 
 TestResult::EOutcome CodeSmithyProjectCreationTest1()
