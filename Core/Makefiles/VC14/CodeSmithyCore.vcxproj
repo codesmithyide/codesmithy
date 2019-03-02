@@ -194,7 +194,6 @@
     <ClCompile Include="..\..\Source\Projects\ProjectLocation.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectType.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectTypes.cpp" />
-    <ClCompile Include="..\..\Source\Projects\ProjectObserver.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectRepository.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectGroup.cpp" />
     <ClCompile Include="..\..\Source\Projects\ProjectGroupType.cpp" />
@@ -267,7 +266,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectLocation.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
