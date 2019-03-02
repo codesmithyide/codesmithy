@@ -46,7 +46,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../../Include/CodeSmithy/Core/Documents/DocumentId.h
         ../../../Include/CodeSmithy/Core/Documents/DocumentIdGenerator.h
         ../../../Include/CodeSmithy/Core/Documents/Documents.h
-        ../../../Include/CodeSmithy/Core/Documents/DocumentsObserver.h
         ../../../Include/CodeSmithy/Core/Documents/Bakefile.h
         ../../../Include/CodeSmithy/Core/Documents/BakefileType.h
         ../../../Include/CodeSmithy/Core/Documents/BinaryFile.h
@@ -134,7 +133,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../Source/Documents/DocumentId.cpp
         ../../Source/Documents/DocumentIdGenerator.cpp
         ../../Source/Documents/Documents.cpp
-        ../../Source/Documents/DocumentsObserver.cpp
         ../../Source/Documents/Bakefile.cpp
         ../../Source/Documents/BakefileType.cpp
         ../../Source/Documents/BinaryFile.cpp

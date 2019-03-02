@@ -44,9 +44,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentsObserver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Bakefile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -260,9 +257,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Documents\Documents.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\DocumentsObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Documents\Bakefile.cpp">

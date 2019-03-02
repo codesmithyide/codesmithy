@@ -158,7 +158,6 @@
     <ClCompile Include="..\..\Source\Documents\DocumentId.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentIdGenerator.cpp" />
     <ClCompile Include="..\..\Source\Documents\Documents.cpp" />
-    <ClCompile Include="..\..\Source\Documents\DocumentsObserver.cpp" />
     <ClCompile Include="..\..\Source\Documents\Bakefile.cpp" />
     <ClCompile Include="..\..\Source\Documents\BakefileType.cpp" />
     <ClCompile Include="..\..\Source\Documents\BinaryFile.cpp" />
@@ -232,7 +231,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentId.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentIdGenerator.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentsObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Bakefile.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BinaryFile.h" />

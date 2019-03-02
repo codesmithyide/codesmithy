@@ -41,6 +41,16 @@ namespace CodeSmithy
 class Documents : private Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>
 {
 public:
+    class DocumentsObserver : public Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observer
+    {
+    public:
+        virtual ~DocumentsObserver() = default;
+
+        void onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& value) override;
+
+        virtual void onAdd(const Documents& source, std::shared_ptr<Document> document);
+    };
+
     size_t size() const;
     std::shared_ptr<const Document> operator[](size_t index) const;
 

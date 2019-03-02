@@ -25,6 +25,15 @@
 namespace CodeSmithy
 {
 
+void DocumentsObserver::onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& value)
+{
+    onAdd(source, value);
+}
+
+void DocumentsObserver::onAdd(const Documents& source, std::shared_ptr<Document> document)
+{
+}
+
 size_t Documents::size() const
 {
     return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::size();
