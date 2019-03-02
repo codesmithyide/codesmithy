@@ -27,17 +27,14 @@
 
 using namespace Ishiko::TestFramework;
 
-void DocumentsTests::AddTests(TestSequence& testSequence)
+void DocumentsTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* documentsTestSequence = new TestSequence("Documents tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Documents tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *documentsTestSequence);
-
-    new HeapAllocationErrorsTest("add test 1", AddTest1, *documentsTestSequence);
-
-    new HeapAllocationErrorsTest("addObserver test 1", AddObserverTest1, *documentsTestSequence);
-
-    new HeapAllocationErrorsTest("removeObserver test 1", RemoveObserverTest1, *documentsTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("add test 1", AddTest1);
+    testSequence.append<HeapAllocationErrorsTest>("addObserver test 1", AddObserverTest1);
+    testSequence.append<HeapAllocationErrorsTest>("removeObserver test 1", RemoveObserverTest1);
 }
 
 TestResult::EOutcome DocumentsTests::CreationTest1()

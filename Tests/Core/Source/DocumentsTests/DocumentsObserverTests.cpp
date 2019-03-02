@@ -25,11 +25,11 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentsObserverTests(TestSequence& testSequence)
+void AddDocumentsObserverTests(TestSequence& parentTestSequence)
 {
-    TestSequence* observerTestSequence = new TestSequence("DocumentsObserver tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("DocumentsObserver tests");
 
-    new HeapAllocationErrorsTest("onAdd test 1", DocumentsObserverOnAddTest1, *observerTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("onAdd test 1", DocumentsObserverOnAddTest1);
 }
 
 TestResult::EOutcome DocumentsObserverOnAddTest1()

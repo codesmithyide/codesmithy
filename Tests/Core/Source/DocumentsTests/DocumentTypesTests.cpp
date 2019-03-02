@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,18 +24,16 @@
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentTypesTests(TestSequence& testSequence)
+void AddDocumentTypesTests(TestSequence& parentTestSequence)
 {
-    TestSequence* typesTestSequence = new TestSequence("DocumentTypes tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("DocumentTypes tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", DocumentTypesCreationTest1, *typesTestSequence);
-
-    new HeapAllocationErrorsTest("add test 1", DocumentTypesAddTest1, *typesTestSequence);
-
-    new HeapAllocationErrorsTest("getSuitableTypesForFileExtension test 1", 
-        DocumentTypesGetSuitableTypesForFileExtensionTest1, *typesTestSequence);
-    new HeapAllocationErrorsTest("getSuitableTypesForFileExtension test 2",
-        DocumentTypesGetSuitableTypesForFileExtensionTest2, *typesTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", DocumentTypesCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("add test 1", DocumentTypesAddTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 1",
+        DocumentTypesGetSuitableTypesForFileExtensionTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 2",
+        DocumentTypesGetSuitableTypesForFileExtensionTest2);
 }
 
 TestResult::EOutcome DocumentTypesCreationTest1()

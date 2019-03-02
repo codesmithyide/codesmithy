@@ -28,7 +28,7 @@
 class DocumentsTests
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
 
 private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();

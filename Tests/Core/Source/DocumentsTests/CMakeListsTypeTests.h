@@ -27,7 +27,7 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddCMakeListsTypeTests(TestSequence& testSequence);
+void AddCMakeListsTypeTests(TestSequence& parentTestSequence);
 
 TestResult::EOutcome CMakeListsTypeCreationTest1();
 
