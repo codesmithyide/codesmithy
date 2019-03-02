@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Documents/CMakeLists.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-void AddCMakeListsTests(TestSequence& testSequence)
+void AddCMakeListsTests(TestSequence& parentTestSequence)
 {
-    TestSequence* cmakelistsTestSequence = new TestSequence("CMakeLists tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CMakeLists tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CMakeListsCreationTest1, *cmakelistsTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CMakeListsCreationTest1);
 }
 
 TestResult::EOutcome CMakeListsCreationTest1()

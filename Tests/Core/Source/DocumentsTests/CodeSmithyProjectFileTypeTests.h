@@ -27,7 +27,7 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddCodeSmithyProjectFileTypeTests(TestSequence& testSequence);
+void AddCodeSmithyProjectFileTypeTests(TestSequence& parentTestSequence);
 
 TestResult::EOutcome CodeSmithyProjectFileTypeCreationTest1();
 

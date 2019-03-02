@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,11 +23,11 @@
 #include "XMLDocumentTypeTests.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-void AddXMLDocumentTypeTests(TestSequence& testSequence)
+void AddXMLDocumentTypeTests(TestSequence& parentTestSequence)
 {
-    TestSequence* typeTestSequence = new TestSequence("XMLDocumentType tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("XMLDocumentType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", XMLDocumentTypeCreationTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", XMLDocumentTypeCreationTest1);
 }
 
 TestResult::EOutcome XMLDocumentTypeCreationTest1()

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,11 +23,11 @@
 #include "CppFileTypeTests.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-void AddCppFileTypeTests(TestSequence& testSequence)
+void AddCppFileTypeTests(TestSequence& parentTestSequence)
 {
-    TestSequence* typeTestSequence = new TestSequence("CppFileType tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CppFileType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CppFileTypeCreationTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CppFileTypeCreationTest1);
 }
 
 TestResult::EOutcome CppFileTypeCreationTest1()

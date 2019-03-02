@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Documents/CppFile.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-void AddCppFileTests(TestSequence& testSequence)
+void AddCppFileTests(TestSequence& parentTestSequence)
 {
-    TestSequence* cppFileTestSequence = new TestSequence("CppFile tests", testSequence);
+    TestSequence testSequence = parentTestSequence.append<TestSequence>("CppFile tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CppFileCreationTest1, *cppFileTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CppFileCreationTest1);
 }
 
 TestResult::EOutcome CppFileCreationTest1()
