@@ -60,8 +60,7 @@ public:
     class Observer
     {
     public:
-        Observer();
-        virtual ~Observer();
+        virtual ~Observer() noexcept = default;
 
         virtual void onModified(const Document& source, bool modified);
     };
@@ -88,8 +87,8 @@ public:
 
     void save(const boost::filesystem::path& path);
 
-    void addObserver(std::weak_ptr<DocumentObserver> observer);
-    void removeObserver(std::weak_ptr<DocumentObserver> observer);
+    void addObserver(std::weak_ptr<Observer> observer);
+    void removeObserver(std::weak_ptr<Observer> observer);
 
 private:
     virtual void doSave(const boost::filesystem::path& path) const = 0;
@@ -102,7 +101,7 @@ private:
     std::string m_name;
     boost::filesystem::path m_filePath;
     bool m_modified;
-    std::vector<std::weak_ptr<DocumentObserver> > m_observers;
+    std::vector<std::weak_ptr<Observer>> m_observers;
 };
 
 }

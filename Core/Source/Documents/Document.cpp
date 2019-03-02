@@ -25,14 +25,6 @@
 namespace CodeSmithy
 {
 
-Document::Observer::Observer()
-{
-}
-
-Document::Observer::~Observer()
-{
-}
-
 void Document::Observer::onModified(const Document& source, bool modified)
 {
 }
@@ -100,12 +92,12 @@ void Document::save(const boost::filesystem::path& path)
     setModified(false);
 }
 
-void Document::addObserver(std::weak_ptr<DocumentObserver> observer)
+void Document::addObserver(std::weak_ptr<Observer> observer)
 {
     m_observers.push_back(observer);
 }
 
-void Document::removeObserver(std::weak_ptr<DocumentObserver> observer)
+void Document::removeObserver(std::weak_ptr<Observer> observer)
 {
     for (size_t i = 0; i < m_observers.size(); ++i)
     {
@@ -121,7 +113,7 @@ void Document::notifyModified(bool modified)
 {
     for (size_t i = 0; i < m_observers.size(); ++i)
     {
-        std::shared_ptr<DocumentObserver> observer = m_observers[i].lock();
+        std::shared_ptr<Observer> observer = m_observers[i].lock();
         if (observer)
         {
             observer->onModified(*this, modified);
