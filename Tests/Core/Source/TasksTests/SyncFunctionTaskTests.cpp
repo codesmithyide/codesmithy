@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,12 +25,12 @@
 
 using namespace Ishiko::TestFramework;
 
-void SyncFunctionTaskTests::AddTests(TestSequence& testSequence)
+void SyncFunctionTaskTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* functionTaskTestSequence = new TestSequence("SyncFunctionTask tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("SyncFunctionTask tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *functionTaskTestSequence);
-    new HeapAllocationErrorsTest("run test 1", RunTest1, *functionTaskTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
 TestResult::EOutcome SyncFunctionTaskTests::CreationTest1()

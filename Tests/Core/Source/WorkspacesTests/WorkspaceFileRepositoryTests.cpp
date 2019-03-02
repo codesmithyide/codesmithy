@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddWorkspaceFileRepositoryTests(TestSequence& testSequence)
+void AddWorkspaceFileRepositoryTests(TestSequence& parentTestSequence)
 {
-    TestSequence* repositoryTestSequence = new TestSequence("WorkspaceFileRepository tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("WorkspaceFileRepository tests");
 
-    new FileComparisonTest("Creation test 1", WorkspaceFileRepositoryCreationTest1, *repositoryTestSequence);
+    testSequence.append<FileComparisonTest>("Creation test 1", WorkspaceFileRepositoryCreationTest1);
 }
 
 TestResult::EOutcome WorkspaceFileRepositoryCreationTest1(FileComparisonTest& test)

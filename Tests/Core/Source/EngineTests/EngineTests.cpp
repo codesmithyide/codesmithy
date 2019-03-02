@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -27,9 +27,9 @@ using namespace Ishiko::TestFramework;
 
 void EngineTests::AddTests(TestHarness& theTestHarness)
 {
-    TestSequence& engineTestSequence = theTestHarness.appendTestSequence("Engine tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("Engine tests");
 
-    new HeapAllocationErrorsTest("Engine test 1", EngineCreationTest1, engineTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Engine test 1", EngineCreationTest1);
 }
 
 TestResult::EOutcome EngineTests::EngineCreationTest1()

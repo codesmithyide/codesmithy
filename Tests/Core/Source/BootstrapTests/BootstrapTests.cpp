@@ -32,10 +32,12 @@ void BootstrapTests::AddTests(TestHarness& theTestHarness)
     boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "BootstrapTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& bootstrapTestSequence = theTestHarness.appendTestSequence("Bootstrap tests");
+    TestSequence& testSequence = theTestHarness.appendTestSequence("Bootstrap tests");
 
-    new FileComparisonTest("Bootstrap ProjectFileRepository creation test 1", ProjectFileRepositoryCreationTest1, bootstrapTestSequence);
-    new HeapAllocationErrorsTest("Bootstap ProjectFileRepository test 2", ProjectFileRepositoryCreationTest2, bootstrapTestSequence);
+    testSequence.append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
+        ProjectFileRepositoryCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Bootstap ProjectFileRepository test 2",
+        ProjectFileRepositoryCreationTest2);
 }
 
 // This tests that we are able to generate the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
