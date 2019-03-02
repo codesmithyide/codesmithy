@@ -209,9 +209,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\Tasks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TasksObserver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Tasks\TaskRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -416,9 +413,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Tasks\Tasks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Tasks\TasksObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Tasks\TaskRunner.cpp">
