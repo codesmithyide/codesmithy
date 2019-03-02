@@ -65,7 +65,7 @@ TestResult::EOutcome TasksTests::AddTest1()
 TestResult::EOutcome TasksTests::AddObserverTest1()
 {
     CodeSmithy::Tasks tasks;
-    std::shared_ptr<CodeSmithy::TasksObserver> observer = std::make_shared<CodeSmithy::TasksObserver>();
+    std::shared_ptr<CodeSmithy::Tasks::Observer> observer = std::make_shared<CodeSmithy::Tasks::Observer>();
     tasks.observers().add(observer);
 
     return TestResult::ePassed;
@@ -74,7 +74,7 @@ TestResult::EOutcome TasksTests::AddObserverTest1()
 TestResult::EOutcome TasksTests::RemoveObserverTest1()
 {
     CodeSmithy::Tasks tasks;
-    std::shared_ptr<CodeSmithy::TasksObserver> observer = std::make_shared<CodeSmithy::TasksObserver>();
+    std::shared_ptr<CodeSmithy::Tasks::Observer> observer = std::make_shared<CodeSmithy::Tasks::Observer>();
     tasks.observers().add(observer);
     tasks.observers().remove(observer);
 

@@ -24,7 +24,6 @@
 #define _CODESMITHY_CORE_TASKS_TASKS_H_
 
 #include "Task.h"
-#include "TasksObserver.h"
 #include "Ishiko/Collections/ObservableVector.h"
 #include <memory>
 
@@ -34,6 +33,8 @@ namespace CodeSmithy
 class Tasks : private Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>
 {
 public:
+    typedef Ishiko::Collections::ObservableVector<std::shared_ptr<Task>, Tasks>::Observer Observer;
+
     size_t size() const;
 
     void add(std::shared_ptr<Task> task);
