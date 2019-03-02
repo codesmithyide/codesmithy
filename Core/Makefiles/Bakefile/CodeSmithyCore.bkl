@@ -108,7 +108,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
 
         ../../../Include/CodeSmithy/Core/Tasks/Task.h
         ../../../Include/CodeSmithy/Core/Tasks/SyncFunctionTask.h
-        ../../../Include/CodeSmithy/Core/Tasks/TaskObserver.h
         ../../../Include/CodeSmithy/Core/Tasks/Tasks.h
         ../../../Include/CodeSmithy/Core/Tasks/TasksObserver.h
         ../../../Include/CodeSmithy/Core/Tasks/TaskRunner.h
@@ -194,7 +193,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
 
         ../../Source/Tasks/Task.cpp
         ../../Source/Tasks/SyncFunctionTask.cpp
-        ../../Source/Tasks/TaskObserver.cpp
         ../../Source/Tasks/Tasks.cpp
         ../../Source/Tasks/TasksObserver.cpp
         ../../Source/Tasks/TaskRunner.cpp
