@@ -28,7 +28,7 @@ using namespace Ishiko::TestFramework;
 
 void ProjectRepositoryTests::AddTests(TestSequence& parentTestSequence)
 {
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectFileRepository tests");
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectRepositoryTests tests");
 
     testSequence.append<FileComparisonTest>("Creation test 1", CreationTest1);
     testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
