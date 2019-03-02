@@ -11,14 +11,14 @@ This repository contains the source code for the main components of the IDE.
 - Core - Library containing all the code that is not UI-related.
 - Make - Command line build tool.
 - UI
- - UI
- - UICore
- - UIElements
- - UIImplementation
+ -- UI
+ -- UICore
+ -- UIElements
+ -- UIImplementation
 
 ## License
 
-Copyright (c) 2015-2018 Xavier Leclercq
+Copyright (c) 2015-2019 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),

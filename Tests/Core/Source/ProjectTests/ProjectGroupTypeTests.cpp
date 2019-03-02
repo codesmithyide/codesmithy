@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,11 +23,11 @@
 #include "ProjectGroupTypeTests.h"
 #include "CodeSmithy/Core/Projects/ProjectGroupType.h"
 
-void AddProjectGroupTypeTests(TestSequence& testSequence)
+void AddProjectGroupTypeTests(TestSequence& parentTestSequence)
 {
-	TestSequence* typeTestSequence = new TestSequence("ProjectGroupType tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectGroupType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", ProjectGroupTypeCreationTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectGroupTypeCreationTest1);
 }
 
 TestResult::EOutcome ProjectGroupTypeCreationTest1()

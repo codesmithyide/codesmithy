@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,13 +24,13 @@
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
 
-void AddCMakeProjectTypeTests(TestSequence& testSequence)
+void AddCMakeProjectTypeTests(TestSequence& parentTestSequence)
 {
-	TestSequence* typeTestSequence = new TestSequence("CMakeProjectType tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CMakeProjectType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CMakeProjectTypeCreationTest1, *typeTestSequence);
-
-    new HeapAllocationErrorsTest("supportedDocumentTypes test 1", CMakeProjectTypeSupportedDocumentTypesTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CMakeProjectTypeCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1",
+        CMakeProjectTypeSupportedDocumentTypesTest1);
 }
 
 TestResult::EOutcome CMakeProjectTypeCreationTest1()

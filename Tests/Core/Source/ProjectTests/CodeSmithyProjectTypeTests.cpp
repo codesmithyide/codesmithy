@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,11 +23,11 @@
 #include "CodeSmithyProjectTypeTests.h"
 #include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h"
 
-void AddCodeSmithyProjectTypeTests(TestSequence& testSequence)
+void AddCodeSmithyProjectTypeTests(TestSequence& parentTestSequence)
 {
-	TestSequence* typeTestSequence = new TestSequence("CodeSmithyProjectType tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProjectType tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CodeSmithyProjectTypeCreationTest1, *typeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectTypeCreationTest1);
 }
 
 TestResult::EOutcome CodeSmithyProjectTypeCreationTest1()

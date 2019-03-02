@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,18 +25,16 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-void AddProjectTypesTests(TestSequence& testSequence)
+void AddProjectTypesTests(TestSequence& parentTestSequence)
 {
-	TestSequence* typesTestSequence = new TestSequence("ProjectTypes tests", testSequence);
+	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectTypes tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", ProjectTypesCreationTest1, *typesTestSequence);
-
-    new HeapAllocationErrorsTest("add test 1", ProjectTypesAddTest1, *typesTestSequence);
-
-    new HeapAllocationErrorsTest("getSuitableTypesForDocumentType test 1", ProjectTypesGetSuitableTypesForDocumentTypeTest1,
-        *typesTestSequence);
-    new HeapAllocationErrorsTest("getSuitableTypesForDocumentType test 2", ProjectTypesGetSuitableTypesForDocumentTypeTest2,
-        *typesTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectTypesCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("add test 1", ProjectTypesAddTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 1",
+        ProjectTypesGetSuitableTypesForDocumentTypeTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 2",
+        ProjectTypesGetSuitableTypesForDocumentTypeTest2);
 }
 
 TestResult::EOutcome ProjectTypesCreationTest1()

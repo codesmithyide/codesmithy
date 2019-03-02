@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddProjectTypesTests(TestSequence& testSequence);
+void AddProjectTypesTests(TestSequence& parentTestSequence);
 
 TestResult::EOutcome ProjectTypesCreationTest1();
 TestResult::EOutcome ProjectTypesAddTest1();
