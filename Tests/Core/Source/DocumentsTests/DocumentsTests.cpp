@@ -68,7 +68,7 @@ TestResult::EOutcome DocumentsTests::AddTest1()
 TestResult::EOutcome DocumentsTests::AddObserverTest1()
 {
     CodeSmithy::Documents documents;
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
+    std::shared_ptr<CodeSmithy::Documents::Observer> observer = std::make_shared<CodeSmithy::Documents::Observer>();
     documents.observers().add(observer);
 
     return TestResult::ePassed;
@@ -77,7 +77,7 @@ TestResult::EOutcome DocumentsTests::AddObserverTest1()
 TestResult::EOutcome DocumentsTests::RemoveObserverTest1()
 {
     CodeSmithy::Documents documents;
-    std::shared_ptr<CodeSmithy::DocumentsObserver> observer = std::make_shared<CodeSmithy::DocumentsObserver>();
+    std::shared_ptr<CodeSmithy::Documents::Observer> observer = std::make_shared<CodeSmithy::Documents::Observer>();
     documents.observers().add(observer);
     documents.observers().remove(observer);
 

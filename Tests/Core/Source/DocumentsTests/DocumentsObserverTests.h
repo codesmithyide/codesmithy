@@ -24,23 +24,23 @@
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include "CodeSmithy/Core/Documents/DocumentsObserver.h"
-#
+#include "CodeSmithy/Core/Documents/Documents.h"
+
 using namespace Ishiko::TestFramework;
 
 void AddDocumentsObserverTests(TestSequence& parentTestSequence);
 
 TestResult::EOutcome DocumentsObserverOnAddTest1();
 
-class TestDocumentsObserver : public CodeSmithy::DocumentsObserver
+class TestDocumentsObserver : public CodeSmithy::Documents::Observer
 {
 public:
-    const std::vector<std::shared_ptr<const CodeSmithy::Document> >& observedDocuments() const;
+    const std::vector<std::shared_ptr<const CodeSmithy::Document>>& observedDocuments() const;
 
-    void onAdd(const CodeSmithy::Documents& source, std::shared_ptr<CodeSmithy::Document> document) override;
+    void onElementAdded(const CodeSmithy::Documents& source, size_t pos, const std::shared_ptr<CodeSmithy::Document>& value) override;
 
 private:
-    std::vector<std::shared_ptr<const CodeSmithy::Document> > m_observedDocuments;
+    std::vector<std::shared_ptr<const CodeSmithy::Document>> m_observedDocuments;
 };
 
 #endif
