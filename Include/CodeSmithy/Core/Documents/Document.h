@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,6 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENT_H_
 
 #include "DocumentId.h"
-#include "DocumentObserver.h"
 #include <boost/filesystem/path.hpp>
 #include <string>
 #include <memory>
@@ -58,6 +57,15 @@ class DocumentType;
 class Document
 {
 public:
+    class Observer
+    {
+    public:
+        Observer();
+        virtual ~Observer();
+
+        virtual void onModified(const Document& source, bool modified);
+    };
+
     Document(const std::shared_ptr<const DocumentType> type, 
         const DocumentId& id, const std::string& name);
     Document(const std::shared_ptr<const DocumentType> type,

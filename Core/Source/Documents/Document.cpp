@@ -25,6 +25,18 @@
 namespace CodeSmithy
 {
 
+Document::Observer::Observer()
+{
+}
+
+Document::Observer::~Observer()
+{
+}
+
+void Document::Observer::onModified(const Document& source, bool modified)
+{
+}
+
 Document::Document(const std::shared_ptr<const DocumentType> type,
                    const DocumentId& id,
                    const std::string& name)

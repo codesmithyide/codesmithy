@@ -155,7 +155,6 @@
     <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp" />
     <ClCompile Include="..\..\Source\Documents\Document.cpp" />
-    <ClCompile Include="..\..\Source\Documents\DocumentObserver.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentId.cpp" />
     <ClCompile Include="..\..\Source\Documents\DocumentIdGenerator.cpp" />
     <ClCompile Include="..\..\Source\Documents\Documents.cpp" />
@@ -230,7 +229,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Document.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentObserver.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentId.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentIdGenerator.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h" />
