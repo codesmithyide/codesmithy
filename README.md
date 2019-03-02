@@ -11,10 +11,10 @@ This repository contains the source code for the main components of the IDE.
 - Core - Library containing all the code that is not UI-related.
 - Make - Command line build tool.
 - UI
- -- UI
- -- UICore
- -- UIElements
- -- UIImplementation
+    - UI
+    - UICore
+    - UIElements
+    - UIImplementation
 
 ## License
 
