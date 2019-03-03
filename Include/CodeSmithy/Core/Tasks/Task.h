@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -31,7 +31,35 @@ namespace CodeSmithy
 class Task
 {
 public:
-    virtual boost::unique_future<void> run();
+    enum class EStatus
+    {
+        ePending,
+        eRunning,
+        eCompleted
+    };
+
+    class Observer
+    {
+    public:
+        virtual ~Observer() = default;
+
+        virtual void onStatusChanged(const Task& source, EStatus status);
+    };
+
+    Task();
+    virtual ~Task() noexcept = default;
+
+    EStatus status() const;
+
+    void run();
+    virtual void doRun();
+
+    void addObserver(std::weak_ptr<Observer> observer);
+    void removeObserver(std::weak_ptr<Observer> observer);
+
+private:
+    EStatus m_status;
+    std::vector<std::weak_ptr<Observer>> m_observers;
 };
 
 }

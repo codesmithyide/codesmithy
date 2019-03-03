@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,11 +25,46 @@
 namespace CodeSmithy
 {
 
-boost::unique_future<void> Task::run()
+void Task::Observer::onStatusChanged(const Task& source, EStatus status)
 {
-    boost::packaged_task<void> task([]() -> void {});
-    task();
-    return task.get_future();
+}
+
+Task::Task()
+    : m_status(EStatus::ePending)
+{
+}
+
+Task::EStatus Task::status() const
+{
+    return m_status;
+}
+
+void Task::run()
+{
+    m_status = EStatus::eRunning;
+    doRun();
+    m_status = EStatus::eCompleted;
+}
+
+void Task::doRun()
+{
+}
+
+void Task::addObserver(std::weak_ptr<Observer> observer)
+{
+    m_observers.push_back(observer);
+}
+
+void Task::removeObserver(std::weak_ptr<Observer> observer)
+{
+    for (size_t i = 0; i < m_observers.size(); ++i)
+    {
+        if (m_observers[i].lock().get() == observer.lock().get())
+        {
+            m_observers.erase(m_observers.begin() + i);
+            break;
+        }
+    }
 }
 
 }
