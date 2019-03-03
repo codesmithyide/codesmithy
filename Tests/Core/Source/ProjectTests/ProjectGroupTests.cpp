@@ -61,7 +61,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest2(Test& test)
 
     if (projectNode)
     {
-        Ishiko::Error error;
+        Ishiko::Error error(0);
         CodeSmithy::ProjectGroupType type;
         CodeSmithy::ProjectGroup project(type, projectNode, error);
         if (!error && (project.name() == "MyProjectGroup"))
@@ -87,7 +87,7 @@ TestResult::EOutcome ProjectGroupTests::CreationTest3(Test& test)
 
     if (projectNode)
     {
-        Ishiko::Error error;
+        Ishiko::Error error(0);
         CodeSmithy::ProjectGroupType type;
         CodeSmithy::ProjectGroup project(type, projectNode, error);
         if (!error && (project.name() == "MyProjectGroup"))
