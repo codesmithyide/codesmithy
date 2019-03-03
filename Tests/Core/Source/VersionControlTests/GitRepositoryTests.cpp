@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,20 +24,16 @@
 #include "CodeSmithy/Core/VersionControl/GitRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void GitRepositoryTests::AddTests(TestSequence& testSequence)
+void GitRepositoryTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* gitRepositoryTestSequence = new TestSequence("GitRepository tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("GitRepository tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *gitRepositoryTestSequence);
-
-    new HeapAllocationErrorsTest("init test 1", InitTest1, *gitRepositoryTestSequence);
-
-    new HeapAllocationErrorsTest("clone test 1", CloneTest1, *gitRepositoryTestSequence);
-
-    new HeapAllocationErrorsTest("open test 1", OpenTest1, *gitRepositoryTestSequence);
-    
-    new HeapAllocationErrorsTest("checkIfRepository test 1", CheckIfRepositoryTest1, *gitRepositoryTestSequence);
-    new HeapAllocationErrorsTest("checkIfRepository test 2", CheckIfRepositoryTest2, *gitRepositoryTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("init test 1", InitTest1);
+    testSequence.append<HeapAllocationErrorsTest>("clone test 1", CloneTest1);
+    testSequence.append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
+    testSequence.append<HeapAllocationErrorsTest>("checkIfRepository test 1", CheckIfRepositoryTest1);
+    testSequence.append<HeapAllocationErrorsTest>("checkIfRepository test 2", CheckIfRepositoryTest2);
 }
 
 TestResult::EOutcome GitRepositoryTests::CreationTest1()
@@ -52,7 +48,7 @@ TestResult::EOutcome GitRepositoryTests::InitTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.init(outputPath.string())->run().wait();
+    repository.init(outputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
@@ -65,7 +61,7 @@ TestResult::EOutcome GitRepositoryTests::CloneTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.clone(inputPath.string(), outputPath.string())->run().wait();
+    repository.clone(inputPath.string(), outputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
@@ -76,7 +72,7 @@ TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
-    repository.open(inputPath.string())->run().wait();
+    repository.open(inputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     return TestResult::ePassed;
