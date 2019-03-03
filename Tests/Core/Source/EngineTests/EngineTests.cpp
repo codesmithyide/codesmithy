@@ -22,6 +22,7 @@
 
 #include "EngineTests.h"
 #include "CodeSmithy/Core/Engine.h"
+#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
 
 using namespace Ishiko::TestFramework;
 
@@ -29,11 +30,43 @@ void EngineTests::AddTests(TestHarness& theTestHarness)
 {
     TestSequence& testSequence = theTestHarness.appendTestSequence("Engine tests");
 
-    testSequence.append<HeapAllocationErrorsTest>("Engine test 1", EngineCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
+    testSequence.append<HeapAllocationErrorsTest>("addTask test 1", AddTaskTest1);
 }
 
-TestResult::EOutcome EngineTests::EngineCreationTest1()
+TestResult::EOutcome EngineTests::CreationTest1()
 {
     CodeSmithy::Engine engine;
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome EngineTests::StartTest1()
+{
+    CodeSmithy::Engine engine;
+    engine.start();
+    engine.stop();
+    engine.join();
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome EngineTests::AddTaskTest1()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    CodeSmithy::Engine engine;
+    engine.start();
+
+    std::shared_ptr<CodeSmithy::SyncFunctionTask> task = std::make_shared<CodeSmithy::SyncFunctionTask>([]() {});
+    engine.addTask(task);
+
+    engine.stop();
+    engine.join();
+
+    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
+    {
+        result = TestResult::ePassed;
+    }
+
+    return result;
 }
