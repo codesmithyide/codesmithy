@@ -35,6 +35,7 @@ void TaskRunnerTests::AddTests(TestSequence& parentTestSequence)
     testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
     testSequence.append<HeapAllocationErrorsTest>("start test 2", StartTest2);
     testSequence.append<HeapAllocationErrorsTest>("post test 1", PostTest1);
+    testSequence.append<HeapAllocationErrorsTest>("post test 2", PostTest2);
 }
 
 TestResult::EOutcome TaskRunnerTests::CreationTest1()
@@ -73,6 +74,27 @@ TestResult::EOutcome TaskRunnerTests::PostTest1()
     taskRunner.start();
 
     std::shared_ptr<CodeSmithy::SyncFunctionTask> task = std::make_shared<CodeSmithy::SyncFunctionTask>([](){});
+    taskRunner.post(task);
+
+    taskRunner.stop();
+    taskRunner.join();
+
+    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome TaskRunnerTests::PostTest2()
+{
+    CodeSmithy::TaskRunner taskRunner(16);
+    taskRunner.start();
+
+    std::shared_ptr<CodeSmithy::SyncFunctionTask> task = std::make_shared<CodeSmithy::SyncFunctionTask>([]() {});
     taskRunner.post(task);
 
     taskRunner.stop();
