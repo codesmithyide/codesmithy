@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -27,6 +27,69 @@ namespace CodeSmithy
 
 void Document::Observer::onModified(const Document& source, bool modified)
 {
+}
+
+void Document::Observers::add(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return (o.first.lock() == observer);
+    }
+    );
+    if (it != m_observers.end())
+    {
+        ++it->second;
+    }
+    else
+    {
+        m_observers.push_back(std::pair<std::weak_ptr<Observer>, size_t>(observer, 1));
+    }
+}
+
+void Document::Observers::remove(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return (o.first.lock() == observer);
+    }
+    );
+    if (it != m_observers.end())
+    {
+        --it->second;
+        if (it->second == 0)
+        {
+            m_observers.erase(it);
+        }
+    }
+}
+
+void Document::Observers::notifyModified(const Document& source, bool modified)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onModified(source, modified);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
+void Document::Observers::removeDeletedObservers()
+{
+    auto it = std::remove_if(m_observers.begin(), m_observers.end(),
+        [](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return o.first.expired();
+    }
+    );
+    m_observers.erase(it, m_observers.end());
 }
 
 Document::Document(const std::shared_ptr<const DocumentType> type,
@@ -82,7 +145,7 @@ bool Document::modified() const
 void Document::setModified(bool modified)
 {
     m_modified = modified;
-    notifyModified(m_modified);
+    observers().notifyModified(*this, m_modified);
 }
 
 void Document::save(const boost::filesystem::path& path)
@@ -92,33 +155,9 @@ void Document::save(const boost::filesystem::path& path)
     setModified(false);
 }
 
-void Document::addObserver(std::weak_ptr<Observer> observer)
+Document::Observers& Document::observers()
 {
-    m_observers.push_back(observer);
-}
-
-void Document::removeObserver(std::weak_ptr<Observer> observer)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        if (m_observers[i].lock().get() == observer.lock().get())
-        {
-            m_observers.erase(m_observers.begin() + i);
-            break;
-        }
-    }
-}
-
-void Document::notifyModified(bool modified)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        std::shared_ptr<Observer> observer = m_observers[i].lock();
-        if (observer)
-        {
-            observer->onModified(*this, modified);
-        }
-    }
+    return m_observers;
 }
 
 }

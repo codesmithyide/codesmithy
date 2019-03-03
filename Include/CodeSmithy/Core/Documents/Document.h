@@ -65,6 +65,21 @@ public:
         virtual void onModified(const Document& source, bool modified);
     };
 
+    class Observers final
+    {
+    public:
+        void add(std::shared_ptr<Observer> observer);
+        void remove(std::shared_ptr<Observer> observer);
+
+        void notifyModified(const Document& source, bool modified);
+
+    private:
+        void removeDeletedObservers();
+
+    private:
+        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
+    };
+
     Document(const std::shared_ptr<const DocumentType> type, 
         const DocumentId& id, const std::string& name);
     Document(const std::shared_ptr<const DocumentType> type,
@@ -87,13 +102,10 @@ public:
 
     void save(const boost::filesystem::path& path);
 
-    void addObserver(std::weak_ptr<Observer> observer);
-    void removeObserver(std::weak_ptr<Observer> observer);
+    Observers& observers();
 
 private:
     virtual void doSave(const boost::filesystem::path& path) const = 0;
-
-    void notifyModified(bool modified);
 
 private:
     const std::shared_ptr<const DocumentType> m_type;
@@ -101,7 +113,7 @@ private:
     std::string m_name;
     boost::filesystem::path m_filePath;
     bool m_modified;
-    std::vector<std::weak_ptr<Observer>> m_observers;
+    Observers m_observers;
 };
 
 }
