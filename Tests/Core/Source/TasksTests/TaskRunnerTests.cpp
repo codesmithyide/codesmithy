@@ -22,6 +22,7 @@
 
 #include "TaskRunnerTests.h"
 #include "CodeSmithy/Core/Tasks/TaskRunner.h"
+#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
 
 using namespace Ishiko::TestFramework;
 
@@ -33,6 +34,7 @@ void TaskRunnerTests::AddTests(TestSequence& parentTestSequence)
     testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
     testSequence.append<HeapAllocationErrorsTest>("start test 2", StartTest2);
+    testSequence.append<HeapAllocationErrorsTest>("post test 1", PostTest1);
 }
 
 TestResult::EOutcome TaskRunnerTests::CreationTest1()
@@ -63,4 +65,25 @@ TestResult::EOutcome TaskRunnerTests::StartTest2()
     taskRunner.stop();
     taskRunner.join();
     return TestResult::ePassed;
+}
+
+TestResult::EOutcome TaskRunnerTests::PostTest1()
+{
+    CodeSmithy::TaskRunner taskRunner(1);
+    taskRunner.start();
+
+    std::shared_ptr<CodeSmithy::SyncFunctionTask> task = std::make_shared<CodeSmithy::SyncFunctionTask>([](){});
+    taskRunner.post(task);
+
+    taskRunner.stop();
+    taskRunner.join();
+
+    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
 }

@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_TASKS_TASKRUNNER_H_
 #define _CODESMITHY_CORE_TASKS_TASKRUNNER_H_
 
+#include "Task.h"
 #include <boost/asio/io_context.hpp>
 #include <boost/asio/executor_work_guard.hpp>
 #include <thread>
@@ -39,6 +40,8 @@ public:
     void start();
     void stop();
     void join();
+
+    void post(std::shared_ptr<Task> task);
 
 private:
     boost::asio::io_context m_ioContext;

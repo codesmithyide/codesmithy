@@ -35,6 +35,7 @@ private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest2();
     static Ishiko::TestFramework::TestResult::EOutcome StartTest1();
     static Ishiko::TestFramework::TestResult::EOutcome StartTest2();
+    static Ishiko::TestFramework::TestResult::EOutcome PostTest1();
 };
 
 #endif

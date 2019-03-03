@@ -21,6 +21,7 @@
 */
 
 #include "Tasks/TaskRunner.h"
+#include <boost/asio/post.hpp>
 
 namespace CodeSmithy
 {
@@ -50,6 +51,15 @@ void TaskRunner::join()
     {
         t.join();
     }
+}
+
+void TaskRunner::post(std::shared_ptr<Task> task)
+{
+    boost::asio::post(m_ioContext,
+        [task]()
+        {
+            task->run();
+        });
 }
 
 }
