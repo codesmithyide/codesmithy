@@ -33,6 +33,7 @@
 #include "CodeSmithy/Core/Documents/Documents.h"
 #include "CodeSmithy/Core/Documents/DocumentIdGenerator.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
+#include "CodeSmithy/Core/Engine.h"
 #include <wx/frame.h>
 #include <wx/filehistory.h>
 
@@ -92,6 +93,7 @@ private:
     std::shared_ptr<Documents> m_documents;
     std::shared_ptr<ActiveWorkspace> m_activeWorkspace;
     std::shared_ptr<ActiveDocument> m_activeDocument;
+    Engine m_engine;
     MenuBar* m_menuBar;
     WorkspacePanel* m_workspacePanel;
     wxFileHistory m_fileHistory;

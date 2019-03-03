@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2018 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,8 +30,9 @@
 #include "CodeSmithy/UIImplementation/Wizards/NewDocumentWizard.h"
 #include "CodeSmithy/UIImplementation/Wizards/OpenGitRepositoryWizard.h"
 #include "CodeSmithy/UIElements/VersionControl/GitCloneDialog.h"
-#include "CodeSmithy/Core/Projects/ProjectFileRepository.h"
+#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <wx/filedlg.h>
+#include <Windows.h>
 
 namespace CodeSmithy
 {
@@ -198,17 +199,19 @@ void Frame::Bootstrap()
     // TODO: in the cloned project repo find project makefile
     // TODO : this is bad because we are not discovering the projects, but just checking that the 
     // file contains what we expect, but I guess this might do for now
-    ProjectFileRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj");
+    ProjectRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj");
     if (repository.name() == "CodeSmithyIDE")
     {
-        std::shared_ptr<ProjectRepositoryNode> projectNode = repository.getProjectNode("CodeSmithy");
+        DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
         if (projectNode)
         {
-            std::string type = projectNode->getChildNodeValue("type");
+            Ishiko::Error error(0);
+            std::string type = projectNode.child("type", error).value().asString();
             if (type == "CodeSmithy.Group")
             {
+                Ishiko::Error error(0);
                 ProjectGroupType type;
-                ProjectGroup project(type, projectNode);
+                ProjectGroup project(type, projectNode, error);
                 cloneBootstrapRepositories(project);
             }
         }
