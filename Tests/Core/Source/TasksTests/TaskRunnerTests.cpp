@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,15 +25,42 @@
 
 using namespace Ishiko::TestFramework;
 
-void TaskRunnerTests::AddTests(TestSequence& testSequence)
+void TaskRunnerTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* taskRunnerTestSequence = new TestSequence("TaskRunner tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("TaskRunner tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *taskRunnerTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
+    testSequence.append<HeapAllocationErrorsTest>("start test 2", StartTest2);
 }
 
 TestResult::EOutcome TaskRunnerTests::CreationTest1()
 {
-    CodeSmithy::TaskRunner taskRunner;
+    CodeSmithy::TaskRunner taskRunner(1);
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome TaskRunnerTests::CreationTest2()
+{
+    CodeSmithy::TaskRunner taskRunner(16);
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome TaskRunnerTests::StartTest1()
+{
+    CodeSmithy::TaskRunner taskRunner(1);
+    taskRunner.start();
+    taskRunner.stop();
+    taskRunner.join();
+    return TestResult::ePassed;
+}
+
+TestResult::EOutcome TaskRunnerTests::StartTest2()
+{
+    CodeSmithy::TaskRunner taskRunner(16);
+    taskRunner.start();
+    taskRunner.stop();
+    taskRunner.join();
     return TestResult::ePassed;
 }

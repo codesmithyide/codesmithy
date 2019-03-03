@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,3 +21,35 @@
 */
 
 #include "Tasks/TaskRunner.h"
+
+namespace CodeSmithy
+{
+
+TaskRunner::TaskRunner(size_t numberOfThreads)
+    : m_workGuard(boost::asio::make_work_guard(m_ioContext))
+{
+    m_threads.resize(numberOfThreads);
+}
+
+void TaskRunner::start()
+{
+    for (std::thread& t : m_threads)
+    {
+        t = std::thread([this] { m_ioContext.run(); });
+    }
+}
+
+void TaskRunner::stop()
+{
+    m_workGuard.reset();
+}
+
+void TaskRunner::join()
+{
+    for (std::thread& t : m_threads)
+    {
+        t.join();
+    }
+}
+
+}
