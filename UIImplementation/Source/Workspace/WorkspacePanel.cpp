@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -40,7 +40,7 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
     m_auiManager.SetManagedWindow(this);
 
     m_documentsObserver = std::make_shared<Observer>(*this);
-    m_documents->addObserver(m_documentsObserver);
+    m_documents->observers().add(m_documentsObserver);
 
     m_startPage = new StartPage(this);
     wxAuiPaneInfo startPagePaneInfo;
@@ -76,7 +76,7 @@ WorkspacePanel::WorkspacePanel(wxWindow* parent,
 
 WorkspacePanel::~WorkspacePanel()
 {
-    m_documents->removeObserver(m_documentsObserver);
+    m_documents->observers().remove(m_documentsObserver);
     m_auiManager.UnInit();
 }
 
@@ -194,8 +194,8 @@ WorkspacePanel::Observer::Observer(WorkspacePanel& workspace)
 {
 }
 
-void WorkspacePanel::Observer::onAdd(const Documents& source,
-                                     std::shared_ptr<Document> document)
+void WorkspacePanel::Observer::onElementAdded(const Documents& source, size_t pos,
+    const std::shared_ptr<Document>& document)
 {
     m_workspace.onAdd(document);
 }

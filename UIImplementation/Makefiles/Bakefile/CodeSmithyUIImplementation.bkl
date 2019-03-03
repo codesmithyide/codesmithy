@@ -14,6 +14,8 @@ library CodeSmithyUIImplementation : wxWidgets, CodeSmithyUICore, CodeSmithyUIEl
 {
     archs = x86 x86_64;
 
+    defines += "_WIN32_WINNT=0x0600";
+
     includedirs += ../../../Include/CodeSmithy/UIImplementation;
 
     outputdir = ../../../Lib/$(arch);

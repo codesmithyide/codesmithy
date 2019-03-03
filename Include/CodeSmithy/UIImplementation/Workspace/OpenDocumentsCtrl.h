@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2017 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,7 @@ private:
     void onContextMenuOpenGitBashPrompt(wxCommandEvent& evt);
 
 private:
-    class Observer : public DocumentObserver
+    class Observer : public Document::Observer
     {
     public:
         Observer(OpenDocumentsCtrl& ctrl);

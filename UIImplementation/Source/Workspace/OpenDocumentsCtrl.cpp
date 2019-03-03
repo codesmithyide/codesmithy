@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -52,7 +52,7 @@ void OpenDocumentsCtrl::addDocument(std::shared_ptr<Document> document)
         wxWindow* newPage = data->CreateDocumentCtrl(this, document, m_appSettings);
         AddPage(newPage, document->name());
         SetPageToolTip(GetPageCount() - 1, document->filePath().string());
-        document->addObserver(m_observer);
+        document->observers().add(m_observer);
     }
 }
 

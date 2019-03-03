@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2018 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -89,12 +89,12 @@ private:
     void onAdd(std::shared_ptr<Document> document);
 
 private:
-    class Observer : public DocumentsObserver
+    class Observer : public Documents::Observer
     {
     public:
         Observer(WorkspacePanel& workspace);
 
-        void onAdd(const Documents& source, std::shared_ptr<Document> document) override;
+        void onElementAdded(const Documents& source, size_t pos, const std::shared_ptr<Document>& document) override;
 
     private:
         WorkspacePanel& m_workspace;
