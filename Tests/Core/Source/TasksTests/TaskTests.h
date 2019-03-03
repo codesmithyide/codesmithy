@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,15 +24,28 @@
 #define _CODESMITHY_TEST_CORE_TASKSTESTS_TASKTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include "CodeSmithy/Core/Tasks/Task.h"
 
 class TaskTests
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& testSequence);
+    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
 
 private:
     static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
     static Ishiko::TestFramework::TestResult::EOutcome RunTest1();
+    static Ishiko::TestFramework::TestResult::EOutcome RunTest2();
+};
+
+class TestTaskObserver : public CodeSmithy::Task::Observer
+{
+public:
+    void onStatusChanged(const CodeSmithy::Task& source, CodeSmithy::Task::EStatus status) override;
+
+    const std::vector<CodeSmithy::Task::EStatus> statuses() const;
+
+public:
+    std::vector<CodeSmithy::Task::EStatus> m_statuses;
 };
 
 #endif

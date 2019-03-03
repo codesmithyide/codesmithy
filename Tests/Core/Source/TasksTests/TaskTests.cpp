@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,29 +21,22 @@
 */
 
 #include "TaskTests.h"
-#include "CodeSmithy/Core/Tasks/Task.h"
 
 using namespace Ishiko::TestFramework;
 
-void TaskTests::AddTests(TestSequence& testSequence)
+void TaskTests::AddTests(TestSequence& parentTestSequence)
 {
-    TestSequence* taskTestSequence = new TestSequence("Task tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Task tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", CreationTest1, *taskTestSequence);
-    new HeapAllocationErrorsTest("run test 1", RunTest1, *taskTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    testSequence.append<HeapAllocationErrorsTest>("run test 2", RunTest2);
 }
 
 TestResult::EOutcome TaskTests::CreationTest1()
 {
     CodeSmithy::Task task;
-    return TestResult::ePassed;
-}
-
-TestResult::EOutcome TaskTests::RunTest1()
-{
-    CodeSmithy::Task task;
-    boost::unique_future<void> result = task.run();
-    if (result.is_ready() && result.has_value())
+    if (task.status() == CodeSmithy::Task::EStatus::ePending)
     {
         return TestResult::ePassed;
     }
@@ -51,4 +44,50 @@ TestResult::EOutcome TaskTests::RunTest1()
     {
         return TestResult::eFailed;
     }
+}
+
+TestResult::EOutcome TaskTests::RunTest1()
+{
+    CodeSmithy::Task task;
+    task.run();
+    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
+    {
+        return TestResult::ePassed;
+    }
+    else
+    {
+        return TestResult::eFailed;
+    }
+}
+
+TestResult::EOutcome TaskTests::RunTest2()
+{
+    TestResult::EOutcome result = TestResult::eFailed;
+
+    CodeSmithy::Task task;
+
+    std::shared_ptr<TestTaskObserver> observer = std::make_shared<TestTaskObserver>();
+    task.observers().add(observer);
+
+    task.run();
+    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
+    {
+        if ((observer->statuses().size() == 2) && (observer->statuses()[0] == CodeSmithy::Task::EStatus::eRunning)
+            && (observer->statuses()[1] == CodeSmithy::Task::EStatus::eCompleted))
+        {
+            return TestResult::ePassed;
+        }
+    }
+    
+    return result;
+}
+
+void TestTaskObserver::onStatusChanged(const CodeSmithy::Task& source, CodeSmithy::Task::EStatus status)
+{
+    m_statuses.push_back(status);
+}
+
+const std::vector<CodeSmithy::Task::EStatus> TestTaskObserver::statuses() const
+{
+    return m_statuses;
 }

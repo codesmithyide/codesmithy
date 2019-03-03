@@ -52,6 +52,8 @@ public:
         void add(std::shared_ptr<Observer> observer);
         void remove(std::shared_ptr<Observer> observer);
 
+        void notifyStatusChanged(const Task& source, EStatus status);
+
     private:
         void removeDeletedObservers();
 

@@ -65,6 +65,22 @@ void Task::Observers::remove(std::shared_ptr<Observer> observer)
     }
 }
 
+void Task::Observers::notifyStatusChanged(const Task& source, EStatus status)
+{
+    for (std::pair<std::weak_ptr<Observer>, size_t>& o : m_observers)
+    {
+        std::shared_ptr<Observer> observer = o.first.lock();
+        if (observer)
+        {
+            observer->onStatusChanged(source, status);
+        }
+        else
+        {
+            removeDeletedObservers();
+        }
+    }
+}
+
 void Task::Observers::removeDeletedObservers()
 {
     auto it = std::remove_if(m_observers.begin(), m_observers.end(),
@@ -89,8 +105,10 @@ Task::EStatus Task::status() const
 void Task::run()
 {
     m_status = EStatus::eRunning;
+    observers().notifyStatusChanged(*this, m_status);
     doRun();
     m_status = EStatus::eCompleted;
+    observers().notifyStatusChanged(*this, m_status);
 }
 
 void Task::doRun()
