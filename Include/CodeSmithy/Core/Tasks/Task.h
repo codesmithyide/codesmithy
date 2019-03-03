@@ -46,6 +46,19 @@ public:
         virtual void onStatusChanged(const Task& source, EStatus status);
     };
 
+    class Observers final
+    {
+    public:
+        void add(std::shared_ptr<Observer> observer);
+        void remove(std::shared_ptr<Observer> observer);
+
+    private:
+        void removeDeletedObservers();
+
+    private:
+        std::vector<std::pair<std::weak_ptr<Observer>, size_t>> m_observers;
+    };
+
     Task();
     virtual ~Task() noexcept = default;
 
@@ -54,12 +67,11 @@ public:
     void run();
     virtual void doRun();
 
-    void addObserver(std::weak_ptr<Observer> observer);
-    void removeObserver(std::weak_ptr<Observer> observer);
+    Observers& observers();
 
 private:
     EStatus m_status;
-    std::vector<std::weak_ptr<Observer>> m_observers;
+    Observers m_observers;
 };
 
 }

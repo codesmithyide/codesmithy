@@ -29,6 +29,53 @@ void Task::Observer::onStatusChanged(const Task& source, EStatus status)
 {
 }
 
+void Task::Observers::add(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return (o.first.lock() == observer);
+    }
+    );
+    if (it != m_observers.end())
+    {
+        ++it->second;
+    }
+    else
+    {
+        m_observers.push_back(std::pair<std::weak_ptr<Observer>, size_t>(observer, 1));
+    }
+}
+
+void Task::Observers::remove(std::shared_ptr<Observer> observer)
+{
+    auto it = std::find_if(m_observers.begin(), m_observers.end(),
+        [&observer](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return (o.first.lock() == observer);
+    }
+    );
+    if (it != m_observers.end())
+    {
+        --it->second;
+        if (it->second == 0)
+        {
+            m_observers.erase(it);
+        }
+    }
+}
+
+void Task::Observers::removeDeletedObservers()
+{
+    auto it = std::remove_if(m_observers.begin(), m_observers.end(),
+        [](const std::pair<std::weak_ptr<Observer>, size_t>& o)
+    {
+        return o.first.expired();
+    }
+    );
+    m_observers.erase(it, m_observers.end());
+}
+
 Task::Task()
     : m_status(EStatus::ePending)
 {
@@ -50,21 +97,9 @@ void Task::doRun()
 {
 }
 
-void Task::addObserver(std::weak_ptr<Observer> observer)
+Task::Observers& Task::observers()
 {
-    m_observers.push_back(observer);
-}
-
-void Task::removeObserver(std::weak_ptr<Observer> observer)
-{
-    for (size_t i = 0; i < m_observers.size(); ++i)
-    {
-        if (m_observers[i].lock().get() == observer.lock().get())
-        {
-            m_observers.erase(m_observers.begin() + i);
-            break;
-        }
-    }
+    return m_observers;
 }
 
 }
