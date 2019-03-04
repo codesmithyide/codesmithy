@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/UICore/State/AppState.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddAppStateTests(TestSequence& testSequence)
+void AddAppStateTests(TestSequence& parentTestSequence)
 {
-    TestSequence* appStateTestSequence = new TestSequence("AppState tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("AppState tests");
 
-    new FileComparisonTest("Creation test 1", AppStateCreationTest1, *appStateTestSequence);
+    testSequence.append<FileComparisonTest>("Creation test 1", AppStateCreationTest1);
 }
 
 TestResult::EOutcome AppStateCreationTest1(FileComparisonTest& test)

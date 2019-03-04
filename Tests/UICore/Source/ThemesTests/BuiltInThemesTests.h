@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@
 
 using namespace Ishiko::TestFramework;
 
-void AddBuiltInThemesTests(TestSequence& testSequence);
+void AddBuiltInThemesTests(TestSequence& parentTestSequence);
 
 TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test);
 TestResult::EOutcome BuiltInThemesAddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test);

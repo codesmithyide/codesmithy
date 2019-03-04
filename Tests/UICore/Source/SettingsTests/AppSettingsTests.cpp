@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,25 +26,26 @@
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddAppSettingsTests(TestSequence& testSequence)
+void AddAppSettingsTests(TestSequence& parentTestSequence)
 {
-    TestSequence* settingsTestSequence = new TestSequence("AppSettings tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("AppSettings tests");
 
-    new FileComparisonTest("Creation test 1", AppSettingsCreationTest1, *settingsTestSequence);
-    new FileComparisonTest("Creation test 2", AppSettingsCreationTest2, *settingsTestSequence);
-    new HeapAllocationErrorsTest("Creation test 3", AppSettingsCreationTest3, *settingsTestSequence);
-    new HeapAllocationErrorsTest("Creation test 4", AppSettingsCreationTest4, *settingsTestSequence);
-    new HeapAllocationErrorsTest("Creation test 5", AppSettingsCreationTest5, *settingsTestSequence);
-    new HeapAllocationErrorsTest("Creation test 6", AppSettingsCreationTest6, *settingsTestSequence);
-    new HeapAllocationErrorsTest("Creation test 7", AppSettingsCreationTest7, *settingsTestSequence);
-
-    new FileComparisonTest("save test 1", AppSettingsSaveTest1, *settingsTestSequence);
-    new FileComparisonTest("save test 2", AppSettingsSaveTest2, *settingsTestSequence);
-    new FileComparisonTest("save test 3", AppSettingsSaveTest3, *settingsTestSequence);
-
-    new HeapAllocationErrorsTest("createFileTypesFilter test 1", AppSettingsCreateFileTypesFilterTest1, *settingsTestSequence);
-    new HeapAllocationErrorsTest("createFileTypesFilter test 2", AppSettingsCreateFileTypesFilterTest2, *settingsTestSequence);
-    new HeapAllocationErrorsTest("createFileTypesFilter test 3", AppSettingsCreateFileTypesFilterTest3, *settingsTestSequence);
+    testSequence.append<FileComparisonTest>("Creation test 1", AppSettingsCreationTest1);
+    testSequence.append<FileComparisonTest>("Creation test 2", AppSettingsCreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", AppSettingsCreationTest3);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 4", AppSettingsCreationTest4);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 5", AppSettingsCreationTest5);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 6", AppSettingsCreationTest6);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 7", AppSettingsCreationTest7);
+    testSequence.append<FileComparisonTest>("save test 1", AppSettingsSaveTest1);
+    testSequence.append<FileComparisonTest>("save test 2", AppSettingsSaveTest2);
+    testSequence.append<FileComparisonTest>("save test 3", AppSettingsSaveTest3);
+    testSequence.append<HeapAllocationErrorsTest>("createFileTypesFilter test 1",
+        AppSettingsCreateFileTypesFilterTest1);
+    testSequence.append<HeapAllocationErrorsTest>("createFileTypesFilter test 2",
+        AppSettingsCreateFileTypesFilterTest2);
+    testSequence.append<HeapAllocationErrorsTest>("createFileTypesFilter test 3",
+        AppSettingsCreateFileTypesFilterTest3);
 }
 
 TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test)

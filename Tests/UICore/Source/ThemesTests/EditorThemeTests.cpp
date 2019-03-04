@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,13 +26,12 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddEditorThemeTests(TestSequence& testSequence)
+void AddEditorThemeTests(TestSequence& parentTestSequence)
 {
-    TestSequence* editorThemeTestSequence = new TestSequence("EditorTheme tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("EditorTheme tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", EditorThemeCreationTest1, *editorThemeTestSequence);
-
-    new FileComparisonTest("save test 1", EditorThemeSaveTest1, *editorThemeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", EditorThemeCreationTest1);
+    testSequence.append<FileComparisonTest>("save test 1", EditorThemeSaveTest1);
 }
 
 TestResult::EOutcome EditorThemeCreationTest1()

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,16 +24,14 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddThemesFileRepositoryTests(TestSequence& testSequence)
+void AddThemesFileRepositoryTests(TestSequence& parentTestSequence)
 {
-    TestSequence* themesFileRepositoryTestSequence = new TestSequence("ThemesFileRepository tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ThemesFileRepository tests");
 
-    new FileComparisonTest("Creation test 1", ThemesFileRepositoryCreationTest1, *themesFileRepositoryTestSequence);
-
-    new HeapAllocationErrorsTest("getThemeNodes test 1", ThemesFileRepositoryGetThemeNodesTest1, *themesFileRepositoryTestSequence);
-
-    new FileComparisonTest("addThemeNode test 1", ThemesFileRepositoryAddThemeNodeTest1, *themesFileRepositoryTestSequence);
-    new FileComparisonTest("addThemeNode test 2", ThemesFileRepositoryAddThemeNodeTest2, *themesFileRepositoryTestSequence);
+    testSequence.append<FileComparisonTest>("Creation test 1", ThemesFileRepositoryCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getThemeNodes test 1", ThemesFileRepositoryGetThemeNodesTest1);
+    testSequence.append<FileComparisonTest>("addThemeNode test 1", ThemesFileRepositoryAddThemeNodeTest1);
+    testSequence.append<FileComparisonTest>("addThemeNode test 2", ThemesFileRepositoryAddThemeNodeTest2);
 }
 
 TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test)

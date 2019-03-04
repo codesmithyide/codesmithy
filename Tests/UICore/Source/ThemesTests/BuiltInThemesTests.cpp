@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,13 +25,16 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddBuiltInThemesTests(TestSequence& testSequence)
+void AddBuiltInThemesTests(TestSequence& parentTestSequence)
 {
-    TestSequence* builtInThemesTestSequence = new TestSequence("BuiltInThemes tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BuiltInThemes tests");
 
-    new FileComparisonTest("addCodeSmithyLightThemeNode test 1", BuiltInThemesAddCodeSmithyLightThemeNodeTest1, *builtInThemesTestSequence);
-    new FileComparisonTest("addCodeSmithyDarkThemeNode test 1", BuiltInThemesAddCodeSmithyDarkThemeNodeTest1, *builtInThemesTestSequence);
-    new FileComparisonTest("createDefaultThemesFileRepository test 1", BuiltInThemesCreateDefaultThemesFileRepositoryTest1, *builtInThemesTestSequence);
+    testSequence.append<FileComparisonTest>("addCodeSmithyLightThemeNode test 1",
+        BuiltInThemesAddCodeSmithyLightThemeNodeTest1);
+    testSequence.append<FileComparisonTest>("addCodeSmithyDarkThemeNode test 1",
+        BuiltInThemesAddCodeSmithyDarkThemeNodeTest1);
+    testSequence.append<FileComparisonTest>("createDefaultThemesFileRepository test 1",
+        BuiltInThemesCreateDefaultThemesFileRepositoryTest1);
 }
 
 TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test)

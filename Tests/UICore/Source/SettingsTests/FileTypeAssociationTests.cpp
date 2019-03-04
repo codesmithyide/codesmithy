@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,17 +23,15 @@
 #include "FileTypeAssociationTests.h"
 #include "CodeSmithy/UICore/Settings/FileTypeAssociation.h"
 
-void AddFileTypeAssociationTests(TestSequence& testSequence)
+void AddFileTypeAssociationTests(TestSequence& parentTestSequence)
 {
-    TestSequence* associationTestSequence = new TestSequence("FileTypeAssociation tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("FileTypeAssociation tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationCreationTest1, *associationTestSequence);
-    new HeapAllocationErrorsTest("Creation test 2", FileTypeAssociationCreationTest2, *associationTestSequence);
-
-    new HeapAllocationErrorsTest("operator= test 1", FileTypeAssociationAssignmentTest1, *associationTestSequence);
-
-    new HeapAllocationErrorsTest("operator== test 1", FileTypeAssociationEqualityTest1, *associationTestSequence);
-    new HeapAllocationErrorsTest("operator== test 2", FileTypeAssociationEqualityTest2, *associationTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileTypeAssociationCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", FileTypeAssociationCreationTest2);
+    testSequence.append<HeapAllocationErrorsTest>("operator= test 1", FileTypeAssociationAssignmentTest1);
+    testSequence.append<HeapAllocationErrorsTest>("operator== test 1", FileTypeAssociationEqualityTest1);
+    testSequence.append<HeapAllocationErrorsTest>("operator== test 2", FileTypeAssociationEqualityTest2);
 }
 
 TestResult::EOutcome FileTypeAssociationCreationTest1()

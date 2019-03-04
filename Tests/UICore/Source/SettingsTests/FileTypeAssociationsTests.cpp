@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,26 +24,23 @@
 #include "CodeSmithy/UICore/Settings/FileTypeAssociations.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddFileTypeAssociationsTests(TestSequence& testSequence)
+void AddFileTypeAssociationsTests(TestSequence& parentTestSequence)
 {
-    TestSequence* associationsTestSequence = new TestSequence("FileTypeAssociations tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("FileTypeAssociations tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", FileTypeAssociationsCreationTest1, *associationsTestSequence);
-
-    new HeapAllocationErrorsTest("set test 1", FileTypeAssociationsSetTest1, *associationsTestSequence);
-    new HeapAllocationErrorsTest("set test 2", FileTypeAssociationsSetTest2, *associationsTestSequence);
-
-    new HeapAllocationErrorsTest("remove test 1", FileTypeAssociationsRemoveTest1, *associationsTestSequence);
-    new HeapAllocationErrorsTest("remove test 2", FileTypeAssociationsRemoveTest2, *associationsTestSequence);
-
-    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 1", FileTypeAssociationsAddNewFileTypeAssociationsTest1,
-        *associationsTestSequence);
-    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 2", FileTypeAssociationsAddNewFileTypeAssociationsTest2,
-        *associationsTestSequence);
-    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 3", FileTypeAssociationsAddNewFileTypeAssociationsTest3,
-        *associationsTestSequence);
-    new HeapAllocationErrorsTest("addNewFileTypeAssociations test 4", FileTypeAssociationsAddNewFileTypeAssociationsTest4,
-        *associationsTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileTypeAssociationsCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("set test 1", FileTypeAssociationsSetTest1);
+    testSequence.append<HeapAllocationErrorsTest>("set test 2", FileTypeAssociationsSetTest2);
+    testSequence.append<HeapAllocationErrorsTest>("remove test 1", FileTypeAssociationsRemoveTest1);
+    testSequence.append<HeapAllocationErrorsTest>("remove test 2", FileTypeAssociationsRemoveTest2);
+    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 1",
+        FileTypeAssociationsAddNewFileTypeAssociationsTest1);
+    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 2",
+        FileTypeAssociationsAddNewFileTypeAssociationsTest2);
+    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 3",
+        FileTypeAssociationsAddNewFileTypeAssociationsTest3);
+    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 4",
+        FileTypeAssociationsAddNewFileTypeAssociationsTest4);
 }
 
 TestResult::EOutcome FileTypeAssociationsCreationTest1()

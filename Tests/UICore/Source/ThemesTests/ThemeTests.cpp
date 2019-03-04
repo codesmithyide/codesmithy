@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,11 +25,11 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddThemeTests(TestSequence& testSequence)
+void AddThemeTests(TestSequence& parentTestSequence)
 {
-    TestSequence* themeTestSequence = new TestSequence("Theme tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Theme tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", ThemeCreationTest1, *themeTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ThemeCreationTest1);
 }
 
 TestResult::EOutcome ThemeCreationTest1()

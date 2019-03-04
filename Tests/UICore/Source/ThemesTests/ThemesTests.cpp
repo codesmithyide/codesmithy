@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,17 +24,15 @@
 #include "CodeSmithy/UICore/Themes/Themes.h"
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 
-void AddThemesTests(TestSequence& testSequence)
+void AddThemesTests(TestSequence& parentTestSequence)
 {
-    TestSequence* themesTestSequence = new TestSequence("Themes tests", testSequence);
+    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Themes tests");
 
-    new HeapAllocationErrorsTest("Creation test 1", ThemesCreationTest1, *themesTestSequence);
-
-    new HeapAllocationErrorsTest("getAllThemes test 1", ThemesGetAllThemesTest1, *themesTestSequence);
-
-    new HeapAllocationErrorsTest("findThemesForEditor test 1", ThemesFindThemesForEditorTest1, *themesTestSequence);
-    new HeapAllocationErrorsTest("findThemesForEditor test 2", ThemesFindThemesForEditorTest2, *themesTestSequence);
-    new HeapAllocationErrorsTest("findThemesForEditor test 3", ThemesFindThemesForEditorTest3, *themesTestSequence);
+    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ThemesCreationTest1);
+    testSequence.append<HeapAllocationErrorsTest>("getAllThemes test 1", ThemesGetAllThemesTest1);
+    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 1", ThemesFindThemesForEditorTest1);
+    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 2", ThemesFindThemesForEditorTest2);
+    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 3", ThemesFindThemesForEditorTest3);
 }
 
 TestResult::EOutcome ThemesCreationTest1()
