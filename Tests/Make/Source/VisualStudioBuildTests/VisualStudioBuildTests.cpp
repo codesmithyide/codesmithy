@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -39,7 +39,7 @@ void VisualStudioBuildTest1(TestSequence& testSequence)
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
-    new ConsoleApplicationTest("Visual Studio build test 1", commandLine, 0, testSequence);
+    testSequence.append<ConsoleApplicationTest>("Visual Studio build test 1", commandLine, 0);
 }
 
 void VisualStudioBuildTest2(TestSequence& testSequence)
@@ -50,7 +50,7 @@ void VisualStudioBuildTest2(TestSequence& testSequence)
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
-    new ConsoleApplicationTest("Visual Studio build test 2", commandLine, -1, testSequence);
+    testSequence.append<ConsoleApplicationTest>("Visual Studio build test 2", commandLine, -1);
 }
 
 void VisualStudioBuildTest3(TestSequence& testSequence)
@@ -61,5 +61,5 @@ void VisualStudioBuildTest3(TestSequence& testSequence)
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
-    new ConsoleApplicationTest("Visual Studio build test 3", commandLine, -1, testSequence);
+    testSequence.append<ConsoleApplicationTest>("Visual Studio build test 3", commandLine, -1);
 }
