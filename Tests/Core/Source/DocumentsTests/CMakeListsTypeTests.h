@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class CMakeListsTypeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    CMakeListsTypeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddCMakeListsTypeTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome CMakeListsTypeCreationTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

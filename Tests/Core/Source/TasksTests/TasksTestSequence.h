@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,8 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-void AddTasksTestSequence(TestHarness& theTestHarness);
+class TasksTestSequence : public Ishiko::Tests::TestSequence
+{
+public:
+    TasksTestSequence(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+};
 
 #endif

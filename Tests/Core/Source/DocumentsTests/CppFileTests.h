@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class CppFileTests : public Ishiko::Tests::TestSequence
+{
+public:
+    CppFileTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddCppFileTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome CppFileCreationTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

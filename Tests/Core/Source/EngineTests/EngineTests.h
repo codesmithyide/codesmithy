@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,15 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class EngineTests
+class EngineTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestHarness& theTestHarness);
+    EngineTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome AddTaskTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void StartTest1(Ishiko::Tests::Test& test);
+    static void AddTaskTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

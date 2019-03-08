@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class XMLDocumentTypeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    XMLDocumentTypeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddXMLDocumentTypeTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome XMLDocumentTypeCreationTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif
