@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class CMakeListsTests : public Ishiko::Tests::TestSequence
+{
+public:
+    CMakeListsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddCMakeListsTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome CMakeListsCreationTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

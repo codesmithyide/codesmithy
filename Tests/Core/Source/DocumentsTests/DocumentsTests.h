@@ -25,16 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class DocumentsTests
+class DocumentsTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    DocumentsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome AddTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome AddObserverTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome RemoveObserverTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void AddTest1(Ishiko::Tests::Test& test);
+    static void AddObserverTest1(Ishiko::Tests::Test& test);
+    static void RemoveObserverTest1(Ishiko::Tests::Test& test);
 };
 
 #endif
