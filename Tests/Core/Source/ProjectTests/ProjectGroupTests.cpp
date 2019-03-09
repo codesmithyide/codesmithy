@@ -30,7 +30,7 @@ using namespace Ishiko::Tests;
 ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectGroup tests", environment)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
     append<HeapAllocationErrorsTest>("Creation test 4", CreationTest4);

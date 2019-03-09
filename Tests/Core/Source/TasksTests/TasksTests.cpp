@@ -23,60 +23,49 @@
 #include "TasksTests.h"
 #include "CodeSmithy/Core/Tasks/Tasks.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void TasksTests::AddTests(TestSequence& parentTestSequence)
+TasksTests::TasksTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Tasks tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Tasks tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("add test 1", AddTest1);
-    testSequence.append<HeapAllocationErrorsTest>("addObserver test 1", AddObserverTest1);
-    testSequence.append<HeapAllocationErrorsTest>("removeObserver test 1", RemoveObserverTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("add test 1", AddTest1);
+    append<HeapAllocationErrorsTest>("addObserver test 1", AddObserverTest1);
+    append<HeapAllocationErrorsTest>("removeObserver test 1", RemoveObserverTest1);
 }
 
-TestResult::EOutcome TasksTests::CreationTest1()
+void TasksTests::CreationTest1(Test& test)
 {
     CodeSmithy::Tasks tasks;
-    if (tasks.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(tasks.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TasksTests::AddTest1()
+void TasksTests::AddTest1(Test& test)
 {
     CodeSmithy::Tasks tasks;
     tasks.add(std::make_shared<CodeSmithy::Task>());
-    if (tasks.size() == 1)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_UNLESS(tasks.size() == 1);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TasksTests::AddObserverTest1()
+void TasksTests::AddObserverTest1(Test& test)
 {
     CodeSmithy::Tasks tasks;
     std::shared_ptr<CodeSmithy::Tasks::Observer> observer = std::make_shared<CodeSmithy::Tasks::Observer>();
     tasks.observers().add(observer);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TasksTests::RemoveObserverTest1()
+void TasksTests::RemoveObserverTest1(Test& test)
 {
     CodeSmithy::Tasks tasks;
     std::shared_ptr<CodeSmithy::Tasks::Observer> observer = std::make_shared<CodeSmithy::Tasks::Observer>();
     tasks.observers().add(observer);
     tasks.observers().remove(observer);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

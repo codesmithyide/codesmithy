@@ -32,7 +32,7 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

@@ -23,32 +23,26 @@
 #include "SyncFunctionTaskTests.h"
 #include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void SyncFunctionTaskTests::AddTests(TestSequence& parentTestSequence)
+SyncFunctionTaskTests::SyncFunctionTaskTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "SyncFunctionTask tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("SyncFunctionTask tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("run test 1", RunTest1);
 }
 
-TestResult::EOutcome SyncFunctionTaskTests::CreationTest1()
+void SyncFunctionTaskTests::CreationTest1(Test& test)
 {
     CodeSmithy::SyncFunctionTask task([]() -> void {});
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome SyncFunctionTaskTests::RunTest1()
+void SyncFunctionTaskTests::RunTest1(Test& test)
 {
     CodeSmithy::SyncFunctionTask task([]() -> void {});
     task.run();
-    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }

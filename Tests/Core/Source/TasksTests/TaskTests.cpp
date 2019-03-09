@@ -22,64 +22,47 @@
 
 #include "TaskTests.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void TaskTests::AddTests(TestSequence& parentTestSequence)
+TaskTests::TaskTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Task tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Task tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run test 1", RunTest1);
-    testSequence.append<HeapAllocationErrorsTest>("run test 2", RunTest2);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("run test 1", RunTest1);
+    append<HeapAllocationErrorsTest>("run test 2", RunTest2);
 }
 
-TestResult::EOutcome TaskTests::CreationTest1()
+void TaskTests::CreationTest1(Test& test)
 {
     CodeSmithy::Task task;
-    if (task.status() == CodeSmithy::Task::EStatus::ePending)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::ePending);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskTests::RunTest1()
+void TaskTests::RunTest1(Test& test)
 {
     CodeSmithy::Task task;
     task.run();
-    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskTests::RunTest2()
+void TaskTests::RunTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     CodeSmithy::Task task;
 
     std::shared_ptr<TestTaskObserver> observer = std::make_shared<TestTaskObserver>();
     task.observers().add(observer);
 
     task.run();
-    if (task.status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        if ((observer->statuses().size() == 2) && (observer->statuses()[0] == CodeSmithy::Task::EStatus::eRunning)
-            && (observer->statuses()[1] == CodeSmithy::Task::EStatus::eCompleted))
-        {
-            return TestResult::ePassed;
-        }
-    }
-    
-    return result;
+
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_UNLESS(observer->statuses().size() == 2);
+    ISHTF_FAIL_UNLESS(observer->statuses()[0] == CodeSmithy::Task::EStatus::eRunning);
+    ISHTF_FAIL_UNLESS(observer->statuses()[1] == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }
 
 void TestTaskObserver::onStatusChanged(const CodeSmithy::Task& source, CodeSmithy::Task::EStatus status)

@@ -26,15 +26,15 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include "CodeSmithy/Core/Tasks/Task.h"
 
-class TaskTests
+class TaskTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    TaskTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome RunTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome RunTest2();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void RunTest1(Ishiko::Tests::Test& test);
+    static void RunTest2(Ishiko::Tests::Test& test);
 };
 
 class TestTaskObserver : public CodeSmithy::Task::Observer

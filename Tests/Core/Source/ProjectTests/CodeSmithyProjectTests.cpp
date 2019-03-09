@@ -30,7 +30,7 @@ using namespace Ishiko::Tests;
 CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "CodeSmithyProject tests", environment)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
 

@@ -25,18 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class TaskRunnerTests
+class TaskRunnerTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    TaskRunnerTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome StartTest2();
-    static Ishiko::TestFramework::TestResult::EOutcome PostTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome PostTest2();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void StartTest1(Ishiko::Tests::Test& test);
+    static void StartTest2(Ishiko::Tests::Test& test);
+    static void PostTest1(Ishiko::Tests::Test& test);
+    static void PostTest2(Ishiko::Tests::Test& test);
 };
 
 #endif

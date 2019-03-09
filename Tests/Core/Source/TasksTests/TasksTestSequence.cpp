@@ -26,12 +26,13 @@
 #include "TasksTests.h"
 #include "TaskRunnerTests.h"
 
-void AddTasksTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& tasksTestSequence = theTestHarness.appendTestSequence("Tasks tests");
+using namespace Ishiko::Tests;
 
-    TaskTests::AddTests(tasksTestSequence);
-    SyncFunctionTaskTests::AddTests(tasksTestSequence);
-    TasksTests::AddTests(tasksTestSequence);
+TasksTestSequence::TasksTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Tasks tests", environment)
+{
+    append<TaskTests>();
+    append<SyncFunctionTaskTests>();
+    append<TasksTests>();
     TaskRunnerTests::AddTests(tasksTestSequence);
 }

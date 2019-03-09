@@ -26,26 +26,23 @@
 
 using namespace Ishiko::Tests;
 
-WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(Tconst TestNumber& number,
+WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& number,
     const TestEnvironment& environment)
     : TestSequence(number, "WorkspaceFileRepository tests", environment)
 {
     append<FileComparisonTest>("Creation test 1", CreationTest1);
 }
 
-void WorkspaceFileRepositoryTestsCreationTest1(FileComparisonTest& test)
+void WorkspaceFileRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
 
     CodeSmithy::WorkspaceFileRepository repository(outputPath);
-    result = TestResult::ePassed;
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return result;
+    ISHTF_PASS();
 }

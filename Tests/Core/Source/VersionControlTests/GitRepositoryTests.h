@@ -25,20 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-class GitRepositoryTests
+class GitRepositoryTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(TestSequence& parentTestSequence);
+    GitRepositoryTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static TestResult::EOutcome CreationTest1();
-    static TestResult::EOutcome InitTest1(Test& test);
-    static TestResult::EOutcome CloneTest1(Test& test);
-    static TestResult::EOutcome OpenTest1(Test& test);
-    static TestResult::EOutcome CheckIfRepositoryTest1(Test& test);
-    static TestResult::EOutcome CheckIfRepositoryTest2(Test& test);
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void InitTest1(Ishiko::Tests::Test& test);
+    static void CloneTest1(Ishiko::Tests::Test& test);
+    static void OpenTest1(Ishiko::Tests::Test& test);
+    static void CheckIfRepositoryTest1(Ishiko::Tests::Test& test);
+    static void CheckIfRepositoryTest2(Ishiko::Tests::Test& test);
 };
 
 #endif
