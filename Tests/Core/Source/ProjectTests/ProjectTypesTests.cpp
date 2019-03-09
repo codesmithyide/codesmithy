@@ -30,7 +30,7 @@ using namespace Ishiko::Tests;
 ProjectTypesTests::ProjectTypesTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectTypes tests", environment)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("add test 1", AddTest1);
     append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 1", GetSuitableTypesForDocumentTypeTest1);
     append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 2", GetSuitableTypesForDocumentTypeTest2);

@@ -29,7 +29,7 @@ using namespace Ishiko::Tests;
 ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectRepository tests", environment)
 {
-	append<FileComparisonTest>("Creation test 1", CreationTest1);
+    append<FileComparisonTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
     append<FileComparisonTest>("setName test 1", SetNameTest1);
@@ -39,58 +39,41 @@ ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const T
 
 void ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
 
     CodeSmithy::ProjectRepository repository(outputPath);
-    if (repository.name() == "")
-    {
-        result = TestResult::ePassed;
-    }
+    ISHTF_FAIL_UNLESS(repository.name() == "");
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return result;
+    ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::CreationTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest2.csmthprj");
 
     CodeSmithy::ProjectRepository repository(inputPath);
-    if (repository.name() == "")
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(repository.name() == "");
+    ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::CreationTest3(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest3.csmthprj");
 
     CodeSmithy::ProjectRepository repository(inputPath);
-    if (repository.name() == "ProjectRepositoryTests_CreationTest3")
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_CreationTest3");
+    ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
@@ -99,15 +82,12 @@ void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
     repository.setName("ProjectRepositoryTests_SetNameTest1");
     repository.save();
 
-    if (repository.name() == "ProjectRepositoryTests_SetNameTest1")
-    {
-        result = TestResult::ePassed;
-    }
-
+    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_SetNameTest1");
+    
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return result;
+    ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
@@ -125,23 +105,16 @@ void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
 
     CodeSmithy::ProjectRepository repository(inputPath);
-    if (repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1")
-    {
-        if (repository.getProjectNode("Project1"))
-        {
-            result = TestResult::ePassed;
-        }
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
+    ISHTF_FAIL_UNLESS(repository.getProjectNode("Project1"));
+    ISHTF_PASS();
 }

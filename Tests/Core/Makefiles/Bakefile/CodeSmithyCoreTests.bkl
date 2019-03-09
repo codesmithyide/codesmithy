@@ -53,7 +53,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/ProjectTests/CodeSmithyProjectTests.h
         ../../Source/ProjectTests/BakefileProjectTests.h
 
-        ../../Source/ProjectTemplatesTests/ProjectTemplatesTestSequence.h
+        ../../Source/ProjectTemplatesTests.h
 
         ../../Source/WorkspacesTests/WorkspacesTestSequence.h
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.h
@@ -105,7 +105,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/ProjectTests/CodeSmithyProjectTests.cpp
         ../../Source/ProjectTests/BakefileProjectTests.cpp
 
-        ../../Source/ProjectTemplatesTests/ProjectTemplatesTestSequence.cpp
+        ../../Source/ProjectTemplatesTests.cpp
 
         ../../Source/WorkspacesTests/WorkspacesTestSequence.cpp
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.cpp

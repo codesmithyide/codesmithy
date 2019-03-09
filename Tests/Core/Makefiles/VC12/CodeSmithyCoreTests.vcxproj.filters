@@ -95,7 +95,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.h">
+    <ClInclude Include="..\..\Source\ProjectTemplatesTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h">
@@ -217,7 +217,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.cpp">
+    <ClCompile Include="..\..\Source\ProjectTemplatesTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp">

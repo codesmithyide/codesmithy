@@ -44,13 +44,13 @@ int main(int argc, char* argv[])
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<DocumentsTestSequence>();
-    AddProjectTests(theTestHarness);
-    AddProjectTemplatesTestSequence(theTestHarness);
-    AddWorkspacesTestSequence(theTestHarness);
-    AddTasksTestSequence(theTestHarness);
-    AddVersionControlTests(theTestHarness);
-    EngineTests::AddTests(theTestHarness);
-    BootstrapTests::AddTests(theTestHarness);
+    theTests.append<ProjectTests>();
+    theTests.append<ProjectTemplatesTests>();
+    theTests.append<WorkspacesTestSequence>();
+    theTests.append<TasksTestSequence>();
+    theTests.append<VersionControlTests>();
+    theTests.append<EngineTests>();
+    theTests.append<BootstrapTests>();
 
     return theTestHarness.run();
 }

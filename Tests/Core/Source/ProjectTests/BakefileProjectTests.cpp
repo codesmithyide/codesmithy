@@ -25,16 +25,17 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddBakefileProjectTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("BakefileProject tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileProjectCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", BakefileProjectCreationTest2);
-    testSequence.append<FileComparisonTest>("save test 1", BakefileProjectSaveTest1);
+BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "BakefileProject tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-TestResult::EOutcome BakefileProjectCreationTest1()
+void BakefileProjectTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);
@@ -42,7 +43,7 @@ TestResult::EOutcome BakefileProjectCreationTest1()
 	return TestResult::ePassed;
 }
 
-TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
+void BakefileProjectTests::CreationTest2(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -66,7 +67,7 @@ TestResult::EOutcome BakefileProjectCreationTest2(Test& test)
     return result;
 }
 
-TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test)
+void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);

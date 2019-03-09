@@ -35,19 +35,19 @@ ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-TestResult::EOutcome ProjectDescriptionTests::CreationTest1()
+void ProjectDescriptionTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectDescription description;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectDescriptionTests::CreationTest2()
+void ProjectDescriptionTests::CreationTest2(Test& test)
 {
     CodeSmithy::ProjectDescription description("My description");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectDescriptionTests::SaveTest1(FileComparisonTest& test)
+void ProjectDescriptionTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectDescriptionTests_SaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);
@@ -65,5 +65,5 @@ TestResult::EOutcome ProjectDescriptionTests::SaveTest1(FileComparisonTest& test
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

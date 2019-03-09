@@ -183,7 +183,7 @@
     <ClCompile Include="..\..\Source\ProjectTests\ProjectGroupTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.cpp" />
     <ClCompile Include="..\..\Source\ProjectTests\BakefileProjectTests.cpp" />
-    <ClCompile Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.cpp" />
+    <ClCompile Include="..\..\Source\ProjectTemplatesTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
@@ -224,7 +224,7 @@
     <ClInclude Include="..\..\Source\ProjectTests\ProjectGroupTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\CodeSmithyProjectTests.h" />
     <ClInclude Include="..\..\Source\ProjectTests\BakefileProjectTests.h" />
-    <ClInclude Include="..\..\Source\ProjectTemplatesTests\ProjectTemplatesTestSequence.h" />
+    <ClInclude Include="..\..\Source\ProjectTemplatesTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />

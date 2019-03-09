@@ -25,28 +25,29 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void ProjectLocationTests::AddTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectLocation tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    testSequence.append<FileComparisonTest>("save test 1", SaveTest1);
+ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectLocation tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-TestResult::EOutcome ProjectLocationTests::CreationTest1()
+void ProjectLocationTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectLocation location;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectLocationTests::CreationTest2()
+void ProjectLocationTests::CreationTest2(Test& test)
 {
     CodeSmithy::ProjectLocation location("location1");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectLocationTests::SaveTest1(FileComparisonTest& test)
+void ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);
@@ -64,5 +65,5 @@ TestResult::EOutcome ProjectLocationTests::SaveTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

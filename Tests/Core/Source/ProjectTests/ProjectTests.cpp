@@ -49,8 +49,8 @@ ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& envi
     append<ProjectTypesTests>();
     append<ProjectRepositoryTests>();
     append<ProjectDescriptionTests>();
-    ProjectLocationTests::AddTests(projectTestSequence);
-    ProjectGroupTests::AddTests(projectTestSequence);
-    AddCodeSmithyProjectTests(projectTestSequence);
-    AddBakefileProjectTests(projectTestSequence);
+    append<ProjectLocationTests>();
+    append<ProjectGroupTests>();
+    append<CodeSmithyProjectTests>();
+    append<BakefileProjectTests>();
 }

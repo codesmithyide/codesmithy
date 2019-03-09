@@ -29,7 +29,7 @@ using namespace Ishiko::Tests;
 CMakeProjectTypeTests::CMakeProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "CMakeProjectType tests", environment)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1", SupportedDocumentTypesTest1);
 }
 
