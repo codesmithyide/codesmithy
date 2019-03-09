@@ -25,10 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class WorkspaceFileRepositoryTests : public Ishiko::Tests::TestSequence
+{
+public:
+    WorkspaceFileRepositoryTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-void AddWorkspaceFileRepositoryTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome WorkspaceFileRepositoryCreationTest1(FileComparisonTest& test);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

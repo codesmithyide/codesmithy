@@ -25,22 +25,23 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddCodeSmithyProjectTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProject tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectCreationTest1);
-    testSequence.append<FileComparisonTest>("save test 1", CodeSmithyProjectSaveTest1);
+CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CodeSmithyProject tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-TestResult::EOutcome CodeSmithyProjectCreationTest1()
+void CodeSmithyProjectTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, "CodeSmithyProjectCreationTest1");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome CodeSmithyProjectSaveTest1(FileComparisonTest& test)
+void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/CodeSmithyProjectSaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);
@@ -62,5 +63,5 @@ TestResult::EOutcome CodeSmithyProjectSaveTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

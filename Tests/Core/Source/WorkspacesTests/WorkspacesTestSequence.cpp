@@ -25,13 +25,14 @@
 #include "GenericWorkspaceTests.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddWorkspacesTestSequence(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+WorkspacesTestSequence::WorkspacesTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Workspaces tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "WorkspaceTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "WorkspaceTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& workspacesTestSequence = theTestHarness.appendTestSequence("Workspaces tests");
-
-    AddWorkspaceFileRepositoryTests(workspacesTestSequence);
-    AddGenericWorkspaceTests(workspacesTestSequence);
+    append<WorkspaceFileRepositoryTests>();
+    append<GenericWorkspaceTests>();
 }

@@ -30,7 +30,7 @@ using namespace Ishiko::Tests;
 BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "BakefileProject tests", environment)
 {
-	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
@@ -39,32 +39,27 @@ void BakefileProjectTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);
-	CodeSmithy::BakefileProject project(type, "BakefileProjectCreationTest1");
-	return TestResult::ePassed;
+    CodeSmithy::BakefileProject project(type, "BakefileProjectCreationTest1");
+    ISHTF_PASS();
 }
 
 void BakefileProjectTests::CreationTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectCreationTest2.csmthprj");
 
     CodeSmithy::ProjectRepository repository(inputPath);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("BakefileProject");
 
-    if (projectNode)
-    {
-        Ishiko::Error error;
-        CodeSmithy::DocumentTypes documentTypes;
-        CodeSmithy::BakefileProjectType type(documentTypes);
-        CodeSmithy::BakefileProject project(type, projectNode, error);
-        if (project.name() == "BakefileProject")
-        {
-            result = TestResult::ePassed;
-        }
-    }
+    ISHTF_ABORT_UNLESS(projectNode);
 
-    return result;
+    Ishiko::Error error(0);
+    CodeSmithy::DocumentTypes documentTypes;
+    CodeSmithy::BakefileProjectType type(documentTypes);
+    CodeSmithy::BakefileProject project(type, projectNode, error);
+
+    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_UNLESS(project.name() == "BakefileProject");
+    ISHTF_PASS();
 }
 
 void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
@@ -90,5 +85,5 @@ void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

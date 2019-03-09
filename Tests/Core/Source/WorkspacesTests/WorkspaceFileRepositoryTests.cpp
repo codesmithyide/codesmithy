@@ -24,14 +24,16 @@
 #include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddWorkspaceFileRepositoryTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("WorkspaceFileRepository tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<FileComparisonTest>("Creation test 1", WorkspaceFileRepositoryCreationTest1);
+WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(Tconst TestNumber& number,
+    const TestEnvironment& environment)
+    : TestSequence(number, "WorkspaceFileRepository tests", environment)
+{
+    append<FileComparisonTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome WorkspaceFileRepositoryCreationTest1(FileComparisonTest& test)
+void WorkspaceFileRepositoryTestsCreationTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 

@@ -25,14 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class SyncFunctionTaskTests
+class SyncFunctionTaskTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    SyncFunctionTaskTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1();
-    static Ishiko::TestFramework::TestResult::EOutcome RunTest1();
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void RunTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

@@ -20,18 +20,19 @@
     IN THE SOFTWARE.
 */
 
-#include "ProjectTemplatesTestSequence.h"
+#include "ProjectTemplatesTests.h"
 #include "CodeSmithy/Core/ProjectTemplates//ProjectTemplates.h"
 
-void AddProjectTemplatesTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& testSequence = theTestHarness.appendTestSequence("ProjectTemplates tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectTemplatesCreationTest1);
+ProjectTemplatesTests::ProjectTemplatesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectTemplates tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome ProjectTemplatesCreationTest1()
+void ProjectTemplatesTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTemplates projectTemplates;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

@@ -23,16 +23,17 @@
 #include "GenericWorkspaceTests.h"
 #include "CodeSmithy/Core/Workspaces/GenericWorkspace.h"
 
-void AddGenericWorkspaceTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("GenericWorkspace tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", GenericWorkspaceCreationTest1);
+GenericWorkspaceTests::GenericWorkspaceTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "GenericWorkspace tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome GenericWorkspaceCreationTest1()
+void GenericWorkspaceTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
     CodeSmithy::GenericWorkspace workspace("GenericWorkspaceCreationTest1", types);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
