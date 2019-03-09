@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class ProjectGroupTypeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    ProjectGroupTypeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddProjectGroupTypeTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome ProjectGroupTypeCreationTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

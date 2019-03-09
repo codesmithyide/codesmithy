@@ -25,26 +25,24 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-class ProjectGroupTests
+class ProjectGroupTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(TestSequence& parentTestSequence);
+    ProjectGroupTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static TestResult::EOutcome CreationTest1();
-    static TestResult::EOutcome CreationTest2(Test& test);
-    static TestResult::EOutcome CreationTest3(Test& test);
-    static TestResult::EOutcome CreationTest4(Test& test);
-    static TestResult::EOutcome CreationTest5(Test& test);
-    static TestResult::EOutcome CreationTest6(Test& test);
-    static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
-    static TestResult::EOutcome SaveTest2(FileComparisonTest& test);
-    static TestResult::EOutcome AddExternalProjectLinkTest1(FileComparisonTest& test);
-    static TestResult::EOutcome AddExternalProjectLinkTest2(FileComparisonTest& test);
-    static TestResult::EOutcome SaveTest3(FileComparisonTest& test);
-    static TestResult::EOutcome AddProjectTest1(FileComparisonTest& test);
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void CreationTest3(Ishiko::Tests::Test& test);
+    static void CreationTest4(Ishiko::Tests::Test& test);
+    static void CreationTest5(Ishiko::Tests::Test& test);
+    static void CreationTest6(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void SaveTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void AddExternalProjectLinkTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void AddExternalProjectLinkTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void SaveTest3(Ishiko::Tests::FileComparisonTest& test);
+    static void AddProjectTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

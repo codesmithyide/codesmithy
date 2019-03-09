@@ -25,13 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class ProjectTypesTests : public Ishiko::Tests::TestSequence
+{
+public:
+    ProjectTypesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddProjectTypesTests(TestSequence& parentTestSequence);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void AddTest1(Ishiko::Tests::Test& test);
+    static void GetSuitableTypesForDocumentTypeTest1(Ishiko::Tests::Test& test);
+    static void GetSuitableTypesForDocumentTypeTest2(Ishiko::Tests::Test& test);
+};
 
-TestResult::EOutcome ProjectTypesCreationTest1();
-TestResult::EOutcome ProjectTypesAddTest1();
-TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest1();
-TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest2();
+
 
 #endif

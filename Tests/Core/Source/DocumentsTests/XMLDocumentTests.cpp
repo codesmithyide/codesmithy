@@ -24,23 +24,19 @@
 #include "CodeSmithy/Core/Documents/XMLDocument.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-void AddXMLDocumentTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("XMLDocument tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", XMLDocumentCreationTest1);
+XMLDocumentTests::XMLDocumentTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "XMLDocument tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome XMLDocumentCreationTest1()
+void XMLDocumentTests::CreationTest1(Test& test)
 {
     std::shared_ptr<CodeSmithy::XMLDocumentType> xmlDocumentType = std::make_shared<CodeSmithy::XMLDocumentType>();
     CodeSmithy::XMLDocument document(xmlDocumentType, 1234, "XMLDocumentCreationTest1");
-    if (document.type().name() == "XML")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(document.type().name() == "XML");
+    ISHTF_PASS();
 }

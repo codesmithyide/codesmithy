@@ -23,23 +23,18 @@
 #include "ProjectGroupTypeTests.h"
 #include "CodeSmithy/Core/Projects/ProjectGroupType.h"
 
-void AddProjectGroupTypeTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectGroupType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectGroupTypeCreationTest1);
+ProjectGroupTypeTests::ProjectGroupTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectGroupType tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome ProjectGroupTypeCreationTest1()
+void ProjectGroupTypeTestsCreationTest1(Test& test)
 {
     CodeSmithy::ProjectGroupType type;
 
-    if (type.name() == "CodeSmithy.Group")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(type.name() == "CodeSmithy.Group");
+    ISHTF_PASS();
 }

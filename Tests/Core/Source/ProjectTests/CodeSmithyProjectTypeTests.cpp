@@ -23,14 +23,15 @@
 #include "CodeSmithyProjectTypeTests.h"
 #include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h"
 
-void AddCodeSmithyProjectTypeTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProjectType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectTypeCreationTest1);
+CodeSmithyProjectTypeTests::CodeSmithyProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CodeSmithyProjectType tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CodeSmithyProjectTypeCreationTest1()
+void CodeSmithyProjectTypeTestsCreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType projectType;
 

@@ -25,11 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class BakefileProjectTypeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    BakefileProjectTypeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddBakefileProjectTypeTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome BakefileProjectTypeCreationTest1();
-TestResult::EOutcome BakefileProjectTypeSupportedDocumentTypesTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SupportedDocumentTypesTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

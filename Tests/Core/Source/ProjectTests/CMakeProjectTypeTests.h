@@ -25,11 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+#include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-void AddCMakeProjectTypeTests(TestSequence& parentTestSequence);
+class CMakeProjectTypeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    CMakeProjectTypeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-TestResult::EOutcome CMakeProjectTypeCreationTest1();
-TestResult::EOutcome CMakeProjectTypeSupportedDocumentTypesTest1();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SupportedDocumentTypesTest1(Ishiko::Tests::Test& test);
+};
 
 #endif

@@ -34,14 +34,9 @@ XMLDocumentTypeTests::XMLDocumentTypeTests(const TestNumber& number, const TestE
 void XMLDocumentTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::XMLDocumentType type;
-    if ((type.name() == "XML") &&
-        (type.extensions().size() == 1) &&
-        (type.extensions()[0] == "xml"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(type.name() == "XML");
+    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
+    ISHTF_FAIL_UNLESS(type.extensions()[0] == "xml");
+    ISHTF_PASS();
 }

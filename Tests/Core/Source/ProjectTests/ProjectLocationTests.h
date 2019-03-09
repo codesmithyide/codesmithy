@@ -25,17 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-class ProjectLocationTests
+class ProjectLocationTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(TestSequence& parentTestSequence);
+    ProjectLocationTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static TestResult::EOutcome CreationTest1();
-    static TestResult::EOutcome CreationTest2();
-    static TestResult::EOutcome SaveTest1(FileComparisonTest& test);
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
 #endif

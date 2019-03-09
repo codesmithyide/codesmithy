@@ -25,18 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-class ProjectRepositoryTests
+class ProjectRepositoryTests : public Ishiko::Tests::TestSequence
 {
 public:
-    static void AddTests(Ishiko::TestFramework::TestSequence& parentTestSequence);
+    ProjectRepositoryTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest1(Ishiko::TestFramework::FileComparisonTest& test);
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest2(Ishiko::TestFramework::Test& test);
-    static Ishiko::TestFramework::TestResult::EOutcome CreationTest3(Ishiko::TestFramework::Test& test);
-    static Ishiko::TestFramework::TestResult::EOutcome SetNameTest1(Ishiko::TestFramework::FileComparisonTest& test);
-    static Ishiko::TestFramework::TestResult::EOutcome AddProjectNodeTest1(Ishiko::TestFramework::FileComparisonTest& test);
-    static Ishiko::TestFramework::TestResult::EOutcome GetProjectNodeTest1(Ishiko::TestFramework::Test& test);
+    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void CreationTest3(Ishiko::Tests::Test& test);
+    static void SetNameTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void AddProjectNodeTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void GetProjectNodeTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

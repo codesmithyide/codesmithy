@@ -49,8 +49,8 @@ DocumentsTestSequence::DocumentsTestSequence(const TestNumber& number, const Tes
     append<CppFileTypeTests>();
     append<CppFileTests>();
     append<XMLDocumentTypeTests>();
-    AddXMLDocumentTests(documentsTestSequence);
-    AddDocumentTypesTests(documentsTestSequence);
+    append<XMLDocumentTests>();
+    append<DocumentTypesTests>();
     DocumentsTests::AddTests(documentsTestSequence);
     AddDocumentsObserverTests(documentsTestSequence);
 }
