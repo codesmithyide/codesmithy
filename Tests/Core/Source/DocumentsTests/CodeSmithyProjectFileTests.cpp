@@ -24,23 +24,19 @@
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFile.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
-void AddCodeSmithyProjectFileTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProjectFile tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectFileCreationTest1);
+CodeSmithyProjectFileTests::CodeSmithyProjectFileTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CodeSmithyProjectFile tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CodeSmithyProjectFileCreationTest1()
+void CodeSmithyProjectFileTests::CreationTest1(Test& test)
 {
     std::shared_ptr<CodeSmithy::CodeSmithyProjectFileType> projectFileType = std::make_shared<CodeSmithy::CodeSmithyProjectFileType>();
     CodeSmithy::CodeSmithyProjectFile document(projectFileType, 1234, "CodeSmithyProjectFileCreationTest1");
-    if (document.type().name() == "CodeSmithy Project File")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(document.type().name() == "CodeSmithy Project File");
+    ISHTF_PASS();
 }

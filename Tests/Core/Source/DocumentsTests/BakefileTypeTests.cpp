@@ -34,14 +34,9 @@ BakefileTypeTests::BakefileTypeTests(const TestNumber& number, const TestEnviron
 void BakefileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::BakefileType type;
-    if ((type.name() == "Bakefile") &&
-        (type.extensions().size() == 1) &&
-        (type.extensions()[0] == "bkl"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(type.name() == "Bakefile");
+    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
+    ISHTF_FAIL_UNLESS(type.extensions()[0] == "bkl");
+    ISHTF_PASS();
 }

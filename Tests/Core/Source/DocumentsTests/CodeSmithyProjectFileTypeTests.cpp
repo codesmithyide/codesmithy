@@ -23,24 +23,21 @@
 #include "CodeSmithyProjectFileTypeTests.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
-void AddCodeSmithyProjectFileTypeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CodeSmithyProjectFileType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CodeSmithyProjectFileTypeCreationTest1);
+CodeSmithyProjectFileTypeTests::CodeSmithyProjectFileTypeTests(const TestNumber& number,
+    const TestEnvironment& environment)
+    : TestSequence(number, "CodeSmithyProjectFileType tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CodeSmithyProjectFileTypeCreationTest1()
+void CodeSmithyProjectFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectFileType type;
-    if ((type.name() == "CodeSmithy Project File") &&
-        (type.extensions().size() == 1) &&
-        (type.extensions()[0] == "csmthprj"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(type.name() == "CodeSmithy Project File");
+    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
+    ISHTF_FAIL_UNLESS(type.extensions()[0] == "csmthprj");
+    ISHTF_PASS();
 }

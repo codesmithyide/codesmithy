@@ -24,23 +24,19 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddBakefileTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Bakefile tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileCreationTest1);
+BakefileTests::BakefileTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Bakefile tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome BakefileCreationTest1()
+void BakefileTests::CreationTest1(Test& test)
 {
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     CodeSmithy::Bakefile document(bakefileType, 1234, "BakefileCreationTest1");
-    if (document.type().name() == "Bakefile")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(document.type().name() == "Bakefile");
+    ISHTF_PASS();
 }

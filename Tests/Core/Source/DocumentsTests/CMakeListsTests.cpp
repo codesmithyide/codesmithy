@@ -24,23 +24,19 @@
 #include "CodeSmithy/Core/Documents/CMakeLists.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-void AddCMakeListsTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CMakeLists tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CMakeListsCreationTest1);
+CMakeListsTests::CMakeListsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CMakeLists tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CMakeListsCreationTest1()
+void CMakeListsTests::CreationTest1(Test& test)
 {
     std::shared_ptr<CodeSmithy::CMakeListsType> cmakelistsType = std::make_shared<CodeSmithy::CMakeListsType>();
     CodeSmithy::CMakeLists document(cmakelistsType, 1234, "CMakeListsCreationTest1");
-    if (document.type().name() == "CMakeLists")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(document.type().name() == "CMakeLists");
+    ISHTF_PASS();
 }

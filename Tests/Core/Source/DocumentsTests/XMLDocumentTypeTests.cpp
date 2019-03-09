@@ -23,14 +23,15 @@
 #include "XMLDocumentTypeTests.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-void AddXMLDocumentTypeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("XMLDocumentType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", XMLDocumentTypeCreationTest1);
+XMLDocumentTypeTests::XMLDocumentTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "XMLDocumentType tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome XMLDocumentTypeCreationTest1()
+void XMLDocumentTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::XMLDocumentType type;
     if ((type.name() == "XML") &&

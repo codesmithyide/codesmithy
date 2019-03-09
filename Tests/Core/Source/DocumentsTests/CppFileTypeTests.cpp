@@ -23,25 +23,21 @@
 #include "CppFileTypeTests.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-void AddCppFileTypeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CppFileType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CppFileTypeCreationTest1);
+CppFileTypeTests::CppFileTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CppFileType tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CppFileTypeCreationTest1()
+void CppFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CppFileType type;
-    if ((type.name() == "C++ Source File") &&
-        (type.extensions().size() == 2) &&
-        (type.extensions()[0] == "cpp") &&
-        (type.extensions()[1] == "cxx"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(type.name() == "C++ Source File");
+    ISHTF_FAIL_UNLESS(type.extensions().size() == 2);
+    ISHTF_FAIL_UNLESS(type.extensions()[0] == "cpp");
+    ISHTF_FAIL_UNLESS(type.extensions()[1] == "cxx");
+    ISHTF_PASS();
 }

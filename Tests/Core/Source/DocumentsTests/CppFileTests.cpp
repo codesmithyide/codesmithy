@@ -24,23 +24,19 @@
 #include "CodeSmithy/Core/Documents/CppFile.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-void AddCppFileTests(TestSequence& parentTestSequence)
-{
-    TestSequence testSequence = parentTestSequence.append<TestSequence>("CppFile tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CppFileCreationTest1);
+CppFileTests::CppFileTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CppFile tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CppFileCreationTest1()
+void CppFileTests::CreationTest1(Test& test)
 {
     std::shared_ptr<CodeSmithy::CppFileType> cppFileType = std::make_shared<CodeSmithy::CppFileType>();
     CodeSmithy::CppFile document(cppFileType, 1234, "CppFileCreationTest1");
-    if (document.type().name() == "C++ Source File")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(document.type().name() == "C++ Source File");
+    ISHTF_PASS();
 }

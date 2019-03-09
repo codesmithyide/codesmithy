@@ -42,13 +42,13 @@ DocumentsTestSequence::DocumentsTestSequence(const TestNumber& number, const Tes
 {
     append<BakefileTypeTests>();
     append<BakefileTests>();
-    AddCMakeListsTypeTests(documentsTestSequence);
-    AddCMakeListsTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTypeTests(documentsTestSequence);
-    AddCodeSmithyProjectFileTests(documentsTestSequence);
-    AddCppFileTypeTests(documentsTestSequence);
-    AddCppFileTests(documentsTestSequence);
-    AddXMLDocumentTypeTests(documentsTestSequence);
+    append<CMakeListsTypeTests>();
+    append<CMakeListsTests>();
+    append<CodeSmithyProjectFileTypeTests>();
+    append<CodeSmithyProjectFileTests>();
+    append<CppFileTypeTests>();
+    append<CppFileTests>();
+    append<XMLDocumentTypeTests>();
     AddXMLDocumentTests(documentsTestSequence);
     AddDocumentTypesTests(documentsTestSequence);
     DocumentsTests::AddTests(documentsTestSequence);

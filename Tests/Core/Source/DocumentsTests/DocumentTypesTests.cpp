@@ -47,15 +47,10 @@ void DocumentTypesTests::AddTest1(Test& test)
 {
     CodeSmithy::DocumentTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileType>());
-    if ((types.size() == 1) &&
-        (types[0]->name() == "Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(types.size() == 1);
+    ISHTF_FAIL_UNLESS(types[0]->name() == "Bakefile");
+    ISHTF_PASS();
 }
 
 void DocumentTypesTests::GetSuitableTypesForFileExtensionTest1(Test& test)
@@ -63,14 +58,9 @@ void DocumentTypesTests::GetSuitableTypesForFileExtensionTest1(Test& test)
     CodeSmithy::DocumentTypes types;
     std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
     types.getSuitableTypesForFileExtension("dummy", suitableTypes);
-    if (suitableTypes.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(suitableTypes.size() == 0);
+    ISHTF_PASS();
 }
 
 void DocumentTypesTests::GetSuitableTypesForFileExtensionTest2(Test& test)
@@ -79,13 +69,8 @@ void DocumentTypesTests::GetSuitableTypesForFileExtensionTest2(Test& test)
     types.add(std::make_shared<CodeSmithy::BakefileType>());
     std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
     types.getSuitableTypesForFileExtension("bkl", suitableTypes);
-    if ((suitableTypes.size() == 1) &&
-        (suitableTypes[0]->name() == "Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(suitableTypes.size() == 1);
+    ISHTF_FAIL_UNLESS(suitableTypes[0]->name() == "Bakefile");
+    ISHTF_PASS();
 }

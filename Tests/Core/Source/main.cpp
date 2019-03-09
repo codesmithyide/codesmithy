@@ -31,9 +31,11 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
+using namespace Ishiko::Tests;
+
 int main(int argc, char* argv[])
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+    TestHarness theTestHarness("CodeSmithyCore");
 
     theTestHarness.environment().setTestDataDirectory("../../TestData");
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");

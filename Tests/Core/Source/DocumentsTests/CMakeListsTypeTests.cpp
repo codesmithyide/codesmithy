@@ -23,24 +23,20 @@
 #include "CMakeListsTypeTests.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-void AddCMakeListsTypeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("CMakeListsType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CMakeListsTypeCreationTest1);
+CMakeListsTypeTests::CMakeListsTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CMakeListsType tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome CMakeListsTypeCreationTest1()
+void CMakeListsTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CMakeListsType type;
-    if ((type.name() == "CMakeLists") &&
-        (type.extensions().size() == 1) &&
-        (type.extensions()[0] == "txt"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(type.name() == "CMakeLists");
+    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
+    ISHTF_FAIL_UNLESS(type.extensions()[0] == "txt");
+    ISHTF_PASS();
 }
