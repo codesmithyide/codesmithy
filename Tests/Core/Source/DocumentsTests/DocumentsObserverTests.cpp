@@ -25,30 +25,26 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentsObserverTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("DocumentsObserver tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("onAdd test 1", DocumentsObserverOnAddTest1);
+DocumentsObserverTests::DocumentsObserverTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "DocumentsObserver tests", environment)
+{
+    append<HeapAllocationErrorsTest>("onElementAdded test 1", OnElementAddedTest1);
 }
 
-TestResult::EOutcome DocumentsObserverOnAddTest1()
+void DocumentsObserverTests::OnElementAddedTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     CodeSmithy::Documents documents;
     std::shared_ptr<TestDocumentsObserver> observer = std::make_shared<TestDocumentsObserver>();
     documents.observers().add(observer);
 
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsObserverOnAddTest1"));
-    if ((observer->observedDocuments().size() == 1) &&
-        (observer->observedDocuments()[0].get() == documents[0].get()))
-    {
-        result = TestResult::ePassed;
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(observer->observedDocuments().size() == 1);
+    ISHTF_FAIL_UNLESS(observer->observedDocuments()[0].get() == documents[0].get());
+    ISHTF_PASS();
 }
 
 const std::vector<std::shared_ptr<const CodeSmithy::Document> >& TestDocumentsObserver::observedDocuments() const

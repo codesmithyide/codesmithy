@@ -23,14 +23,15 @@
 #include "BakefileTypeTests.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddBakefileTypeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BakefileType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileTypeCreationTest1);
+BakefileTypeTests::BakefileTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "BakefileType tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome BakefileTypeCreationTest1()
+void BakefileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::BakefileType type;
     if ((type.name() == "Bakefile") &&

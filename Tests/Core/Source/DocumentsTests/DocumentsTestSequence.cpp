@@ -35,12 +35,13 @@
 #include "DocumentsTests.h"
 #include "DocumentsObserverTests.h"
 
-void AddDocumentsTestSequence(TestHarness& theTestHarness)
-{
-    TestSequence& documentsTestSequence = theTestHarness.appendTestSequence("Documents tests");
+using namespace Ishiko::Tests;
 
-    AddBakefileTypeTests(documentsTestSequence);
-    AddBakefileTests(documentsTestSequence);
+DocumentsTestSequence::DocumentsTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Documents tests", environment)
+{
+    append<BakefileTypeTests>();
+    append<BakefileTests>();
     AddCMakeListsTypeTests(documentsTestSequence);
     AddCMakeListsTests(documentsTestSequence);
     AddCodeSmithyProjectFileTypeTests(documentsTestSequence);

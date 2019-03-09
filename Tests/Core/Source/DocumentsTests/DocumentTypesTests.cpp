@@ -24,32 +24,26 @@
 #include "CodeSmithy/Core/Documents/DocumentTypes.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddDocumentTypesTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("DocumentTypes tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", DocumentTypesCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("add test 1", DocumentTypesAddTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 1",
-        DocumentTypesGetSuitableTypesForFileExtensionTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 2",
-        DocumentTypesGetSuitableTypesForFileExtensionTest2);
+DocumentTypesTests::DocumentTypesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "DocumentTypes tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("add test 1", AddTest1);
+    append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 1", GetSuitableTypesForFileExtensionTest1);
+    append<HeapAllocationErrorsTest>("getSuitableTypesForFileExtension test 2", GetSuitableTypesForFileExtensionTest2);
 }
 
-TestResult::EOutcome DocumentTypesCreationTest1()
+void DocumentTypesTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes types;
-    if (types.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(types.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome DocumentTypesAddTest1()
+void DocumentTypesTests::AddTest1(Test& test)
 {
     CodeSmithy::DocumentTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileType>());
@@ -64,7 +58,7 @@ TestResult::EOutcome DocumentTypesAddTest1()
     }
 }
 
-TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest1()
+void DocumentTypesTests::GetSuitableTypesForFileExtensionTest1(Test& test)
 {
     CodeSmithy::DocumentTypes types;
     std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
@@ -79,7 +73,7 @@ TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest1()
     }
 }
 
-TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest2()
+void DocumentTypesTests::GetSuitableTypesForFileExtensionTest2(Test& test)
 {
     CodeSmithy::DocumentTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileType>());

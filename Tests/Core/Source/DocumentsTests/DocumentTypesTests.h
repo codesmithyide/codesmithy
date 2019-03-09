@@ -25,13 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class DocumentTypesTests : public Ishiko::Tests::TestSequence
+{
+public:
+    DocumentTypesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddDocumentTypesTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome DocumentTypesCreationTest1();
-TestResult::EOutcome DocumentTypesAddTest1();
-TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest1();
-TestResult::EOutcome DocumentTypesGetSuitableTypesForFileExtensionTest2();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void AddTest1(Ishiko::Tests::Test& test);
+    static void GetSuitableTypesForFileExtensionTest1(Ishiko::Tests::Test& test);
+    static void GetSuitableTypesForFileExtensionTest2(Ishiko::Tests::Test& test);
+};
 
 #endif

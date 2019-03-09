@@ -26,11 +26,14 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include "CodeSmithy/Core/Documents/Documents.h"
 
-using namespace Ishiko::TestFramework;
+class DocumentsObserverTests : public Ishiko::Tests::TestSequence
+{
+public:
+    DocumentsObserverTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddDocumentsObserverTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome DocumentsObserverOnAddTest1();
+private:
+    static void OnElementAddedTest1(Ishiko::Tests::Test& test);
+};
 
 class TestDocumentsObserver : public CodeSmithy::Documents::Observer
 {

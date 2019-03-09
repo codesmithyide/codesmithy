@@ -25,61 +25,50 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void DocumentsTests::AddTests(TestSequence& parentTestSequence)
+DocumentsTests::DocumentsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Documents tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Documents tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("add test 1", AddTest1);
-    testSequence.append<HeapAllocationErrorsTest>("addObserver test 1", AddObserverTest1);
-    testSequence.append<HeapAllocationErrorsTest>("removeObserver test 1", RemoveObserverTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("add test 1", AddTest1);
+    append<HeapAllocationErrorsTest>("addObserver test 1", AddObserverTest1);
+    append<HeapAllocationErrorsTest>("removeObserver test 1", RemoveObserverTest1);
 }
 
-TestResult::EOutcome DocumentsTests::CreationTest1()
+void DocumentsTests::CreationTest1(Test& test)
 {
     CodeSmithy::Documents documents;
-    if (documents.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(documents.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome DocumentsTests::AddTest1()
+void DocumentsTests::AddTest1(Test& test)
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsAddTest1"));
-    if (documents.size() == 1)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_UNLESS(documents.size() == 1);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome DocumentsTests::AddObserverTest1()
+void DocumentsTests::AddObserverTest1(Test& test)
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::Documents::Observer> observer = std::make_shared<CodeSmithy::Documents::Observer>();
     documents.observers().add(observer);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome DocumentsTests::RemoveObserverTest1()
+void DocumentsTests::RemoveObserverTest1(Test& test)
 {
     CodeSmithy::Documents documents;
     std::shared_ptr<CodeSmithy::Documents::Observer> observer = std::make_shared<CodeSmithy::Documents::Observer>();
     documents.observers().add(observer);
     documents.observers().remove(observer);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
