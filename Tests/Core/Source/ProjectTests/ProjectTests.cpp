@@ -34,20 +34,21 @@
 #include "BakefileProjectTests.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddProjectTests(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Project tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ProjectTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "ProjectTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& projectTestSequence = theTestHarness.appendTestSequence("Project tests");
-
-    AddProjectGroupTypeTests(projectTestSequence);
-    AddCodeSmithyProjectTypeTests(projectTestSequence);
-    AddBakefileProjectTypeTests(projectTestSequence);
-    AddCMakeProjectTypeTests(projectTestSequence);
-    AddProjectTypesTests(projectTestSequence);
-    ProjectRepositoryTests::AddTests(projectTestSequence);
-    ProjectDescriptionTests::AddTests(projectTestSequence);
+    append<ProjectGroupTypeTests>();
+    append<CodeSmithyProjectTypeTests>();
+    append<BakefileProjectTypeTests>();
+    append<CMakeProjectTypeTests>();
+    append<ProjectTypesTests>();
+    append<ProjectRepositoryTests>();
+    append<ProjectDescriptionTests>();
     ProjectLocationTests::AddTests(projectTestSequence);
     ProjectGroupTests::AddTests(projectTestSequence);
     AddCodeSmithyProjectTests(projectTestSequence);

@@ -24,43 +24,32 @@
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
 
-void AddCMakeProjectTypeTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("CMakeProjectType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CMakeProjectTypeCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1",
-        CMakeProjectTypeSupportedDocumentTypesTest1);
+CMakeProjectTypeTests::CMakeProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "CMakeProjectType tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1", SupportedDocumentTypesTest1);
 }
 
-TestResult::EOutcome CMakeProjectTypeCreationTest1()
+void CMakeProjectTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::CMakeProjectType projectType(documentTypes);
 
-    if (projectType.name() == "CodeSmithy.CMake")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(projectType.name() == "CodeSmithy.CMake");
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome CMakeProjectTypeSupportedDocumentTypesTest1()
+void CMakeProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::CMakeListsType>());
     const CodeSmithy::CMakeProjectType projectType(documentTypes);
     const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
-    if ((supportedDocumentTypes.size() == 1) &&
-        (supportedDocumentTypes[0]->name() == "CMakeLists"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(supportedDocumentTypes.size() == 1);
+    ISHTF_FAIL_UNLESS(supportedDocumentTypes[0]->name() == "CMakeLists");
+    ISHTF_PASS();
 }

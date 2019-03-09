@@ -42,7 +42,8 @@ int main(int argc, char* argv[])
     boost::filesystem::create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
-    AddDocumentsTestSequence(theTestHarness);
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<DocumentsTestSequence>();
     AddProjectTests(theTestHarness);
     AddProjectTemplatesTestSequence(theTestHarness);
     AddWorkspacesTestSequence(theTestHarness);

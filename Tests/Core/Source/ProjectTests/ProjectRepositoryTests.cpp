@@ -24,21 +24,20 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void ProjectRepositoryTests::AddTests(TestSequence& parentTestSequence)
+ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectRepository tests", environment)
 {
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectRepositoryTests tests");
-
-    testSequence.append<FileComparisonTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
-    testSequence.append<FileComparisonTest>("setName test 1", SetNameTest1);
-    testSequence.append<FileComparisonTest>("addProjectNode test 1", AddProjectNodeTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
+	append<FileComparisonTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
+    append<FileComparisonTest>("setName test 1", SetNameTest1);
+    append<FileComparisonTest>("addProjectNode test 1", AddProjectNodeTest1);
+    append<HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
 }
 
-TestResult::EOutcome ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -58,7 +57,7 @@ TestResult::EOutcome ProjectRepositoryTests::CreationTest1(FileComparisonTest& t
     return result;
 }
 
-TestResult::EOutcome ProjectRepositoryTests::CreationTest2(Test& test)
+void ProjectRepositoryTests::CreationTest2(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -73,7 +72,7 @@ TestResult::EOutcome ProjectRepositoryTests::CreationTest2(Test& test)
     return result;
 }
 
-TestResult::EOutcome ProjectRepositoryTests::CreationTest3(Test& test)
+void ProjectRepositoryTests::CreationTest3(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -88,7 +87,7 @@ TestResult::EOutcome ProjectRepositoryTests::CreationTest3(Test& test)
     return result;
 }
 
-TestResult::EOutcome ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 
@@ -111,7 +110,7 @@ TestResult::EOutcome ProjectRepositoryTests::SetNameTest1(FileComparisonTest& te
     return result;
 }
 
-TestResult::EOutcome ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
     boost::filesystem::remove(outputPath);
@@ -129,7 +128,7 @@ TestResult::EOutcome ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonT
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
+void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
 {
     TestResult::EOutcome result = TestResult::eFailed;
 

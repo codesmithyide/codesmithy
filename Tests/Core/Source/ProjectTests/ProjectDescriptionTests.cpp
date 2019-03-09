@@ -25,13 +25,14 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void ProjectDescriptionTests::AddTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectDescription tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    testSequence.append<FileComparisonTest>("save test 1", SaveTest1);
+ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectDescription tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
 TestResult::EOutcome ProjectDescriptionTests::CreationTest1()

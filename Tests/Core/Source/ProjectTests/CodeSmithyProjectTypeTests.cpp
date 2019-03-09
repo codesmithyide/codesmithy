@@ -35,12 +35,6 @@ void CodeSmithyProjectTypeTestsCreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType projectType;
 
-    if (projectType.name() == "CodeSmithy.CodeSmithy")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(projectType.name() == "CodeSmithy.CodeSmithy");
+    ISHTF_PASS();
 }

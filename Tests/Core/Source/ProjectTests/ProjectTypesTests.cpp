@@ -25,33 +25,26 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-void AddProjectTypesTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("ProjectTypes tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ProjectTypesCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("add test 1", ProjectTypesAddTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 1",
-        ProjectTypesGetSuitableTypesForDocumentTypeTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 2",
-        ProjectTypesGetSuitableTypesForDocumentTypeTest2);
+ProjectTypesTests::ProjectTypesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ProjectTypes tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("add test 1", AddTest1);
+    append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 1", GetSuitableTypesForDocumentTypeTest1);
+    append<HeapAllocationErrorsTest>("getSuitableTypesForDocumentType test 2", GetSuitableTypesForDocumentTypeTest2);
 }
 
-TestResult::EOutcome ProjectTypesCreationTest1()
+void ProjectTypesTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
 
-    if (types.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(types.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectTypesAddTest1()
+void ProjectTypesTests::AddTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
@@ -59,34 +52,23 @@ TestResult::EOutcome ProjectTypesAddTest1()
     CodeSmithy::ProjectTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
 
-    if ((types.size() == 1) &&
-        (types[0]->name() == "CodeSmithy.Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(types.size() == 1);
+    ISHTF_FAIL_UNLESS(types[0]->name() == "CodeSmithy.Bakefile");
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest1()
+void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
 
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("dummy", suitableTypes);
-    if (suitableTypes.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(suitableTypes.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest2()
+void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest2(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
@@ -96,13 +78,8 @@ TestResult::EOutcome ProjectTypesGetSuitableTypesForDocumentTypeTest2()
 
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("Bakefile", suitableTypes);
-    if ((suitableTypes.size() == 1) &&
-        (suitableTypes[0]->name() == "CodeSmithy.Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(suitableTypes.size() == 1);
+    ISHTF_FAIL_UNLESS(suitableTypes[0]->name() == "CodeSmithy.Bakefile");
+    ISHTF_PASS();
 }

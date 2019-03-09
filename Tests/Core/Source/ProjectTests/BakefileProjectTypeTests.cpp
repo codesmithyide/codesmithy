@@ -24,43 +24,32 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-void AddBakefileProjectTypeTests(TestSequence& parentTestSequence)
-{
-	TestSequence& testSequence = parentTestSequence.append<TestSequence>("BakefileProjectType tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", BakefileProjectTypeCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1",
-        BakefileProjectTypeSupportedDocumentTypesTest1);
+BakefileProjectTypeTests::BakefileProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "BakefileProjectType tests", environment)
+{
+	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1", SupportedDocumentTypesTest1);
 }
 
-TestResult::EOutcome BakefileProjectTypeCreationTest1()
+void BakefileProjectTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType projectType(documentTypes);
 
-    if (projectType.name() == "CodeSmithy.Bakefile")
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(projectType.name() == "CodeSmithy.Bakefile");
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome BakefileProjectTypeSupportedDocumentTypesTest1()
+void BakefileProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
     const CodeSmithy::BakefileProjectType projectType(documentTypes);
     const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
-    if ((supportedDocumentTypes.size() == 1) &&
-        (supportedDocumentTypes[0]->name() == "Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(supportedDocumentTypes.size() == 1);
+    ISHTF_FAIL_UNLESS(supportedDocumentTypes[0]->name() == "Bakefile");
+    ISHTF_PASS();
 }

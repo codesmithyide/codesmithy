@@ -25,12 +25,16 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class BakefileProjectTests : public Ishiko::Tests::TestSequence
+{
+public:
+    BakefileProjectTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddBakefileProjectTests(TestSequence& parentTestSequence);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
 
-TestResult::EOutcome BakefileProjectCreationTest1();
-TestResult::EOutcome BakefileProjectCreationTest2(Test& test);
-TestResult::EOutcome BakefileProjectSaveTest1(FileComparisonTest& test);
+};
 
 #endif
