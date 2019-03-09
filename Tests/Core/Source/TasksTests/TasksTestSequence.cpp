@@ -34,5 +34,5 @@ TasksTestSequence::TasksTestSequence(const TestNumber& number, const TestEnviron
     append<TaskTests>();
     append<SyncFunctionTaskTests>();
     append<TasksTests>();
-    TaskRunnerTests::AddTests(tasksTestSequence);
+    append<TaskRunnerTests>();
 }

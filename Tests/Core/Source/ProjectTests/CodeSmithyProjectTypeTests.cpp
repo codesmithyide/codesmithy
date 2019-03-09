@@ -31,7 +31,7 @@ CodeSmithyProjectTypeTests::CodeSmithyProjectTypeTests(const TestNumber& number,
 	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-void CodeSmithyProjectTypeTestsCreationTest1(Test& test)
+void CodeSmithyProjectTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType projectType;
 

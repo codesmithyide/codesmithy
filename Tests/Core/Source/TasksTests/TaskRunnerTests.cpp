@@ -24,51 +24,52 @@
 #include "CodeSmithy/Core/Tasks/TaskRunner.h"
 #include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void TaskRunnerTests::AddTests(TestSequence& parentTestSequence)
+TaskRunnerTests::TaskRunnerTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "TaskRunner tests", environment)
 {
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("TaskRunner tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
-    testSequence.append<HeapAllocationErrorsTest>("start test 2", StartTest2);
-    testSequence.append<HeapAllocationErrorsTest>("post test 1", PostTest1);
-    testSequence.append<HeapAllocationErrorsTest>("post test 2", PostTest2);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("start test 1", StartTest1);
+    append<HeapAllocationErrorsTest>("start test 2", StartTest2);
+    append<HeapAllocationErrorsTest>("post test 1", PostTest1);
+    append<HeapAllocationErrorsTest>("post test 2", PostTest2);
 }
 
-TestResult::EOutcome TaskRunnerTests::CreationTest1()
+void TaskRunnerTests::CreationTest1(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(1);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskRunnerTests::CreationTest2()
+void TaskRunnerTests::CreationTest2(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(16);
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskRunnerTests::StartTest1()
+void TaskRunnerTests::StartTest1(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(1);
     taskRunner.start();
     taskRunner.stop();
     taskRunner.join();
-    return TestResult::ePassed;
+
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskRunnerTests::StartTest2()
+void TaskRunnerTests::StartTest2(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(16);
     taskRunner.start();
     taskRunner.stop();
     taskRunner.join();
-    return TestResult::ePassed;
+
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskRunnerTests::PostTest1()
+void TaskRunnerTests::PostTest1(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(1);
     taskRunner.start();
@@ -79,17 +80,11 @@ TestResult::EOutcome TaskRunnerTests::PostTest1()
     taskRunner.stop();
     taskRunner.join();
 
-    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(task->status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome TaskRunnerTests::PostTest2()
+void TaskRunnerTests::PostTest2(Test& test)
 {
     CodeSmithy::TaskRunner taskRunner(16);
     taskRunner.start();
@@ -100,12 +95,6 @@ TestResult::EOutcome TaskRunnerTests::PostTest2()
     taskRunner.stop();
     taskRunner.join();
 
-    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(task->status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }

@@ -25,27 +25,24 @@
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void BootstrapTests::AddTests(TestHarness& theTestHarness)
+BootstrapTests::BootstrapTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Bootstrap tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "BootstrapTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "BootstrapTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& testSequence = theTestHarness.appendTestSequence("Bootstrap tests");
-
-    testSequence.append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
+    append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Bootstap ProjectFileRepository test 2",
+    append<HeapAllocationErrorsTest>("Bootstap ProjectFileRepository test 2",
         ProjectFileRepositoryCreationTest2);
 }
 
 // This tests that we are able to generate the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 // It's also a convenient way to generate it.
-TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
+void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
@@ -98,52 +95,41 @@ TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest1(FileComp
 
     repository.save();
 
-    if (repository.name() == "CodeSmithyIDE")
-    {
-        result = TestResult::ePassed;
-    }
-
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return result;
+    ISHTF_PASS();
 }
 
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
-TestResult::EOutcome BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
+void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
     CodeSmithy::ProjectRepository repository(inputPath);
-    if (repository.name() == "CodeSmithyIDE")
-    {
-        DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
-        if (projectNode)
-        {
-            Ishiko::Error error;
-            CodeSmithy::ProjectGroupType type;
-            CodeSmithy::ProjectGroup project(type, projectNode, error);
-            if (project.name() == "CodeSmithy")
-            {
-                if ((project.children().size() == 5) &&
-                    project.children()[0].isProject() &&
-                    (project.children()[0].project().name() == "pugixml") &&
-                    project.children()[1].isProject() &&
-                    (project.children()[1].project().name() == "libgit2") &&
-                    project.children()[2].isProject() &&
-                    (project.children()[2].project().name() == "Ishiko Dependencies") &&
-                    project.children()[3].isProject() &&
-                    (project.children()[3].project().name() == "wxWidgets Dependencies") &&
-                    project.children()[4].isLink() &&
-                    (project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy")))
-                {
-                    result = TestResult::ePassed;
-                }
-            }
-        }
-    }
 
-    return result;
+    ISHTF_FAIL_UNLESS(repository.name() == "CodeSmithyIDE");
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
+
+    ISHTF_ABORT_UNLESS(projectNode);
+
+    Ishiko::Error error(0);
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, projectNode, error);
+
+    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_UNLESS(project.name() == "CodeSmithy");
+    ISHTF_FAIL_UNLESS(project.children().size() == 5);
+    ISHTF_FAIL_UNLESS(project.children()[0].isProject());
+    ISHTF_FAIL_UNLESS(project.children()[0].project().name() == "pugixml");
+    ISHTF_FAIL_UNLESS(project.children()[1].isProject());
+    ISHTF_FAIL_UNLESS(project.children()[1].project().name() == "libgit2");
+    ISHTF_FAIL_UNLESS(project.children()[2].isProject());
+    ISHTF_FAIL_UNLESS(project.children()[2].project().name() == "Ishiko Dependencies");
+    ISHTF_FAIL_UNLESS(project.children()[3].isProject());
+    ISHTF_FAIL_UNLESS(project.children()[3].project().name() == "wxWidgets Dependencies");
+    ISHTF_FAIL_UNLESS(project.children()[4].isLink());
+    ISHTF_FAIL_UNLESS(project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+    ISHTF_PASS();
 }

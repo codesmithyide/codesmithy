@@ -24,36 +24,34 @@
 #include "CodeSmithy/Core/Engine.h"
 #include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
 
-using namespace Ishiko::TestFramework;
+using namespace Ishiko::Tests;
 
-void EngineTests::AddTests(TestHarness& theTestHarness)
+EngineTests::EngineTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Engine tests", environment)
 {
-    TestSequence& testSequence = theTestHarness.appendTestSequence("Engine tests");
-
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("start test 1", StartTest1);
-    testSequence.append<HeapAllocationErrorsTest>("addTask test 1", AddTaskTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("start test 1", StartTest1);
+    append<HeapAllocationErrorsTest>("addTask test 1", AddTaskTest1);
 }
 
-TestResult::EOutcome EngineTests::CreationTest1()
+void EngineTests::CreationTest1(Test& test)
 {
     CodeSmithy::Engine engine;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome EngineTests::StartTest1()
+void EngineTests::StartTest1(Test& test)
 {
     CodeSmithy::Engine engine;
     engine.start();
     engine.stop();
     engine.join();
-    return TestResult::ePassed;
+    
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome EngineTests::AddTaskTest1()
+void EngineTests::AddTaskTest1(Test& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     CodeSmithy::Engine engine;
     engine.start();
 
@@ -63,10 +61,6 @@ TestResult::EOutcome EngineTests::AddTaskTest1()
     engine.stop();
     engine.join();
 
-    if (task->status() == CodeSmithy::Task::EStatus::eCompleted)
-    {
-        result = TestResult::ePassed;
-    }
-
-    return result;
+    ISHTF_FAIL_UNLESS(task->status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_PASS();
 }

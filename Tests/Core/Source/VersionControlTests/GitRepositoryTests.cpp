@@ -24,25 +24,26 @@
 #include "CodeSmithy/Core/VersionControl/GitRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void GitRepositoryTests::AddTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("GitRepository tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("init test 1", InitTest1);
-    testSequence.append<HeapAllocationErrorsTest>("clone test 1", CloneTest1);
-    testSequence.append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
-    testSequence.append<HeapAllocationErrorsTest>("checkIfRepository test 1", CheckIfRepositoryTest1);
-    testSequence.append<HeapAllocationErrorsTest>("checkIfRepository test 2", CheckIfRepositoryTest2);
+GitRepositoryTests::GitRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "GitRepository tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("init test 1", InitTest1);
+    append<HeapAllocationErrorsTest>("clone test 1", CloneTest1);
+    append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
+    append<HeapAllocationErrorsTest>("checkIfRepository test 1", CheckIfRepositoryTest1);
+    append<HeapAllocationErrorsTest>("checkIfRepository test 2", CheckIfRepositoryTest2);
 }
 
-TestResult::EOutcome GitRepositoryTests::CreationTest1()
+void GitRepositoryTests::CreationTest1(Test& test)
 {
     CodeSmithy::GitRepository repository;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome GitRepositoryTests::InitTest1(Test& test)
+void GitRepositoryTests::InitTest1(Test& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
     boost::filesystem::remove_all(outputPath);
@@ -51,10 +52,10 @@ TestResult::EOutcome GitRepositoryTests::InitTest1(Test& test)
     repository.init(outputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome GitRepositoryTests::CloneTest1(Test& test)
+void GitRepositoryTests::CloneTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_CloneTest1");
@@ -64,10 +65,10 @@ TestResult::EOutcome GitRepositoryTests::CloneTest1(Test& test)
     repository.clone(inputPath.string(), outputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
+void GitRepositoryTests::OpenTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
 
@@ -75,35 +76,27 @@ TestResult::EOutcome GitRepositoryTests::OpenTest1(Test& test)
     repository.open(inputPath.string())->run();
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
+void GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests/GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
-    if (repository.checkIfRepository(inputPath.string()))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    bool isRepository = repository.checkIfRepository(inputPath.string());
+
+    ISHTF_FAIL_UNLESS(isRepository);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome GitRepositoryTests::CheckIfRepositoryTest2(Test& test)
+void GitRepositoryTests::CheckIfRepositoryTest2(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "VersionControlTests");
 
     CodeSmithy::GitRepository repository;
-    if (!repository.checkIfRepository(inputPath.string()))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    bool isRepository = repository.checkIfRepository(inputPath.string());
+    
+    ISHTF_FAIL_IF(isRepository);
+    ISHTF_PASS();
 }

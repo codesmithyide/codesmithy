@@ -31,7 +31,7 @@ ProjectGroupTypeTests::ProjectGroupTypeTests(const TestNumber& number, const Tes
 	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-void ProjectGroupTypeTestsCreationTest1(Test& test)
+void ProjectGroupTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectGroupType type;
 
