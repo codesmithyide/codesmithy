@@ -22,16 +22,17 @@
 
 #include "VisualStudioBuildTests.h"
 
-void AddVisualStudioBuildTests(TestHarness& theTestHarness)
-{
-    TestSequence& buildTestSequence = theTestHarness.appendTestSequence("VisualStudio build tests");
+using namespace Ishiko::Tests;
 
-    VisualStudioBuildTest1(buildTestSequence);
-    VisualStudioBuildTest2(buildTestSequence);
-    VisualStudioBuildTest3(buildTestSequence);
+VisualStudioBuildTests::VisualStudioBuildTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "VisualStudio build tests", environment)
+{
+    BuildTest1(*this);
+    BuildTest2(*this);
+    BuildTest3(*this);
 }
 
-void VisualStudioBuildTest1(TestSequence& testSequence)
+void VisualStudioBuildTests::BuildTest1(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
         testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln"
@@ -42,7 +43,7 @@ void VisualStudioBuildTest1(TestSequence& testSequence)
     testSequence.append<ConsoleApplicationTest>("Visual Studio build test 1", commandLine, 0);
 }
 
-void VisualStudioBuildTest2(TestSequence& testSequence)
+void VisualStudioBuildTests::BuildTest2(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
         testSequence.environment().getTestDataDirectory() / "MissingProject.sln"
@@ -53,7 +54,7 @@ void VisualStudioBuildTest2(TestSequence& testSequence)
     testSequence.append<ConsoleApplicationTest>("Visual Studio build test 2", commandLine, -1);
 }
 
-void VisualStudioBuildTest3(TestSequence& testSequence)
+void VisualStudioBuildTests::BuildTest3(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
         testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln"
