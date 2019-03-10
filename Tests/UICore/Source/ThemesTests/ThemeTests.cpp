@@ -25,15 +25,16 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddThemeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Theme tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ThemeCreationTest1);
+ThemeTests::ThemeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Theme tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome ThemeCreationTest1()
+void ThemeTests::CreationTest1(Test& test)
 {
     CodeSmithy::Theme theme("ThemeCreationTest1");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

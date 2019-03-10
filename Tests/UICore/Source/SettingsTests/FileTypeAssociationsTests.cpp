@@ -90,14 +90,9 @@ void FileTypeAssociationsTests::RemoveTest2(Test& test)
     std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
     associations.remove("documentType1");
-    if (associations.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest1(Test& test)
@@ -105,14 +100,9 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest1(Test& test)
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::FileTypeAssociations associations;
     associations.addNewFileTypeAssociations(documentTypes);
-    if (associations.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest2(Test& test)
@@ -121,15 +111,10 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest2(Test& test)
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
     CodeSmithy::FileTypeAssociations associations;
     associations.addNewFileTypeAssociations(documentTypes);
-    if ((associations.size() == 1) &&
-        (associations[0]->documentTypeName() == "Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 1);
+    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "Bakefile");
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest3(Test& test)
@@ -142,16 +127,11 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest3(Test& test)
     associations.set(association);
 
     associations.addNewFileTypeAssociations(documentTypes);
-    if ((associations.size() == 2) &&
-        (associations[0]->documentTypeName() == "documentType1") &&
-        (associations[1]->documentTypeName() == "Bakefile"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 2);
+    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
+    ISHTF_FAIL_UNLESS(associations[1]->documentTypeName() == "Bakefile");
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest4(Test& test)
@@ -165,14 +145,9 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest4(Test& test)
     associations.set(association);
 
     associations.addNewFileTypeAssociations(documentTypes);
-    if ((associations.size() == 1) &&
-        (associations[0]->documentTypeName() == "Bakefile") &&
-        (associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 1);
+    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "Bakefile");
+    ISHTF_FAIL_UNLESS(associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen);
+    ISHTF_PASS();
 }

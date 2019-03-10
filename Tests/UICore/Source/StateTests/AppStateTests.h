@@ -25,10 +25,13 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class AppStateTests : public Ishiko::Tests::TestSequence
+{
+public:
+    AppStateTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddAppStateTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome AppStateCreationTest1(FileComparisonTest& test);
+private:
+    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
+};
 
 #endif

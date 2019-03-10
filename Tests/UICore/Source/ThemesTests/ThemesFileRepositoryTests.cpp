@@ -24,17 +24,18 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddThemesFileRepositoryTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("ThemesFileRepository tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<FileComparisonTest>("Creation test 1", ThemesFileRepositoryCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getThemeNodes test 1", ThemesFileRepositoryGetThemeNodesTest1);
-    testSequence.append<FileComparisonTest>("addThemeNode test 1", ThemesFileRepositoryAddThemeNodeTest1);
-    testSequence.append<FileComparisonTest>("addThemeNode test 2", ThemesFileRepositoryAddThemeNodeTest2);
+ThemesFileRepositoryTests::ThemesFileRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "ThemesFileRepository tests", environment)
+{
+    append<FileComparisonTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("getThemeNodes test 1", GetThemeNodesTest1);
+    append<FileComparisonTest>("addThemeNode test 1", AddThemeNodeTest1);
+    append<FileComparisonTest>("addThemeNode test 2", AddThemeNodeTest2);
 }
 
-TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test)
+void ThemesFileRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/ThemesFileRepositoryCreationTest1.csmththemes");
     boost::filesystem::remove(outputPath);
@@ -45,28 +46,23 @@ TestResult::EOutcome ThemesFileRepositoryCreationTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesFileRepositoryGetThemeNodesTest1(Test& test)
+void ThemesFileRepositoryTests::GetThemeNodesTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ThemesTests/ThemesFileRepositoryGetThemeNodesTest1.csmththemes");
     CodeSmithy::ThemesFileRepository repository(inputPath);
 
     std::vector<std::shared_ptr<CodeSmithy::ThemesRepositoryNode> > themeNodes;
     repository.getThemeNodes(themeNodes);
-    if ((themeNodes.size() == 1) &&
-        (themeNodes[0]->themeName() == "Theme1"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(themeNodes.size() == 1);
+    ISHTF_FAIL_UNLESS(themeNodes[0]->themeName() == "Theme1");
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest1(FileComparisonTest& test)
+void ThemesFileRepositoryTests::AddThemeNodeTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/ThemesFileRepositoryAddThemeNodeTest1.csmththemes");
     boost::filesystem::remove(outputPath);
@@ -83,7 +79,7 @@ TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest1(FileComparisonTest& t
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome ThemesFileRepositoryAddThemeNodeTest2(FileComparisonTest& test)
+void ThemesFileRepositoryTests::AddThemeNodeTest2(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/ThemesFileRepositoryAddThemeNodeTest2.csmththemes");
     boost::filesystem::remove(outputPath);

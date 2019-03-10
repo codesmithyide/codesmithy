@@ -26,21 +26,22 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddEditorThemeTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("EditorTheme tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", EditorThemeCreationTest1);
-    testSequence.append<FileComparisonTest>("save test 1", EditorThemeSaveTest1);
+EditorThemeTests::EditorThemeTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "EditorTheme tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-TestResult::EOutcome EditorThemeCreationTest1()
+void EditorThemeTests::CreationTest1(Test& test)
 {
     CodeSmithy::EditorTheme editorTheme("EditorThemeCreationTest1");
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome EditorThemeSaveTest1(FileComparisonTest& test)
+void EditorThemeTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/EditorThemeSaveTest1.csmththemes");
     boost::filesystem::remove(outputPath);
@@ -61,5 +62,5 @@ TestResult::EOutcome EditorThemeSaveTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

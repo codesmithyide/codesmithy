@@ -25,19 +25,17 @@
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddBuiltInThemesTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("BuiltInThemes tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<FileComparisonTest>("addCodeSmithyLightThemeNode test 1",
-        BuiltInThemesAddCodeSmithyLightThemeNodeTest1);
-    testSequence.append<FileComparisonTest>("addCodeSmithyDarkThemeNode test 1",
-        BuiltInThemesAddCodeSmithyDarkThemeNodeTest1);
-    testSequence.append<FileComparisonTest>("createDefaultThemesFileRepository test 1",
-        BuiltInThemesCreateDefaultThemesFileRepositoryTest1);
+BuiltInThemesTests::BuiltInThemesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "BuiltInThemes tests", environment)
+{
+    append<FileComparisonTest>("addCodeSmithyLightThemeNode test 1", AddCodeSmithyLightThemeNodeTest1);
+    append<FileComparisonTest>("addCodeSmithyDarkThemeNode test 1", AddCodeSmithyDarkThemeNodeTest1);
+    append<FileComparisonTest>("createDefaultThemesFileRepository test 1", CreateDefaultThemesFileRepositoryTest1);
 }
 
-TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test)
+void BuiltInThemesTests::AddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyLightThemeNodeTest1.csmththemes");
     boost::filesystem::remove(outputPath);
@@ -53,7 +51,7 @@ TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileCompariso
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome BuiltInThemesAddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test)
+void BuiltInThemesTests::AddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesAddCodeSmithyDarkThemeNodeTest1.csmththemes");
     boost::filesystem::remove(outputPath);
@@ -69,7 +67,7 @@ TestResult::EOutcome BuiltInThemesAddCodeSmithyDarkThemeNodeTest1(FileComparison
     return TestResult::ePassed;
 }
 
-TestResult::EOutcome BuiltInThemesCreateDefaultThemesFileRepositoryTest1(FileComparisonTest& test)
+void BuiltInThemesTests::CreateDefaultThemesFileRepositoryTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ThemesTests/BuiltInThemesCreateDefaultThemesFileRepositoryTest1.csmththemes");
     boost::filesystem::remove(outputPath);
