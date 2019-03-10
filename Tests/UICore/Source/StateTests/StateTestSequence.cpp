@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,12 +24,13 @@
 #include "AppStateTests.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddStateTestSequence(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+StateTestSequence::StateTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "State tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "StateTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "StateTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& stateTestSequence = theTestHarness.appendTestSequence("State tests");
-
-    AddAppStateTests(stateTestSequence);
+    append<AppStateTests>();
 }

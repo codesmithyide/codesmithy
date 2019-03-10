@@ -76,7 +76,7 @@ void ThemesFileRepositoryTests::AddThemeNodeTest1(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
 void ThemesFileRepositoryTests::AddThemeNodeTest2(FileComparisonTest& test)
@@ -94,5 +94,5 @@ void ThemesFileRepositoryTests::AddThemeNodeTest2(FileComparisonTest& test)
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

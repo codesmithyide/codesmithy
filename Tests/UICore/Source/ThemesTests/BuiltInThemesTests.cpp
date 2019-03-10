@@ -48,7 +48,7 @@ void BuiltInThemesTests::AddCodeSmithyLightThemeNodeTest1(FileComparisonTest& te
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
 void BuiltInThemesTests::AddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test)
@@ -64,7 +64,7 @@ void BuiltInThemesTests::AddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& tes
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
 void BuiltInThemesTests::CreateDefaultThemesFileRepositoryTest1(FileComparisonTest& test)
@@ -78,5 +78,5 @@ void BuiltInThemesTests::CreateDefaultThemesFileRepositoryTest1(FileComparisonTe
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }

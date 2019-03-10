@@ -24,26 +24,24 @@
 #include "CodeSmithy/UICore/State/AppState.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddAppStateTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("AppState tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<FileComparisonTest>("Creation test 1", AppStateCreationTest1);
+AppStateTests::AppStateTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "AppState tests", environment)
+{
+    append<FileComparisonTest>("Creation test 1", CreationTest1);
 }
 
-TestResult::EOutcome AppStateCreationTest1(FileComparisonTest& test)
+void AppStateTests::CreationTest1(FileComparisonTest& test)
 {
-    TestResult::EOutcome result = TestResult::eFailed;
-
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "StateTests/AppStateCreationTest1.xml");
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "StateTests/AppStateCreationTest1.xml");
 
     CodeSmithy::AppState appState(outputPath);
-    result = TestResult::ePassed;
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    return result;
+    ISHTF_PASS();
 }
