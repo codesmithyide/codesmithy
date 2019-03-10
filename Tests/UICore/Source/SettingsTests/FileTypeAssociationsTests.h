@@ -25,18 +25,22 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class FileTypeAssociationsTests : public Ishiko::Tests::TestSequence
+{
+public:
+    FileTypeAssociationsTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-void AddFileTypeAssociationsTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome FileTypeAssociationsCreationTest1();
-TestResult::EOutcome FileTypeAssociationsSetTest1();
-TestResult::EOutcome FileTypeAssociationsSetTest2();
-TestResult::EOutcome FileTypeAssociationsRemoveTest1();
-TestResult::EOutcome FileTypeAssociationsRemoveTest2();
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest1();
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2();
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest3();
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest4();
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SetTest1(Ishiko::Tests::Test& test);
+    static void SetTest2(Ishiko::Tests::Test& test);
+    static void RemoveTest1(Ishiko::Tests::Test& test);
+    static void RemoveTest2(Ishiko::Tests::Test& test);
+    static void AddNewFileTypeAssociationsTest1(Ishiko::Tests::Test& test);
+    static void AddNewFileTypeAssociationsTest2(Ishiko::Tests::Test& test);
+    static void AddNewFileTypeAssociationsTest3(Ishiko::Tests::Test& test);
+    static void AddNewFileTypeAssociationsTest4(Ishiko::Tests::Test& test);
+};
 
 #endif

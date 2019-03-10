@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,14 +26,15 @@
 #include "AppSettingsTests.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddSettingsTests(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+SettingsTests::SettingsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Settings tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "SettingsTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "SettingsTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& settingsTestSequence = theTestHarness.appendTestSequence("Settings tests");
-
-    AddFileTypeAssociationTests(settingsTestSequence);
-    AddFileTypeAssociationsTests(settingsTestSequence);
-    AddAppSettingsTests(settingsTestSequence);
+    append<FileTypeAssociationTests>();
+    append<FileTypeAssociationsTests>();
+    append<AppSettingsTests>();
 }

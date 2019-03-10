@@ -25,8 +25,10 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
-
-void AddStateTestSequence(TestHarness& theTestHarness);
+class StateTestSequence : public Ishiko::Tests::TestSequence
+{
+public:
+    StateTestSequence(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+};
 
 #endif

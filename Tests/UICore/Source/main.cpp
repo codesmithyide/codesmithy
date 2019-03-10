@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,18 +26,21 @@
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 #include <boost/filesystem/operations.hpp>
 
+using namespace Ishiko::Tests;
+
 int main(int argc, char* argv[])
 {
-    Ishiko::TestFramework::TestHarness theTestHarness("CodeSmithyCore");
+    TestHarness theTestHarness("CodeSmithyUICore");
 
     theTestHarness.environment().setTestDataDirectory("../../TestData");
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
     boost::filesystem::create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
-    AddSettingsTests(theTestHarness);
-    AddThemesTestSequence(theTestHarness);
-    AddStateTestSequence(theTestHarness);
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<SettingsTests>();
+    theTests.append<ThemesTestSequence>();
+    theTests.append<StateTestSequence>();
 
     return theTestHarness.run();
 }

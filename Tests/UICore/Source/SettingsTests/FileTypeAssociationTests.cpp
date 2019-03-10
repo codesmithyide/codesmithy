@@ -23,18 +23,19 @@
 #include "FileTypeAssociationTests.h"
 #include "CodeSmithy/UICore/Settings/FileTypeAssociation.h"
 
-void AddFileTypeAssociationTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("FileTypeAssociation tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileTypeAssociationCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 2", FileTypeAssociationCreationTest2);
-    testSequence.append<HeapAllocationErrorsTest>("operator= test 1", FileTypeAssociationAssignmentTest1);
-    testSequence.append<HeapAllocationErrorsTest>("operator== test 1", FileTypeAssociationEqualityTest1);
-    testSequence.append<HeapAllocationErrorsTest>("operator== test 2", FileTypeAssociationEqualityTest2);
+FileTypeAssociationTests::FileTypeAssociationTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "FileTypeAssociation tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("operator= test 1", AssignmentTest1);
+    append<HeapAllocationErrorsTest>("operator== test 1", EqualityTest1);
+    append<HeapAllocationErrorsTest>("operator== test 2", EqualityTest2);
 }
 
-TestResult::EOutcome FileTypeAssociationCreationTest1()
+void FileTypeAssociationTests::CreationTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociation association("dummyTypeName");
     if ((association.documentTypeName() == "dummyTypeName") &&
@@ -50,7 +51,7 @@ TestResult::EOutcome FileTypeAssociationCreationTest1()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationCreationTest2()
+void FileTypeAssociationTests::CreationTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName");
     CodeSmithy::FileTypeAssociation association2(association1);
@@ -71,7 +72,7 @@ TestResult::EOutcome FileTypeAssociationCreationTest2()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationAssignmentTest1()
+void FileTypeAssociationTests::AssignmentTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName2");
@@ -89,7 +90,7 @@ TestResult::EOutcome FileTypeAssociationAssignmentTest1()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationEqualityTest1()
+void FileTypeAssociationTests::EqualityTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName1");
@@ -103,7 +104,7 @@ TestResult::EOutcome FileTypeAssociationEqualityTest1()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationEqualityTest2()
+void FileTypeAssociationTests::EqualityTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName2");

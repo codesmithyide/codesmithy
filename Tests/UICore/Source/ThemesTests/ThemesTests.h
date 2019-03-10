@@ -25,14 +25,17 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class ThemesTests : public Ishiko::Tests::TestSequence
+{
+public:
+    ThemesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddThemesTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome ThemesCreationTest1();
-TestResult::EOutcome ThemesGetAllThemesTest1();
-TestResult::EOutcome ThemesFindThemesForEditorTest1();
-TestResult::EOutcome ThemesFindThemesForEditorTest2(Test& test);
-TestResult::EOutcome ThemesFindThemesForEditorTest3(Test& test);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void GetAllThemesTest1(Ishiko::Tests::Test& test);
+    static void FindThemesForEditorTest1(Ishiko::Tests::Test& test);
+    static void FindThemesForEditorTest2(Ishiko::Tests::Test& test);
+    static void FindThemesForEditorTest3(Ishiko::Tests::Test& test);
+};
 
 #endif

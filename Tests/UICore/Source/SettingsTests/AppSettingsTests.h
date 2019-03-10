@@ -25,22 +25,25 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class AppSettingsTests : public Ishiko::Tests::TestSequence
+{
+public:
+    AppSettingsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddAppSettingsTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome AppSettingsCreationTest1(FileComparisonTest& test);
-TestResult::EOutcome AppSettingsCreationTest2(FileComparisonTest& test);
-TestResult::EOutcome AppSettingsCreationTest3(Test& test);
-TestResult::EOutcome AppSettingsCreationTest4(Test& test);
-TestResult::EOutcome AppSettingsCreationTest5(Test& test);
-TestResult::EOutcome AppSettingsCreationTest6(Test& test);
-TestResult::EOutcome AppSettingsCreationTest7(Test& test);
-TestResult::EOutcome AppSettingsSaveTest1(FileComparisonTest& test);
-TestResult::EOutcome AppSettingsSaveTest2(FileComparisonTest& test);
-TestResult::EOutcome AppSettingsSaveTest3(FileComparisonTest& test);
-TestResult::EOutcome AppSettingsCreateFileTypesFilterTest1();
-TestResult::EOutcome AppSettingsCreateFileTypesFilterTest2();
-TestResult::EOutcome AppSettingsCreateFileTypesFilterTest3();
+private:
+    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void CreationTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void CreationTest3(Ishiko::Tests::Test& test);
+    static void CreationTest4(Ishiko::Tests::Test& test);
+    static void CreationTest5(Ishiko::Tests::Test& test);
+    static void CreationTest6(Ishiko::Tests::Test& test);
+    static void CreationTest7(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void SaveTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void SaveTest3(Ishiko::Tests::FileComparisonTest& test);
+    static void CreateFileTypesFilterTest1(Ishiko::Tests::Test& test);
+    static void CreateFileTypesFilterTest2(Ishiko::Tests::Test& test);
+    static void CreateFileTypesFilterTest3(Ishiko::Tests::Test& test);
+};
 
 #endif

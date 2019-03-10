@@ -25,14 +25,18 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class FileTypeAssociationTests : public Ishiko::Tests::TestSequence
+{
+public:
+    FileTypeAssociationTests(const Ishiko::Tests::TestNumber& number,
+        const Ishiko::Tests::TestEnvironment& environment);
 
-void AddFileTypeAssociationTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome FileTypeAssociationCreationTest1();
-TestResult::EOutcome FileTypeAssociationCreationTest2();
-TestResult::EOutcome FileTypeAssociationAssignmentTest1();
-TestResult::EOutcome FileTypeAssociationEqualityTest1();
-TestResult::EOutcome FileTypeAssociationEqualityTest2();
+private:
+    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void AssignmentTest1(Ishiko::Tests::Test& test);
+    static void EqualityTest1(Ishiko::Tests::Test& test);
+    static void EqualityTest2(Ishiko::Tests::Test& test);
+};
 
 #endif
