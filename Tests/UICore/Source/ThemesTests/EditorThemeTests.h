@@ -25,11 +25,14 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class EditorThemeTests : public Ishiko::Tests::TestSequence
+{
+public:
+    EditorThemeTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddEditorThemeTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome EditorThemeCreationTest1();
-TestResult::EOutcome EditorThemeSaveTest1(FileComparisonTest& test);
+private:
+    static void CreationTest1(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
+};
 
 #endif

@@ -38,38 +38,28 @@ FileTypeAssociationTests::FileTypeAssociationTests(const TestNumber& number, con
 void FileTypeAssociationTests::CreationTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociation association("dummyTypeName");
-    if ((association.documentTypeName() == "dummyTypeName") &&
-        (association.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
-        (association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association.associatedProjectTypeName() == ""))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(association.documentTypeName() == "dummyTypeName");
+    ISHTF_FAIL_UNLESS(association.association() == CodeSmithy::FileTypeAssociation::eDisabled);
+    ISHTF_FAIL_UNLESS(association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup);
+    ISHTF_FAIL_UNLESS(association.associatedProjectTypeName() == "");
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationTests::CreationTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName");
     CodeSmithy::FileTypeAssociation association2(association1);
-    if ((association1.documentTypeName() == "dummyTypeName") &&
-        (association1.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
-        (association1.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association1.associatedProjectTypeName() == "") &&
-        (association2.documentTypeName() == "dummyTypeName") &&
-        (association2.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
-        (association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association2.associatedProjectTypeName() == ""))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(association1.documentTypeName() == "dummyTypeName");
+    ISHTF_FAIL_UNLESS(association1.association() == CodeSmithy::FileTypeAssociation::eDisabled);
+    ISHTF_FAIL_UNLESS(association1.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup);
+    ISHTF_FAIL_UNLESS(association1.associatedProjectTypeName() == "");
+    ISHTF_FAIL_UNLESS(association2.documentTypeName() == "dummyTypeName");
+    ISHTF_FAIL_UNLESS(association2.association() == CodeSmithy::FileTypeAssociation::eDisabled);
+    ISHTF_FAIL_UNLESS(association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup);
+    ISHTF_FAIL_UNLESS(association2.associatedProjectTypeName() == "");
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationTests::AssignmentTest1(Test& test)
@@ -77,43 +67,32 @@ void FileTypeAssociationTests::AssignmentTest1(Test& test)
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName2");
     association2 = association1;
-    if ((association2.documentTypeName() == "dummyTypeName1") &&
-        (association2.association() == CodeSmithy::FileTypeAssociation::eDisabled) &&
-        (association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup) &&
-        (association2.associatedProjectTypeName() == ""))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(association2.documentTypeName() == "dummyTypeName1");
+    ISHTF_FAIL_UNLESS(association2.association() == CodeSmithy::FileTypeAssociation::eDisabled);
+    ISHTF_FAIL_UNLESS(association2.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup);
+    ISHTF_FAIL_UNLESS(association2.associatedProjectTypeName() == "");
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationTests::EqualityTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName1");
-    if (association1 == association2)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    bool equal = (association1 == association2);
+    
+    ISHTF_FAIL_UNLESS(equal);
+    ISHTF_PASS();
 }
 
 void FileTypeAssociationTests::EqualityTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociation association1("dummyTypeName1");
     CodeSmithy::FileTypeAssociation association2("dummyTypeName2");
-    if (association1 == association2)
-    {
-        return TestResult::eFailed;
-    }
-    else
-    {
-        return TestResult::ePassed;
-    }
+    
+    bool equal = (association1 == association2);
+
+    ISHTF_FAIL_IF(equal);
+    ISHTF_PASS();
 }

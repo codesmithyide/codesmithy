@@ -24,54 +24,45 @@
 #include "CodeSmithy/UICore/Themes/Themes.h"
 #include "CodeSmithy/UICore/Themes/ThemesFileRepository.h"
 
-void AddThemesTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("Themes tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", ThemesCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("getAllThemes test 1", ThemesGetAllThemesTest1);
-    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 1", ThemesFindThemesForEditorTest1);
-    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 2", ThemesFindThemesForEditorTest2);
-    testSequence.append<HeapAllocationErrorsTest>("findThemesForEditor test 3", ThemesFindThemesForEditorTest3);
+ThemesTests::ThemesTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Themes tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("getAllThemes test 1", GetAllThemesTest1);
+    append<HeapAllocationErrorsTest>("findThemesForEditor test 1", FindThemesForEditorTest1);
+    append<HeapAllocationErrorsTest>("findThemesForEditor test 2", FindThemesForEditorTest2);
+    append<HeapAllocationErrorsTest>("findThemesForEditor test 3", FindThemesForEditorTest3);
 }
 
-TestResult::EOutcome ThemesCreationTest1()
+void ThemesTests::CreationTest1(Test& test)
 {
     CodeSmithy::Themes themes;
-    return TestResult::ePassed;
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesGetAllThemesTest1()
+void ThemesTests::GetAllThemesTest1(Test& test)
 {
     CodeSmithy::Themes themes;
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.getAllThemes(availableThemes);
-    if (availableThemes.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesFindThemesForEditorTest1()
+void ThemesTests::FindThemesForEditorTest1(Test& test)
 {
     CodeSmithy::Themes themes;
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("dummy", availableThemes);
-    if (availableThemes.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesFindThemesForEditorTest2(Test& test)
+void ThemesTests::FindThemesForEditorTest2(Test& test)
 {
     CodeSmithy::Themes themes;
 
@@ -82,17 +73,12 @@ TestResult::EOutcome ThemesFindThemesForEditorTest2(Test& test)
 
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
-    if (availableThemes.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    
+    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome ThemesFindThemesForEditorTest3(Test& test)
+void ThemesTests::FindThemesForEditorTest3(Test& test)
 {
     CodeSmithy::Themes themes;
 
@@ -103,12 +89,7 @@ TestResult::EOutcome ThemesFindThemesForEditorTest3(Test& test)
 
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
-    if (availableThemes.size() == 1)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(availableThemes.size() == 1);
+    ISHTF_PASS();
 }

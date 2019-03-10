@@ -25,12 +25,15 @@
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
-using namespace Ishiko::TestFramework;
+class BuiltInThemesTests : public Ishiko::Tests::TestSequence
+{
+public:
+    BuiltInThemesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-void AddBuiltInThemesTests(TestSequence& parentTestSequence);
-
-TestResult::EOutcome BuiltInThemesAddCodeSmithyLightThemeNodeTest1(FileComparisonTest& test);
-TestResult::EOutcome BuiltInThemesAddCodeSmithyDarkThemeNodeTest1(FileComparisonTest& test);
-TestResult::EOutcome BuiltInThemesCreateDefaultThemesFileRepositoryTest1(FileComparisonTest& test);
+private:
+    static void AddCodeSmithyLightThemeNodeTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void AddCodeSmithyDarkThemeNodeTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void CreateDefaultThemesFileRepositoryTest1(Ishiko::Tests::FileComparisonTest& test);
+};
 
 #endif

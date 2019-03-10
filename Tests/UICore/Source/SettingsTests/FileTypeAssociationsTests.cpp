@@ -24,55 +24,42 @@
 #include "CodeSmithy/UICore/Settings/FileTypeAssociations.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-void AddFileTypeAssociationsTests(TestSequence& parentTestSequence)
-{
-    TestSequence& testSequence = parentTestSequence.append<TestSequence>("FileTypeAssociations tests");
+using namespace Ishiko::Tests;
 
-    testSequence.append<HeapAllocationErrorsTest>("Creation test 1", FileTypeAssociationsCreationTest1);
-    testSequence.append<HeapAllocationErrorsTest>("set test 1", FileTypeAssociationsSetTest1);
-    testSequence.append<HeapAllocationErrorsTest>("set test 2", FileTypeAssociationsSetTest2);
-    testSequence.append<HeapAllocationErrorsTest>("remove test 1", FileTypeAssociationsRemoveTest1);
-    testSequence.append<HeapAllocationErrorsTest>("remove test 2", FileTypeAssociationsRemoveTest2);
-    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 1",
-        FileTypeAssociationsAddNewFileTypeAssociationsTest1);
-    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 2",
-        FileTypeAssociationsAddNewFileTypeAssociationsTest2);
-    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 3",
-        FileTypeAssociationsAddNewFileTypeAssociationsTest3);
-    testSequence.append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 4",
-        FileTypeAssociationsAddNewFileTypeAssociationsTest4);
+FileTypeAssociationsTests::FileTypeAssociationsTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "FileTypeAssociations tests", environment)
+{
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("set test 1", SetTest1);
+    append<HeapAllocationErrorsTest>("set test 2", SetTest2);
+    append<HeapAllocationErrorsTest>("remove test 1", RemoveTest1);
+    append<HeapAllocationErrorsTest>("remove test 2", RemoveTest2);
+    append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 1", AddNewFileTypeAssociationsTest1);
+    append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 2", AddNewFileTypeAssociationsTest2);
+    append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 3", AddNewFileTypeAssociationsTest3);
+    append<HeapAllocationErrorsTest>("addNewFileTypeAssociations test 4", AddNewFileTypeAssociationsTest4);
 }
 
-TestResult::EOutcome FileTypeAssociationsCreationTest1()
+void FileTypeAssociationsTests::CreationTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
-    if (associations.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome FileTypeAssociationsSetTest1()
+void FileTypeAssociationsTests::SetTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
     std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
-    if ((associations.size() == 1) &&
-        (associations[0]->documentTypeName() == "documentType1"))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 1);
+    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome FileTypeAssociationsSetTest2()
+void FileTypeAssociationsTests::SetTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
     std::shared_ptr<CodeSmithy::FileTypeAssociation> association1 = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
@@ -82,33 +69,22 @@ TestResult::EOutcome FileTypeAssociationsSetTest2()
     association2->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
     associations.set(association2);
 
-    if ((associations.size() == 1) &&
-        (associations[0]->documentTypeName() == "documentType1") &&
-        (associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen))
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+    ISHTF_FAIL_UNLESS(associations.size() == 1);
+    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
+    ISHTF_FAIL_UNLESS(associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome FileTypeAssociationsRemoveTest1()
+void FileTypeAssociationsTests::RemoveTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
     associations.remove("absent");
-    if (associations.size() == 0)
-    {
-        return TestResult::ePassed;
-    }
-    else
-    {
-        return TestResult::eFailed;
-    }
+
+    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_PASS();
 }
 
-TestResult::EOutcome FileTypeAssociationsRemoveTest2()
+void FileTypeAssociationsTests::RemoveTest2(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
     std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
@@ -124,7 +100,7 @@ TestResult::EOutcome FileTypeAssociationsRemoveTest2()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest1()
+void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest1(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::FileTypeAssociations associations;
@@ -139,7 +115,7 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest1()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2()
+void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest2(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
@@ -156,7 +132,7 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest2()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest3()
+void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest3(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());
@@ -178,7 +154,7 @@ TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest3()
     }
 }
 
-TestResult::EOutcome FileTypeAssociationsAddNewFileTypeAssociationsTest4()
+void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest4(Test& test)
 {
     CodeSmithy::DocumentTypes documentTypes;
     documentTypes.add(std::make_shared<CodeSmithy::BakefileType>());

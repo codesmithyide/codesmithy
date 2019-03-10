@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016 Xavier Leclercq
+    Copyright (c) 2016-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -28,16 +28,17 @@
 #include "BuiltInThemesTests.h"
 #include <boost/filesystem/operations.hpp>
 
-void AddThemesTestSequence(TestHarness& theTestHarness)
+using namespace Ishiko::Tests;
+
+ThemesTestSequence::ThemesTestSequence(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "Themes tests", environment)
 {
-    boost::filesystem::path outputPath(theTestHarness.environment().getTestOutputDirectory() / "ThemesTests");
+    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "ThemesTests");
     boost::filesystem::create_directories(outputPath);
 
-    TestSequence& themesTestSequence = theTestHarness.appendTestSequence("Themes tests");
-
-    AddThemeTests(themesTestSequence);
-    AddEditorThemeTests(themesTestSequence);
-    AddThemesFileRepositoryTests(themesTestSequence);
-    AddThemesTests(themesTestSequence);
-    AddBuiltInThemesTests(themesTestSequence);
+    append<ThemeTests>();
+    append<EditorThemeTests>();
+    append<ThemesFileRepositoryTests>();
+    append<ThemesTests>();
+    append<BuiltInThemesTests>();
 }
