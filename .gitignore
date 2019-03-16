@@ -10,7 +10,8 @@
 Debug/
 Release/
 Bin/
-Lib/
+/Lib/*
+!/Lib/README.md
 Documentation/Doxygen/html
 Tests/Core/TestOutput
 Tests/UICore/TestOutput
