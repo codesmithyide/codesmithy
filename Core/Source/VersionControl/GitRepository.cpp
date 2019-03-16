@@ -41,18 +41,18 @@ GitRepository::~GitRepository()
 
 std::unique_ptr<Task> GitRepository::init(const std::string& path)
 {
-    return std::make_unique<SyncFunctionTask>(
+    return std::unique_ptr<Task>(new SyncFunctionTask(
         [this, path]() -> void
         {
             // TODO: error handling
             int err = git_repository_init(&m_repository, path.c_str(), 0);
         }
-    );
+    ));
 }
 
 std::unique_ptr<Task> GitRepository::clone(const std::string& url, const std::string& clonePath)
 {
-    return std::make_unique<SyncFunctionTask>(
+    return std::unique_ptr<Task>(new SyncFunctionTask(
         [this, url, clonePath]() -> void
         {
             // TODO
@@ -70,18 +70,18 @@ std::unique_ptr<Task> GitRepository::clone(const std::string& url, const std::st
                 }
             }
         }
-    );
+    ));
 }
 
 std::unique_ptr<Task> GitRepository::open(const std::string& path)
 {
-    return std::make_unique<SyncFunctionTask>(
+    return std::unique_ptr<Task>(new SyncFunctionTask(
         [this, path]() -> void
         {
             // TODO: error handling
             int err = git_repository_open(&m_repository, path.c_str());
         }
-    );
+    ));
 }
 
 void GitRepository::checkout()
