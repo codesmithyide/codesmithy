@@ -9,7 +9,8 @@
 .vs
 Debug/
 Release/
-Bin/
+/Bin/*
+!/Bin/README.md
 /Lib/*
 !/Lib/README.md
 Documentation/Doxygen/html
