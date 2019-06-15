@@ -30,13 +30,9 @@ CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, const st
 {
 }
 
-CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDBNode node,
-    Ishiko::Error& error)
-    : Project(node.child("name", error).value().asString()), m_type(type), m_node(node)
-{
-}
-
-CodeSmithyProject::~CodeSmithyProject()
+CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDB& db,
+    DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
+    : Project(db.childValue(node, "name", error).asUTF8String()), m_type(type), m_node(node)
 {
 }
 
@@ -45,12 +41,14 @@ const ProjectType& CodeSmithyProject::type() const
     return m_type;
 }
 
+/*
 void CodeSmithyProject::save()
 {
     // TODO
 }
+*/
 
-void CodeSmithyProject::save(DiplodocusDB::TreeDBNode& node) const
+void CodeSmithyProject::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
     // TODO
 }

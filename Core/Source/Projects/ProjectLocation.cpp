@@ -34,10 +34,14 @@ ProjectLocation::ProjectLocation(const std::string& url)
 {
 }
 
-ProjectLocation::ProjectLocation(DiplodocusDB::TreeDBNode& node,
-    Ishiko::Error& error)
-    : m_url(node.child("location", error).value().asString())
+ProjectLocation::ProjectLocation(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error)
 {
+    DiplodocusDB::TreeDBNode locationNode = db.child(node, "location", error);
+    DiplodocusDB::TreeDBValue value = db.value(locationNode, error);
+    if (!error)
+    {
+        m_url = value.asUTF8String();
+    }
 }
 
 const std::string& ProjectLocation::url() const
@@ -45,13 +49,12 @@ const std::string& ProjectLocation::url() const
     return m_url;
 }
 
-void ProjectLocation::save(DiplodocusDB::TreeDBNode& node) const
+void ProjectLocation::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
     if (m_url.size() > 0)
     {
-        Ishiko::Error error;
-        DiplodocusDB::TreeDBNode locationNode = node.set("location", error);
-        locationNode.value().setString(m_url);
+        DiplodocusDB::TreeDBNode locationNode = db.setChildNode(node, "location", error);
+        db.setValue(locationNode, DiplodocusDB::TreeDBValue::UTF8String(m_url), error);
     }
 }
 

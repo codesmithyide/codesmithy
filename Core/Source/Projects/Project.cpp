@@ -30,10 +30,6 @@ Project::Project(const std::string& name)
 {
 }
 
-Project::~Project()
-{
-}
-
 const std::string& Project::name() const
 {
     return m_name;
@@ -44,13 +40,13 @@ void Project::setDescription(const ProjectDescription& description)
     m_description = description;
 }
 
-void Project::saveBaseMembers(DiplodocusDB::TreeDBNode& node) const
+void Project::saveBaseMembers(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
-    Ishiko::Error error;
-    node.set("name", error).value().setString(name());
-    node.set("type", error).value().setString(type().name());
-    m_description.save(node);
-    m_location.save(node);
+    // TODO : make this a transaction
+    db.setChildNode(node, "name", DiplodocusDB::TreeDBValue::UTF8String(name()), error);
+    db.setChildNode(node, "type", DiplodocusDB::TreeDBValue::UTF8String(type().name()), error);
+    m_description.save(db, node, error);
+    m_location.save(db, node, error);
 }
 
 }

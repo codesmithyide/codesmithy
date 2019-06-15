@@ -66,8 +66,7 @@ static const char* childProjectsElementName = "projects";
 static const char* externalProjectLinkElementName = "external-project-link";
 static const char* childProjectElementName = "codesmithy-project";
 
-ProjectGroup::ProjectGroup(const ProjectGroupType& type,
-                           const std::string& name)
+ProjectGroup::ProjectGroup(const ProjectGroupType& type, const std::string& name)
     : Project(name), m_type(type)
 {
 }
@@ -75,33 +74,28 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type,
 // TODO : this needs to be redone. It is used both for initialization of a new project
 // and to read an existing one from disk. That doesn't work well as I want to do either
 // initialization of validation of the data
-ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
-    : Project(node.child(projectNameElementName, error).value().asString()), m_type(type),
-    m_node(node)
+ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+    Ishiko::Error& error)
+    : Project(db.childValue(node, projectNameElementName, error).asUTF8String()), m_type(type), m_node(node)
 {
     // TODO : this is particularly bad, this should not be set when we are reading an
     // existing file
-    m_node.set(projectTypeElementName, error).value().setString(m_type.name());
-    DiplodocusDB::TreeDBNode childProjectsNode = m_node.set(childProjectsElementName, error);
-    std::vector<DiplodocusDB::TreeDBNode> children;
-    childProjectsNode.children(children, error);
+    db.setChildNode(m_node, projectTypeElementName, DiplodocusDB::TreeDBValue::UTF8String(m_type.name()), error);
+    DiplodocusDB::TreeDBNode childProjectsNode = db.setChildNode(m_node, childProjectsElementName, error);
+    std::vector<DiplodocusDB::TreeDBNode> children = db.childNodes(childProjectsNode, error);
     for (DiplodocusDB::TreeDBNode& childProjectNode : children)
     {
-        if (childProjectNode.key() == externalProjectLinkElementName)
+        if (childProjectNode.name() == externalProjectLinkElementName)
         {
-            m_childProjects.push_back(ProjectOrLink(ProjectLocation(childProjectNode, error)));
+            m_childProjects.push_back(ProjectOrLink(ProjectLocation(db, childProjectNode, error)));
         }
-        else if (childProjectNode.key() == childProjectElementName)
+        else if (childProjectNode.name() == childProjectElementName)
         {
             // TODO : this assumes the project is always a ProjectGroup
-            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, childProjectNode, error);
+            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, db, childProjectNode, error);
             m_childProjects.push_back(ProjectOrLink(childProject));
         }
     }
-}
-
-ProjectGroup::~ProjectGroup()
-{
 }
 
 const ProjectType& ProjectGroup::type() const
@@ -109,31 +103,33 @@ const ProjectType& ProjectGroup::type() const
     return m_type;
 }
 
+/*
 void ProjectGroup::save()
 {
     save(m_node);
-}
+}*/
 
-void ProjectGroup::save(DiplodocusDB::TreeDBNode& node) const
+void ProjectGroup::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
-    Ishiko::Error error;
-    node.removeAll(error);
+    db.removeAllChildNodes(node, error);
 
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
-    saveBaseMembers(node);
-    DiplodocusDB::TreeDBNode childProjectsNode = node.set(childProjectsElementName, error);
+    saveBaseMembers(db, node, error);
+    DiplodocusDB::TreeDBNode childProjectsNode = db.setChildNode(node, childProjectsElementName, error);
     for (const ProjectOrLink& item : m_childProjects)
     {
         if (item.isLink())
         {
-            DiplodocusDB::TreeDBNode childProjectNode = childProjectsNode.append(externalProjectLinkElementName);
-            item.location().save(childProjectNode);
+            DiplodocusDB::TreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
+                externalProjectLinkElementName, error);
+            item.location().save(db, childProjectNode, error);
         }
         else if (item.isProject())
         {
-            DiplodocusDB::TreeDBNode childProjectNode = childProjectsNode.append(childProjectElementName);
-            item.project().save(childProjectNode);
+            DiplodocusDB::TreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
+                childProjectElementName, error);
+            item.project().save(db, childProjectNode, error);
         }
     }
 }

@@ -34,35 +34,30 @@ static const char* repositoryProjectsElementName = "projects";
 static const char* projectElementName = "codesmithy-project";
 static const char* projectNameElementName = "name";
 
-ProjectRepository::ProjectRepository(const boost::filesystem::path& path)
+ProjectRepository::ProjectRepository(const boost::filesystem::path& path, Ishiko::Error& error)
 {
-    Ishiko::Error error;
     if (boost::filesystem::exists(path))
     {
         m_db.open(path, error);
-        m_nameNode = m_db.root().child(rootElementName, error).child(repositoryNameElementName, error);
-        m_projectsNode = m_db.root().child(rootElementName, error).child(repositoryProjectsElementName, error);
+        DiplodocusDB::TreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
+        m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
+        m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
     }
     else
     {   
         m_db.create(path, error);
-        DiplodocusDB::TreeDBNode rootNode = m_db.root().append(rootElementName);
+        DiplodocusDB::TreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
         if (rootNode)
         {
-            DiplodocusDB::TreeDBNode versionNode = rootNode.append(versionElementName);
-            versionNode.value().setString("0.1.0");
-            m_nameNode = rootNode.append(repositoryNameElementName);
-            m_projectsNode = rootNode.append(repositoryProjectsElementName);
+            m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::TreeDBValue::UTF8String("0.1.0"), error);
+            m_nameNode = m_db.appendChildNode(rootNode, repositoryNameElementName, error);
+            m_projectsNode = m_db.appendChildNode(rootNode, repositoryProjectsElementName, error);
             if (m_nameNode && m_projectsNode)
             {
-                save();
+                save(error);
             }
         }
     }
-}
-
-ProjectRepository::~ProjectRepository()
-{
 }
 
 std::string ProjectRepository::name() const
@@ -70,26 +65,34 @@ std::string ProjectRepository::name() const
     std::string result;
     if (m_nameNode)
     {
-        result = m_nameNode.value().asString();
+        // TODO: need to cache the name to avoid error
+        Ishiko::Error error(0);
+        result = m_db.value(m_nameNode, error).asUTF8String();
     }
     return result;
 }
 
 void ProjectRepository::setName(const std::string& name)
 {
-    m_nameNode.value().setString(name);
+    // TODO : should setName commit immediately?
+    Ishiko::Error error(0);
+    m_db.setValue(m_nameNode, DiplodocusDB::TreeDBValue::UTF8String(name), error);
 }
 
-DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& name)
+DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
 {
     DiplodocusDB::TreeDBNode result;
-    Ishiko::Error error;
-    for (DiplodocusDB::TreeDBNode projectNode = m_projectsNode.child(projectElementName, error); 
+    for (DiplodocusDB::TreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
          projectNode; 
-         projectNode = projectNode.nextSibling(projectElementName, error))
+         projectNode = m_db.nextSibling(projectNode, projectElementName, error))
     {
-        DiplodocusDB::TreeDBNode nameNode = projectNode.child(projectNameElementName, error);
-        if (nameNode.value().asString() == name)
+        DiplodocusDB::TreeDBValue nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
+            DiplodocusDB::DataType(DiplodocusDB::EPrimitiveDataType::eUTF8String), error);
+        if (error)
+        {
+            break;
+        }
+        if (nameNodeValue.asUTF8String() == name)
         {
             result = projectNode;
             break;
@@ -98,13 +101,13 @@ DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& na
     return result;
 }
 
-DiplodocusDB::TreeDBNode ProjectRepository::addProjectNode(const std::string& name)
+DiplodocusDB::TreeDBNode ProjectRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
 {
     if (m_projectsNode)
     {
-        DiplodocusDB::TreeDBNode projectNode = m_projectsNode.append(projectElementName);
-        DiplodocusDB::TreeDBNode nameNode = projectNode.append(projectNameElementName);
-        nameNode.value().setString(name);
+        DiplodocusDB::TreeDBNode projectNode = m_db.appendChildNode(m_projectsNode, projectElementName, error);
+        DiplodocusDB::TreeDBNode nameNode = m_db.appendChildNode(m_projectsNode, projectNameElementName,
+            DiplodocusDB::TreeDBValue::UTF8String(name), error);
         return DiplodocusDB::TreeDBNode(projectNode);
     }
     else
@@ -113,10 +116,10 @@ DiplodocusDB::TreeDBNode ProjectRepository::addProjectNode(const std::string& na
     }
 }
 
-void ProjectRepository::save()
+void ProjectRepository::save(Ishiko::Error& error)
 {
-    Ishiko::Error error;
-    m_db.root().commit(error);
+    // TODO : everything is committed immediately but I may be better off using a transaction
+    //m_db.commit(m_db.root(), error);
 }
 
 }
