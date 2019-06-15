@@ -26,7 +26,9 @@
 #include "ProjectType.h"
 #include "ProjectDescription.h"
 #include "ProjectLocation.h"
+#include "DiplodocusDB/TreeDB/Core/TreeDB.h"
 #include "DiplodocusDB/TreeDB/Core/TreeDBNode.h"
+#include "Ishiko/Errors/Error.h"
 #include <string>
 
 namespace CodeSmithy
@@ -37,18 +39,18 @@ class Project
 {
 public:
     Project(const std::string& name);
-    virtual ~Project();
+    virtual ~Project() noexcept = default;
 
     virtual const ProjectType& type() const = 0;
     const std::string& name() const;
     void setDescription(const ProjectDescription& description);
 
     // TODO : I may want to get rid of save()
-	virtual void save() = 0;
-    virtual void save(DiplodocusDB::TreeDBNode& node) const = 0;
+	//virtual void save() = 0;
+    virtual void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const = 0;
 
 protected:
-    void saveBaseMembers(DiplodocusDB::TreeDBNode& node) const;
+    void saveBaseMembers(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_name;

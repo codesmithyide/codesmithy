@@ -34,13 +34,13 @@ class CodeSmithyProject : public Project
 {
 public:
     CodeSmithyProject(const CodeSmithyProjectType& type, const std::string& name);
-    CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDBNode node, Ishiko::Error& error);
-    ~CodeSmithyProject() override;
+    CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+        Ishiko::Error& error);
 
     const ProjectType& type() const override;
 
-    void save() override;
-    void save(DiplodocusDB::TreeDBNode& node) const override;
+    //void save() override;
+    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const override;
 
 private:
     const CodeSmithyProjectType& m_type;

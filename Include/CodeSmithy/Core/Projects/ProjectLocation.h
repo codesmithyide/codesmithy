@@ -23,6 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 
+#include "DiplodocusDB/TreeDB/Core/TreeDB.h"
 #include "DiplodocusDB/TreeDB/Core/TreeDBNode.h"
 #include <string>
 
@@ -41,11 +42,11 @@ public:
     /// @param url The URL of the GitHub repository. This should be the URL as typed in the browser, not the one with
     /// the ".git" extension.
     ProjectLocation(const std::string& url);
-    ProjectLocation(DiplodocusDB::TreeDBNode& node, Ishiko::Error& error);
+    ProjectLocation(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error);
 
     const std::string& url() const;
 
-    void save(DiplodocusDB::TreeDBNode& node) const;
+    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
 
     bool operator ==(const ProjectLocation& other) const;
     bool operator !=(const ProjectLocation& other) const;

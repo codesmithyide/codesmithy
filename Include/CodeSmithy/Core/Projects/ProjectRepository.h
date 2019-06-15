@@ -34,20 +34,22 @@ namespace CodeSmithy
 class ProjectRepository
 {
 public:
-    ProjectRepository(const boost::filesystem::path& path);
-    ~ProjectRepository();
+    // TODO : use create/open semantics
+    ProjectRepository(const boost::filesystem::path& path, Ishiko::Error& error);
 
     std::string name() const;
     void setName(const std::string& name);
     
-    DiplodocusDB::TreeDBNode getProjectNode(const std::string& name);
-    DiplodocusDB::TreeDBNode addProjectNode(const std::string& name);
+    DiplodocusDB::TreeDBNode getProjectNode(const std::string& name, Ishiko::Error& error);
+    DiplodocusDB::TreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
 
-    void save();
+    void save(Ishiko::Error& error);
 
 private:
-    DiplodocusDB::XMLTreeDB m_db;
-    DiplodocusDB::TreeDBNode m_nameNode;
+    // TODO : mutable because used in name(), fix that
+    mutable DiplodocusDB::XMLTreeDB m_db;
+    // TODO : mutable because used in name(), fix that
+    mutable DiplodocusDB::TreeDBNode m_nameNode;
     DiplodocusDB::TreeDBNode m_projectsNode;
 };
 
