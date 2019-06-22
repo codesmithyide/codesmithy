@@ -22,45 +22,50 @@
 
 #include "ProjectLocationTests.h"
 #include "CodeSmithy/Core/Projects/ProjectLocation.h"
-#include "CodeSmithy/Core/Projects/ProjectRepository.h"
-#include <boost/filesystem/operations.hpp>
+#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
 
 using namespace Ishiko::Tests;
 
 ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectLocation tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-void ProjectLocationTests::CreationTest1(Test& test)
+void ProjectLocationTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::ProjectLocation location;
+
     ISHTF_PASS();
 }
 
-void ProjectLocationTests::CreationTest2(Test& test)
+void ProjectLocationTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectLocation location("location1");
+
     ISHTF_PASS();
 }
 
 void ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory()
+        / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory()
+        / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
-    repository.setName("ProjectLocationTests_SaveTest1");
-    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
+    Ishiko::Error error(0);
+
+    DiplodocusDB::XMLTreeDB db;
+    db.create(outputPath, error);
+
+    ISHTF_ABORT_IF(error);
 
     CodeSmithy::ProjectLocation location("location1");
-    location.save(project1);
+    location.save(db, db.root(), error);
 
-    repository.save();
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);

@@ -39,11 +39,17 @@ ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const T
 
 void ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory()
+        / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory()
+        / "ProjectTests/ProjectRepositoryTests_CreationTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
+
+    CodeSmithy::ProjectRepository repository(outputPath, error);
+
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "");
 
     test.setOutputFilePath(outputPath);
@@ -54,34 +60,47 @@ void ProjectRepositoryTests::CreationTest1(FileComparisonTest& test)
 
 void ProjectRepositoryTests::CreationTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest2.csmthprj");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory()
+        / "ProjectTests/ProjectRepositoryTests_CreationTest2.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "");
     ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::CreationTest3(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_CreationTest3.csmthprj");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory()
+        / "ProjectTests/ProjectRepositoryTests_CreationTest3.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_CreationTest3");
     ISHTF_PASS();
 }
 
 void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory()
+        / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory()
+        / "ProjectTests/ProjectRepositoryTests_SetNameTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
+
+    CodeSmithy::ProjectRepository repository(outputPath, error);
     repository.setName("ProjectRepositoryTests_SetNameTest1");
-    repository.save();
+    repository.save(error);
 
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_SetNameTest1");
     
     test.setOutputFilePath(outputPath);
@@ -92,15 +111,21 @@ void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
 
 void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory()
+        / "ProjectTests/ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory()
+        / "ProjectTests/ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
+
+    CodeSmithy::ProjectRepository repository(outputPath, error);
     repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
-    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
+    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1", error);
 
-    repository.save();
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -112,9 +137,16 @@ void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
-    ISHTF_FAIL_UNLESS(repository.getProjectNode("Project1"));
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("Project1", error);
+
+    ISHTF_FAIL_IF(error);
+    ISHTF_FAIL_UNLESS(projectNode);
     ISHTF_PASS();
 }
