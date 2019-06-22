@@ -199,19 +199,20 @@ void Frame::Bootstrap()
     // TODO: in the cloned project repo find project makefile
     // TODO : this is bad because we are not discovering the projects, but just checking that the 
     // file contains what we expect, but I guess this might do for now
-    ProjectRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj");
+    // TODO : handle errors in the lines below
+    Ishiko::Error error(0);
+    ProjectRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj", error);
     if (repository.name() == "CodeSmithyIDE")
     {
-        DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
+        DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
         if (projectNode)
         {
-            Ishiko::Error error(0);
-            std::string type = projectNode.child("type", error).value().asString();
+            std::string type = repository.db().childValue(projectNode, "type", error).asUTF8String();
             if (type == "CodeSmithy.Group")
             {
                 Ishiko::Error error(0);
                 ProjectGroupType type;
-                ProjectGroup project(type, projectNode, error);
+                ProjectGroup project(type, repository.db(), projectNode, error);
                 cloneBootstrapRepositories(project);
             }
         }

@@ -79,6 +79,11 @@ void ProjectRepository::setName(const std::string& name)
     m_db.setValue(m_nameNode, DiplodocusDB::TreeDBValue::UTF8String(name), error);
 }
 
+DiplodocusDB::XMLTreeDB& ProjectRepository::db()
+{
+    return m_db;
+}
+
 DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
 {
     DiplodocusDB::TreeDBNode result;

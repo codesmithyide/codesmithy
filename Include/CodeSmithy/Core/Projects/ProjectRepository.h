@@ -39,6 +39,9 @@ public:
 
     std::string name() const;
     void setName(const std::string& name);
+
+    // TODO: need to find a better way to encapsulate the XMLTreeDB
+    DiplodocusDB::XMLTreeDB& db();
     
     DiplodocusDB::TreeDBNode getProjectNode(const std::string& name, Ishiko::Error& error);
     DiplodocusDB::TreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
