@@ -31,9 +31,8 @@ public:
     CodeSmithyProjectTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
-    
+    static void ConstructorTest1(Ishiko::Tests::Test& test);
+    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test); 
 };
 
 #endif

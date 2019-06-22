@@ -31,12 +31,12 @@ public:
     ProjectGroupTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void CreationTest2(Ishiko::Tests::Test& test);
-    static void CreationTest3(Ishiko::Tests::Test& test);
-    static void CreationTest4(Ishiko::Tests::Test& test);
-    static void CreationTest5(Ishiko::Tests::Test& test);
-    static void CreationTest6(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Tests::Test& test);
+    static void ConstructorTest2(Ishiko::Tests::Test& test);
+    static void ConstructorTest3(Ishiko::Tests::Test& test);
+    static void ConstructorTest4(Ishiko::Tests::Test& test);
+    static void ConstructorTest5(Ishiko::Tests::Test& test);
+    static void ConstructorTest6(Ishiko::Tests::Test& test);
     static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
     static void SaveTest2(Ishiko::Tests::FileComparisonTest& test);
     static void AddExternalProjectLinkTest1(Ishiko::Tests::FileComparisonTest& test);

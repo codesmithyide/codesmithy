@@ -32,8 +32,8 @@ public:
         const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void CreationTest2(Ishiko::Tests::Test& test);
+    static void ConstructorTest1(Ishiko::Tests::Test& test);
+    static void ConstructorTest2(Ishiko::Tests::Test& test);
     static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
 };
 
