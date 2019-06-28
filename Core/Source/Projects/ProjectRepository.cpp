@@ -21,7 +21,6 @@
 */
 
 #include "Projects/ProjectRepository.h"
-#include <boost/filesystem/operations.hpp>
 #include <fstream>
 
 namespace CodeSmithy
@@ -34,30 +33,28 @@ static const char* repositoryProjectsElementName = "projects";
 static const char* projectElementName = "codesmithy-project";
 static const char* projectNameElementName = "name";
 
-ProjectRepository::ProjectRepository(const boost::filesystem::path& path, Ishiko::Error& error)
+void ProjectRepository::create(const boost::filesystem::path& path, Ishiko::Error& error)
 {
-    if (boost::filesystem::exists(path))
+    m_db.create(path, error);
+    DiplodocusDB::TreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
+    if (rootNode)
     {
-        m_db.open(path, error);
-        DiplodocusDB::TreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
-        m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
-        m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
-    }
-    else
-    {   
-        m_db.create(path, error);
-        DiplodocusDB::TreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
-        if (rootNode)
+        m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::TreeDBValue::UTF8String("0.1.0"), error);
+        m_nameNode = m_db.appendChildNode(rootNode, repositoryNameElementName, error);
+        m_projectsNode = m_db.appendChildNode(rootNode, repositoryProjectsElementName, error);
+        if (m_nameNode && m_projectsNode)
         {
-            m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::TreeDBValue::UTF8String("0.1.0"), error);
-            m_nameNode = m_db.appendChildNode(rootNode, repositoryNameElementName, error);
-            m_projectsNode = m_db.appendChildNode(rootNode, repositoryProjectsElementName, error);
-            if (m_nameNode && m_projectsNode)
-            {
-                save(error);
-            }
+            save(error);
         }
     }
+}
+
+void ProjectRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
+{
+    m_db.open(path, error);
+    DiplodocusDB::TreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
+    m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
+    m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
 }
 
 std::string ProjectRepository::name() const
