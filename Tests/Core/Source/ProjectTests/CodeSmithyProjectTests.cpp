@@ -30,35 +30,42 @@ using namespace Ishiko::Tests;
 CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "CodeSmithyProject tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-void CodeSmithyProjectTests::CreationTest1(Test& test)
+void CodeSmithyProjectTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, "CodeSmithyProjectCreationTest1");
+
     ISHTF_PASS();
 }
 
 void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/CodeSmithyProjectSaveTest1.csmthprj");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/CodeSmithyProjectTests_SaveTest1.csmthprj");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/CodeSmithyProjectSaveTest1.csmthprj");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/CodeSmithyProjectTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject");
-    if (projectNode)
-    {
-        Ishiko::Error error;
-        CodeSmithy::CodeSmithyProjectType type;
-        CodeSmithy::CodeSmithyProject project(type, projectNode, error);
-        project.save();
-    }
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-    repository.save();
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
+
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+    
+    CodeSmithy::CodeSmithyProjectType type;
+    CodeSmithy::CodeSmithyProject project(type, repository.db(), projectNode, error);
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);

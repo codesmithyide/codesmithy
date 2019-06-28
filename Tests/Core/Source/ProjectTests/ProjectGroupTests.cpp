@@ -30,12 +30,12 @@ using namespace Ishiko::Tests;
 ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectGroup tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
-    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
-    append<HeapAllocationErrorsTest>("Creation test 4", CreationTest4);
-    append<HeapAllocationErrorsTest>("Creation test 5", CreationTest5);
-    append<HeapAllocationErrorsTest>("Creation test 6", CreationTest6);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
+    append<HeapAllocationErrorsTest>("Constructor test 3", ConstructorTest3);
+    append<HeapAllocationErrorsTest>("Constructor test 4", ConstructorTest4);
+    append<HeapAllocationErrorsTest>("Constructor test 5", ConstructorTest5);
+    append<HeapAllocationErrorsTest>("Constructor test 6", ConstructorTest6);
     append<FileComparisonTest>("save test 1", SaveTest1);
     append<FileComparisonTest>("save test 2", SaveTest2);
     append<FileComparisonTest>("addExternalProjectLink test 1", AddExternalProjectLinkTest1);
@@ -44,46 +44,53 @@ ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestEnviron
     append<FileComparisonTest>("addProject test 1", AddProjectTest1);
 }
 
-void ProjectGroupTests::CreationTest1(Test& test)
+void ProjectGroupTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "ProjectGroupTests_CreationTest1");
     ISHTF_PASS();
 }
 
-void ProjectGroupTests::CreationTest2(Test& test)
+void ProjectGroupTests::ConstructorTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest2.csmthprj");
-
-    CodeSmithy::ProjectRepository repository(inputPath);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
-
-    ISHTF_ABORT_UNLESS(projectNode);
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_ConstructorTest2.csmthprj");
 
     Ishiko::Error error(0);
-    CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
     ISHTF_FAIL_UNLESS(project.children().size() == 0);
     ISHTF_PASS();
 }
 
-void ProjectGroupTests::CreationTest3(Test& test)
+void ProjectGroupTests::ConstructorTest3(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest3.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_ABORT_IF(error);
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
     ISHTF_ABORT_UNLESS(projectNode);
 
-    Ishiko::Error error(0);
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
     ISHTF_FAIL_UNLESS(project.children().size() == 1);
     ISHTF_FAIL_UNLESS(project.children()[0].isLink());
@@ -91,20 +98,25 @@ void ProjectGroupTests::CreationTest3(Test& test)
     ISHTF_PASS();
 }
 
-void ProjectGroupTests::CreationTest4(Test& test)
+void ProjectGroupTests::ConstructorTest4(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest4.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_ABORT_IF(error);
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
     ISHTF_ABORT_UNLESS(projectNode);
 
-    Ishiko::Error error(0);
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
     ISHTF_FAIL_UNLESS(project.children().size() == 2);
     ISHTF_FAIL_UNLESS(project.children()[0].isLink());
@@ -114,20 +126,25 @@ void ProjectGroupTests::CreationTest4(Test& test)
     ISHTF_PASS();
 }
 
-void ProjectGroupTests::CreationTest5(Test& test)
+void ProjectGroupTests::ConstructorTest5(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest5.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
+    Ishiko::Error error(0);
+    
+    CodeSmithy::ProjectRepository repository(inputPath, error);
 
+    ISHTF_ABORT_IF(error);
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
     ISHTF_ABORT_UNLESS(projectNode);
 
-    Ishiko::Error error(0);
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
     ISHTF_FAIL_UNLESS(project.children().size() == 1);
     ISHTF_FAIL_UNLESS(project.children()[0].isProject());
@@ -135,20 +152,25 @@ void ProjectGroupTests::CreationTest5(Test& test)
     ISHTF_PASS();
 }
 
-void ProjectGroupTests::CreationTest6(Test& test)
+void ProjectGroupTests::ConstructorTest6(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectGroupTests_CreationTest6.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup");
+    Ishiko::Error error(0);
 
+    CodeSmithy::ProjectRepository repository(inputPath, error);
+
+    ISHTF_ABORT_IF(error);
+
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
     ISHTF_ABORT_UNLESS(projectNode);
 
-    Ishiko::Error error(0);
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
     ISHTF_FAIL_UNLESS(project.children().size() == 2);
     ISHTF_FAIL_UNLESS(project.children()[0].isProject());
@@ -164,18 +186,26 @@ void ProjectGroupTests::SaveTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
-        project.save();
-    }
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-    repository.save();
+    ISHTF_ABORT_IF(error);
+
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -190,21 +220,29 @@ void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest2.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-        // We call save() twice on purpose
-        project.save();
-        project.save();
-    }
+    ISHTF_ABORT_IF(error);
 
-    repository.save();
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+    
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+
+    // We call save() twice on purpose
+    project.save(repository.db(), projectNode, error);
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -218,21 +256,29 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+    ISHTF_ABORT_IF(error);
 
-        project.save();
-    }
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    repository.save();
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+    
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+    
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -246,23 +292,31 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
+    ISHTF_ABORT_IF(error);
 
-        project.save();
-    }
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    repository.save();
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+    
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
+    
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+    
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -277,25 +331,33 @@ void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_SaveTest3.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
+    ISHTF_ABORT_IF(error);
 
-        // We call save() twice on purpose
-        project.save();
-        project.save();
-    }
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    repository.save();
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location2"));
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
+
+    // We call save() twice on purpose
+    project.save(repository.db(), projectNode, error);
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+    
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -309,23 +371,29 @@ void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectGroupTests_AddProjectTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup");
-    if (projectNode)
-    {
-        Ishiko::Error error(0);
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectRepository repository(outputPath, error);
 
-        std::shared_ptr<CodeSmithy::ProjectGroup> childProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "MyChildProject");
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-        project.addProject(childProject);
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
+    
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-        project.save();
-    }
+    std::shared_ptr<CodeSmithy::ProjectGroup> childProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "MyChildProject");
+    
+    project.addProject(childProject);
 
-    repository.save();
+    project.save(repository.db(), projectNode, error);
+
+    ISHTF_FAIL_IF(error);
+
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
