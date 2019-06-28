@@ -47,53 +47,62 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
+    Ishiko::Error error(0);
+
+    CodeSmithy::ProjectRepository repository(outputPath, error);
+
+    ISHTF_ABORT_IF(error);
+
     repository.setName("CodeSmithyIDE");
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy");
-    if (projectNode)
-    {
-        Ishiko::Error error;
-        CodeSmithy::ProjectGroupType type;
-        CodeSmithy::ProjectGroup project(type, projectNode, error);
-        project.setDescription(CodeSmithy::ProjectDescription("The CodeSmithy code and all its dependencies."));
+    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy", error);
 
-        std::shared_ptr<CodeSmithy::ProjectGroup> pugixmlProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "pugixml");
-        pugixmlProject->setDescription(CodeSmithy::ProjectDescription("A local fork of the pugixml project. This is a library to read XML files."));
-        pugixmlProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/pugixml"));
-        project.addProject(pugixmlProject);
+    ISHTF_ABORT_IF(error);
+    ISHTF_ABORT_UNLESS(projectNode);
 
-        std::shared_ptr<CodeSmithy::ProjectGroup> libgit2Project = std::make_shared<CodeSmithy::ProjectGroup>(type, "libgit2");
-        libgit2Project->setDescription(CodeSmithy::ProjectDescription("A local fork of the libgit2 project. This is a client library to work with git repositories."));
-        libgit2Project->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libgit2"));
-        project.addProject(libgit2Project);
+    CodeSmithy::ProjectGroupType type;
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+    project.setDescription(CodeSmithy::ProjectDescription("The CodeSmithy code and all its dependencies."));
 
-        std::shared_ptr<CodeSmithy::ProjectGroup> ishikoDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "Ishiko Dependencies");
-        ishikoDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The Ishiko-Cpp projects that CodeSmithy depends on. Each project in this group is a "
-            "local fork of the official Ishiko-Cpp project."));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Errors"));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Process"));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/FileTypes"));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/WindowsRegistry"));
-        ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/TestFramework"));
-        project.addProject(ishikoDependenciesProject);
+    std::shared_ptr<CodeSmithy::ProjectGroup> pugixmlProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "pugixml");
+    pugixmlProject->setDescription(CodeSmithy::ProjectDescription("A local fork of the pugixml project. This is a library to read XML files."));
+    pugixmlProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/pugixml"));
+    project.addProject(pugixmlProject);
+
+    std::shared_ptr<CodeSmithy::ProjectGroup> libgit2Project = std::make_shared<CodeSmithy::ProjectGroup>(type, "libgit2");
+    libgit2Project->setDescription(CodeSmithy::ProjectDescription("A local fork of the libgit2 project. This is a client library to work with git repositories."));
+    libgit2Project->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libgit2"));
+    project.addProject(libgit2Project);
+
+    std::shared_ptr<CodeSmithy::ProjectGroup> ishikoDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "Ishiko Dependencies");
+    ishikoDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The Ishiko-Cpp projects that CodeSmithy depends on. Each project in this group is a "
+        "local fork of the official Ishiko-Cpp project."));
+    ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Errors"));
+    ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/Process"));
+    ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/FileTypes"));
+    ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/WindowsRegistry"));
+    ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/TestFramework"));
+    project.addProject(ishikoDependenciesProject);
         
-        std::shared_ptr<CodeSmithy::ProjectGroup> wxWidgetsDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "wxWidgets Dependencies");
-        wxWidgetsDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The wxWidgets code and its dependencies. These are local forks of the official wxWidgets projects."));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/zlib"));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libpng"));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libexpat"));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libjpeg-turbo"));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libtiff"));
-        wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/wxWidgets"));
-        project.addProject(wxWidgetsDependenciesProject);
+    std::shared_ptr<CodeSmithy::ProjectGroup> wxWidgetsDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "wxWidgets Dependencies");
+    wxWidgetsDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The wxWidgets code and its dependencies. These are local forks of the official wxWidgets projects."));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/zlib"));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libpng"));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libexpat"));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libjpeg-turbo"));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/libtiff"));
+    wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/wxWidgets"));
+    project.addProject(wxWidgetsDependenciesProject);
 
-        project.addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+    project.addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+    
+    project.save(repository.db(), projectNode, error);
 
-        project.save();
-    }
+    ISHTF_FAIL_IF(error);
 
-    repository.save();
+    repository.save(error);
+
+    ISHTF_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -106,19 +115,22 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(inputPath);
+    Ishiko::Error error(0);
+    
+    CodeSmithy::ProjectRepository repository(inputPath, error);
 
+    ISHTF_ABORT_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "CodeSmithyIDE");
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy");
+    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
 
+    ISHTF_ABORT_IF(error);
     ISHTF_ABORT_UNLESS(projectNode);
 
-    Ishiko::Error error(0);
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF((bool)error);
+    ISHTF_FAIL_IF(error);
     ISHTF_FAIL_UNLESS(project.name() == "CodeSmithy");
     ISHTF_FAIL_UNLESS(project.children().size() == 5);
     ISHTF_FAIL_UNLESS(project.children()[0].isProject());

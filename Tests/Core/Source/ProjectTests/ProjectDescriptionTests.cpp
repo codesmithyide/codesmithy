@@ -22,45 +22,48 @@
 
 #include "ProjectDescriptionTests.h"
 #include "CodeSmithy/Core/Projects/ProjectDescription.h"
-#include "CodeSmithy/Core/Projects/ProjectRepository.h"
-#include <boost/filesystem/operations.hpp>
+#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
 
 using namespace Ishiko::Tests;
 
 ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectDescription tests", environment)
 {
-    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
-    append<HeapAllocationErrorsTest>("Creation test 2", CreationTest2);
+    append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
+    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
     append<FileComparisonTest>("save test 1", SaveTest1);
 }
 
-void ProjectDescriptionTests::CreationTest1(Test& test)
+void ProjectDescriptionTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::ProjectDescription description;
+
     ISHTF_PASS();
 }
 
-void ProjectDescriptionTests::CreationTest2(Test& test)
+void ProjectDescriptionTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectDescription description("My description");
+
     ISHTF_PASS();
 }
 
 void ProjectDescriptionTests::SaveTest1(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/ProjectDescriptionTests_SaveTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
     boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/ProjectDescriptionTests_SaveTest1.csmthprj");
 
-    CodeSmithy::ProjectRepository repository(outputPath);
-    repository.setName("ProjectDescriptionTests_SaveTest1");
-    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1");
+    Ishiko::Error error(0);
+
+    DiplodocusDB::XMLTreeDB db;
+    db.create(outputPath, error);
+
+    ISHTF_ABORT_IF((bool)error);
 
     CodeSmithy::ProjectDescription description("My description");
-    description.save(project1);
+    description.save(db, db.root(), error);
 
-    repository.save();
+    ISHTF_FAIL_IF((bool)error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
