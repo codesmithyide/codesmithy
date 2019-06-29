@@ -32,15 +32,14 @@
 #include "ProjectGroupTests.h"
 #include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
 
 ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Project tests", environment)
 {
-    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "ProjectTests");
-    boost::filesystem::create_directories(outputPath);
+    this->environment().setTestOutputDirectory("ProjectTests");
+    this->environment().setReferenceDataDirectory("ProjectTests");
 
     append<ProjectGroupTypeTests>();
     append<CodeSmithyProjectTypeTests>();

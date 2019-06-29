@@ -29,9 +29,6 @@ using namespace boost::filesystem;
 ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectRepository tests", environment)
 {
-    this->environment().setTestOutputDirectory("ProjectTests");
-    this->environment().setReferenceDataDirectory("ProjectTests");
-
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("create test 1", CreateTest1);
     append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
