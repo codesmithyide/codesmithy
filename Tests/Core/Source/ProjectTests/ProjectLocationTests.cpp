@@ -25,6 +25,7 @@
 #include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
 
 using namespace Ishiko::Tests;
+using namespace boost::filesystem;
 
 ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "ProjectLocation tests", environment)
@@ -50,10 +51,8 @@ void ProjectLocationTests::ConstructorTest2(Test& test)
 
 void ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory()
-        / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory()
-        / "ProjectTests/ProjectLocationTests_SaveTest1.csmthprj");
+    path outputPath(test.environment().getTestOutputDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
+    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 

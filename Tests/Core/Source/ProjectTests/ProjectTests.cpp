@@ -46,9 +46,9 @@ ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& envi
     append<BakefileProjectTypeTests>();
     append<CMakeProjectTypeTests>();
     append<ProjectTypesTests>();
-    append<ProjectRepositoryTests>();
     append<ProjectDescriptionTests>();
     append<ProjectLocationTests>();
+    append<ProjectRepositoryTests>();
     append<ProjectGroupTests>();
     append<CodeSmithyProjectTests>();
     append<BakefileProjectTests>();

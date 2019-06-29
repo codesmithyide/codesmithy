@@ -29,7 +29,6 @@
 #include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
 
@@ -39,7 +38,6 @@ int main(int argc, char* argv[])
 
     theTestHarness.environment().setTestDataDirectory("../../TestData");
     theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
-    boost::filesystem::create_directories("../../TestOutput");
     theTestHarness.environment().setReferenceDataDirectory("../../ReferenceData");
 
     TestSequence& theTests = theTestHarness.tests();
