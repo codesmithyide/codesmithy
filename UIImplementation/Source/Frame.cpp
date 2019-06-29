@@ -201,7 +201,8 @@ void Frame::Bootstrap()
     // file contains what we expect, but I guess this might do for now
     // TODO : handle errors in the lines below
     Ishiko::Error error(0);
-    ProjectRepository repository("Project/CodeSmithy/CodeSmithy.csmthprj", error);
+    ProjectRepository repository;
+    repository.open("Project/CodeSmithy/CodeSmithy.csmthprj", error);
     if (repository.name() == "CodeSmithyIDE")
     {
         DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
