@@ -23,9 +23,9 @@
 #include "BakefileProjectTests.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
+using namespace boost::filesystem;
 
 BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "BakefileProject tests", environment)
@@ -46,11 +46,12 @@ void BakefileProjectTests::ConstructorTest1(Test& test)
 
 void BakefileProjectTests::ConstructorTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/BakefileProjectTests_ConstructorTest2.csmthprj");
+    path inputPath(test.environment().getTestDataDirectory() / "BakefileProjectTests_ConstructorTest2.csmthprj");
 
     Ishiko::Error error(0);
 
-    CodeSmithy::ProjectRepository repository(inputPath, error);
+    CodeSmithy::ProjectRepository repository;
+    repository.open(inputPath, error);
 
     ISHTF_ABORT_IF(error);
 
@@ -70,13 +71,13 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
 
 void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/BakefileProjectSaveTest1.csmthprj");
+    path outputPath(test.environment().getTestOutputDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
+    path referencePath(test.environment().getReferenceDataDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 
-    CodeSmithy::ProjectRepository repository(outputPath, error);
+    CodeSmithy::ProjectRepository repository;
+    repository.create(outputPath, error);
 
     ISHTF_ABORT_IF(error);
 
@@ -89,10 +90,6 @@ void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
-
-    ISHTF_FAIL_IF(error);
-    
-    repository.save(error);
 
     ISHTF_FAIL_IF(error);
 
