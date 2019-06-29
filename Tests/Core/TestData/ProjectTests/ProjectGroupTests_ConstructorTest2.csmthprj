@@ -7,11 +7,7 @@
       <codesmithy-project>
         <name data-type="utf8string">MyProjectGroup</name>
         <type data-type="utf8string">CodeSmithy.Group</type>
-        <projects>
-          <external-project-link>
-            <location data-type="utf8string">location1</location>
-          </external-project-link>
-        </projects>
+        <projects />
       </codesmithy-project>
     </projects>
   </codesmithy-project-repository>
