@@ -23,9 +23,9 @@
 #include "CodeSmithyProjectTests.h"
 #include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
+using namespace boost::filesystem;
 
 CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "CodeSmithyProject tests", environment)
@@ -44,13 +44,13 @@ void CodeSmithyProjectTests::ConstructorTest1(Test& test)
 
 void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "ProjectTests/CodeSmithyProjectTests_SaveTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "ProjectTests/CodeSmithyProjectTests_SaveTest1.csmthprj");
+    path outputPath(test.environment().getTestOutputDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
+    path referencePath(test.environment().getReferenceDataDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 
-    CodeSmithy::ProjectRepository repository(outputPath, error);
+    CodeSmithy::ProjectRepository repository;
+    repository.create(outputPath, error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
 
@@ -60,10 +60,6 @@ void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
-
-    ISHTF_FAIL_IF(error);
-
-    repository.save(error);
 
     ISHTF_FAIL_IF(error);
 
