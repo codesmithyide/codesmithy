@@ -46,8 +46,6 @@ public:
     DiplodocusDB::TreeDBNode getProjectNode(const std::string& name, Ishiko::Error& error);
     DiplodocusDB::TreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
 
-    void save(Ishiko::Error& error);
-
 private:
     // TODO : mutable because used in name(), fix that
     mutable DiplodocusDB::XMLTreeDB m_db;
