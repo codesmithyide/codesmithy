@@ -11,12 +11,6 @@
           <external-project-link>
             <location data-type="utf8string">location1</location>
           </external-project-link>
-          <external-project-link>
-            <location data-type="utf8string">location2</location>
-          </external-project-link>
-          <external-project-link>
-            <location data-type="utf8string">location3</location>
-          </external-project-link>
         </projects>
       </codesmithy-project>
     </projects>
