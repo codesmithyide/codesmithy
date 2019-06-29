@@ -23,15 +23,16 @@
 #include "BootstrapTests.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
+using namespace boost::filesystem;
 
 BootstrapTests::BootstrapTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Bootstrap tests", environment)
 {
-    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "BootstrapTests");
-    boost::filesystem::create_directories(outputPath);
+    this->environment().setTestDataDirectory("BootstrapTests");
+    this->environment().setTestOutputDirectory("BootstrapTests");
+    this->environment().setReferenceDataDirectory("BootstrapTests");
 
     append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
@@ -43,13 +44,15 @@ BootstrapTests::BootstrapTests(const TestNumber& number, const TestEnvironment& 
 // It's also a convenient way to generate it.
 void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
+    path outputPath(test.environment().getTestOutputDirectory()
+        / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
+    path referencePath(test.environment().getReferenceDataDirectory()
+        / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
 
     Ishiko::Error error(0);
 
-    CodeSmithy::ProjectRepository repository(outputPath, error);
+    CodeSmithy::ProjectRepository repository;
+    repository.create(outputPath, error);
 
     ISHTF_ABORT_IF(error);
 
@@ -61,7 +64,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     ISHTF_ABORT_UNLESS(projectNode);
 
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+    CodeSmithy::ProjectGroup project(type, "CodeSmithy");
     project.setDescription(CodeSmithy::ProjectDescription("The CodeSmithy code and all its dependencies."));
 
     std::shared_ptr<CodeSmithy::ProjectGroup> pugixmlProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "pugixml");
@@ -100,10 +103,6 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
 
     ISHTF_FAIL_IF(error);
 
-    repository.save(error);
-
-    ISHTF_FAIL_IF(error);
-
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
@@ -113,11 +112,13 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "BootstrapTests/Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
+    path inputPath(test.environment().getTestDataDirectory()
+        / "Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
     Ishiko::Error error(0);
     
-    CodeSmithy::ProjectRepository repository(inputPath, error);
+    CodeSmithy::ProjectRepository repository;
+    repository.open(inputPath, error);
 
     ISHTF_ABORT_IF(error);
     ISHTF_FAIL_UNLESS(repository.name() == "CodeSmithyIDE");

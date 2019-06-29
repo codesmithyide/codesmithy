@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,15 +22,15 @@
 
 #include "VersionControlTests.h"
 #include "GitRepositoryTests.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
 
 VersionControlTests::VersionControlTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "VersionControl tests", environment)
 {
-    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "VersionControlTests");
-    boost::filesystem::create_directories(outputPath);
+    this->environment().setTestDataDirectory("VersionControlTests");
+    this->environment().setTestOutputDirectory("VersionControlTests");
+    this->environment().setReferenceDataDirectory("VersionControlTests");
 
     append<GitRepositoryTests>();
 }

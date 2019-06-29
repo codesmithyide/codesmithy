@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,15 +23,15 @@
 #include "WorkspacesTestSequence.h"
 #include "WorkspaceFileRepositoryTests.h"
 #include "GenericWorkspaceTests.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
 
 WorkspacesTestSequence::WorkspacesTestSequence(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Workspaces tests", environment)
 {
-    boost::filesystem::path outputPath(environment.getTestOutputDirectory() / "WorkspaceTests");
-    boost::filesystem::create_directories(outputPath);
+    this->environment().setTestDataDirectory("WorkspaceTests");
+    this->environment().setTestOutputDirectory("WorkspaceTests");
+    this->environment().setReferenceDataDirectory("WorkspaceTests");
 
     append<WorkspaceFileRepositoryTests>();
     append<GenericWorkspaceTests>();

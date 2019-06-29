@@ -22,9 +22,9 @@
 
 #include "WorkspaceFileRepositoryTests.h"
 #include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
-#include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;
+using namespace boost::filesystem;
 
 WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& number,
     const TestEnvironment& environment)
@@ -35,9 +35,9 @@ WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& num
 
 void WorkspaceFileRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
-    boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "WorkspaceTests/WorkspaceFileRepositoryCreationTest1.csmthws");
+    path outputPath(test.environment().getTestOutputDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
+    path referencePath(test.environment().getReferenceDataDirectory()
+        / "WorkspaceFileRepositoryCreationTest1.csmthws");
 
     CodeSmithy::WorkspaceFileRepository repository(outputPath);
 
