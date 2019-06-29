@@ -4,16 +4,16 @@
     <file-format-version data-type="utf8string">0.1.0</file-format-version>
     <name data-type="null" />
     <projects data-type="null">
-      <codesmithy-project data-type="null">
+      <codesmithy-project>
         <name data-type="utf8string">MyProjectGroup</name>
         <type data-type="utf8string">CodeSmithy.Group</type>
-        <projects data-type="null">
-          <codesmithy-project data-type="null">
+        <projects>
+          <codesmithy-project>
             <name data-type="utf8string">MyChildProject1</name>
             <type data-type="utf8string">CodeSmithy.Group</type>
-            <projects data-type="null" />
+            <projects />
           </codesmithy-project>
-          <codesmithy-project data-type="null">
+          <codesmithy-project>
             <name data-type="utf8string">MyChildProject2</name>
             <type data-type="utf8string">CodeSmithy.Group</type>
             <projects />
