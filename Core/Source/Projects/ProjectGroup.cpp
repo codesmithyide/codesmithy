@@ -71,17 +71,11 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type, const std::string& name
 {
 }
 
-// TODO : this needs to be redone. It is used both for initialization of a new project
-// and to read an existing one from disk. That doesn't work well as I want to do either
-// initialization of validation of the data
 ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
     Ishiko::Error& error)
-    : Project(db.childValue(node, projectNameElementName, error).asUTF8String()), m_type(type), m_node(node)
+    : Project(db.childValue(node, projectNameElementName, error).asUTF8String()), m_type(type)
 {
-    // TODO : this is particularly bad, this should not be set when we are reading an
-    // existing file
-    db.setChildNode(m_node, projectTypeElementName, DiplodocusDB::TreeDBValue::UTF8String(m_type.name()), error);
-    DiplodocusDB::TreeDBNode childProjectsNode = db.setChildNode(m_node, childProjectsElementName, error);
+    DiplodocusDB::TreeDBNode childProjectsNode = db.child(node, childProjectsElementName, error);
     std::vector<DiplodocusDB::TreeDBNode> children = db.childNodes(childProjectsNode, error);
     for (DiplodocusDB::TreeDBNode& childProjectNode : children)
     {
@@ -92,7 +86,8 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& d
         else if (childProjectNode.name() == childProjectElementName)
         {
             // TODO : this assumes the project is always a ProjectGroup
-            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(type, db, childProjectNode, error);
+            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(m_type, db, childProjectNode,
+                error);
             m_childProjects.push_back(ProjectOrLink(childProject));
         }
     }
@@ -102,12 +97,6 @@ const ProjectType& ProjectGroup::type() const
 {
     return m_type;
 }
-
-/*
-void ProjectGroup::save()
-{
-    save(m_node);
-}*/
 
 void ProjectGroup::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {

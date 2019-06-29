@@ -38,6 +38,7 @@ using namespace Ishiko::Tests;
 ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "Project tests", environment)
 {
+    this->environment().setTestDataDirectory("ProjectTests");
     this->environment().setTestOutputDirectory("ProjectTests");
     this->environment().setReferenceDataDirectory("ProjectTests");
 

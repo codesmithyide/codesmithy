@@ -55,10 +55,9 @@ public:
     ProjectGroup(const ProjectGroupType& type, const std::string& name);
     ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
         Ishiko::Error& error);
-
+    
     const ProjectType& type() const override;
 
-    //void save() override;
     void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const override;
 
     std::vector<ProjectOrLink>& children();
@@ -68,7 +67,6 @@ public:
 private:
     const ProjectGroupType& m_type;
     std::vector<ProjectOrLink> m_childProjects;
-    DiplodocusDB::TreeDBNode m_node;
 };
 
 }

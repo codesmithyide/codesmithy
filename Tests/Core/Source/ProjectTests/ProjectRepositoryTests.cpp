@@ -66,8 +66,7 @@ void ProjectRepositoryTests::CreateTest1(FileComparisonTest& test)
 
 void ProjectRepositoryTests::OpenTest1(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory()
-        / "ProjectTests/ProjectRepositoryTests_OpenTest1.csmthprj");
+    path inputPath(test.environment().getTestDataDirectory() / "ProjectRepositoryTests_OpenTest1.csmthprj");
 
     Ishiko::Error error(0);
 
@@ -81,8 +80,7 @@ void ProjectRepositoryTests::OpenTest1(Test& test)
 
 void ProjectRepositoryTests::OpenTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory()
-        / "ProjectTests/ProjectRepositoryTests_OpenTest2.csmthprj");
+    path inputPath(test.environment().getTestDataDirectory() / "ProjectRepositoryTests_OpenTest2.csmthprj");
 
     Ishiko::Error error(0);
 
@@ -138,7 +136,8 @@ void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
 
 void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "ProjectTests/ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
+    boost::filesystem::path inputPath(test.environment().getTestDataDirectory()
+        / "ProjectRepositoryTests_GetProjectNodeTest1.csmthprj");
 
     Ishiko::Error error(0);
 

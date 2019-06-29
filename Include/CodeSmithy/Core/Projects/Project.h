@@ -45,8 +45,6 @@ public:
     const std::string& name() const;
     void setDescription(const ProjectDescription& description);
 
-    // TODO : I may want to get rid of save()
-	//virtual void save() = 0;
     virtual void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const = 0;
 
 protected:
