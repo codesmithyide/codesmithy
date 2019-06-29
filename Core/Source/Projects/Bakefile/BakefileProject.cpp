@@ -45,14 +45,12 @@ const ProjectType& BakefileProject::type() const
     return m_type;
 }
 
-/*
-void BakefileProject::save()
-{
-    saveBaseMembers(m_node);
-}*/
-
 void BakefileProject::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
+    db.removeAllChildNodes(node, error);
+
+    saveBaseMembers(db, node, error);
+
     // TODO
 }
 

@@ -43,6 +43,10 @@ const ProjectType& CodeSmithyProject::type() const
 
 void CodeSmithyProject::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
 {
+    db.removeAllChildNodes(node, error);
+
+    saveBaseMembers(db, node, error);
+
     // TODO
 }
 

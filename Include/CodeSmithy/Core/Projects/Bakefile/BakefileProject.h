@@ -39,7 +39,6 @@ public:
 
     const ProjectType& type() const override;
 
-    //void save() override;
     void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const override;
 
 private:

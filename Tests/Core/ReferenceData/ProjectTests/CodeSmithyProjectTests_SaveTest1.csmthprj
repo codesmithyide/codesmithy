@@ -6,6 +6,7 @@
     <projects>
       <codesmithy-project>
         <name data-type="utf8string">CodeSmithyProject</name>
+        <type data-type="utf8string">CodeSmithy.CodeSmithy</type>
       </codesmithy-project>
     </projects>
   </codesmithy-project-repository>
