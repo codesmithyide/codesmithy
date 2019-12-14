@@ -63,6 +63,33 @@
 				<font-point-size>10</font-point-size>
 			</font-settings>
 		</html-editor-settings>
+		<java-editor-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</java-editor-settings>
+		<javascript-editor-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</javascript-editor-settings>
+		<packagejson-editor-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</packagejson-editor-settings>
 		<powershell-editor-settings>
 			<use-default-settings>true</use-default-settings>
 			<theme-name>CodeSmithy Light Theme</theme-name>
@@ -72,6 +99,15 @@
 				<font-point-size>10</font-point-size>
 			</font-settings>
 		</powershell-editor-settings>
+		<pug-editor-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</pug-editor-settings>
 		<python-editor-settings>
 			<use-default-settings>true</use-default-settings>
 			<theme-name>CodeSmithy Light Theme</theme-name>
@@ -81,6 +117,15 @@
 				<font-point-size>10</font-point-size>
 			</font-settings>
 		</python-editor-settings>
+		<text-editor-settings>
+			<use-default-settings>true</use-default-settings>
+			<theme-name>CodeSmithy Light Theme</theme-name>
+			<override-theme>false</override-theme>
+			<font-settings>
+				<font-face-name>Courier New</font-face-name>
+				<font-point-size>10</font-point-size>
+			</font-settings>
+		</text-editor-settings>
 		<xml-editor-settings>
 			<use-default-settings>true</use-default-settings>
 			<theme-name>CodeSmithy Light Theme</theme-name>
