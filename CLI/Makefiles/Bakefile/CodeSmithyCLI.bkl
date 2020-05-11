@@ -1,0 +1,15 @@
+toolsets = vs2017;
+
+vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
+
+program CodeSmithyCLI
+{
+    archs = x86 x86_64;
+
+    outputdir = ../../../Bin/$(arch);
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
