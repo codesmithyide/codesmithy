@@ -1,8 +1,11 @@
+ishikopath = envvar("ISHIKO");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+
 toolsets = vs2017;
 
 vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
 
-program CodeSmithyCLI
+program CodeSmithyCLI : libgit2
 {
     archs = x86 x86_64;
 
