@@ -1,11 +1,12 @@
 ishikopath = envvar("ISHIKO");
+import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 
 toolsets = vs2017;
 
 vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
 
-program CodeSmithyCLI : libgit2
+program CodeSmithyCLI : IshikoProcess, libgit2
 {
     archs = x86 x86_64;
 
