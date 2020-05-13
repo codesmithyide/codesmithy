@@ -5,7 +5,8 @@
 */
 
 // TODO: add CI for this
-#include "Ishiko/Process/ProcessCreator.h"
+#include <Ishiko/Process/ProcessCreator.h>
+#include <Ishiko/Errors/Error.h>
 // TODO: use Core instead of libgit2 directly
 #include <git2.h>
 #include <iostream>
@@ -13,52 +14,59 @@
 namespace
 {
 
+void CloneRepository(const std::string& organization, const std::string& name, const std::string& workspaceDirectory,
+    bool verbose, Ishiko::Error& error)
+{
+    std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+    std::string targetDirectory = workspaceDirectory + "/" + organization + "/" + name;
+
+    if (verbose)
+    {
+        std::cout << "Cloning " << organization << "/" << name << " in: " << targetDirectory << std::endl;
+    }
+
+    git_libgit2_init();
+
+    git_repository* project_repository = nullptr;
+    int err = git_clone(&project_repository, repositoryURL.c_str(), targetDirectory.c_str(), 0);
+    if (err < 0)
+    {
+        // TODO: check for null pointers
+        char* msg = giterr_last()->message;
+        // TODO : error code + message
+        error.fail(-1);
+        // TODO: make nice wrapper for console output
+        std::cerr << (char)0x1B << "[91m" << "ERROR: " << err << msg << (char)0x1B << "[0m" << std::endl;
+    }
+    git_repository_free(project_repository);
+}
+
 // TODO: also bootstrap code in UI. Put common bootstrap code in Core.
 // TODO: error handling
-void Bootstrap(bool verbose)
+void Bootstrap(bool verbose, Ishiko::Error& error)
 {
     // TODO: this should be a command line argument or something
     // TODO: create dir
-    const char* workspaceDirectory = "D:/scratch/CodeSmithyCLI";
+    std::string workspaceDirectory = "D:/scratch/CodeSmithyCLI";
 
     if (verbose)
     {
         std::cout << "Workspace directory: " << workspaceDirectory << std::endl;
     }
 
-    git_libgit2_init();
-
-    if (verbose)
+    CloneRepository("CodeSmithyIDE", "Project", workspaceDirectory, verbose, error);
+    if (error)
     {
-        std::cout << "Cloning CodeSmithyIDE/Project in: " << "D:/scratch/CodeSmithyCLI/Project" << std::endl;
+        return;
     }
-    git_repository* project_repository = nullptr;
-    int err = git_clone(&project_repository, "https://github.com/CodeSmithyIDE/Project", "D:/scratch/CodeSmithyCLI/Project", 0);
-    if (err < 0)
-    {
-        // TODO: check for null pointers
-        char* msg = giterr_last()->message;
-        // TODO: make nice wrapper for console output
-        std::cerr << (char)0x1B << "[91m" << "ERROR: " << err << msg << (char)0x1B << "[0m" << std::endl;
-    }
-    git_repository_free(project_repository);
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
-    if (verbose)
+    CloneRepository("CodeSmithyIDE", "CodeSmithy", workspaceDirectory, verbose, error);
+    if (error)
     {
-        std::cout << "Cloning CodeSmithyIDE/CodeSmithy in: " << "D:/scratch/CodeSmithyCLI/CodeSmithy" << std::endl;
+        return;
     }
-    git_repository* codesmithy_repository = nullptr;
-    err = git_clone(&codesmithy_repository, "https://github.com/CodeSmithyIDE/CodeSmithy.git", "D:/scratch/CodeSmithyCLI/CodeSmithy", 0);
-    if (err < 0)
-    {
-        // TODO: check for null pointers
-        char* msg = giterr_last()->message;
-        // TODO: make nice wrapper for console output -> Ishiko/Terminal
-        std::cerr << (char)0x1B << "[91m" << "ERROR: " << err << msg << (char)0x1B << "[0m" << std::endl;
-    }
-    git_repository_free(codesmithy_repository);
 
     git_libgit2_shutdown();
 
@@ -67,15 +75,22 @@ void Bootstrap(bool verbose)
         std::cout << "Building CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln" << std::endl;
     }
     std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/devenv.exe ";
-    commandLine.append("D:/scratch/CodeSmithyCLI/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln");
+    commandLine.append("D:/scratch/CodeSmithyCLI/CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln");
     commandLine.append(" /build ");
     commandLine.append("Debug|x64");
 
     Ishiko::Process::ProcessHandle processHandle;
-    err = Ishiko::Process::ProcessCreator::StartProcess(commandLine, processHandle);
+    int err = Ishiko::Process::ProcessCreator::StartProcess(commandLine, processHandle);
     if (err == 0)
     {
         processHandle.waitForExit();
+        if (processHandle.exitCode() != 0)
+        {
+            // TODO : error code + message
+            error.fail(-1);
+            // TODO: make nice wrapper for console output
+            std::cerr << (char)0x1B << "[91m" << "ERROR: " << processHandle.exitCode() << (char)0x1B << "[0m" << std::endl;
+        }
     }
 }
 
@@ -84,11 +99,11 @@ void Bootstrap(bool verbose)
 // TODO: add install command
 // TODO: add to path command
 // TODO: add boostrap command
-// TODO: error handling
 // TODO: workspace init: extension csmws/csmprj
-// TODO: verbose mode
 int main(int argc, char* argv[])
 {
+    Ishiko::Error error(0);
+
     bool verbose = false;
     if (argc > 1)
     {
@@ -98,6 +113,13 @@ int main(int argc, char* argv[])
         }
     }
 
-    Bootstrap(verbose);
-    return 0;
+    Bootstrap(verbose, error);
+
+    if (error)
+    {
+        // TODO: error should provide an output method
+        std::cout << "ERROR: " << error.code() << std::endl;
+    }
+
+    return error.code();
 }
