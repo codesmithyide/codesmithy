@@ -5,6 +5,7 @@
 */
 
 // TODO: add CI for this
+#include <Ishiko/Process/Environment.h>
 #include <Ishiko/Process/ProcessCreator.h>
 #include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
@@ -14,6 +15,22 @@
 
 namespace
 {
+
+void SetEnvironmentVariables(const std::string& workspaceDirectory, bool verbose)
+{
+    const std::string value = workspaceDirectory + "/CodeSmithyIDE";
+    if (verbose)
+    {
+        std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
+    }
+    Ishiko::Process::Environment::set("CODESMITHYIDE", value);
+
+    if (verbose)
+    {
+        std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
+    }
+    Ishiko::Process::Environment::set("DIPLODOCUSDB", value);
+}
 
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workspaceDirectory,
     bool verbose, Ishiko::Error& error)
@@ -72,6 +89,8 @@ void Build(const std::string& workspaceDirectory, const std::string& makefilePat
 // TODO: error handling
 void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Error& error)
 {
+    SetEnvironmentVariables(workspaceDirectory, verbose);
+
     git_libgit2_init();
 
     if (verbose)
@@ -87,6 +106,18 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
+    CloneRepository("CodeSmithyIDE", "Core", workspaceDirectory, verbose, error);
+    if (error)
+    {
+        return;
+    }
+
+    CloneRepository("CodeSmithyIDE", "TreeDB", workspaceDirectory, verbose, error);
+    if (error)
+    {
+        return;
+    }
+
     CloneRepository("CodeSmithyIDE", "CodeSmithy", workspaceDirectory, verbose, error);
     if (error)
     {
@@ -94,6 +125,18 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
     }
 
     git_libgit2_shutdown();
+
+    Build(workspaceDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
+
+    Build(workspaceDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
 
     Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose, error);
     if (error)
