@@ -95,25 +95,44 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     git_libgit2_shutdown();
 
+    Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
+
     Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
 }
 
 }
 
-// TODO: add boostrap command
 // TODO: workspace init: extension csmws/csmprj
 int main(int argc, char* argv[])
 {
     Ishiko::Error error(0);
 
-    bool bootstrap = true;
+    bool bootstrap = false;
     bool verbose = false;
     for (int i = 1; i < argc; ++i)
     {
         const char* argument = argv[i];
-        if (strncmp("-v", argument, 3) == 0)
+        if (strncmp("--bootstrap", argument, 12) == 0)
+        {
+            bootstrap = true;
+        }
+        else if (strncmp("-v", argument, 3) == 0)
         {
             verbose = true;
+        }
+        else
+        {
+            std::cerr << (char)0x1B << "[91m" << "ERROR: invalid argument: " << argument << (char)0x1B << "[0m" 
+                << std::endl;
+            return -1;
         }
     }
 
