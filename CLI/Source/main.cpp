@@ -4,17 +4,23 @@
     See https://github.com/CodeSmithyIDE/CodeSmithy/blob/master/LICENSE.txt
 */
 
-// TODO: add CI for this
 #include <Ishiko/Process/Environment.h>
 #include <Ishiko/Process/ProcessCreator.h>
 #include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
-// TODO: use Core instead of libgit2 directly
+#include <Ishiko/Errors/MessageErrorExtension.h>
 #include <git2.h>
 #include <iostream>
 
 namespace
 {
+
+enum EErrorCodes
+{
+    eInvalidCommandLine = -1,
+    eGitError = -2,
+    eBuildError = -3
+};
 
 void SetEnvironmentVariables(const std::string& workspaceDirectory, bool verbose)
 {
@@ -47,12 +53,15 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     int err = git_clone(&project_repository, repositoryURL.c_str(), targetDirectory.c_str(), 0);
     if (err < 0)
     {
-        // TODO: check for null pointers
-        char* msg = giterr_last()->message;
-        // TODO : error code + message
-        error.fail(-1);
-        // TODO: make nice wrapper for console output
-        std::cerr << (char)0x1B << "[91m" << "ERROR: " << err << msg << (char)0x1B << "[0m" << std::endl;
+        std::string message = "git clone failed with error: ";
+        message.append(std::to_string(err));
+        const char* gitErrorMessage = giterr_last()->message;
+        if (gitErrorMessage)
+        {
+            message.append(", ");
+            message.append(gitErrorMessage);
+        }
+        error.fail(eGitError, message, __FILE__, __LINE__);
     }
     git_repository_free(project_repository);
 }
@@ -77,11 +86,13 @@ void Build(const std::string& workspaceDirectory, const std::string& makefilePat
         processHandle.waitForExit();
         if (processHandle.exitCode() != 0)
         {
-            // TODO : error code + message
-            error.fail(-1);
-            // TODO: make nice wrapper for console output
-            std::cerr << (char)0x1B << "[91m" << "ERROR: " << processHandle.exitCode() << (char)0x1B << "[0m" << std::endl;
+            error.fail(eBuildError, "Process launched by " + commandLine + " exited with code " + std::to_string(err),
+                __FILE__, __LINE__);
         }
+    }
+    else
+    {
+        error.fail(eBuildError, "Failed to launch process: " + commandLine, __FILE__, __LINE__);
     }
 }
 
@@ -177,10 +188,9 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
 }
 
-// TODO: workspace init: extension csmws/csmprj
 int main(int argc, char* argv[])
 {
-    Ishiko::Error error(0);
+    Ishiko::Error error(0, new Ishiko::MessageErrorExtension());
 
     bool bootstrap = false;
     bool verbose = false;
@@ -197,25 +207,29 @@ int main(int argc, char* argv[])
         }
         else
         {
-            std::cerr << (char)0x1B << "[91m" << "ERROR: invalid argument: " << argument << (char)0x1B << "[0m" 
-                << std::endl;
-            return -1;
+            std::string message = "invalid argument: ";
+            message.append(argument);
+            error.fail(eInvalidCommandLine, message, __FILE__, __LINE__);
+            break;
         }
     }
 
-    // TODO: this should be a command line argument or something
-    // TODO: create dir
-    std::string workspaceDirectory = "D:/scratch/CodeSmithyCLI";
-
-    if (bootstrap)
+    if (!error)
     {
-        Bootstrap(workspaceDirectory, verbose, error);
+        // TODO: this should be a command line argument or something
+        // TODO: create dir
+        std::string workspaceDirectory = "D:/scratch/CodeSmithyCLI";
+
+        if (bootstrap)
+        {
+            Bootstrap(workspaceDirectory, verbose, error);
+        }
     }
 
     if (error)
     {
-        // TODO: error should provide an output method
-        std::cout << "ERROR: " << error.code() << std::endl;
+        // TODO: make nice wrapper for console output
+        std::cerr << (char)0x1B << "[91m" << "ERROR: " << error << (char)0x1B << "[0m" << std::endl;
     }
 
     return error.code();
