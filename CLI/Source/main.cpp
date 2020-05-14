@@ -106,6 +106,18 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
+    CloneRepository("CodeSmithyIDE", "Errors", workspaceDirectory, verbose, error);
+    if (error)
+    {
+        return;
+    }
+
+    CloneRepository("CodeSmithyIDE", "Collections", workspaceDirectory, verbose, error);
+    if (error)
+    {
+        return;
+    }
+
     CloneRepository("CodeSmithyIDE", "Core", workspaceDirectory, verbose, error);
     if (error)
     {
@@ -125,6 +137,18 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
     }
 
     git_libgit2_shutdown();
+
+    Build(workspaceDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
+
+    Build(workspaceDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose, error);
+    if (error)
+    {
+        return;
+    }
 
     Build(workspaceDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose, error);
     if (error)
