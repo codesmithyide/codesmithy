@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST);$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP)/Collections\Include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
