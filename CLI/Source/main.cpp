@@ -40,15 +40,16 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     git_repository_free(project_repository);
 }
 
-void Build(const std::string& workspaceDirectory, bool verbose, Ishiko::Error& error)
+void Build(const std::string& workspaceDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
 {
+    std::string absoluteMakefilePath = workspaceDirectory + "/" + makefilePath;
+
     if (verbose)
     {
-        std::cout << "Building CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln" << std::endl;
+        std::cout << "Building " << absoluteMakefilePath << std::endl;
     }
     std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/devenv.exe ";
-    std::string makefilePath = workspaceDirectory + "/CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln";
-    commandLine.append(makefilePath);
+    commandLine.append(absoluteMakefilePath);
     commandLine.append(" /build ");
     commandLine.append("Debug|x64");
 
@@ -94,7 +95,7 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     git_libgit2_shutdown();
 
-    Build(workspaceDirectory, verbose, error);
+    Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose, error);
 }
 
 }
