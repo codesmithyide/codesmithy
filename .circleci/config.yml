@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
+      - run: 
+          name: "Set ISHIKO_CPP environment variable and create directory"
+          command: mkdir /CodeSmithyIDE && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
