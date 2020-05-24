@@ -6,3 +6,6 @@ jobs:
     steps:
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
+      - run:
+          name: Build
+          command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
