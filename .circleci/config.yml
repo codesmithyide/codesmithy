@@ -21,6 +21,9 @@ jobs:
           name: "Checkout CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
       - run:
+          name: "Checkout CodeSmithyIDE/Process dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Process.git
+      - run:
           name: "Checkout CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
       - run:
