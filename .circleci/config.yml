@@ -4,8 +4,14 @@ jobs:
     docker:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
+      - run:
+          name: "Checkout CodeSmithyIDE/Collections dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
+      - run:
+          name: "Build CodeSmithyIDE/Collections dependency"
+          command: cd /CodeSmithyIDE/Collections/Makefiles/GNUmakefile && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
