@@ -4,15 +4,24 @@ import $(ishikopath)/FileSystem/Include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 
-toolsets = vs2017;
+toolsets = gnu vs2017;
 
+gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
 
 program CodeSmithyCLI : IshikoProcess, IshikoFileSystem, IshikoErrors, libgit2
 {
-    archs = x86 x86_64;
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Bin;
+    }
 
-    outputdir = ../../../Bin/$(arch);
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../Bin/$(arch);
+    }
 
     sources
     {
