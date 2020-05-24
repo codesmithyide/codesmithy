@@ -52,3 +52,5 @@ jobs:
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+      - store_artifacts:
+          path: /CodeSmithyIDE/Bin/CodeSmithyCLI
