@@ -12,6 +12,9 @@ jobs:
           name: "Checkout CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
       - run:
+          name: "Checkout CodeSmithyIDE/Core dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Core.git
+      - run:
           name: "Checkout CodeSmithyIDE/TreeDB dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
@@ -19,6 +22,9 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE/Collections/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/Core dependency"
+          command: cd /CodeSmithyIDE/Core/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/TreeDB dependency"
           command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
