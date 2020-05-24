@@ -5,7 +5,7 @@
 */
 
 #include <Ishiko/Process/Environment.h>
-#include <Ishiko/Process/ProcessCreator.h>
+#include <Ishiko/Process/ChildProcessBuilder.h>
 #include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
 #include <Ishiko/Errors/MessageErrorExtension.h>
@@ -29,13 +29,13 @@ void SetEnvironmentVariables(const std::string& workspaceDirectory, bool verbose
     {
         std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
     }
-    Ishiko::Process::Environment::set("CODESMITHYIDE", value);
+    Ishiko::Process::Environment::Set("CODESMITHYIDE", value);
 
     if (verbose)
     {
         std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
     }
-    Ishiko::Process::Environment::set("DIPLODOCUSDB", value);
+    Ishiko::Process::Environment::Set("DIPLODOCUSDB", value);
 }
 
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workspaceDirectory,
@@ -79,20 +79,16 @@ void Build(const std::string& workspaceDirectory, const std::string& makefilePat
     commandLine.append(" /build ");
     commandLine.append("Debug|x64");
 
-    Ishiko::Process::ProcessHandle processHandle;
-    int err = Ishiko::Process::ProcessCreator::StartProcess(commandLine, processHandle);
-    if (err == 0)
+    Ishiko::Process::ChildProcess processHandle = Ishiko::Process::ChildProcessBuilder::StartProcess(commandLine, error);
+    if (!error)
     {
         processHandle.waitForExit();
-        if (processHandle.exitCode() != 0)
+        int exitCode = processHandle.exitCode();
+        if (exitCode != 0)
         {
-            error.fail(eBuildError, "Process launched by " + commandLine + " exited with code " + std::to_string(err),
+            error.fail(eBuildError, "Process launched by " + commandLine + " exited with code " + std::to_string(exitCode),
                 __FILE__, __LINE__);
         }
-    }
-    else
-    {
-        error.fail(eBuildError, "Failed to launch process: " + commandLine, __FILE__, __LINE__);
     }
 }
 
