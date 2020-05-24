@@ -1,0 +1,8 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ishikocpp/gcc-boost:9.1.0-1.70.0
+    steps:
+      - checkout:
+          path: /CodeSmithyIDE/CodeSmithy
