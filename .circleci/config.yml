@@ -6,8 +6,13 @@ jobs:
     steps:
       - run: 
           name: "Set ISHIKO_CPP and DIPLODOCUSDB environment variables and create directory"
-          command: mkdir /CodeSmithyIDE && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
+          command: mkdir /CodeSmithyIDE \
+                   && echo 'export PUGIXML="/CodeSmithyIDE"' >> $BASH_ENV \
+                   && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV
+      - run:
+          name: "Checkout CodeSmithyIDE/pugixml dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
       - run:
           name: "Checkout CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
