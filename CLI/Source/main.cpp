@@ -6,7 +6,7 @@
 
 #include <Ishiko/Process/Environment.h>
 #include <Ishiko/Process/ChildProcessBuilder.h>
-#include <Ishiko/FileSystem/Utilities.h>
+//#include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
 #include <Ishiko/Errors/MessageErrorExtension.h>
 #include <git2.h>
