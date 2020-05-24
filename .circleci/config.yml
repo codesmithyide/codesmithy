@@ -46,3 +46,6 @@ jobs:
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
+      - run:
+          name: Build
+          command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
