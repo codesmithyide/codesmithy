@@ -5,9 +5,9 @@ jobs:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
       - run: 
-          name: "Set ISHIKO_CPP and DIPLODOCUSDB environment variables and create directory"
+          name: "Set PUGIXML, ISHIKO_CPP and DIPLODOCUSDB environment variables and create directory"
           command: mkdir /CodeSmithyIDE \
-                   && echo 'export PUGIXML="/CodeSmithyIDE"' >> $BASH_ENV \
+                   && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
                    && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
