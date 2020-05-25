@@ -78,7 +78,7 @@ LIBGIT2_ROOT ?= $(LIBGIT2)
 all: ../../../Bin/CodeSmithyCLI
 
 ../../../Bin/CodeSmithyCLI: $(_builddir)CodeSmithyCLI_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/Lib -L$(LIBGIT2_ROOT) -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/Lib -L$(LIBGIT2_ROOT) -lgit2 -pthread
 
 $(_builddir)CodeSmithyCLI_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/Include -I$(LIBGIT2_ROOT)/include -std=c++11 ../../Source/main.cpp
