@@ -4,12 +4,6 @@ jobs:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.1.0
     steps:
-      - run: 
-          name: "Set LIBGIT2 environment variable and create directory"
-          command: mkdir /CodeSmithyIDE && echo 'export LIBGIT2="/CodeSmithyIDE/libgit2"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/libgit2 dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/libgit2.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
