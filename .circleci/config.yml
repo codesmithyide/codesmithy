@@ -2,14 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishikocpp/gcc-boost:9.1.0-1.70.0
+      - image: codesmithy/build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set PUGIXML, LIBGIT2, ISHIKO_CPP and DIPLODOCUSDB environment variables and create directory"
+          name: "Set PUGIXML, LIBGIT2 and DIPLODOCUSDB environment variables and create directory"
           command: mkdir /CodeSmithyIDE \
                    && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
                    && echo 'export LIBGIT2="/CodeSmithyIDE/libgit2"' >> $BASH_ENV \
-                   && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/CMake dependency"
@@ -21,15 +20,6 @@ jobs:
           name: "Checkout CodeSmithyIDE/libgit2 dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/libgit2.git
       - run:
-          name: "Checkout CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
-      - run:
-          name: "Checkout CodeSmithyIDE/Process dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Process.git
-      - run:
-          name: "Checkout CodeSmithyIDE/Collections dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
-      - run:
           name: "Checkout CodeSmithyIDE/Core dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Core.git
       - run:
@@ -40,12 +30,6 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/CMake dependency"
           command: cd /CodeSmithyIDE/CMake && ./bootstrap && make
-      - run:
-          name: "Build CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/Collections dependency"
-          command: cd /CodeSmithyIDE/Collections/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/Core dependency"
           command: cd /CodeSmithyIDE/Core/Makefiles/GNUmakefile && make
