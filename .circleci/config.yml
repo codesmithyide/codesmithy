@@ -8,16 +8,10 @@ jobs:
           name: "Set LIBGIT2 environment variable and create directory"
           command: mkdir /CodeSmithyIDE && echo 'export LIBGIT2="/CodeSmithyIDE/libgit2"' >> $BASH_ENV
       - run:
-          name: "Checkout CodeSmithyIDE/CMake dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/CMake.git
-      - run:
           name: "Checkout CodeSmithyIDE/libgit2 dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/libgit2.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
-      - run:
-          name: "Build CodeSmithyIDE/CMake dependency"
-          command: cd /CodeSmithyIDE/CMake && ./bootstrap && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
