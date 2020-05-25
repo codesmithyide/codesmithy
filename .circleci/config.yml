@@ -12,6 +12,9 @@ jobs:
                    && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
+          name: "Checkout CodeSmithyIDE/CMake dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/CMake.git
+      - run:
           name: "Checkout CodeSmithyIDE/pugixml dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
       - run:
@@ -34,6 +37,9 @@ jobs:
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
+      - run:
+          name: "Build CodeSmithyIDE/CMake dependency"
+          command: cd /CodeSmithyIDE/CMake && ./bootstrap && make
       - run:
           name: "Build CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
