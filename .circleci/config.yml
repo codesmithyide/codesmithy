@@ -46,3 +46,15 @@ jobs:
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
+     - run:
+          name: "Checkout CodeSmithyIDE/Process test dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Process.git
+     - run:
+          name: "Checkout CodeSmithyIDE/TestFramework test dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TestFramework.git
+      - run:
+          name: "Build CodeSmithyIDE/Process test dependency"
+          command: cd /CodeSmithyIDE/Process/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/TestFramework test dependency"
+          command: cd /CodeSmithyIDE/TestFramework/Core/Makefiles/GNUmakefile && make
