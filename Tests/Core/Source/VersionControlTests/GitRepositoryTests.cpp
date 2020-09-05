@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -86,7 +86,7 @@ void GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
     CodeSmithy::GitRepository repository;
     bool isRepository = repository.checkIfRepository(inputPath.string());
 
-    ISHTF_FAIL_UNLESS(isRepository);
+    ISHTF_FAIL_IF_NOT(isRepository);
     ISHTF_PASS();
 }
 
