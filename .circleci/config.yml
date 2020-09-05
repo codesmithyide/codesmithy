@@ -60,7 +60,7 @@ jobs:
           command: cd /CodeSmithyIDE/TestFramework/Core/Makefiles/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /CodeSmithyIDE/CodeSmithy/Tests/CoreMakefiles/GNUmakefile && make
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyIDECoreTests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
