@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -212,7 +212,11 @@ std::string StartupSettings::startupBehaviorToString(EStartupBehavior behavior)
 
 StartupSettings::EOSBootBehavior StartupSettings::stringToOSBootBehavior(const std::string& behavior)
 {
-    if (behavior == "restore")
+    if (behavior == "start-always")
+    {
+        return eAlwaysStart;
+    }
+    else if (behavior == "restore")
     {
         return eRestore;
     }
@@ -231,6 +235,9 @@ std::string StartupSettings::osBootBehaviorToString(EOSBootBehavior behavior)
 
     case eRestore:
         return "restore";
+
+    case eAlwaysStart:
+        return "start-always";
 
     default:
         return "none";

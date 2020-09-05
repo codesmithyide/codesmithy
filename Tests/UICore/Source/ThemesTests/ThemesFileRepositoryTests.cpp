@@ -57,8 +57,8 @@ void ThemesFileRepositoryTests::GetThemeNodesTest1(Test& test)
     std::vector<std::shared_ptr<CodeSmithy::ThemesRepositoryNode> > themeNodes;
     repository.getThemeNodes(themeNodes);
 
-    ISHTF_FAIL_UNLESS(themeNodes.size() == 1);
-    ISHTF_FAIL_UNLESS(themeNodes[0]->themeName() == "Theme1");
+    ISHTF_ABORT_IF_NEQ(themeNodes.size(), 1);
+    ISHTF_FAIL_IF_NEQ(themeNodes[0]->themeName(), "Theme1");
     ISHTF_PASS();
 }
 

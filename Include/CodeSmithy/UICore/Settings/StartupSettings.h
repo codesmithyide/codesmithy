@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -54,7 +54,9 @@ public:
         eDoNothing,
         // If the OS was rebooted while the 
         // application was running restore it
-        eRestore
+        eRestore,
+        // Start the application each time the user logs in
+        eAlwaysStart
     };
 
 public:

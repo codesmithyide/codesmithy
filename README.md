@@ -18,7 +18,7 @@ This repository contains the source code for the main components of the IDE.
 
 ## License
 
-Copyright (c) 2015-2019 Xavier Leclercq
+Copyright (c) 2015-2020 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
