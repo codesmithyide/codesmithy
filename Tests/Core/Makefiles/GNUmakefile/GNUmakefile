@@ -86,7 +86,7 @@ DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB)/Core
 # Path to the DiplodocusDB installation
 DIPLODOCUSDB_TREEDB_ROOT ?= $(DIPLODOCUSDB)/TreeDB
 # Path to the CodeSmithy installation
-CODESMITHY_ROOT ?= $(CODESMITHY)/CodeSmithy
+CODESMITHY_ROOT ?= $(CODESMITHY_IDE)/CodeSmithy
 
 # ------------
 
