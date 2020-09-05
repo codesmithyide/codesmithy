@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -38,7 +38,7 @@ void BakefileProjectTypeTests::CreationTest1(Test& test)
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType projectType(documentTypes);
 
-    ISHTF_FAIL_UNLESS(projectType.name() == "CodeSmithy.Bakefile");
+    ISHTF_FAIL_IF_NOT(projectType.name() == "CodeSmithy.Bakefile");
     ISHTF_PASS();
 }
 
@@ -49,7 +49,7 @@ void BakefileProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
     const CodeSmithy::BakefileProjectType projectType(documentTypes);
     const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
 
-    ISHTF_FAIL_UNLESS(supportedDocumentTypes.size() == 1);
-    ISHTF_FAIL_UNLESS(supportedDocumentTypes[0]->name() == "Bakefile");
+    ISHTF_FAIL_IF_NOT(supportedDocumentTypes.size() == 1);
+    ISHTF_FAIL_IF_NOT(supportedDocumentTypes[0]->name() == "Bakefile");
     ISHTF_PASS();
 }
