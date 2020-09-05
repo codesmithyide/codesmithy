@@ -22,9 +22,9 @@ enum EErrorCodes
     eBuildError = -3
 };
 
-void SetEnvironmentVariables(const std::string& workspaceDirectory, bool verbose)
+void SetEnvironmentVariables(const std::string& workDirectory, bool verbose)
 {
-    const std::string value = workspaceDirectory + "/CodeSmithyIDE";
+    const std::string value = workDirectory + "/CodeSmithyIDE";
     if (verbose)
     {
         std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
@@ -38,11 +38,11 @@ void SetEnvironmentVariables(const std::string& workspaceDirectory, bool verbose
     Ishiko::Process::Environment::set("DIPLODOCUSDB", value);
 }
 
-void CloneRepository(const std::string& organization, const std::string& name, const std::string& workspaceDirectory,
+void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
     bool verbose, Ishiko::Error& error)
 {
     std::string repositoryURL = "https://github.com/" + organization + "/" + name;
-    std::string targetDirectory = workspaceDirectory + "/" + organization + "/" + name;
+    std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
 
     if (verbose)
     {
@@ -66,9 +66,9 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     git_repository_free(project_repository);
 }
 
-void Build(const std::string& workspaceDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
+void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
 {
-    std::string absoluteMakefilePath = workspaceDirectory + "/" + makefilePath;
+    std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
     if (verbose)
     {
@@ -96,20 +96,18 @@ void Build(const std::string& workspaceDirectory, const std::string& makefilePat
     }
 }
 
-// TODO: also bootstrap code in UI. Put common bootstrap code in Core.
-// TODO: error handling
-void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Error& error)
+void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
 {
-    SetEnvironmentVariables(workspaceDirectory, verbose);
+    SetEnvironmentVariables(workDirectory, verbose);
 
     git_libgit2_init();
 
     if (verbose)
     {
-        std::cout << "Workspace directory: " << workspaceDirectory << std::endl;
+        std::cout << "Workspace directory: " << workDirectory << std::endl;
     }
 
-    CloneRepository("CodeSmithyIDE", "Project", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose, error);
     if (error)
     {
         return;
@@ -117,31 +115,31 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
-    CloneRepository("CodeSmithyIDE", "Errors", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose, error);
     if (error)
     {
         return;
     }
 
-    CloneRepository("CodeSmithyIDE", "Collections", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "Collections", workDirectory, verbose, error);
     if (error)
     {
         return;
     }
 
-    CloneRepository("CodeSmithyIDE", "Core", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "Core", workDirectory, verbose, error);
     if (error)
     {
         return;
     }
 
-    CloneRepository("CodeSmithyIDE", "TreeDB", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "TreeDB", workDirectory, verbose, error);
     if (error)
     {
         return;
     }
 
-    CloneRepository("CodeSmithyIDE", "CodeSmithy", workspaceDirectory, verbose, error);
+    CloneRepository("CodeSmithyIDE", "CodeSmithy", workDirectory, verbose, error);
     if (error)
     {
         return;
@@ -149,37 +147,37 @@ void Bootstrap(const std::string& workspaceDirectory, bool verbose, Ishiko::Erro
 
     git_libgit2_shutdown();
 
-    Build(workspaceDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
     if (error)
     {
         return;
     }
 
-    Build(workspaceDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose, error);
     if (error)
     {
         return;
     }
 
-    Build(workspaceDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose, error);
     if (error)
     {
         return;
     }
 
-    Build(workspaceDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose, error);
     if (error)
     {
         return;
     }
 
-    Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose, error);
     if (error)
     {
         return;
     }
 
-    Build(workspaceDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose, error);
+    Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose, error);
     if (error)
     {
         return;
@@ -193,6 +191,7 @@ int main(int argc, char* argv[])
     Ishiko::Error error(0, new Ishiko::MessageErrorExtension());
 
     bool bootstrap = false;
+    std::string workDir = ".";
     bool verbose = false;
     for (int i = 1; i < argc; ++i)
     {
@@ -200,6 +199,10 @@ int main(int argc, char* argv[])
         if (strncmp("--bootstrap", argument, 12) == 0)
         {
             bootstrap = true;
+        }
+        else if (strncmp("--work-dir", argument, 11) == 0)
+        {
+            workDir = argument;
         }
         else if (strncmp("-v", argument, 3) == 0)
         {
@@ -216,13 +219,10 @@ int main(int argc, char* argv[])
 
     if (!error)
     {
-        // TODO: this should be a command line argument or something
         // TODO: create dir
-        std::string workspaceDirectory = "D:/scratch/CodeSmithyCLI";
-
         if (bootstrap)
         {
-            Bootstrap(workspaceDirectory, verbose, error);
+            Bootstrap(workDir, verbose, error);
         }
     }
 
