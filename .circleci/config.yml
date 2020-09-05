@@ -5,7 +5,7 @@ jobs:
       - image: ishikocpp/gcc-boost:9.1.0-1.70.0
     steps:
       - run: 
-          name: "Set PUGIXML, LIBGIT2, ISHIKO_CPP, DIPLODOCUSDB and CODESMITH_IDE environment variables and create directory"
+          name: "Set PUGIXML, LIBGIT2, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
           command: mkdir /CodeSmithyIDE \
                    && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
                    && echo 'export LIBGIT2="/CodeSmithyIDE/libgit2"' >> $BASH_ENV \
@@ -44,6 +44,9 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/TreeDB dependency"
           command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/XMLTreeDB dependency"
+          command: cd /CodeSmithyIDE/XMLTreeDB/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
