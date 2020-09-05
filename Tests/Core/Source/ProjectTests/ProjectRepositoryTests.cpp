@@ -150,6 +150,6 @@ void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("Project1", error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(projectNode);
+    ISHTF_FAIL_IF_NOT(projectNode);
     ISHTF_PASS();
 }

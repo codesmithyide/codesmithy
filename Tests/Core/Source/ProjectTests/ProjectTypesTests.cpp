@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -40,7 +40,7 @@ void ProjectTypesTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
 
-    ISHTF_FAIL_UNLESS(types.size() == 0);
+    ISHTF_FAIL_IF_NOT(types.size() == 0);
     ISHTF_PASS();
 }
 
@@ -52,8 +52,8 @@ void ProjectTypesTests::AddTest1(Test& test)
     CodeSmithy::ProjectTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
 
-    ISHTF_FAIL_UNLESS(types.size() == 1);
-    ISHTF_FAIL_UNLESS(types[0]->name() == "CodeSmithy.Bakefile");
+    ISHTF_FAIL_IF_NOT(types.size() == 1);
+    ISHTF_FAIL_IF_NOT(types[0]->name() == "CodeSmithy.Bakefile");
     ISHTF_PASS();
 }
 
@@ -79,7 +79,7 @@ void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest2(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("Bakefile", suitableTypes);
 
-    ISHTF_FAIL_UNLESS(suitableTypes.size() == 1);
-    ISHTF_FAIL_UNLESS(suitableTypes[0]->name() == "CodeSmithy.Bakefile");
+    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 1);
+    ISHTF_FAIL_IF_NOT(suitableTypes[0]->name() == "CodeSmithy.Bakefile");
     ISHTF_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -36,8 +36,8 @@ void CodeSmithyProjectFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectFileType type;
 
-    ISHTF_FAIL_UNLESS(type.name() == "CodeSmithy Project File");
-    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
-    ISHTF_FAIL_UNLESS(type.extensions()[0] == "csmthprj");
+    ISHTF_FAIL_IF_NOT(type.name() == "CodeSmithy Project File");
+    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "csmthprj");
     ISHTF_PASS();
 }
