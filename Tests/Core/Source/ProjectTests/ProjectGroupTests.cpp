@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -63,14 +63,14 @@ void ProjectGroupTests::ConstructorTest2(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_FAIL_UNLESS(project.children().size() == 0);
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_FAIL_IF_NOT(project.children().size() == 0);
     ISHTF_PASS();
 }
 
@@ -88,16 +88,16 @@ void ProjectGroupTests::ConstructorTest3(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_UNLESS(project.children().size() == 1);
-    ISHTF_FAIL_UNLESS(project.children()[0].isLink());
-    ISHTF_FAIL_UNLESS(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_ABORT_IF_NOT(project.children().size() == 1);
+    ISHTF_FAIL_IF_NOT(project.children()[0].isLink());
+    ISHTF_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
     ISHTF_PASS();
 }
 
@@ -115,18 +115,18 @@ void ProjectGroupTests::ConstructorTest4(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_UNLESS(project.children().size() == 2);
-    ISHTF_FAIL_UNLESS(project.children()[0].isLink());
-    ISHTF_FAIL_UNLESS(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
-    ISHTF_FAIL_UNLESS(project.children()[1].isLink());
-    ISHTF_FAIL_UNLESS(project.children()[1].location() == CodeSmithy::ProjectLocation("location2"));
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_ABORT_IF_NOT(project.children().size() == 2);
+    ISHTF_FAIL_IF_NOT(project.children()[0].isLink());
+    ISHTF_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
+    ISHTF_FAIL_IF_NOT(project.children()[1].isLink());
+    ISHTF_FAIL_IF_NOT(project.children()[1].location() == CodeSmithy::ProjectLocation("location2"));
     ISHTF_PASS();
 }
 
@@ -144,16 +144,16 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_UNLESS(project.children().size() == 1);
-    ISHTF_FAIL_UNLESS(project.children()[0].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[0].project().name() == "MyChildProject");
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_ABORT_IF_NOT(project.children().size() == 1);
+    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject");
     ISHTF_PASS();
 }
 
@@ -171,18 +171,18 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_FAIL_UNLESS(project.children().size() == 2);
-    ISHTF_FAIL_UNLESS(project.children()[0].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[0].project().name() == "MyChildProject1");
-    ISHTF_FAIL_UNLESS(project.children()[1].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[1].project().name() == "MyChildProject2");
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_ABORT_IF_NOT(project.children().size() == 2);
+    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject1");
+    ISHTF_FAIL_IF_NOT(project.children()[1].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[1].project().name() == "MyChildProject2");
     ISHTF_PASS();
 }
 
@@ -201,7 +201,7 @@ void ProjectGroupTests::SaveTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -231,7 +231,7 @@ void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -265,7 +265,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -299,7 +299,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -334,7 +334,7 @@ void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -368,7 +368,7 @@ void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");

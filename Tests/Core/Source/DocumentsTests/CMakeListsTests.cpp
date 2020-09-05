@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -37,6 +37,6 @@ void CMakeListsTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::CMakeListsType> cmakelistsType = std::make_shared<CodeSmithy::CMakeListsType>();
     CodeSmithy::CMakeLists document(cmakelistsType, 1234, "CMakeListsCreationTest1");
 
-    ISHTF_FAIL_UNLESS(document.type().name() == "CMakeLists");
+    ISHTF_FAIL_IF_NOT(document.type().name() == "CMakeLists");
     ISHTF_PASS();
 }

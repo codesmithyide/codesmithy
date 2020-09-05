@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2016 Xavier Leclercq
+    Copyright (c) 2015-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -198,6 +198,7 @@ void StartupPreferencesPage::onOSBootBehaviorChanged(wxCommandEvent& evt)
         break;
     }
     m_newSettings.setOSBootBehavior(behavior);
+    // TODO: the following should only be done once apply or close are selected
     if (behavior == StartupSettings::eRestore)
     {
         RegisterApplicationRestart(L"/restart", 0);

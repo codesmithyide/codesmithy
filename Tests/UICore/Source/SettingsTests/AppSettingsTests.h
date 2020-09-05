@@ -31,13 +31,13 @@ public:
     AppSettingsTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
 private:
-    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
-    static void CreationTest2(Ishiko::Tests::FileComparisonTest& test);
-    static void CreationTest3(Ishiko::Tests::Test& test);
-    static void CreationTest4(Ishiko::Tests::Test& test);
-    static void CreationTest5(Ishiko::Tests::Test& test);
-    static void CreationTest6(Ishiko::Tests::Test& test);
-    static void CreationTest7(Ishiko::Tests::Test& test);
+    static void ConstructionTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void ConstructionTest2(Ishiko::Tests::FileComparisonTest& test);
+    static void ConstructionTest3(Ishiko::Tests::Test& test);
+    static void ConstructionTest4(Ishiko::Tests::Test& test);
+    static void ConstructionTest5(Ishiko::Tests::Test& test);
+    static void ConstructionTest6(Ishiko::Tests::Test& test);
+    static void ConstructionTest7(Ishiko::Tests::Test& test);
     static void SaveTest1(Ishiko::Tests::FileComparisonTest& test);
     static void SaveTest2(Ishiko::Tests::FileComparisonTest& test);
     static void SaveTest3(Ishiko::Tests::FileComparisonTest& test);

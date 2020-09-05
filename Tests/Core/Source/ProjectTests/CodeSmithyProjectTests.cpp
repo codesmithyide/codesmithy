@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -55,7 +55,7 @@ void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, repository.db(), projectNode, error);

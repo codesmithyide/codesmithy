@@ -36,5 +36,6 @@ ThemeTests::ThemeTests(const TestNumber& number, const TestEnvironment& environm
 void ThemeTests::CreationTest1(Test& test)
 {
     CodeSmithy::Theme theme("ThemeCreationTest1");
+
     ISHTF_PASS();
 }
