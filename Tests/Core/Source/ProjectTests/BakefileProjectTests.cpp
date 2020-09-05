@@ -84,7 +84,7 @@ void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("BakefileProject", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);

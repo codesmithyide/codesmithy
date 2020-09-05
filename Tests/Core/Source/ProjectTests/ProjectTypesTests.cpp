@@ -64,7 +64,7 @@ void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest1(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("dummy", suitableTypes);
 
-    ISHTF_FAIL_UNLESS(suitableTypes.size() == 0);
+    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 0);
     ISHTF_PASS();
 }
 

@@ -150,8 +150,8 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_UNLESS(project.children().size() == 1);
+    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHTF_ABORT_IF_NOT(project.children().size() == 1);
     ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
     ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject");
     ISHTF_PASS();
