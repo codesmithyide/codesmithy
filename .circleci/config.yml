@@ -33,6 +33,9 @@ jobs:
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
+          name: "Build CodeSmithyIDE/libgit2 dependency"
+          command: cd /CodeSmithyIDE/libgit2 && mkdir build && cd build && cmake .. -DBUILD_SHARED_LIBS=OFF && cmake --build .
+      - run:
           name: "Build CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
       - run:
