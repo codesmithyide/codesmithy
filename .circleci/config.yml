@@ -58,3 +58,9 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/TestFramework test dependency"
           command: cd /CodeSmithyIDE/TestFramework/Core/Makefiles/GNUmakefile && make
+      - run:
+          name: Test build
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/CoreMakefiles/GNUmakefile && make
+      - run:
+          name: Run the tests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyIDECoreTests
