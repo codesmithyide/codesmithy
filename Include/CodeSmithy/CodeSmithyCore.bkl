@@ -1,4 +1,4 @@
-ishikopath = envvar("ISHIKO");
+ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
