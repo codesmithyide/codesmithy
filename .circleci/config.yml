@@ -7,13 +7,9 @@ jobs:
       - run: 
           name: "Set PUGIXML, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
           command: mkdir /CodeSmithyIDE \
-                   && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
                    && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/pugixml dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
       - run:
           name: "Checkout CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
