@@ -14,7 +14,7 @@ jobs:
                    && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/CMake dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Cmake.git
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/CMake.git
       - run:
           name: "Checkout CodeSmithyIDE/pugixml dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
