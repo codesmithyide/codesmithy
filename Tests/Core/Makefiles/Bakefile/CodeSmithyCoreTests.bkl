@@ -1,4 +1,4 @@
-ishikopath = envvar("ISHIKO");
+ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
 codesmithypath = envvar("CODESMITHY");
 import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyCore.bkl;
