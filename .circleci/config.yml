@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ishikocpp/gcc-boost:9.1.0-1.70.0
+      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
           name: "Set PUGIXML, LIBGIT2, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
