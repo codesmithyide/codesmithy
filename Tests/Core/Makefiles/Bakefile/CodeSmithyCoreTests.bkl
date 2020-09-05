@@ -15,7 +15,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoTestFrameworkCore IshikoProcess IshikoErrors git2 boost_filesystem boost_system pcre z;
+        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoTestFrameworkCore IshikoProcess IshikoErrors git2 boost_filesystem boost_system ssl crypto pcre z;
     }
 
     if ($(toolset) != gnu)
