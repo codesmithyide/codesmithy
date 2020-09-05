@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,8 +35,8 @@ void BakefileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::BakefileType type;
 
-    ISHTF_FAIL_UNLESS(type.name() == "Bakefile");
-    ISHTF_FAIL_UNLESS(type.extensions().size() == 1);
-    ISHTF_FAIL_UNLESS(type.extensions()[0] == "bkl");
+    ISHTF_FAIL_IF_NOT(type.name() == "Bakefile");
+    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "bkl");
     ISHTF_PASS();
 }

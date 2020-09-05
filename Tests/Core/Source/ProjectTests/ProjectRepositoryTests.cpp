@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -56,7 +56,7 @@ void ProjectRepositoryTests::CreateTest1(FileComparisonTest& test)
     repository.create(outputPath, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "");
+    ISHTF_FAIL_IF_NOT(repository.name() == "");
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -74,7 +74,7 @@ void ProjectRepositoryTests::OpenTest1(Test& test)
     repository.open(inputPath, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "");
+    ISHTF_FAIL_IF_NOT(repository.name() == "");
     ISHTF_PASS();
 }
 
@@ -88,7 +88,7 @@ void ProjectRepositoryTests::OpenTest2(Test& test)
     repository.open(inputPath, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_OpenTest2");
+    ISHTF_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_OpenTest2");
     ISHTF_PASS();
 }
 
@@ -105,7 +105,7 @@ void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
     repository.setName("ProjectRepositoryTests_SetNameTest1");
     
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_SetNameTest1");
+    ISHTF_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_SetNameTest1");
     
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
@@ -145,7 +145,7 @@ void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
     repository.open(inputPath, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
+    ISHTF_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("Project1", error);
 

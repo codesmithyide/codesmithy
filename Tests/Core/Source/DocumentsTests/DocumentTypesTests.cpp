@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -39,7 +39,7 @@ void DocumentTypesTests::CreationTest1(Test& test)
 {
     CodeSmithy::DocumentTypes types;
 
-    ISHTF_FAIL_UNLESS(types.size() == 0);
+    ISHTF_FAIL_IF_NOT(types.size() == 0);
     ISHTF_PASS();
 }
 
@@ -48,8 +48,8 @@ void DocumentTypesTests::AddTest1(Test& test)
     CodeSmithy::DocumentTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileType>());
 
-    ISHTF_FAIL_UNLESS(types.size() == 1);
-    ISHTF_FAIL_UNLESS(types[0]->name() == "Bakefile");
+    ISHTF_FAIL_IF_NOT(types.size() == 1);
+    ISHTF_FAIL_IF_NOT(types[0]->name() == "Bakefile");
     ISHTF_PASS();
 }
 
@@ -59,7 +59,7 @@ void DocumentTypesTests::GetSuitableTypesForFileExtensionTest1(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
     types.getSuitableTypesForFileExtension("dummy", suitableTypes);
 
-    ISHTF_FAIL_UNLESS(suitableTypes.size() == 0);
+    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 0);
     ISHTF_PASS();
 }
 
@@ -70,7 +70,7 @@ void DocumentTypesTests::GetSuitableTypesForFileExtensionTest2(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::DocumentType> > suitableTypes;
     types.getSuitableTypesForFileExtension("bkl", suitableTypes);
 
-    ISHTF_FAIL_UNLESS(suitableTypes.size() == 1);
-    ISHTF_FAIL_UNLESS(suitableTypes[0]->name() == "Bakefile");
+    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 1);
+    ISHTF_FAIL_IF_NOT(suitableTypes[0]->name() == "Bakefile");
     ISHTF_PASS();
 }
