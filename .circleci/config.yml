@@ -5,19 +5,15 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set PUGIXML, LIBGIT2, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
+          name: "Set PUGIXML, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
           command: mkdir /CodeSmithyIDE \
                    && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
-                   && echo 'export LIBGIT2="/CodeSmithyIDE/libgit2"' >> $BASH_ENV \
                    && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/pugixml dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
-      - run:
-          name: "Checkout CodeSmithyIDE/libgit2 dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/libgit2.git
       - run:
           name: "Checkout CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
@@ -32,9 +28,6 @@ jobs:
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
-      - run:
-          name: "Build CodeSmithyIDE/libgit2 dependency"
-          command: cd /CodeSmithyIDE/libgit2 && mkdir build && cd build && cmake .. -DBUILD_SHARED_LIBS=OFF && cmake --build .
       - run:
           name: "Build CodeSmithyIDE/Errors dependency"
           command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
