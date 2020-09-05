@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -38,7 +38,7 @@ void TasksTests::CreationTest1(Test& test)
 {
     CodeSmithy::Tasks tasks;
 
-    ISHTF_FAIL_IF_NOT(tasks.size() == 0);
+    ISHTF_FAIL_UNLESS(tasks.size() == 0);
     ISHTF_PASS();
 }
 
@@ -47,7 +47,7 @@ void TasksTests::AddTest1(Test& test)
     CodeSmithy::Tasks tasks;
     tasks.add(std::make_shared<CodeSmithy::Task>());
     
-    ISHTF_FAIL_IF_NOT(tasks.size() == 1);
+    ISHTF_FAIL_UNLESS(tasks.size() == 1);
     ISHTF_PASS();
 }
 

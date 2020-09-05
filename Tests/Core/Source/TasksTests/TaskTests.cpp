@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2019 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -36,7 +36,7 @@ void TaskTests::CreationTest1(Test& test)
 {
     CodeSmithy::Task task;
 
-    ISHTF_FAIL_IF_NOT(task.status() == CodeSmithy::Task::EStatus::ePending);
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::ePending);
     ISHTF_PASS();
 }
 
@@ -45,7 +45,7 @@ void TaskTests::RunTest1(Test& test)
     CodeSmithy::Task task;
     task.run();
 
-    ISHTF_FAIL_IF_NOT(task.status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::eCompleted);
     ISHTF_PASS();
 }
 
@@ -58,10 +58,10 @@ void TaskTests::RunTest2(Test& test)
 
     task.run();
 
-    ISHTF_FAIL_IF_NOT(task.status() == CodeSmithy::Task::EStatus::eCompleted);
-    ISHTF_FAIL_IF_NOT(observer->statuses().size() == 2);
-    ISHTF_FAIL_IF_NOT(observer->statuses()[0] == CodeSmithy::Task::EStatus::eRunning);
-    ISHTF_FAIL_IF_NOT(observer->statuses()[1] == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_UNLESS(task.status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_UNLESS(observer->statuses().size() == 2);
+    ISHTF_FAIL_UNLESS(observer->statuses()[0] == CodeSmithy::Task::EStatus::eRunning);
+    ISHTF_FAIL_UNLESS(observer->statuses()[1] == CodeSmithy::Task::EStatus::eCompleted);
     ISHTF_PASS();
 }
 
