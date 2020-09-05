@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -37,6 +37,6 @@ void BakefileTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     CodeSmithy::Bakefile document(bakefileType, 1234, "BakefileCreationTest1");
 
-    ISHTF_FAIL_UNLESS(document.type().name() == "Bakefile");
+    ISHTF_FAIL_IF_NOT(document.type().name() == "Bakefile");
     ISHTF_PASS();
 }

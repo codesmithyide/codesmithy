@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "CodeSmithy");
@@ -121,28 +121,28 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
     repository.open(inputPath, error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_FAIL_UNLESS(repository.name() == "CodeSmithyIDE");
+    ISHTF_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "CodeSmithy");
-    ISHTF_FAIL_UNLESS(project.children().size() == 5);
-    ISHTF_FAIL_UNLESS(project.children()[0].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[0].project().name() == "pugixml");
-    ISHTF_FAIL_UNLESS(project.children()[1].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[1].project().name() == "libgit2");
-    ISHTF_FAIL_UNLESS(project.children()[2].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[2].project().name() == "Ishiko Dependencies");
-    ISHTF_FAIL_UNLESS(project.children()[3].isProject());
-    ISHTF_FAIL_UNLESS(project.children()[3].project().name() == "wxWidgets Dependencies");
-    ISHTF_FAIL_UNLESS(project.children()[4].isLink());
-    ISHTF_FAIL_UNLESS(project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+    ISHTF_FAIL_IF_NOT(project.name() == "CodeSmithy");
+    ISHTF_FAIL_IF_NOT(project.children().size() == 5);
+    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "pugixml");
+    ISHTF_FAIL_IF_NOT(project.children()[1].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[1].project().name() == "libgit2");
+    ISHTF_FAIL_IF_NOT(project.children()[2].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[2].project().name() == "Ishiko Dependencies");
+    ISHTF_FAIL_IF_NOT(project.children()[3].isProject());
+    ISHTF_FAIL_IF_NOT(project.children()[3].project().name() == "wxWidgets Dependencies");
+    ISHTF_FAIL_IF_NOT(project.children()[4].isLink());
+    ISHTF_FAIL_IF_NOT(project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
     ISHTF_PASS();
 }

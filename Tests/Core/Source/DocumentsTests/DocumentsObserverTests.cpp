@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -42,8 +42,8 @@ void DocumentsObserverTests::OnElementAddedTest1(Test& test)
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsObserverOnAddTest1"));
 
-    ISHTF_FAIL_UNLESS(observer->observedDocuments().size() == 1);
-    ISHTF_FAIL_UNLESS(observer->observedDocuments()[0].get() == documents[0].get());
+    ISHTF_FAIL_IF_NOT(observer->observedDocuments().size() == 1);
+    ISHTF_FAIL_IF_NOT(observer->observedDocuments()[0].get() == documents[0].get());
     ISHTF_PASS();
 }
 

@@ -31,13 +31,13 @@ using namespace Ishiko::Tests;
 AppSettingsTests::AppSettingsTests(const TestNumber& number, const TestEnvironment& environment)
     : TestSequence(number, "AppSettings tests", environment)
 {
-    append<FileComparisonTest>("Creation test 1", CreationTest1);
-    append<FileComparisonTest>("Creation test 2", CreationTest2);
-    append<HeapAllocationErrorsTest>("Creation test 3", CreationTest3);
-    append<HeapAllocationErrorsTest>("Creation test 4", CreationTest4);
-    append<HeapAllocationErrorsTest>("Creation test 5", CreationTest5);
-    append<HeapAllocationErrorsTest>("Creation test 6", CreationTest6);
-    append<HeapAllocationErrorsTest>("Creation test 7", CreationTest7);
+    append<FileComparisonTest>("Construction test 1", ConstructionTest1);
+    append<FileComparisonTest>("Construction test 2", ConstructionTest2);
+    append<HeapAllocationErrorsTest>("Construction test 3", ConstructionTest3);
+    append<HeapAllocationErrorsTest>("Construction test 4", ConstructionTest4);
+    append<HeapAllocationErrorsTest>("Construction test 5", ConstructionTest5);
+    append<HeapAllocationErrorsTest>("Construction test 6", ConstructionTest6);
+    append<HeapAllocationErrorsTest>("Construction test 7", ConstructionTest7);
     append<FileComparisonTest>("save test 1", SaveTest1);
     append<FileComparisonTest>("save test 2", SaveTest2);
     append<FileComparisonTest>("save test 3", SaveTest3);
@@ -46,11 +46,11 @@ AppSettingsTests::AppSettingsTests(const TestNumber& number, const TestEnvironme
     append<HeapAllocationErrorsTest>("createFileTypesFilter test 3", CreateFileTypesFilterTest3);
 }
 
-void AppSettingsTests::CreationTest1(FileComparisonTest& test)
+void AppSettingsTests::ConstructionTest1(FileComparisonTest& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsCreationTest1.xml");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "AppSettingsTests_ConstructionTest1.xml");
     boost::filesystem::remove(outputPath);
-    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "SettingsTests/AppSettingsCreationTest1.xml");
+    boost::filesystem::path referencePath(test.environment().getReferenceDataDirectory() / "AppSettingsTests_ConstructionTest1.xml");
 
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::ProjectTypes projectTypes;
@@ -62,7 +62,7 @@ void AppSettingsTests::CreationTest1(FileComparisonTest& test)
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest2(FileComparisonTest& test)
+void AppSettingsTests::ConstructionTest2(FileComparisonTest& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "SettingsTests/AppSettingsCreationTest2.xml");
     boost::filesystem::remove(outputPath);
@@ -79,7 +79,7 @@ void AppSettingsTests::CreationTest2(FileComparisonTest& test)
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest3(Test& test)
+void AppSettingsTests::ConstructionTest3(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest3.xml");
 
@@ -87,13 +87,13 @@ void AppSettingsTests::CreationTest3(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
 
-    ISHTF_FAIL_UNLESS(appSettings.fileTypeAssociations().size() == 0);
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New");
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 10);
+    ISHTF_FAIL_IF_NEQ(appSettings.fileTypeAssociations().size(), 0);
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().faceName(), "Courier New");
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().pointSize(), 10);
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest4(Test& test)
+void AppSettingsTests::ConstructionTest4(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest4.xml");
 
@@ -101,18 +101,18 @@ void AppSettingsTests::CreationTest4(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
 
-    ISHTF_ABORT_UNLESS(appSettings.fileTypeAssociations().size() == 1);
+    ISHTF_ABORT_IF_NEQ(appSettings.fileTypeAssociations().size(), 1);
 
     const CodeSmithy::FileTypeAssociation& association = *appSettings.fileTypeAssociations()[0];
 
-    ISHTF_FAIL_UNLESS(association.documentTypeName() == "Bakefile");
-    ISHTF_FAIL_UNLESS(association.association() == CodeSmithy::FileTypeAssociation::eDisabled);
-    ISHTF_FAIL_UNLESS(association.actionType() == CodeSmithy::FileTypeAssociation::eAskAtStartup);
-    ISHTF_FAIL_UNLESS(association.associatedProjectTypeName() == "");
+    ISHTF_FAIL_IF_NEQ(association.documentTypeName(), "Bakefile");
+    ISHTF_FAIL_IF_NEQ(association.association(), CodeSmithy::FileTypeAssociation::eDisabled);
+    ISHTF_FAIL_IF_NEQ(association.actionType(), CodeSmithy::FileTypeAssociation::eAskAtStartup);
+    ISHTF_FAIL_IF_NEQ(association.associatedProjectTypeName(), "");
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest5(Test& test)
+void AppSettingsTests::ConstructionTest5(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest5.xml");
 
@@ -120,18 +120,18 @@ void AppSettingsTests::CreationTest5(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
 
-    ISHTF_ABORT_UNLESS(appSettings.fileTypeAssociations().size() == 1);
+    ISHTF_ABORT_IF_NEQ(appSettings.fileTypeAssociations().size(), 1);
 
     const CodeSmithy::FileTypeAssociation& association = *appSettings.fileTypeAssociations()[0];
 
-    ISHTF_FAIL_UNLESS(association.documentTypeName() == "Bakefile");
-    ISHTF_FAIL_UNLESS(association.association() == CodeSmithy::FileTypeAssociation::eOpen);
-    ISHTF_FAIL_UNLESS(association.actionType() == CodeSmithy::FileTypeAssociation::eProjectType);
-    ISHTF_FAIL_UNLESS(association.associatedProjectTypeName() == "CodeSmithy.Bakefile");
+    ISHTF_FAIL_IF_NEQ(association.documentTypeName(), "Bakefile");
+    ISHTF_FAIL_IF_NEQ(association.association(), CodeSmithy::FileTypeAssociation::eOpen);
+    ISHTF_FAIL_IF_NEQ(association.actionType(), CodeSmithy::FileTypeAssociation::eProjectType);
+    ISHTF_FAIL_IF_NEQ(association.associatedProjectTypeName(), "CodeSmithy.Bakefile");
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest6(Test& test)
+void AppSettingsTests::ConstructionTest6(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest6.xml");
 
@@ -139,13 +139,13 @@ void AppSettingsTests::CreationTest6(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
 
-    ISHTF_FAIL_UNLESS(appSettings.fileTypeAssociations().size() == 0);
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Arial");
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 12);
+    ISHTF_FAIL_IF_NEQ(appSettings.fileTypeAssociations().size(), 0);
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().faceName(), "Arial");
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().pointSize(), 12);
     ISHTF_PASS();
 }
 
-void AppSettingsTests::CreationTest7(Test& test)
+void AppSettingsTests::ConstructionTest7(Test& test)
 {
     boost::filesystem::path inputPath(test.environment().getTestDataDirectory() / "SettingsTests/AppSettingsCreationTest7.xml");
 
@@ -153,12 +153,12 @@ void AppSettingsTests::CreationTest7(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes, inputPath);
 
-    ISHTF_FAIL_UNLESS(appSettings.fileTypeAssociations().size() == 0);
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().faceName() == "Courier New");
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().defaultSettings().fontSettings().pointSize() == 10);
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().cppSettings().overrideTheme() == true);
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().cppSettings().fontSettings().faceName() == "Arial");
-    ISHTF_FAIL_UNLESS(appSettings.editorSettings().cppSettings().fontSettings().pointSize() == 12);
+    ISHTF_FAIL_IF_NEQ(appSettings.fileTypeAssociations().size(), 0);
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().faceName(), "Courier New");
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().defaultSettings().fontSettings().pointSize(), 10);
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().cppSettings().overrideTheme(), true);
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().cppSettings().fontSettings().faceName(), "Arial");
+    ISHTF_FAIL_IF_NEQ(appSettings.editorSettings().cppSettings().fontSettings().pointSize(), 12);
     ISHTF_PASS();
 }
 
@@ -230,7 +230,7 @@ void AppSettingsTests::CreateFileTypesFilterTest1(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
 
-    ISHTF_FAIL_UNLESS(appSettings.createFileTypesFilter() == "All Files (*.*)|*.*");
+    ISHTF_FAIL_IF_NEQ(appSettings.createFileTypesFilter(), "All Files (*.*)|*.*");
     ISHTF_PASS();
 }
 
@@ -241,7 +241,7 @@ void AppSettingsTests::CreateFileTypesFilterTest2(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
 
-    ISHTF_FAIL_UNLESS(appSettings.createFileTypesFilter() == "Bakefile (*.bkl)|*.bkl|All Files (*.*)|*.*");
+    ISHTF_FAIL_IF_NEQ(appSettings.createFileTypesFilter(), "Bakefile (*.bkl)|*.bkl|All Files (*.*)|*.*");
     ISHTF_PASS();
 }
 
@@ -253,7 +253,7 @@ void AppSettingsTests::CreateFileTypesFilterTest3(Test& test)
     CodeSmithy::ProjectTypes projectTypes;
     CodeSmithy::AppSettings appSettings(documentTypes, projectTypes);
 
-    ISHTF_FAIL_UNLESS(appSettings.createFileTypesFilter() ==
+    ISHTF_FAIL_IF_NEQ(appSettings.createFileTypesFilter(),
         "Bakefile (*.bkl)|*.bkl|C++ Source File (*.cpp;*.cxx)|*.cpp;*.cxx|All Files (*.*)|*.*");
     ISHTF_PASS();
 }

@@ -44,7 +44,7 @@ void FileTypeAssociationsTests::CreationTest1(Test& test)
 {
     CodeSmithy::FileTypeAssociations associations;
 
-    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_FAIL_IF_NEQ(associations.size(), 0);
     ISHTF_PASS();
 }
 
@@ -54,8 +54,8 @@ void FileTypeAssociationsTests::SetTest1(Test& test)
     std::shared_ptr<CodeSmithy::FileTypeAssociation> association = std::make_shared<CodeSmithy::FileTypeAssociation>("documentType1");
     associations.set(association);
 
-    ISHTF_FAIL_UNLESS(associations.size() == 1);
-    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
+    ISHTF_ABORT_IF_NEQ(associations.size(), 1);
+    ISHTF_FAIL_IF_NEQ(associations[0]->documentTypeName(), "documentType1");
     ISHTF_PASS();
 }
 
@@ -69,9 +69,9 @@ void FileTypeAssociationsTests::SetTest2(Test& test)
     association2->setAssociation(CodeSmithy::FileTypeAssociation::eOpen);
     associations.set(association2);
 
-    ISHTF_FAIL_UNLESS(associations.size() == 1);
-    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
-    ISHTF_FAIL_UNLESS(associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen);
+    ISHTF_ABORT_IF_NEQ(associations.size(), 1);
+    ISHTF_FAIL_IF_NEQ(associations[0]->documentTypeName(), "documentType1");
+    ISHTF_FAIL_IF_NEQ(associations[0]->association(), CodeSmithy::FileTypeAssociation::eOpen);
     ISHTF_PASS();
 }
 
@@ -80,7 +80,7 @@ void FileTypeAssociationsTests::RemoveTest1(Test& test)
     CodeSmithy::FileTypeAssociations associations;
     associations.remove("absent");
 
-    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_FAIL_IF_NEQ(associations.size(), 0);
     ISHTF_PASS();
 }
 
@@ -91,7 +91,7 @@ void FileTypeAssociationsTests::RemoveTest2(Test& test)
     associations.set(association);
     associations.remove("documentType1");
     
-    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_FAIL_IF_NEQ(associations.size(), 0);
     ISHTF_PASS();
 }
 
@@ -101,7 +101,7 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest1(Test& test)
     CodeSmithy::FileTypeAssociations associations;
     associations.addNewFileTypeAssociations(documentTypes);
     
-    ISHTF_FAIL_UNLESS(associations.size() == 0);
+    ISHTF_FAIL_IF_NEQ(associations.size(), 0);
     ISHTF_PASS();
 }
 
@@ -112,8 +112,8 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest2(Test& test)
     CodeSmithy::FileTypeAssociations associations;
     associations.addNewFileTypeAssociations(documentTypes);
 
-    ISHTF_FAIL_UNLESS(associations.size() == 1);
-    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "Bakefile");
+    ISHTF_FAIL_IF_NEQ(associations.size(), 1);
+    ISHTF_FAIL_IF_NEQ(associations[0]->documentTypeName(), "Bakefile");
     ISHTF_PASS();
 }
 
@@ -128,9 +128,9 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest3(Test& test)
 
     associations.addNewFileTypeAssociations(documentTypes);
 
-    ISHTF_FAIL_UNLESS(associations.size() == 2);
-    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "documentType1");
-    ISHTF_FAIL_UNLESS(associations[1]->documentTypeName() == "Bakefile");
+    ISHTF_ABORT_IF_NEQ(associations.size(), 2);
+    ISHTF_FAIL_IF_NEQ(associations[0]->documentTypeName(), "documentType1");
+    ISHTF_FAIL_IF_NEQ(associations[1]->documentTypeName(), "Bakefile");
     ISHTF_PASS();
 }
 
@@ -146,8 +146,8 @@ void FileTypeAssociationsTests::AddNewFileTypeAssociationsTest4(Test& test)
 
     associations.addNewFileTypeAssociations(documentTypes);
 
-    ISHTF_FAIL_UNLESS(associations.size() == 1);
-    ISHTF_FAIL_UNLESS(associations[0]->documentTypeName() == "Bakefile");
-    ISHTF_FAIL_UNLESS(associations[0]->association() == CodeSmithy::FileTypeAssociation::eOpen);
+    ISHTF_ABORT_IF_NEQ(associations.size(), 1);
+    ISHTF_FAIL_IF_NEQ(associations[0]->documentTypeName(), "Bakefile");
+    ISHTF_FAIL_IF_NEQ(associations[0]->association(), CodeSmithy::FileTypeAssociation::eOpen);
     ISHTF_PASS();
 }

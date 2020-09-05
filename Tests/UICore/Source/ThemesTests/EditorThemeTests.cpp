@@ -38,6 +38,7 @@ EditorThemeTests::EditorThemeTests(const TestNumber& number, const TestEnvironme
 void EditorThemeTests::CreationTest1(Test& test)
 {
     CodeSmithy::EditorTheme editorTheme("EditorThemeCreationTest1");
+
     ISHTF_PASS();
 }
 
