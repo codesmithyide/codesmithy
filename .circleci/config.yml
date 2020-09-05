@@ -46,7 +46,7 @@ jobs:
           command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/XMLTreeDB dependency"
-          command: cd /CodeSmithyIDE/XMLTreeDB/Core/Makefiles/GNUmakefile && make
+          command: cd /CodeSmithyIDE/TreeDB/XMLTreeDB/Makefiles/GNUmakefile && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
