@@ -5,13 +5,9 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set PUGIXML, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables"
-          command: echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
-                   && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
+          name: "Set DIPLODOCUSDB and CODESMITHY_IDE environment variables"
+          command: echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
                    && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
       - run:
           name: "Checkout CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
@@ -23,9 +19,6 @@ jobs:
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
-      - run:
-          name: "Build CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/Collections dependency"
           command: cd /CodeSmithyIDE/Collections/Makefiles/GNUmakefile && make
