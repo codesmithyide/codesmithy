@@ -5,20 +5,13 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set DIPLODOCUSDB and CODESMITHY_IDE environment variables"
-          command: echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
-                   && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/Core dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Core.git
+          name: "Set CODESMITHY_IDE environment variables"
+          command: echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/TreeDB dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
-      - run:
-          name: "Build CodeSmithyIDE/Core dependency"
-          command: cd /CodeSmithyIDE/Core/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/TreeDB dependency"
           command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
