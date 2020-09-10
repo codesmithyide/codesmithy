@@ -29,12 +29,6 @@ jobs:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
-          name: "Checkout CodeSmithyIDE/TestFramework test dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TestFramework.git
-      - run:
-          name: "Build CodeSmithyIDE/TestFramework test dependency"
-          command: cd /CodeSmithyIDE/TestFramework/Core/Makefiles/GNUmakefile && make
-      - run:
           name: Test build
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
       - run:
