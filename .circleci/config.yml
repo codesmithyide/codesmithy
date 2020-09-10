@@ -19,6 +19,7 @@ jobs:
           name: Run the tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
 workflows:
+  version: 2
   build:
     jobs:
       - bootstrap-build
