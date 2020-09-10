@@ -5,59 +5,13 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set PUGIXML, ISHIKO_CPP, DIPLODOCUSDB and CODESMITHY_IDE environment variables and create directory"
-          command: mkdir /CodeSmithyIDE \
-                   && echo 'export PUGIXML="/CodeSmithyIDE/pugixml"' >> $BASH_ENV \
-                   && echo 'export ISHIKO_CPP="/CodeSmithyIDE"' >> $BASH_ENV \
-                   && echo 'export DIPLODOCUSDB="/CodeSmithyIDE"' >> $BASH_ENV \
-                   && echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/pugixml dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/pugixml.git
-      - run:
-          name: "Checkout CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Errors.git
-      - run:
-          name: "Checkout CodeSmithyIDE/Collections dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Collections.git
-      - run:
-          name: "Checkout CodeSmithyIDE/Core dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Core.git
-      - run:
-          name: "Checkout CodeSmithyIDE/TreeDB dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
+          name: "Set CODESMITHY_IDE environment variables"
+          command: echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
-          name: "Build CodeSmithyIDE/Errors dependency"
-          command: cd /CodeSmithyIDE/Errors/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/Collections dependency"
-          command: cd /CodeSmithyIDE/Collections/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/Core dependency"
-          command: cd /CodeSmithyIDE/Core/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/TreeDB dependency"
-          command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/XMLTreeDB dependency"
-          command: cd /CodeSmithyIDE/TreeDB/XMLTreeDB/Makefiles/GNUmakefile && make
-      - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
-      - run:
-          name: "Checkout CodeSmithyIDE/Process test dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Process.git
-      - run:
-          name: "Checkout CodeSmithyIDE/TestFramework test dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TestFramework.git
-      - run:
-          name: "Build CodeSmithyIDE/Process test dependency"
-          command: cd /CodeSmithyIDE/Process/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/TestFramework test dependency"
-          command: cd /CodeSmithyIDE/TestFramework/Core/Makefiles/GNUmakefile && make
       - run:
           name: Test build
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
