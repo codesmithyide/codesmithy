@@ -7,17 +7,8 @@ jobs:
       - run: 
           name: "Set CODESMITHY_IDE environment variables"
           command: echo 'export CODESMITHY_IDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/TreeDB dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/TreeDB.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
-      - run:
-          name: "Build CodeSmithyIDE/TreeDB dependency"
-          command: cd /CodeSmithyIDE/TreeDB/Core/Makefiles/GNUmakefile && make
-      - run:
-          name: "Build CodeSmithyIDE/XMLTreeDB dependency"
-          command: cd /CodeSmithyIDE/TreeDB/XMLTreeDB/Makefiles/GNUmakefile && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
