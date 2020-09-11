@@ -20,7 +20,7 @@ jobs:
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
   build:
     docker:
-      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
+      - image: codesmithy/gcc-build-prerequisites:0.1.0
     steps:
       - run: 
           name: "Set CODESMITHY_IDE environment variables"
