@@ -160,7 +160,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\SyncFunctionTask.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\Tasks.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\TaskRunner.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

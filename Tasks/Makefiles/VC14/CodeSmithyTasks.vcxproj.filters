@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\TaskRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

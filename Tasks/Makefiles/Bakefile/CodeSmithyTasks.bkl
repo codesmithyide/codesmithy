@@ -33,7 +33,7 @@ library CodeSmithyTasks
         ../../../Include/CodeSmithy/Tasks/Tasks.h
         ../../../Include/CodeSmithy/Tasks/TaskRunner.h
 
-        ../../../Include/CodeSmithy/Core/linkoptions.h
+        ../../../Include/CodeSmithy/Tasks/linkoptions.h
     }
 
     sources
