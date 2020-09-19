@@ -1,0 +1,24 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
+import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
+
+setting CODESMITHY_ROOT
+{
+    help = "Path to the CodeSmithy installation";
+    default = '$(CODESMITHYIDE)/CodeSmithy';
+}
+
+template CodeSmithyTasks : IshikoCollections, Boost
+{
+    includedirs += $(CODESMITHY_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);
+    }
+}

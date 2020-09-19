@@ -21,7 +21,7 @@
 */
 
 #include "VersionControl/GitRepository.h"
-#include "Tasks/SyncFunctionTask.h"
+#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 namespace CodeSmithy
 {
