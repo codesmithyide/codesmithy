@@ -22,7 +22,7 @@
 
 #include "EngineTests.h"
 #include "CodeSmithy/Core/Engine.h"
-#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
+#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 using namespace Ishiko::Tests;
 
