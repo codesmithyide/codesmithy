@@ -28,6 +28,19 @@ library CodeSmithyTasks
 
     headers
     {
+        ../../../Include/CodeSmithy/Tasks/Task.h
+        ../../../Include/CodeSmithy/Tasks/SyncFunctionTask.h
+        ../../../Include/CodeSmithy/Tasks/Tasks.h
+        ../../../Include/CodeSmithy/Tasks/TaskRunner.h
+
         ../../../Include/CodeSmithy/Core/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/Task.cpp
+        ../../Source/SyncFunctionTask.cpp
+        ../../Source/Tasks.cpp
+        ../../Source/TaskRunner.cpp
     }
 }

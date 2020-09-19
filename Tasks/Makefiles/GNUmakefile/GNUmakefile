@@ -45,13 +45,39 @@ _false :=
 _not    = $(if $(1),$(_false),$(_true_))
 _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 
+
+# The directory for the build files, may be overridden on make command line.
+builddir = .
+
+ifneq ($(builddir),.)
+_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
+_builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
+$(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
+endif
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a:
-	$(AR) rc $@ 
+../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a: $(_builddir)CodeSmithyTasks_Task.o $(_builddir)CodeSmithyTasks_SyncFunctionTask.o $(_builddir)CodeSmithyTasks_Tasks.o $(_builddir)CodeSmithyTasks_TaskRunner.o
+	$(AR) rc $@ $(_builddir)CodeSmithyTasks_Task.o $(_builddir)CodeSmithyTasks_SyncFunctionTask.o $(_builddir)CodeSmithyTasks_Tasks.o $(_builddir)CodeSmithyTasks_TaskRunner.o
 	$(RANLIB) $@
 
+$(_builddir)CodeSmithyTasks_Task.o: ../../Source/Task.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Task.cpp
+
+$(_builddir)CodeSmithyTasks_SyncFunctionTask.o: ../../Source/SyncFunctionTask.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/SyncFunctionTask.cpp
+
+$(_builddir)CodeSmithyTasks_Tasks.o: ../../Source/Tasks.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Tasks.cpp
+
+$(_builddir)CodeSmithyTasks_TaskRunner.o: ../../Source/TaskRunner.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/TaskRunner.cpp
+
 clean:
+	rm -f $(_builddir)*.o
+	rm -f $(_builddir)*.d
 	rm -f ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a
 
 .PHONY: all clean
+
+# Dependencies tracking:
+-include $(_builddir)*.d

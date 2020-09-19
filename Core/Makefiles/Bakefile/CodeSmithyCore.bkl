@@ -106,11 +106,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
-        ../../../Include/CodeSmithy/Core/Tasks/Task.h
-        ../../../Include/CodeSmithy/Core/Tasks/SyncFunctionTask.h
-        ../../../Include/CodeSmithy/Core/Tasks/Tasks.h
-        ../../../Include/CodeSmithy/Core/Tasks/TaskRunner.h
-
         ../../../Include/CodeSmithy/Core/VersionControl/GitRepository.h
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
@@ -189,11 +184,6 @@ library CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusX
         ../../Source/Workspaces/WorkspaceRepository.cpp
         ../../Source/Workspaces/WorkspaceFileRepository.cpp
         ../../Source/Workspaces/GenericWorkspace.cpp
-
-        ../../Source/Tasks/Task.cpp
-        ../../Source/Tasks/SyncFunctionTask.cpp
-        ../../Source/Tasks/Tasks.cpp
-        ../../Source/Tasks/TaskRunner.cpp
 
         ../../Source/VersionControl/GitRepository.cpp
 

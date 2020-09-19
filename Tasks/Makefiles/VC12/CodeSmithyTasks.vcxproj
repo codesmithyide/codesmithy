@@ -150,6 +150,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Task.cpp" />
+    <ClCompile Include="..\..\Source\SyncFunctionTask.cpp" />
+    <ClCompile Include="..\..\Source\Tasks.cpp" />
+    <ClCompile Include="..\..\Source\TaskRunner.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\Task.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\SyncFunctionTask.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\Tasks.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\Tasks\TaskRunner.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
