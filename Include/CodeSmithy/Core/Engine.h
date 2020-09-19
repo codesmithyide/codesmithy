@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,8 +23,8 @@
 #ifndef _CODESMITHY_CORE_ENGINE_H_
 #define _CODESMITHY_CORE_ENGINE_H_
 
-#include "Tasks/Tasks.h"
-#include "Tasks/TaskRunner.h"
+#include "CodeSmithy/Tasks/Tasks.h"
+#include "CodeSmithy/Tasks/TaskRunner.h"
 
 namespace CodeSmithy
 {
