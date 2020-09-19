@@ -59,11 +59,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.h
         ../../Source/WorkspacesTests/GenericWorkspaceTests.h
 
-        ../../Source/TasksTests/TaskTests.h
-        ../../Source/TasksTests/SyncFunctionTaskTests.h
-        ../../Source/TasksTests/TasksTests.h
-        ../../Source/TasksTests/TaskRunnerTests.h
-
         ../../Source/VersionControlTests/VersionControlTests.h
         ../../Source/VersionControlTests/GitRepositoryTests.h
 
@@ -109,12 +104,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFrameworkCore
         ../../Source/WorkspacesTests/WorkspacesTestSequence.cpp
         ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.cpp
         ../../Source/WorkspacesTests/GenericWorkspaceTests.cpp
-
-        ../../Source/TasksTests/TasksTestSequence.cpp
-        ../../Source/TasksTests/TaskTests.cpp
-        ../../Source/TasksTests/SyncFunctionTaskTests.cpp
-        ../../Source/TasksTests/TasksTests.cpp
-        ../../Source/TasksTests/TaskRunnerTests.cpp
 
         ../../Source/VersionControlTests/VersionControlTests.cpp
         ../../Source/VersionControlTests/GitRepositoryTests.cpp

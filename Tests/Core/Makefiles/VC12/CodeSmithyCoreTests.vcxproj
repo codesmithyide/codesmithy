@@ -187,11 +187,6 @@
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\TasksTestSequence.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\TaskTests.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\SyncFunctionTaskTests.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\TasksTests.cpp" />
-    <ClCompile Include="..\..\Source\TasksTests\TaskRunnerTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp" />
     <ClCompile Include="..\..\Source\VersionControlTests\GitRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\EngineTests\EngineTests.cpp" />
@@ -228,10 +223,6 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\TaskTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\SyncFunctionTaskTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\TasksTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\TaskRunnerTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h" />
     <ClInclude Include="..\..\Source\VersionControlTests\GitRepositoryTests.h" />
     <ClInclude Include="..\..\Source\EngineTests\EngineTests.h" />

@@ -23,8 +23,20 @@ program CodeSmithyTasksTests : CodeSmithyTasks, IshikoTestFrameworkCore
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../Source/TaskTests.h
+        ../../Source/SyncFunctionTaskTests.h
+        ../../Source/TasksTests.h
+        ../../Source/TaskRunnerTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/TaskTests.cpp
+        ../../Source/SyncFunctionTaskTests.cpp
+        ../../Source/TasksTests.cpp
+        ../../Source/TaskRunnerTests.cpp
     }
 }

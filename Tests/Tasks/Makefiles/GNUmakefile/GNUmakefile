@@ -80,11 +80,23 @@ CODESMITHY_ROOT ?= $(CODESMITHYIDE)/CodeSmithy
 
 all: $(_builddir)CodeSmithyTasksTests
 
-$(_builddir)CodeSmithyTasksTests: $(_builddir)CodeSmithyTasksTests_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyTasksTests_main.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHY_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyTasks -lIshikoTestFrameworkCore -lIshikoProcess -lIshikoErrors -lboost_filesystem -pthread
+$(_builddir)CodeSmithyTasksTests: $(_builddir)CodeSmithyTasksTests_main.o $(_builddir)CodeSmithyTasksTests_TaskTests.o $(_builddir)CodeSmithyTasksTests_SyncFunctionTaskTests.o $(_builddir)CodeSmithyTasksTests_TasksTests.o $(_builddir)CodeSmithyTasksTests_TaskRunnerTests.o
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyTasksTests_main.o $(_builddir)CodeSmithyTasksTests_TaskTests.o $(_builddir)CodeSmithyTasksTests_SyncFunctionTaskTests.o $(_builddir)CodeSmithyTasksTests_TasksTests.o $(_builddir)CodeSmithyTasksTests_TaskRunnerTests.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHY_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyTasks -lIshikoTestFrameworkCore -lIshikoProcess -lIshikoErrors -lboost_filesystem -pthread
 
 $(_builddir)CodeSmithyTasksTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
+
+$(_builddir)CodeSmithyTasksTests_TaskTests.o: ../../Source/TaskTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/TaskTests.cpp
+
+$(_builddir)CodeSmithyTasksTests_SyncFunctionTaskTests.o: ../../Source/SyncFunctionTaskTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/SyncFunctionTaskTests.cpp
+
+$(_builddir)CodeSmithyTasksTests_TasksTests.o: ../../Source/TasksTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/TasksTests.cpp
+
+$(_builddir)CodeSmithyTasksTests_TaskRunnerTests.o: ../../Source/TaskRunnerTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/TaskRunnerTests.cpp
 
 clean:
 	rm -f $(_builddir)*.o
