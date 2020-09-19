@@ -5,8 +5,8 @@
 */
 
 #include "TaskRunnerTests.h"
-#include "CodeSmithy/Core/Tasks/TaskRunner.h"
-#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
+#include "CodeSmithy/Tasks/TaskRunner.h"
+#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 using namespace Ishiko::Tests;
 

@@ -8,7 +8,7 @@
 #define _CODESMITHY_TEST_TASKS_TASKTESTS_H_
 
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
-#include "CodeSmithy/Core/Tasks/Task.h"
+#include "CodeSmithy/Tasks/Task.h"
 
 class TaskTests : public Ishiko::Tests::TestSequence
 {

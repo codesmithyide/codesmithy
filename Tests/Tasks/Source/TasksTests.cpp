@@ -5,7 +5,7 @@
 */
 
 #include "TasksTests.h"
-#include "CodeSmithy/Core/Tasks/Tasks.h"
+#include "CodeSmithy/Tasks/Tasks.h"
 
 using namespace Ishiko::Tests;
 

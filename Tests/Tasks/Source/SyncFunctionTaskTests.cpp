@@ -5,7 +5,7 @@
 */
 
 #include "SyncFunctionTaskTests.h"
-#include "CodeSmithy/Core/Tasks/SyncFunctionTask.h"
+#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 using namespace Ishiko::Tests;
 
