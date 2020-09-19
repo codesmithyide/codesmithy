@@ -15,7 +15,7 @@ program CodeSmithyCLI : IshikoProcess, IshikoFileSystem, IshikoErrors, libgit2
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../Bin;
-        libs += IshikoProcess IshikoErrors git2 ssl crypto pcre z;
+        libs += IshikoProcess IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
     }
 
     if ($(toolset) != gnu)
