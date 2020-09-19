@@ -48,7 +48,7 @@ void ThemesTests::GetAllThemesTest1(Test& test)
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.getAllThemes(availableThemes);
 
-    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_FAIL_IF_NEQ(availableThemes.size(), 0);
     ISHTF_PASS();
 }
 
@@ -58,7 +58,7 @@ void ThemesTests::FindThemesForEditorTest1(Test& test)
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("dummy", availableThemes);
 
-    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_FAIL_IF_NEQ(availableThemes.size(), 0);
     ISHTF_PASS();
 }
 
@@ -74,7 +74,7 @@ void ThemesTests::FindThemesForEditorTest2(Test& test)
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
     
-    ISHTF_FAIL_UNLESS(availableThemes.size() == 0);
+    ISHTF_FAIL_IF_NEQ(availableThemes.size(), 0);
     ISHTF_PASS();
 }
 
@@ -90,6 +90,6 @@ void ThemesTests::FindThemesForEditorTest3(Test& test)
     std::vector<std::shared_ptr<CodeSmithy::Theme> > availableThemes;
     themes.findThemesForEditor("CodeSmithy.Editor.XML", availableThemes);
 
-    ISHTF_FAIL_UNLESS(availableThemes.size() == 1);
+    ISHTF_FAIL_IF_NEQ(availableThemes.size(), 1);
     ISHTF_PASS();
 }

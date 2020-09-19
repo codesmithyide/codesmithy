@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -58,14 +58,14 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("BakefileProject", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
 
     ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_UNLESS(project.name() == "BakefileProject");
+    ISHTF_FAIL_IF_NOT(project.name() == "BakefileProject");
     ISHTF_PASS();
 }
 
@@ -84,7 +84,7 @@ void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("BakefileProject", error);
 
     ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_UNLESS(projectNode);
+    ISHTF_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);

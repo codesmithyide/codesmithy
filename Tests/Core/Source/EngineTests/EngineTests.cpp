@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -61,6 +61,6 @@ void EngineTests::AddTaskTest1(Test& test)
     engine.stop();
     engine.join();
 
-    ISHTF_FAIL_UNLESS(task->status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_IF_NOT(task->status() == CodeSmithy::Task::EStatus::eCompleted);
     ISHTF_PASS();
 }

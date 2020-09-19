@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -37,6 +37,6 @@ void CodeSmithyProjectFileTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::CodeSmithyProjectFileType> projectFileType = std::make_shared<CodeSmithy::CodeSmithyProjectFileType>();
     CodeSmithy::CodeSmithyProjectFile document(projectFileType, 1234, "CodeSmithyProjectFileCreationTest1");
 
-    ISHTF_FAIL_UNLESS(document.type().name() == "CodeSmithy Project File");
+    ISHTF_FAIL_IF_NOT(document.type().name() == "CodeSmithy Project File");
     ISHTF_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,9 +35,9 @@ void CppFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CppFileType type;
 
-    ISHTF_FAIL_UNLESS(type.name() == "C++ Source File");
-    ISHTF_FAIL_UNLESS(type.extensions().size() == 2);
-    ISHTF_FAIL_UNLESS(type.extensions()[0] == "cpp");
-    ISHTF_FAIL_UNLESS(type.extensions()[1] == "cxx");
+    ISHTF_FAIL_IF_NOT(type.name() == "C++ Source File");
+    ISHTF_FAIL_IF_NOT(type.extensions().size() == 2);
+    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "cpp");
+    ISHTF_FAIL_IF_NOT(type.extensions()[1] == "cxx");
     ISHTF_PASS();
 }
