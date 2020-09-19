@@ -107,9 +107,6 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TasksTests\TasksTestSequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\TasksTests\TaskTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>

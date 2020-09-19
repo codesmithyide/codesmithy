@@ -228,7 +228,6 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
-    <ClInclude Include="..\..\Source\TasksTests\TasksTestSequence.h" />
     <ClInclude Include="..\..\Source\TasksTests\TaskTests.h" />
     <ClInclude Include="..\..\Source\TasksTests\SyncFunctionTaskTests.h" />
     <ClInclude Include="..\..\Source\TasksTests\TasksTests.h" />
