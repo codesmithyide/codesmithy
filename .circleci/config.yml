@@ -10,11 +10,20 @@ jobs:
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
+          name: Build CodeSmithy/Tasks
+          command: cd /CodeSmithyIDE/CodeSmithy/Tasks/Makefiles/GNUmakefile && make
+      - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/CLI
           command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Tasks tests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Tasks/Makefiles/GNUmakefile && make
+      - run:
+          name: Run CodeSmithy/Tasks tests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Tasks/Makefiles/GNUmakefile && ./CodeSmithyTasksTests
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
@@ -33,11 +42,20 @@ jobs:
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
+          name: Build CodeSmithy/Tasks
+          command: cd /CodeSmithyIDE/CodeSmithy/Tasks/Makefiles/GNUmakefile && make
+      - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/CLI
           command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Tasks tests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Tasks/Makefiles/GNUmakefile && make
+      - run:
+          name: Run CodeSmithy/Tasks tests
+          command: cd /CodeSmithyIDE/CodeSmithy/Tests/Tasks/Makefiles/GNUmakefile && ./CodeSmithyTasksTests
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make

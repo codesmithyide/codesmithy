@@ -5,14 +5,10 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
 import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/CodeSmithy/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
-setting CODESMITHY_ROOT
-{
-    help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHYIDE)/CodeSmithy';
-}
-
-template CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusXMLTreeDB
+template CodeSmithyCore : CodeSmithyTasks, DiplodocusXMLTreeDB, IshikoCollections, libgit2, pugixml, Boost
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
 
