@@ -33,6 +33,12 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      BOOST_ROOT                   Path to the Boost installation
+#      ISHIKO_CPP_COLLECTIONS_ROOT  Path to the Ishiko Collections installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +60,18 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+# Path to the Ishiko Collections installation
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
+
+# ------------
+
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a
 
 ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyTasks-d,CodeSmithyTasks).a: $(_builddir)CodeSmithyTasks_Task.o $(_builddir)CodeSmithyTasks_SyncFunctionTask.o $(_builddir)CodeSmithyTasks_Tasks.o $(_builddir)CodeSmithyTasks_TaskRunner.o
@@ -61,16 +79,16 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyT
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyTasks_Task.o: ../../Source/Task.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Task.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Task.cpp
 
 $(_builddir)CodeSmithyTasks_SyncFunctionTask.o: ../../Source/SyncFunctionTask.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/SyncFunctionTask.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/SyncFunctionTask.cpp
 
 $(_builddir)CodeSmithyTasks_Tasks.o: ../../Source/Tasks.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Tasks.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/Tasks.cpp
 
 $(_builddir)CodeSmithyTasks_TaskRunner.o: ../../Source/TaskRunner.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/TaskRunner.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I../../../Include/CodeSmithy/Tasks -std=c++11 ../../Source/TaskRunner.cpp
 
 clean:
 	rm -f $(_builddir)*.o

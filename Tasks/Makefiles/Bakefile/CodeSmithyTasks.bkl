@@ -1,3 +1,7 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
+import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
+
 toolsets = gnu vs2017 vs2015 vs2013;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
@@ -5,7 +9,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyTasks.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyTasks.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyTasks.sln;
 
-library CodeSmithyTasks
+library CodeSmithyTasks : IshikoCollections, Boost
 {
     includedirs += ../../../Include/CodeSmithy/Tasks;
 
