@@ -15,7 +15,7 @@ program CodeSmithyTasksTests : CodeSmithyTasks, IshikoTestFrameworkCore
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyTasks;
+        libs += CodeSmithyTasks IshikoTestFrameworkCore;
     }
 
     if ($(toolset) != gnu)

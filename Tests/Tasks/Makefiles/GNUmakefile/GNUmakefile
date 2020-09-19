@@ -81,7 +81,7 @@ CODESMITHY_ROOT ?= $(CODESMITHYIDE)/CodeSmithy
 all: $(_builddir)CodeSmithyTasksTests
 
 $(_builddir)CodeSmithyTasksTests: $(_builddir)CodeSmithyTasksTests_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyTasksTests_main.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHY_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyTasks -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyTasksTests_main.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHY_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyTasks -lIshikoTestFrameworkCore -pthread
 
 $(_builddir)CodeSmithyTasksTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHY_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
