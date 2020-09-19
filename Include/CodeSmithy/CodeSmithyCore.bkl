@@ -9,7 +9,7 @@ import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
 setting CODESMITHY_ROOT
 {
     help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHY_IDE)/CodeSmithy';
+    default = '$(CODESMITHYIDE)/CodeSmithy';
 }
 
 template CodeSmithyCore : Boost, pugixml, libgit2, IshikoCollections, DiplodocusXMLTreeDB

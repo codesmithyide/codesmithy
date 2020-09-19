@@ -1,6 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/TestFramework/Include/Ishiko/TestFramework/TestFrameworkCore.bkl;
-codesmithypath = envvar("CODESMITHY_IDE");
+codesmithypath = envvar("CODESMITHYIDE");
 import $(codesmithypath)/CodeSmithy/Include/CodeSmithy/CodeSmithyCore.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
