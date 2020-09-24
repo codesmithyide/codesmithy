@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,6 @@
 #include "ProjectTests/ProjectTests.h"
 #include "ProjectTemplatesTests.h"
 #include "WorkspacesTests/WorkspacesTestSequence.h"
-#include "TasksTests/TasksTestSequence.h"
 #include "VersionControlTests/VersionControlTests.h"
 #include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
@@ -45,7 +44,6 @@ int main(int argc, char* argv[])
     theTests.append<ProjectTests>();
     theTests.append<ProjectTemplatesTests>();
     theTests.append<WorkspacesTestSequence>();
-    theTests.append<TasksTestSequence>();
     theTests.append<VersionControlTests>();
     theTests.append<EngineTests>();
     theTests.append<BootstrapTests>();
