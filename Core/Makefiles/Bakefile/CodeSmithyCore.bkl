@@ -6,7 +6,7 @@ import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
 import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
 codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/CodeSmithy/Include/CodeSmithy/CodeSmithyTasks.bkl;
+import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
