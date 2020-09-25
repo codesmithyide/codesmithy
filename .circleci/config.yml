@@ -11,9 +11,6 @@ jobs:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
           name: Build
-          command: cd /CodeSmithyIDE/CodeSmithy/Tasks/Makefiles/GNUmakefile && make
-      - run:
-          name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Test build
