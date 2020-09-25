@@ -31,8 +31,14 @@ jobs:
       - run: 
           name: "Set CODESMITHYIDE environment variables"
           command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
+      - run:
+          name: "Checkout CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
+      - run:
+          name: "Build CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
       - run:
           name: Build
           command: cd /CodeSmithyIDE/CodeSmithy/Tasks/Makefiles/GNUmakefile && make
