@@ -187,8 +187,6 @@
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp" />
-    <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp" />
-    <ClCompile Include="..\..\Source\VersionControlTests\GitRepositoryTests.cpp" />
     <ClCompile Include="..\..\Source\EngineTests\EngineTests.cpp" />
     <ClCompile Include="..\..\Source\BootstrapTests\BootstrapTests.cpp" />
   </ItemGroup>
@@ -223,8 +221,6 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspacesTestSequence.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\WorkspaceFileRepositoryTests.h" />
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h" />
-    <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h" />
-    <ClInclude Include="..\..\Source\VersionControlTests\GitRepositoryTests.h" />
     <ClInclude Include="..\..\Source\EngineTests\EngineTests.h" />
     <ClInclude Include="..\..\Source\BootstrapTests\BootstrapTests.h" />
   </ItemGroup>

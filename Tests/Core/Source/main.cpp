@@ -24,7 +24,6 @@
 #include "ProjectTests/ProjectTests.h"
 #include "ProjectTemplatesTests.h"
 #include "WorkspacesTests/WorkspacesTestSequence.h"
-#include "VersionControlTests/VersionControlTests.h"
 #include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
@@ -44,7 +43,6 @@ int main(int argc, char* argv[])
     theTests.append<ProjectTests>();
     theTests.append<ProjectTemplatesTests>();
     theTests.append<WorkspacesTestSequence>();
-    theTests.append<VersionControlTests>();
     theTests.append<EngineTests>();
     theTests.append<BootstrapTests>();
 
