@@ -6,7 +6,7 @@ import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
 import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
 codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/CodeSmithy/Include/CodeSmithy/CodeSmithyTasks.bkl;
+import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -108,7 +108,6 @@ library CodeSmithyCore : CodeSmithyTasks, Boost, pugixml, libgit2, IshikoCollect
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
-        ../../../Include/CodeSmithy/Core/VersionControl/GitRepository.h
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
@@ -186,8 +185,6 @@ library CodeSmithyCore : CodeSmithyTasks, Boost, pugixml, libgit2, IshikoCollect
         ../../Source/Workspaces/WorkspaceRepository.cpp
         ../../Source/Workspaces/WorkspaceFileRepository.cpp
         ../../Source/Workspaces/GenericWorkspace.cpp
-
-        ../../Source/VersionControl/GitRepository.cpp
 
         ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 

@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/CodeSmithy\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/Tasks\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/CodeSmithy\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/Tasks\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/CodeSmithy\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/Tasks\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/CodeSmithy\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(CODESMITHYIDE)/Tasks\Include;$(PUGIXML)\src;$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(DIPLODOCUSDB)/TreeDB\Include;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -210,7 +210,6 @@
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceRepository.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\WorkspaceFileRepository.cpp" />
     <ClCompile Include="..\..\Source\Workspaces\GenericWorkspace.cpp" />
-    <ClCompile Include="..\..\Source\VersionControl\GitRepository.cpp" />
     <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp" />
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
@@ -276,7 +275,6 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\VersionControl\GitRepository.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
