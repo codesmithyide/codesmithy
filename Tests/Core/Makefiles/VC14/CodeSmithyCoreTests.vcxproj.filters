@@ -107,12 +107,6 @@
     <ClInclude Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\VersionControlTests\VersionControlTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\VersionControlTests\GitRepositoryTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\EngineTests\EngineTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -212,12 +206,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\WorkspacesTests\GenericWorkspaceTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\VersionControlTests\VersionControlTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\VersionControlTests\GitRepositoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\EngineTests\EngineTests.cpp">
