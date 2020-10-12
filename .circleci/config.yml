@@ -13,6 +13,9 @@ jobs:
       - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
+      - run:
+          name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
@@ -21,6 +24,9 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/VersionControl/Git dependency"
           command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
@@ -48,6 +54,9 @@ jobs:
       - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
+      - run:
+          name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
@@ -56,6 +65,9 @@ jobs:
       - run:
           name: "Build CodeSmithyIDE/VersionControl/Git dependency"
           command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
