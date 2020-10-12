@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/Terminal/Include/Ishiko/Terminal.bkl;
 import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
 import $(ishikopath)/FileSystem/Include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
@@ -12,7 +13,7 @@ toolsets = gnu vs2017;
 gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
 
-program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoProcess, IshikoFileSystem, IshikoErrors, libgit2
+program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, libgit2
 {
     if ($(toolset) == gnu)
     {
