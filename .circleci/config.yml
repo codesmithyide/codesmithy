@@ -10,11 +10,17 @@ jobs:
       - run:
           name: "Checkout CodeSmithyIDE/Tasks dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
+      - run:
+          name: "Checkout CodeSmithyIDE/VersionControl dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
           name: "Build CodeSmithyIDE/Tasks dependency"
           command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
+      - run:
+          name: "Build CodeSmithyIDE/VersionControl/Git dependency"
+          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
