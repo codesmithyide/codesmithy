@@ -4,22 +4,40 @@
     See https://github.com/CodeSmithyIDE/CodeSmithy/blob/master/LICENSE.txt
 */
 
+#include "CodeSmithy/VersionControl/Git/GitRepository.h"
+#include "CodeSmithy/BuildToolchains/VisualStudioToolchain.h"
+#include <Ishiko/Terminal/TerminalOutput.h>
 #include <Ishiko/Process/Environment.h>
 #include <Ishiko/Process/ChildProcessBuilder.h>
-//#include <Ishiko/FileSystem/Utilities.h>
+#include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
 #include <Ishiko/Errors/MessageErrorExtension.h>
-#include <git2.h>
+#include <sstream>
 #include <iostream>
+
+using namespace CodeSmithy;
 
 namespace
 {
 
+class AppErrorCategory : public Ishiko::ErrorCategory
+{
+public:
+    static const AppErrorCategory& Get() noexcept;
+};
+
+const AppErrorCategory& AppErrorCategory::Get() noexcept
+{
+    static AppErrorCategory theCategory;
+    return theCategory;
+}
+
 enum EErrorCodes
 {
     eInvalidCommandLine = -1,
-    eGitError = -2,
-    eBuildError = -3
+    eWorkDirNotEmpty = -2,
+    eGitError = -3,
+    eBuildError = -4
 };
 
 void SetEnvironmentVariables(const std::string& workDirectory, bool verbose)
@@ -49,8 +67,9 @@ void CloneRepository(const std::string& organization, const std::string& name, c
         std::cout << "Cloning " << organization << "/" << name << " in: " << targetDirectory << std::endl;
     }
 
-    git_repository* project_repository = nullptr;
-    int err = git_clone(&project_repository, repositoryURL.c_str(), targetDirectory.c_str(), 0);
+    GitRepository project_repository;
+    project_repository.clone(repositoryURL, targetDirectory)->run();
+    /*
     if (err < 0)
     {
         std::string message = "git clone failed with error: ";
@@ -63,7 +82,7 @@ void CloneRepository(const std::string& organization, const std::string& name, c
         }
         error.fail(eGitError, message, __FILE__, __LINE__);
     }
-    git_repository_free(project_repository);
+    */
 }
 
 void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
@@ -74,29 +93,14 @@ void Build(const std::string& workDirectory, const std::string& makefilePath, bo
     {
         std::cout << "Building " << absoluteMakefilePath << std::endl;
     }
-    std::string commandLine = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/Common7/IDE/devenv.exe ";
-    commandLine.append(absoluteMakefilePath);
-    commandLine.append(" /build ");
-    commandLine.append("Debug|x64");
 
-    Ishiko::Process::ChildProcess processHandle = Ishiko::Process::ChildProcessBuilder::StartProcess(commandLine, error);
-    if (!error)
-    {
-        processHandle.waitForExit();
-        int exitCode = processHandle.exitCode();
-        if (exitCode != 0)
-        {
-            error.fail(eBuildError, "Process launched by " + commandLine + " exited with code " + std::to_string(exitCode),
-                __FILE__, __LINE__);
-        }
-    }
+    VisualStudioToolchain toolchain;
+    toolchain.build(absoluteMakefilePath, error);
 }
 
 void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
 {
     SetEnvironmentVariables(workDirectory, verbose);
-
-    git_libgit2_init();
 
     if (verbose)
     {
@@ -141,8 +145,6 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         return;
     }
 
-    git_libgit2_shutdown();
-
     Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
     if (error)
     {
@@ -184,21 +186,23 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
 int main(int argc, char* argv[])
 {
-    Ishiko::Error error(0, new Ishiko::MessageErrorExtension());
+    Ishiko::Error error(new Ishiko::MessageErrorExtension());
 
     bool bootstrap = false;
-    std::string workDir = ".";
+    std::string workDir = "./CodeSmithyBootstrapWorkDir";
     bool verbose = false;
     for (int i = 1; i < argc; ++i)
     {
         const char* argument = argv[i];
-        if (strncmp("--bootstrap", argument, 12) == 0)
+        if (strncmp("bootstrap", argument, 10) == 0)
         {
             bootstrap = true;
         }
         else if (strncmp("--work-dir", argument, 11) == 0)
         {
-            workDir = argument;
+            // TODO: check bounds
+            ++i;
+            workDir = argv[i];
         }
         else if (strncmp("-v", argument, 3) == 0)
         {
@@ -208,25 +212,36 @@ int main(int argc, char* argv[])
         {
             std::string message = "invalid argument: ";
             message.append(argument);
-            error.fail(eInvalidCommandLine, message, __FILE__, __LINE__);
+            error.fail(eInvalidCommandLine, AppErrorCategory::Get(), message, __FILE__, __LINE__);
             break;
+        }
+    }
+
+    std::string absoluteWorkDir;
+    Ishiko::FileSystem::ToAbsolutePath(workDir, absoluteWorkDir);
+
+    if (!error)
+    {
+        if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
+        {
+            error.fail(eWorkDirNotEmpty, AppErrorCategory::Get(), absoluteWorkDir, __FILE__, __LINE__);
         }
     }
 
     if (!error)
     {
-        // TODO: create dir
         if (bootstrap)
         {
-            Bootstrap(workDir, verbose, error);
+            Bootstrap(absoluteWorkDir, verbose, error);
         }
     }
 
     if (error)
     {
-        // TODO: make nice wrapper for console output
-        std::cerr << (char)0x1B << "[91m" << "ERROR: " << error << (char)0x1B << "[0m" << std::endl;
+        std::stringstream message;
+        message << "ERROR: " << error << std::endl;
+        Ishiko::Terminal::TerminalOutput(stderr).write(message.str(), Ishiko::Color::eRed);
     }
 
-    return error.code();
+    return error.condition().value();
 }
