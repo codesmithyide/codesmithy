@@ -57,7 +57,7 @@ void SetEnvironmentVariables(const std::string& workDirectory, bool verbose)
 }
 
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
-    bool verbose, Ishiko::Error& error)
+    bool verbose)
 {
     std::string repositoryURL = "https://github.com/" + organization + "/" + name;
     std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
@@ -68,21 +68,7 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     }
 
     GitRepository project_repository;
-    project_repository.clone(repositoryURL, targetDirectory)->run();
-    /*
-    if (err < 0)
-    {
-        std::string message = "git clone failed with error: ";
-        message.append(std::to_string(err));
-        const char* gitErrorMessage = giterr_last()->message;
-        if (gitErrorMessage)
-        {
-            message.append(", ");
-            message.append(gitErrorMessage);
-        }
-        error.fail(eGitError, message, __FILE__, __LINE__);
-    }
-    */
+    project_repository.clone(repositoryURL, targetDirectory);
 }
 
 void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
@@ -107,42 +93,26 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         std::cout << "Workspace directory: " << workDirectory << std::endl;
     }
 
-    CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose, error);
-    if (error)
-    {
-        return;
-    }
-
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
-    CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose, error);
-    if (error)
+    try
     {
-        return;
+        CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Collections", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Core", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "TreeDB", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "CodeSmithy", workDirectory, verbose);
     }
-
-    CloneRepository("CodeSmithyIDE", "Collections", workDirectory, verbose, error);
-    if (error)
+    catch (const std::exception& e)
     {
-        return;
+        // TODO: report error better
+        error.fail(eGitError, AppErrorCategory::Get(), e.what(), __FILE__, __LINE__);
     }
-
-    CloneRepository("CodeSmithyIDE", "Core", workDirectory, verbose, error);
-    if (error)
+    catch (...)
     {
-        return;
-    }
-
-    CloneRepository("CodeSmithyIDE", "TreeDB", workDirectory, verbose, error);
-    if (error)
-    {
-        return;
-    }
-
-    CloneRepository("CodeSmithyIDE", "CodeSmithy", workDirectory, verbose, error);
-    if (error)
-    {
-        return;
+        // TODO: report error better
+        error.fail(eGitError, AppErrorCategory::Get(), "", __FILE__, __LINE__);
     }
 
     Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
