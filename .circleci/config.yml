@@ -8,9 +8,6 @@ jobs:
           name: "Set CODESMITHYIDE environment variable"
           command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
-          name: "Checkout CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
-      - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
       - run:
@@ -48,9 +45,6 @@ jobs:
       - run: 
           name: "Set CODESMITHYIDE environment variable"
           command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
-      - run:
-          name: "Checkout CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
       - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
           command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
