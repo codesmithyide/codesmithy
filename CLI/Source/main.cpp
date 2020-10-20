@@ -24,12 +24,19 @@ class AppErrorCategory : public Ishiko::ErrorCategory
 {
 public:
     static const AppErrorCategory& Get() noexcept;
+
+    const char* name() const noexcept override;
 };
 
 const AppErrorCategory& AppErrorCategory::Get() noexcept
 {
     static AppErrorCategory theCategory;
     return theCategory;
+}
+
+const char* AppErrorCategory::name() const noexcept
+{
+    return "CodeSmithy::AppErrorCategory";
 }
 
 enum EErrorCodes
