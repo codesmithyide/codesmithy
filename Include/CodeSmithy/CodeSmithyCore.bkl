@@ -3,10 +3,9 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
+import $(ishikopath)/Tasks/Include/Ishiko/IshikoTasks.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
 import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
-codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
 setting CODESMITHY_ROOT
 {
@@ -14,7 +13,7 @@ setting CODESMITHY_ROOT
     default = '$(CODESMITHYIDE)/CodeSmithy';
 }
 
-template CodeSmithyCore : CodeSmithyTasks, DiplodocusXMLTreeDB, IshikoCollections, libgit2, pugixml, Boost
+template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
 {
     includedirs += $(CODESMITHY_ROOT)/Include;
 

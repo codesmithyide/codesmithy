@@ -5,49 +5,71 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE environment variables"
+          name: "Set CODESMITHYIDE environment variable"
           command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
-          name: "Checkout CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
+          name: "Checkout CodeSmithyIDE/VersionControl dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
+      - run:
+          name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
-          name: "Build CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
+          name: "Build CodeSmithyIDE/VersionControl/Git dependency"
+          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
       - run:
-          name: Build
+          name: "Build CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
-          name: Test build
+          name: Build CodeSmithy/CLI
+          command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
       - run:
-          name: Run the tests
+          name: Run CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
+      - store_artifacts:
+          path: /CodeSmithyIDE/CodeSmithy/Bin/CodeSmithyCLI
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.1.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE environment variables"
+          name: "Set CODESMITHYIDE environment variable"
           command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
       - run:
-          name: "Checkout CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
+          name: "Checkout CodeSmithyIDE/VersionControl dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/VersionControl.git
+      - run:
+          name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
       - checkout:
           path: /CodeSmithyIDE/CodeSmithy
       - run:
-          name: "Build CodeSmithyIDE/Tasks dependency"
-          command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
+          name: "Build CodeSmithyIDE/VersionControl/Git dependency"
+          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
       - run:
-          name: Build
+          name: "Build CodeSmithyIDE/BuildToolchains dependency"
+          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
       - run:
-          name: Test build
+          name: Build CodeSmithy/CLI
+          command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+      - run:
+          name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
       - run:
-          name: Run the tests
+          name: Run CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
+      - store_artifacts:
+          path: /CodeSmithyIDE/CodeSmithy/Bin/CodeSmithyCLI
 workflows:
   version: 2
   build:

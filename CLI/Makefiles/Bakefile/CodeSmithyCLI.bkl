@@ -1,0 +1,35 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/Terminal/Include/Ishiko/Terminal.bkl;
+import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
+import $(ishikopath)/FileSystem/Include/Ishiko/FileSystem.bkl;
+import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/VersionControl/Include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
+import $(codesmithyidepath)/BuildToolchains/Include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
+
+toolsets = gnu vs2017;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
+
+program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, libgit2
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Bin;
+        libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoTasks IshikoTerminal IshikoFileSystem IshikoProcess IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../Bin/$(arch);
+    }
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
