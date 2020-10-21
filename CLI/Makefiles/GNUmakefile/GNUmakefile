@@ -45,7 +45,7 @@ endif
 #      ISHIKO_CPP_FILESYSTEM_ROOT          Path to the Ishiko FileSystem installation
 #      LIBGIT2_ROOT                        Path to the libgit2 installation
 #      ISHIKO_CPP_COLLECTIONS_ROOT         Path to the Ishiko Collections installation
-#      CODESMITHYIDE_TASKS_ROOT            Path to the CodeSmithyIDE/Tasks installation
+#      ISHIKO_CPP_TASKS_ROOT               Path to the Ishiko/Tasks installation
 #      CODESMITHYIDE_VERSIONCONTROL_ROOT   Path to the CodeSmithyIDE/VersionControl installation
 #      CODESMITHYIDE_BUILDTOOLCHAINS_ROOT  Path to the CodeSmithyIDE/BuildToolchains installation
 
@@ -84,8 +84,8 @@ ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP)/FileSystem
 LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the Ishiko Collections installation
 ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
-# Path to the CodeSmithyIDE/Tasks installation
-CODESMITHYIDE_TASKS_ROOT ?= $(CODESMITHYIDE)/Tasks
+# Path to the Ishiko/Tasks installation
+ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/Tasks
 # Path to the CodeSmithyIDE/VersionControl installation
 CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/VersionControl
 # Path to the CodeSmithyIDE/BuildToolchains installation
@@ -96,10 +96,10 @@ CODESMITHYIDE_BUILDTOOLCHAINS_ROOT ?= $(CODESMITHYIDE)/BuildToolchains
 all: ../../../Bin/CodeSmithyCLI
 
 ../../../Bin/CodeSmithyCLI: $(_builddir)CodeSmithyCLI_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Lib -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHYIDE_TASKS_ROOT)/Lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib -L$(ISHIKO_CPP_TYPES_ROOT)/Lib -L$(ISHIKO_CPP_TERMINAL_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/Lib -lCodeSmithyBuildToolchains -lCodeSmithyGit -lCodeSmithyTasks -lIshikoTerminal -lIshikoFileSystem -lIshikoProcess -lIshikoTypes -lIshikoErrors -lgit2 -lboost_filesystem -lssl -lcrypto -lpcre -lz -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Lib -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(ISHIKO_CPP_TASKS_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib -L$(ISHIKO_CPP_TYPES_ROOT)/Lib -L$(ISHIKO_CPP_TERMINAL_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/Lib -lCodeSmithyBuildToolchains -lCodeSmithyGit -lIshikoTasks -lIshikoTerminal -lIshikoFileSystem -lIshikoProcess -lIshikoTypes -lIshikoErrors -lgit2 -lboost_filesystem -lssl -lcrypto -lpcre -lz -pthread
 
 $(_builddir)CodeSmithyCLI_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Include -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include -I$(ISHIKO_CPP_TYPES_ROOT)/Include -I$(ISHIKO_CPP_TERMINAL_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/Include -std=c++11 ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Include -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include -I$(ISHIKO_CPP_TYPES_ROOT)/Include -I$(ISHIKO_CPP_TERMINAL_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/Include -std=c++11 ../../Source/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
