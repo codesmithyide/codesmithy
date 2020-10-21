@@ -50,17 +50,24 @@ enum EErrorCodes
 void SetEnvironmentVariables(const std::string& workDirectory, bool verbose)
 {
     const std::string value = workDirectory + "/CodeSmithyIDE";
+
     if (verbose)
     {
-        std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
+        std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
     }
-    Ishiko::Process::Environment::Set("CODESMITHYIDE", value);
+    Ishiko::Process::Environment::Set("ISHIKO_CPP", value);
 
     if (verbose)
     {
         std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
     }
     Ishiko::Process::Environment::Set("DIPLODOCUSDB", value);
+
+    if (verbose)
+    {
+        std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
+    }
+    Ishiko::Process::Environment::Set("CODESMITHYIDE", value);
 }
 
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
@@ -106,9 +113,16 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     {
         CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Types", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Process", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Collections", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "FileSystem", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Terminal", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Tasks", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Core", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "TreeDB", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "VersionControl", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "BuildToolchains", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "CodeSmithy", workDirectory, verbose);
     }
     catch (const std::exception& e)
@@ -127,9 +141,16 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     try
     {
         Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", verbose);
         Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", verbose);
         Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose);
         Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", verbose);
         Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose);
         Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose);
     }
