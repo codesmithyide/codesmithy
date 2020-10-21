@@ -23,8 +23,8 @@
 #ifndef _CODESMITHY_CORE_ENGINE_H_
 #define _CODESMITHY_CORE_ENGINE_H_
 
-#include "CodeSmithy/Tasks/Tasks.h"
-#include "CodeSmithy/Tasks/TaskRunner.h"
+#include <Ishiko/Tasks/Tasks.h>
+#include <Ishiko/Tasks/TaskRunner.h>
 
 namespace CodeSmithy
 {
@@ -38,11 +38,11 @@ public:
     void stop();
     void join();
 
-    void addTask(std::shared_ptr<Task> task);
+    void addTask(std::shared_ptr<Ishiko::Task> task);
 
 private:
-    Tasks m_tasks;
-    TaskRunner m_taskRunner;
+    Ishiko::Tasks m_tasks;
+    Ishiko::TaskRunner m_taskRunner;
 };
 
 }
