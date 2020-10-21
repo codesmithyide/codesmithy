@@ -78,7 +78,7 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     project_repository.clone(repositoryURL, targetDirectory);
 }
 
-void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose, Ishiko::Error& error)
+void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -88,7 +88,7 @@ void Build(const std::string& workDirectory, const std::string& makefilePath, bo
     }
 
     VisualStudioToolchain toolchain;
-    toolchain.build(absoluteMakefilePath, error);
+    toolchain.build(absoluteMakefilePath);
 }
 
 void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
@@ -115,47 +115,33 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     {
         // TODO: report error better
         error.fail(eGitError, AppErrorCategory::Get(), e.what(), __FILE__, __LINE__);
+        return;
     }
     catch (...)
     {
         // TODO: report error better
         error.fail(eGitError, AppErrorCategory::Get(), "", __FILE__, __LINE__);
-    }
-
-    Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose, error);
-    if (error)
-    {
         return;
     }
 
-    Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose, error);
-    if (error)
+    try
     {
-        return;
+        Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose);
     }
-
-    Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose, error);
-    if (error)
+    catch (const std::exception& e)
     {
-        return;
+        // TODO: report error better
+        error.fail(eBuildError, AppErrorCategory::Get(), e.what(), __FILE__, __LINE__);
     }
-
-    Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose, error);
-    if (error)
+    catch (...)
     {
-        return;
-    }
-
-    Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose, error);
-    if (error)
-    {
-        return;
-    }
-
-    Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose, error);
-    if (error)
-    {
-        return;
+        // TODO: report error better
+        error.fail(eBuildError, AppErrorCategory::Get(), "", __FILE__, __LINE__);
     }
 }
 
