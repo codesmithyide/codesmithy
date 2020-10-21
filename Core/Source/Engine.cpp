@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2020 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -21,6 +21,8 @@
 */
 
 #include "Engine.h"
+
+using namespace Ishiko;
 
 namespace CodeSmithy
 {
