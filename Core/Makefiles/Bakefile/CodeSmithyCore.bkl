@@ -3,10 +3,9 @@ import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
+import $(ishikopath)/Tasks/Include/Ishiko/IshikoTasks.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
 import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
-codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/CodeSmithy/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -15,7 +14,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyCore.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyCore.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
 
-library CodeSmithyCore : CodeSmithyTasks, Boost, pugixml, libgit2, IshikoCollections, DiplodocusXMLTreeDB
+library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
 {
     includedirs += ../../../Include/CodeSmithy/Core;
 
@@ -108,7 +107,6 @@ library CodeSmithyCore : CodeSmithyTasks, Boost, pugixml, libgit2, IshikoCollect
         ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
         ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
-        ../../../Include/CodeSmithy/Core/VersionControl/GitRepository.h
 
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
         ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
@@ -186,8 +184,6 @@ library CodeSmithyCore : CodeSmithyTasks, Boost, pugixml, libgit2, IshikoCollect
         ../../Source/Workspaces/WorkspaceRepository.cpp
         ../../Source/Workspaces/WorkspaceFileRepository.cpp
         ../../Source/Workspaces/GenericWorkspace.cpp
-
-        ../../Source/VersionControl/GitRepository.cpp
 
         ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 

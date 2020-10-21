@@ -22,7 +22,7 @@
 
 #include "EngineTests.h"
 #include "CodeSmithy/Core/Engine.h"
-#include "CodeSmithy/Tasks/SyncFunctionTask.h"
+#include <Ishiko/Tasks/SyncFunctionTask.h>
 
 using namespace Ishiko::Tests;
 
@@ -55,12 +55,12 @@ void EngineTests::AddTaskTest1(Test& test)
     CodeSmithy::Engine engine;
     engine.start();
 
-    std::shared_ptr<CodeSmithy::SyncFunctionTask> task = std::make_shared<CodeSmithy::SyncFunctionTask>([]() {});
+    std::shared_ptr<Ishiko::SyncFunctionTask> task = std::make_shared<Ishiko::SyncFunctionTask>([]() {});
     engine.addTask(task);
 
     engine.stop();
     engine.join();
 
-    ISHTF_FAIL_IF_NOT(task->status() == CodeSmithy::Task::EStatus::eCompleted);
+    ISHTF_FAIL_IF_NOT(task->status() == Ishiko::Task::EStatus::eCompleted);
     ISHTF_PASS();
 }
