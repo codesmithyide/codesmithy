@@ -5,10 +5,9 @@
 */
 
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
-#include "CodeSmithy/BuildToolchains/VisualStudioToolchain.h"
+#include "CodeSmithy/BuildToolchains/MSBuildToolchain.h"
 #include <Ishiko/Terminal/TerminalOutput.h>
-#include <Ishiko/Process/Environment.h>
-#include <Ishiko/Process/ChildProcessBuilder.h>
+#include <Ishiko/Process.h>
 #include <Ishiko/FileSystem/Utilities.h>
 #include <Ishiko/Errors/Error.h>
 #include <Ishiko/Errors/MessageErrorExtension.h>
@@ -47,29 +46,6 @@ enum EErrorCodes
     eBuildError = -4
 };
 
-void SetEnvironmentVariables(const std::string& workDirectory, bool verbose)
-{
-    const std::string value = workDirectory + "/CodeSmithyIDE";
-
-    if (verbose)
-    {
-        std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
-    }
-    Ishiko::Process::Environment::Set("ISHIKO_CPP", value);
-
-    if (verbose)
-    {
-        std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
-    }
-    Ishiko::Process::Environment::Set("DIPLODOCUSDB", value);
-
-    if (verbose)
-    {
-        std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
-    }
-    Ishiko::Process::Environment::Set("CODESMITHYIDE", value);
-}
-
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
     bool verbose)
 {
@@ -85,7 +61,8 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     project_repository.clone(repositoryURL, targetDirectory);
 }
 
-void Build(const std::string& workDirectory, const std::string& makefilePath, bool verbose)
+void Build(const std::string& workDirectory, const std::string& makefilePath,
+    const Ishiko::Process::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -94,18 +71,38 @@ void Build(const std::string& workDirectory, const std::string& makefilePath, bo
         std::cout << "Building " << absoluteMakefilePath << std::endl;
     }
 
-    VisualStudioToolchain toolchain;
-    toolchain.build(absoluteMakefilePath);
+    MSBuildToolchain toolchain;
+    toolchain.build(absoluteMakefilePath, environment);
 }
 
 void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
 {
-    SetEnvironmentVariables(workDirectory, verbose);
-
     if (verbose)
     {
         std::cout << "Workspace directory: " << workDirectory << std::endl;
     }
+
+    Ishiko::Process::Environment environment = Ishiko::Process::CurrentEnvironment();
+
+    const std::string value = workDirectory + "/CodeSmithyIDE";
+
+    if (verbose)
+    {
+        std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
+    }
+    environment.set("ISHIKO_CPP", value.c_str());
+
+    if (verbose)
+    {
+        std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
+    }
+    environment.set("DIPLODOCUSDB", value.c_str());
+
+    if (verbose)
+    {
+        std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
+    }
+    environment.set("CODESMITHYIDE", value.c_str());
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
@@ -140,19 +137,22 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     try
     {
-        Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", verbose);
-        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", verbose);
+        Build(workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln", environment,
+            verbose);
+        Build(workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln", environment,
+            verbose);
+        Build(workDirectory, "CodeSmithyIDE/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", environment,
+            verbose);
+        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln", environment, verbose);
+        Build(workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", environment, verbose);
     }
     catch (const std::exception& e)
     {
