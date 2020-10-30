@@ -9,8 +9,7 @@
 #include <Ishiko/Terminal/TerminalOutput.h>
 #include <Ishiko/Process.h>
 #include <Ishiko/FileSystem/Utilities.h>
-#include <Ishiko/Errors/Error.h>
-#include <Ishiko/Errors/MessageErrorExtension.h>
+#include <Ishiko/Errors.h>
 #include <sstream>
 #include <iostream>
 
@@ -109,6 +108,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     try
     {
         CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
+        CloneRepository("CodeSmithyIDE", "Platform", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Types", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Process", workDirectory, verbose);
