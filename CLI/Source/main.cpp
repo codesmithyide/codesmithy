@@ -86,7 +86,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
     std::unique_ptr<BuildToolchain> toolchain(new MSBuildToolchain());
 #else
-#error Unsupported OS
+    #error Unsupported OS
 #endif
 
     Ishiko::Process::Environment environment = Ishiko::Process::CurrentEnvironment();
@@ -110,6 +110,15 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         std::cout << "Set environment variable CODESMITHYIDE to " << value << std::endl;
     }
     environment.set("CODESMITHYIDE", value.c_str());
+
+    if (verbose)
+    {
+        std::cout << "Environment: " << std::endl;
+        for (const Ishiko::Process::EnvironmentVariable& variable : environment)
+        {
+            std::cout << variable.name() << "=" << variable.value() << std::endl;
+        }
+    }
 
     // TODO: should get build instructions Project but that may introduce too many dependencies?
 
