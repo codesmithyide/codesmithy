@@ -61,6 +61,20 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     project_repository.clone(repositoryURL, targetDirectory);
 }
 
+std::string GetMakefilePath(const std::string& makefile)
+{
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+    boost::filesystem::path makefilePath = makefile;
+    makefilePath = makefilePath.parent_path().parent_path();
+    makefilePath /= "GNUmakefile/GNUmakefile";
+    return makefilePath.string();
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
+    return makefile;
+#else
+    #error Unsupported OS
+#endif
+}
+
 void Build(const BuildToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
     const Ishiko::Process::Environment& environment, bool verbose)
 {
@@ -71,7 +85,7 @@ void Build(const BuildToolchain& toolchain, const std::string& workDirectory, co
         std::cout << "Building " << absoluteMakefilePath << std::endl;
     }
 
-    toolchain.build(absoluteMakefilePath, environment);
+    toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
 }
 
 void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
