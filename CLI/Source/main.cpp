@@ -82,9 +82,9 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     }
 
 #if ISHIKO_OS == ISHIKO_OS_LINUX
-    std::unique_ptr<BuildToolchain> toolchain = std::make_unique<MakeToolchain>();
+    std::unique_ptr<BuildToolchain> toolchain(new MakeToolchain());
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-    std::unique_ptr<BuildToolchain> toolchain = std::make_unique<MSBuildToolchain>();
+    std::unique_ptr<BuildToolchain> toolchain(new MSBuildToolchain());
 #else
 #error Unsupported OS
 #endif
