@@ -109,6 +109,12 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     if (verbose)
     {
+        std::cout << "Set environment variable PUGIXML to " << value << std::endl;
+    }
+    environment.set("PUGIXML", (value + "/pugixml").c_str());
+
+    if (verbose)
+    {
         std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
     }
     environment.set("ISHIKO_CPP", value.c_str());
@@ -138,6 +144,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     try
     {
+        CloneRepository("CodeSmithyIDE", "pugixml", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Platform", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
