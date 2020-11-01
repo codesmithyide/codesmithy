@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include;$(ISHIKO_CPP)/Platform\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -107,7 +107,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include;$(ISHIKO_CPP)/Platform\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -126,7 +126,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include;$(ISHIKO_CPP)/Platform\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -147,7 +147,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include;$(ISHIKO_CPP)/Platform\Include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
