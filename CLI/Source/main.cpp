@@ -47,6 +47,21 @@ enum EErrorCodes
 };
 
 void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
+    const std::string& architecture, bool verbose)
+{
+    std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+    std::string targetDirectory = workDirectory + "/" + organization + "/" + name + "/" + architecture;
+
+    if (verbose)
+    {
+        std::cout << "Cloning " << organization << "/" << name << " in: " << targetDirectory << std::endl;
+    }
+
+    GitRepository projectRepository;
+    projectRepository.clone(repositoryURL, targetDirectory);
+}
+
+void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
     bool verbose)
 {
     std::string repositoryURL = "https://github.com/" + organization + "/" + name;
@@ -75,7 +90,33 @@ std::string GetMakefilePath(const std::string& makefile)
 #endif
 }
 
-void Build(const BuildToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
+void Build(const MakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
+    const Ishiko::Process::Environment& environment, bool verbose)
+{
+    std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
+
+    if (verbose)
+    {
+        std::cout << "Building " << absoluteMakefilePath << std::endl;
+    }
+
+    toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
+}
+
+void Build(const MSBuildToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
+    const Ishiko::Process::Environment& environment, bool verbose)
+{
+    std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
+
+    if (verbose)
+    {
+        std::cout << "Building " << absoluteMakefilePath << std::endl;
+    }
+
+    toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
+}
+
+void Build(const CMakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
     const Ishiko::Process::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
@@ -96,9 +137,9 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     }
 
 #if ISHIKO_OS == ISHIKO_OS_LINUX
-    std::unique_ptr<BuildToolchain> nativeToolchain(new MakeToolchain());
+    MakeToolchain nativeToolchain;
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-    std::unique_ptr<BuildToolchain> nativeToolchain(new MSBuildToolchain());
+    MSBuildToolchain nativeToolchain;
 #else
     #error Unsupported OS
 #endif
@@ -153,7 +194,11 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     try
     {
         CloneRepository("CodeSmithyIDE", "pugixml", workDirectory, verbose);
+#if ISHIKO_OS == ISHIKO_OS_WINDOWS
+        CloneRepository("CodeSmithyIDE", "libgit2", workDirectory, "x64", verbose);
+#else
         CloneRepository("CodeSmithyIDE", "libgit2", workDirectory, verbose);
+#endif
         CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Platform", workDirectory, verbose);
         CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
@@ -184,32 +229,36 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     try
     {
+#if ISHIKO_OS == ISHIKO_OS_WINDOWS
+        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/x64/CMakeLists.txt", environment, verbose);
+#else
         Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/CMakeLists.txt", environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", environment,
+#endif
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln",
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln",
             environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln",
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln",
             environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment,
             verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln",
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln",
             environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln",
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln",
             environment, verbose);
-        Build(*nativeToolchain, workDirectory,
+        Build(nativeToolchain, workDirectory,
             "CodeSmithyIDE/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln",
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln",
             environment, verbose);
-        Build(*nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", environment,
+        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", environment,
             verbose);
     }
     catch (const std::exception& e)
