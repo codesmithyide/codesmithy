@@ -117,7 +117,7 @@ void Build(const MSBuildToolchain& toolchain, const std::string& workDirectory, 
 }
 
 void Build(const CMakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
-    const Ishiko::Process::Environment& environment, bool verbose)
+    const CMakeGenerationOptions& options, const Ishiko::Process::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -126,7 +126,8 @@ void Build(const CMakeToolchain& toolchain, const std::string& workDirectory, co
         std::cout << "Building " << absoluteMakefilePath << std::endl;
     }
 
-    toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
+    toolchain.generate(absoluteMakefilePath, options, environment);
+    toolchain.build(absoluteMakefilePath, environment);
 }
 
 void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& error)
@@ -230,7 +231,10 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     try
     {
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
-        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/x64/CMakeLists.txt", environment, verbose);
+        CMakeGenerationOptions options("Visual Studio 15 2017 Win64",
+            { { "BUILD_SHARED_LIBS", "OFF" }, { "STATIC_CRT", "OFF" } });
+        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/x64/CMakeLists.txt", options, environment,
+            verbose);
 #else
         Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/CMakeLists.txt", environment, verbose);
 #endif
