@@ -236,7 +236,8 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/x64/CMakeLists.txt", options, environment,
             verbose);
 #else
-        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/CMakeLists.txt", environment, verbose);
+        CMakeGenerationOptions options;
+        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
         Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", environment,
             verbose);
