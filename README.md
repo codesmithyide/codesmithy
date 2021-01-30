@@ -9,7 +9,7 @@ This repository contains the source code for the main components of the IDE.
 
 - Include - Common directory for public header files of all components
 - Core - Library containing all the code that is not UI-related.
-- Make - Command line build tool.
+- CLI - Command line tool.
 - UI
     - UI
     - UICore
@@ -18,7 +18,7 @@ This repository contains the source code for the main components of the IDE.
 
 ## License
 
-Copyright (c) 2015-2020 Xavier Leclercq
+Copyright (c) 2015-2021 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
