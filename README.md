@@ -3,13 +3,16 @@
 CodeSmithy is an IDE in very early stages of development. It is currently
 only really useful to me for my own projects.
 
-This repository contains the source code for the main components of the IDE.
-
 ## Contents
 
-- Include - Common directory for public header files of all components
-- Core - Library containing all the code that is not UI-related.
+This repository contains the source code for:
+- The libraries implementing various features of the IDE.
+- The IDE command line tool.
+- The IDE GUI.
+
 - CLI - Command line tool.
+- Core - Library containing all the code that is not UI-related.
+- Include - Common directory for public header files of all components
 - UI
     - UI
     - UICore
