@@ -10,17 +10,17 @@ This repository contains the source code for:
 - [The IDE command line tool](CLI).
 - [The IDE GUI](UI).
 
-# Project Status
+## Project Status
 
 [![CodeSmithy](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy.svg?style=shield)](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy)
 
 This project is intended for use by its author only.
 
-# Usage
+## Usage
 
 No documentation available as of yet.
 
-# Support
+## Support
 
 None.
 
