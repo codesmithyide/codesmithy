@@ -3,22 +3,30 @@
 CodeSmithy is an IDE in very early stages of development. It is currently
 only really useful to me for my own projects.
 
-This repository contains the source code for the main components of the IDE.
-
 ## Contents
 
-- Include - Common directory for public header files of all components
-- Core - Library containing all the code that is not UI-related.
-- Make - Command line build tool.
-- UI
-    - UI
-    - UICore
-    - UIElements
-    - UIImplementation
+This repository contains the source code for:
+- [The libraries implementing core features of the IDE](Core).
+- [The IDE command line tool](CLI).
+- [The IDE GUI](UI).
+
+## Project Status
+
+[![CodeSmithy](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy.svg?style=shield)](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy)
+
+This project is intended for use by its author only.
+
+## Usage
+
+No documentation available as of yet.
+
+## Support
+
+None.
 
 ## License
 
-Copyright (c) 2015-2020 Xavier Leclercq
+Copyright (c) 2015-2021 Xavier Leclercq
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
