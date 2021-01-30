@@ -16,6 +16,20 @@ This repository contains the source code for the main components of the IDE.
     - UIElements
     - UIImplementation
 
+# Project Status
+
+[![CodeSmithy](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy.svg?style=shield)](https://circleci.com/gh/CodeSmithyIDE/CodeSmithy)
+
+This project is intended for use by its author only.
+
+# Usage
+
+No documentation available as of yet.
+
+# Support
+
+None.
+
 ## License
 
 Copyright (c) 2015-2021 Xavier Leclercq
