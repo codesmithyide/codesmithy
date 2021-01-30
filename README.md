@@ -9,6 +9,7 @@ This repository contains the source code for:
 - [The libraries implementing core features of the IDE](Core).
 - [The IDE command line tool](CLI).
 - [The IDE GUI](UI).
+- [The IDE installer](Installer).
 
 ## Project Status
 
