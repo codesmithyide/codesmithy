@@ -1,0 +1,24 @@
+toolsets = gnu vs2017;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyInstallerCLI.sln;
+
+program CodeSmithyInstallerCLI
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../../Bin;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../../Bin/$(arch);
+    }
+
+    sources
+    {
+        ../../Source/main.cpp
+    }
+}
