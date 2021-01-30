@@ -6,18 +6,9 @@ only really useful to me for my own projects.
 ## Contents
 
 This repository contains the source code for:
-- The libraries implementing various features of the IDE.
-- The IDE command line tool.
-- The IDE GUI.
-
-- CLI - Command line tool.
-- Core - Library containing all the code that is not UI-related.
-- Include - Common directory for public header files of all components
-- UI
-    - UI
-    - UICore
-    - UIElements
-    - UIImplementation
+- [The libraries implementing core features of the IDE](Core).
+- [The IDE command line tool](CLI).
+- [The IDE GUI](UI).
 
 # Project Status
 
