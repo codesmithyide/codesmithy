@@ -12,12 +12,12 @@ jobs:
           command: cd /codesmithyide && git clone https://github.com/codesmithyide/VersionControl.git
       - run:
           name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
+          command: cd /codesmithyide && git clone https://github.com/codesmithyide/BuildToolchains.git
       - checkout:
-          path: /CodeSmithyIDE/CodeSmithy
+          path: /codesmithyide/codesmithy
       - run:
           name: "Build CodeSmithyIDE/VersionControl/Git dependency"
-          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/VersionControl/Git/Makefiles/GNUmakefile && make
       - run:
           name: "Build CodeSmithyIDE/BuildToolchains dependency"
           command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
