@@ -9,7 +9,7 @@ jobs:
           command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/VersionControl.git
+          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git
       - run:
           name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
           command: cd /codesmithyide && git clone https://github.com/codesmithyide/BuildToolchains.git
