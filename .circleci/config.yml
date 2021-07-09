@@ -20,7 +20,7 @@ jobs:
           command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: "Build CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
+          command: cd /CodeSmithyIDE/build-toolchains/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
@@ -44,18 +44,18 @@ jobs:
           command: echo 'export CODESMITHYIDE="/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Checkout CodeSmithyIDE/VersionControl dependency"
-          command: cd /codesmithyide && git clone https://github.com/CodeSmithyIDE/version-control.git
+          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git
       - run:
           name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/BuildToolchains.git
+          command: cd /CodeSmithyIDE && git clone https://github.com/codesmithyide/build-toolchains.git
       - checkout:
           path: /codesmithyide/codesmithy
       - run:
           name: "Build CodeSmithyIDE/VersionControl/Git dependency"
-          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: "Build CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/build-toolchains/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
