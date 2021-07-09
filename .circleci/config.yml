@@ -12,7 +12,7 @@ jobs:
           command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git
       - run:
           name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/BuildToolchains.git
+          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git
       - checkout:
           path: /codesmithyide/codesmithy
       - run:
