@@ -26,7 +26,7 @@ jobs:
           command: cd /codesmithyide/codesmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/CLI
-          command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/CLI/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
@@ -47,7 +47,7 @@ jobs:
           command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git
       - run:
           name: "Checkout CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE && git clone https://github.com/codesmithyide/build-toolchains.git
+          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git
       - checkout:
           path: /codesmithyide/codesmithy
       - run:
@@ -61,7 +61,7 @@ jobs:
           command: cd /codesmithyide/codesmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/CLI
-          command: cd /CodeSmithyIDE/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/CodeSmithy/CLI/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /CodeSmithyIDE/CodeSmithy/Tests/Core/Makefiles/GNUmakefile && make
