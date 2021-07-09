@@ -11,7 +11,7 @@ import $(ishikopath)/tasks/include/Ishiko/IshikoTasks.bkl;
 setting CODESMITHY_ROOT
 {
     help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHYIDE)/CodeSmithy';
+    default = '$(CODESMITHYIDE)/codesmithy';
 }
 
 template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml

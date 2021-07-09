@@ -104,7 +104,7 @@ ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/collections
 # Path to the Ishiko/Tasks installation
 ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/tasks
 # Path to the CodeSmithy installation
-CODESMITHY_ROOT ?= $(CODESMITHYIDE)/CodeSmithy
+CODESMITHY_ROOT ?= $(CODESMITHYIDE)/codesmithy
 
 # ------------
 
