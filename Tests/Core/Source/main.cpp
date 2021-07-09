@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,7 +26,7 @@
 #include "WorkspacesTests/WorkspacesTestSequence.h"
 #include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests.h>
 
 using namespace Ishiko::Tests;
 
