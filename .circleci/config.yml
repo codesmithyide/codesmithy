@@ -61,7 +61,7 @@ jobs:
           command: cd /codesmithyide/codesmithy/Core/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/CLI
-          command: cd /codesmithyide/CodeSmithy/CLI/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/CLI/Makefiles/GNUmakefile && make
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /codesmithyide/codesmithy/Tests/Core/Makefiles/GNUmakefile && make

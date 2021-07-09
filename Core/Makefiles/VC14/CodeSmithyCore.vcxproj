@@ -69,17 +69,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>CodeSmithyCore-d</TargetName>
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>CodeSmithyCore-d</TargetName>
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\Include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -214,70 +214,70 @@
     <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Engine.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Document.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentId.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentIdGenerator.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Bakefile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BinaryFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BinaryFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeLists.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppDocument.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\HTMLDocument.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\HTMLDocumentType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaScriptFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaScriptFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFile.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFileType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocumentType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectDescription.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectLocation.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProject.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProjectType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplate.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplates.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\Workspace.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentTypes.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Document.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentId.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentIdGenerator.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Documents.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Bakefile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BakefileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BinaryFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BinaryFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CMakeLists.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CMakeListsType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CodeSmithyProjectFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppDocument.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\HTMLDocument.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\HTMLDocumentType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaScriptFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaScriptFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaSourceFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaSourceFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PackageJSONFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PackageJSONFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PowerShellFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PowerShellFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PugFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PugFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PythonFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PythonFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\TextFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\TextFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\WiXSourceFile.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\WiXSourceFileType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocument.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocumentType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Project.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectDescription.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectRepository.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProject.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProjectType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\ProjectTemplates\ProjectTemplate.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\ProjectTemplates\ProjectTemplates.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\Workspace.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
