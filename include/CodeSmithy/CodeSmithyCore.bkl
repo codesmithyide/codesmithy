@@ -16,15 +16,15 @@ setting CODESMITHY_ROOT
 
 template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
 {
-    includedirs += $(CODESMITHY_ROOT)/Include;
+    includedirs += $(CODESMITHY_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(CODESMITHY_ROOT)/Lib;
+        libdirs += $(CODESMITHY_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(CODESMITHY_ROOT)/Lib/$(arch);
+        libdirs += $(CODESMITHY_ROOT)/lib/$(arch);
     }
 }
