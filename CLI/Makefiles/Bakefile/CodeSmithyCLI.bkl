@@ -1,13 +1,13 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/Terminal/Include/Ishiko/Terminal.bkl;
-import $(ishikopath)/Process/Include/Ishiko/Process.bkl;
-import $(ishikopath)/FileSystem/Include/Ishiko/FileSystem.bkl;
-import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
-import $(ishikopath)/Platform/Include/Ishiko/Platform.bkl;
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
+import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
+import $(ishikopath)/platform/include/Ishiko/Platform.bkl;
+import $(ishikopath)/process/include/Ishiko/Process.bkl;
+import $(ishikopath)/terminal/include/Ishiko/Terminal.bkl;
 codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/VersionControl/Include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
-import $(codesmithyidepath)/BuildToolchains/Include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
+import $(codesmithyidepath)/build-toolchains/include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
+import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
+import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
 
 toolsets = gnu vs2017;
 

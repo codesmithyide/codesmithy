@@ -37,19 +37,19 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      ISHIKO_CPP_TYPES_ROOT               Path to the Ishiko Types installation
-#      ISHIKO_CPP_TERMINAL_ROOT            Path to the Ishiko Terminal installation
-#      ISHIKO_CPP_TEXT_ROOT                Path to the Ishiko/Text installation
 #      ISHIKO_CPP_ERRORS_ROOT              Path to the Ishiko Errors installation
 #      ISHIKO_CPP_PLATFORM_ROOT            Path to the Ishiko Platform installation
-#      BOOST_ROOT                          Path to the Boost installation
-#      ISHIKO_CPP_PROCESS_ROOT             Path to the Ishiko Process installation
+#      ISHIKO_CPP_BOOST_ROOT               Path to the Boost installation
 #      ISHIKO_CPP_FILESYSTEM_ROOT          Path to the Ishiko FileSystem installation
+#      ISHIKO_CPP_TEXT_ROOT                Path to the Ishiko/Text installation
+#      ISHIKO_CPP_PROCESS_ROOT             Path to the Ishiko Process installation
+#      ISHIKO_CPP_TYPES_ROOT               Path to the Ishiko Types installation
+#      ISHIKO_CPP_TERMINAL_ROOT            Path to the Ishiko Terminal installation
+#      CODESMITHYIDE_BUILDTOOLCHAINS_ROOT  Path to the CodeSmithyIDE/BuildToolchains installation
 #      LIBGIT2_ROOT                        Path to the libgit2 installation
 #      ISHIKO_CPP_COLLECTIONS_ROOT         Path to the Ishiko Collections installation
 #      ISHIKO_CPP_TASKS_ROOT               Path to the Ishiko/Tasks installation
 #      CODESMITHYIDE_VERSIONCONTROL_ROOT   Path to the CodeSmithyIDE/VersionControl installation
-#      CODESMITHYIDE_BUILDTOOLCHAINS_ROOT  Path to the CodeSmithyIDE/BuildToolchains installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -70,42 +70,42 @@ endif
 # Configurable settings:
 # 
 
-# Path to the Ishiko Types installation
-ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP)/Types
-# Path to the Ishiko Terminal installation
-ISHIKO_CPP_TERMINAL_ROOT ?= $(ISHIKO_CPP)/Terminal
-# Path to the Ishiko/Text installation
-ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/Text
 # Path to the Ishiko Errors installation
-ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
 # Path to the Ishiko Platform installation
-ISHIKO_CPP_PLATFORM_ROOT ?= $(ISHIKO_CPP)/Platform
+ISHIKO_CPP_PLATFORM_ROOT ?= $(ISHIKO_CPP)/platform
 # Path to the Boost installation
-BOOST_ROOT ?= $(BOOST)
-# Path to the Ishiko Process installation
-ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/Process
+ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
 # Path to the Ishiko FileSystem installation
-ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP)/FileSystem
+ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP)/filesystem
+# Path to the Ishiko/Text installation
+ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP)/text
+# Path to the Ishiko Process installation
+ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP)/process
+# Path to the Ishiko Types installation
+ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP)/types
+# Path to the Ishiko Terminal installation
+ISHIKO_CPP_TERMINAL_ROOT ?= $(ISHIKO_CPP)/terminal
+# Path to the CodeSmithyIDE/BuildToolchains installation
+CODESMITHYIDE_BUILDTOOLCHAINS_ROOT ?= $(CODESMITHYIDE)/build-toolchains
 # Path to the libgit2 installation
 LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the Ishiko Collections installation
-ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/collections
 # Path to the Ishiko/Tasks installation
-ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/Tasks
+ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/tasks
 # Path to the CodeSmithyIDE/VersionControl installation
-CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/VersionControl
-# Path to the CodeSmithyIDE/BuildToolchains installation
-CODESMITHYIDE_BUILDTOOLCHAINS_ROOT ?= $(CODESMITHYIDE)/BuildToolchains
+CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/version-control
 
 # ------------
 
 all: ../../../Bin/CodeSmithyCLI
 
 ../../../Bin/CodeSmithyCLI: $(_builddir)CodeSmithyCLI_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Lib -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(ISHIKO_CPP_TASKS_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib -L$(ISHIKO_CPP_TYPES_ROOT)/Lib -L$(ISHIKO_CPP_TERMINAL_ROOT)/Lib -L$(ISHIKO_CPP_TEXT_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/Lib -lCodeSmithyBuildToolchains -lCodeSmithyGit -lIshikoTasks -lIshikoTerminal -lIshikoFileSystem -lIshikoProcess -lIshikoTypes -lIshikoErrors -lgit2 -lboost_filesystem -lssl -lcrypto -lpcre -lz -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLI_main.o -L$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/lib -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_TASKS_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/lib -L$(ISHIKO_CPP_TYPES_ROOT)/lib -L$(ISHIKO_CPP_TERMINAL_ROOT)/lib -L$(ISHIKO_CPP_TEXT_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/lib -lCodeSmithyBuildToolchains -lCodeSmithyGit -lIshikoTasks -lIshikoTerminal -lIshikoFileSystem -lIshikoProcess -lIshikoTypes -lIshikoErrors -lgit2 -lboost_filesystem -lssl -lcrypto -lpcre -lz -pthread
 
 $(_builddir)CodeSmithyCLI_main.o: ../../Source/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/Include -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include -I$(ISHIKO_CPP_TYPES_ROOT)/Include -I$(ISHIKO_CPP_TERMINAL_ROOT)/Include -I$(ISHIKO_CPP_TEXT_ROOT)/Include -I$(ISHIKO_CPP_PLATFORM_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/Include -std=c++11 ../../Source/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/include -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_TERMINAL_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_PLATFORM_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -std=c++11 ../../Source/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o
