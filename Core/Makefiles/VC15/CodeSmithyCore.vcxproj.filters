@@ -17,196 +17,196 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Engine.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\linkoptions.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentTypes.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Document.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Document.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentId.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentId.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\DocumentIdGenerator.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentIdGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Documents.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Documents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\Bakefile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\Bakefile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BakefileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BakefileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BinaryFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BinaryFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\BinaryFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\BinaryFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeLists.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CMakeLists.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CMakeListsType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CMakeListsType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CodeSmithyProjectFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CodeSmithyProjectFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppDocument.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\CppFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CppFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\HTMLDocument.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\HTMLDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\HTMLDocumentType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\HTMLDocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaScriptFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaScriptFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaScriptFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaScriptFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaSourceFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\JavaSourceFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\JavaSourceFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PackageJSONFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PackageJSONFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PackageJSONFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PowerShellFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PowerShellFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PowerShellFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PugFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PugFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PugFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PythonFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\PythonFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\PythonFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\TextFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\TextFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\TextFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFile.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\WiXSourceFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\WiXSourceFileType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\WiXSourceFileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocument.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Documents\XMLDocumentType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Project.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectDescription.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectDescription.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectLocation.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectTypes.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectRepository.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroup.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\ProjectGroupType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroupType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProject.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CodeSmithy\CodeSmithyProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Bakefile\BakefileProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Bakefile\BakefileProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CMake\CMakeProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\WiX\WiXProjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplate.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\ProjectTemplates\ProjectTemplate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\ProjectTemplates\ProjectTemplates.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\ProjectTemplates\ProjectTemplates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\Workspace.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\Workspace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Workspaces\GenericWorkspace.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\GenericWorkspace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\Core\Utilities\XMLUtilities.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Utilities\XMLUtilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

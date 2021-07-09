@@ -1,11 +1,12 @@
-ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/Boost.bkl;
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/pugixml.bkl;
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
-import $(ishikopath)/Collections/Include/Ishiko/IshikoCollections.bkl;
-import $(ishikopath)/Tasks/Include/Ishiko/IshikoTasks.bkl;
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB");
-import $(diplodocusdbpath)/TreeDB/Include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
+import $(diplodocusdbpath)/tree-db/include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
+import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/pugixml.bkl;
+import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
+import $(ishikopath)/tasks/include/Ishiko/IshikoTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -16,18 +17,18 @@ vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
 
 library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
 {
-    includedirs += ../../../Include/CodeSmithy/Core;
+    includedirs += ../../../include/CodeSmithy/Core;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../../Lib;
+        outputdir = ../../../lib;
     }
 
     if ($(toolset) != gnu)
     {
         archs = x86 x86_64;
-        outputdir = ../../../Lib/$(arch);
+        outputdir = ../../../lib/$(arch);
     }
 
     if ($(config) == Debug)
@@ -37,81 +38,81 @@ library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollec
 
     headers
     {
-        ../../../Include/CodeSmithy/Core/Engine.h
-        ../../../Include/CodeSmithy/Core/linkoptions.h
+        ../../../include/CodeSmithy/Core/Engine.h
+        ../../../include/CodeSmithy/Core/linkoptions.h
 
-        ../../../Include/CodeSmithy/Core/Documents/DocumentType.h
-        ../../../Include/CodeSmithy/Core/Documents/CustomDocumentTypeData.h
-        ../../../Include/CodeSmithy/Core/Documents/DocumentTypes.h
-        ../../../Include/CodeSmithy/Core/Documents/Document.h
-        ../../../Include/CodeSmithy/Core/Documents/DocumentId.h
-        ../../../Include/CodeSmithy/Core/Documents/DocumentIdGenerator.h
-        ../../../Include/CodeSmithy/Core/Documents/Documents.h
-        ../../../Include/CodeSmithy/Core/Documents/Bakefile.h
-        ../../../Include/CodeSmithy/Core/Documents/BakefileType.h
-        ../../../Include/CodeSmithy/Core/Documents/BinaryFile.h
-        ../../../Include/CodeSmithy/Core/Documents/BinaryFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/CMakeLists.h
-        ../../../Include/CodeSmithy/Core/Documents/CMakeListsType.h
-        ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFile.h
-        ../../../Include/CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/CppDocument.h
-        ../../../Include/CodeSmithy/Core/Documents/CppFile.h
-        ../../../Include/CodeSmithy/Core/Documents/CppFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/HTMLDocument.h
-        ../../../Include/CodeSmithy/Core/Documents/HTMLDocumentType.h
-        ../../../Include/CodeSmithy/Core/Documents/JavaScriptFile.h
-        ../../../Include/CodeSmithy/Core/Documents/JavaScriptFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/JavaSourceFile.h
-        ../../../Include/CodeSmithy/Core/Documents/JavaSourceFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/PackageJSONFile.h
-        ../../../Include/CodeSmithy/Core/Documents/PackageJSONFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/PowerShellFile.h
-        ../../../Include/CodeSmithy/Core/Documents/PowerShellFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/PugFile.h
-        ../../../Include/CodeSmithy/Core/Documents/PugFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/PythonFile.h
-        ../../../Include/CodeSmithy/Core/Documents/PythonFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/TextFile.h
-        ../../../Include/CodeSmithy/Core/Documents/TextFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/WiXSourceFile.h
-        ../../../Include/CodeSmithy/Core/Documents/WiXSourceFileType.h
-        ../../../Include/CodeSmithy/Core/Documents/XMLDocument.h
-        ../../../Include/CodeSmithy/Core/Documents/XMLDocumentType.h
+        ../../../include/CodeSmithy/Core/Documents/DocumentType.h
+        ../../../include/CodeSmithy/Core/Documents/CustomDocumentTypeData.h
+        ../../../include/CodeSmithy/Core/Documents/DocumentTypes.h
+        ../../../include/CodeSmithy/Core/Documents/Document.h
+        ../../../include/CodeSmithy/Core/Documents/DocumentId.h
+        ../../../include/CodeSmithy/Core/Documents/DocumentIdGenerator.h
+        ../../../include/CodeSmithy/Core/Documents/Documents.h
+        ../../../include/CodeSmithy/Core/Documents/Bakefile.h
+        ../../../include/CodeSmithy/Core/Documents/BakefileType.h
+        ../../../include/CodeSmithy/Core/Documents/BinaryFile.h
+        ../../../include/CodeSmithy/Core/Documents/BinaryFileType.h
+        ../../../include/CodeSmithy/Core/Documents/CMakeLists.h
+        ../../../include/CodeSmithy/Core/Documents/CMakeListsType.h
+        ../../../include/CodeSmithy/Core/Documents/CodeSmithyProjectFile.h
+        ../../../include/CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h
+        ../../../include/CodeSmithy/Core/Documents/CppDocument.h
+        ../../../include/CodeSmithy/Core/Documents/CppFile.h
+        ../../../include/CodeSmithy/Core/Documents/CppFileType.h
+        ../../../include/CodeSmithy/Core/Documents/HTMLDocument.h
+        ../../../include/CodeSmithy/Core/Documents/HTMLDocumentType.h
+        ../../../include/CodeSmithy/Core/Documents/JavaScriptFile.h
+        ../../../include/CodeSmithy/Core/Documents/JavaScriptFileType.h
+        ../../../include/CodeSmithy/Core/Documents/JavaSourceFile.h
+        ../../../include/CodeSmithy/Core/Documents/JavaSourceFileType.h
+        ../../../include/CodeSmithy/Core/Documents/PackageJSONFile.h
+        ../../../include/CodeSmithy/Core/Documents/PackageJSONFileType.h
+        ../../../include/CodeSmithy/Core/Documents/PowerShellFile.h
+        ../../../include/CodeSmithy/Core/Documents/PowerShellFileType.h
+        ../../../include/CodeSmithy/Core/Documents/PugFile.h
+        ../../../include/CodeSmithy/Core/Documents/PugFileType.h
+        ../../../include/CodeSmithy/Core/Documents/PythonFile.h
+        ../../../include/CodeSmithy/Core/Documents/PythonFileType.h
+        ../../../include/CodeSmithy/Core/Documents/TextFile.h
+        ../../../include/CodeSmithy/Core/Documents/TextFileType.h
+        ../../../include/CodeSmithy/Core/Documents/WiXSourceFile.h
+        ../../../include/CodeSmithy/Core/Documents/WiXSourceFileType.h
+        ../../../include/CodeSmithy/Core/Documents/XMLDocument.h
+        ../../../include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
-        ../../../Include/CodeSmithy/Core/Projects/Project.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectDescription.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectLocation.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectType.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectTypes.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectRepository.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectGroup.h
-        ../../../Include/CodeSmithy/Core/Projects/ProjectGroupType.h
-        ../../../Include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
+        ../../../include/CodeSmithy/Core/Projects/Project.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectDescription.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectLocation.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectType.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectTypes.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectRepository.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectGroup.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectGroupType.h
+        ../../../include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
 
-        ../../../Include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h
-        ../../../Include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h
+        ../../../include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h
+        ../../../include/CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h
 
-        ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
-        ../../../Include/CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h
+        ../../../include/CodeSmithy/Core/Projects/Bakefile/BakefileProject.h
+        ../../../include/CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h
 
-        ../../../Include/CodeSmithy/Core/Projects/CMake/CMakeProjectType.h
+        ../../../include/CodeSmithy/Core/Projects/CMake/CMakeProjectType.h
 
-        ../../../Include/CodeSmithy/Core/Projects/WiX/WiXProjectType.h
+        ../../../include/CodeSmithy/Core/Projects/WiX/WiXProjectType.h
 
-        ../../../Include/CodeSmithy/Core/ProjectTemplates/ProjectTemplate.h
-        ../../../Include/CodeSmithy/Core/ProjectTemplates/ProjectTemplates.h
+        ../../../include/CodeSmithy/Core/ProjectTemplates/ProjectTemplate.h
+        ../../../include/CodeSmithy/Core/ProjectTemplates/ProjectTemplates.h
 
-        ../../../Include/CodeSmithy/Core/Workspaces/Workspace.h
-        ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceRepository.h
-        ../../../Include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
-        ../../../Include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
+        ../../../include/CodeSmithy/Core/Workspaces/Workspace.h
+        ../../../include/CodeSmithy/Core/Workspaces/WorkspaceRepository.h
+        ../../../include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
+        ../../../include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
 
-        ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
-        ../../../Include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
+        ../../../include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
+        ../../../include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
 
-        ../../../Include/CodeSmithy/Core/Utilities/XMLUtilities.h
+        ../../../include/CodeSmithy/Core/Utilities/XMLUtilities.h
     }
 
     sources

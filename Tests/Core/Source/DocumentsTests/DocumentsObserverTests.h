@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#include <Ishiko/Tests.h>
 #include "CodeSmithy/Core/Documents/Documents.h"
 
 class DocumentsObserverTests : public Ishiko::Tests::TestSequence

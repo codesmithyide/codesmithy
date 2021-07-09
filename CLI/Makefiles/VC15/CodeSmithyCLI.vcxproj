@@ -90,13 +90,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Text\Include;$(ISHIKO_CPP)/Platform\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/build-toolchains\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/version-control\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/terminal\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/filesystem\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/BuildToolchains\Lib\$(Platform);$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/VersionControl\Lib\$(Platform);$(ISHIKO_CPP)/Types\Lib\$(Platform);$(ISHIKO_CPP)/Terminal\Lib\$(Platform);$(ISHIKO_CPP)/Text\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/FileSystem\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/build-toolchains\lib\$(Platform);$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/tasks\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/version-control\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/terminal\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -107,13 +107,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Text\Include;$(ISHIKO_CPP)/Platform\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/build-toolchains\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/version-control\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/terminal\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/filesystem\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/BuildToolchains\Lib\$(Platform);$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/VersionControl\Lib\$(Platform);$(ISHIKO_CPP)/Types\Lib\$(Platform);$(ISHIKO_CPP)/Terminal\Lib\$(Platform);$(ISHIKO_CPP)/Text\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/FileSystem\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/build-toolchains\lib\$(Platform);$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/tasks\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/version-control\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/terminal\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -126,7 +126,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Text\Include;$(ISHIKO_CPP)/Platform\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/build-toolchains\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/version-control\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/terminal\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/filesystem\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/BuildToolchains\Lib\$(Platform);$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/VersionControl\Lib\$(Platform);$(ISHIKO_CPP)/Types\Lib\$(Platform);$(ISHIKO_CPP)/Terminal\Lib\$(Platform);$(ISHIKO_CPP)/Text\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/FileSystem\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/build-toolchains\lib\$(Platform);$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/tasks\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/version-control\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/terminal\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -147,7 +147,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/BuildToolchains\Include;$(ISHIKO_CPP)/Collections\Include;$(BOOST);$(ISHIKO_CPP)/Tasks\Include;$(ISHIKO_CPP)/Errors\Include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/VersionControl\Include;$(ISHIKO_CPP)/Types\Include;$(ISHIKO_CPP)/Terminal\Include;$(ISHIKO_CPP)/Text\Include;$(ISHIKO_CPP)/Platform\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/FileSystem\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CODESMITHYIDE)/build-toolchains\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE)/version-control\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/terminal\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/filesystem\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -155,7 +155,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/BuildToolchains\Lib\$(Platform);$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/VersionControl\Lib\$(Platform);$(ISHIKO_CPP)/Types\Lib\$(Platform);$(ISHIKO_CPP)/Terminal\Lib\$(Platform);$(ISHIKO_CPP)/Text\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/FileSystem\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CODESMITHYIDE)/build-toolchains\lib\$(Platform);$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/tasks\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(LIBGIT2)\$(Platform)\$(Configuration);$(CODESMITHYIDE)/version-control\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/terminal\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
