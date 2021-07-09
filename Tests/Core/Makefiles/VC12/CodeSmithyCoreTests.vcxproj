@@ -86,13 +86,13 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(BOOST);$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Collections\Include;$(ISHIKO_CPP)/Tasks\Include;$(PUGIXML)\src;$(CODESMITHYIDE)/CodeSmithy\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;$(CODESMITHYIDE)/codesmithy\Include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/Core\Lib\$(Platform);$(DIPLODOCUSDB)/TreeDB\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(CODESMITHYIDE)/CodeSmithy\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/core\lib\$(Platform);$(DIPLODOCUSDB)/tree-db\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP)/tasks\lib\$(Platform);$(CODESMITHYIDE)/codesmithy\Lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/diff\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/tests\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -103,13 +103,13 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(BOOST);$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Collections\Include;$(ISHIKO_CPP)/Tasks\Include;$(PUGIXML)\src;$(CODESMITHYIDE)/CodeSmithy\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;$(CODESMITHYIDE)/codesmithy\Include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/Core\Lib\$(Platform);$(DIPLODOCUSDB)/TreeDB\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(CODESMITHYIDE)/CodeSmithy\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/core\lib\$(Platform);$(DIPLODOCUSDB)/tree-db\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP)/tasks\lib\$(Platform);$(CODESMITHYIDE)/codesmithy\Lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/diff\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/tests\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -122,7 +122,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(BOOST);$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Collections\Include;$(ISHIKO_CPP)/Tasks\Include;$(PUGIXML)\src;$(CODESMITHYIDE)/CodeSmithy\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;$(CODESMITHYIDE)/codesmithy\Include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/Core\Lib\$(Platform);$(DIPLODOCUSDB)/TreeDB\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(CODESMITHYIDE)/CodeSmithy\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/core\lib\$(Platform);$(DIPLODOCUSDB)/tree-db\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP)/tasks\lib\$(Platform);$(CODESMITHYIDE)/codesmithy\Lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/diff\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/tests\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -143,7 +143,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/Core\Include;$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Errors\Include;$(BOOST);$(DIPLODOCUSDB)/TreeDB\Include;$(ISHIKO_CPP)/Collections\Include;$(ISHIKO_CPP)/Tasks\Include;$(PUGIXML)\src;$(CODESMITHYIDE)/CodeSmithy\Include;$(ISHIKO_CPP)/Process\Include;$(ISHIKO_CPP)/TestFramework\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;$(CODESMITHYIDE)/codesmithy\Include;$(ISHIKO_CPP)/platform\include;$(ISHIKO_CPP)/filesystem\include;$(ISHIKO_CPP)/text\include;$(ISHIKO_CPP)/types\include;$(ISHIKO_CPP)/diff\include;$(ISHIKO_CPP)/process\include;$(ISHIKO_CPP)/tests\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -151,7 +151,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/Core\Lib\$(Platform);$(DIPLODOCUSDB)/TreeDB\Lib\$(Platform);$(ISHIKO_CPP)/Errors\Lib\$(Platform);$(BOOST)\stage\lib;$(ISHIKO_CPP)/Collections\Lib\$(Platform);$(ISHIKO_CPP)/Tasks\Lib\$(Platform);$(CODESMITHYIDE)/CodeSmithy\Lib\$(Platform);$(ISHIKO_CPP)/Process\Lib\$(Platform);$(ISHIKO_CPP)/TestFramework\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(LIBGIT2)\$(Platform)\$(Configuration);$(DIPLODOCUSDB)/core\lib\$(Platform);$(DIPLODOCUSDB)/tree-db\lib\$(Platform);$(ISHIKO_CPP)/errors\lib\$(Platform);$(ISHIKO_CPP_THIRD_PARTY_BOOST)\stage\lib;$(ISHIKO_CPP)/collections\lib\$(Platform);$(ISHIKO_CPP)/tasks\lib\$(Platform);$(CODESMITHYIDE)/codesmithy\Lib\$(Platform);$(ISHIKO_CPP)/filesystem\lib\$(Platform);$(ISHIKO_CPP)/text\lib\$(Platform);$(ISHIKO_CPP)/types\lib\$(Platform);$(ISHIKO_CPP)/diff\lib\$(Platform);$(ISHIKO_CPP)/process\lib\$(Platform);$(ISHIKO_CPP)/tests\lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>git2.lib;Winhttp.lib;Crypt32.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
