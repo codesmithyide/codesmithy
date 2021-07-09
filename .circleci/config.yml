@@ -17,7 +17,7 @@ jobs:
           path: /codesmithyide/codesmithy
       - run:
           name: "Build CodeSmithyIDE/VersionControl/Git dependency"
-          command: cd /codesmithyide/VersionControl/Git/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: "Build CodeSmithyIDE/BuildToolchains dependency"
           command: cd /CodeSmithyIDE/BuildToolchains/Makefiles/GNUmakefile && make
