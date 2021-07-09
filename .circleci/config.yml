@@ -20,7 +20,7 @@ jobs:
           command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: "Build CodeSmithyIDE/BuildToolchains dependency"
-          command: cd /CodeSmithyIDE/build-toolchains/build/gnumake && make
+          command: cd /codesmithyide/build-toolchains/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core
           command: cd /CodeSmithyIDE/CodeSmithy/Core/Makefiles/GNUmakefile && make
