@@ -23,10 +23,10 @@ jobs:
           command: cd /codesmithyide/build-toolchains/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core
-          command: cd /codesmithyide/codesmithy/Core/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
       - run:
           name: Build CodeSmithy/CLI
-          command: cd /codesmithyide/codesmithy/CLI/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /codesmithyide/codesmithy/Tests/Core/Makefiles/GNUmakefile && make
@@ -34,7 +34,7 @@ jobs:
           name: Run CodeSmithy/Core tests
           command: cd /codesmithyide/codesmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/Bin/CodeSmithyCLI
+          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.1.0
@@ -58,10 +58,10 @@ jobs:
           command: cd /codesmithyide/build-toolchains/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core
-          command: cd /codesmithyide/codesmithy/Core/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
       - run:
           name: Build CodeSmithy/CLI
-          command: cd /codesmithyide/codesmithy/CLI/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
       - run:
           name: Build CodeSmithy/Core tests
           command: cd /codesmithyide/codesmithy/Tests/Core/Makefiles/GNUmakefile && make
@@ -69,7 +69,7 @@ jobs:
           name: Run CodeSmithy/Core tests
           command: cd /codesmithyide/codesmithy/Tests/Core/Makefiles/GNUmakefile && ./CodeSmithyCoreTests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/Bin/CodeSmithyCLI
+          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
 workflows:
   version: 2
   build:

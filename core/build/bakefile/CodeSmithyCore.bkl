@@ -10,10 +10,10 @@ import $(ishikopath)/tasks/include/Ishiko/IshikoTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/CodeSmithyCore.sln;
-vs2015.solutionfile = ../VC14/CodeSmithyCore.sln;
-vs2013.solutionfile = ../VC12/CodeSmithyCore.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/CodeSmithyCore.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyCore.sln;
+vs2013.solutionfile = ../vc12/CodeSmithyCore.sln;
 
 library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
 {
