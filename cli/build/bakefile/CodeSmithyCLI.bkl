@@ -11,22 +11,22 @@ import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/Co
 
 toolsets = gnu vs2017;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
-vs2017.solutionfile = ../VC15/CodeSmithyCLI.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2017.solutionfile = ../vc15/CodeSmithyCLI.sln;
 
 program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, IshikoPlatform, libgit2
 {
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../../Bin;
+        outputdir = ../../../bin;
         libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoTasks IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
     }
 
     if ($(toolset) != gnu)
     {
         archs = x86 x86_64;
-        outputdir = ../../../Bin/$(arch);
+        outputdir = ../../../bin/$(arch);
     }
 
     sources
