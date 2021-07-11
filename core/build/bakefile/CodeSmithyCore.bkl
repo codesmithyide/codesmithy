@@ -117,77 +117,77 @@ library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollec
 
     sources
     {
-        ../../Source/Engine.cpp
+        ../../src/Engine.cpp
 
-        ../../Source/Documents/DocumentType.cpp
-        ../../Source/Documents/CustomDocumentTypeData.cpp
-        ../../Source/Documents/DocumentTypes.cpp
-        ../../Source/Documents/Document.cpp
-        ../../Source/Documents/DocumentId.cpp
-        ../../Source/Documents/DocumentIdGenerator.cpp
-        ../../Source/Documents/Documents.cpp
-        ../../Source/Documents/Bakefile.cpp
-        ../../Source/Documents/BakefileType.cpp
-        ../../Source/Documents/BinaryFile.cpp
-        ../../Source/Documents/BinaryFileType.cpp
-        ../../Source/Documents/CMakeLists.cpp
-        ../../Source/Documents/CMakeListsType.cpp
-        ../../Source/Documents/CodeSmithyProjectFile.cpp
-        ../../Source/Documents/CodeSmithyProjectFileType.cpp
-        ../../Source/Documents/CppDocument.cpp
-        ../../Source/Documents/CppFile.cpp
-        ../../Source/Documents/CppFileType.cpp
-        ../../Source/Documents/HTMLDocument.cpp
-        ../../Source/Documents/HTMLDocumentType.cpp
-        ../../Source/Documents/JavaScriptFile.cpp
-        ../../Source/Documents/JavaScriptFileType.cpp
-        ../../Source/Documents/JavaSourceFile.cpp
-        ../../Source/Documents/JavaSourceFileType.cpp
-        ../../Source/Documents/PackageJSONFile.cpp
-        ../../Source/Documents/PackageJSONFileType.cpp
-        ../../Source/Documents/PowerShellFile.cpp
-        ../../Source/Documents/PowerShellFileType.cpp
-        ../../Source/Documents/PugFile.cpp
-        ../../Source/Documents/PugFileType.cpp
-        ../../Source/Documents/PythonFile.cpp
-        ../../Source/Documents/PythonFileType.cpp
-        ../../Source/Documents/TextFile.cpp
-        ../../Source/Documents/TextFileType.cpp
-        ../../Source/Documents/WiXSourceFile.cpp
-        ../../Source/Documents/WiXSourceFileType.cpp
-        ../../Source/Documents/XMLDocument.cpp
-        ../../Source/Documents/XMLDocumentType.cpp
+        ../../src/Documents/DocumentType.cpp
+        ../../src/Documents/CustomDocumentTypeData.cpp
+        ../../src/Documents/DocumentTypes.cpp
+        ../../src/Documents/Document.cpp
+        ../../src/Documents/DocumentId.cpp
+        ../../src/Documents/DocumentIdGenerator.cpp
+        ../../src/Documents/Documents.cpp
+        ../../src/Documents/Bakefile.cpp
+        ../../src/Documents/BakefileType.cpp
+        ../../src/Documents/BinaryFile.cpp
+        ../../src/Documents/BinaryFileType.cpp
+        ../../src/Documents/CMakeLists.cpp
+        ../../src/Documents/CMakeListsType.cpp
+        ../../src/Documents/CodeSmithyProjectFile.cpp
+        ../../src/Documents/CodeSmithyProjectFileType.cpp
+        ../../src/Documents/CppDocument.cpp
+        ../../src/Documents/CppFile.cpp
+        ../../src/Documents/CppFileType.cpp
+        ../../src/Documents/HTMLDocument.cpp
+        ../../src/Documents/HTMLDocumentType.cpp
+        ../../src/Documents/JavaScriptFile.cpp
+        ../../src/Documents/JavaScriptFileType.cpp
+        ../../src/Documents/JavaSourceFile.cpp
+        ../../src/Documents/JavaSourceFileType.cpp
+        ../../src/Documents/PackageJSONFile.cpp
+        ../../src/Documents/PackageJSONFileType.cpp
+        ../../src/Documents/PowerShellFile.cpp
+        ../../src/Documents/PowerShellFileType.cpp
+        ../../src/Documents/PugFile.cpp
+        ../../src/Documents/PugFileType.cpp
+        ../../src/Documents/PythonFile.cpp
+        ../../src/Documents/PythonFileType.cpp
+        ../../src/Documents/TextFile.cpp
+        ../../src/Documents/TextFileType.cpp
+        ../../src/Documents/WiXSourceFile.cpp
+        ../../src/Documents/WiXSourceFileType.cpp
+        ../../src/Documents/XMLDocument.cpp
+        ../../src/Documents/XMLDocumentType.cpp
 
-        ../../Source/Projects/Project.cpp
-        ../../Source/Projects/ProjectDescription.cpp
-        ../../Source/Projects/ProjectLocation.cpp
-        ../../Source/Projects/ProjectType.cpp
-        ../../Source/Projects/ProjectTypes.cpp
-        ../../Source/Projects/ProjectRepository.cpp
-        ../../Source/Projects/ProjectGroup.cpp
-        ../../Source/Projects/ProjectGroupType.cpp
-        ../../Source/Projects/MetaBuildSystemProject.cpp
+        ../../src/Projects/Project.cpp
+        ../../src/Projects/ProjectDescription.cpp
+        ../../src/Projects/ProjectLocation.cpp
+        ../../src/Projects/ProjectType.cpp
+        ../../src/Projects/ProjectTypes.cpp
+        ../../src/Projects/ProjectRepository.cpp
+        ../../src/Projects/ProjectGroup.cpp
+        ../../src/Projects/ProjectGroupType.cpp
+        ../../src/Projects/MetaBuildSystemProject.cpp
 
-        ../../Source/Projects/CodeSmithy/CodeSmithyProject.cpp
-        ../../Source/Projects/CodeSmithy/CodeSmithyProjectType.cpp
+        ../../src/Projects/CodeSmithy/CodeSmithyProject.cpp
+        ../../src/Projects/CodeSmithy/CodeSmithyProjectType.cpp
 
-        ../../Source/Projects/Bakefile/BakefileProject.cpp
-        ../../Source/Projects/Bakefile/BakefileProjectType.cpp
+        ../../src/Projects/Bakefile/BakefileProject.cpp
+        ../../src/Projects/Bakefile/BakefileProjectType.cpp
 
-        ../../Source/Projects/CMake/CMakeProjectType.cpp
+        ../../src/Projects/CMake/CMakeProjectType.cpp
 
-        ../../Source/Projects/WiX/WiXProjectType.cpp
+        ../../src/Projects/WiX/WiXProjectType.cpp
 
-        ../../Source/ProjectTemplates/ProjectTemplate.cpp
-        ../../Source/ProjectTemplates/ProjectTemplates.cpp
+        ../../src/ProjectTemplates/ProjectTemplate.cpp
+        ../../src/ProjectTemplates/ProjectTemplates.cpp
 
-        ../../Source/Workspaces/Workspace.cpp
-        ../../Source/Workspaces/WorkspaceRepository.cpp
-        ../../Source/Workspaces/WorkspaceFileRepository.cpp
-        ../../Source/Workspaces/GenericWorkspace.cpp
+        ../../src/Workspaces/Workspace.cpp
+        ../../src/Workspaces/WorkspaceRepository.cpp
+        ../../src/Workspaces/WorkspaceFileRepository.cpp
+        ../../src/Workspaces/GenericWorkspace.cpp
 
-        ../../Source/CodeSmithyMake/CodeSmithyMakeEngine.cpp
+        ../../src/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 
-        ../../Source/Utilities/XMLUtilities.cpp
+        ../../src/Utilities/XMLUtilities.cpp
     }
 }
