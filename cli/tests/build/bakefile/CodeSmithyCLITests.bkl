@@ -1,8 +1,9 @@
 ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
 
-toolsets = vs2017 vs2015 vs2013;
+toolsets = gnu vs2017 vs2015 vs2013;
 
+gnu.makefile = ../gnumake/GNUmakefile;
 vs2017.solutionfile = ../vc15/CodeSmithyCLITests.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCLITests.sln;
 vs2013.solutionfile = ../vc12/CodeSmithyCLITests.sln;
