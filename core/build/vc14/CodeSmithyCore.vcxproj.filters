@@ -211,190 +211,190 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Engine.cpp">
+    <ClCompile Include="..\..\src\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\DocumentType.cpp">
+    <ClCompile Include="..\..\src\Documents\DocumentType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CustomDocumentTypeData.cpp">
+    <ClCompile Include="..\..\src\Documents\CustomDocumentTypeData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\DocumentTypes.cpp">
+    <ClCompile Include="..\..\src\Documents\DocumentTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\Document.cpp">
+    <ClCompile Include="..\..\src\Documents\Document.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\DocumentId.cpp">
+    <ClCompile Include="..\..\src\Documents\DocumentId.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\DocumentIdGenerator.cpp">
+    <ClCompile Include="..\..\src\Documents\DocumentIdGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\Documents.cpp">
+    <ClCompile Include="..\..\src\Documents\Documents.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\Bakefile.cpp">
+    <ClCompile Include="..\..\src\Documents\Bakefile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\BakefileType.cpp">
+    <ClCompile Include="..\..\src\Documents\BakefileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\BinaryFile.cpp">
+    <ClCompile Include="..\..\src\Documents\BinaryFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\BinaryFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\BinaryFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CMakeLists.cpp">
+    <ClCompile Include="..\..\src\Documents\CMakeLists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CMakeListsType.cpp">
+    <ClCompile Include="..\..\src\Documents\CMakeListsType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFile.cpp">
+    <ClCompile Include="..\..\src\Documents\CodeSmithyProjectFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CodeSmithyProjectFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\CodeSmithyProjectFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CppDocument.cpp">
+    <ClCompile Include="..\..\src\Documents\CppDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CppFile.cpp">
+    <ClCompile Include="..\..\src\Documents\CppFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\CppFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\CppFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\HTMLDocument.cpp">
+    <ClCompile Include="..\..\src\Documents\HTMLDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\HTMLDocumentType.cpp">
+    <ClCompile Include="..\..\src\Documents\HTMLDocumentType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\JavaScriptFile.cpp">
+    <ClCompile Include="..\..\src\Documents\JavaScriptFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\JavaScriptFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\JavaScriptFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\JavaSourceFile.cpp">
+    <ClCompile Include="..\..\src\Documents\JavaSourceFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\JavaSourceFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\JavaSourceFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PackageJSONFile.cpp">
+    <ClCompile Include="..\..\src\Documents\PackageJSONFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PackageJSONFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\PackageJSONFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PowerShellFile.cpp">
+    <ClCompile Include="..\..\src\Documents\PowerShellFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PowerShellFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\PowerShellFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PugFile.cpp">
+    <ClCompile Include="..\..\src\Documents\PugFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PugFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\PugFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PythonFile.cpp">
+    <ClCompile Include="..\..\src\Documents\PythonFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\PythonFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\PythonFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\TextFile.cpp">
+    <ClCompile Include="..\..\src\Documents\TextFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\TextFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\TextFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\WiXSourceFile.cpp">
+    <ClCompile Include="..\..\src\Documents\WiXSourceFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\WiXSourceFileType.cpp">
+    <ClCompile Include="..\..\src\Documents\WiXSourceFileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\XMLDocument.cpp">
+    <ClCompile Include="..\..\src\Documents\XMLDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Documents\XMLDocumentType.cpp">
+    <ClCompile Include="..\..\src\Documents\XMLDocumentType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\Project.cpp">
+    <ClCompile Include="..\..\src\Projects\Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectDescription.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectDescription.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectLocation.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectLocation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectType.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectTypes.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectRepository.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectGroup.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectGroup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\ProjectGroupType.cpp">
+    <ClCompile Include="..\..\src\Projects\ProjectGroupType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\MetaBuildSystemProject.cpp">
+    <ClCompile Include="..\..\src\Projects\MetaBuildSystemProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\CodeSmithy\CodeSmithyProject.cpp">
+    <ClCompile Include="..\..\src\Projects\CodeSmithy\CodeSmithyProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\CodeSmithy\CodeSmithyProjectType.cpp">
+    <ClCompile Include="..\..\src\Projects\CodeSmithy\CodeSmithyProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProject.cpp">
+    <ClCompile Include="..\..\src\Projects\Bakefile\BakefileProject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\Bakefile\BakefileProjectType.cpp">
+    <ClCompile Include="..\..\src\Projects\Bakefile\BakefileProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\CMake\CMakeProjectType.cpp">
+    <ClCompile Include="..\..\src\Projects\CMake\CMakeProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Projects\WiX\WiXProjectType.cpp">
+    <ClCompile Include="..\..\src\Projects\WiX\WiXProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjectTemplates\ProjectTemplate.cpp">
+    <ClCompile Include="..\..\src\ProjectTemplates\ProjectTemplate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjectTemplates\ProjectTemplates.cpp">
+    <ClCompile Include="..\..\src\ProjectTemplates\ProjectTemplates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Workspaces\Workspace.cpp">
+    <ClCompile Include="..\..\src\Workspaces\Workspace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Workspaces\WorkspaceRepository.cpp">
+    <ClCompile Include="..\..\src\Workspaces\WorkspaceRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Workspaces\WorkspaceFileRepository.cpp">
+    <ClCompile Include="..\..\src\Workspaces\WorkspaceFileRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Workspaces\GenericWorkspace.cpp">
+    <ClCompile Include="..\..\src\Workspaces\GenericWorkspace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\CodeSmithyMake\CodeSmithyMakeEngine.cpp">
+    <ClCompile Include="..\..\src\CodeSmithyMake\CodeSmithyMakeEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Utilities\XMLUtilities.cpp">
+    <ClCompile Include="..\..\src\Utilities\XMLUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
