@@ -185,9 +185,9 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     if (verbose)
     {
-        std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
+        std::cout << "Set environment variable DIPLODOCUSDB to " << value + "/diplodocusdb" << std::endl;
     }
-    environment.set("DIPLODOCUSDB", value.c_str());
+    environment.set("DIPLODOCUSDB", (value + "/diplodocusdb").c_str());
 
     if (verbose)
     {
@@ -224,8 +224,8 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         CloneRepository2("codesmithyide", "ishiko-cpp-filesystem", workDirectory + "/codesmithyide/ishiko/cpp/filesystem", verbose);
         CloneRepository2("codesmithyide", "ishiko-cpp-terminal", workDirectory + "/codesmithyide/ishiko/cpp/terminal", verbose);
         CloneRepository2("codesmithyide", "ishiko-cpp-tasks", workDirectory + "/codesmithyide/ishiko/cpp/tasks", verbose);
-        CloneRepository("codesmithyide", "diplodocusdb-core", workDirectory, verbose);
-        CloneRepository("codesmithyide", "diplodocusdb-tree-db", workDirectory, verbose);
+        CloneRepository2("codesmithyide", "diplodocusdb-core", workDirectory + "/codesmithyide/diplodocusdb/core", verbose);
+        CloneRepository2("codesmithyide", "diplodocusdb-tree-db", workDirectory + "/codesmithyide/diplodocusdb/tree-db", verbose);
         CloneRepository("codesmithyide", "version-control", workDirectory, verbose);
         CloneRepository("codesmithyide", "build-toolchains", workDirectory, verbose);
         CloneRepository("codesmithyide", "codesmithy", workDirectory, verbose);
@@ -272,17 +272,17 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
             verbose);
         Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/tasks/build/vc15/IshikoTasks.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/diplodocusdb/core/build/vc15/DiplodocusDBCore.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/diplodocusdb/tree-db/core/build/vc15/DiplodocusTreeDBCore.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/version-control/git/build/vc15/CodeSmithyGit.sln",
             environment, verbose);
         Build(nativeToolchain, workDirectory,
-            "codesmithyide/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", environment, verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln",
+            "codesmithyide/build-toolchains/build/vc15/CodeSmithyBuildToolchains.sln", environment, verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/codesmithy/core/build/vc15/CodeSmithyCore.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/codesmithy/cli/build/vc15/CodeSmithyCLI.sln", environment,
             verbose);
     }
     catch (const std::exception& e)
