@@ -13,7 +13,7 @@ program CodeSmithyCLITests : IshikoTests
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoTests;
+        libs += IshikoTests boost_filesystem;
     }
 
     if ($(toolset) != gnu)
