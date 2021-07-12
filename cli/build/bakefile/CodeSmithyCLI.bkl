@@ -31,6 +31,6 @@ program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
     }
 }
