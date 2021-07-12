@@ -10,7 +10,16 @@ vs2013.solutionfile = ../vc12/CodeSmithyCLITests.sln;
 
 program CodeSmithyCLITests : IshikoTestsCore
 {
-    archs = x86 x86_64;
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoTasks IshikoTests IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
 
     headers
     {
