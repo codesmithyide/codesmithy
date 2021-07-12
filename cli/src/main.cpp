@@ -76,6 +76,20 @@ void CloneRepository(const std::string& organization, const std::string& name, c
     projectRepository.clone(repositoryURL, targetDirectory);
 }
 
+void CloneRepository2(const std::string& organization, const std::string& name, const std::string& targetDirectory,
+    bool verbose)
+{
+    std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+
+    if (verbose)
+    {
+        std::cout << "Cloning " << organization << "/" << name << " in: " << targetDirectory << std::endl;
+    }
+
+    GitRepository projectRepository;
+    projectRepository.clone(repositoryURL, targetDirectory);
+}
+
 std::string GetMakefilePath(const std::string& makefile)
 {
 #if ISHIKO_OS == ISHIKO_OS_LINUX
@@ -165,9 +179,9 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     if (verbose)
     {
-        std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
+        std::cout << "Set environment variable ISHIKO_CPP to " << value + "/ishiko/cpp" << std::endl;
     }
-    environment.set("ISHIKO_CPP", value.c_str());
+    environment.set("ISHIKO_CPP", (value + "/ishiko/cpp").c_str());
 
     if (verbose)
     {
@@ -201,14 +215,15 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         CloneRepository("codesmithyide", "libgit2", workDirectory, verbose);
 #endif
         CloneRepository("codesmithyide", "project", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-platform", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-errors", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-types", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-process", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-collections", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-filesystem", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-terminal", workDirectory, verbose);
-        CloneRepository("codesmithyide", "ishiko-cpp-tasks", workDirectory, verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-platform", workDirectory + "/codesmithyide/ishiko/cpp/platform", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-errors", workDirectory + "/codesmithyide/ishiko/cpp/errors", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-types", workDirectory + "/codesmithyide/ishiko/cpp/types", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-collections", workDirectory + "/codesmithyide/ishiko/cpp/collections", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-text", workDirectory + "/codesmithyide/ishiko/cpp/text", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-process", workDirectory + "/codesmithyide/ishiko/cpp/process", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-filesystem", workDirectory + "/codesmithyide/ishiko/cpp/filesystem", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-terminal", workDirectory + "/codesmithyide/ishiko/cpp/terminal", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-tasks", workDirectory + "/codesmithyide/ishiko/cpp/tasks", verbose);
         CloneRepository("codesmithyide", "diplodocusdb-core", workDirectory, verbose);
         CloneRepository("codesmithyide", "diplodocusdb-tree-db", workDirectory, verbose);
         CloneRepository("codesmithyide", "version-control", workDirectory, verbose);
@@ -239,19 +254,23 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
         CMakeGenerationOptions options;
         Build(cmakeToolchain, workDirectory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
-        Build(nativeToolchain, workDirectory, "codesmithyide/Errors/Makefiles/VC15/IshikoErrors.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/platform/build/vc15/IshikoPlatform.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Types/Makefiles/VC15/IshikoTypes.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/errors/build/vc15/IshikoErrors.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Process/Makefiles/VC15/IshikoProcess.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/types/build/vc15/IshikoTypes.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Collections/Makefiles/VC15/IshikoCollections.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/collections/build/vc15/IshikoCollections.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/FileSystem/Makefiles/VC15/IshikoFileSystem.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/text/build/vc15/IshikoText.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Terminal/Makefiles/VC15/IshikoTerminal.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/process/build/vc15/IshikoProcess.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "codesmithyide/Tasks/Makefiles/VC15/IshikoTasks.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/filesystem/build/vc15/IshikoFileSystem.sln",
+            environment, verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/terminal/build/vc15/IshikoTerminal.sln", environment,
+            verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/tasks/build/vc15/IshikoTasks.sln", environment,
             verbose);
         Build(nativeToolchain, workDirectory, "codesmithyide/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment,
             verbose);
