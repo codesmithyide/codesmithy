@@ -1,5 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/tests/include/Ishiko/Tests/Core.bkl;
+import $(ishikopath)/tests/include/Ishiko/Tests.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -8,12 +8,12 @@ vs2017.solutionfile = ../vc15/CodeSmithyCLITests.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCLITests.sln;
 vs2013.solutionfile = ../vc12/CodeSmithyCLITests.sln;
 
-program CodeSmithyCLITests : IshikoTestsCore
+program CodeSmithyCLITests : IshikoTests
 {
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += IshikoTestsCore;
+        libs += IshikoTests;
     }
 
     if ($(toolset) != gnu)
