@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyMake");
 
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
+    theTestHarness.environment().setTestDataDirectory("../../data");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<VisualStudioBuildTests>();
