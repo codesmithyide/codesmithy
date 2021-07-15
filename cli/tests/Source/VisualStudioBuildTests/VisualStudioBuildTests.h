@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2016-2021 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,19 +20,21 @@
     IN THE SOFTWARE.
 */
 
-#include "VisualStudioBuildTests/VisualStudioBuildTests.h"
-#include "Ishiko/TestFramework/TestFrameworkCore.h"
+#ifndef _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
+#define _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
 
-using namespace Ishiko::Tests;
+#include <Ishiko/Tests/Core.h>
 
-int main(int argc, char* argv[])
+class VisualStudioBuildTests : public Ishiko::Tests::TestSequence
 {
-    TestHarness theTestHarness("CodeSmithyMake");
+public:
+    VisualStudioBuildTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
 
-    theTestHarness.environment().setTestDataDirectory("../../TestData");
+private:
+    static void BuildTest1(Ishiko::Tests::TestSequence& testSequence);
+    static void BuildTest2(Ishiko::Tests::TestSequence& testSequence);
+    static void BuildTest3(Ishiko::Tests::TestSequence& testSequence);
 
-    TestSequence& theTests = theTestHarness.tests();
-    theTests.append<VisualStudioBuildTests>();
+};
 
-    return theTestHarness.run();
-}
+#endif
