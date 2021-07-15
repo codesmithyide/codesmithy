@@ -1,14 +1,14 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2021 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/CodeSmithyIDE/CodeSmithy/blob/master/LICENSE.txt
+    See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
 #include "CodeSmithy/BuildToolchains.h"
 #include <Ishiko/Terminal/TerminalOutput.h>
 #include <Ishiko/Process.h>
-#include <Ishiko/FileSystem/Utilities.h>
+#include <Ishiko/FileSystem.h>
 #include <Ishiko/Errors.h>
 #include <Ishiko/Platform.h>
 #include <sstream>
@@ -66,6 +66,20 @@ void CloneRepository(const std::string& organization, const std::string& name, c
 {
     std::string repositoryURL = "https://github.com/" + organization + "/" + name;
     std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
+
+    if (verbose)
+    {
+        std::cout << "Cloning " << organization << "/" << name << " in: " << targetDirectory << std::endl;
+    }
+
+    GitRepository projectRepository;
+    projectRepository.clone(repositoryURL, targetDirectory);
+}
+
+void CloneRepository2(const std::string& organization, const std::string& name, const std::string& targetDirectory,
+    bool verbose)
+{
+    std::string repositoryURL = "https://github.com/" + organization + "/" + name;
 
     if (verbose)
     {
@@ -149,7 +163,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     Ishiko::Process::Environment environment = Ishiko::Process::CurrentEnvironment();
 
-    const std::string value = workDirectory + "/CodeSmithyIDE";
+    const std::string value = workDirectory + "/codesmithyide";
 
     if (verbose)
     {
@@ -165,15 +179,15 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     if (verbose)
     {
-        std::cout << "Set environment variable ISHIKO_CPP to " << value << std::endl;
+        std::cout << "Set environment variable ISHIKO_CPP to " << value + "/ishiko/cpp" << std::endl;
     }
-    environment.set("ISHIKO_CPP", value.c_str());
+    environment.set("ISHIKO_CPP", (value + "/ishiko/cpp").c_str());
 
     if (verbose)
     {
-        std::cout << "Set environment variable DIPLODOCUSDB to " << value << std::endl;
+        std::cout << "Set environment variable DIPLODOCUSDB to " << value + "/diplodocusdb" << std::endl;
     }
-    environment.set("DIPLODOCUSDB", value.c_str());
+    environment.set("DIPLODOCUSDB", (value + "/diplodocusdb").c_str());
 
     if (verbose)
     {
@@ -194,26 +208,27 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
     try
     {
-        CloneRepository("CodeSmithyIDE", "pugixml", workDirectory, verbose);
+        CloneRepository("codesmithyide", "pugixml", workDirectory, verbose);
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
-        CloneRepository("CodeSmithyIDE", "libgit2", workDirectory, "x64", verbose);
+        CloneRepository("codesmithyide", "libgit2", workDirectory, "x64", verbose);
 #else
-        CloneRepository("CodeSmithyIDE", "libgit2", workDirectory, verbose);
+        CloneRepository("codesmithyide", "libgit2", workDirectory, verbose);
 #endif
-        CloneRepository("CodeSmithyIDE", "Project", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Platform", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Errors", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Types", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Process", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Collections", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "FileSystem", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Terminal", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Tasks", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "Core", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "TreeDB", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "VersionControl", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "BuildToolchains", workDirectory, verbose);
-        CloneRepository("CodeSmithyIDE", "CodeSmithy", workDirectory, verbose);
+        CloneRepository("codesmithyide", "project", workDirectory, verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-platform", workDirectory + "/codesmithyide/ishiko/cpp/platform", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-errors", workDirectory + "/codesmithyide/ishiko/cpp/errors", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-types", workDirectory + "/codesmithyide/ishiko/cpp/types", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-collections", workDirectory + "/codesmithyide/ishiko/cpp/collections", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-text", workDirectory + "/codesmithyide/ishiko/cpp/text", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-process", workDirectory + "/codesmithyide/ishiko/cpp/process", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-filesystem", workDirectory + "/codesmithyide/ishiko/cpp/filesystem", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-terminal", workDirectory + "/codesmithyide/ishiko/cpp/terminal", verbose);
+        CloneRepository2("codesmithyide", "ishiko-cpp-tasks", workDirectory + "/codesmithyide/ishiko/cpp/tasks", verbose);
+        CloneRepository2("codesmithyide", "diplodocusdb-core", workDirectory + "/codesmithyide/diplodocusdb/core", verbose);
+        CloneRepository2("codesmithyide", "diplodocusdb-tree-db", workDirectory + "/codesmithyide/diplodocusdb/tree-db", verbose);
+        CloneRepository("codesmithyide", "version-control", workDirectory, verbose);
+        CloneRepository("codesmithyide", "build-toolchains", workDirectory, verbose);
+        CloneRepository("codesmithyide", "codesmithy", workDirectory, verbose);
     }
     catch (const std::exception& e)
     {
@@ -233,37 +248,41 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
         CMakeGenerationOptions options("Visual Studio 15 2017 Win64",
             { { "BUILD_SHARED_LIBS", "OFF" }, { "STATIC_CRT", "OFF" } });
-        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/x64/CMakeLists.txt", options, environment,
+        Build(cmakeToolchain, workDirectory, "codesmithyide/libgit2/x64/CMakeLists.txt", options, environment,
             verbose);
 #else
         CMakeGenerationOptions options;
-        Build(cmakeToolchain, workDirectory, "CodeSmithyIDE/libgit2/CMakeLists.txt", options, environment, verbose);
+        Build(cmakeToolchain, workDirectory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Errors/Makefiles/VC15/IshikoErrors.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/platform/build/vc15/IshikoPlatform.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Types/Makefiles/VC15/IshikoTypes.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/errors/build/vc15/IshikoErrors.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Process/Makefiles/VC15/IshikoProcess.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/types/build/vc15/IshikoTypes.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Collections/Makefiles/VC15/IshikoCollections.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/collections/build/vc15/IshikoCollections.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/FileSystem/Makefiles/VC15/IshikoFileSystem.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/text/build/vc15/IshikoText.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Terminal/Makefiles/VC15/IshikoTerminal.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/process/build/vc15/IshikoProcess.sln", environment,
             verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Tasks/Makefiles/VC15/IshikoTasks.sln", environment,
-            verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/Core/Makefiles/VC15/DiplodocusDBCore.sln", environment,
-            verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/TreeDB/Core/Makefiles/VC15/DiplodocusTreeDBCore.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/filesystem/build/vc15/IshikoFileSystem.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/VersionControl/Git/Makefiles/VC15/CodeSmithyGit.sln",
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/terminal/build/vc15/IshikoTerminal.sln", environment,
+            verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/ishiko/cpp/tasks/build/vc15/IshikoTasks.sln", environment,
+            verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/diplodocusdb/core/build/vc15/DiplodocusDBCore.sln", environment,
+            verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/diplodocusdb/tree-db/core/build/vc15/DiplodocusTreeDBCore.sln",
+            environment, verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/version-control/git/build/vc15/CodeSmithyGit.sln",
             environment, verbose);
         Build(nativeToolchain, workDirectory,
-            "CodeSmithyIDE/BuildToolchains/Makefiles/VC15/CodeSmithyBuildToolchains.sln", environment, verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/Core/Makefiles/VC15/CodeSmithyCore.sln",
+            "codesmithyide/build-toolchains/build/vc15/CodeSmithyBuildToolchains.sln", environment, verbose);
+        Build(nativeToolchain, workDirectory, "codesmithyide/codesmithy/core/build/vc15/CodeSmithyCore.sln",
             environment, verbose);
-        Build(nativeToolchain, workDirectory, "CodeSmithyIDE/CodeSmithy/CLI/Makefiles/VC15/CodeSmithyCLI.sln", environment,
+        Build(nativeToolchain, workDirectory, "codesmithyide/codesmithy/cli/build/vc15/CodeSmithyCLI.sln", environment,
             verbose);
     }
     catch (const std::exception& e)
