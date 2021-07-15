@@ -23,13 +23,12 @@ program CodeSmithyCLITests : IshikoTests
 
     headers
     {
-        ../../Source/VisualStudioBuildTests/VisualStudioBuildTests.h
+        ../../src/VisualStudioBuildTests/VisualStudioBuildTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
-
-        ../../Source/VisualStudioBuildTests/VisualStudioBuildTests.cpp
+        ../../src/main.cpp
+        ../../src/VisualStudioBuildTests/VisualStudioBuildTests.cpp
     }
 }
