@@ -4,6 +4,7 @@
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
+#include "BootstrapTests.h"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
 #include <Ishiko/Tests/Core.h>
 
@@ -16,6 +17,7 @@ int main(int argc, char* argv[])
     theTestHarness.environment().setTestDataDirectory("../../data");
 
     TestSequence& theTests = theTestHarness.tests();
+    theTests.append<BootstrapTests>();
     theTests.append<VisualStudioBuildTests>();
 
     return theTestHarness.run();
