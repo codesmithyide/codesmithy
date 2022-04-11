@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb>
   <codesmithy-project-repository>
-    <file-format-version data-type="utf8string">0.1.0</file-format-version>
-    <name data-type="utf8string"></name>
+    <file-format-version data-type="unicode-string">0.1.0</file-format-version>
+    <name data-type="unicode-string" />
     <projects>
       <codesmithy-project>
-        <name data-type="utf8string">MyProjectGroup</name>
-        <type data-type="utf8string">CodeSmithy.Group</type>
+        <name data-type="unicode-string">MyProjectGroup</name>
+        <type data-type="unicode-string">CodeSmithy.Group</type>
         <projects>
           <external-project-link>
-            <location data-type="utf8string">location1</location>
+            <location data-type="unicode-string">location1</location>
           </external-project-link>
         </projects>
       </codesmithy-project>
