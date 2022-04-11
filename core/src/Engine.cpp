@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -47,7 +47,7 @@ void Engine::join()
     m_taskRunner.join();
 }
 
-void Engine::addTask(std::shared_ptr<Task> task)
+void Engine::addTask(std::shared_ptr<UserTask> task)
 {
     m_tasks.add(task);
     m_taskRunner.post(task);

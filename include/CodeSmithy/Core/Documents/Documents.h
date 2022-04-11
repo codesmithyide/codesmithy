@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,7 @@
 #define _CODESMITHY_CORE_DOCUMENTS_DOCUMENTS_H_
 
 #include "Document.h"
-#include "Ishiko/Collections/ObservableVector.h"
+#include <Ishiko/Collections.hpp>
 #include <memory>
 
 namespace CodeSmithy
@@ -37,17 +37,17 @@ namespace CodeSmithy
     purpose. It has a list of all the documents that are part
     of the workspace across all projects.
 */
-class Documents : private Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>
+class Documents : private Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>
 {
 public:
-    typedef Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observer Observer;
+    typedef Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::Observer Observer;
 
     size_t size() const;
     std::shared_ptr<const Document> operator[](size_t index) const;
 
     void add(std::shared_ptr<Document> document);
 
-    Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& observers();
+    Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& observers();
 };
 
 }
