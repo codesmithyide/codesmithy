@@ -6,15 +6,15 @@
 
 #include "BootstrapTests.h"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
-#include <Ishiko/Tests/Core.h>
+#include <Ishiko/TestFramework.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
 int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyMake");
 
-    theTestHarness.environment().setTestDataDirectory("../../data");
+    theTestHarness.context().setTestDataDirectory("../../data");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<BootstrapTests>();

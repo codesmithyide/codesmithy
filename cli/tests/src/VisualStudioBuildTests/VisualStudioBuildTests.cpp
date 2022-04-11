@@ -1,15 +1,15 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
 #include "VisualStudioBuildTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-VisualStudioBuildTests::VisualStudioBuildTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "VisualStudio build tests", environment)
+VisualStudioBuildTests::VisualStudioBuildTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "VisualStudio build tests", context)
 {
     BuildTest1(*this);
     BuildTest2(*this);
@@ -19,7 +19,7 @@ VisualStudioBuildTests::VisualStudioBuildTests(const TestNumber& number, const T
 void VisualStudioBuildTests::BuildTest1(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
-        testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln"
+        testSequence.context().getTestDataDirectory() / "VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln"
         );
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
@@ -30,7 +30,7 @@ void VisualStudioBuildTests::BuildTest1(TestSequence& testSequence)
 void VisualStudioBuildTests::BuildTest2(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
-        testSequence.environment().getTestDataDirectory() / "MissingProject.sln"
+        testSequence.context().getTestDataDirectory() / "MissingProject.sln"
         );
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
@@ -41,7 +41,7 @@ void VisualStudioBuildTests::BuildTest2(TestSequence& testSequence)
 void VisualStudioBuildTests::BuildTest3(TestSequence& testSequence)
 {
     boost::filesystem::path projectPath(
-        testSequence.environment().getTestDataDirectory() / "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln"
+        testSequence.context().getTestDataDirectory() / "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln"
         );
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
