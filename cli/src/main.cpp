@@ -1,16 +1,16 @@
 /*
-    Copyright (c) 2020-2021 Xavier Leclercq
+    Copyright (c) 2020-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
 #include "CodeSmithy/BuildToolchains.h"
-#include <Ishiko/Terminal/TerminalOutput.h>
+#include <Ishiko/BasePlatform.h>
+#include <Ishiko/Errors.hpp>
+#include <Ishiko/FileSystem.hpp>
 #include <Ishiko/Process.h>
-#include <Ishiko/FileSystem.h>
-#include <Ishiko/Errors.h>
-#include <Ishiko/Platform.h>
+#include <Ishiko/Terminal/TerminalOutput.h>
 #include <sstream>
 #include <iostream>
 
