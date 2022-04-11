@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2021 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
