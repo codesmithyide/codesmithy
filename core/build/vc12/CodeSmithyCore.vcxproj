@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP_THIRD_PARTY_FMT)\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/time\include;$(ISHIKO_CPP)/errors\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/user-tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP_THIRD_PARTY_FMT)\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/time\include;$(ISHIKO_CPP)/errors\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/user-tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP_THIRD_PARTY_FMT)\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/time\include;$(ISHIKO_CPP)/errors\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/user-tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/errors\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(DIPLODOCUSDB)/core\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP_THIRD_PARTY_FMT)\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/time\include;$(ISHIKO_CPP)/errors\include;$(DIPLODOCUSDB)/tree-db\include;$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP)/user-tasks\include;$(ISHIKO_CPP_THIRD_PARTY_PUGIXML)\src;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
