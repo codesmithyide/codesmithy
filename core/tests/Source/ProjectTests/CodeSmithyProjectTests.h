@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2021 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,16 +23,16 @@
 #ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_CODESMITHYPROJECTTESTS_H_
 #define _CODESMITHY_TEST_CORE_PROJECTTESTS_CODESMITHYPROJECTTESTS_H_
 
-#include <Ishiko/Tests.h>
+#include <Ishiko/TestFramework.hpp>
 
-class CodeSmithyProjectTests : public Ishiko::Tests::TestSequence
+class CodeSmithyProjectTests : public Ishiko::TestSequence
 {
 public:
-    CodeSmithyProjectTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    CodeSmithyProjectTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ConstructorTest1(Ishiko::Tests::Test& test);
-    static void SaveTest1(Ishiko::Tests::FileComparisonTest& test); 
+    static void ConstructorTest1(Ishiko::Test& test);
+    static void SaveTest1(Ishiko::FileComparisonTest& test); 
 };
 
 #endif

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,13 +22,13 @@
 
 #include "ProjectDescriptionTests.h"
 #include "CodeSmithy/Core/Projects/ProjectDescription.h"
-#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
+#include <DiplodocusDB/TreeDB/XMLTreeDB.hpp>
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectDescription tests", environment)
+ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectDescription tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
@@ -39,35 +39,35 @@ void ProjectDescriptionTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::ProjectDescription description;
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectDescriptionTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectDescription description("My description");
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectDescriptionTests::SaveTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     DiplodocusDB::XMLTreeDB db;
     db.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     CodeSmithy::ProjectDescription description("My description");
     description.save(db, db.root(), error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

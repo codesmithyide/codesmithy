@@ -27,22 +27,22 @@ namespace CodeSmithy
 
 size_t Documents::size() const
 {
-    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::size();
+    return Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::size();
 }
 
 std::shared_ptr<const Document> Documents::operator[](size_t index) const
 {
-    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::operator[](index);
+    return Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::operator[](index);
 }
 
 void Documents::add(std::shared_ptr<Document> document)
 {
-    Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::pushBack(document);
+    Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::pushBack(document);
 }
 
-Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& Documents::observers()
+Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::Observers& Documents::observers()
 {
-    return Ishiko::Collections::ObservableVector<std::shared_ptr<Document>, Documents>::observers();
+    return Ishiko::ObservableVector<std::shared_ptr<Document>, Documents>::observers();
 }
 
 }

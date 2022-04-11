@@ -14,5 +14,5 @@ Release/
 /Lib/*
 !/Lib/README.md
 Documentation/Doxygen/html
-Tests/Core/TestOutput
+Core/Tests/TestOutput
 Tests/UICore/TestOutput

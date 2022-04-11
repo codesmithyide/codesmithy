@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -26,9 +26,8 @@
 #include "ProjectType.h"
 #include "ProjectDescription.h"
 #include "ProjectLocation.h"
-#include "DiplodocusDB/TreeDB/Core/TreeDB.h"
-#include "DiplodocusDB/TreeDB/Core/TreeDBNode.h"
-#include "Ishiko/Errors/Error.h"
+#include <DiplodocusDB/TreeDB/Core.hpp>
+#include <Ishiko/Errors.hpp>
 #include <string>
 
 namespace CodeSmithy

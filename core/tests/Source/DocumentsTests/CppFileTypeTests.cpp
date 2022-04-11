@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "CppFileTypeTests.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CppFileTypeTests::CppFileTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CppFileType tests", environment)
+CppFileTypeTests::CppFileTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CppFileType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,9 +35,9 @@ void CppFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CppFileType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "C++ Source File");
-    ISHTF_FAIL_IF_NOT(type.extensions().size() == 2);
-    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "cpp");
-    ISHTF_FAIL_IF_NOT(type.extensions()[1] == "cxx");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "C++ Source File");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions().size() == 2);
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[0] == "cpp");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[1] == "cxx");
+    ISHIKO_TEST_PASS();
 }

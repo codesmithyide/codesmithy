@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb>
-  <location data-type="utf8string">location1</location>
+  <location data-type="unicode-string">location1</location>
 </diplodocusdb-xmltreedb>

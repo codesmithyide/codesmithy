@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/XMLDocument.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-XMLDocumentTests::XMLDocumentTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "XMLDocument tests", environment)
+XMLDocumentTests::XMLDocumentTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "XMLDocument tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -37,6 +37,6 @@ void XMLDocumentTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::XMLDocumentType> xmlDocumentType = std::make_shared<CodeSmithy::XMLDocumentType>();
     CodeSmithy::XMLDocument document(xmlDocumentType, 1234, "XMLDocumentCreationTest1");
 
-    ISHTF_FAIL_IF_NOT(document.type().name() == "XML");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(document.type().name() == "XML");
+    ISHIKO_TEST_PASS();
 }

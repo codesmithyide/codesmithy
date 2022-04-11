@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "CMakeListsTypeTests.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CMakeListsTypeTests::CMakeListsTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CMakeListsType tests", environment)
+CMakeListsTypeTests::CMakeListsTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CMakeListsType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,8 +35,8 @@ void CMakeListsTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CMakeListsType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "CMakeLists");
-    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
-    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "txt");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "CMakeLists");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[0] == "txt");
+    ISHIKO_TEST_PASS();
 }

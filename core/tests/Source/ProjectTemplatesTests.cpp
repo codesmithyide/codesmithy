@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "ProjectTemplatesTests.h"
 #include "CodeSmithy/Core/ProjectTemplates//ProjectTemplates.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-ProjectTemplatesTests::ProjectTemplatesTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectTemplates tests", environment)
+ProjectTemplatesTests::ProjectTemplatesTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectTemplates tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -34,5 +34,6 @@ ProjectTemplatesTests::ProjectTemplatesTests(const TestNumber& number, const Tes
 void ProjectTemplatesTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTemplates projectTemplates;
-    ISHTF_PASS();
+
+    ISHIKO_TEST_PASS();
 }

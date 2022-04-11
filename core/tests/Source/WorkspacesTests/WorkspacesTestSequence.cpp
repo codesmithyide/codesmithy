@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,14 +24,14 @@
 #include "WorkspaceFileRepositoryTests.h"
 #include "GenericWorkspaceTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-WorkspacesTestSequence::WorkspacesTestSequence(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Workspaces tests", environment)
+WorkspacesTestSequence::WorkspacesTestSequence(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Workspaces tests", context)
 {
-    this->environment().setTestDataDirectory("WorkspaceTests");
-    this->environment().setTestOutputDirectory("WorkspaceTests");
-    this->environment().setReferenceDataDirectory("WorkspaceTests");
+    this->context().setTestDataDirectory("WorkspaceTests");
+    this->context().setTestOutputDirectory("WorkspaceTests");
+    this->context().setReferenceDataDirectory("WorkspaceTests");
 
     append<WorkspaceFileRepositoryTests>();
     append<GenericWorkspaceTests>();

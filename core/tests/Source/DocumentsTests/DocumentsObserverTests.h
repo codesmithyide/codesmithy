@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,16 +23,16 @@
 #ifndef _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 #define _CODESMITHY_TEST_CORE_DOCUMENTSTESTS_DOCUMENTSOBSERVERTESTS_H_
 
-#include <Ishiko/Tests.h>
+#include <Ishiko/TestFramework.hpp>
 #include "CodeSmithy/Core/Documents/Documents.h"
 
-class DocumentsObserverTests : public Ishiko::Tests::TestSequence
+class DocumentsObserverTests : public Ishiko::TestSequence
 {
 public:
-    DocumentsObserverTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    DocumentsObserverTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void OnElementAddedTest1(Ishiko::Tests::Test& test);
+    static void OnElementAddedTest1(Ishiko::Test& test);
 };
 
 class TestDocumentsObserver : public CodeSmithy::Documents::Observer

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-ProjectTypesTests::ProjectTypesTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectTypes tests", environment)
+ProjectTypesTests::ProjectTypesTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectTypes tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("add test 1", AddTest1);
@@ -40,8 +40,8 @@ void ProjectTypesTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
 
-    ISHTF_FAIL_IF_NOT(types.size() == 0);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(types.size() == 0);
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectTypesTests::AddTest1(Test& test)
@@ -52,9 +52,9 @@ void ProjectTypesTests::AddTest1(Test& test)
     CodeSmithy::ProjectTypes types;
     types.add(std::make_shared<CodeSmithy::BakefileProjectType>(documentTypes));
 
-    ISHTF_FAIL_IF_NOT(types.size() == 1);
-    ISHTF_FAIL_IF_NOT(types[0]->name() == "CodeSmithy.Bakefile");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(types.size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(types[0]->name() == "CodeSmithy.Bakefile");
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest1(Test& test)
@@ -64,8 +64,8 @@ void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest1(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("dummy", suitableTypes);
 
-    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 0);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(suitableTypes.size() == 0);
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest2(Test& test)
@@ -79,7 +79,7 @@ void ProjectTypesTests::GetSuitableTypesForDocumentTypeTest2(Test& test)
     std::vector<std::shared_ptr<const CodeSmithy::ProjectType> > suitableTypes;
     types.getSuitableTypesForDocumentType("Bakefile", suitableTypes);
 
-    ISHTF_FAIL_IF_NOT(suitableTypes.size() == 1);
-    ISHTF_FAIL_IF_NOT(suitableTypes[0]->name() == "CodeSmithy.Bakefile");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(suitableTypes.size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(suitableTypes[0]->name() == "CodeSmithy.Bakefile");
+    ISHIKO_TEST_PASS();
 }

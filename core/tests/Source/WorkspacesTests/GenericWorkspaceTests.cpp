@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "GenericWorkspaceTests.h"
 #include "CodeSmithy/Core/Workspaces/GenericWorkspace.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-GenericWorkspaceTests::GenericWorkspaceTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "GenericWorkspace tests", environment)
+GenericWorkspaceTests::GenericWorkspaceTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "GenericWorkspace tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,5 +35,6 @@ void GenericWorkspaceTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectTypes types;
     CodeSmithy::GenericWorkspace workspace("GenericWorkspaceCreationTest1", types);
-    ISHTF_PASS();
+
+    ISHIKO_TEST_PASS();
 }

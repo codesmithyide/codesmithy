@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,15 +24,15 @@
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-BootstrapTests::BootstrapTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Bootstrap tests", environment)
+BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Bootstrap tests", context)
 {
-    this->environment().setTestDataDirectory("BootstrapTests");
-    this->environment().setTestOutputDirectory("BootstrapTests");
-    this->environment().setReferenceDataDirectory("BootstrapTests");
+    this->context().setTestDataDirectory("BootstrapTests");
+    this->context().setTestOutputDirectory("BootstrapTests");
+    this->context().setReferenceDataDirectory("BootstrapTests");
 
     append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
@@ -44,24 +44,24 @@ BootstrapTests::BootstrapTests(const TestNumber& number, const TestEnvironment& 
 // It's also a convenient way to generate it.
 void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory()
+    path outputPath(test.context().getTestOutputDirectory()
         / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory()
+    path referencePath(test.context().getReferenceDataDirectory()
         / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     repository.setName("CodeSmithyIDE");
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithy", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "CodeSmithy");
@@ -101,48 +101,48 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory()
+    path inputPath(test.context().getTestDataDirectory()
         / "Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
     
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "CodeSmithy");
-    ISHTF_FAIL_IF_NOT(project.children().size() == 5);
-    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "pugixml");
-    ISHTF_FAIL_IF_NOT(project.children()[1].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[1].project().name() == "libgit2");
-    ISHTF_FAIL_IF_NOT(project.children()[2].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[2].project().name() == "Ishiko Dependencies");
-    ISHTF_FAIL_IF_NOT(project.children()[3].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[3].project().name() == "wxWidgets Dependencies");
-    ISHTF_FAIL_IF_NOT(project.children()[4].isLink());
-    ISHTF_FAIL_IF_NOT(project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "CodeSmithy");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children().size() == 5);
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].project().name() == "pugixml");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].project().name() == "libgit2");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[2].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[2].project().name() == "Ishiko Dependencies");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[3].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[3].project().name() == "wxWidgets Dependencies");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[4].isLink());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[4].location() == CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
+    ISHIKO_TEST_PASS();
 }

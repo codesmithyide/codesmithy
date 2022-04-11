@@ -23,11 +23,10 @@
 #include "CodeSmithyProjectFileTypeTests.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CodeSmithyProjectFileTypeTests::CodeSmithyProjectFileTypeTests(const TestNumber& number,
-    const TestEnvironment& environment)
-    : TestSequence(number, "CodeSmithyProjectFileType tests", environment)
+CodeSmithyProjectFileTypeTests::CodeSmithyProjectFileTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CodeSmithyProjectFileType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -36,8 +35,8 @@ void CodeSmithyProjectFileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectFileType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "CodeSmithy Project File");
-    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
-    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "csmthprj");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "CodeSmithy Project File");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[0] == "csmthprj");
+    ISHIKO_TEST_PASS();
 }
