@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-BakefileProjectTypeTests::BakefileProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "BakefileProjectType tests", environment)
+BakefileProjectTypeTests::BakefileProjectTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "BakefileProjectType tests", context)
 {
 	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1", SupportedDocumentTypesTest1);
@@ -38,8 +38,8 @@ void BakefileProjectTypeTests::CreationTest1(Test& test)
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType projectType(documentTypes);
 
-    ISHTF_FAIL_IF_NOT(projectType.name() == "CodeSmithy.Bakefile");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(projectType.name() == "CodeSmithy.Bakefile");
+    ISHIKO_TEST_PASS();
 }
 
 void BakefileProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
@@ -49,7 +49,7 @@ void BakefileProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
     const CodeSmithy::BakefileProjectType projectType(documentTypes);
     const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
 
-    ISHTF_FAIL_IF_NOT(supportedDocumentTypes.size() == 1);
-    ISHTF_FAIL_IF_NOT(supportedDocumentTypes[0]->name() == "Bakefile");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(supportedDocumentTypes.size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(supportedDocumentTypes[0]->name() == "Bakefile");
+    ISHIKO_TEST_PASS();
 }

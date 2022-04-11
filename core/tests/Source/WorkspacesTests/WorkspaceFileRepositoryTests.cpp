@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,26 +23,24 @@
 #include "WorkspaceFileRepositoryTests.h"
 #include "CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h"
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& number,
-    const TestEnvironment& environment)
-    : TestSequence(number, "WorkspaceFileRepository tests", environment)
+WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "WorkspaceFileRepository tests", context)
 {
     append<FileComparisonTest>("Creation test 1", CreationTest1);
 }
 
 void WorkspaceFileRepositoryTests::CreationTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
-    path referencePath(test.environment().getReferenceDataDirectory()
-        / "WorkspaceFileRepositoryCreationTest1.csmthws");
+    path outputPath(test.context().getTestOutputDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
+    path referencePath(test.context().getReferenceDataDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
 
     CodeSmithy::WorkspaceFileRepository repository(outputPath);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

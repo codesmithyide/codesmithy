@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,18 +23,18 @@
 #ifndef _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTTYPESTESTS_H_
 #define _CODESMITHY_TEST_CORE_PROJECTTESTS_PROJECTTYPESTESTS_H_
 
-#include <Ishiko/Tests.h>
+#include <Ishiko/TestFramework.hpp>
 
-class ProjectTypesTests : public Ishiko::Tests::TestSequence
+class ProjectTypesTests : public Ishiko::TestSequence
 {
 public:
-    ProjectTypesTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    ProjectTypesTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void AddTest1(Ishiko::Tests::Test& test);
-    static void GetSuitableTypesForDocumentTypeTest1(Ishiko::Tests::Test& test);
-    static void GetSuitableTypesForDocumentTypeTest2(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void AddTest1(Ishiko::Test& test);
+    static void GetSuitableTypesForDocumentTypeTest1(Ishiko::Test& test);
+    static void GetSuitableTypesForDocumentTypeTest2(Ishiko::Test& test);
 };
 
 

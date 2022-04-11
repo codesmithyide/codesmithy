@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 #include "CodeSmithy/Core/Projects/CMake/CMakeProjectType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CMakeProjectTypeTests::CMakeProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CMakeProjectType tests", environment)
+CMakeProjectTypeTests::CMakeProjectTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CMakeProjectType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("supportedDocumentTypes test 1", SupportedDocumentTypesTest1);
@@ -38,8 +38,8 @@ void CMakeProjectTypeTests::CreationTest1(Test& test)
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::CMakeProjectType projectType(documentTypes);
 
-    ISHTF_FAIL_IF_NOT(projectType.name() == "CodeSmithy.CMake");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(projectType.name() == "CodeSmithy.CMake");
+    ISHIKO_TEST_PASS();
 }
 
 void CMakeProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
@@ -49,7 +49,7 @@ void CMakeProjectTypeTests::SupportedDocumentTypesTest1(Test& test)
     const CodeSmithy::CMakeProjectType projectType(documentTypes);
     const CodeSmithy::DocumentTypes& supportedDocumentTypes = projectType.supportedDocumentTypes();
 
-    ISHTF_FAIL_IF_NOT(supportedDocumentTypes.size() == 1);
-    ISHTF_FAIL_IF_NOT(supportedDocumentTypes[0]->name() == "CMakeLists");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(supportedDocumentTypes.size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(supportedDocumentTypes[0]->name() == "CMakeLists");
+    ISHIKO_TEST_PASS();
 }

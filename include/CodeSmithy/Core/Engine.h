@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,8 +23,7 @@
 #ifndef _CODESMITHY_CORE_ENGINE_H_
 #define _CODESMITHY_CORE_ENGINE_H_
 
-#include <Ishiko/Tasks/Tasks.h>
-#include <Ishiko/Tasks/TaskRunner.h>
+#include <Ishiko/UserTasks.hpp>
 
 namespace CodeSmithy
 {
@@ -38,7 +37,7 @@ public:
     void stop();
     void join();
 
-    void addTask(std::shared_ptr<Ishiko::Task> task);
+    void addTask(std::shared_ptr<Ishiko::UserTask> task);
 
 private:
     Ishiko::Tasks m_tasks;

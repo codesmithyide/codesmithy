@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-DocumentsTests::DocumentsTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Documents tests", environment)
+DocumentsTests::DocumentsTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Documents tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("add test 1", AddTest1);
@@ -40,8 +40,8 @@ void DocumentsTests::CreationTest1(Test& test)
 {
     CodeSmithy::Documents documents;
 
-    ISHTF_FAIL_IF_NOT(documents.size() == 0);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(documents.size() == 0);
+    ISHIKO_TEST_PASS();
 }
 
 void DocumentsTests::AddTest1(Test& test)
@@ -50,8 +50,8 @@ void DocumentsTests::AddTest1(Test& test)
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsAddTest1"));
     
-    ISHTF_FAIL_IF_NOT(documents.size() == 1);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(documents.size() == 1);
+    ISHIKO_TEST_PASS();
 }
 
 void DocumentsTests::AddObserverTest1(Test& test)
@@ -60,7 +60,7 @@ void DocumentsTests::AddObserverTest1(Test& test)
     std::shared_ptr<CodeSmithy::Documents::Observer> observer = std::make_shared<CodeSmithy::Documents::Observer>();
     documents.observers().add(observer);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void DocumentsTests::RemoveObserverTest1(Test& test)
@@ -70,5 +70,5 @@ void DocumentsTests::RemoveObserverTest1(Test& test)
     documents.observers().add(observer);
     documents.observers().remove(observer);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
 
-#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
+#include <DiplodocusDB/TreeDB/XMLTreeDB.hpp>
 #include <boost/filesystem/path.hpp>
 #include <string>
 
