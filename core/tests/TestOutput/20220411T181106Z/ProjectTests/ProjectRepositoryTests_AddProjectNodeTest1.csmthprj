@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<diplodocusdb-xmltreedb>
+  <codesmithy-project-repository>
+    <file-format-version data-type="unicode-string">0.1.0</file-format-version>
+    <name data-type="unicode-string">ProjectRepositoryTests_AddProjectNodeTest1</name>
+    <projects>
+      <codesmithy-project>
+        <name data-type="unicode-string">Project1</name>
+      </codesmithy-project>
+    </projects>
+  </codesmithy-project-repository>
+</diplodocusdb-xmltreedb>
