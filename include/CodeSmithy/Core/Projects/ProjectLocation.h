@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,8 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 
-#include "DiplodocusDB/TreeDB/Core/TreeDB.h"
-#include "DiplodocusDB/TreeDB/Core/TreeDBNode.h"
+#include <DiplodocusDB/TreeDB/Core.hpp>
 #include <string>
 
 namespace CodeSmithy

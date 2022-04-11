@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,16 +23,15 @@
 #ifndef _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACEFILEREPOSITORYTESTS_H_
 #define _CODESMITHY_TEST_CORE_WORKSPACESTESTS_WORKSPACEFILEREPOSITORYTESTS_H_
 
-#include <Ishiko/Tests.h>
+#include <Ishiko/TestFramework.hpp>
 
-class WorkspaceFileRepositoryTests : public Ishiko::Tests::TestSequence
+class WorkspaceFileRepositoryTests : public Ishiko::TestSequence
 {
 public:
-    WorkspaceFileRepositoryTests(const Ishiko::Tests::TestNumber& number,
-        const Ishiko::Tests::TestEnvironment& environment);
+    WorkspaceFileRepositoryTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::FileComparisonTest& test);
+    static void CreationTest1(Ishiko::FileComparisonTest& test);
 };
 
 #endif

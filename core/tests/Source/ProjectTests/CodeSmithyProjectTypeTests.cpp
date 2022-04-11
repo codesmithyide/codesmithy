@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "CodeSmithyProjectTypeTests.h"
 #include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProjectType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CodeSmithyProjectTypeTests::CodeSmithyProjectTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CodeSmithyProjectType tests", environment)
+CodeSmithyProjectTypeTests::CodeSmithyProjectTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CodeSmithyProjectType tests", context)
 {
 	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,6 +35,6 @@ void CodeSmithyProjectTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::CodeSmithyProjectType projectType;
 
-    ISHTF_FAIL_IF_NOT(projectType.name() == "CodeSmithy.CodeSmithy");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(projectType.name() == "CodeSmithy.CodeSmithy");
+    ISHIKO_TEST_PASS();
 }

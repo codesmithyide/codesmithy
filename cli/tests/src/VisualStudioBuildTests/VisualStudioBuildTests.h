@@ -1,39 +1,23 @@
 /*
-    Copyright (c) 2016-2021 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
+    Copyright (c) 2016-2022 Xavier Leclercq
+    Released under the MIT License
+    See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
 #ifndef _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
 #define _CODESMITHY_TEST_MAKE_VISUALSTUDIOBUILDTESTS_VISUALSTUDIOBUILDTESTS_H_
 
-#include <Ishiko/Tests/Core.h>
+#include <Ishiko/TestFramework.hpp>
 
-class VisualStudioBuildTests : public Ishiko::Tests::TestSequence
+class VisualStudioBuildTests : public Ishiko::TestSequence
 {
 public:
-    VisualStudioBuildTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    VisualStudioBuildTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void BuildTest1(Ishiko::Tests::TestSequence& testSequence);
-    static void BuildTest2(Ishiko::Tests::TestSequence& testSequence);
-    static void BuildTest3(Ishiko::Tests::TestSequence& testSequence);
+    static void BuildTest1(Ishiko::TestSequence& testSequence);
+    static void BuildTest2(Ishiko::TestSequence& testSequence);
+    static void BuildTest3(Ishiko::TestSequence& testSequence);
 
 };
 

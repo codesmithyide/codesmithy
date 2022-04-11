@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Projects/CodeSmithy/CodeSmithyProject.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CodeSmithyProject tests", environment)
+CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CodeSmithyProject tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<FileComparisonTest>("save test 1", SaveTest1);
@@ -39,32 +39,32 @@ void CodeSmithyProjectTests::ConstructorTest1(Test& test)
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, "CodeSmithyProjectCreationTest1");
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void CodeSmithyProjectTests::SaveTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "CodeSmithyProjectTests_SaveTest1.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

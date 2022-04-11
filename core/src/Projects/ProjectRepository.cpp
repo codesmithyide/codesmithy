@@ -89,7 +89,7 @@ DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& na
          projectNode = m_db.nextSibling(projectNode, projectElementName, error))
     {
         DiplodocusDB::TreeDBValue nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
-            DiplodocusDB::DataType(DiplodocusDB::EPrimitiveDataType::eUTF8String), error);
+            DiplodocusDB::DataType(DiplodocusDB::PrimitiveDataType::unicodeString), error);
         if (error)
         {
             break;

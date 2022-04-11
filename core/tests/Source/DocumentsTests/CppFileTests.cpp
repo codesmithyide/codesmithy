@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/CppFile.h"
 #include "CodeSmithy/Core/Documents/CppFileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CppFileTests::CppFileTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CppFile tests", environment)
+CppFileTests::CppFileTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CppFile tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -37,6 +37,6 @@ void CppFileTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::CppFileType> cppFileType = std::make_shared<CodeSmithy::CppFileType>();
     CodeSmithy::CppFile document(cppFileType, 1234, "CppFileCreationTest1");
 
-    ISHTF_FAIL_IF_NOT(document.type().name() == "C++ Source File");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(document.type().name() == "C++ Source File");
+    ISHIKO_TEST_PASS();
 }

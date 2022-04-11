@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-BakefileTests::BakefileTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Bakefile tests", environment)
+BakefileTests::BakefileTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Bakefile tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -37,6 +37,6 @@ void BakefileTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     CodeSmithy::Bakefile document(bakefileType, 1234, "BakefileCreationTest1");
 
-    ISHTF_FAIL_IF_NOT(document.type().name() == "Bakefile");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(document.type().name() == "Bakefile");
+    ISHIKO_TEST_PASS();
 }

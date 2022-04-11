@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -25,10 +25,10 @@
 #include "CodeSmithy/Core/Documents/Bakefile.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-DocumentsObserverTests::DocumentsObserverTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "DocumentsObserver tests", environment)
+DocumentsObserverTests::DocumentsObserverTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "DocumentsObserver tests", context)
 {
     append<HeapAllocationErrorsTest>("onElementAdded test 1", OnElementAddedTest1);
 }
@@ -42,9 +42,9 @@ void DocumentsObserverTests::OnElementAddedTest1(Test& test)
     std::shared_ptr<CodeSmithy::BakefileType> bakefileType = std::make_shared<CodeSmithy::BakefileType>();
     documents.add(std::make_shared<CodeSmithy::Bakefile>(bakefileType, 1234, "DocumentsObserverOnAddTest1"));
 
-    ISHTF_FAIL_IF_NOT(observer->observedDocuments().size() == 1);
-    ISHTF_FAIL_IF_NOT(observer->observedDocuments()[0].get() == documents[0].get());
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(observer->observedDocuments().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(observer->observedDocuments()[0].get() == documents[0].get());
+    ISHIKO_TEST_PASS();
 }
 
 const std::vector<std::shared_ptr<const CodeSmithy::Document> >& TestDocumentsObserver::observedDocuments() const

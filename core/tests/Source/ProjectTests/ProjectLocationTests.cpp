@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,13 +22,13 @@
 
 #include "ProjectLocationTests.h"
 #include "CodeSmithy/Core/Projects/ProjectLocation.h"
-#include "DiplodocusDB/TreeDB/XMLTreeDB/XMLTreeDB.h"
+#include <DiplodocusDB/TreeDB/XMLTreeDB.hpp>
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectLocation tests", environment)
+ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectLocation tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
@@ -39,35 +39,35 @@ void ProjectLocationTests::ConstructorTest1(Test& test)
 {
     CodeSmithy::ProjectLocation location;
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectLocationTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectLocation location("location1");
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectLocationTests::SaveTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectLocationTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 
     DiplodocusDB::XMLTreeDB db;
     db.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     CodeSmithy::ProjectLocation location("location1");
     location.save(db, db.root(), error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2021 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,17 +23,17 @@
 #ifndef _CODESMITHY_TEST_CORE_ENGINETESTS_ENGINETESTS_H_
 #define _CODESMITHY_TEST_CORE_ENGINETESTS_ENGINETESTS_H_
 
-#include <Ishiko/Tests.h>
+#include <Ishiko/TestFramework.hpp>
 
-class EngineTests : public Ishiko::Tests::TestSequence
+class EngineTests : public Ishiko::TestSequence
 {
 public:
-    EngineTests(const Ishiko::Tests::TestNumber& number, const Ishiko::Tests::TestEnvironment& environment);
+    EngineTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::Tests::Test& test);
-    static void StartTest1(Ishiko::Tests::Test& test);
-    static void AddTaskTest1(Ishiko::Tests::Test& test);
+    static void CreationTest1(Ishiko::Test& test);
+    static void StartTest1(Ishiko::Test& test);
+    static void AddTaskTest1(Ishiko::Test& test);
 };
 
 #endif

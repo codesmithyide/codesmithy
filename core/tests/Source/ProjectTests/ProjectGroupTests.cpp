@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectGroup tests", environment)
+ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectGroup tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
@@ -49,12 +49,12 @@ void ProjectGroupTests::ConstructorTest1(Test& test)
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "ProjectGroupTests_CreationTest1");
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::ConstructorTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest2.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest2.csmthprj");
 
     Ishiko::Error error(0);
 
@@ -62,176 +62,176 @@ void ProjectGroupTests::ConstructorTest2(Test& test)
     repository.open(inputPath, error);
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
-    ISHTF_FAIL_IF_NOT(project.children().size() == 0);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children().size() == 0);
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::ConstructorTest3(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest3.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest3.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_IF_NOT(project.children().size() == 1);
-    ISHTF_FAIL_IF_NOT(project.children()[0].isLink());
-    ISHTF_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHIKO_TEST_ABORT_IF_NOT(project.children().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isLink());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::ConstructorTest4(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest4.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest4.csmthprj");
 
     Ishiko::Error error(0);
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_IF_NOT(project.children().size() == 2);
-    ISHTF_FAIL_IF_NOT(project.children()[0].isLink());
-    ISHTF_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
-    ISHTF_FAIL_IF_NOT(project.children()[1].isLink());
-    ISHTF_FAIL_IF_NOT(project.children()[1].location() == CodeSmithy::ProjectLocation("location2"));
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHIKO_TEST_ABORT_IF_NOT(project.children().size() == 2);
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isLink());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].location() == CodeSmithy::ProjectLocation("location1"));
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].isLink());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].location() == CodeSmithy::ProjectLocation("location2"));
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::ConstructorTest5(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest5.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest5.csmthprj");
 
     Ishiko::Error error(0);
     
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_IF_NOT(project.children().size() == 1);
-    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHIKO_TEST_ABORT_IF_NOT(project.children().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject");
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::ConstructorTest6(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest6.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest6.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "MyProjectGroup");
-    ISHTF_ABORT_IF_NOT(project.children().size() == 2);
-    ISHTF_FAIL_IF_NOT(project.children()[0].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject1");
-    ISHTF_FAIL_IF_NOT(project.children()[1].isProject());
-    ISHTF_FAIL_IF_NOT(project.children()[1].project().name() == "MyChildProject2");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "MyProjectGroup");
+    ISHIKO_TEST_ABORT_IF_NOT(project.children().size() == 2);
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].project().name() == "MyChildProject1");
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].isProject());
+    ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].project().name() == "MyChildProject2");
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::SaveTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -240,32 +240,32 @@ void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
     project.save(repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory()
+    path outputPath(test.context().getTestOutputDirectory()
         / "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory()
+    path referencePath(test.context().getReferenceDataDirectory()
         / "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -274,32 +274,32 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
 
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory()
+    path outputPath(test.context().getTestOutputDirectory()
         / "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory()
+    path referencePath(test.context().getReferenceDataDirectory()
         / "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -310,31 +310,31 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
     
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
 
     Ishiko::Error error(0);
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -347,28 +347,28 @@ void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
     project.save(repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
@@ -379,10 +379,10 @@ void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
 
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }

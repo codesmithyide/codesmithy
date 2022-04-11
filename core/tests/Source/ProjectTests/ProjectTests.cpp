@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -33,14 +33,14 @@
 #include "CodeSmithyProjectTests.h"
 #include "BakefileProjectTests.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-ProjectTests::ProjectTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Project tests", environment)
+ProjectTests::ProjectTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Project tests", context)
 {
-    this->environment().setTestDataDirectory("ProjectTests");
-    this->environment().setTestOutputDirectory("ProjectTests");
-    this->environment().setReferenceDataDirectory("ProjectTests");
+    this->context().setTestDataDirectory("ProjectTests");
+    this->context().setTestOutputDirectory("ProjectTests");
+    this->context().setReferenceDataDirectory("ProjectTests");
 
     append<ProjectGroupTypeTests>();
     append<CodeSmithyProjectTypeTests>();

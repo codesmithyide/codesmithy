@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,12 +22,12 @@
 
 #include "EngineTests.h"
 #include "CodeSmithy/Core/Engine.h"
-#include <Ishiko/Tasks/SyncFunctionTask.h>
+#include <Ishiko/UserTasks.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-EngineTests::EngineTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "Engine tests", environment)
+EngineTests::EngineTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "Engine tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("start test 1", StartTest1);
@@ -37,7 +37,8 @@ EngineTests::EngineTests(const TestNumber& number, const TestEnvironment& enviro
 void EngineTests::CreationTest1(Test& test)
 {
     CodeSmithy::Engine engine;
-    ISHTF_PASS();
+
+    ISHIKO_TEST_PASS();
 }
 
 void EngineTests::StartTest1(Test& test)
@@ -47,7 +48,7 @@ void EngineTests::StartTest1(Test& test)
     engine.stop();
     engine.join();
     
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void EngineTests::AddTaskTest1(Test& test)
@@ -61,6 +62,6 @@ void EngineTests::AddTaskTest1(Test& test)
     engine.stop();
     engine.join();
 
-    ISHTF_FAIL_IF_NOT(task->status() == Ishiko::Task::EStatus::eCompleted);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(task->status() == Ishiko::UserTask::EStatus::eCompleted);
+    ISHIKO_TEST_PASS();
 }
