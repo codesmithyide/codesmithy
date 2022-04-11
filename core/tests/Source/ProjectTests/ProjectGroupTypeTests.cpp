@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "ProjectGroupTypeTests.h"
 #include "CodeSmithy/Core/Projects/ProjectGroupType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-ProjectGroupTypeTests::ProjectGroupTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "ProjectGroupType tests", environment)
+ProjectGroupTypeTests::ProjectGroupTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "ProjectGroupType tests", context)
 {
 	append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,6 +35,6 @@ void ProjectGroupTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::ProjectGroupType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "CodeSmithy.Group");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "CodeSmithy.Group");
+    ISHIKO_TEST_PASS();
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "XMLDocumentTypeTests.h"
 #include "CodeSmithy/Core/Documents/XMLDocumentType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-XMLDocumentTypeTests::XMLDocumentTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "XMLDocumentType tests", environment)
+XMLDocumentTypeTests::XMLDocumentTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "XMLDocumentType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,8 +35,8 @@ void XMLDocumentTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::XMLDocumentType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "XML");
-    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
-    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "xml");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "XML");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[0] == "xml");
+    ISHIKO_TEST_PASS();
 }

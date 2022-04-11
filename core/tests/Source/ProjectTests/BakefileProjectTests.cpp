@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,11 +24,11 @@
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProject.h"
 #include "CodeSmithy/Core/Projects/ProjectRepository.h"
 
-using namespace Ishiko::Tests;
 using namespace boost::filesystem;
+using namespace Ishiko;
 
-BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "BakefileProject tests", environment)
+BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "BakefileProject tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
@@ -41,60 +41,60 @@ void BakefileProjectTests::ConstructorTest1(Test& test)
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, "BakefileProjectTests_ConstructorTest1");
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void BakefileProjectTests::ConstructorTest2(Test& test)
 {
-    path inputPath(test.environment().getTestDataDirectory() / "BakefileProjectTests_ConstructorTest2.csmthprj");
+    path inputPath(test.context().getTestDataDirectory() / "BakefileProjectTests_ConstructorTest2.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("BakefileProject", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
 
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
-    ISHTF_FAIL_IF_NOT(project.name() == "BakefileProject");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "BakefileProject");
+    ISHIKO_TEST_PASS();
 }
 
 void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
 {
-    path outputPath(test.environment().getTestOutputDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
-    path referencePath(test.environment().getReferenceDataDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
+    path outputPath(test.context().getTestOutputDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
+    path referencePath(test.context().getReferenceDataDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
 
     Ishiko::Error error(0);
 
     CodeSmithy::ProjectRepository repository;
     repository.create(outputPath, error);
 
-    ISHTF_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF(error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("BakefileProject", error);
 
-    ISHTF_ABORT_IF(error);
-    ISHTF_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF(error);
+    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
     
     CodeSmithy::DocumentTypes documentTypes;
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
 
-    ISHTF_FAIL_IF(error);
+    ISHIKO_TEST_FAIL_IF(error);
 
     test.setOutputFilePath(outputPath);
     test.setReferenceFilePath(referencePath);
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
