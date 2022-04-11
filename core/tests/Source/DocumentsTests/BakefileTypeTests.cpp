@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,10 +23,10 @@
 #include "BakefileTypeTests.h"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-BakefileTypeTests::BakefileTypeTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "BakefileType tests", environment)
+BakefileTypeTests::BakefileTypeTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "BakefileType tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -35,8 +35,8 @@ void BakefileTypeTests::CreationTest1(Test& test)
 {
     CodeSmithy::BakefileType type;
 
-    ISHTF_FAIL_IF_NOT(type.name() == "Bakefile");
-    ISHTF_FAIL_IF_NOT(type.extensions().size() == 1);
-    ISHTF_FAIL_IF_NOT(type.extensions()[0] == "bkl");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(type.name() == "Bakefile");
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions().size() == 1);
+    ISHIKO_TEST_FAIL_IF_NOT(type.extensions()[0] == "bkl");
+    ISHIKO_TEST_PASS();
 }

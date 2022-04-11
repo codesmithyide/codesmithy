@@ -1,21 +1,22 @@
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/tests/include/Ishiko/Tests.bkl;
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
 codesmithypath = envvar("CODESMITHYIDE");
 import $(codesmithypath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = gnu vs2017 vs2015 vs2013;
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2019.solutionfile = ../vc16/CodeSmithyCoreTests.sln;
 vs2017.solutionfile = ../VC15/CodeSmithyCoreTests.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
-program CodeSmithyCoreTests : CodeSmithyCore, IshikoTests
+program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
 {
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoTasks IshikoTests IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
+        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoTasks IshikoTestFramework IshikoTestFrameworkCore IshikoDiff IshikoFileSystem IshikoProcess IshikoText IshikoErrors boost_filesystem boost_system;
     }
 
     if ($(toolset) != gnu)

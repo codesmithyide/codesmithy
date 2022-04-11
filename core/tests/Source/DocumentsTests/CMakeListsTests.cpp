@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2020 Xavier Leclercq
+    Copyright (c) 2015-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/CMakeLists.h"
 #include "CodeSmithy/Core/Documents/CMakeListsType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CMakeListsTests::CMakeListsTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CMakeLists tests", environment)
+CMakeListsTests::CMakeListsTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CMakeLists tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -37,6 +37,6 @@ void CMakeListsTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::CMakeListsType> cmakelistsType = std::make_shared<CodeSmithy::CMakeListsType>();
     CodeSmithy::CMakeLists document(cmakelistsType, 1234, "CMakeListsCreationTest1");
 
-    ISHTF_FAIL_IF_NOT(document.type().name() == "CMakeLists");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(document.type().name() == "CMakeLists");
+    ISHIKO_TEST_PASS();
 }

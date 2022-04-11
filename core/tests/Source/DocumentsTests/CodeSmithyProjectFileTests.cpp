@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2020 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,10 +24,10 @@
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFile.h"
 #include "CodeSmithy/Core/Documents/CodeSmithyProjectFileType.h"
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-CodeSmithyProjectFileTests::CodeSmithyProjectFileTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "CodeSmithyProjectFile tests", environment)
+CodeSmithyProjectFileTests::CodeSmithyProjectFileTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "CodeSmithyProjectFile tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
@@ -37,6 +37,6 @@ void CodeSmithyProjectFileTests::CreationTest1(Test& test)
     std::shared_ptr<CodeSmithy::CodeSmithyProjectFileType> projectFileType = std::make_shared<CodeSmithy::CodeSmithyProjectFileType>();
     CodeSmithy::CodeSmithyProjectFile document(projectFileType, 1234, "CodeSmithyProjectFileCreationTest1");
 
-    ISHTF_FAIL_IF_NOT(document.type().name() == "CodeSmithy Project File");
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(document.type().name() == "CodeSmithy Project File");
+    ISHIKO_TEST_PASS();
 }
