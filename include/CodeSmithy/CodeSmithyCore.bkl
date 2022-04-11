@@ -6,7 +6,7 @@ ishikopath = envvar("ISHIKO_CPP");
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/pugixml.bkl;
 import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
-import $(ishikopath)/tasks/include/Ishiko/IshikoTasks.bkl;
+import $(ishikopath)/user-tasks/include/Ishiko/UserTasks.bkl;
 
 setting CODESMITHY_ROOT
 {
@@ -14,7 +14,7 @@ setting CODESMITHY_ROOT
     default = '$(CODESMITHYIDE)/codesmithy';
 }
 
-template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoTasks, IshikoCollections, Boost, pugixml
+template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoUserTasks, IshikoCollections, Boost, pugixml
 {
     includedirs += $(CODESMITHY_ROOT)/include;
 
