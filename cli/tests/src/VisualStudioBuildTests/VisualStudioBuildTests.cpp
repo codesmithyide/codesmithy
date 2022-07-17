@@ -18,9 +18,8 @@ VisualStudioBuildTests::VisualStudioBuildTests(const TestNumber& number, const T
 
 void VisualStudioBuildTests::BuildTest1(TestSequence& testSequence)
 {
-    boost::filesystem::path projectPath(
-        testSequence.context().getTestDataDirectory() / "VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln"
-        );
+    boost::filesystem::path projectPath =
+        testSequence.context().getDataPath("VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln");
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
@@ -29,9 +28,7 @@ void VisualStudioBuildTests::BuildTest1(TestSequence& testSequence)
 
 void VisualStudioBuildTests::BuildTest2(TestSequence& testSequence)
 {
-    boost::filesystem::path projectPath(
-        testSequence.context().getTestDataDirectory() / "MissingProject.sln"
-        );
+    boost::filesystem::path projectPath = testSequence.context().getDataPath("MissingProject.sln");
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
@@ -40,9 +37,9 @@ void VisualStudioBuildTests::BuildTest2(TestSequence& testSequence)
 
 void VisualStudioBuildTests::BuildTest3(TestSequence& testSequence)
 {
-    boost::filesystem::path projectPath(
-        testSequence.context().getTestDataDirectory() / "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln"
-        );
+    boost::filesystem::path projectPath =
+        testSequence.context().getDataPath(
+            "VisualStudioProjects/CompilationError/Makefiles/VC14/CompilationError.sln");
 
     std::string commandLine("C:/GitRepositories/CodeSmithyIDE/CodeSmithy/Bin/x64/CodeSmithyMake.exe ");
     commandLine.append(projectPath.string());
