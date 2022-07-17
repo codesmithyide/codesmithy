@@ -186,15 +186,14 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectGroupTests::SaveTest1(FileComparisonTest& test)
+void ProjectGroupTests::SaveTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest1.csmthprj");
-
-    Ishiko::Error error(0);
+    const char* outputName = "ProjectGroupTests_SaveTest1.csmthprj";
+    
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -206,25 +205,22 @@ void ProjectGroupTests::SaveTest1(FileComparisonTest& test)
     CodeSmithy::ProjectGroupType type;
     CodeSmithy::ProjectGroup project(type, "MyProjectGroup");
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
-void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
+void ProjectGroupTests::SaveTest2(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest2.csmthprj");
-
+    const char* outputName = "ProjectGroupTests_SaveTest2.csmthprj";
+    
     Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -239,12 +235,10 @@ void ProjectGroupTests::SaveTest2(FileComparisonTest& test)
     // We call save() twice on purpose
     project.save(repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 

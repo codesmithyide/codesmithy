@@ -69,15 +69,14 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
+void BakefileProjectTests::SaveTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "BakefileProjectTests_SaveTest1.csmthprj");
-
-    Ishiko::Error error(0);
+    const char* outputName = "BakefileProjectTests_SaveTest1.csmthprj";
+    
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -90,11 +89,9 @@ void BakefileProjectTests::SaveTest1(FileComparisonTest& test)
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
