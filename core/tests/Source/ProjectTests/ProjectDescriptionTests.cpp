@@ -32,7 +32,7 @@ ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
-    append<FileComparisonTest>("save test 1", SaveTest1);
+    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void ProjectDescriptionTests::ConstructorTest1(Test& test)

@@ -103,7 +103,7 @@ void ProjectGroupTests::ConstructorTest3(Test& test)
 
 void ProjectGroupTests::ConstructorTest4(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest4.csmthprj");
+    path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest4.csmthprj");
 
     Ishiko::Error error(0);
 
@@ -132,7 +132,7 @@ void ProjectGroupTests::ConstructorTest4(Test& test)
 
 void ProjectGroupTests::ConstructorTest5(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest5.csmthprj");
+    path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest5.csmthprj");
 
     Ishiko::Error error(0);
     
@@ -159,7 +159,7 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
 
 void ProjectGroupTests::ConstructorTest6(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory() / "ProjectGroupTests_ConstructorTest6.csmthprj");
+    path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest6.csmthprj");
 
     Ishiko::Error error;
 

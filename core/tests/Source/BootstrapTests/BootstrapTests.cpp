@@ -30,9 +30,9 @@ using namespace Ishiko;
 BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Bootstrap tests", context)
 {
-    context().setDataDirectory("BootstrapTests");
-    context().setOutputDirectory("BootstrapTests");
-    context().setReferenceDirectory("BootstrapTests");
+    this->context().setDataDirectory("BootstrapTests");
+    this->context().setOutputDirectory("BootstrapTests");
+    this->context().setReferenceDirectory("BootstrapTests");
 
     append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
@@ -112,8 +112,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory()
-        / "Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
+    path inputPath = test.context().getDataPath("Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
     Ishiko::Error error;
     

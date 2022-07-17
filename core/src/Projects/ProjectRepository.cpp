@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2022 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -55,6 +55,11 @@ void ProjectRepository::open(const boost::filesystem::path& path, Ishiko::Error&
     DiplodocusDB::TreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
     m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
     m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
+}
+
+void ProjectRepository::close()
+{
+    m_db.close();
 }
 
 std::string ProjectRepository::name() const

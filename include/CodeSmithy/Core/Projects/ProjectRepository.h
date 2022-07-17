@@ -36,6 +36,7 @@ class ProjectRepository
 public:
     void create(const boost::filesystem::path& path, Ishiko::Error& error);
     void open(const boost::filesystem::path& path, Ishiko::Error& error);
+    void close();
 
     std::string name() const;
     void setName(const std::string& name);

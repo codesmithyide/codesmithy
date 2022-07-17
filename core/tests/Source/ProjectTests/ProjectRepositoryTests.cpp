@@ -30,11 +30,11 @@ ProjectRepositoryTests::ProjectRepositoryTests(const TestNumber& number, const T
     : TestSequence(number, "ProjectRepository tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
-    append<FileComparisonTest>("create test 1", CreateTest1);
+    append<HeapAllocationErrorsTest>("create test 1", CreateTest1);
     append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
     append<HeapAllocationErrorsTest>("open test 2", OpenTest2);
-    append<FileComparisonTest>("setName test 1", SetNameTest1);
-    append<FileComparisonTest>("addProjectNode test 1", AddProjectNodeTest1);
+    append<HeapAllocationErrorsTest>("setName test 1", SetNameTest1);
+    append<HeapAllocationErrorsTest>("addProjectNode test 1", AddProjectNodeTest1);
     append<HeapAllocationErrorsTest>("getProjectNode test 1", GetProjectNodeTest1);
 }
 
@@ -45,22 +45,18 @@ void ProjectRepositoryTests::ConstructorTest1(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectRepositoryTests::CreateTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::CreateTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectRepositoryTests_CreateTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectRepositoryTests_CreateTest1.csmthprj");
-
+    const char* outputName = "ProjectRepositoryTests_CreateTest1.csmthprj";
+    
     Ishiko::Error error;
-
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "");
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
@@ -92,23 +88,19 @@ void ProjectRepositoryTests::OpenTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectRepositoryTests::SetNameTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::SetNameTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectRepositoryTests_SetNameTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectRepositoryTests_SetNameTest1.csmthprj");
+    const char* outputName = "ProjectRepositoryTests_SetNameTest1.csmthprj";
 
     Ishiko::Error error;
-
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_SetNameTest1");
+    repository.close();
     
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_SetNameTest1");
-    
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
