@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyMake");
 
-    theTestHarness.context().setTestDataDirectory("../../data");
+    theTestHarness.context().setDataDirectory("../../data");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<BootstrapTests>();

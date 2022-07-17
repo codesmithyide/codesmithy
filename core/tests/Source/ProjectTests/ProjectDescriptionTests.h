@@ -33,7 +33,7 @@ public:
 private:
     static void ConstructorTest1(Ishiko::Test& test);
     static void ConstructorTest2(Ishiko::Test& test);
-    static void SaveTest1(Ishiko::FileComparisonTest& test);
+    static void SaveTest1(Ishiko::Test& test);
 };
 
 #endif

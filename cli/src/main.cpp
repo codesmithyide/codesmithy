@@ -9,7 +9,7 @@
 #include <Ishiko/BasePlatform.h>
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>
-#include <Ishiko/Process.h>
+#include <Ishiko/Process.hpp>
 #include <Ishiko/Terminal/TerminalOutput.h>
 #include <sstream>
 #include <iostream>
@@ -105,7 +105,7 @@ std::string GetMakefilePath(const std::string& makefile)
 }
 
 void Build(const MakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
-    const Ishiko::Process::Environment& environment, bool verbose)
+    const Ishiko::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -118,7 +118,7 @@ void Build(const MakeToolchain& toolchain, const std::string& workDirectory, con
 }
 
 void Build(const MSBuildToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
-    const Ishiko::Process::Environment& environment, bool verbose)
+    const Ishiko::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -131,7 +131,7 @@ void Build(const MSBuildToolchain& toolchain, const std::string& workDirectory, 
 }
 
 void Build(const CMakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
-    const CMakeGenerationOptions& options, const Ishiko::Process::Environment& environment, bool verbose)
+    const CMakeGenerationOptions& options, const Ishiko::Environment& environment, bool verbose)
 {
     std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
 
@@ -161,7 +161,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
  
     CMakeToolchain cmakeToolchain;
 
-    Ishiko::Process::Environment environment = Ishiko::Process::CurrentEnvironment();
+    Ishiko::Environment environment = Ishiko::CurrentEnvironment();
 
     const std::string value = workDirectory + "/codesmithyide";
 
@@ -198,7 +198,7 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     if (verbose)
     {
         std::cout << "Environment: " << std::endl;
-        for (const Ishiko::Process::EnvironmentVariable& variable : environment)
+        for (const Ishiko::EnvironmentVariable& variable : environment)
         {
             std::cout << variable.name() << "=" << variable.value() << std::endl;
         }
