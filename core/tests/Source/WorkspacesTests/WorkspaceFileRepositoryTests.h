@@ -31,7 +31,7 @@ public:
     WorkspaceFileRepositoryTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreationTest1(Ishiko::FileComparisonTest& test);
+    static void CreationTest1(Ishiko::Test& test);
 };
 
 #endif

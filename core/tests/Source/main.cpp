@@ -34,9 +34,9 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyCore");
 
-    theTestHarness.context().setTestDataDirectory("../../TestData");
-    theTestHarness.context().setTestOutputDirectory("../../TestOutput");
-    theTestHarness.context().setReferenceDataDirectory("../../ReferenceData");
+    theTestHarness.context().setDataDirectory("../../TestData");
+    theTestHarness.context().setOutputDirectory("../../TestOutput");
+    theTestHarness.context().setReferenceDirectory("../../ReferenceData");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<DocumentsTestSequence>();

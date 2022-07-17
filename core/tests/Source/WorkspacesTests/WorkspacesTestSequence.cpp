@@ -29,9 +29,9 @@ using namespace Ishiko;
 WorkspacesTestSequence::WorkspacesTestSequence(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Workspaces tests", context)
 {
-    this->context().setTestDataDirectory("WorkspaceTests");
-    this->context().setTestOutputDirectory("WorkspaceTests");
-    this->context().setReferenceDataDirectory("WorkspaceTests");
+    context().setDataDirectory("WorkspaceTests");
+    context().setOutputDirectory("WorkspaceTests");
+    context().setReferenceDirectory("WorkspaceTests");
 
     append<WorkspaceFileRepositoryTests>();
     append<GenericWorkspaceTests>();

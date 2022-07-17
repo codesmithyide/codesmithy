@@ -38,9 +38,9 @@ using namespace Ishiko;
 ProjectTests::ProjectTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Project tests", context)
 {
-    this->context().setTestDataDirectory("ProjectTests");
-    this->context().setTestOutputDirectory("ProjectTests");
-    this->context().setReferenceDataDirectory("ProjectTests");
+    context().setDataDirectory("ProjectTests");
+    context().setOutputDirectory("ProjectTests");
+    context().setReferenceDirectory("ProjectTests");
 
     append<ProjectGroupTypeTests>();
     append<CodeSmithyProjectTypeTests>();

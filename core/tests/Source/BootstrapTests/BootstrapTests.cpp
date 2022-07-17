@@ -30,9 +30,9 @@ using namespace Ishiko;
 BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Bootstrap tests", context)
 {
-    this->context().setTestDataDirectory("BootstrapTests");
-    this->context().setTestOutputDirectory("BootstrapTests");
-    this->context().setReferenceDataDirectory("BootstrapTests");
+    context().setDataDirectory("BootstrapTests");
+    context().setOutputDirectory("BootstrapTests");
+    context().setReferenceDirectory("BootstrapTests");
 
     append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);

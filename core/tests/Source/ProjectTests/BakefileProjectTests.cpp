@@ -46,7 +46,7 @@ void BakefileProjectTests::ConstructorTest1(Test& test)
 
 void BakefileProjectTests::ConstructorTest2(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory() / "BakefileProjectTests_ConstructorTest2.csmthprj");
+    path inputPath = test.context().getDataPath("BakefileProjectTests_ConstructorTest2.csmthprj");
 
     Ishiko::Error error;
 
