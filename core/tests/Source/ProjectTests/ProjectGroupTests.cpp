@@ -36,12 +36,12 @@ ProjectGroupTests::ProjectGroupTests(const TestNumber& number, const TestContext
     append<HeapAllocationErrorsTest>("Constructor test 4", ConstructorTest4);
     append<HeapAllocationErrorsTest>("Constructor test 5", ConstructorTest5);
     append<HeapAllocationErrorsTest>("Constructor test 6", ConstructorTest6);
-    append<FileComparisonTest>("save test 1", SaveTest1);
-    append<FileComparisonTest>("save test 2", SaveTest2);
-    append<FileComparisonTest>("addExternalProjectLink test 1", AddExternalProjectLinkTest1);
-    append<FileComparisonTest>("addExternalProjectLink test 2", AddExternalProjectLinkTest2);
-    append<FileComparisonTest>("save test 3", SaveTest3);
-    append<FileComparisonTest>("addProject test 1", AddProjectTest1);
+    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
+    append<HeapAllocationErrorsTest>("save test 2", SaveTest2);
+    append<HeapAllocationErrorsTest>("addExternalProjectLink test 1", AddExternalProjectLinkTest1);
+    append<HeapAllocationErrorsTest>("addExternalProjectLink test 2", AddExternalProjectLinkTest2);
+    append<HeapAllocationErrorsTest>("save test 3", SaveTest3);
+    append<HeapAllocationErrorsTest>("addProject test 1", AddProjectTest1);
 }
 
 void ProjectGroupTests::ConstructorTest1(Test& test)

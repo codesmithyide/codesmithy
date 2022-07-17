@@ -31,7 +31,7 @@ CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const T
     : TestSequence(number, "CodeSmithyProject tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
-    append<FileComparisonTest>("save test 1", SaveTest1);
+    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void CodeSmithyProjectTests::ConstructorTest1(Test& test)

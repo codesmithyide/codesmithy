@@ -104,24 +104,19 @@ void ProjectRepositoryTests::SetNameTest1(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectRepositoryTests::AddProjectNodeTest1(FileComparisonTest& test)
+void ProjectRepositoryTests::AddProjectNodeTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory()
-        / "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj");
+    const char* outputName = "ProjectRepositoryTests_AddProjectNodeTest1.csmthprj";
 
     Ishiko::Error error;
-
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
     DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1", error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
