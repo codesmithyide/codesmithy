@@ -242,17 +242,14 @@ void ProjectGroupTests::SaveTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
+void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory()
-        / "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory()
-        / "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj");
-
+    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj";
+   
     Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -267,26 +264,21 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(FileComparisonTest& test)
     project.addExternalProjectLink(CodeSmithy::ProjectLocation("location1"));
 
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
-void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
+void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory()
-        / "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory()
-        / "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj");
-
+    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj";
+  
     Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -303,25 +295,22 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(FileComparisonTest& test)
     project.addExternalProjectLink(CodeSmithy::ProjectLocation("location3"));
     
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
-void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
+void ProjectGroupTests::SaveTest3(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_SaveTest3.csmthprj");
+    const char* outputName = "ProjectGroupTests_SaveTest3.csmthprj";
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -340,24 +329,21 @@ void ProjectGroupTests::SaveTest3(FileComparisonTest& test)
     // We call save() twice on purpose
     project.save(repository.db(), projectNode, error);
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
-void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
+void ProjectGroupTests::AddProjectTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectGroupTests_AddProjectTest1.csmthprj");
-
+    const char* outputName = "ProjectGroupTests_AddProjectTest1.csmthprj";
+    
     Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
@@ -372,11 +358,9 @@ void ProjectGroupTests::AddProjectTest1(FileComparisonTest& test)
     project.addProject(childProject);
 
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
