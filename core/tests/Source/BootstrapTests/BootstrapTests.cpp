@@ -30,11 +30,11 @@ using namespace Ishiko;
 BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "Bootstrap tests", context)
 {
-    this->context().setTestDataDirectory("BootstrapTests");
-    this->context().setTestOutputDirectory("BootstrapTests");
-    this->context().setReferenceDataDirectory("BootstrapTests");
+    this->context().setDataDirectory("BootstrapTests");
+    this->context().setOutputDirectory("BootstrapTests");
+    this->context().setReferenceDirectory("BootstrapTests");
 
-    append<FileComparisonTest>("Bootstrap ProjectFileRepository creation test 1",
+    append<HeapAllocationErrorsTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
     append<HeapAllocationErrorsTest>("Bootstap ProjectFileRepository test 2",
         ProjectFileRepositoryCreationTest2);
@@ -42,17 +42,14 @@ BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& cont
 
 // This tests that we are able to generate the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 // It's also a convenient way to generate it.
-void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test)
+void BootstrapTests::ProjectFileRepositoryCreationTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory()
-        / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory()
-        / "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj");
-
+    const char* outputName = "Bootstrap_ProjectFileRepository_CreationTest1.csmthprj";
+   
     Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
-    repository.create(outputPath, error);
+    repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -100,20 +97,17 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(FileComparisonTest& test
     project.addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/CodeSmithy"));
     
     project.save(repository.db(), projectNode, error);
+    repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
 
 // This tests that we can succesfully open the CodeSmithy/Project/CodeSmithy/CodeSmithy.csmthprj file.
 void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 {
-    path inputPath(test.context().getTestDataDirectory()
-        / "Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
+    path inputPath = test.context().getDataPath("Bootstrap_ProjectFileRepository_CreationTest2.csmthprj");
 
     Ishiko::Error error;
     

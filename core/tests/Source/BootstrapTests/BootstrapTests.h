@@ -31,7 +31,7 @@ public:
     BootstrapTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void ProjectFileRepositoryCreationTest1(Ishiko::FileComparisonTest& test);
+    static void ProjectFileRepositoryCreationTest1(Ishiko::Test& test);
     static void ProjectFileRepositoryCreationTest2(Ishiko::Test& test);
 };
 

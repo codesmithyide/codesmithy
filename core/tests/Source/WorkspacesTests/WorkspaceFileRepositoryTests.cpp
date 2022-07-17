@@ -29,18 +29,15 @@ using namespace Ishiko;
 WorkspaceFileRepositoryTests::WorkspaceFileRepositoryTests(const TestNumber& number, const TestContext& context)
     : TestSequence(number, "WorkspaceFileRepository tests", context)
 {
-    append<FileComparisonTest>("Creation test 1", CreationTest1);
+    append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
 }
 
-void WorkspaceFileRepositoryTests::CreationTest1(FileComparisonTest& test)
+void WorkspaceFileRepositoryTests::CreationTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
-    path referencePath(test.context().getReferenceDataDirectory() / "WorkspaceFileRepositoryCreationTest1.csmthws");
+    const char* outputName = "WorkspaceFileRepositoryCreationTest1.csmthws";
+  
+    CodeSmithy::WorkspaceFileRepository repository(test.context().getOutputPath(outputName));
 
-    CodeSmithy::WorkspaceFileRepository repository(outputPath);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }

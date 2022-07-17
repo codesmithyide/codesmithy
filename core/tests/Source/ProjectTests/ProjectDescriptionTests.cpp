@@ -32,7 +32,7 @@ ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
-    append<FileComparisonTest>("save test 1", SaveTest1);
+    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void ProjectDescriptionTests::ConstructorTest1(Test& test)
@@ -49,25 +49,22 @@ void ProjectDescriptionTests::ConstructorTest2(Test& test)
     ISHIKO_TEST_PASS();
 }
 
-void ProjectDescriptionTests::SaveTest1(FileComparisonTest& test)
+void ProjectDescriptionTests::SaveTest1(Test& test)
 {
-    path outputPath(test.context().getTestOutputDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
-    path referencePath(test.context().getReferenceDataDirectory() / "ProjectDescriptionTests_SaveTest1.csmthprj");
-
+    const char* outputName = "ProjectDescriptionTests_SaveTest1.csmthprj";
+   
     Ishiko::Error error;
 
     DiplodocusDB::XMLTreeDB db;
-    db.create(outputPath, error);
+    db.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
     CodeSmithy::ProjectDescription description("My description");
     description.save(db, db.root(), error);
+    db.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-
-    test.setOutputFilePath(outputPath);
-    test.setReferenceFilePath(referencePath);
-
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }

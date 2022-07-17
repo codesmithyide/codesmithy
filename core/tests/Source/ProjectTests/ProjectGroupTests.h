@@ -37,12 +37,12 @@ private:
     static void ConstructorTest4(Ishiko::Test& test);
     static void ConstructorTest5(Ishiko::Test& test);
     static void ConstructorTest6(Ishiko::Test& test);
-    static void SaveTest1(Ishiko::FileComparisonTest& test);
-    static void SaveTest2(Ishiko::FileComparisonTest& test);
-    static void AddExternalProjectLinkTest1(Ishiko::FileComparisonTest& test);
-    static void AddExternalProjectLinkTest2(Ishiko::FileComparisonTest& test);
-    static void SaveTest3(Ishiko::FileComparisonTest& test);
-    static void AddProjectTest1(Ishiko::FileComparisonTest& test);
+    static void SaveTest1(Ishiko::Test& test);
+    static void SaveTest2(Ishiko::Test& test);
+    static void AddExternalProjectLinkTest1(Ishiko::Test& test);
+    static void AddExternalProjectLinkTest2(Ishiko::Test& test);
+    static void SaveTest3(Ishiko::Test& test);
+    static void AddProjectTest1(Ishiko::Test& test);
 };
 
 #endif
