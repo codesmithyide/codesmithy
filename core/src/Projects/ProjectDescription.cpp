@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -35,7 +35,7 @@ void ProjectDescription::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode
     if (m_plainTestDescription.size() > 0)
     {
         DiplodocusDB::TreeDBNode descriptionNode = db.setChildNode(node, "description", error);
-        db.setChildNode(descriptionNode, "text", DiplodocusDB::TreeDBValue::UTF8String(m_plainTestDescription), error);
+        db.setChildNode(descriptionNode, "text", DiplodocusDB::Value::UTF8String(m_plainTestDescription), error);
     }
 }
 
