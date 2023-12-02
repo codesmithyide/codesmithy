@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2022 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -39,12 +39,12 @@ void ProjectRepository::create(const boost::filesystem::path& path, Ishiko::Erro
 
     // TODO : everything is committed immediately but I may be better off using a transaction
     // TODO : handle errors
-    DiplodocusDB::TreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
+    DiplodocusDB::XMLTreeDBNode rootNode = m_db.appendChildNode(m_db.root(), rootElementName, error);
     if (rootNode)
     {
-        m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::TreeDBValue::UTF8String("0.1.0"), error);
-        m_nameNode = m_db.appendChildNode(rootNode, repositoryNameElementName,
-            DiplodocusDB::TreeDBValue::UTF8String(""), error);
+        m_db.appendChildNode(rootNode, versionElementName, DiplodocusDB::Value::UTF8String("0.1.0"), error);
+        m_nameNode =
+            m_db.appendChildNode(rootNode, repositoryNameElementName, DiplodocusDB::Value::UTF8String(""), error);
         m_projectsNode = m_db.appendChildNode(rootNode, repositoryProjectsElementName, error);
     }
 }
@@ -52,7 +52,7 @@ void ProjectRepository::create(const boost::filesystem::path& path, Ishiko::Erro
 void ProjectRepository::open(const boost::filesystem::path& path, Ishiko::Error& error)
 {
     m_db.open(path, error);
-    DiplodocusDB::TreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
+    DiplodocusDB::XMLTreeDBNode projectRoot = m_db.child(m_db.root(), rootElementName, error);
     m_nameNode = m_db.child(projectRoot, repositoryNameElementName, error);
     m_projectsNode = m_db.child(projectRoot, repositoryProjectsElementName, error);
 }
@@ -68,7 +68,7 @@ std::string ProjectRepository::name() const
     if (m_nameNode)
     {
         // TODO: need to cache the name to avoid error
-        Ishiko::Error error(0);
+        Ishiko::Error error;
         result = m_db.value(m_nameNode, error).asUTF8String();
     }
     return result;
@@ -77,8 +77,8 @@ std::string ProjectRepository::name() const
 void ProjectRepository::setName(const std::string& name)
 {
     // TODO : should setName commit immediately?
-    Ishiko::Error error(0);
-    m_db.setValue(m_nameNode, DiplodocusDB::TreeDBValue::UTF8String(name), error);
+    Ishiko::Error error;
+    m_db.setValue(m_nameNode, DiplodocusDB::Value::UTF8String(name), error);
 }
 
 DiplodocusDB::XMLTreeDB& ProjectRepository::db()
@@ -86,14 +86,14 @@ DiplodocusDB::XMLTreeDB& ProjectRepository::db()
     return m_db;
 }
 
-DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode ProjectRepository::getProjectNode(const std::string& name, Ishiko::Error& error)
 {
-    DiplodocusDB::TreeDBNode result;
-    for (DiplodocusDB::TreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
+    DiplodocusDB::XMLTreeDBNode result;
+    for (DiplodocusDB::XMLTreeDBNode projectNode = m_db.child(m_projectsNode, projectElementName, error);
          projectNode; 
          projectNode = m_db.nextSibling(projectNode, projectElementName, error))
     {
-        DiplodocusDB::TreeDBValue nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
+        DiplodocusDB::Value nameNodeValue = m_db.childValue(projectNode, projectNameElementName,
             DiplodocusDB::DataType(DiplodocusDB::PrimitiveDataType::unicodeString), error);
         if (error)
         {
@@ -108,18 +108,18 @@ DiplodocusDB::TreeDBNode ProjectRepository::getProjectNode(const std::string& na
     return result;
 }
 
-DiplodocusDB::TreeDBNode ProjectRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
+DiplodocusDB::XMLTreeDBNode ProjectRepository::addProjectNode(const std::string& name, Ishiko::Error& error)
 {
     if (m_projectsNode)
     {
-        DiplodocusDB::TreeDBNode projectNode = m_db.appendChildNode(m_projectsNode, projectElementName, error);
-        DiplodocusDB::TreeDBNode nameNode = m_db.appendChildNode(projectNode, projectNameElementName,
-            DiplodocusDB::TreeDBValue::UTF8String(name), error);
-        return DiplodocusDB::TreeDBNode(projectNode);
+        DiplodocusDB::XMLTreeDBNode projectNode = m_db.appendChildNode(m_projectsNode, projectElementName, error);
+        DiplodocusDB::XMLTreeDBNode nameNode = m_db.appendChildNode(projectNode, projectNameElementName,
+            DiplodocusDB::Value::UTF8String(name), error);
+        return DiplodocusDB::XMLTreeDBNode(projectNode);
     }
     else
     {
-        return DiplodocusDB::TreeDBNode();
+        return DiplodocusDB::XMLTreeDBNode();
     }
 }
 
