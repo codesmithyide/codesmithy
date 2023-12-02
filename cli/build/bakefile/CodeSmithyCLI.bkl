@@ -21,7 +21,7 @@ program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoUserTasks IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
+        libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoWorkflows IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
     }
 
     if ($(toolset) != gnu)
