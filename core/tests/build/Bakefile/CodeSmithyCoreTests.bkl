@@ -1,6 +1,6 @@
-ishikopath = envvar("ISHIKO_CPP");
+ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
-codesmithypath = envvar("CODESMITHYIDE");
+codesmithypath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithypath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
@@ -16,7 +16,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyCore DiplodocusXMLTreeDB DiplodocusTreeDBCore DiplodocusDBCore IshikoUserTasks IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoErrors;
+        libs += CodeSmithyCore DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoWorkflows IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors;
         libs += fmt boost_filesystem boost_system;
     }
 

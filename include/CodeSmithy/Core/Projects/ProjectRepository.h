@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2022 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -20,10 +20,10 @@
     IN THE SOFTWARE.
 */
 
-#ifndef _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
-#define _CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H_
+#ifndef GUARD_CODESMITHYIDE_CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H
+#define GUARD_CODESMITHYIDE_CODESMITHY_CORE_PROJECTS_PROJECTREPOSITORY_H
 
-#include <DiplodocusDB/TreeDB/XMLTreeDB.hpp>
+#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <boost/filesystem/path.hpp>
 #include <string>
 
@@ -44,15 +44,15 @@ public:
     // TODO: need to find a better way to encapsulate the XMLTreeDB
     DiplodocusDB::XMLTreeDB& db();
     
-    DiplodocusDB::TreeDBNode getProjectNode(const std::string& name, Ishiko::Error& error);
-    DiplodocusDB::TreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
+    DiplodocusDB::XMLTreeDBNode getProjectNode(const std::string& name, Ishiko::Error& error);
+    DiplodocusDB::XMLTreeDBNode addProjectNode(const std::string& name, Ishiko::Error& error);
 
 private:
     // TODO : mutable because used in name(), fix that
     mutable DiplodocusDB::XMLTreeDB m_db;
     // TODO : mutable because used in name(), fix that
-    mutable DiplodocusDB::TreeDBNode m_nameNode;
-    DiplodocusDB::TreeDBNode m_projectsNode;
+    mutable DiplodocusDB::XMLTreeDBNode m_nameNode;
+    DiplodocusDB::XMLTreeDBNode m_projectsNode;
 };
 
 }

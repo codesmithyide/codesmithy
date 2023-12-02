@@ -1,20 +1,20 @@
-codesmithyidepath = envvar("CODESMITHYIDE");
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
-diplodocusdbpath = envvar("DIPLODOCUSDB");
-import $(diplodocusdbpath)/tree-db/include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
-ishikopath = envvar("ISHIKO_CPP");
+diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
+import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
+ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/pugixml.bkl;
-import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
-import $(ishikopath)/user-tasks/include/Ishiko/UserTasks.bkl;
+import $(ishikopath)/workflows/include/Ishiko/Workflows.bkl;
 
 setting CODESMITHY_ROOT
 {
     help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHYIDE)/codesmithy';
+    default = '$(CODESMITHYIDE_ROOT)/codesmithy';
 }
 
-template CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoUserTasks, IshikoCollections, Boost, pugixml
+template CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows, IshikoCollections, Boost, pugixml
 {
     includedirs += $(CODESMITHY_ROOT)/include;
 

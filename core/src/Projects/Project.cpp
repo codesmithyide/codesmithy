@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -40,11 +40,12 @@ void Project::setDescription(const ProjectDescription& description)
     m_description = description;
 }
 
-void Project::saveBaseMembers(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void Project::saveBaseMembers(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
+    Ishiko::Error& error) const
 {
     // TODO : make this a transaction
-    db.setChildNode(node, "name", DiplodocusDB::TreeDBValue::UTF8String(name()), error);
-    db.setChildNode(node, "type", DiplodocusDB::TreeDBValue::UTF8String(type().name()), error);
+    db.setChildNode(node, "name", DiplodocusDB::Value::UTF8String(name()), error);
+    db.setChildNode(node, "type", DiplodocusDB::Value::UTF8String(type().name()), error);
     m_description.save(db, node, error);
     m_location.save(db, node, error);
 }

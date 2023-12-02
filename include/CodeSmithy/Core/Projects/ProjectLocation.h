@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2022 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTLOCATION_H_
 
-#include <DiplodocusDB/TreeDB/Core.hpp>
+#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <string>
 
 namespace CodeSmithy
@@ -41,11 +41,11 @@ public:
     /// @param url The URL of the GitHub repository. This should be the URL as typed in the browser, not the one with
     /// the ".git" extension.
     ProjectLocation(const std::string& url);
-    ProjectLocation(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error);
+    ProjectLocation(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error);
 
     const std::string& url() const;
 
-    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
+    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
     bool operator ==(const ProjectLocation& other) const;
     bool operator !=(const ProjectLocation& other) const;

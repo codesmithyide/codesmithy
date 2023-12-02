@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -53,12 +53,12 @@ public:
 
 public:
     ProjectGroup(const ProjectGroupType& type, const std::string& name);
-    ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+    ProjectGroup(const ProjectGroupType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
         Ishiko::Error& error);
     
     const ProjectType& type() const override;
 
-    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const override;
+    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const override;
 
     std::vector<ProjectOrLink>& children();
     void addProject(std::shared_ptr<Project> project);

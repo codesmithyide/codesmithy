@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2022 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -22,7 +22,7 @@
 
 #include "ProjectDescriptionTests.h"
 #include "CodeSmithy/Core/Projects/ProjectDescription.h"
-#include <DiplodocusDB/TreeDB/XMLTreeDB.hpp>
+#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 
 using namespace boost::filesystem;
 using namespace Ishiko;

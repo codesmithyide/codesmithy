@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,12 +30,13 @@ ProjectDescription::ProjectDescription(const std::string& plainTextDescription)
 {
 }
 
-void ProjectDescription::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void ProjectDescription::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
+    Ishiko::Error& error) const
 {
     if (m_plainTestDescription.size() > 0)
     {
-        DiplodocusDB::TreeDBNode descriptionNode = db.setChildNode(node, "description", error);
-        db.setChildNode(descriptionNode, "text", DiplodocusDB::TreeDBValue::UTF8String(m_plainTestDescription), error);
+        DiplodocusDB::XMLTreeDBNode descriptionNode = db.setChildNode(node, "description", error);
+        db.setChildNode(descriptionNode, "text", DiplodocusDB::Value::UTF8String(m_plainTestDescription), error);
     }
 }
 
