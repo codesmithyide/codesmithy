@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020-2022 Xavier Leclercq
+    Copyright (c) 2020-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
@@ -25,6 +25,7 @@ public:
     static const AppErrorCategory& Get() noexcept;
 
     const char* name() const noexcept override;
+    std::ostream& streamOut(int value, std::ostream& os) const override;
 };
 
 const AppErrorCategory& AppErrorCategory::Get() noexcept
@@ -36,6 +37,12 @@ const AppErrorCategory& AppErrorCategory::Get() noexcept
 const char* AppErrorCategory::name() const noexcept
 {
     return "CodeSmithy::AppErrorCategory";
+}
+
+
+std::ostream& AppErrorCategory::streamOut(int value, std::ostream& os) const
+{
+    return os;
 }
 
 enum EErrorCodes
@@ -233,13 +240,13 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     catch (const std::exception& e)
     {
         // TODO: report error better
-        error.fail(eGitError, AppErrorCategory::Get(), e.what(), __FILE__, __LINE__);
+        error.fail(AppErrorCategory::Get(), eGitError, e.what(), __FILE__, __LINE__);
         return;
     }
     catch (...)
     {
         // TODO: report error better
-        error.fail(eGitError, AppErrorCategory::Get(), "", __FILE__, __LINE__);
+        error.fail(AppErrorCategory::Get(), eGitError, "", __FILE__, __LINE__);
         return;
     }
 
@@ -288,12 +295,12 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
     catch (const std::exception& e)
     {
         // TODO: report error better
-        error.fail(eBuildError, AppErrorCategory::Get(), e.what(), __FILE__, __LINE__);
+        error.fail(AppErrorCategory::Get(), eBuildError, e.what(), __FILE__, __LINE__);
     }
     catch (...)
     {
         // TODO: report error better
-        error.fail(eBuildError, AppErrorCategory::Get(), "", __FILE__, __LINE__);
+        error.fail(AppErrorCategory::Get(), eBuildError, "", __FILE__, __LINE__);
     }
 }
 
@@ -301,7 +308,8 @@ void Bootstrap(const std::string& workDirectory, bool verbose, Ishiko::Error& er
 
 int main(int argc, char* argv[])
 {
-    Ishiko::Error error(new Ishiko::MessageErrorExtension());
+    Ishiko::Error error;
+    error.extensions().install<Ishiko::InfoErrorExtension>();
 
     bool bootstrap = false;
     std::string workDir = "./CodeSmithyBootstrapWorkDir";
@@ -327,7 +335,7 @@ int main(int argc, char* argv[])
         {
             std::string message = "invalid argument: ";
             message.append(argument);
-            error.fail(eInvalidCommandLine, AppErrorCategory::Get(), message, __FILE__, __LINE__);
+            error.fail(AppErrorCategory::Get(), eInvalidCommandLine, message, __FILE__, __LINE__);
             break;
         }
     }
@@ -339,7 +347,7 @@ int main(int argc, char* argv[])
     {
         if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
         {
-            error.fail(eWorkDirNotEmpty, AppErrorCategory::Get(), absoluteWorkDir, __FILE__, __LINE__);
+            error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
         }
     }
 
