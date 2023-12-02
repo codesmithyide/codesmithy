@@ -34,9 +34,9 @@ ProjectLocation::ProjectLocation(const std::string& url)
 {
 }
 
-ProjectLocation::ProjectLocation(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error)
+ProjectLocation::ProjectLocation(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error)
 {
-    DiplodocusDB::TreeDBNode locationNode = db.child(node, "location", error);
+    DiplodocusDB::XMLTreeDBNode locationNode = db.child(node, "location", error);
     DiplodocusDB::Value value = db.value(locationNode, error);
     if (!error)
     {

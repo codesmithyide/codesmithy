@@ -71,13 +71,13 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type, const std::string& name
 {
 }
 
-ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
     Ishiko::Error& error)
     : Project(db.childValue(node, projectNameElementName, error).asUTF8String()), m_type(type)
 {
-    DiplodocusDB::TreeDBNode childProjectsNode = db.child(node, childProjectsElementName, error);
-    std::vector<DiplodocusDB::TreeDBNode> children = db.childNodes(childProjectsNode, error);
-    for (DiplodocusDB::TreeDBNode& childProjectNode : children)
+    DiplodocusDB::XMLTreeDBNode childProjectsNode = db.child(node, childProjectsElementName, error);
+    std::vector<DiplodocusDB::XMLTreeDBNode> children = db.childNodes(childProjectsNode, error);
+    for (DiplodocusDB::XMLTreeDBNode& childProjectNode : children)
     {
         if (childProjectNode.name() == externalProjectLinkElementName)
         {

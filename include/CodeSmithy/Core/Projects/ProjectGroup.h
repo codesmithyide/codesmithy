@@ -53,7 +53,7 @@ public:
 
 public:
     ProjectGroup(const ProjectGroupType& type, const std::string& name);
-    ProjectGroup(const ProjectGroupType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+    ProjectGroup(const ProjectGroupType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
         Ishiko::Error& error);
     
     const ProjectType& type() const override;
