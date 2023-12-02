@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2019 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -41,7 +41,8 @@ const ProjectType& CodeSmithyProject::type() const
     return m_type;
 }
 
-void CodeSmithyProject::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void CodeSmithyProject::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
+    Ishiko::Error& error) const
 {
     db.removeAllChildNodes(node, error);
 

@@ -45,7 +45,7 @@ public:
 
     const std::string& url() const;
 
-    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
+    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
     bool operator ==(const ProjectLocation& other) const;
     bool operator !=(const ProjectLocation& other) const;

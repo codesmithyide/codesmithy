@@ -40,7 +40,8 @@ void Project::setDescription(const ProjectDescription& description)
     m_description = description;
 }
 
-void Project::saveBaseMembers(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void Project::saveBaseMembers(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
+    Ishiko::Error& error) const
 {
     // TODO : make this a transaction
     db.setChildNode(node, "name", DiplodocusDB::Value::UTF8String(name()), error);

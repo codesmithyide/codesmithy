@@ -44,10 +44,10 @@ public:
     const std::string& name() const;
     void setDescription(const ProjectDescription& description);
 
-    virtual void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const = 0;
+    virtual void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const = 0;
 
 protected:
-    void saveBaseMembers(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
+    void saveBaseMembers(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_name;

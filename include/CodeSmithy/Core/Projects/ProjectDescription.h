@@ -35,7 +35,7 @@ public:
     ProjectDescription() = default;
     ProjectDescription(const std::string& plainTextDescription);
 
-    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
+    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_plainTestDescription;

@@ -30,11 +30,12 @@ ProjectDescription::ProjectDescription(const std::string& plainTextDescription)
 {
 }
 
-void ProjectDescription::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void ProjectDescription::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
+    Ishiko::Error& error) const
 {
     if (m_plainTestDescription.size() > 0)
     {
-        DiplodocusDB::TreeDBNode descriptionNode = db.setChildNode(node, "description", error);
+        DiplodocusDB::XMLTreeDBNode descriptionNode = db.setChildNode(node, "description", error);
         db.setChildNode(descriptionNode, "text", DiplodocusDB::Value::UTF8String(m_plainTestDescription), error);
     }
 }

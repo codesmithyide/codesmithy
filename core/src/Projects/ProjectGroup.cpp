@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2019 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -98,25 +98,25 @@ const ProjectType& ProjectGroup::type() const
     return m_type;
 }
 
-void ProjectGroup::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void ProjectGroup::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const
 {
     db.removeAllChildNodes(node, error);
 
     // TODO : should be more robust, but the robustness should probably be implemented
     // at a higher level so here we just don't try to recover
     saveBaseMembers(db, node, error);
-    DiplodocusDB::TreeDBNode childProjectsNode = db.setChildNode(node, childProjectsElementName, error);
+    DiplodocusDB::XMLTreeDBNode childProjectsNode = db.setChildNode(node, childProjectsElementName, error);
     for (const ProjectOrLink& item : m_childProjects)
     {
         if (item.isLink())
         {
-            DiplodocusDB::TreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
+            DiplodocusDB::XMLTreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
                 externalProjectLinkElementName, error);
             item.location().save(db, childProjectNode, error);
         }
         else if (item.isProject())
         {
-            DiplodocusDB::TreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
+            DiplodocusDB::XMLTreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
                 childProjectElementName, error);
             item.project().save(db, childProjectNode, error);
         }
