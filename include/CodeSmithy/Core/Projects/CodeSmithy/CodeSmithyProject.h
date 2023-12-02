@@ -34,7 +34,7 @@ class CodeSmithyProject : public Project
 {
 public:
     CodeSmithyProject(const CodeSmithyProjectType& type, const std::string& name);
-    CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode node,
+    CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
         Ishiko::Error& error);
 
     const ProjectType& type() const override;

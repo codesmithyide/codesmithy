@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2022 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -56,11 +56,11 @@ void ProjectGroupTests::ConstructorTest2(Test& test)
 {
     path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest2.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -85,7 +85,7 @@ void ProjectGroupTests::ConstructorTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -105,14 +105,14 @@ void ProjectGroupTests::ConstructorTest4(Test& test)
 {
     path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest4.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
 
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -134,14 +134,14 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
 {
     path inputPath = test.context().getDataPath("ProjectGroupTests_ConstructorTest5.csmthprj");
 
-    Ishiko::Error error(0);
+    Ishiko::Error error;
     
     CodeSmithy::ProjectRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -168,7 +168,7 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -197,7 +197,7 @@ void ProjectGroupTests::SaveTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -224,7 +224,7 @@ void ProjectGroupTests::SaveTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -253,7 +253,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -282,7 +282,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -314,7 +314,7 @@ void ProjectGroupTests::SaveTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -345,7 +345,7 @@ void ProjectGroupTests::AddProjectTest1(Test& test)
     CodeSmithy::ProjectRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("MyProjectGroup", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

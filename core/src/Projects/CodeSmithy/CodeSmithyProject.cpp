@@ -30,8 +30,8 @@ CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, const st
 {
 }
 
-CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::TreeDB& db,
-    DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
+CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::XMLTreeDB& db,
+    DiplodocusDB::XMLTreeDBNode node, Ishiko::Error& error)
     : Project(db.childValue(node, "name", error).asUTF8String()), m_type(type)
 {
 }
