@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2022 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -51,7 +51,7 @@ void CodeSmithyProjectTests::SaveTest1(Test& test)
     CodeSmithy::ProjectRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
-    DiplodocusDB::TreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2015-2019 Xavier Leclercq
+    Copyright (c) 2015-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -30,8 +30,8 @@ BakefileProject::BakefileProject(const BakefileProjectType& type, const std::str
 {
 }
 
-BakefileProject::BakefileProject(const BakefileProjectType& type, DiplodocusDB::TreeDB& db,
-    DiplodocusDB::TreeDBNode node, Ishiko::Error& error)
+BakefileProject::BakefileProject(const BakefileProjectType& type, DiplodocusDB::XMLTreeDB& db,
+    DiplodocusDB::XMLTreeDBNode node, Ishiko::Error& error)
     : MetaBuildSystemProject(db.childValue(node, "name", error).asUTF8String()), m_type(type), m_node(node)
 {
 }
@@ -45,7 +45,7 @@ const ProjectType& BakefileProject::type() const
     return m_type;
 }
 
-void BakefileProject::save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const
+void BakefileProject::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const
 {
     db.removeAllChildNodes(node, error);
 

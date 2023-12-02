@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2022 Xavier Leclercq
+    Copyright (c) 2018-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 
-#include <DiplodocusDB/TreeDB/Core.hpp>
+#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <string>
 
 namespace CodeSmithy
@@ -35,7 +35,7 @@ public:
     ProjectDescription() = default;
     ProjectDescription(const std::string& plainTextDescription);
 
-    void save(DiplodocusDB::TreeDB& db, DiplodocusDB::TreeDBNode& node, Ishiko::Error& error) const;
+    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_plainTestDescription;

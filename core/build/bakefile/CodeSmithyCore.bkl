@@ -1,12 +1,12 @@
-codesmithyidepath = envvar("CODESMITHYIDE");
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
-diplodocusdbpath = envvar("DIPLODOCUSDB");
-import $(diplodocusdbpath)/tree-db/include/DiplodocusDB/TreeDB/XMLTreeDB.bkl;
-ishikopath = envvar("ISHIKO_CPP");
+diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
+import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
+ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/pugixml.bkl;
-import $(ishikopath)/user-tasks/include/Ishiko/UserTasks.bkl;
+import $(ishikopath)/workflows/include/Ishiko/Workflows.bkl;
 
 toolsets = gnu vs2019 vs2017 vs2015 vs2013;
 
@@ -16,7 +16,7 @@ vs2017.solutionfile = ../vc15/CodeSmithyCore.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCore.sln;
 vs2013.solutionfile = ../vc12/CodeSmithyCore.sln;
 
-library CodeSmithyCore : libgit2, DiplodocusXMLTreeDB, IshikoUserTasks, IshikoCollections, Boost, pugixml
+library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows, IshikoCollections, Boost, pugixml
 {
     includedirs += ../../../include/CodeSmithy/Core;
 

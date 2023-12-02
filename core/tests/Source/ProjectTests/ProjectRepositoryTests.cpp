@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2016-2022 Xavier Leclercq
+    Copyright (c) 2016-2023 Xavier Leclercq
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -112,7 +112,7 @@ void ProjectRepositoryTests::AddProjectNodeTest1(Test& test)
     CodeSmithy::ProjectRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
     repository.setName("ProjectRepositoryTests_AddProjectNodeTest1");
-    DiplodocusDB::TreeDBNode project1 = repository.addProjectNode("Project1", error);
+    DiplodocusDB::XMLTreeDBNode project1 = repository.addProjectNode("Project1", error);
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
@@ -133,7 +133,7 @@ void ProjectRepositoryTests::GetProjectNodeTest1(Test& test)
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "ProjectRepositoryTests_GetProjectNodeTest1");
 
-    DiplodocusDB::TreeDBNode projectNode = repository.getProjectNode("Project1", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("Project1", error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(projectNode);
