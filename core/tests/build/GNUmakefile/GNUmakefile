@@ -118,17 +118,17 @@ ISHIKO_CPP_TESTS_ROOT ?= $(ISHIKO_CPP_ROOT)/test-framework
 # Path to the libgit2 installation
 LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the DiplodocusDB installation
-DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB)/core
+DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB_ROOT)/core
 # Path to the DiplodocusDB installation
-DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB)/physical-storage
+DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB_ROOT)/physical-storage
 # Path to the DiplodocusDB Embedded Document DB installation
-DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB)/embedded-document-db
+DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB_ROOT)/embedded-document-db
 # Path to the Ishiko/C++ Collections installation
 ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP_ROOT)/collections
 # Path to the Ishiko/C++ Workflows installation
 ISHIKO_CPP_WORKFLOWS_ROOT ?= $(ISHIKO_CPP_ROOT)/workflows
 # Path to the CodeSmithy installation
-CODESMITHY_ROOT ?= $(CODESMITHYIDE)/codesmithy
+CODESMITHY_ROOT ?= $(CODESMITHYIDE_ROOT)/codesmithy
 
 # ------------
 

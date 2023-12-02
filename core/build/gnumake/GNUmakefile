@@ -87,7 +87,7 @@ ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
 # Path to the Ishiko/C++ Time installation
 ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP_ROOT)/time
 # Path to the DiplodocusDB installation
-DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB)/core
+DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB_ROOT)/core
 # Path to the Ishiko/C++ BasePlatform installation
 ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP_ROOT)/base-platform
 # Path to the Ishiko/C++ Errors installation
@@ -99,11 +99,11 @@ ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
 # Path to the Ishiko/C++ Memory installation
 ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
 # Path to the DiplodocusDB installation
-DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB)/physical-storage
+DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB_ROOT)/physical-storage
 # Path to the pugixml installation
 ISHIKO_CPP_PUGIXML_ROOT ?= $(PUGIXML_ROOT)
 # Path to the DiplodocusDB Embedded Document DB installation
-DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB)/embedded-document-db
+DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB_ROOT)/embedded-document-db
 # Path to the Ishiko/C++ Collections installation
 ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP_ROOT)/collections
 # Path to the Ishiko/C++ Workflows installation
