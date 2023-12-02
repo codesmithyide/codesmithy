@@ -101,7 +101,7 @@ ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP_ROOT)/collections
 # Path to the Ishiko/C++ Workflows installation
 ISHIKO_CPP_WORKFLOWS_ROOT ?= $(ISHIKO_CPP_ROOT)/workflows
 # Path to the CodeSmithyIDE/VersionControl installation
-CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/version-control
+CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE_ROOT)/version-control
 
 # ------------
 
