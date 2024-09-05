@@ -8,9 +8,10 @@ import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/pugixml.bkl;
 import $(ishikopath)/workflows/include/Ishiko/Workflows.bkl;
 
-toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+toolsets = gnu vs2022 vs2019 vs2017 vs2015 vs2013;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/CodeSmithyCore.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCore.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCore.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCore.sln;
