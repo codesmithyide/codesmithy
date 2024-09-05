@@ -2,7 +2,7 @@ version: 2
 jobs:
   bootstrap-build:
     docker:
-      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.6.0
+      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.8.0
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variable"
@@ -31,7 +31,7 @@ jobs:
           path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.8.0
+      - image: codesmithy/gcc-build-prerequisites:0.10.0
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variable"
