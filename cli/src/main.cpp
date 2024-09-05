@@ -1,12 +1,12 @@
 /*
-    Copyright (c) 2020-2023 Xavier Leclercq
+    Copyright (c) 2020-2024 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
 */
 
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
 #include "CodeSmithy/BuildToolchains.h"
-#include <Ishiko/BasePlatform.h>
+#include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>
 #include <Ishiko/Process.hpp>
@@ -25,7 +25,7 @@ public:
     static const AppErrorCategory& Get() noexcept;
 
     const char* name() const noexcept override;
-    std::ostream& streamOut(int value, std::ostream& os) const override;
+    const char* message(int ev, char* buffer, size_t len) const noexcept override;
 };
 
 const AppErrorCategory& AppErrorCategory::Get() noexcept
@@ -40,9 +40,9 @@ const char* AppErrorCategory::name() const noexcept
 }
 
 
-std::ostream& AppErrorCategory::streamOut(int value, std::ostream& os) const
+const char* AppErrorCategory::message(int ev, char* buffer, size_t len) const noexcept
 {
-    return os;
+    return "TODO";
 }
 
 enum EErrorCodes
@@ -366,5 +366,5 @@ int main(int argc, char* argv[])
         Ishiko::Terminal::TerminalOutput(stderr).write(message.str(), Ishiko::Color::eRed);
     }
 
-    return error.condition().value();
+    return error.code().value();
 }

@@ -9,9 +9,10 @@ import $(codesmithyidepath)/build-toolchains/include/CodeSmithy/CodeSmithyBuildT
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
 import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
 
-toolsets = gnu vs2019 vs2017;
+toolsets = gnu vs2022 vs2019 vs2017;
 
 gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/CodeSmithyCLI.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCLI.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCLI.sln;
 
@@ -21,7 +22,7 @@ program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoWorkflows IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto pcre z;
+        libs += CodeSmithyBuildToolchains CodeSmithyGit IshikoWorkflows IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem  ssl crypto z;
     }
 
     if ($(toolset) != gnu)
