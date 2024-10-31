@@ -23,10 +23,10 @@ jobs:
           command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /workspace/projects/codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/build/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
           path: /workspace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
   build:
@@ -52,10 +52,10 @@ jobs:
           command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /workspace/projects/codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/build/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
           path: /workspace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
 workflows:
