@@ -5,8 +5,8 @@ jobs:
       - image: codesmithy/gcc-bootstrap-build-prerequisites:0.9.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
+          command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
           command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
@@ -34,8 +34,8 @@ jobs:
       - image: codesmithy/gcc-build-prerequisites:0.11.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
+          command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
           command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
