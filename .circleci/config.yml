@@ -2,62 +2,62 @@ version: 2
 jobs:
   bootstrap-build:
     docker:
-      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.8.0
+      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.9.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
+          command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
       - checkout:
-          path: /codesmithyide/codesmithy
+          path: /workspace/projects/codesmithyide/codesmithy
       - run:
           name: "Build: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/core/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/tests/build/GNUmakefile && make && ./CodeSmithyCoreTests
+          command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/tests/build-files/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
+          path: /workspace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.10.0
+      - image: codesmithy/gcc-build-prerequisites:0.11.0
     steps:
       - run: 
-          name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
+          command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
       - checkout:
-          path: /codesmithyide/codesmithy
+          path: /workspace/projects/codesmithyide/codesmithy
       - run:
           name: Build CodeSmithy/Core
-          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/core/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/tests/build/GNUmakefile && make && ./CodeSmithyCoreTests
+          command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli/tests/build-files/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
+          path: /workspace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
 workflows:
   version: 2
   continuous_build:
