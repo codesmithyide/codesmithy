@@ -6,58 +6,58 @@ jobs:
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/worskpace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
       - checkout:
-          path: /codesmithyide/codesmithy
+          path: /worskpace/projects/codesmithyide/codesmithy
       - run:
           name: "Build: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide/codesmithy/core/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/tests/build/GNUmakefile && make && ./CodeSmithyCoreTests
+          command: cd /worskpace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide/codesmithy/cli/build/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /worskpace/projects/codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
+          path: /worskpace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.11.0
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variable"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/worskpace/projects/codesmithyide"' >> $BASH_ENV
       - run:
           name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
-          command: cd /codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
       - checkout:
-          path: /codesmithyide/codesmithy
+          path: /worskpace/projects/codesmithyide/codesmithy
       - run:
           name: Build CodeSmithy/Core
-          command: cd /codesmithyide/codesmithy/core/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide/codesmithy/core/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/Core"
-          command: cd /codesmithyide/codesmithy/core/tests/build/GNUmakefile && make && ./CodeSmithyCoreTests
+          command: cd /worskpace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/build/gnumake && make
+          command: cd /worskpace/projects/codesmithyide/codesmithy/cli/build/gnumake && make
       - run:
           name: "Test: CodeSmithy/CLI"
-          command: cd /codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
+          command: cd /worskpace/projects/codesmithyide/codesmithy/cli/tests/build/gnumake && make && ./CodeSmithyCLITests
       - store_artifacts:
-          path: /codesmithyide/codesmithy/bin/CodeSmithyCLI
+          path: /worskpace/projects/codesmithyide/codesmithy/bin/CodeSmithyCLI
 workflows:
   version: 2
   continuous_build:
