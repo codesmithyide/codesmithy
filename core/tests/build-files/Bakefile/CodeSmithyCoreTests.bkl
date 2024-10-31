@@ -3,14 +3,13 @@ import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
 codesmithypath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithypath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 
-toolsets = gnu vs2022 vs2019 vs2017 vs2015 vs2013;
+toolsets = gnu vs2022 vs2019 vs2017 vs2015;
 
 gnu.makefile = ../GNUmakefile/GNUmakefile;
 vs2022.solutionfile = ../vc17/CodeSmithyCoreTests.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCoreTests.sln;
 vs2017.solutionfile = ../VC15/CodeSmithyCoreTests.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
-vs2013.solutionfile = ../VC12/CodeSmithyCoreTests.sln;
 
 program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
 {
