@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2020-2024 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/codesmithyide/codesmithy/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
+// SPDX-License-Identifier: BSL-1.0
 
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
 #include "CodeSmithy/BuildToolchains.h"
@@ -38,7 +35,6 @@ const char* AppErrorCategory::name() const noexcept
 {
     return "CodeSmithy::AppErrorCategory";
 }
-
 
 const char* AppErrorCategory::message(int ev, char* buffer, size_t len) const noexcept
 {
