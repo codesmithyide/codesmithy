@@ -32,8 +32,14 @@ program CodeSmithyCLI : CodeSmithyCore, CodeSmithyBuildToolchains, CodeSmithyGit
         outputdir = ../../../bin/$(arch);
     }
 
+    headers
+    {
+        ../../src/CommandLineSpecification.hpp
+    }
+
     sources
     {
+        ../../src/CommandLineSpecification.cpp
         ../../src/main.cpp
     }
 }
