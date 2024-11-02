@@ -1,5 +1,6 @@
 codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
+import $(codesmithyidepath)/build-toolchains/include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
 diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
 import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
@@ -16,7 +17,7 @@ vs2019.solutionfile = ../vc16/CodeSmithyCore.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCore.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCore.sln;
 
-library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows, IshikoCollections, Boost, pugixml
+library CodeSmithyCore : CodeSmithyBuildToolchains, libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows, IshikoCollections, Boost, pugixml
 {
     includedirs += ../../../include/CodeSmithy/Core;
 
