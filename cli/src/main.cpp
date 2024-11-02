@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
+#include "CommandLineSpecification.hpp"
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
@@ -53,6 +54,11 @@ int main(int argc, char* argv[])
 {
     try
     {
+        CommandLineSpecification command_line_spec;
+        Ishiko::Configuration configuration = command_line_spec.createDefaultConfiguration();
+        Ishiko::CommandLineParser::parse(command_line_spec, argc, argv, configuration);
+
+
         Ishiko::Error error;
         error.extensions().install<Ishiko::InfoErrorExtension>();
 
