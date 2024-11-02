@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
+#include "CommandLineSpecification.hpp"
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
@@ -53,40 +54,26 @@ int main(int argc, char* argv[])
 {
     try
     {
+        CommandLineSpecification command_line_spec;
+        Ishiko::Configuration configuration = command_line_spec.createDefaultConfiguration();
+        Ishiko::CommandLineParser::parse(command_line_spec, argc, argv, configuration);
+
+
         Ishiko::Error error;
         error.extensions().install<Ishiko::InfoErrorExtension>();
 
         bool bootstrap = false;
-        std::string workDir = "./CodeSmithyBootstrapWorkDir";
-        bool verbose = false;
-        for (int i = 1; i < argc; ++i)
+        if (configuration.value("command").asString() == "bootstrap")
         {
-            const char* argument = argv[i];
-            if (strncmp("bootstrap", argument, 10) == 0)
-            {
-                bootstrap = true;
-            }
-            else if (strncmp("--work-dir", argument, 11) == 0)
-            {
-                // TODO: check bounds
-                ++i;
-                workDir = argv[i];
-            }
-            else if (strncmp("-v", argument, 3) == 0)
-            {
-                verbose = true;
-            }
-            else
-            {
-                std::string message = "invalid argument: ";
-                message.append(argument);
-                error.fail(AppErrorCategory::Get(), eInvalidCommandLine, message, __FILE__, __LINE__);
-                break;
-            }
+            bootstrap = true;
         }
 
+        std::string work_dir = configuration.value("work-dir").asString();
+
+        bool verbose = (configuration.value("verbose").asString() == "true");
+
         std::string absoluteWorkDir;
-        Ishiko::FileSystem::ToAbsolutePath(workDir, absoluteWorkDir);
+        Ishiko::FileSystem::ToAbsolutePath(work_dir, absoluteWorkDir);
 
         if (!error)
         {
