@@ -1,5 +1,6 @@
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/base-platform/include/Ishiko/BasePlatform.bkl;
+import $(ishikopath)/configuration/include/Ishiko/Configuration.bkl;
 import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/process/include/Ishiko/Process.bkl;
@@ -17,13 +18,13 @@ vs2022.solutionfile = ../vc17/CodeSmithyCLI.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCLI.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCLI.sln;
 
-program CodeSmithyCLI : CodeSmithyCore, CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, IshikoBasePlatform, libgit2
+program CodeSmithyCLI : CodeSmithyCore, CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoConfiguration, IshikoProcess, IshikoFileSystem, IshikoErrors, IshikoBasePlatform, libgit2
 {
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += CodeSmithyCore CodeSmithyBuildToolchains CodeSmithyGit IshikoWorkflows IshikoTerminal IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem ssl crypto z;
+        libs += CodeSmithyCore CodeSmithyBuildToolchains CodeSmithyGit IshikoWorkflows IshikoTerminal IshikoConfiguration IshikoFileSystem IshikoProcess IshikoText IshikoTypes IshikoErrors git2 boost_filesystem ssl crypto z;
     }
 
     if ($(toolset) != gnu)
@@ -32,8 +33,14 @@ program CodeSmithyCLI : CodeSmithyCore, CodeSmithyBuildToolchains, CodeSmithyGit
         outputdir = ../../../bin/$(arch);
     }
 
+    headers
+    {
+        ../../src/CommandLineSpecification.hpp
+    }
+
     sources
     {
+        ../../src/CommandLineSpecification.cpp
         ../../src/main.cpp
     }
 }
