@@ -200,12 +200,6 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\GenericWorkspace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Utilities\XMLUtilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -389,9 +383,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Workspaces\GenericWorkspace.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\CodeSmithyMake\CodeSmithyMakeEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Utilities\XMLUtilities.cpp">

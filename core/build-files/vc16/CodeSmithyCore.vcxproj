@@ -210,7 +210,6 @@
     <ClCompile Include="..\..\src\Workspaces\WorkspaceRepository.cpp" />
     <ClCompile Include="..\..\src\Workspaces\WorkspaceFileRepository.cpp" />
     <ClCompile Include="..\..\src\Workspaces\GenericWorkspace.cpp" />
-    <ClCompile Include="..\..\src\CodeSmithyMake\CodeSmithyMakeEngine.cpp" />
     <ClCompile Include="..\..\src\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -275,8 +274,6 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceRepository.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\WorkspaceFileRepository.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Workspaces\GenericWorkspace.h" />
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeReturnCodes.h" />
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\CodeSmithyMake\CodeSmithyMakeEngine.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Utilities\XMLUtilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
