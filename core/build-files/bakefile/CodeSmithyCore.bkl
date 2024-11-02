@@ -109,10 +109,6 @@ library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows,
         ../../../include/CodeSmithy/Core/Workspaces/WorkspaceFileRepository.h
         ../../../include/CodeSmithy/Core/Workspaces/GenericWorkspace.h
 
-
-        ../../../include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeReturnCodes.h
-        ../../../include/CodeSmithy/Core/CodeSmithyMake/CodeSmithyMakeEngine.h
-
         ../../../include/CodeSmithy/Core/Utilities/XMLUtilities.h
     }
 
@@ -186,8 +182,6 @@ library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows,
         ../../src/Workspaces/WorkspaceRepository.cpp
         ../../src/Workspaces/WorkspaceFileRepository.cpp
         ../../src/Workspaces/GenericWorkspace.cpp
-
-        ../../src/CodeSmithyMake/CodeSmithyMakeEngine.cpp
 
         ../../src/Utilities/XMLUtilities.cpp
     }
