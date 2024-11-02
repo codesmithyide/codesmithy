@@ -1,8 +1,9 @@
 // SPDX-FileCopyrightText: 2020-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "CodeSmithy/VersionControl/Git/GitRepository.h"
-#include "CodeSmithy/BuildToolchains.h"
+#include <CodeSmithy/BuildToolchains.h>
+#include <CodeSmithy/Core.hpp>
+#include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/Errors.hpp>
 #include <Ishiko/FileSystem.hpp>

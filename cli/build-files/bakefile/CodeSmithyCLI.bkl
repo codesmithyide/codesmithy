@@ -5,6 +5,7 @@ import $(ishikopath)/filesystem/include/Ishiko/FileSystem.bkl;
 import $(ishikopath)/process/include/Ishiko/Process.bkl;
 import $(ishikopath)/terminal/include/Ishiko/Terminal.bkl;
 codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
+import $(codesmithyidepath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 import $(codesmithyidepath)/build-toolchains/include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
 import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
@@ -16,7 +17,7 @@ vs2022.solutionfile = ../vc17/CodeSmithyCLI.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCLI.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCLI.sln;
 
-program CodeSmithyCLI : CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, IshikoBasePlatform, libgit2
+program CodeSmithyCLI : CodeSmithyCore, CodeSmithyBuildToolchains, CodeSmithyGit, IshikoTerminal, IshikoProcess, IshikoFileSystem, IshikoErrors, IshikoBasePlatform, libgit2
 {
     if ($(toolset) == gnu)
     {
