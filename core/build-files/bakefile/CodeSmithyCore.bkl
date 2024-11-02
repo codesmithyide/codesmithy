@@ -39,8 +39,11 @@ library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows,
 
     headers
     {
+        ../../../include/CodeSmithy/Core.hpp
         ../../../include/CodeSmithy/Core/Engine.h
         ../../../include/CodeSmithy/Core/linkoptions.h
+
+        ../../../include/CodeSmithy/Core/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.hpp
 
         ../../../include/CodeSmithy/Core/Documents/DocumentType.h
         ../../../include/CodeSmithy/Core/Documents/CustomDocumentTypeData.h
@@ -115,6 +118,8 @@ library CodeSmithyCore : libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows,
     sources
     {
         ../../src/Engine.cpp
+
+        ../../src/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.cpp
 
         ../../src/Documents/DocumentType.cpp
         ../../src/Documents/CustomDocumentTypeData.cpp

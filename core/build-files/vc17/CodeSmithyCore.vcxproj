@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Engine.cpp" />
+    <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp" />
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\src\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\src\Documents\DocumentTypes.cpp" />
@@ -213,8 +214,10 @@
     <ClCompile Include="..\..\src\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentTypes.h" />
