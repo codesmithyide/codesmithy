@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(ISHIKO_CPP_ROOT)/io\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/workflows\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(ISHIKO_CPP_ROOT)/io\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/workflows\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(ISHIKO_CPP_ROOT)/io\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/workflows\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(LIBGIT2)\$(Platform)\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(ISHIKO_CPP_ROOT)/io\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/workflows\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;..\..\..\include\CodeSmithy\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Engine.cpp" />
+    <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp" />
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\src\Documents\CustomDocumentTypeData.cpp" />
     <ClCompile Include="..\..\src\Documents\DocumentTypes.cpp" />
@@ -213,8 +214,10 @@
     <ClCompile Include="..\..\src\Utilities\XMLUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentTypes.h" />

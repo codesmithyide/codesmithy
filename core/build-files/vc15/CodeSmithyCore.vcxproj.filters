@@ -17,10 +17,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h">
@@ -206,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp">
