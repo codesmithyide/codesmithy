@@ -91,7 +91,6 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildToolchains, libgit2, Dipl
         ../../../include/CodeSmithy/Core/Projects/ProjectLocation.h
         ../../../include/CodeSmithy/Core/Projects/ProjectType.h
         ../../../include/CodeSmithy/Core/Projects/ProjectTypes.h
-        ../../../include/CodeSmithy/Core/Projects/ProjectRepository.h
         ../../../include/CodeSmithy/Core/Projects/ProjectGroup.h
         ../../../include/CodeSmithy/Core/Projects/ProjectGroupType.h
         ../../../include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h
@@ -167,7 +166,6 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildToolchains, libgit2, Dipl
         ../../src/Projects/ProjectLocation.cpp
         ../../src/Projects/ProjectType.cpp
         ../../src/Projects/ProjectTypes.cpp
-        ../../src/Projects/ProjectRepository.cpp
         ../../src/Projects/ProjectGroup.cpp
         ../../src/Projects/ProjectGroupType.cpp
         ../../src/Projects/MetaBuildSystemProject.cpp

@@ -195,7 +195,6 @@
     <ClCompile Include="..\..\src\Projects\ProjectLocation.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectType.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectTypes.cpp" />
-    <ClCompile Include="..\..\src\Projects\ProjectRepository.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectGroup.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectGroupType.cpp" />
     <ClCompile Include="..\..\src\Projects\MetaBuildSystemProject.cpp" />
@@ -261,7 +260,6 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h" />
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectRepository.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />
