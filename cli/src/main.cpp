@@ -62,30 +62,24 @@ int main(int argc, char* argv[])
         Ishiko::Error error;
         error.extensions().install<Ishiko::InfoErrorExtension>();
 
-        bool bootstrap = false;
         if (configuration.value("command").asString() == "bootstrap")
         {
-            bootstrap = true;
-        }
+            std::string work_dir = configuration.value("work-dir").asString();
 
-        std::string work_dir = configuration.value("work-dir").asString();
+            bool verbose = (configuration.value("verbose").asString() == "true");
 
-        bool verbose = (configuration.value("verbose").asString() == "true");
+            std::string absoluteWorkDir;
+            Ishiko::FileSystem::ToAbsolutePath(work_dir, absoluteWorkDir);
 
-        std::string absoluteWorkDir;
-        Ishiko::FileSystem::ToAbsolutePath(work_dir, absoluteWorkDir);
-
-        if (!error)
-        {
-            if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
+            if (!error)
             {
-                error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
+                if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
+                {
+                    error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
+                }
             }
-        }
 
-        if (!error)
-        {
-            if (bootstrap)
+            if (!error)
             {
                 CodeSmithyCLIBootstrapBuildEngine build_engine;
                 build_engine.run(absoluteWorkDir, verbose);
