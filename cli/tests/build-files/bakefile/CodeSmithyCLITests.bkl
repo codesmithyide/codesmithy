@@ -26,6 +26,7 @@ program CodeSmithyCLITests : IshikoTestFramework
     headers
     {
         ../../src/BootstrapTests.h
+        ../../src/ProjectCommandTests.hpp
         ../../src/VisualStudioBuildTests/VisualStudioBuildTests.h
     }
 
@@ -33,6 +34,7 @@ program CodeSmithyCLITests : IshikoTestFramework
     {
         ../../src/BootstrapTests.cpp
         ../../src/main.cpp
+        ../../src/ProjectCommandTests.cpp
         ../../src/VisualStudioBuildTests/VisualStudioBuildTests.cpp
     }
 }
