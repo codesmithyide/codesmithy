@@ -1,28 +1,9 @@
-/*
-    Copyright (c) 2018-2023 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
-*/
+// SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "BootstrapTests.h"
-#include "CodeSmithy/Core/Projects/ProjectRepository.h"
 #include "CodeSmithy/Core/Projects/ProjectGroup.h"
+#include <CodeSmithy/BuildFiles.hpp>
 
 using namespace boost::filesystem;
 using namespace Ishiko;
@@ -48,7 +29,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(Test& test)
    
     Ishiko::Error error;
 
-    CodeSmithy::ProjectRepository repository;
+    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
@@ -83,7 +64,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(Test& test)
     ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/WindowsRegistry"));
     ishikoDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/TestFramework"));
     project.addProject(ishikoDependenciesProject);
-        
+
     std::shared_ptr<CodeSmithy::ProjectGroup> wxWidgetsDependenciesProject = std::make_shared<CodeSmithy::ProjectGroup>(type, "wxWidgets Dependencies");
     wxWidgetsDependenciesProject->setDescription(CodeSmithy::ProjectDescription("The wxWidgets code and its dependencies. These are local forks of the official wxWidgets projects."));
     wxWidgetsDependenciesProject->addExternalProjectLink(CodeSmithy::ProjectLocation("https://github.com/CodeSmithyIDE/zlib"));
@@ -111,7 +92,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 
     Ishiko::Error error;
     
-    CodeSmithy::ProjectRepository repository;
+    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_ABORT_IF(error);

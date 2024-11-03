@@ -8,11 +8,14 @@ jobs:
           name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
           command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
-          name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
-      - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
           command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
+      - run:
+          name: "Install build dependency: CodeSmithyIDE BuildFiles"
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-files.git && cd build-files/build-files/gnumake && make
+      - run:
+          name: "Install build dependency: CodeSmithyIDE VersionControl"
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - checkout:
           path: /workspace/projects/codesmithyide/codesmithy
       - run:
@@ -37,11 +40,14 @@ jobs:
           name: "Set CODESMITHYIDE_ROOT environment variable and create workspace directory"
           command: mkdir -p /workspace/projects/codesmithyide && echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - run:
-          name: "Install build dependency: CodeSmithyIDE VersionControl"
-          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
-      - run:
           name: "Install build dependency: CodeSmithyIDE BuildToolchains"
           command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-toolchains.git && cd build-toolchains/build-files/gnumake && make
+      - run:
+          name: "Install build dependency: CodeSmithyIDE BuildFiles"
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/build-files.git && cd build-files/build-files/gnumake && make
+      - run:
+          name: "Install build dependency: CodeSmithyIDE VersionControl"
+          command: cd /workspace/projects/codesmithyide && git clone https://github.com/codesmithyide/version-control.git && cd version-control/git/build-files/gnumake && make
       - checkout:
           path: /workspace/projects/codesmithyide/codesmithy
       - run:
