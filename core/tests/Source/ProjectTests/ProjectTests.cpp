@@ -26,7 +26,6 @@
 #include "BakefileProjectTypeTests.h"
 #include "CMakeProjectTypeTests.h"
 #include "ProjectTypesTests.h"
-#include "ProjectRepositoryTests.h"
 #include "ProjectDescriptionTests.h"
 #include "ProjectLocationTests.h"
 #include "ProjectGroupTests.h"
@@ -49,7 +48,6 @@ ProjectTests::ProjectTests(const TestNumber& number, const TestContext& context)
     append<ProjectTypesTests>();
     append<ProjectDescriptionTests>();
     append<ProjectLocationTests>();
-    append<ProjectRepositoryTests>();
     append<ProjectGroupTests>();
     append<CodeSmithyProjectTests>();
     append<BakefileProjectTests>();

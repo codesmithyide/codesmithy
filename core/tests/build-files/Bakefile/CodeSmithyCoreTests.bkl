@@ -16,7 +16,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyCore DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoWorkflows IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
+        libs += CodeSmithyCore CodeSmithyBuildFiles DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoWorkflows IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
         libs += fmt boost_filesystem boost_system;
     }
 
@@ -48,7 +48,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
         ../../Source/ProjectTests/BakefileProjectTypeTests.h
         ../../Source/ProjectTests/CMakeProjectTypeTests.h
         ../../Source/ProjectTests/ProjectTypesTests.h
-        ../../Source/ProjectTests/ProjectRepositoryTests.h
         ../../Source/ProjectTests/ProjectDescriptionTests.h
         ../../Source/ProjectTests/ProjectLocationTests.h
         ../../Source/ProjectTests/ProjectGroupTests.h
@@ -91,7 +90,6 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
         ../../Source/ProjectTests/BakefileProjectTypeTests.cpp
         ../../Source/ProjectTests/CMakeProjectTypeTests.cpp
         ../../Source/ProjectTests/ProjectTypesTests.cpp
-        ../../Source/ProjectTests/ProjectRepositoryTests.cpp
         ../../Source/ProjectTests/ProjectDescriptionTests.cpp
         ../../Source/ProjectTests/ProjectLocationTests.cpp
         ../../Source/ProjectTests/ProjectGroupTests.cpp
