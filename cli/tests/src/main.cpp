@@ -4,6 +4,7 @@
 #include "BootstrapTests.h"
 #include "ProjectCommandTests.hpp"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
+#include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/TestFramework.hpp>
 #include <exception>
 
@@ -18,8 +19,13 @@ int main(int argc, char* argv[])
         configuration.set("context.data", "../../data");
         configuration.set("context.reference", "../../reference");
         configuration.set("context.output", "../../output");
-        //configuration.set("context.application-path", "../../../../bin/x64/CodeSmithyCLI.exe");
+#if ISHIKO_OS == ISHIKO_OS_LINUX
         configuration.set("context.application-path", "../../../../bin/CodeSmithyCLI");
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
+        configuration.set("context.application-path", "../../../../bin/x64/CodeSmithyCLI.exe");
+#else
+#error Unsupported or unrecognized OS
+#endif
         CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
         TestHarness the_test_harness("CodeSmithy CLI Tests", configuration);
