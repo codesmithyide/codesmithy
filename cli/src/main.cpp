@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "CommandLineSpecification.hpp"
+#include <CodeSmithy/BuildFiles.hpp>
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
@@ -58,37 +59,44 @@ int main(int argc, char* argv[])
         Ishiko::Configuration configuration = command_line_spec.createDefaultConfiguration();
         Ishiko::CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
-
         Ishiko::Error error;
         error.extensions().install<Ishiko::InfoErrorExtension>();
 
-        bool bootstrap = false;
         if (configuration.value("command").asString() == "bootstrap")
         {
-            bootstrap = true;
-        }
+            std::string work_dir = configuration.value("work-dir").asString();
 
-        std::string work_dir = configuration.value("work-dir").asString();
+            bool verbose = (configuration.value("verbose").asString() == "true");
 
-        bool verbose = (configuration.value("verbose").asString() == "true");
+            std::string absoluteWorkDir;
+            Ishiko::FileSystem::ToAbsolutePath(work_dir, absoluteWorkDir);
 
-        std::string absoluteWorkDir;
-        Ishiko::FileSystem::ToAbsolutePath(work_dir, absoluteWorkDir);
-
-        if (!error)
-        {
-            if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
+            if (!error)
             {
-                error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
+                if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
+                {
+                    error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
+                }
             }
-        }
 
-        if (!error)
-        {
-            if (bootstrap)
+            if (!error)
             {
                 CodeSmithyCLIBootstrapBuildEngine build_engine;
                 build_engine.run(absoluteWorkDir, verbose);
+            }
+        }
+        else if (configuration.value("command").asString() == "project")
+        {
+            if (configuration.value("subcommand").asString() == "create")
+            {
+                const std::string& output_dir = configuration.valueOrDefault("output-dir", ".");
+                const std::string& project_name = configuration.value("project-name").asString();
+                std::string project_file_path = (output_dir + "/" + project_name + ".csmthprj");
+
+                CodeSmithyProjectFileXMLRepository project_repository;
+                project_repository.create(project_file_path, error);
+                project_repository.setName(project_name);
+                project_repository.addProjectNode(project_name, error);
             }
         }
 
