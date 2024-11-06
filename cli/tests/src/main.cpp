@@ -18,7 +18,8 @@ int main(int argc, char* argv[])
         configuration.set("context.data", "../../data");
         configuration.set("context.reference", "../../reference");
         configuration.set("context.output", "../../output");
-        configuration.set("context.application-path", "../../../../bin/x64/CodeSmithyCLI.exe");
+        //configuration.set("context.application-path", "../../../../bin/x64/CodeSmithyCLI.exe");
+        configuration.set("context.application-path", "../../../../bin/CodeSmithyCLI");
         CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
         TestHarness the_test_harness("CodeSmithy CLI Tests", configuration);
