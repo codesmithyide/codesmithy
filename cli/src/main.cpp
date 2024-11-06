@@ -59,7 +59,6 @@ int main(int argc, char* argv[])
         Ishiko::Configuration configuration = command_line_spec.createDefaultConfiguration();
         Ishiko::CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
-
         Ishiko::Error error;
         error.extensions().install<Ishiko::InfoErrorExtension>();
 
