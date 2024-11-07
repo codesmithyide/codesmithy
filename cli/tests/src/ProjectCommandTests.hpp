@@ -12,7 +12,8 @@ public:
     ProjectCommandTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void CreateTest1(Ishiko::TestSequence& testSequence);
+    static void CreateTest1(Ishiko::TestSequence& test_sequence);
+    static void AddTest1(Ishiko::TestSequence& test_sequence);
 };
 
 #endif
