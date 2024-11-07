@@ -29,14 +29,14 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(Test& test)
    
     Ishiko::Error error;
 
-    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
     repository.setName("CodeSmithyIDE");
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("CodeSmithy", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("CodeSmithy", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -92,13 +92,13 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 
     Ishiko::Error error;
     
-    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("CodeSmithy", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileNode("CodeSmithy", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

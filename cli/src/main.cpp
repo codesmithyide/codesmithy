@@ -89,14 +89,45 @@ int main(int argc, char* argv[])
         {
             if (configuration.value("subcommand").asString() == "create")
             {
-                const std::string& output_dir = configuration.valueOrDefault("output-dir", ".");
+                std::string output_dir = configuration.valueOrDefault("output-dir", ".");
                 const std::string& project_name = configuration.value("project-name").asString();
-                std::string project_file_path = (output_dir + "/" + project_name + ".csmthprj");
+                std::string project_file_path = (output_dir + "/" + project_name + ".csbld");
 
-                CodeSmithyProjectFileXMLRepository project_repository;
+                CodeSmithyBuildFileXMLRepository project_repository;
                 project_repository.create(project_file_path, error);
+                // TODO: handle error
                 project_repository.setName(project_name);
-                project_repository.addProjectNode(project_name, error);
+                project_repository.addBuildFileNode(project_name, error);
+                project_repository.close();
+            }
+            else if (configuration.value("subcommand").asString() == "add")
+            {
+                const std::string& project_name = configuration.value("project-name").asString();
+                
+                std::string repository_path;
+                const Ishiko::Configuration::Value* repository_path_value =
+                    configuration.valueOrNull("repository-path");
+                if (repository_path_value)
+                {
+                    repository_path = repository_path_value->asString();
+                }
+                else
+                {
+                    repository_path = (project_name + ".csbld");
+                }
+
+                const std::string& file_path = configuration.value("file-path").asString();
+
+                CodeSmithyBuildFileXMLRepository project_repository;
+                project_repository.open(repository_path, error);
+                // TODO: handle error
+                std::unique_ptr<CodeSmithyBuildFile> project_node =
+                    project_repository.getBuildFileNode(project_name, error);
+
+                project_node->addSourceFile(file_path);
+
+                // TODO: handle error
+                project_repository.close();
             }
         }
 
