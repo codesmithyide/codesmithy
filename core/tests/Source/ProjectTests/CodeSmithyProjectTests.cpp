@@ -29,10 +29,10 @@ void CodeSmithyProjectTests::SaveTest1(Test& test)
     
     Ishiko::Error error;
 
-    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("CodeSmithyProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("CodeSmithyProject", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
