@@ -31,12 +31,12 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
 
     Ishiko::Error error;
 
-    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getProjectNode("BakefileProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("BakefileProject", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -56,12 +56,12 @@ void BakefileProjectTests::SaveTest1(Test& test)
     
     Ishiko::Error error;
 
-    CodeSmithy::CodeSmithyProjectFileXMLRepository repository;
+    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addProjectNode("BakefileProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("BakefileProject", error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
