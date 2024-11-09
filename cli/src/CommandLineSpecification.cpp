@@ -7,17 +7,21 @@ using namespace CodeSmithy;
 
 CommandLineSpecification::CommandLineSpecification()
 {
-    // TODO: set allowed commands
     addPositionalOption(1, "command", {Ishiko::CommandLineSpecification::OptionType::single_value});
  
-    // TODO: how can I make this conditional on the project command?
-    addPositionalOption(2, "subcommand", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    Ishiko::CommandLineSpecification::CommandDetails& buildfile_create_command_details =
+        addCommand("command", "project", "create");
+    buildfile_create_command_details.addPositionalOption(3, "project-name",
+        {Ishiko::CommandLineSpecification::OptionType::single_value});
 
-    // TODO: how can I make this conditional on the selected subcommand?
-    addPositionalOption(3, "project-name", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    Ishiko::CommandLineSpecification::CommandDetails& buildfile_add_command_details =
+        addCommand("command", "project", "add");
+    buildfile_add_command_details.addPositionalOption(3, "project-name", 
+        {Ishiko::CommandLineSpecification::OptionType::single_value});
+    buildfile_add_command_details.addPositionalOption(4, "file-path",
+        {Ishiko::CommandLineSpecification::OptionType::single_value});
 
-    // TODO: how can I make this conditional on the selected subcommand?
-    addPositionalOption(4, "file-path", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    Ishiko::CommandLineSpecification::CommandDetails& bootstrap_command_details = addCommand("command", "bootstrap");
     
     addNamedOption("input-file", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("output-dir", {Ishiko::CommandLineSpecification::OptionType::single_value});
