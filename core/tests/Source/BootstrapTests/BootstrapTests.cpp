@@ -98,13 +98,13 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileNode("CodeSmithy", error);
+    DiplodocusDB::XMLTreeDBNode project_node = repository.getBuildFileRawNode("CodeSmithy", error);
 
     ISHIKO_TEST_ABORT_IF(error);
-    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
+    ISHIKO_TEST_ABORT_IF_NOT(project_node);
 
     CodeSmithy::ProjectGroupType type;
-    CodeSmithy::ProjectGroup project(type, repository.db(), projectNode, error);
+    CodeSmithy::ProjectGroup project(type, repository.db(), project_node, error);
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(project.name() == "CodeSmithy");
