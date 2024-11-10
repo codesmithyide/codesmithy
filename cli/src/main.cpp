@@ -17,38 +17,36 @@ using namespace CodeSmithy;
 
 namespace
 {
+    class AppErrorCategory : public Ishiko::ErrorCategory
+    {
+    public:
+        static const AppErrorCategory& Get() noexcept;
 
-class AppErrorCategory : public Ishiko::ErrorCategory
-{
-public:
-    static const AppErrorCategory& Get() noexcept;
+        const char* name() const noexcept override;
+        const char* message(int ev, char* buffer, size_t len) const noexcept override;
+    };
 
-    const char* name() const noexcept override;
-    const char* message(int ev, char* buffer, size_t len) const noexcept override;
-};
+    const AppErrorCategory& AppErrorCategory::Get() noexcept
+    {
+        static AppErrorCategory the_category;
+        return the_category;
+    }
 
-const AppErrorCategory& AppErrorCategory::Get() noexcept
-{
-    static AppErrorCategory theCategory;
-    return theCategory;
-}
+    const char* AppErrorCategory::name() const noexcept
+    {
+        return "CodeSmithy::AppErrorCategory";
+    }
 
-const char* AppErrorCategory::name() const noexcept
-{
-    return "CodeSmithy::AppErrorCategory";
-}
+    const char* AppErrorCategory::message(int ev, char* buffer, size_t len) const noexcept
+    {
+        return "TODO";
+    }
 
-const char* AppErrorCategory::message(int ev, char* buffer, size_t len) const noexcept
-{
-    return "TODO";
-}
-
-enum EErrorCodes
-{
-    eInvalidCommandLine = -1,
-    eWorkDirNotEmpty = -2
-};
-
+    enum ErrorCodes
+    {
+        invalid_command_line = -1,
+        work_dir_not_empty = -2
+    };
 }
 
 int main(int argc, char* argv[])
@@ -77,7 +75,7 @@ int main(int argc, char* argv[])
             {
                 if (Ishiko::FileSystem::Exists(absoluteWorkDir.c_str()))
                 {
-                    error.fail(AppErrorCategory::Get(), eWorkDirNotEmpty, absoluteWorkDir, __FILE__, __LINE__);
+                    error.fail(AppErrorCategory::Get(), work_dir_not_empty, absoluteWorkDir, __FILE__, __LINE__);
                 }
             }
 
@@ -95,19 +93,19 @@ int main(int argc, char* argv[])
             if (subcommand_name == "create")
             {
                 std::string output_dir = configuration.valueOrDefault("output-dir", ".");
-                const std::string& project_name = subcommand_configuration.value("project-name").asString();
-                std::string project_file_path = (output_dir + "/" + project_name + ".csbld");
+                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
+                std::string project_file_path = (output_dir + "/" + build_file_name + ".csbld");
 
                 CodeSmithyBuildFileXMLRepository project_repository;
                 project_repository.create(project_file_path, error);
                 // TODO: handle error
-                project_repository.setName(project_name);
-                project_repository.addBuildFileNode(project_name, error);
+                project_repository.setName(build_file_name);
+                project_repository.addBuildFileNode(build_file_name, error);
                 project_repository.close();
             }
             else if (subcommand_name == "add")
             {
-                const std::string& project_name = subcommand_configuration.value("project-name").asString();
+                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
                 
                 std::string repository_path;
                 const Ishiko::Configuration::Value* repository_path_value =
@@ -118,7 +116,7 @@ int main(int argc, char* argv[])
                 }
                 else
                 {
-                    repository_path = (project_name + ".csbld");
+                    repository_path = (build_file_name + ".csbld");
                 }
 
                 const std::string& file_path = subcommand_configuration.value("file-path").asString();
@@ -127,7 +125,7 @@ int main(int argc, char* argv[])
                 project_repository.open(repository_path, error);
                 // TODO: handle error
                 std::unique_ptr<CodeSmithyBuildFile> project_node =
-                    project_repository.getBuildFileNode(project_name, error);
+                    project_repository.getBuildFileNode(build_file_name, error);
 
                 project_node->addSourceFile(file_path);
 
