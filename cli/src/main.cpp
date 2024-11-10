@@ -138,8 +138,21 @@ int main(int argc, char* argv[])
         {
             const std::string& project_name = command_configuration.value("project-name").asString();
 
-            MSBuildToolchain toolchain;
-            toolchain.build(project_name);
+            // TODO: proper logic to determine the right toolchain to use
+            if (project_name.find(".sln") != std::string::npos)
+            {
+                MSBuildToolchain toolchain;
+                toolchain.build(project_name, Ishiko::CurrentEnvironment());
+            }
+            else if (project_name.find("GNUmakefile") != std::string::npos)
+            {
+                MakeToolchain toolchain;
+                toolchain.build(project_name, Ishiko::CurrentEnvironment());
+            }
+            else
+            {
+                // TODO
+            }
         }
 
         if (error)

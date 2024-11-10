@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "BuildCommandTests.hpp"
+#include <Ishiko/BasePlatform.hpp>
 
 using namespace Ishiko;
 
@@ -15,8 +16,16 @@ BuildCommandTests::BuildCommandTests(const TestNumber& number, const TestContext
 void BuildCommandTests::BuildTest1(TestSequence& test_sequence)
 {
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
+
+#if ISHIKO_OS == ISHIKO_OS_LINUX
     boost::filesystem::path project_path =
-        test_sequence.context().getDataPath("VisualStudioProjects/HelloWorld/Makefiles/VC14/HelloWorld.sln");
+        test_sequence.context().getDataPath("VisualStudioProjects/HelloWorld/Makefiles/gnumake/GNUmakefile");
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
+    boost::filesystem::path project_path =
+        test_sequence.context().getDataPath("VisualStudioProjects/HelloWorld/Makefiles/vc14/HelloWorld.sln");
+#else
+#error Unsupported OS
+#endif
 
     std::string command_line = (application_path.string() + " build " + project_path.string());
 

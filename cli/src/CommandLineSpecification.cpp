@@ -30,6 +30,7 @@ CommandLineSpecification::CommandLineSpecification()
     addNamedOption("input-file", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("output-dir", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("repository-path", {Ishiko::CommandLineSpecification::OptionType::single_value});
+    addNamedOption("toolchain", {Ishiko::CommandLineSpecification::OptionType::single_value});
     addNamedOption("verbose", { Ishiko::CommandLineSpecification::OptionType::toggle });
     addNamedOption("work-dir", {Ishiko::CommandLineSpecification::OptionType::single_value});
 }
