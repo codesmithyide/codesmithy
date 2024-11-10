@@ -1,10 +1,18 @@
-toolsets = vs2015 vs2013;
+toolsets = gnu vs2022 vs2019 vs2017 vs2015;
 
-vs2015.solutionfile = ../VC14/HelloWorld.sln;
-vs2013.solutionfile = ../VC12/HelloWorld.sln;
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/HelloWorld.sln;
+vs2019.solutionfile = ../vc16/HelloWorld.sln;
+vs2017.solutionfile = ../vc15/HelloWorld.sln;
+vs2015.solutionfile = ../vc14/HelloWorld.sln;
 
 program HelloWorld
 {
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
+
     sources
     {
         ../../Source/main.cpp
