@@ -23,7 +23,7 @@
     <ClInclude Include="..\..\src\BuildCommandTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BuildFileCommandTests.hpp">
+    <ClInclude Include="..\..\src\ProjectCommandTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\VisualStudioBuildTests\VisualStudioBuildTests.h">
@@ -40,7 +40,7 @@
     <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BuildFileCommandTests.cpp">
+    <ClCompile Include="..\..\src\ProjectCommandTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\VisualStudioBuildTests\VisualStudioBuildTests.cpp">
