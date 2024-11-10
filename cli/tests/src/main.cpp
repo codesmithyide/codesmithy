@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "BootstrapTests.h"
+#include "BuildCommandTests.hpp"
 #include "BuildFileCommandTests.hpp"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
 #include <Ishiko/BasePlatform.hpp>
@@ -32,6 +33,7 @@ int main(int argc, char* argv[])
 
         TestSequence& the_tests = the_test_harness.tests();
         the_tests.append<BuildFileCommandTests>();
+        the_tests.append<BuildCommandTests>();
         the_tests.append<BootstrapTests>();
         the_tests.append<VisualStudioBuildTests>();
 
