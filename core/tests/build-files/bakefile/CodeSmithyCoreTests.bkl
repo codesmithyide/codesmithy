@@ -5,11 +5,11 @@ import $(codesmithypath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 
 toolsets = gnu vs2022 vs2019 vs2017 vs2015;
 
-gnu.makefile = ../GNUmakefile/GNUmakefile;
+gnu.makefile = ../gnumake/GNUmakefile;
 vs2022.solutionfile = ../vc17/CodeSmithyCoreTests.sln;
 vs2019.solutionfile = ../vc16/CodeSmithyCoreTests.sln;
-vs2017.solutionfile = ../VC15/CodeSmithyCoreTests.sln;
-vs2015.solutionfile = ../VC14/CodeSmithyCoreTests.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyCoreTests.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyCoreTests.sln;
 
 program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
 {
