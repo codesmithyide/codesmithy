@@ -10,6 +10,10 @@ class BuildCommandTests : public Ishiko::TestSequence
 {
 public:
     BuildCommandTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
+
+private:
+    static void BuildTest1(Ishiko::TestSequence& test_sequence);
+    static void BuildTest2(Ishiko::TestSequence& test_sequence);
 };
 
 #endif

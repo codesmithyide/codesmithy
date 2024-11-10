@@ -22,7 +22,7 @@ CommandLineSpecification::CommandLineSpecification()
         {Ishiko::CommandLineSpecification::OptionType::single_value});
 
     Ishiko::CommandLineSpecification::CommandDetails& build_command_details = addCommand("command", "build");
-    build_command_details.addPositionalOption(3, "project-name",
+    build_command_details.addPositionalOption(2, "project-name",
         {Ishiko::CommandLineSpecification::OptionType::single_value});
 
     Ishiko::CommandLineSpecification::CommandDetails& bootstrap_command_details = addCommand("command", "bootstrap");
