@@ -3,7 +3,7 @@
 
 #include "BootstrapTests.h"
 #include "BuildCommandTests.hpp"
-#include "BuildFileCommandTests.hpp"
+#include "ProjectCommandTests.hpp"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
 #include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/TestFramework.hpp>

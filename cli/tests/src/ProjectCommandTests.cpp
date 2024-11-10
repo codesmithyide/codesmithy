@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
-#include "BuildFileCommandTests.hpp"
+#include "ProjectCommandTests.hpp"
 #include <Ishiko/FileSystem.hpp>
 
 using namespace Ishiko;
