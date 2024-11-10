@@ -10,12 +10,12 @@ CommandLineSpecification::CommandLineSpecification()
     addPositionalOption(1, "command", {Ishiko::CommandLineSpecification::OptionType::single_value});
  
     Ishiko::CommandLineSpecification::CommandDetails& buildfile_create_command_details =
-        addCommand("command", "project", "create");
+        addCommand("command", "build-file", "create");
     buildfile_create_command_details.addPositionalOption(3, "project-name",
         {Ishiko::CommandLineSpecification::OptionType::single_value});
 
     Ishiko::CommandLineSpecification::CommandDetails& buildfile_add_command_details =
-        addCommand("command", "project", "add");
+        addCommand("command", "build-file", "add");
     buildfile_add_command_details.addPositionalOption(3, "project-name", 
         {Ishiko::CommandLineSpecification::OptionType::single_value});
     buildfile_add_command_details.addPositionalOption(4, "file-path",

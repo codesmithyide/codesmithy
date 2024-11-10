@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
                 build_engine.run(absoluteWorkDir, verbose);
             }
         }
-        else if (command_name == "project")
+        else if (command_name == "build-file")
         {
             const Ishiko::Configuration& subcommand_configuration =
                 command_configuration.value("subcommand").asConfiguration();
