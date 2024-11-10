@@ -32,7 +32,7 @@ void BuildCommandTests::BuildTest1(TestSequence& test_sequence)
     test_sequence.append<ConsoleApplicationTest>("build command test 1", command_line,
         [](int exit_code, ConsoleApplicationTest& test)
         {
-            ISHIKO_TEST_ABORT_IF_NEQ(exit_code, 0);
+            ISHIKO_TEST_FAIL_IF_NEQ(exit_code, 0);
             ISHIKO_TEST_PASS();
         }
     );
@@ -48,7 +48,7 @@ void BuildCommandTests::BuildTest2(TestSequence& test_sequence)
     test_sequence.append<ConsoleApplicationTest>("build command test 2", command_line,
         [](int exit_code, ConsoleApplicationTest& test)
         {
-            ISHIKO_TEST_ABORT_IF_NEQ(exit_code, -1);
+            ISHIKO_TEST_FAIL_IF_NEQ(exit_code, -1);
             ISHIKO_TEST_PASS();
         }
     );
