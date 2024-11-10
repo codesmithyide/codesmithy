@@ -15,8 +15,6 @@ public:
     VisualStudioBuildTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
-    static void BuildTest1(Ishiko::TestSequence& testSequence);
-    static void BuildTest2(Ishiko::TestSequence& testSequence);
     static void BuildTest3(Ishiko::TestSequence& testSequence);
 
 };

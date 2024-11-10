@@ -3,6 +3,7 @@
 
 #include "CommandLineSpecification.hpp"
 #include <CodeSmithy/BuildFiles.hpp>
+#include <CodeSmithy/BuildToolchains.h>
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
@@ -85,7 +86,7 @@ int main(int argc, char* argv[])
                 build_engine.run(absoluteWorkDir, verbose);
             }
         }
-        else if (command_name == "build-file")
+        else if (command_name == "project")
         {
             const Ishiko::Configuration& subcommand_configuration =
                 command_configuration.value("subcommand").asConfiguration();
@@ -93,19 +94,19 @@ int main(int argc, char* argv[])
             if (subcommand_name == "create")
             {
                 std::string output_dir = configuration.valueOrDefault("output-dir", ".");
-                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
-                std::string project_file_path = (output_dir + "/" + build_file_name + ".csbld");
+                const std::string& project_name = subcommand_configuration.value("project-name").asString();
+                std::string project_file_path = (output_dir + "/" + project_name + ".csbld");
 
                 CodeSmithyBuildFileXMLRepository project_repository;
                 project_repository.create(project_file_path, error);
                 // TODO: handle error
-                project_repository.setName(build_file_name);
-                project_repository.addBuildFileNode(build_file_name, error);
+                project_repository.setName(project_name);
+                project_repository.addBuildFileNode(project_name, error);
                 project_repository.close();
             }
             else if (subcommand_name == "add")
             {
-                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
+                const std::string& project_name = subcommand_configuration.value("project-name").asString();
                 
                 std::string repository_path;
                 const Ishiko::Configuration::Value* repository_path_value =
@@ -116,7 +117,7 @@ int main(int argc, char* argv[])
                 }
                 else
                 {
-                    repository_path = (build_file_name + ".csbld");
+                    repository_path = (project_name + ".csbld");
                 }
 
                 const std::string& file_path = subcommand_configuration.value("file-path").asString();
@@ -125,12 +126,32 @@ int main(int argc, char* argv[])
                 project_repository.open(repository_path, error);
                 // TODO: handle error
                 std::unique_ptr<CodeSmithyBuildFile> project_node =
-                    project_repository.getBuildFileNode(build_file_name, error);
+                    project_repository.getBuildFileNode(project_name, error);
 
                 project_node->addSourceFile(file_path);
 
                 // TODO: handle error
                 project_repository.close();
+            }
+        }
+        else if (command_name == "build")
+        {
+            const std::string& project_name = command_configuration.value("project-name").asString();
+
+            // TODO: proper logic to determine the right toolchain to use
+            if (project_name.find(".sln") != std::string::npos)
+            {
+                MSBuildToolchain toolchain;
+                toolchain.build(project_name, Ishiko::CurrentEnvironment());
+            }
+            else if (project_name.find("GNUmakefile") != std::string::npos)
+            {
+                MakeToolchain toolchain;
+                toolchain.build(project_name, Ishiko::CurrentEnvironment());
+            }
+            else
+            {
+                // TODO
             }
         }
 
@@ -148,6 +169,9 @@ int main(int argc, char* argv[])
         std::stringstream message;
         message << "EXCEPTION: " << e.what() << std::endl;
         Ishiko::Terminal::TerminalOutput(stderr).write(message.str(), Ishiko::Color::eRed);
+
+        // TODO
+        return -1;
     }
     catch (...)
     {
