@@ -6,10 +6,10 @@
 
 #include <Ishiko/TestFramework.hpp>
 
-class BuildFileCommandTests : public Ishiko::TestSequence
+class ProjectCommandTests : public Ishiko::TestSequence
 {
 public:
-    BuildFileCommandTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
+    ProjectCommandTests(const Ishiko::TestNumber& number, const Ishiko::TestContext& context);
 
 private:
     static void CreateTest1(Ishiko::TestSequence& test_sequence);

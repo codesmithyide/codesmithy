@@ -6,14 +6,14 @@
 
 using namespace Ishiko;
 
-BuildFileCommandTests::BuildFileCommandTests(const TestNumber& number, const TestContext& context)
-    : TestSequence(number, "build-file command tests", context)
+ProjectCommandTests::ProjectCommandTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "project command tests", context)
 {
     CreateTest1(*this);
     AddTest1(*this);
 }
 
-void BuildFileCommandTests::CreateTest1(TestSequence& test_sequence)
+void ProjectCommandTests::CreateTest1(TestSequence& test_sequence)
 {
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
     boost::filesystem::path output_dir = test_sequence.context().getOutputDirectory();
@@ -31,7 +31,7 @@ void BuildFileCommandTests::CreateTest1(TestSequence& test_sequence)
     );
 }
 
-void BuildFileCommandTests::AddTest1(TestSequence& test_sequence)
+void ProjectCommandTests::AddTest1(TestSequence& test_sequence)
 {
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
     boost::filesystem::path repository_path =
