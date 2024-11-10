@@ -23,7 +23,7 @@ jobs:
           command: cd /workspace/projects/codesmithyide/codesmithy/core/build-files/gnumake && make
       - run:
           name: "Test: CodeSmithy/Core"
-          command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/GNUmakefile && make && ./CodeSmithyCoreTests
+          command: cd /workspace/projects/codesmithyide/codesmithy/core/tests/build-files/gnumake && make && ./CodeSmithyCoreTests
       - run:
           name: "Build: CodeSmithy/CLI"
           command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make

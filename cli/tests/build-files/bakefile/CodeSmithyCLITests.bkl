@@ -26,15 +26,17 @@ program CodeSmithyCLITests : IshikoTestFramework
     headers
     {
         ../../src/BootstrapTests.h
-        ../../src/BuildFileCommandTests.hpp
+        ../../src/BuildCommandTests.hpp
+        ../../src/ProjectCommandTests.hpp
         ../../src/VisualStudioBuildTests/VisualStudioBuildTests.h
     }
 
     sources
     {
         ../../src/BootstrapTests.cpp
+        ../../src/BuildCommandTests.cpp
         ../../src/main.cpp
-        ../../src/BuildFileCommandTests.cpp
+        ../../src/ProjectCommandTests.cpp
         ../../src/VisualStudioBuildTests/VisualStudioBuildTests.cpp
     }
 }
