@@ -19,7 +19,7 @@ void BuildFileCommandTests::CreateTest1(TestSequence& test_sequence)
     boost::filesystem::path output_dir = test_sequence.context().getOutputDirectory();
 
     std::string command_line = application_path.string()
-        + " build-file create BuildFileCommandTests_CreateTest1 --output-dir=" + output_dir.string();
+        + " project create BuildFileCommandTests_CreateTest1 --output-dir=" + output_dir.string();
 
     test_sequence.append<ConsoleApplicationTest>("Project create command test 1", command_line,
         [](int exit_code, ConsoleApplicationTest& test)
@@ -38,7 +38,7 @@ void BuildFileCommandTests::AddTest1(TestSequence& test_sequence)
         test_sequence.context().getOutputPath("BuildFileCommandTests_AddTest1.csbld");
 
     std::string command_line = application_path.string()
-        + " build-file add BuildFileCommandTests_AddTest1 file1 --repository-path=" + repository_path.string();
+        + " project add BuildFileCommandTests_AddTest1 file1 --repository-path=" + repository_path.string();
 
     Ishiko::Test& test = test_sequence.append<ConsoleApplicationTest>("Project add command test 1", command_line,
         [](int exit_code, ConsoleApplicationTest& test)

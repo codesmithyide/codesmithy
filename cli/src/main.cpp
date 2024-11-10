@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
                 build_engine.run(absoluteWorkDir, verbose);
             }
         }
-        else if (command_name == "build-file")
+        else if (command_name == "project")
         {
             const Ishiko::Configuration& subcommand_configuration =
                 command_configuration.value("subcommand").asConfiguration();
@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
             if (subcommand_name == "create")
             {
                 std::string output_dir = configuration.valueOrDefault("output-dir", ".");
-                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
+                const std::string& build_file_name = subcommand_configuration.value("project-name").asString();
                 std::string project_file_path = (output_dir + "/" + build_file_name + ".csbld");
 
                 CodeSmithyBuildFileXMLRepository project_repository;
@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
             }
             else if (subcommand_name == "add")
             {
-                const std::string& build_file_name = subcommand_configuration.value("build-file-name").asString();
+                const std::string& build_file_name = subcommand_configuration.value("project-name").asString();
                 
                 std::string repository_path;
                 const Ishiko::Configuration::Value* repository_path_value =
