@@ -2,10 +2,10 @@
 <diplodocusdb-xmltreedb>
   <codesmithy-project-repository>
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
-    <name data-type="unicode-string">ProjectCommandTests_AddTest1</name>
+    <name data-type="unicode-string">BuildFileCommandTests_AddTest1</name>
     <projects>
       <codesmithy-project>
-        <name data-type="unicode-string">ProjectCommandTests_AddTest1</name>
+        <name data-type="unicode-string">BuildFileCommandTests_AddTest1</name>
       </codesmithy-project>
     </projects>
   </codesmithy-project-repository>
