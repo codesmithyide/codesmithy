@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "BootstrapTests.h"
-#include "ProjectCommandTests.hpp"
+#include "BuildFileCommandTests.hpp"
 #include "VisualStudioBuildTests/VisualStudioBuildTests.h"
 #include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/TestFramework.hpp>
