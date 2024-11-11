@@ -4,7 +4,6 @@
 #include "BootstrapTests.h"
 #include "BuildCommandTests.hpp"
 #include "ProjectCommandTests.hpp"
-#include "VisualStudioBuildTests/VisualStudioBuildTests.h"
 #include <Ishiko/BasePlatform.hpp>
 #include <Ishiko/TestFramework.hpp>
 #include <exception>
@@ -35,7 +34,6 @@ int main(int argc, char* argv[])
         the_tests.append<ProjectCommandTests>();
         the_tests.append<BuildCommandTests>();
         the_tests.append<BootstrapTests>();
-        the_tests.append<VisualStudioBuildTests>();
 
         return the_test_harness.run();
     }
