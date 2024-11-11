@@ -160,13 +160,11 @@
     <ClCompile Include="..\..\src\BuildCommandTests.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\ProjectCommandTests.cpp" />
-    <ClCompile Include="..\..\src\VisualStudioBuildTests\VisualStudioBuildTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BootstrapTests.h" />
     <ClInclude Include="..\..\src\BuildCommandTests.hpp" />
     <ClInclude Include="..\..\src\ProjectCommandTests.hpp" />
-    <ClInclude Include="..\..\src\VisualStudioBuildTests\VisualStudioBuildTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

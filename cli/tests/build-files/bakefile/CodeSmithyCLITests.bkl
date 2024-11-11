@@ -28,7 +28,6 @@ program CodeSmithyCLITests : IshikoTestFramework
         ../../src/BootstrapTests.h
         ../../src/BuildCommandTests.hpp
         ../../src/ProjectCommandTests.hpp
-        ../../src/VisualStudioBuildTests/VisualStudioBuildTests.h
     }
 
     sources
@@ -37,6 +36,5 @@ program CodeSmithyCLITests : IshikoTestFramework
         ../../src/BuildCommandTests.cpp
         ../../src/main.cpp
         ../../src/ProjectCommandTests.cpp
-        ../../src/VisualStudioBuildTests/VisualStudioBuildTests.cpp
     }
 }

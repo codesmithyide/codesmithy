@@ -14,6 +14,7 @@ public:
 private:
     static void BuildTest1(Ishiko::TestSequence& test_sequence);
     static void BuildTest2(Ishiko::TestSequence& test_sequence);
+    static void BuildTest3(Ishiko::TestSequence& test_sequence);
 };
 
 #endif

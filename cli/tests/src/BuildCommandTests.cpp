@@ -11,6 +11,7 @@ BuildCommandTests::BuildCommandTests(const TestNumber& number, const TestContext
 {
     BuildTest1(*this);
     BuildTest2(*this);
+    BuildTest3(*this);
 }
 
 void BuildCommandTests::BuildTest1(TestSequence& test_sequence)
@@ -46,6 +47,31 @@ void BuildCommandTests::BuildTest2(TestSequence& test_sequence)
     std::string command_line = (application_path.string() + " build " + project_path.string());
 
     test_sequence.append<ConsoleApplicationTest>("build command test 2", command_line,
+        [](int exit_code, ConsoleApplicationTest& test)
+        {
+            ISHIKO_TEST_FAIL_IF_NEQ(exit_code, -1);
+            ISHIKO_TEST_PASS();
+        }
+    );
+}
+
+void BuildCommandTests::BuildTest3(TestSequence& test_sequence)
+{
+    boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
+
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+    boost::filesystem::path project_path =
+        test_sequence.context().getDataPath("VisualStudioProjects/CompilationError/Makefiles/gnumake/GNUmakefile");
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
+    boost::filesystem::path project_path =
+        test_sequence.context().getDataPath("VisualStudioProjects/CompilationError/Makefiles/vc14/CompilationError.sln");
+#else
+#error Unsupported OS
+#endif
+
+    std::string command_line = (application_path.string() + " build " + project_path.string());
+
+    test_sequence.append<ConsoleApplicationTest>("build command test 1", command_line,
         [](int exit_code, ConsoleApplicationTest& test)
         {
             ISHIKO_TEST_FAIL_IF_NEQ(exit_code, -1);
