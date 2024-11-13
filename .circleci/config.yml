@@ -28,6 +28,9 @@ jobs:
           name: "Build: CodeSmithy/CLIEngine"
           command: cd /workspace/projects/codesmithyide/codesmithy/cli-engine/build-files/gnumake && make
       - run:
+          name: "Test: CodeSmithy/CLIEngine"
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli-engine/tests/build-files/gnumake && make && ./CodeSmithyCLIEngineTests
+      - run:
           name: "Build: CodeSmithy/CLI"
           command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
       - run:
@@ -62,6 +65,9 @@ jobs:
       - run:
           name: "Build: CodeSmithy/CLIEngine"
           command: cd /workspace/projects/codesmithyide/codesmithy/cli-engine/build-files/gnumake && make
+      - run:
+          name: "Test: CodeSmithy/CLIEngine"
+          command: cd /workspace/projects/codesmithyide/codesmithy/cli-engine/tests/build-files/gnumake && make && ./CodeSmithyCLIEngineTests
       - run:
           name: "Build: CodeSmithy/CLI"
           command: cd /workspace/projects/codesmithyide/codesmithy/cli/build-files/gnumake && make
