@@ -1,0 +1,20 @@
+setting CODESMITHY_ROOT
+{
+    help = "Path to the CodeSmithy installation";
+    default = '$(CODESMITHYIDE_ROOT)/codesmithy';
+}
+
+template CodeSmithyCLIEngine
+{
+    includedirs += $(CODESMITHY_ROOT)/include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHY_ROOT)/lib/$(arch);
+    }
+}

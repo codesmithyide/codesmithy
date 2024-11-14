@@ -1,0 +1,38 @@
+codesmithypath = envvar("CODESMITHYIDE_ROOT");
+import $(codesmithypath)/codesmithy/include/CodeSmithy/CLIEngine.bkl;
+ishikopath = envvar("ISHIKO_CPP_ROOT");
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
+
+toolsets = gnu vs2022 vs2019 vs2017 vs2015;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/CodeSmithyCLIEngineTests.sln;
+vs2019.solutionfile = ../vc16/CodeSmithyCLIEngineTests.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyCLIEngineTests.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyCLIEngineTests.sln;
+
+program CodeSmithyCLIEngineTests : CodeSmithyCLIEngine, IshikoTestFramework
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
+        libs += fmt boost_filesystem boost_system;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
+
+    headers
+    {
+        ../../src/CLIEngineTests.hpp
+    }
+
+    sources
+    {
+        ../../src/CLIEngineTests.cpp
+        ../../src/main.cpp
+    }
+}
