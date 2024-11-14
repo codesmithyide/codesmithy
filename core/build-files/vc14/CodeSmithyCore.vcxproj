@@ -258,8 +258,8 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Project.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectDescription.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h" />
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h" />
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.hpp" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroupType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\MetaBuildSystemProject.h" />

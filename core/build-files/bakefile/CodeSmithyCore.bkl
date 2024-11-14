@@ -90,8 +90,8 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../../include/CodeSmithy/Core/Projects/Project.h
         ../../../include/CodeSmithy/Core/Projects/ProjectDescription.h
         ../../../include/CodeSmithy/Core/Projects/ProjectLocation.h
-        ../../../include/CodeSmithy/Core/Projects/ProjectType.h
-        ../../../include/CodeSmithy/Core/Projects/ProjectTypes.h
+        ../../../include/CodeSmithy/Core/Projects/ProjectType.hpp
+        ../../../include/CodeSmithy/Core/Projects/ProjectTypes.hpp
         ../../../include/CodeSmithy/Core/Projects/ProjectGroup.h
         ../../../include/CodeSmithy/Core/Projects/ProjectGroupType.h
         ../../../include/CodeSmithy/Core/Projects/MetaBuildSystemProject.h

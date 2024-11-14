@@ -152,10 +152,10 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h">
