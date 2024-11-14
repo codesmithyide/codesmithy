@@ -48,6 +48,8 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
 
         ../../../include/CodeSmithy/Core/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.hpp
 
+        ../../../include/CodeSmithy/Core/Cpp/CppProgramProjectType.hpp
+
         ../../../include/CodeSmithy/Core/Documents/DocumentType.h
         ../../../include/CodeSmithy/Core/Documents/CustomDocumentTypeData.h
         ../../../include/CodeSmithy/Core/Documents/DocumentTypes.h
@@ -87,7 +89,6 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../../include/CodeSmithy/Core/Documents/XMLDocument.h
         ../../../include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
-        ../../../include/CodeSmithy/Core/Projects/CppProgramProjectType.hpp
         ../../../include/CodeSmithy/Core/Projects/Project.h
         ../../../include/CodeSmithy/Core/Projects/ProjectDescription.h
         ../../../include/CodeSmithy/Core/Projects/ProjectLocation.h
@@ -123,6 +124,8 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../src/Engine.cpp
 
         ../../src/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.cpp
+
+        ../../src/Cpp/CppProgramProjectType.cpp
 
         ../../src/Documents/DocumentType.cpp
         ../../src/Documents/CustomDocumentTypeData.cpp
@@ -163,7 +166,6 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../src/Documents/XMLDocument.cpp
         ../../src/Documents/XMLDocumentType.cpp
 
-        ../../src/Projects/CppProgramProjectType.cpp
         ../../src/Projects/Project.cpp
         ../../src/Projects/ProjectDescription.cpp
         ../../src/Projects/ProjectLocation.cpp

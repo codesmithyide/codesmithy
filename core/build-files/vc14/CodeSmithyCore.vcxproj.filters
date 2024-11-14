@@ -29,6 +29,9 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Cpp\CppProgramProjectType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -143,9 +146,6 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CppProgramProjectType.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -215,6 +215,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Cpp\CppProgramProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp">
@@ -329,9 +332,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Documents\XMLDocumentType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Projects\CppProgramProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Projects\Project.cpp">
