@@ -23,8 +23,14 @@ program CodeSmithyCLIEngineTests : IshikoTestFramework
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../src/CLIEngineTests.hpp
+    }
+
     sources
     {
+        ../../src/CLIEngineTests.cpp
         ../../src/main.cpp
     }
 }
