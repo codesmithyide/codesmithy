@@ -190,6 +190,7 @@
     <ClCompile Include="..\..\src\Documents\WiXSourceFileType.cpp" />
     <ClCompile Include="..\..\src\Documents\XMLDocument.cpp" />
     <ClCompile Include="..\..\src\Documents\XMLDocumentType.cpp" />
+    <ClCompile Include="..\..\src\Projects\CppProgramProjectType.cpp" />
     <ClCompile Include="..\..\src\Projects\Project.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectDescription.cpp" />
     <ClCompile Include="..\..\src\Projects\ProjectLocation.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\WiXSourceFileType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocument.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\XMLDocumentType.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\CppProgramProjectType.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\Project.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectDescription.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h" />

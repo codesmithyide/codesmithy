@@ -87,6 +87,7 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../../include/CodeSmithy/Core/Documents/XMLDocument.h
         ../../../include/CodeSmithy/Core/Documents/XMLDocumentType.h
 
+        ../../../include/CodeSmithy/Core/Projects/CppProgramProjectType.hpp
         ../../../include/CodeSmithy/Core/Projects/Project.h
         ../../../include/CodeSmithy/Core/Projects/ProjectDescription.h
         ../../../include/CodeSmithy/Core/Projects/ProjectLocation.h
@@ -162,6 +163,7 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../src/Documents/XMLDocument.cpp
         ../../src/Documents/XMLDocumentType.cpp
 
+        ../../src/Projects/CppProgramProjectType.cpp
         ../../src/Projects/Project.cpp
         ../../src/Projects/ProjectDescription.cpp
         ../../src/Projects/ProjectLocation.cpp
