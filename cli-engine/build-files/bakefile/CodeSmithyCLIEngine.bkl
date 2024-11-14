@@ -1,0 +1,40 @@
+toolsets = gnu vs2022 vs2019 vs2017 vs2015;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2022.solutionfile = ../vc17/CodeSmithyCLIEngine.sln;
+vs2019.solutionfile = ../vc16/CodeSmithyCLIEngine.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyCLIEngine.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyCLIEngine.sln;
+
+library CodeSmithyCLIEngine
+{
+    includedirs += ../../../include/CodeSmithy/CLIEngine;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyCLIEngine-d;
+    }
+
+    headers
+    {
+        ../../../include/CodeSmithy/CLIEngine.hpp
+        ../../../include/CodeSmithy/CLIEngine/CLIEngine.hpp
+    }
+
+    sources
+    {
+        ../../src/CLIEngine.cpp
+    }
+}
