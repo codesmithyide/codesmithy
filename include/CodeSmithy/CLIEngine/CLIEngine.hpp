@@ -4,4 +4,11 @@
 #ifndef GUARD_CODESMITHYIDE_CODESMITHY_CLIENGINE_CLIENGINEHPP
 #define GUARD_CODESMITHYIDE_CODESMITHY_CLIENGINE_CLIENGINEHPP
 
+namespace CodeSmithy
+{
+    class CLIEngine
+    {
+    };
+}
+
 #endif
