@@ -27,83 +27,83 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
 
     headers
     {
-        ../../Source/DocumentsTests/DocumentsTestSequence.h
-        ../../Source/DocumentsTests/DocumentsTests.h
-        ../../Source/DocumentsTests/DocumentsObserverTests.h
-        ../../Source/DocumentsTests/DocumentTypesTests.h
-        ../../Source/DocumentsTests/BakefileTypeTests.h
-        ../../Source/DocumentsTests/BakefileTests.h
-        ../../Source/DocumentsTests/CMakeListsTypeTests.h
-        ../../Source/DocumentsTests/CMakeListsTests.h
-        ../../Source/DocumentsTests/CodeSmithyProjectFileTypeTests.h
-        ../../Source/DocumentsTests/CodeSmithyProjectFileTests.h
-        ../../Source/DocumentsTests/CppFileTypeTests.h
-        ../../Source/DocumentsTests/CppFileTests.h
-        ../../Source/DocumentsTests/XMLDocumentTypeTests.h
-        ../../Source/DocumentsTests/XMLDocumentTests.h
+        ../../src/DocumentsTests/DocumentsTestSequence.h
+        ../../src/DocumentsTests/DocumentsTests.h
+        ../../src/DocumentsTests/DocumentsObserverTests.h
+        ../../src/DocumentsTests/DocumentTypesTests.h
+        ../../src/DocumentsTests/BakefileTypeTests.h
+        ../../src/DocumentsTests/BakefileTests.h
+        ../../src/DocumentsTests/CMakeListsTypeTests.h
+        ../../src/DocumentsTests/CMakeListsTests.h
+        ../../src/DocumentsTests/CodeSmithyProjectFileTypeTests.h
+        ../../src/DocumentsTests/CodeSmithyProjectFileTests.h
+        ../../src/DocumentsTests/CppFileTypeTests.h
+        ../../src/DocumentsTests/CppFileTests.h
+        ../../src/DocumentsTests/XMLDocumentTypeTests.h
+        ../../src/DocumentsTests/XMLDocumentTests.h
 
-        ../../Source/ProjectTests/ProjectTests.h
-        ../../Source/ProjectTests/ProjectGroupTypeTests.h
-        ../../Source/ProjectTests/CodeSmithyProjectTypeTests.h
-        ../../Source/ProjectTests/BakefileProjectTypeTests.h
-        ../../Source/ProjectTests/CMakeProjectTypeTests.h
-        ../../Source/ProjectTests/ProjectTypesTests.h
-        ../../Source/ProjectTests/ProjectDescriptionTests.h
-        ../../Source/ProjectTests/ProjectLocationTests.h
-        ../../Source/ProjectTests/ProjectGroupTests.h
-        ../../Source/ProjectTests/CodeSmithyProjectTests.h
-        ../../Source/ProjectTests/BakefileProjectTests.h
+        ../../src/ProjectTests/ProjectTests.h
+        ../../src/ProjectTests/ProjectGroupTypeTests.h
+        ../../src/ProjectTests/CodeSmithyProjectTypeTests.h
+        ../../src/ProjectTests/BakefileProjectTypeTests.h
+        ../../src/ProjectTests/CMakeProjectTypeTests.h
+        ../../src/ProjectTests/ProjectTypesTests.h
+        ../../src/ProjectTests/ProjectDescriptionTests.h
+        ../../src/ProjectTests/ProjectLocationTests.h
+        ../../src/ProjectTests/ProjectGroupTests.h
+        ../../src/ProjectTests/CodeSmithyProjectTests.h
+        ../../src/ProjectTests/BakefileProjectTests.h
 
-        ../../Source/ProjectTemplatesTests.h
+        ../../src/ProjectTemplatesTests.h
 
-        ../../Source/WorkspacesTests/WorkspacesTestSequence.h
-        ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.h
-        ../../Source/WorkspacesTests/GenericWorkspaceTests.h
+        ../../src/WorkspacesTests/WorkspacesTestSequence.h
+        ../../src/WorkspacesTests/WorkspaceFileRepositoryTests.h
+        ../../src/WorkspacesTests/GenericWorkspaceTests.h
 
-        ../../Source/EngineTests/EngineTests.h
+        ../../src/EngineTests/EngineTests.h
 
-        ../../Source/BootstrapTests/BootstrapTests.h
+        ../../src/BootstrapTests/BootstrapTests.h
     }
 
     sources
     {
-        ../../Source/main.cpp
+        ../../src/main.cpp
 
-        ../../Source/DocumentsTests/DocumentsTestSequence.cpp
-        ../../Source/DocumentsTests/DocumentsTests.cpp
-        ../../Source/DocumentsTests/DocumentsObserverTests.cpp
-        ../../Source/DocumentsTests/DocumentTypesTests.cpp
-        ../../Source/DocumentsTests/BakefileTypeTests.cpp
-        ../../Source/DocumentsTests/BakefileTests.cpp
-        ../../Source/DocumentsTests/CMakeListsTypeTests.cpp
-        ../../Source/DocumentsTests/CMakeListsTests.cpp
-        ../../Source/DocumentsTests/CodeSmithyProjectFileTypeTests.cpp
-        ../../Source/DocumentsTests/CodeSmithyProjectFileTests.cpp
-        ../../Source/DocumentsTests/CppFileTypeTests.cpp
-        ../../Source/DocumentsTests/CppFileTests.cpp
-        ../../Source/DocumentsTests/XMLDocumentTypeTests.cpp
-        ../../Source/DocumentsTests/XMLDocumentTests.cpp
+        ../../src/DocumentsTests/DocumentsTestSequence.cpp
+        ../../src/DocumentsTests/DocumentsTests.cpp
+        ../../src/DocumentsTests/DocumentsObserverTests.cpp
+        ../../src/DocumentsTests/DocumentTypesTests.cpp
+        ../../src/DocumentsTests/BakefileTypeTests.cpp
+        ../../src/DocumentsTests/BakefileTests.cpp
+        ../../src/DocumentsTests/CMakeListsTypeTests.cpp
+        ../../src/DocumentsTests/CMakeListsTests.cpp
+        ../../src/DocumentsTests/CodeSmithyProjectFileTypeTests.cpp
+        ../../src/DocumentsTests/CodeSmithyProjectFileTests.cpp
+        ../../src/DocumentsTests/CppFileTypeTests.cpp
+        ../../src/DocumentsTests/CppFileTests.cpp
+        ../../src/DocumentsTests/XMLDocumentTypeTests.cpp
+        ../../src/DocumentsTests/XMLDocumentTests.cpp
 
-        ../../Source/ProjectTests/ProjectTests.cpp
-        ../../Source/ProjectTests/ProjectGroupTypeTests.cpp
-        ../../Source/ProjectTests/CodeSmithyProjectTypeTests.cpp
-        ../../Source/ProjectTests/BakefileProjectTypeTests.cpp
-        ../../Source/ProjectTests/CMakeProjectTypeTests.cpp
-        ../../Source/ProjectTests/ProjectTypesTests.cpp
-        ../../Source/ProjectTests/ProjectDescriptionTests.cpp
-        ../../Source/ProjectTests/ProjectLocationTests.cpp
-        ../../Source/ProjectTests/ProjectGroupTests.cpp
-        ../../Source/ProjectTests/CodeSmithyProjectTests.cpp
-        ../../Source/ProjectTests/BakefileProjectTests.cpp
+        ../../src/ProjectTests/ProjectTests.cpp
+        ../../src/ProjectTests/ProjectGroupTypeTests.cpp
+        ../../src/ProjectTests/CodeSmithyProjectTypeTests.cpp
+        ../../src/ProjectTests/BakefileProjectTypeTests.cpp
+        ../../src/ProjectTests/CMakeProjectTypeTests.cpp
+        ../../src/ProjectTests/ProjectTypesTests.cpp
+        ../../src/ProjectTests/ProjectDescriptionTests.cpp
+        ../../src/ProjectTests/ProjectLocationTests.cpp
+        ../../src/ProjectTests/ProjectGroupTests.cpp
+        ../../src/ProjectTests/CodeSmithyProjectTests.cpp
+        ../../src/ProjectTests/BakefileProjectTests.cpp
 
-        ../../Source/ProjectTemplatesTests.cpp
+        ../../src/ProjectTemplatesTests.cpp
 
-        ../../Source/WorkspacesTests/WorkspacesTestSequence.cpp
-        ../../Source/WorkspacesTests/WorkspaceFileRepositoryTests.cpp
-        ../../Source/WorkspacesTests/GenericWorkspaceTests.cpp
+        ../../src/WorkspacesTests/WorkspacesTestSequence.cpp
+        ../../src/WorkspacesTests/WorkspaceFileRepositoryTests.cpp
+        ../../src/WorkspacesTests/GenericWorkspaceTests.cpp
 
-        ../../Source/EngineTests/EngineTests.cpp
+        ../../src/EngineTests/EngineTests.cpp
 
-        ../../Source/BootstrapTests/BootstrapTests.cpp
+        ../../src/BootstrapTests/BootstrapTests.cpp
     }
 }
