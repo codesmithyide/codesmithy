@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_WIX_WIXPROJECTTYPE_H_
 #define _CODESMITHY_CORE_PROJECTS_WIX_WIXPROJECTTYPE_H_
 
-#include "../ProjectType.h"
+#include "../ProjectType.hpp"
 
 namespace CodeSmithy
 {
