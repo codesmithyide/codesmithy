@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\Engine.cpp" />
     <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp" />
+    <ClCompile Include="..\..\src\BuildFiles\BuildFileType.cpp" />
     <ClCompile Include="..\..\src\Cpp\CppProgramProjectType.cpp" />
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp" />
     <ClCompile Include="..\..\src\Documents\CustomDocumentTypeData.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Engine.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\linkoptions.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\BuildFiles\BuildFileType.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Cpp\CppProgramProjectType.hpp" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h" />
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\CustomDocumentTypeData.h" />
