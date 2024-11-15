@@ -49,6 +49,7 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../../include/CodeSmithy/Core/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.hpp
 
         ../../../include/CodeSmithy/Core/BuildFiles/BuildFileType.hpp
+        ../../../include/CodeSmithy/Core/BuildFiles/CodeSmithyBuildFileType.hpp
 
         ../../../include/CodeSmithy/Core/Cpp/CppProgramProjectType.hpp
 
@@ -128,6 +129,7 @@ library CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToo
         ../../src/Bootstrap/CodeSmithyCLIBootstrapBuildEngine.cpp
 
         ../../src/BuildFiles/BuildFileType.cpp
+        ../../src/BuildFiles/CodeSmithyBuildFileType.cpp
 
         ../../src/Cpp/CppProgramProjectType.cpp
 
