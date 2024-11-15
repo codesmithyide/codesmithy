@@ -37,24 +37,34 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      CODESMITHY_ROOT                Path to the CodeSmithy installation
-#      ISHIKO_CPP_BASEPLATFORM_ROOT   Path to the Ishiko/C++ BasePlatform installation
-#      ISHIKO_CPP_ERRORS_ROOT         Path to the Ishiko/C++ Errors installation
-#      ISHIKO_CPP_MEMORY_ROOT         Path to the Ishiko/C++ Memory installation
-#      ISHIKO_CPP_BOOST_ROOT          Path to the Boost installation
-#      ISHIKO_CPP_TEXT_ROOT           Path to the Ishiko/C++ Text installation
-#      ISHIKO_CPP_CONFIGURATION_ROOT  Path to the Ishiko/C++ Configuration installation
-#      ISHIKO_CPP_IO_ROOT             Path to the Ishiko/C++ IO installation
-#      ISHIKO_CPP_FILESYSTEM_ROOT     Path to the Ishiko/C++ FileSystem installation
-#      ISHIKO_CPP_TYPES_ROOT          Path to the Ishiko/C++ Types installation
-#      ISHIKO_CPP_DIFF_ROOT           Path to the Ishiko/C++ Diff installation
-#      ISHIKO_CPP_PROCESS_ROOT        Path to the Ishiko/C++ Process installation
-#      ISHIKO_CPP_FMT_ROOT            Path to the fmt installation
-#      ISHIKO_CPP_TIME_ROOT           Path to the Ishiko/C++ Time installation
-#      ISHIKO_CPP_PUGIXML_ROOT        Path to the pugixml installation
-#      ISHIKO_CPP_XML_ROOT            Path to the Ishiko/C++ XML installation
-#      ISHIKO_CPP_TESTFRAMEWORK_ROOT  Path to the Ishiko/C++ TestFramework installation
-#      ISHIKO_CPP_TESTS_ROOT          Path to the Ishiko/C++ TestFramework installation
+#      LIBGIT2_ROOT                          Path to the libgit2 installation
+#      ISHIKO_CPP_BASEPLATFORM_ROOT          Path to the Ishiko/C++ BasePlatform installation
+#      ISHIKO_CPP_ERRORS_ROOT                Path to the Ishiko/C++ Errors installation
+#      ISHIKO_CPP_MEMORY_ROOT                Path to the Ishiko/C++ Memory installation
+#      ISHIKO_CPP_BOOST_ROOT                 Path to the Boost installation
+#      ISHIKO_CPP_TEXT_ROOT                  Path to the Ishiko/C++ Text installation
+#      ISHIKO_CPP_PROCESS_ROOT               Path to the Ishiko/C++ Process installation
+#      CODESMITHYIDE_BUILDTOOLCHAINS_ROOT    Path to the CodeSmithyIDE/BuildToolchains installation
+#      ISHIKO_CPP_FMT_ROOT                   Path to the fmt installation
+#      ISHIKO_CPP_TIME_ROOT                  Path to the Ishiko/C++ Time installation
+#      DIPLODOCUSDB_CORE_ROOT                Path to the DiplodocusDB installation
+#      ISHIKO_CPP_IO_ROOT                    Path to the Ishiko/C++ IO installation
+#      ISHIKO_CPP_FILESYSTEM_ROOT            Path to the Ishiko/C++ FileSystem installation
+#      DIPLODOCUSDB_PHYSICALSTORAGE_ROOT     Path to the DiplodocusDB installation
+#      ISHIKO_CPP_PUGIXML_ROOT               Path to the pugixml installation
+#      DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT  Path to the DiplodocusDB Embedded Document DB installation
+#      ISHIKO_CPP_UUIDS_ROOT                 Path to the Ishiko/C++ UUIDs installation
+#      CODESMITHYIDE_BUILDFILES_ROOT         Path to the CodeSmithyIDE/BuildFiles installation
+#      ISHIKO_CPP_COLLECTIONS_ROOT           Path to the Ishiko/C++ Collections installation
+#      ISHIKO_CPP_WORKFLOWS_ROOT             Path to the Ishiko/C++ Workflows installation
+#      CODESMITHYIDE_VERSIONCONTROL_ROOT     Path to the CodeSmithyIDE/VersionControl installation
+#      CODESMITHY_ROOT                       Path to the CodeSmithy installation
+#      ISHIKO_CPP_CONFIGURATION_ROOT         Path to the Ishiko/C++ Configuration installation
+#      ISHIKO_CPP_TYPES_ROOT                 Path to the Ishiko/C++ Types installation
+#      ISHIKO_CPP_DIFF_ROOT                  Path to the Ishiko/C++ Diff installation
+#      ISHIKO_CPP_XML_ROOT                   Path to the Ishiko/C++ XML installation
+#      ISHIKO_CPP_TESTFRAMEWORK_ROOT         Path to the Ishiko/C++ TestFramework installation
+#      ISHIKO_CPP_TESTS_ROOT                 Path to the Ishiko/C++ TestFramework installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -75,8 +85,8 @@ endif
 # Configurable settings:
 # 
 
-# Path to the CodeSmithy installation
-CODESMITHY_ROOT ?= $(CODESMITHYIDE_ROOT)/codesmithy
+# Path to the libgit2 installation
+LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the Ishiko/C++ BasePlatform installation
 ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP_ROOT)/base-platform
 # Path to the Ishiko/C++ Errors installation
@@ -87,24 +97,44 @@ ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
 ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
 # Path to the Ishiko/C++ Text installation
 ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP_ROOT)/text
-# Path to the Ishiko/C++ Configuration installation
-ISHIKO_CPP_CONFIGURATION_ROOT ?= $(ISHIKO_CPP_ROOT)/configuration
-# Path to the Ishiko/C++ IO installation
-ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP_ROOT)/io
-# Path to the Ishiko/C++ FileSystem installation
-ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
-# Path to the Ishiko/C++ Types installation
-ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP_ROOT)/types
-# Path to the Ishiko/C++ Diff installation
-ISHIKO_CPP_DIFF_ROOT ?= $(ISHIKO_CPP_ROOT)/diff
 # Path to the Ishiko/C++ Process installation
 ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP_ROOT)/process
+# Path to the CodeSmithyIDE/BuildToolchains installation
+CODESMITHYIDE_BUILDTOOLCHAINS_ROOT ?= $(CODESMITHYIDE_ROOT)/build-toolchains
 # Path to the fmt installation
 ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
 # Path to the Ishiko/C++ Time installation
 ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP_ROOT)/time
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB_ROOT)/core
+# Path to the Ishiko/C++ IO installation
+ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP_ROOT)/io
+# Path to the Ishiko/C++ FileSystem installation
+ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB_ROOT)/physical-storage
 # Path to the pugixml installation
 ISHIKO_CPP_PUGIXML_ROOT ?= $(PUGIXML_ROOT)
+# Path to the DiplodocusDB Embedded Document DB installation
+DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB_ROOT)/embedded-document-db
+# Path to the Ishiko/C++ UUIDs installation
+ISHIKO_CPP_UUIDS_ROOT ?= $(ISHIKO_CPP_ROOT)/uuids
+# Path to the CodeSmithyIDE/BuildFiles installation
+CODESMITHYIDE_BUILDFILES_ROOT ?= $(CODESMITHYIDE_ROOT)/build-files
+# Path to the Ishiko/C++ Collections installation
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP_ROOT)/collections
+# Path to the Ishiko/C++ Workflows installation
+ISHIKO_CPP_WORKFLOWS_ROOT ?= $(ISHIKO_CPP_ROOT)/workflows
+# Path to the CodeSmithyIDE/VersionControl installation
+CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE_ROOT)/version-control
+# Path to the CodeSmithy installation
+CODESMITHY_ROOT ?= $(CODESMITHYIDE_ROOT)/codesmithy
+# Path to the Ishiko/C++ Configuration installation
+ISHIKO_CPP_CONFIGURATION_ROOT ?= $(ISHIKO_CPP_ROOT)/configuration
+# Path to the Ishiko/C++ Types installation
+ISHIKO_CPP_TYPES_ROOT ?= $(ISHIKO_CPP_ROOT)/types
+# Path to the Ishiko/C++ Diff installation
+ISHIKO_CPP_DIFF_ROOT ?= $(ISHIKO_CPP_ROOT)/diff
 # Path to the Ishiko/C++ XML installation
 ISHIKO_CPP_XML_ROOT ?= $(ISHIKO_CPP_ROOT)/xml
 # Path to the Ishiko/C++ TestFramework installation
@@ -117,13 +147,13 @@ ISHIKO_CPP_TESTS_ROOT ?= $(ISHIKO_CPP_ROOT)/test-framework
 all: $(_builddir)CodeSmithyCLIEngineTests
 
 $(_builddir)CodeSmithyCLIEngineTests: $(_builddir)CodeSmithyCLIEngineTests_CLIEngineTests.o $(_builddir)CodeSmithyCLIEngineTests_main.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLIEngineTests_CLIEngineTests.o $(_builddir)CodeSmithyCLIEngineTests_main.o -L$(CODESMITHY_ROOT)/lib -L$(ISHIKO_CPP_BASEPLATFORM_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_MEMORY_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_TEXT_ROOT)/lib -L$(ISHIKO_CPP_CONFIGURATION_ROOT)/lib -L$(ISHIKO_CPP_IO_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/lib -L$(ISHIKO_CPP_TYPES_ROOT)/lib -L$(ISHIKO_CPP_DIFF_ROOT)/lib -L$(ISHIKO_CPP_XML_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/lib -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_TIME_ROOT)/lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib -L$(ISHIKO_CPP_TESTS_ROOT)/lib -lIshikoTestFramework -lIshikoTestFrameworkCore -lIshikoConfiguration -lIshikoDiff -lIshikoXML -lIshikoFileSystem -lIshikoIO -lIshikoProcess -lIshikoTime -lIshikoText -lIshikoErrors -lIshikoBasePlatform -lfmt -lboost_filesystem -lboost_system -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyCLIEngineTests_CLIEngineTests.o $(_builddir)CodeSmithyCLIEngineTests_main.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/lib -L$(ISHIKO_CPP_BASEPLATFORM_ROOT)/lib -L$(ISHIKO_CPP_ERRORS_ROOT)/lib -L$(ISHIKO_CPP_BOOST_ROOT)/lib -L$(ISHIKO_CPP_WORKFLOWS_ROOT)/lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/lib -L$(ISHIKO_CPP_IO_ROOT)/lib -L$(ISHIKO_CPP_FILESYSTEM_ROOT)/lib -L$(ISHIKO_CPP_MEMORY_ROOT)/lib -L$(DIPLODOCUSDB_PHYSICALSTORAGE_ROOT)/lib -L$(ISHIKO_CPP_FMT_ROOT)/lib -L$(ISHIKO_CPP_TIME_ROOT)/lib -L$(DIPLODOCUSDB_CORE_ROOT)/lib -L$(DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT)/lib -L$(ISHIKO_CPP_UUIDS_ROOT)/lib -L$(ISHIKO_CPP_TEXT_ROOT)/lib -L$(CODESMITHYIDE_BUILDFILES_ROOT)/lib -L$(ISHIKO_CPP_PROCESS_ROOT)/lib -L$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/lib -L$(CODESMITHY_ROOT)/lib -L$(ISHIKO_CPP_CONFIGURATION_ROOT)/lib -L$(ISHIKO_CPP_TYPES_ROOT)/lib -L$(ISHIKO_CPP_DIFF_ROOT)/lib -L$(ISHIKO_CPP_XML_ROOT)/lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/lib -L$(ISHIKO_CPP_TESTS_ROOT)/lib -lIshikoTestFramework -lIshikoTestFrameworkCore -lIshikoConfiguration -lIshikoDiff -lIshikoXML -lIshikoFileSystem -lIshikoIO -lIshikoProcess -lIshikoTime -lIshikoText -lIshikoErrors -lIshikoBasePlatform -lfmt -lboost_filesystem -lboost_system -pthread
 
 $(_builddir)CodeSmithyCLIEngineTests_CLIEngineTests.o: ../../src/CLIEngineTests.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(CODESMITHY_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -I$(ISHIKO_CPP_TESTS_ROOT)/include -std=c++11 ../../src/CLIEngineTests.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_WORKFLOWS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(DIPLODOCUSDB_PHYSICALSTORAGE_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(DIPLODOCUSDB_CORE_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(CODESMITHYIDE_BUILDFILES_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/include -I$(CODESMITHY_ROOT)/include -I$(CODESMITHY_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -I$(ISHIKO_CPP_TESTS_ROOT)/include -std=c++11 ../../src/CLIEngineTests.cpp
 
 $(_builddir)CodeSmithyCLIEngineTests_main.o: ../../src/main.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(CODESMITHY_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -I$(ISHIKO_CPP_TESTS_ROOT)/include -std=c++11 ../../src/main.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_WORKFLOWS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(DIPLODOCUSDB_PHYSICALSTORAGE_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(DIPLODOCUSDB_CORE_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(CODESMITHYIDE_BUILDFILES_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/include -I$(CODESMITHY_ROOT)/include -I$(CODESMITHY_ROOT)/include -I$(ISHIKO_CPP_CONFIGURATION_ROOT)/include -I$(ISHIKO_CPP_TYPES_ROOT)/include -I$(ISHIKO_CPP_DIFF_ROOT)/include -I$(ISHIKO_CPP_XML_ROOT)/include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/include -I$(ISHIKO_CPP_TESTS_ROOT)/include -std=c++11 ../../src/main.cpp
 
 clean:
 	rm -f $(_builddir)*.o

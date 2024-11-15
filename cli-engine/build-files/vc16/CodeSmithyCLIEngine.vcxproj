@@ -85,10 +85,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(CODESMITHYIDE_ROOT)/codesmithy\include;..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -100,10 +100,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(CODESMITHYIDE_ROOT)/codesmithy\include;..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -117,10 +117,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(CODESMITHYIDE_ROOT)/codesmithy\include;..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -136,10 +136,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PUGIXML_HEADER_ONLY;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT);$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/io\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/memory\include;$(DIPLODOCUSDB_ROOT)/physical-storage\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/time\include;$(DIPLODOCUSDB_ROOT)/core\include;$(PUGIXML_ROOT)\src;$(DIPLODOCUSDB_ROOT)/embedded-document-db\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(CODESMITHYIDE_ROOT)/codesmithy\include;..\..\..\include\CodeSmithy\CLIEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>

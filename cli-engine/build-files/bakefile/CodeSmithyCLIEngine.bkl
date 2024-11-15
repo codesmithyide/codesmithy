@@ -1,3 +1,6 @@
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
+import $(codesmithyidepath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
+
 toolsets = gnu vs2022 vs2019 vs2017 vs2015;
 
 gnu.makefile = ../gnumake/GNUmakefile;
@@ -6,7 +9,7 @@ vs2019.solutionfile = ../vc16/CodeSmithyCLIEngine.sln;
 vs2017.solutionfile = ../vc15/CodeSmithyCLIEngine.sln;
 vs2015.solutionfile = ../vc14/CodeSmithyCLIEngine.sln;
 
-library CodeSmithyCLIEngine
+library CodeSmithyCLIEngine : CodeSmithyCore
 {
     includedirs += ../../../include/CodeSmithy/CLIEngine;
 

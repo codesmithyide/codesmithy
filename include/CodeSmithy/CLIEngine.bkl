@@ -1,10 +1,7 @@
-setting CODESMITHY_ROOT
-{
-    help = "Path to the CodeSmithy installation";
-    default = '$(CODESMITHYIDE_ROOT)/codesmithy';
-}
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
+import $(codesmithyidepath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
 
-template CodeSmithyCLIEngine
+template CodeSmithyCLIEngine : CodeSmithyCore
 {
     includedirs += $(CODESMITHY_ROOT)/include;
 

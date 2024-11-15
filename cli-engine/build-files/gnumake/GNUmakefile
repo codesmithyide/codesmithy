@@ -33,6 +33,32 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      LIBGIT2_ROOT                          Path to the libgit2 installation
+#      ISHIKO_CPP_BASEPLATFORM_ROOT          Path to the Ishiko/C++ BasePlatform installation
+#      ISHIKO_CPP_ERRORS_ROOT                Path to the Ishiko/C++ Errors installation
+#      ISHIKO_CPP_MEMORY_ROOT                Path to the Ishiko/C++ Memory installation
+#      ISHIKO_CPP_BOOST_ROOT                 Path to the Boost installation
+#      ISHIKO_CPP_TEXT_ROOT                  Path to the Ishiko/C++ Text installation
+#      ISHIKO_CPP_PROCESS_ROOT               Path to the Ishiko/C++ Process installation
+#      CODESMITHYIDE_BUILDTOOLCHAINS_ROOT    Path to the CodeSmithyIDE/BuildToolchains installation
+#      ISHIKO_CPP_FMT_ROOT                   Path to the fmt installation
+#      ISHIKO_CPP_TIME_ROOT                  Path to the Ishiko/C++ Time installation
+#      DIPLODOCUSDB_CORE_ROOT                Path to the DiplodocusDB installation
+#      ISHIKO_CPP_IO_ROOT                    Path to the Ishiko/C++ IO installation
+#      ISHIKO_CPP_FILESYSTEM_ROOT            Path to the Ishiko/C++ FileSystem installation
+#      DIPLODOCUSDB_PHYSICALSTORAGE_ROOT     Path to the DiplodocusDB installation
+#      ISHIKO_CPP_PUGIXML_ROOT               Path to the pugixml installation
+#      DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT  Path to the DiplodocusDB Embedded Document DB installation
+#      ISHIKO_CPP_UUIDS_ROOT                 Path to the Ishiko/C++ UUIDs installation
+#      CODESMITHYIDE_BUILDFILES_ROOT         Path to the CodeSmithyIDE/BuildFiles installation
+#      ISHIKO_CPP_COLLECTIONS_ROOT           Path to the Ishiko/C++ Collections installation
+#      ISHIKO_CPP_WORKFLOWS_ROOT             Path to the Ishiko/C++ Workflows installation
+#      CODESMITHYIDE_VERSIONCONTROL_ROOT     Path to the CodeSmithyIDE/VersionControl installation
+#      CODESMITHY_ROOT                       Path to the CodeSmithy installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +80,58 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the libgit2 installation
+LIBGIT2_ROOT ?= $(LIBGIT2)
+# Path to the Ishiko/C++ BasePlatform installation
+ISHIKO_CPP_BASEPLATFORM_ROOT ?= $(ISHIKO_CPP_ROOT)/base-platform
+# Path to the Ishiko/C++ Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP_ROOT)/errors
+# Path to the Ishiko/C++ Memory installation
+ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
+# Path to the Boost installation
+ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
+# Path to the Ishiko/C++ Text installation
+ISHIKO_CPP_TEXT_ROOT ?= $(ISHIKO_CPP_ROOT)/text
+# Path to the Ishiko/C++ Process installation
+ISHIKO_CPP_PROCESS_ROOT ?= $(ISHIKO_CPP_ROOT)/process
+# Path to the CodeSmithyIDE/BuildToolchains installation
+CODESMITHYIDE_BUILDTOOLCHAINS_ROOT ?= $(CODESMITHYIDE_ROOT)/build-toolchains
+# Path to the fmt installation
+ISHIKO_CPP_FMT_ROOT ?= $(FMT_ROOT)
+# Path to the Ishiko/C++ Time installation
+ISHIKO_CPP_TIME_ROOT ?= $(ISHIKO_CPP_ROOT)/time
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_CORE_ROOT ?= $(DIPLODOCUSDB_ROOT)/core
+# Path to the Ishiko/C++ IO installation
+ISHIKO_CPP_IO_ROOT ?= $(ISHIKO_CPP_ROOT)/io
+# Path to the Ishiko/C++ FileSystem installation
+ISHIKO_CPP_FILESYSTEM_ROOT ?= $(ISHIKO_CPP_ROOT)/filesystem
+# Path to the DiplodocusDB installation
+DIPLODOCUSDB_PHYSICALSTORAGE_ROOT ?= $(DIPLODOCUSDB_ROOT)/physical-storage
+# Path to the pugixml installation
+ISHIKO_CPP_PUGIXML_ROOT ?= $(PUGIXML_ROOT)
+# Path to the DiplodocusDB Embedded Document DB installation
+DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT ?= $(DIPLODOCUSDB_ROOT)/embedded-document-db
+# Path to the Ishiko/C++ UUIDs installation
+ISHIKO_CPP_UUIDS_ROOT ?= $(ISHIKO_CPP_ROOT)/uuids
+# Path to the CodeSmithyIDE/BuildFiles installation
+CODESMITHYIDE_BUILDFILES_ROOT ?= $(CODESMITHYIDE_ROOT)/build-files
+# Path to the Ishiko/C++ Collections installation
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP_ROOT)/collections
+# Path to the Ishiko/C++ Workflows installation
+ISHIKO_CPP_WORKFLOWS_ROOT ?= $(ISHIKO_CPP_ROOT)/workflows
+# Path to the CodeSmithyIDE/VersionControl installation
+CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE_ROOT)/version-control
+# Path to the CodeSmithy installation
+CODESMITHY_ROOT ?= $(CODESMITHYIDE_ROOT)/codesmithy
+
+# ------------
+
 all: ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyCLIEngine-d,CodeSmithyCLIEngine).a
 
 ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyCLIEngine-d,CodeSmithyCLIEngine).a: $(_builddir)CodeSmithyCLIEngine_CLIEngine.o
@@ -61,7 +139,7 @@ all: ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyC
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyCLIEngine_CLIEngine.o: ../../src/CLIEngine.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../include/CodeSmithy/CLIEngine -std=c++11 ../../src/CLIEngine.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -DPUGIXML_HEADER_ONLY -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BASEPLATFORM_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_WORKFLOWS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/include -I$(ISHIKO_CPP_IO_ROOT)/include -I$(ISHIKO_CPP_FILESYSTEM_ROOT)/include -I$(ISHIKO_CPP_MEMORY_ROOT)/include -I$(DIPLODOCUSDB_PHYSICALSTORAGE_ROOT)/include -I$(ISHIKO_CPP_FMT_ROOT)/include -I$(ISHIKO_CPP_TIME_ROOT)/include -I$(DIPLODOCUSDB_CORE_ROOT)/include -I$(ISHIKO_CPP_PUGIXML_ROOT)/src -I$(DIPLODOCUSDB_EMBEDDEDDOCUMENTDB_ROOT)/include -I$(ISHIKO_CPP_UUIDS_ROOT)/include -I$(ISHIKO_CPP_TEXT_ROOT)/include -I$(CODESMITHYIDE_BUILDFILES_ROOT)/include -I$(ISHIKO_CPP_PROCESS_ROOT)/include -I$(CODESMITHYIDE_BUILDTOOLCHAINS_ROOT)/include -I$(CODESMITHY_ROOT)/include -I../../../include/CodeSmithy/CLIEngine -std=c++11 ../../src/CLIEngine.cpp
 
 clean:
 	rm -f $(_builddir)*.o
