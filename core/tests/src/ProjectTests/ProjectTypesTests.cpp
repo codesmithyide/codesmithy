@@ -21,7 +21,7 @@
 */
 
 #include "ProjectTypesTests.h"
-#include "CodeSmithy/Core/Projects/ProjectTypes.h"
+#include "CodeSmithy/Core/Projects/ProjectTypes.hpp"
 #include "CodeSmithy/Core/Documents/BakefileType.h"
 #include "CodeSmithy/Core/Projects/Bakefile/BakefileProjectType.h"
 
