@@ -107,6 +107,8 @@ int main(int argc, char* argv[])
             }
             else if (subcommand_name == "add")
             {
+                CLIEngine engine;
+
                 const std::string& project_name = subcommand_configuration.value("project-name").asString();
                 
                 std::string repository_path;
