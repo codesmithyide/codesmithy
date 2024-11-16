@@ -26,7 +26,7 @@ program CodeSmithyCLI : CodeSmithyCLIEngine, CodeSmithyCore, CodeSmithyBuildFile
     {
         cxx-compiler-options = "-std=c++11";
         outputdir = ../../../bin;
-        libs += CodeSmithyCore CodeSmithyBuildFiles CodeSmithyBuildToolchains CodeSmithyGit DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoWorkflows IshikoTerminal IshikoConfiguration IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoTypes IshikoErrors;
+        libs += CodeSmithyCLIEngine CodeSmithyCore CodeSmithyBuildFiles CodeSmithyBuildToolchains CodeSmithyGit DiplodocusEmbeddedDocumentDB DiplodocusEmbeddedDocumentDBStorageEngine DiplodocusDBPhysicalStorage DiplodocusDBCore IshikoWorkflows IshikoTerminal IshikoConfiguration IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoTypes IshikoErrors;
         libs += git2 fmt boost_filesystem ssl crypto z;
     }
 
