@@ -34,6 +34,7 @@ library CodeSmithyCLIEngine : CodeSmithyCore
     {
         ../../../include/CodeSmithy/CLIEngine.hpp
         ../../../include/CodeSmithy/CLIEngine/CLIEngine.hpp
+        ../../../include/CodeSmithy/CLIEngine/linkoptions.hpp
     }
 
     sources
