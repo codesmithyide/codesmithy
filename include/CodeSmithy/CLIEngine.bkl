@@ -1,7 +1,8 @@
 codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithyidepath)/codesmithy/include/CodeSmithy/CodeSmithyCore.bkl;
+import $(codesmithyidepath)/build-files/include/CodeSmithy/CodeSmithyBuildFiles.bkl;
 
-template CodeSmithyCLIEngine : CodeSmithyCore
+template CodeSmithyCLIEngine : CodeSmithyCore, CodeSmithyBuildFiles
 {
     includedirs += $(CODESMITHY_ROOT)/include;
 
