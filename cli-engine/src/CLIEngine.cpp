@@ -2,3 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 #include "CLIEngine.hpp"
+
+using namespace CodeSmithy;
+
+CLIEngine::CLIEngine()
+{
+}
