@@ -5,6 +5,7 @@
 #define GUARD_CODESMITHYIDE_CODESMITHY_CLIENGINE_CLIENGINE_HPP
 
 #include <CodeSmithy/Core.hpp>
+#include <string>
 
 namespace CodeSmithy
 {
@@ -12,6 +13,9 @@ namespace CodeSmithy
     {
     public:
         CLIEngine();
+
+        void addFile(const std::string& repository_path, const std::string& project_name,
+            const std::string& file_path);
 
     private:
         ProjectTypes m_project_types;

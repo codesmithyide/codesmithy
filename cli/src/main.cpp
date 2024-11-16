@@ -125,16 +125,7 @@ int main(int argc, char* argv[])
 
                 const std::string& file_path = subcommand_configuration.value("file-path").asString();
 
-                CodeSmithyBuildFileXMLRepository project_repository;
-                project_repository.open(repository_path, error);
-                // TODO: handle error
-                std::unique_ptr<CodeSmithyBuildFile> project_node =
-                    project_repository.getBuildFileNode(project_name, error);
-
-                project_node->addSourceFile(file_path);
-
-                // TODO: handle error
-                project_repository.close();
+                engine.addFile(repository_path, project_name, file_path);
             }
         }
         else if (command_name == "build")
