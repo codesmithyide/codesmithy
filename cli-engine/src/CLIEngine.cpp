@@ -7,4 +7,5 @@ using namespace CodeSmithy;
 
 CLIEngine::CLIEngine()
 {
+    m_project_types.add(std::make_shared<CppProgramProjectType>());
 }

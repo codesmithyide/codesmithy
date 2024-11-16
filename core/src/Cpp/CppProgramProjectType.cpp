@@ -2,3 +2,10 @@
 // SPDX-License-Identifier: MIT
 
 #include "Cpp/CppProgramProjectType.hpp"
+
+using namespace CodeSmithy;
+
+CppProgramProjectType::CppProgramProjectType()
+    : ProjectType("codesmithy:cpp-program-project")
+{
+}

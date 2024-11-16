@@ -10,6 +10,8 @@ namespace CodeSmithy
 {
     class CppProgramProjectType : public ProjectType
     {
+    public:
+        CppProgramProjectType();
     };
 }
 
