@@ -29,6 +29,15 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\BuildFiles\BuildFileType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\BuildFiles\CodeSmithyBuildFileType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Cpp\CppProgramProjectType.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Documents\DocumentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -152,10 +161,10 @@
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectLocation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectType.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.h">
+    <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectTypes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\CodeSmithy\Core\Projects\ProjectGroup.h">
@@ -212,6 +221,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Bootstrap\CodeSmithyCLIBootstrapBuildEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BuildFiles\BuildFileType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BuildFiles\CodeSmithyBuildFileType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Cpp\CppProgramProjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Documents\DocumentType.cpp">

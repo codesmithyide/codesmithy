@@ -5,5 +5,6 @@
 #define GUARD_CODESMITHYIDE_CODESMITHY_CLIENGINE_HPP
 
 #include "CLIEngine/CLIEngine.hpp"
+#include "CLIEngine/linkoptions.hpp"
 
 #endif

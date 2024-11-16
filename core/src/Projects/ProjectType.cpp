@@ -20,7 +20,7 @@
     IN THE SOFTWARE.
 */
 
-#include "Projects/ProjectType.h"
+#include "Projects/ProjectType.hpp"
 
 namespace CodeSmithy
 {

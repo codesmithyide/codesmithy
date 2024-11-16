@@ -4,6 +4,7 @@
 #include "CommandLineSpecification.hpp"
 #include <CodeSmithy/BuildFiles.hpp>
 #include <CodeSmithy/BuildToolchains.h>
+#include <CodeSmithy/CLIEngine.hpp>
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
@@ -106,6 +107,8 @@ int main(int argc, char* argv[])
             }
             else if (subcommand_name == "add")
             {
+                CLIEngine engine;
+
                 const std::string& project_name = subcommand_configuration.value("project-name").asString();
                 
                 std::string repository_path;
@@ -122,16 +125,7 @@ int main(int argc, char* argv[])
 
                 const std::string& file_path = subcommand_configuration.value("file-path").asString();
 
-                CodeSmithyBuildFileXMLRepository project_repository;
-                project_repository.open(repository_path, error);
-                // TODO: handle error
-                std::unique_ptr<CodeSmithyBuildFile> project_node =
-                    project_repository.getBuildFileNode(project_name, error);
-
-                project_node->addSourceFile(file_path);
-
-                // TODO: handle error
-                project_repository.close();
+                engine.addFile(repository_path, project_name, file_path);
             }
         }
         else if (command_name == "build")

@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 #define _CODESMITHY_CORE_WORKSPACES_WORKSPACE_H_
 
-#include "../Projects/ProjectTypes.h"
+#include "../Projects/ProjectTypes.hpp"
 
 namespace CodeSmithy
 {

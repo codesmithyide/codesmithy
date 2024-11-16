@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "CLIEngineTests.hpp"
+#include "CodeSmithy/CLIEngine/linkoptions.hpp"
 #include <Ishiko/TestFramework.hpp>
 #include <exception>
 

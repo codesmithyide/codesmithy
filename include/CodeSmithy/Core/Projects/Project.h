@@ -23,7 +23,7 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECT_H_
 
-#include "ProjectType.h"
+#include "ProjectType.hpp"
 #include "ProjectDescription.h"
 #include "ProjectLocation.h"
 #include <DiplodocusDB/EmbeddedDocumentDB.hpp>
