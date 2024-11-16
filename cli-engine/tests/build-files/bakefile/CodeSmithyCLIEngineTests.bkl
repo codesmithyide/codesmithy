@@ -16,7 +16,7 @@ program CodeSmithyCLIEngineTests : CodeSmithyCLIEngine, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyCLIEngine IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
+        libs += CodeSmithyCLIEngine CodeSmithyCore IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoDiff IshikoXML IshikoFileSystem IshikoIO IshikoProcess IshikoTime IshikoText IshikoErrors IshikoBasePlatform;
         libs += fmt boost_filesystem boost_system;
     }
 
