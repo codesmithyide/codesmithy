@@ -17,7 +17,7 @@ BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& cont
 
     append<HeapAllocationErrorsTest>("Bootstrap ProjectFileRepository creation test 1",
         ProjectFileRepositoryCreationTest1);
-    append<HeapAllocationErrorsTest>("Bootstap ProjectFileRepository test 2",
+    append<HeapAllocationErrorsTest>("Bootstrap ProjectFileRepository test 2",
         ProjectFileRepositoryCreationTest2);
 }
 

@@ -169,12 +169,13 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
 
 void ProjectGroupTests::SaveTest1(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest1.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest1.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -189,19 +190,20 @@ void ProjectGroupTests::SaveTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest2(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest2.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest2.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -219,7 +221,7 @@ void ProjectGroupTests::SaveTest2(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
