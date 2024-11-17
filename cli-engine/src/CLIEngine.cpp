@@ -11,6 +11,23 @@ CLIEngine::CLIEngine()
     m_project_types.add(std::make_shared<CppProgramProjectType>());
 }
 
+void CLIEngine::createProject(const std::string& repository_path, const std::string& project_name)
+{
+    // TODO: handle errors
+    Ishiko::Error error;
+
+    CodeSmithyBuildFileXMLRepository project_repository;
+    project_repository.create(repository_path, error);
+    // TODO: handle error
+    project_repository.setName(project_name);
+    project_repository.getBuildFile(error)->addProject(project_name);
+
+    // TODO: there should be an extra argument for the project type but for now we just assume the C++ program
+    project_repository.getBuildFile(error)->addTarget(project_name, project_name);
+
+    project_repository.close();
+}
+
 void CLIEngine::addFile(const std::string& repository_path, const std::string& project_name,
     const std::string& file_path)
 {
