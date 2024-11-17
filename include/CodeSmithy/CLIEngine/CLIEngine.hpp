@@ -14,6 +14,8 @@ namespace CodeSmithy
     public:
         CLIEngine();
 
+        void createProject(const std::string& repository_path, const std::string& project_name);
+
         void addFile(const std::string& repository_path, const std::string& project_name,
             const std::string& file_path);
 

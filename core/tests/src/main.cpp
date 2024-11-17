@@ -1,24 +1,5 @@
-/*
-    Copyright (c) 2015-2022 Xavier Leclercq
-
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE SOFTWARE.
-*/
+// SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "DocumentsTests/DocumentsTestSequence.h"
 #include "ProjectTests/ProjectTests.h"
@@ -27,24 +8,39 @@
 #include "EngineTests/EngineTests.h"
 #include "BootstrapTests/BootstrapTests.h"
 #include <Ishiko/TestFramework.hpp>
+#include <exception>
 
 using namespace Ishiko;
 
 int main(int argc, char* argv[])
 {
-    TestHarness theTestHarness("CodeSmithyCore");
+    try
+    {
+        TestHarness::CommandLineSpecification command_line_spec;
+        Configuration configuration = command_line_spec.createDefaultConfiguration();
+        configuration.set("context.data", "../../TestData");
+        configuration.set("context.output", "../../TestOutput");
+        configuration.set("context.reference", "../../ReferenceData");
+        CommandLineParser::parse(command_line_spec, argc, argv, configuration);
 
-    theTestHarness.context().setDataDirectory("../../TestData");
-    theTestHarness.context().setOutputDirectory("../../TestOutput");
-    theTestHarness.context().setReferenceDirectory("../../ReferenceData");
+        TestHarness the_test_harness("CodeSmithyCore Library Tests", configuration);
 
-    TestSequence& theTests = theTestHarness.tests();
-    theTests.append<DocumentsTestSequence>();
-    theTests.append<ProjectTests>();
-    theTests.append<ProjectTemplatesTests>();
-    theTests.append<WorkspacesTestSequence>();
-    theTests.append<EngineTests>();
-    theTests.append<BootstrapTests>();
+        TestSequence& the_tests = the_test_harness.tests();
+        the_tests.append<DocumentsTestSequence>();
+        the_tests.append<ProjectTests>();
+        the_tests.append<ProjectTemplatesTests>();
+        the_tests.append<WorkspacesTestSequence>();
+        the_tests.append<EngineTests>();
+        the_tests.append<BootstrapTests>();
 
-    return theTestHarness.run();
+        return the_test_harness.run();
+    }
+    catch (const std::exception& e)
+    {
+        return TestApplicationReturnCode::exception;
+    }
+    catch (...)
+    {
+        return TestApplicationReturnCode::exception;
+    }
 }
