@@ -36,7 +36,7 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("BakefileProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -61,7 +61,7 @@ void BakefileProjectTests::SaveTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("BakefileProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

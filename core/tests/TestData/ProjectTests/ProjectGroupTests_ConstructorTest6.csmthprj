@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb>
-  <codesmithy-project-repository>
+  <codesmithy-build-file>
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
     <name data-type="unicode-string" />
     <projects>
@@ -21,5 +21,5 @@
         </projects>
       </codesmithy-project>
     </projects>
-  </codesmithy-project-repository>
+  </codesmithy-build-file>
 </diplodocusdb-xmltreedb>

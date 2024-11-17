@@ -32,7 +32,7 @@ void CodeSmithyProjectTests::SaveTest1(Test& test)
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("CodeSmithyProject", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

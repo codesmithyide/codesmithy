@@ -41,7 +41,7 @@ void ProjectGroupTests::ConstructorTest2(Test& test)
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -66,7 +66,7 @@ void ProjectGroupTests::ConstructorTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -93,7 +93,7 @@ void ProjectGroupTests::ConstructorTest4(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -122,7 +122,7 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -149,7 +149,7 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -178,7 +178,7 @@ void ProjectGroupTests::SaveTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -205,7 +205,7 @@ void ProjectGroupTests::SaveTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -234,7 +234,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -263,7 +263,7 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -295,7 +295,7 @@ void ProjectGroupTests::SaveTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -326,7 +326,7 @@ void ProjectGroupTests::AddProjectTest1(Test& test)
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.create(test.context().getOutputPath(outputName), error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);

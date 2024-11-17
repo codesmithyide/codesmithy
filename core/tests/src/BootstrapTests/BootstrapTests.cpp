@@ -36,7 +36,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest1(Test& test)
 
     repository.setName("CodeSmithyIDE");
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("CodeSmithy", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -98,7 +98,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(repository.name() == "CodeSmithyIDE");
 
-    DiplodocusDB::XMLTreeDBNode project_node = repository.getBuildFileRawNode("CodeSmithy", error);
+    DiplodocusDB::XMLTreeDBNode project_node = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(project_node);
@@ -108,7 +108,7 @@ void BootstrapTests::ProjectFileRepositoryCreationTest2(Test& test)
 
     ISHIKO_TEST_FAIL_IF(error);
     ISHIKO_TEST_FAIL_IF_NOT(project.name() == "CodeSmithy");
-    ISHIKO_TEST_FAIL_IF_NOT(project.children().size() == 5);
+    ISHIKO_TEST_ABORT_IF_NOT(project.children().size() == 5);
     ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].isProject());
     ISHIKO_TEST_FAIL_IF_NOT(project.children()[0].project().name() == "pugixml");
     ISHIKO_TEST_FAIL_IF_NOT(project.children()[1].isProject());
