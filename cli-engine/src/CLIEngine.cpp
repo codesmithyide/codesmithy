@@ -20,10 +20,9 @@ void CLIEngine::addFile(const std::string& repository_path, const std::string& p
     CodeSmithyBuildFileXMLRepository project_repository;
     project_repository.open(repository_path, error);
     // TODO: handle error
-    std::unique_ptr<CodeSmithyBuildFile> project_node =
-        project_repository.getBuildFileNode(project_name, error);
+    std::unique_ptr<CodeSmithyBuildFile> project_node = project_repository.getBuildFile(error);
 
-    project_node->addSourceFile(file_path);
+    project_node->addSourceFile("", file_path);
 
     // TODO: handle error
     project_repository.close();
