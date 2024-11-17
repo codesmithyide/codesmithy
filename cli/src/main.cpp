@@ -94,16 +94,13 @@ int main(int argc, char* argv[])
             const std::string& subcommand_name = subcommand_configuration.value("name").asString();
             if (subcommand_name == "create")
             {
+                CLIEngine engine;
+
                 std::string output_dir = configuration.valueOrDefault("output-dir", ".");
                 const std::string& project_name = subcommand_configuration.value("project-name").asString();
-                std::string project_file_path = (output_dir + "/" + project_name + ".csbld");
+                std::string repository_path = (output_dir + "/" + project_name + ".csbld");
 
-                CodeSmithyBuildFileXMLRepository project_repository;
-                project_repository.create(project_file_path, error);
-                // TODO: handle error
-                project_repository.setName(project_name);
-                project_repository.addBuildFileNode(project_name, error);
-                project_repository.close();
+                engine.createProject(repository_path, project_name);
             }
             else if (subcommand_name == "add")
             {
