@@ -4,10 +4,10 @@
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
     <name data-type="unicode-string" />
     <projects>
-      <codesmithy-project>
+      <project>
         <name data-type="unicode-string">BakefileProject</name>
         <type data-type="unicode-string">CodeSmithy.Bakefile</type>
-      </codesmithy-project>
+      </project>
     </projects>
   </codesmithy-build-file>
 </diplodocusdb-xmltreedb>

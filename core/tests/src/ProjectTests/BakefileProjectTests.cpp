@@ -52,12 +52,13 @@ void BakefileProjectTests::ConstructorTest2(Test& test)
 
 void BakefileProjectTests::SaveTest1(Test& test)
 {
-    const char* outputName = "BakefileProjectTests_SaveTest1.csmthprj";
+    const char* output_name = "BakefileProjectTests_SaveTest1.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -73,6 +74,6 @@ void BakefileProjectTests::SaveTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
