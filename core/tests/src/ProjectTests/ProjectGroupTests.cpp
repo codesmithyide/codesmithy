@@ -41,7 +41,7 @@ void ProjectGroupTests::ConstructorTest2(Test& test)
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
     repository.open(inputPath, error);
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -66,7 +66,7 @@ void ProjectGroupTests::ConstructorTest3(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -93,7 +93,7 @@ void ProjectGroupTests::ConstructorTest4(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -122,7 +122,7 @@ void ProjectGroupTests::ConstructorTest5(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -149,7 +149,7 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -169,16 +169,17 @@ void ProjectGroupTests::ConstructorTest6(Test& test)
 
 void ProjectGroupTests::SaveTest1(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest1.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest1.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -189,23 +190,24 @@ void ProjectGroupTests::SaveTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest2(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest2.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest2.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -219,22 +221,23 @@ void ProjectGroupTests::SaveTest2(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj";
+    const char* output_name = "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj";
    
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -248,22 +251,23 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj";
+    const char* output_name = "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj";
   
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -279,23 +283,24 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest3(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest3.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest3.csmthprj";
 
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -313,20 +318,21 @@ void ProjectGroupTests::SaveTest3(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddProjectTest1(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_AddProjectTest1.csmthprj";
+    const char* output_name = "ProjectGroupTests_AddProjectTest1.csmthprj";
     
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.addBuildFileNode("MyProjectGroup", error);
+    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
 
     ISHIKO_TEST_ABORT_IF(error);
     ISHIKO_TEST_ABORT_IF_NOT(projectNode);
@@ -342,6 +348,6 @@ void ProjectGroupTests::AddProjectTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
