@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <diplodocusdb-xmltreedb>
-  <codesmithy-project-repository>
+  <codesmithy-build-file>
     <file-format-version data-type="unicode-string">0.1.0</file-format-version>
     <name data-type="unicode-string"></name>
     <projects>
-      <codesmithy-project>
+      <project>
         <name data-type="unicode-string">MyProjectGroup</name>
         <type data-type="unicode-string">CodeSmithy.Group</type>
         <projects>
@@ -12,7 +12,7 @@
             <location data-type="unicode-string">location1</location>
           </external-project-link>
         </projects>
-      </codesmithy-project>
+      </project>
     </projects>
-  </codesmithy-project-repository>
+  </codesmithy-build-file>
 </diplodocusdb-xmltreedb>

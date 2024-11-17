@@ -227,12 +227,13 @@ void ProjectGroupTests::SaveTest2(Test& test)
 
 void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj";
+    const char* output_name = "ProjectGroupTests_AddExternalProjectLinkTest1.csmthprj";
    
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -250,18 +251,19 @@ void ProjectGroupTests::AddExternalProjectLinkTest1(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj";
+    const char* output_name = "ProjectGroupTests_AddExternalProjectLinkTest2.csmthprj";
   
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -281,19 +283,20 @@ void ProjectGroupTests::AddExternalProjectLinkTest2(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
 // Checks that calling save() twice works correctly
 void ProjectGroupTests::SaveTest3(Test& test)
 {
-    const char* outputName = "ProjectGroupTests_SaveTest3.csmthprj";
+    const char* output_name = "ProjectGroupTests_SaveTest3.csmthprj";
 
     Ishiko::Error error;
 
     CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(outputName), error);
+    repository.create(test.context().getOutputPath(output_name), error);
+    repository.getBuildFile(error)->addProject(output_name);
 
     ISHIKO_TEST_ABORT_IF(error);
 
@@ -315,7 +318,7 @@ void ProjectGroupTests::SaveTest3(Test& test)
     repository.close();
 
     ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
+    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }
 
