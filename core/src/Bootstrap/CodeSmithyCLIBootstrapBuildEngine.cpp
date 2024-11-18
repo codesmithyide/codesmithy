@@ -14,7 +14,13 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         const std::string& architecture, bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name + "/" + architecture;
 
         if (verbose)
@@ -29,7 +35,13 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
 
         if (verbose)
@@ -44,7 +56,13 @@ namespace
     void CloneRepository2(const std::string& organization, const std::string& name, const std::string& targetDirectory,
         bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
 
         if (verbose)
         {
@@ -189,13 +207,16 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
     CloneRepository2("codesmithyide", "ishiko-cpp_process", work_directory + "/codesmithyide/ishiko/cpp/process", verbose);
     CloneRepository2("codesmithyide", "ishiko-cpp_io", work_directory + "/codesmithyide/ishiko/cpp/io", verbose);
     CloneRepository2("codesmithyide", "ishiko-cpp_filesystem", work_directory + "/codesmithyide/ishiko/cpp/filesystem", verbose);
+    CloneRepository2("codesmithyide", "ishiko-cpp_configuration", work_directory + "/codesmithyide/ishiko/cpp/configuration", verbose);
     CloneRepository2("codesmithyide", "ishiko-cpp_terminal", work_directory + "/codesmithyide/ishiko/cpp/terminal", verbose);
     CloneRepository2("codesmithyide", "ishiko-cpp_workflows", work_directory + "/codesmithyide/ishiko/cpp/workflows", verbose);
+    CloneRepository2("codesmithyide", "ishiko-cpp_uuids", work_directory + "/codesmithyide/ishiko/cpp/uuids", verbose);
     CloneRepository2("codesmithyide", "diplodocusdb_core", work_directory + "/codesmithyide/diplodocusdb/core", verbose);
     CloneRepository2("codesmithyide", "diplodocusdb_physical-storage", work_directory + "/codesmithyide/diplodocusdb/physical-storage", verbose);
     CloneRepository2("codesmithyide", "diplodocusdb_embedded-document-db", work_directory + "/codesmithyide/diplodocusdb/embedded-document-db", verbose);
-    CloneRepository("codesmithyide", "version-control", work_directory, verbose);
     CloneRepository("codesmithyide", "build-toolchains", work_directory, verbose);
+    CloneRepository("codesmithyide", "build-files", work_directory, verbose);
+    CloneRepository("codesmithyide", "version-control", work_directory, verbose);
     CloneRepository("codesmithyide", "codesmithy", work_directory, verbose);
 
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
@@ -227,9 +248,13 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
         environment, verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/filesystem/build-files/vc17/IshikoFileSystem.sln",
         environment, verbose);
+    Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/configuration/build-files/vc17/IshikoConfiguration.sln",
+        environment, verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/terminal/build-files/vc17/IshikoTerminal.sln", environment,
         verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/workflows/build-files/vc17/IshikoWorkflows.sln", environment,
+        verbose);
+    Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/uuids/build-files/vc17/IshikoUUIDs.sln", environment,
         verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/diplodocusdb/core/build-files/vc17/DiplodocusDBCore.sln", environment,
         verbose);
@@ -241,10 +266,14 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
         environment, verbose);
     Build(nativeToolchain, work_directory,
         "codesmithyide/build-toolchains/build-files/vc17/CodeSmithyBuildToolchains.sln", environment, verbose);
+    Build(nativeToolchain, work_directory,
+        "codesmithyide/build-files/build-files/vc17/CodeSmithyBuildFiles.sln", environment, verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/version-control/git/build-files/vc17/CodeSmithyGit.sln",
         environment, verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/codesmithy/core/build-files/vc17/CodeSmithyCore.sln",
         environment, verbose);
+    Build(nativeToolchain, work_directory, "codesmithyide/codesmithy/cli-engine/build-files/vc17/CodeSmithyCLIEngine.sln", environment,
+        verbose);
     Build(nativeToolchain, work_directory, "codesmithyide/codesmithy/cli/build-files/vc17/CodeSmithyCLI.sln", environment,
         verbose);
 }
