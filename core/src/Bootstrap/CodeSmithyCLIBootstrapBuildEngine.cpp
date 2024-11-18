@@ -14,7 +14,13 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         const std::string& architecture, bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name + "/" + architecture;
 
         if (verbose)
@@ -29,7 +35,13 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
 
         if (verbose)
@@ -44,7 +56,13 @@ namespace
     void CloneRepository2(const std::string& organization, const std::string& name, const std::string& targetDirectory,
         bool verbose)
     {
+#if ISHIKO_OS == ISHIKO_OS_LINUX
+        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
+#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         std::string repositoryURL = "https://github.com/" + organization + "/" + name;
+#else
+#error Unsupported OS
+#endif
 
         if (verbose)
         {
