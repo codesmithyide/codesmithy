@@ -14,7 +14,7 @@ BootstrapTests::BootstrapTests(const TestNumber& number, const TestContext& cont
 void BootstrapTests::BootstrapTest1(TestSequence& test_sequence)
 {
     boost::filesystem::path application_path = test_sequence.context().getApplicationPath();
-    boost::filesystem::path output_dir = test_sequence.context().getOutputPath("BootstrapTests_BootstrapTest1");
+    boost::filesystem::path output_dir = test_sequence.context().getOutputPath("BootstrapTest1");
 
     std::string command_line =
         (application_path.string() + " bootstrap --work-dir=" + output_dir.string() + " --verbose=true");
