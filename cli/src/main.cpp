@@ -3,7 +3,7 @@
 
 #include "CommandLineSpecification.hpp"
 #include <CodeSmithy/BuildFiles.hpp>
-#include <CodeSmithy/BuildToolchains.h>
+#include <CodeSmithy/BuildToolchains.hpp>
 #include <CodeSmithy/CLIEngine.hpp>
 #include <CodeSmithy/Core.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
