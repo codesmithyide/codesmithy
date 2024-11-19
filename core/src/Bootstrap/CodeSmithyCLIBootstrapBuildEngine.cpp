@@ -206,11 +206,11 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
 
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
     CMakeGenerationOptions options("Visual Studio 17 2022", "x64",
-        { { "BUILD_SHARED_LIBS", "OFF" }, { "STATIC_CRT", "OFF" } });
+        {{"BUILD_SHARED_LIBS", "OFF"}, {"STATIC_CRT", "OFF"}});
     Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/x64/CMakeLists.txt", options, environment,
         verbose);
 #else
-    CMakeGenerationOptions options;
+    CMakeGenerationOptions options("Unix Makefiles", "x64", {{"BUILD_SHARED_LIBS", "OFF"}});
     Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/base-platform/build-files/vc17/IshikoBasePlatform.sln", environment,
