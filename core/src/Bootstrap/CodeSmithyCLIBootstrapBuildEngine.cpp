@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 #include "Bootstrap/CodeSmithyCLIBootstrapBuildEngine.hpp"
-#include <CodeSmithy/BuildToolchains.h>
+#include <CodeSmithy/BuildToolchains.hpp>
 #include <CodeSmithy/VersionControl/Git/GitRepository.h>
 #include <Ishiko/BasePlatform.hpp>
 #include <iostream>
