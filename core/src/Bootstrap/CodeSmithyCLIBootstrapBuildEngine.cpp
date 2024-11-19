@@ -211,7 +211,7 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
         verbose);
 #else
     // TODO: I should not have to escape the generator
-    CMakeGenerationOptions options("'Unix Makefiles'", "x64", {{"BUILD_SHARED_LIBS", "OFF"}});
+    CMakeGenerationOptions options("Unix Makefiles", "", {{"BUILD_SHARED_LIBS", "OFF"}});
     Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/base-platform/build-files/vc17/IshikoBasePlatform.sln", environment,
