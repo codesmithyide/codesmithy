@@ -63,7 +63,7 @@ namespace
 #if ISHIKO_OS == ISHIKO_OS_LINUX
         boost::filesystem::path makefilePath = makefile;
         makefilePath = makefilePath.parent_path().parent_path();
-        makefilePath /= "GNUmakefile/GNUmakefile";
+        makefilePath /= "gnumake/GNUmakefile";
         return makefilePath.string();
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         return makefile;
