@@ -14,13 +14,8 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         const std::string& architecture, bool verbose)
     {
-#if ISHIKO_OS == ISHIKO_OS_LINUX
-        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
-#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-        std::string repositoryURL = "https://github.com/" + organization + "/" + name;
-#else
-#error Unsupported OS
-#endif
+        // TODO: should be HTTPS but it doesn't work on CircleCI
+        std::string repositoryURL = "http://github.com/" + organization + "/" + name;
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name + "/" + architecture;
 
         if (verbose)
@@ -35,13 +30,8 @@ namespace
     void CloneRepository(const std::string& organization, const std::string& name, const std::string& workDirectory,
         bool verbose)
     {
-#if ISHIKO_OS == ISHIKO_OS_LINUX
-        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
-#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-        std::string repositoryURL = "https://github.com/" + organization + "/" + name;
-#else
-#error Unsupported OS
-#endif
+        // TODO: should be HTTPS but it doesn't work on CircleCI
+        std::string repositoryURL = "http://github.com/" + organization + "/" + name;
         std::string targetDirectory = workDirectory + "/" + organization + "/" + name;
 
         if (verbose)
@@ -56,13 +46,8 @@ namespace
     void CloneRepository2(const std::string& organization, const std::string& name, const std::string& targetDirectory,
         bool verbose)
     {
-#if ISHIKO_OS == ISHIKO_OS_LINUX
-        std::string repositoryURL = "ssh://git@github.com:" + organization + "/" + name + ".git";
-#elif ISHIKO_OS == ISHIKO_OS_WINDOWS
-        std::string repositoryURL = "https://github.com/" + organization + "/" + name;
-#else
-#error Unsupported OS
-#endif
+        // TODO: should be HTTPS but it doesn't work on CircleCI
+        std::string repositoryURL = "http://github.com/" + organization + "/" + name;
 
         if (verbose)
         {
@@ -78,7 +63,7 @@ namespace
 #if ISHIKO_OS == ISHIKO_OS_LINUX
         boost::filesystem::path makefilePath = makefile;
         makefilePath = makefilePath.parent_path().parent_path();
-        makefilePath /= "GNUmakefile/GNUmakefile";
+        makefilePath /= "gnumake/GNUmakefile";
         return makefilePath.string();
 #elif ISHIKO_OS == ISHIKO_OS_WINDOWS
         return makefile;
@@ -221,11 +206,12 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
 
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
     CMakeGenerationOptions options("Visual Studio 17 2022", "x64",
-        { { "BUILD_SHARED_LIBS", "OFF" }, { "STATIC_CRT", "OFF" } });
+        {{"BUILD_SHARED_LIBS", "OFF"}, {"STATIC_CRT", "OFF"}});
     Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/x64/CMakeLists.txt", options, environment,
         verbose);
 #else
-    CMakeGenerationOptions options;
+    // TODO: I should not have to escape the generator
+    CMakeGenerationOptions options("'Unix Makefiles'", "x64", {{"BUILD_SHARED_LIBS", "OFF"}});
     Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
 #endif
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/base-platform/build-files/vc17/IshikoBasePlatform.sln", environment,
