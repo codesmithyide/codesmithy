@@ -72,17 +72,17 @@ namespace
 #endif
     }
 
-    void Build(const MakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
+    void Build(const MakeToolchain& toolchain, const std::string& work_directory, const std::string& makefile_path,
         const Ishiko::Environment& environment, bool verbose)
     {
-        std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
+        std::string absolute_makefile_path = work_directory + "/" + makefile_path;
 
         if (verbose)
         {
-            std::cout << "Building " << absoluteMakefilePath << std::endl;
+            std::cout << "Building " << absolute_makefile_path << std::endl;
         }
 
-        toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
+        toolchain.build(GetMakefilePath(absolute_makefile_path), environment);
     }
 
     void Build(const MSBuildToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
@@ -98,18 +98,22 @@ namespace
         toolchain.build(GetMakefilePath(absoluteMakefilePath), environment);
     }
 
-    void Build(const CMakeToolchain& toolchain, const std::string& workDirectory, const std::string& makefilePath,
-        const CMakeGenerationOptions& options, const Ishiko::Environment& environment, bool verbose)
+    void Build(const CMakeToolchain& toolchain, const std::string& work_directory, const std::string& makefile_path,
+        const CMakeGenerationOptions& options, const Ishiko::Environment& environment, bool install, bool verbose)
     {
-        std::string absoluteMakefilePath = workDirectory + "/" + makefilePath;
+        std::string absolute_makefile_path = work_directory + "/" + makefile_path;
 
         if (verbose)
         {
-            std::cout << "Building " << absoluteMakefilePath << std::endl;
+            std::cout << "Building " << absolute_makefile_path << std::endl;
         }
 
-        toolchain.generate(absoluteMakefilePath, options, environment);
-        toolchain.build(absoluteMakefilePath, environment);
+        toolchain.generate(absolute_makefile_path, options, environment);
+        toolchain.build(absolute_makefile_path, environment);
+        if (install)
+        {
+            toolchain.build(absolute_makefile_path, "install", environment);
+        }
     }
 }
 
@@ -140,11 +144,12 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
     }
     environment.set("PUGIXML_ROOT", (value + "/pugixml").c_str());
 
+    const std::string libgit2_path = (value + "/libgit2");
     if (verbose)
     {
-        std::cout << "Set environment variable LIBGIT2 to " << value << "/libgit2" << std::endl;
+        std::cout << "Set environment variable LIBGIT2 to " << libgit2_path << std::endl;
     }
-    environment.set("LIBGIT2", (value + "/libgit2").c_str());
+    environment.set("LIBGIT2", libgit2_path.c_str());
 
     if (verbose)
     {
@@ -207,12 +212,12 @@ void CodeSmithyCLIBootstrapBuildEngine::run(const std::string& work_directory, b
 #if ISHIKO_OS == ISHIKO_OS_WINDOWS
     CMakeGenerationOptions options("Visual Studio 17 2022", "x64",
         {{"BUILD_SHARED_LIBS", "OFF"}, {"STATIC_CRT", "OFF"}});
-    Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/x64/CMakeLists.txt", options, environment,
+    Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/x64/CMakeLists.txt", options, environment, false,
         verbose);
 #else
-    // TODO: I should not have to escape the generator
-    CMakeGenerationOptions options("Unix Makefiles", "", {{"BUILD_SHARED_LIBS", "OFF"}});
-    Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, verbose);
+    CMakeGenerationOptions options("Unix Makefiles", "",
+        {{"BUILD_SHARED_LIBS", "OFF"}, {"CMAKE_INSTALL_PREFIX", libgit2_path}});
+    Build(cmakeToolchain, work_directory, "codesmithyide/libgit2/CMakeLists.txt", options, environment, true, verbose);
 #endif
     Build(nativeToolchain, work_directory, "codesmithyide/ishiko/cpp/base-platform/build-files/vc17/IshikoBasePlatform.sln", environment,
         verbose);
