@@ -23,6 +23,7 @@ program CodeSmithyCoreTests : CodeSmithyCore, IshikoTestFramework
     if ($(toolset) != gnu)
     {
         archs = x86 x86_64;
+        cxx-compiler-options = "/utf-8";
     }
 
     headers

@@ -88,6 +88,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT)\include\boost-1_90;$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(YAML_CPP_ROOT)\include;$(ISHIKO_CPP_ROOT)/tidy-yaml\include;$(ISHIKO_CPP_ROOT)/io\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(PUGIXML_ROOT)\src;$(CODESMITHYIDE_ROOT)/codesmithy\include;$(ISHIKO_CPP_ROOT)/configuration\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/types\include;$(ISHIKO_CPP_ROOT)/diff\include;$(ISHIKO_CPP_ROOT)/xml\include;$(ISHIKO_CPP_ROOT)/time\include;$(ISHIKO_CPP_ROOT)/test-framework\include;$(ISHIKO_CPP_ROOT)/test-framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +106,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT)\include\boost-1_90;$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(YAML_CPP_ROOT)\include;$(ISHIKO_CPP_ROOT)/tidy-yaml\include;$(ISHIKO_CPP_ROOT)/io\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(PUGIXML_ROOT)\src;$(CODESMITHYIDE_ROOT)/codesmithy\include;$(ISHIKO_CPP_ROOT)/configuration\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/types\include;$(ISHIKO_CPP_ROOT)/diff\include;$(ISHIKO_CPP_ROOT)/xml\include;$(ISHIKO_CPP_ROOT)/time\include;$(ISHIKO_CPP_ROOT)/test-framework\include;$(ISHIKO_CPP_ROOT)/test-framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT)\include\boost-1_90;$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(YAML_CPP_ROOT)\include;$(ISHIKO_CPP_ROOT)/tidy-yaml\include;$(ISHIKO_CPP_ROOT)/io\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(PUGIXML_ROOT)\src;$(CODESMITHYIDE_ROOT)/codesmithy\include;$(ISHIKO_CPP_ROOT)/configuration\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/types\include;$(ISHIKO_CPP_ROOT)/diff\include;$(ISHIKO_CPP_ROOT)/xml\include;$(ISHIKO_CPP_ROOT)/time\include;$(ISHIKO_CPP_ROOT)/test-framework\include;$(ISHIKO_CPP_ROOT)/test-framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +148,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalIncludeDirectories>$(ISHIKO_CPP_ROOT)/collections\include;$(ISHIKO_CPP_ROOT)/base-platform\include;$(ISHIKO_CPP_ROOT)/errors\include;$(BOOST_ROOT)\include\boost-1_90;$(ISHIKO_CPP_ROOT)/workflows\include;$(LIBGIT2)\$(Platform)\include;$(CODESMITHYIDE_ROOT)/version-control\include;$(ISHIKO_CPP_ROOT)/uuids\include;$(YAML_CPP_ROOT)\include;$(ISHIKO_CPP_ROOT)/tidy-yaml\include;$(ISHIKO_CPP_ROOT)/io\include;$(FMT_ROOT)\include;$(ISHIKO_CPP_ROOT)/memory\include;$(ISHIKO_CPP_ROOT)/text\include;$(CODESMITHYIDE_ROOT)/build-files\include;$(ISHIKO_CPP_ROOT)/process\include;$(CODESMITHYIDE_ROOT)/build-toolchains\include;$(PUGIXML_ROOT)\src;$(CODESMITHYIDE_ROOT)/codesmithy\include;$(ISHIKO_CPP_ROOT)/configuration\include;$(ISHIKO_CPP_ROOT)/filesystem\include;$(ISHIKO_CPP_ROOT)/types\include;$(ISHIKO_CPP_ROOT)/diff\include;$(ISHIKO_CPP_ROOT)/xml\include;$(ISHIKO_CPP_ROOT)/time\include;$(ISHIKO_CPP_ROOT)/test-framework\include;$(ISHIKO_CPP_ROOT)/test-framework\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

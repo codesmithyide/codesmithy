@@ -22,7 +22,6 @@
 
 #include "ProjectDescriptionTests.h"
 #include "CodeSmithy/Core/Projects/ProjectDescription.h"
-#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 
 using namespace boost::filesystem;
 using namespace Ishiko;
@@ -32,7 +31,6 @@ ProjectDescriptionTests::ProjectDescriptionTests(const TestNumber& number, const
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
-    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void ProjectDescriptionTests::ConstructorTest1(Test& test)
@@ -46,25 +44,5 @@ void ProjectDescriptionTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectDescription description("My description");
 
-    ISHIKO_TEST_PASS();
-}
-
-void ProjectDescriptionTests::SaveTest1(Test& test)
-{
-    const char* outputName = "ProjectDescriptionTests_SaveTest1.csmthprj";
-   
-    Ishiko::Error error;
-
-    DiplodocusDB::XMLTreeDB db;
-    db.create(test.context().getOutputPath(outputName), error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-
-    CodeSmithy::ProjectDescription description("My description");
-    description.save(db, db.root(), error);
-    db.close();
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }

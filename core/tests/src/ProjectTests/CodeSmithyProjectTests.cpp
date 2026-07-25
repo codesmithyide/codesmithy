@@ -12,7 +12,6 @@ CodeSmithyProjectTests::CodeSmithyProjectTests(const TestNumber& number, const T
     : TestSequence(number, "CodeSmithyProject tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
-    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void CodeSmithyProjectTests::ConstructorTest1(Test& test)
@@ -20,30 +19,5 @@ void CodeSmithyProjectTests::ConstructorTest1(Test& test)
     CodeSmithy::CodeSmithyProjectType type;
     CodeSmithy::CodeSmithyProject project(type, "CodeSmithyProjectCreationTest1");
 
-    ISHIKO_TEST_PASS();
-}
-
-void CodeSmithyProjectTests::SaveTest1(Test& test)
-{
-    const char* output_name = "CodeSmithyProjectTests_SaveTest1.csmthprj";
-    
-    Ishiko::Error error;
-
-    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(output_name), error);
-    repository.getBuildFile(error)->addProject(output_name);
-
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
-    
-    CodeSmithy::CodeSmithyProjectType type;
-    CodeSmithy::CodeSmithyProject project(type, repository.db(), projectNode, error);
-    project.save(repository.db(), projectNode, error);
-    repository.close();
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }

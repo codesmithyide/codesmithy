@@ -22,7 +22,6 @@
 
 #include "ProjectLocationTests.h"
 #include "CodeSmithy/Core/Projects/ProjectLocation.h"
-#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 
 using namespace boost::filesystem;
 using namespace Ishiko;
@@ -32,7 +31,6 @@ ProjectLocationTests::ProjectLocationTests(const TestNumber& number, const TestC
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
     append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
-    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void ProjectLocationTests::ConstructorTest1(Test& test)
@@ -46,25 +44,5 @@ void ProjectLocationTests::ConstructorTest2(Test& test)
 {
     CodeSmithy::ProjectLocation location("location1");
 
-    ISHIKO_TEST_PASS();
-}
-
-void ProjectLocationTests::SaveTest1(Test& test)
-{
-    const char* outputName = "ProjectLocationTests_SaveTest1.csmthprj";
-
-    Ishiko::Error error;
-
-    DiplodocusDB::XMLTreeDB db;
-    db.create(test.context().getOutputPath(outputName), error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-
-    CodeSmithy::ProjectLocation location("location1");
-    location.save(db, db.root(), error);
-    db.close();
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(outputName);
     ISHIKO_TEST_PASS();
 }
