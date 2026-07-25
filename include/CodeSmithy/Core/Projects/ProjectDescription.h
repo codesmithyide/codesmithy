@@ -23,7 +23,6 @@
 #ifndef _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 #define _CODESMITHY_CORE_PROJECTS_PROJECTDESCRIPTION_H_
 
-#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <string>
 
 namespace CodeSmithy
@@ -34,8 +33,6 @@ class ProjectDescription
 public:
     ProjectDescription() = default;
     ProjectDescription(const std::string& plainTextDescription);
-
-    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_plainTestDescription;

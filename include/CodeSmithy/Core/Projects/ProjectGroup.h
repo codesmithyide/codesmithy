@@ -53,12 +53,8 @@ public:
 
 public:
     ProjectGroup(const ProjectGroupType& type, const std::string& name);
-    ProjectGroup(const ProjectGroupType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
-        Ishiko::Error& error);
     
     const ProjectType& type() const override;
-
-    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const override;
 
     std::vector<ProjectOrLink>& children();
     void addProject(std::shared_ptr<Project> project);
