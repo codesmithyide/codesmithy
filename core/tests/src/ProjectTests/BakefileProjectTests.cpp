@@ -12,8 +12,6 @@ BakefileProjectTests::BakefileProjectTests(const TestNumber& number, const TestC
     : TestSequence(number, "BakefileProject tests", context)
 {
     append<HeapAllocationErrorsTest>("Constructor test 1", ConstructorTest1);
-    append<HeapAllocationErrorsTest>("Constructor test 2", ConstructorTest2);
-    append<HeapAllocationErrorsTest>("save test 1", SaveTest1);
 }
 
 void BakefileProjectTests::ConstructorTest1(Test& test)
@@ -22,58 +20,5 @@ void BakefileProjectTests::ConstructorTest1(Test& test)
     CodeSmithy::BakefileProjectType type(documentTypes);
     CodeSmithy::BakefileProject project(type, "BakefileProjectTests_ConstructorTest1");
 
-    ISHIKO_TEST_PASS();
-}
-
-void BakefileProjectTests::ConstructorTest2(Test& test)
-{
-    path inputPath = test.context().getDataPath("BakefileProjectTests_ConstructorTest2.csmthprj");
-
-    Ishiko::Error error;
-
-    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.open(inputPath, error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
-
-    CodeSmithy::DocumentTypes documentTypes;
-    CodeSmithy::BakefileProjectType type(documentTypes);
-    CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_NOT(project.name() == "BakefileProject");
-    ISHIKO_TEST_PASS();
-}
-
-void BakefileProjectTests::SaveTest1(Test& test)
-{
-    const char* output_name = "BakefileProjectTests_SaveTest1.csmthprj";
-    
-    Ishiko::Error error;
-
-    CodeSmithy::CodeSmithyBuildFileXMLRepository repository;
-    repository.create(test.context().getOutputPath(output_name), error);
-    repository.getBuildFile(error)->addProject(output_name);
-
-    ISHIKO_TEST_ABORT_IF(error);
-
-    DiplodocusDB::XMLTreeDBNode projectNode = repository.getBuildFileRawNode(error);
-
-    ISHIKO_TEST_ABORT_IF(error);
-    ISHIKO_TEST_ABORT_IF_NOT(projectNode);
-    
-    CodeSmithy::DocumentTypes documentTypes;
-    CodeSmithy::BakefileProjectType type(documentTypes);
-    CodeSmithy::BakefileProject project(type, repository.db(), projectNode, error);
-    project.save(repository.db(), projectNode, error);
-    repository.close();
-
-    ISHIKO_TEST_FAIL_IF(error);
-    ISHIKO_TEST_FAIL_IF_OUTPUT_AND_REFERENCE_FILES_NEQ(output_name);
     ISHIKO_TEST_PASS();
 }

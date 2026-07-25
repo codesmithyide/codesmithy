@@ -30,25 +30,9 @@ CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, const st
 {
 }
 
-CodeSmithyProject::CodeSmithyProject(const CodeSmithyProjectType& type, DiplodocusDB::XMLTreeDB& db,
-    DiplodocusDB::XMLTreeDBNode node, Ishiko::Error& error)
-    : Project(db.childValue(node, "name", error).asUTF8String()), m_type(type)
-{
-}
-
 const ProjectType& CodeSmithyProject::type() const
 {
     return m_type;
-}
-
-void CodeSmithyProject::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node,
-    Ishiko::Error& error) const
-{
-    db.removeAllChildNodes(node, error);
-
-    saveBaseMembers(db, node, error);
-
-    // TODO
 }
 
 }

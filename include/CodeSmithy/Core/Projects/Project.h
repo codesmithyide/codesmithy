@@ -26,7 +26,6 @@
 #include "ProjectType.hpp"
 #include "ProjectDescription.h"
 #include "ProjectLocation.h"
-#include <DiplodocusDB/EmbeddedDocumentDB.hpp>
 #include <Ishiko/Errors.hpp>
 #include <string>
 
@@ -43,11 +42,6 @@ public:
     virtual const ProjectType& type() const = 0;
     const std::string& name() const;
     void setDescription(const ProjectDescription& description);
-
-    virtual void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const = 0;
-
-protected:
-    void saveBaseMembers(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const;
 
 private:
     std::string m_name;

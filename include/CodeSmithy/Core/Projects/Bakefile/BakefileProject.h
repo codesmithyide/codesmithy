@@ -33,17 +33,12 @@ class BakefileProject : public MetaBuildSystemProject
 {
 public:
     BakefileProject(const BakefileProjectType& type, const std::string& name);
-    BakefileProject(const BakefileProjectType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
-        Ishiko::Error& error);
     ~BakefileProject() override;
 
     const ProjectType& type() const override;
 
-    void save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const override;
-
 private:
     const BakefileProjectType& m_type;
-    DiplodocusDB::XMLTreeDBNode m_node;
 };
 
 }
