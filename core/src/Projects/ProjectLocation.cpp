@@ -34,28 +34,9 @@ ProjectLocation::ProjectLocation(const std::string& url)
 {
 }
 
-ProjectLocation::ProjectLocation(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error)
-{
-    DiplodocusDB::XMLTreeDBNode locationNode = db.child(node, "location", error);
-    DiplodocusDB::Value value = db.value(locationNode, error);
-    if (!error)
-    {
-        m_url = value.asUTF8String();
-    }
-}
-
 const std::string& ProjectLocation::url() const
 {
     return m_url;
-}
-
-void ProjectLocation::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const
-{
-    if (m_url.size() > 0)
-    {
-        DiplodocusDB::XMLTreeDBNode locationNode = db.setChildNode(node, "location", error);
-        db.setValue(locationNode, DiplodocusDB::Value::UTF8String(m_url), error);
-    }
 }
 
 bool ProjectLocation::operator ==(const ProjectLocation& other) const

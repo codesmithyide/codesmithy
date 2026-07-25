@@ -3,8 +3,6 @@ import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgi
 import $(codesmithyidepath)/build-toolchains/include/CodeSmithy/CodeSmithyBuildToolchains.bkl;
 import $(codesmithyidepath)/build-files/include/CodeSmithy/CodeSmithyBuildFiles.bkl;
 import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
-diplodocusdbpath = envvar("DIPLODOCUSDB_ROOT");
-import $(diplodocusdbpath)/embedded-document-db/include/DiplodocusDB/EmbeddedDocumentDB.bkl;
 ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/collections/include/Ishiko/Collections.bkl;
 import $(ishikopath)/third-party-glue/include/Ishiko/ThirdParty/Boost.bkl;
@@ -17,7 +15,7 @@ setting CODESMITHY_ROOT
     default = '$(CODESMITHYIDE_ROOT)/codesmithy';
 }
 
-template CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToolchains, libgit2, DiplodocusEmbeddedDocumentDB, IshikoWorkflows, IshikoCollections, Boost, pugixml
+template CodeSmithyCore : CodeSmithyGit, CodeSmithyBuildFiles, CodeSmithyBuildToolchains, libgit2, IshikoWorkflows, IshikoCollections, Boost, pugixml
 {
     includedirs += $(CODESMITHY_ROOT)/include;
 

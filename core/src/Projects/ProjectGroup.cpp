@@ -71,56 +71,9 @@ ProjectGroup::ProjectGroup(const ProjectGroupType& type, const std::string& name
 {
 }
 
-ProjectGroup::ProjectGroup(const ProjectGroupType& type, DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode node,
-    Ishiko::Error& error)
-    : Project(db.childValue(node, projectNameElementName, error).asUTF8String()), m_type(type)
-{
-    DiplodocusDB::XMLTreeDBNode childProjectsNode = db.child(node, childProjectsElementName, error);
-    std::vector<DiplodocusDB::XMLTreeDBNode> children = db.childNodes(childProjectsNode, error);
-    for (DiplodocusDB::XMLTreeDBNode& childProjectNode : children)
-    {
-        if (childProjectNode.name() == externalProjectLinkElementName)
-        {
-            m_childProjects.push_back(ProjectOrLink(ProjectLocation(db, childProjectNode, error)));
-        }
-        else if (childProjectNode.name() == childProjectElementName)
-        {
-            // TODO : this assumes the project is always a ProjectGroup
-            std::shared_ptr<ProjectGroup> childProject = std::make_shared<ProjectGroup>(m_type, db, childProjectNode,
-                error);
-            m_childProjects.push_back(ProjectOrLink(childProject));
-        }
-    }
-}
-
 const ProjectType& ProjectGroup::type() const
 {
     return m_type;
-}
-
-void ProjectGroup::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const
-{
-    db.removeAllChildNodes(node, error);
-
-    // TODO : should be more robust, but the robustness should probably be implemented
-    // at a higher level so here we just don't try to recover
-    saveBaseMembers(db, node, error);
-    DiplodocusDB::XMLTreeDBNode childProjectsNode = db.setChildNode(node, childProjectsElementName, error);
-    for (const ProjectOrLink& item : m_childProjects)
-    {
-        if (item.isLink())
-        {
-            DiplodocusDB::XMLTreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
-                externalProjectLinkElementName, error);
-            item.location().save(db, childProjectNode, error);
-        }
-        else if (item.isProject())
-        {
-            DiplodocusDB::XMLTreeDBNode childProjectNode = db.appendChildNode(childProjectsNode,
-                childProjectElementName, error);
-            item.project().save(db, childProjectNode, error);
-        }
-    }
 }
 
 std::vector<ProjectGroup::ProjectOrLink>& ProjectGroup::children()

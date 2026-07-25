@@ -30,12 +30,6 @@ BakefileProject::BakefileProject(const BakefileProjectType& type, const std::str
 {
 }
 
-BakefileProject::BakefileProject(const BakefileProjectType& type, DiplodocusDB::XMLTreeDB& db,
-    DiplodocusDB::XMLTreeDBNode node, Ishiko::Error& error)
-    : MetaBuildSystemProject(db.childValue(node, "name", error).asUTF8String()), m_type(type), m_node(node)
-{
-}
-
 BakefileProject::~BakefileProject()
 {
 }
@@ -43,15 +37,6 @@ BakefileProject::~BakefileProject()
 const ProjectType& BakefileProject::type() const
 {
     return m_type;
-}
-
-void BakefileProject::save(DiplodocusDB::XMLTreeDB& db, DiplodocusDB::XMLTreeDBNode& node, Ishiko::Error& error) const
-{
-    db.removeAllChildNodes(node, error);
-
-    saveBaseMembers(db, node, error);
-
-    // TODO
 }
 
 }
